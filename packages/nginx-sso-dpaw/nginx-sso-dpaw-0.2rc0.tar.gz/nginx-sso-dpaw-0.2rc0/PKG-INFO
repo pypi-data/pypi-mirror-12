@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: nginx-sso-dpaw
+Version: 0.2rc0
+Summary: Nginx SSO library for DPaW internal applications.
+Home-page: https://bitbucket.org/dpaw/nginx-sso
+Author: Rocky Chen
+Author-email: asi@dpaw.wa.gov.au
+License: BSD 3-Clause License
+Description: ==============
+        DPaW Nginx SSO
+        ==============
+        
+        This project is a library of Nginx configuration to undertake single-sign-on
+        within `Department of Parks and Wildlife`_ internal applications.
+        
+        Installation (Django applications)
+        ==================================
+        
+        #. Install via pip: ``pip install nginx-sso-dpaw``
+        #. At the end of settings.py, add the following code
+            try:
+                import nginx_sso
+                nginx_sso.config(globals())
+            except:
+                pass
+        
+        
+        When nginx sso is disabled
+        ==================================
+        
+        #. nginx sso app is not installed
+        #. Set "SSO_ENABLED" to False in .env file
+        #. The middleware "django.contrib.auth.middleware.AuthenticationMiddleware" is not configured
+        
+        .. _Department of Parks and Wildlife: http://www.dpaw.wa.gov.au
+        
+Keywords: auth,sso,nginx,dpaw
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Systems Administration :: Authentication/Directory
