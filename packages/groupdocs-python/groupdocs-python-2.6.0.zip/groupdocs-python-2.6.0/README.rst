@@ -1,0 +1,90 @@
+GroupDocs.Total for Cloud API is a suite of RESTful APIs that allows developers to seamlessly add comprehensive document collaboration tools to their web/mobile applications and websites. The suite currently includes the following tools:
+
+**GroupDocs.Viewer for Cloud API**
+
+An embeddable HTML-based document viewer that enables end users to view and securely share over 50 common document types, including PDF, Microsoft Word, Excel, PowerPoint, Outlook, Project, Visio, OpenDocument, CAD, etc. GroupDocs.Viewer works with all HTML5-compliant web-browsers, doesn’t require any client installation and allows end users to share document in a read-only mode. Learn more: http://groupdocs.com/cloud/document-viewer-api
+
+**GroupDocs.Annotation for Cloud API**
+
+GroupDocs.Annotation enables end users to collaboratively review and annotate 50+ document and image types directly from within your web app or site. GroupDocs.Annotation provides cross-platform compatibility, comes with an embeddable web-based GUI, allows multiple users to annotate the same document simultaneously in real time and is compatible with native PDF and Microsoft Word annotations.  Learn more: http://groupdocs.com/cloud/document-annotation-api
+
+**GroupDocs.Assembly for Cloud API**
+
+GroupDocs.Assembly turns PDF and Microsoft Word documents into online forms. It allows you or end users to generate essential business documents on-the-fly by automatically merging document templates with data collected via online forms. GroupDocs.Assembly provides API and a web UI which enables end users to build online forms, link them to templates and get custom-generated documents without any help from developers. Learn more: http://groupdocs.com/cloud/document-assembly-api
+
+**GroupDocs.Signature for Cloud API**
+
+With this API, you can seamlessly build electronic signature workflows of any complexity. It allows you to send documents for signature; prepare and manage reusable document templates; capture handwritten, scanned or typed signatures, etc. You can also embed an out-of-the-box signature widget into any web page using a simple iframe. The widget allows end users to sign document online, without leaving your application or website. Learn more: http://groupdocs.com/cloud/electronic-signature-api
+
+**GroupDocs.Comparison for Cloud API**
+
+GroupDocs.Comparison allows end users to compare two versions of a document online. Supported file formats include: PDF, Microsoft Word, Excel, PowerPoint, OpenDocument, plain text and HTML. The API comes with an embeddable widget that can be seamlessly customized and integrated into your web app or site. The widget displays differences between compared documents with a redline change tracking view approach. Learn more: http://groupdocs.com/cloud/document-comparison-api
+
+**GroupDocs.Conversion for Cloud API**
+
+With this API you can convert back and forth between over 50 common document and image file formats.  To name just a few, supported formats include: PDF, DOC(X), XLS(X), PPT(X), MSG, EML, RTF, ODT, ODS, CSV, TXT, HTML, XPS, DWG, DXF, VSD(X), JPEG, TIFF, PNG, GIF, BMP and many more. Lear more: 
+http://groupdocs.com/cloud/document-conversion-api
+
+All APIs listed here can be used individually, or under a single GroupDocs.Total for Cloud API subscription.
+
+GroupDocs Python SDK |Build Status|_
+####################################
+
+Latest SDK version 2.6.0.
+
+Requirements
+************
+
+-  SDK requires Python 2.6 (or later). If you need Python 3 version of
+   SDK please go to `groupdocs-python3`_
+
+Installation
+************
+
+You can use the `Pip`_ to download and install SDK. GroupDocs SDK is now
+in `PyPi`_.
+
+Usage Example
+*************
+
+::
+
+    apiClient = ApiClient(GroupDocsRequestSigner(privateKey))
+    api = AntApi(apiClient)
+    response = api.ListAnnotations(userId, fileId)
+
+
+License
+*******
+
+::
+
+    Copyright 2012 GroupDocs.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+.. _Build Status: http://travis-ci.org/groupdocs/groupdocs-python
+.. _groupdocs-python3: https://github.com/groupdocs/groupdocs-python3
+.. _Pip: http://www.pip-installer.org/
+.. _PyPi: http://pypi.python.org/pypi/groupdocs-python
+.. _Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs: http://groupdocs.com
+.. _Sign documents online with GroupDocs Signature: http://groupdocs.com/apps/signature
+.. _PDF, Word and Image Annotation with GroupDocs Annotation: http://groupdocs.com/apps/annotation
+.. _Online DOC, DOCX, PPT Document Comparison with GroupDocs Comparison: http://groupdocs.com/apps/comparison
+.. _Online Document Management with GroupDocs Dashboard: http://groupdocs.com/apps
+.. _Doc to PDF, Doc to Docx, PPT to PDF, and other Document Conversions with GroupDocs Viewer: http://groupdocs.com/apps/viewer
+.. _Online Document Automation with GroupDocs Assembly: http://groupdocs.com/apps/assembly
+
+
+
+.. |Build Status| image:: https://secure.travis-ci.org/groupdocs/groupdocs-python.png
