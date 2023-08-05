@@ -1,0 +1,164 @@
+Dockyard CLI
+============
+
+Light-weight CLI for development using Vagrant + Docker
+GitHub <https://github.com/smysnk/dockyard>
+
+## Concept + Motivation
+
+Using [Vagrant](http://www.vagrantup.com/) + [Docker](http://www.docker.io/) together you can create identical development environments regardless of the host OS.  
+
+Dockyard CLI helps solve some of the following problems:
+
+#### Grunt work getting this utopia setup
+  - $ vagrant up - Create a new vagrant vm and configure it for docker
+  - $ docker build . - Create the docker containers required to run your application
+
+#### Interacting with Docker from your host OS
+To interact with docker you need to be inside your Vagrant VM. 
+It would be nice if you could pass through commands to Docker from your host OS.
+
+#### Running Docker images in certain formations
+After you have your base Docker images created, you will want to create formations and wire them together.
+You will want to be able to use DNS names in your Docker images to connect them to each other exactly as they would be in production.
+
+#### Deploying your Dockyard formations to Production (eg. AWS)
+When you're ready to move to Testing or Production you will want to push your Docker containers to staging servers / cloud.
+
+
+## Installation
+
+In the future I plan to make this project as an installable tool that is available on system path; 
+however, currently it requires a file (eg. webstack.py) be created in the root directory of your project.
+This project is to then be included in your project under the directory 'dockyard'.
+For an example of this, see my [Webstack Demo Project](https://github.com/smysnk/web-stack).
+
+## webstack.py
+
+```
+#!/usr/bin/python
+import dockyard
+
+cli = dockyard.Cli()
+cli.addPlugin(dockyard.DockerPlugin())
+cli.addPlugin(dockyard.DockyardPlugin())
+cli.addPlugin(dockyard.StackPlugin())
+cli.parse()
+```
+
+## Webstack usage
+
+```
+$ ./webstack.py 
+usage: webstack.py [-h] [--version] {docker,dockyard,stack} ...
+
+Dockyard CLI
+
+positional arguments:
+  {docker,dockyard,stack}
+                        _
+    docker              Execute Docker related tasks from the host
+    dockyard            Dockyard related operations
+    stack               Stack related commands, can combine vagrant + docker
+                        commands into a single command
+
+```
+
+## Dockyard
+  - For starting formations of docker containers - under development
+
+```
+$ ./webstack.py dockyard
+usage: webstack.py dockyard [-h] {init,list,start,stop} ...
+
+positional arguments:
+  {init,list,start,stop}
+                        Docker operations help
+    init                Initialize Dockyard
+    list                List active Dockyards
+    start               Start dockyard(s)
+    stop                Stop dockyard(s)
+```
+
+## Stack
+ - All in one commands for getting up and going fast 
+
+```
+$ ./webstack.py stack
+usage: webstack.py stack [-h] {up,down,start,stop} ...
+
+positional arguments:
+  {up,down,start,stop}  Stack operations
+    up                  Create Vagrant VM, build Docker containers
+    down                Destroy Vagrant VM
+    start               Start a dock configuration
+    stop                Stop a dock configuration
+```
+
+## Docker
+  - Control docker from outside of a Vagrant container
+  - More logical grouping of Docker commands
+
+```
+usage: webstack.py docker [-h] {command,build,image,container} ...
+
+positional arguments:
+  {command,build,image,container}
+                        Docker operations help
+    command             Execute command
+    build               Build images
+    image               Image operations
+    container           Container operations
+```
+
+### Docker command pass-through
+ - Execute any native docker commands
+
+```
+usage: webstack.py docker command [-h] arg [arg ...]
+
+positional arguments:
+  arg         Execution arguments
+```
+
+### Build docker images
+ - Uses Dockyard conventions for building single or all docker containers
+
+```
+$ ./webstack.py docker build
+usage: webstack.py docker build [-h] docker [docker ...]
+
+positional arguments:
+  docker      Docker container names
+```
+
+### Image commands
+ - Common docker image commands
+
+```
+$ ./webstack.py docker image
+usage: webstack.py docker image [-h] {list,remove,create,run,history} ...
+
+positional arguments:
+  {list,remove,create,run,history}
+                        Image operations
+    list                List images
+    remove              Remove image(s)
+    create              Create image(s)
+    run                 Run image(s)
+    history             Kill container(s)
+```
+
+### Container commands
+ - Common container commands
+
+```
+$ ./webstack.py docker container
+usage: webstack.py docker container [-h] {list,kill} ...
+
+positional arguments:
+  {list,kill}  Container operations
+    list       List container(s)
+    kill       Kill container(s)
+```
+
