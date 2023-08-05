@@ -1,0 +1,24 @@
+{% extends 'luhublog/base.html' %}
+
+{% block title %}{{ blog.title }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>{{ blog.title }}</h1>
+				<ul>
+					{% for entry in entries %}
+						<li>
+							<h2>{{ entry.title }}</h2>
+							<p>{{ entry.lead_entry }}_</p>
+							<a href="{{ entry.get_absolute_url }}">IR AL POST</a>
+						</li>
+					{% empty %}
+						<p>No hay entradas</p>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% load thumbnail %}
+
+
+{% if opengraph %}
+	<meta property="og:type" content="{{ opengraph.og_type }}" />
+	<meta property="og:title" content="{{ opengraph.og_title }}" />
+	<meta property="og:description" content="{{ opengraph.og_description }}"/>
+	<meta property="og:image" content="{{ opengraph.get_og_image_url }}" />
+{% endif %}
+
+<meta property="og:url" content="{{ entry.full_url }}" />
+<meta property="og:site_name" content="{{ entry.blog.title }}" />
+<meta property="article:published_time" content="{{ entry.start_publication|date:"c" }}" />
+<meta property="article:modified_time" content="{{ entry.modified|date:"c" }}" />
