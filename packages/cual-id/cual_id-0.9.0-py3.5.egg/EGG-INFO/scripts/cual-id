@@ -1,0 +1,68 @@
+#!/Users/jc33/miniconda3/envs/cual-id/bin/python
+import click
+import sys
+
+from cualid.label import get_barcodes
+from cualid.mint import create_ids
+from cualid.fix import fix_ids, format_output
+
+@click.group()
+def cli():
+    pass
+
+@cli.group()
+def create():
+    """Command to create barcode labels or sample ids."""
+    pass
+
+@create.command("labels")
+@click.argument('input', type=click.File('U'), required=True)
+@click.option('-o', '--output-pdf', type=click.STRING, required=True)
+@click.option('--suppress-ids', is_flag=True)
+@click.option('--barcode', type=click.STRING, required=False)
+def barcode_generator(input, output_pdf, suppress_ids, barcode):
+    """This script generates a pdf of barcodes"""
+    if suppress_ids and barcode == 'none':
+        click.ClickException("Please don't do that").show()
+        exit()
+
+    barcodes = get_barcodes(input, output_pdf, suppress_ids, barcode)
+    barcodes.save()
+
+@create.command("ids")
+@click.argument('number-of-ids', type=int)
+@click.option('-l', '--length', type=int, default=8, required=False)
+@click.option('-f', '--fail-threshold', type=float, default=0.99, required=False)
+def sample_id_generator(number_of_ids, length, fail_threshold):
+    """This script generates a file of sample IDs"""
+    if fail_threshold >= 1:
+        raise ValueError("")
+    collected = 0
+    for uuid_, hrid in create_ids(number_of_ids, length,
+                                  failure_threshold=fail_threshold):
+        collected += 1
+        click.echo("%s\t%s" %(uuid_, hrid))
+
+    if collected != number_of_ids:
+        click.echo(
+            "\033[1;31m"
+            "Could only collect %d out of %d.\nGreater than %f%% of the"
+            " generated CualIDs were not sufficiently unique."
+            "\033[0;0m" % (collected, number_of_ids, fail_threshold * 100), err=True)
+
+@cli.command("fix")
+@click.argument('ids-to-be-corrected', type=click.File('U'), required=True)
+@click.option('--correct-ids', type=click.File('U'), required=True)
+@click.option('-s', '--show', type=click.STRING, default='DFN', required=False)
+@click.option('-a', '--all', is_flag=True, default=False, required=False)
+def correct_ids(correct_ids, ids_to_be_corrected, show, all):
+    """Compare a set of possibly invalid IDs against a correct set of IDs
+    to identify errors in the IDs"""
+    if all:
+        show = 'DFNV'
+    for line in format_output(fix_ids(correct_ids, ids_to_be_corrected), show):
+        click.echo(line)
+
+
+if __name__ == '__main__':
+    cli()
