@@ -1,0 +1,55 @@
+suricata:
+    build: $basepath/docker/suricata
+    volumes:
+        - $basepath/config/suricata/suricata.yaml:/etc/suricata/suricata.yaml:ro
+        - $basepath/suricata:/var/log/suricata:rw
+        - $basepath/scirius/:/etc/suricata/rules:rw
+    privileged: true
+    net: host
+    # TODO set your suricata iface here
+    environment:
+        - SURICATA_ARGS="$capture_option"
+
+elasticsearch:
+    image: elasticsearch:latest
+    volumes:
+        - $basepath/elasticsearch:/usr/share/elasticsearch/data:rw
+
+logstash:
+    image: logstash:latest
+    links:
+        - elasticsearch
+    command: -f /etc/logstash/logstash.conf
+    volumes:
+        - $basepath/config/logstash:/etc/logstash:ro
+        - $basepath/suricata:/var/log/suricata:ro
+    hostname: suricata
+
+kibana:
+    image: kibana:latest
+    ports:
+     - 5601:5601
+    links:
+        - elasticsearch
+
+scirius:
+    build: $basepath/docker/scirius
+    ports:
+     - 8000:8000
+    volumes:
+        - $basepath/config/scirius:/etc/scirius:ro
+        - $basepath/scirius:/etc/suricata/rules:rw
+        # TODO uncomment correctly set path to scirius git tree on host below
+        # to run a specific scirius version
+        #- /path/to/git/stamus/scirius/:/opt/selks/scirius/:ro
+    links:
+        - elasticsearch
+        - kibana
+    volumes_from:
+        - sciriusdata
+
+sciriusdata:
+    image: busybox
+    command: /bin/true
+    volumes:
+        - /sciriusdata
