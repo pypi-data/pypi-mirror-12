@@ -1,0 +1,56 @@
+#!python
+
+# ----------------------------------------------------
+# Blast a set of seed sequences in fasta file.
+# ----------------------------------------------------
+
+import argparse
+from phylogenetics.names import switch
+from phylogenetics.homologs import load_homologset
+
+def main():
+    """
+        Edit the labels in a tree to show any attributes in the homologset.
+    """
+
+    # ---------------------------------------------------
+    # command-line arg parsing
+    # ---------------------------------------------------
+
+    # Build arguments and grab arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--input",
+        help="File to change names.",
+        type=str,
+        required=True)
+
+    parser.add_argument("--homset",
+        help="homologs .pickle that holds info for sequences",
+        type=str,
+        required=True)
+
+    parser.add_argument("--old",
+        help="Type of previous name",
+        type=str,
+        required=True)
+
+    parser.add_argument("--new",
+        help="List of attributes to include (ex name orgname`)",
+        nargs='+',
+        type=str,
+        required=True)
+
+    args = parser.parse_args()
+
+    # ---------------------------------------------------
+    # Swap labels in homologset
+    # ---------------------------------------------------
+    
+    # Load the homologset
+    hs = load_homologset(args.homset)
+
+    # Switch the names in the treefile
+    switch(args.input, hs, args.old, args.new)
+
+if __name__ == "__main__":
+    main()
