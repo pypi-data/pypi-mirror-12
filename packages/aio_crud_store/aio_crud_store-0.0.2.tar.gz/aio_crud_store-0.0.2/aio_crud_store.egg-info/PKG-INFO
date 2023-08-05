@@ -1,0 +1,48 @@
+Metadata-Version: 1.1
+Name: aio-crud-store
+Version: 0.0.2
+Summary: A small subset of dbs capabilities to write dbs-independent asyncio libs
+Home-page: https://github.com/imbolc/aio_crud_store
+Author: Imbolc
+Author-email: imbolc@imbolc.name
+License: ISC
+Description: AsyncIO CRUD Store
+        ==================
+        
+        A very simple subset of databases capabilities intended to use most of dbs
+        the same way. You can use it to write database independent asyncio
+        libraries.
+        
+        It currently supports mongodb (through motor_) and postrgresql
+        (through aiopg_), please feel free to add other dbs implementations.
+        
+        Usage
+        -----
+        The api is very simple and obvious (I hope).
+        The working examples are in *examples* directory.
+        
+        .. code:: python
+        
+            # create
+            id = await store.create({'foo': 'bar'})
+        
+            # read
+            doc = await store.read(foo='bar')
+        
+            # update
+            await store.update(id, {'foo': 'baz', 'spam': 1})
+        
+            # delete
+            await store.delete(id)
+        
+        
+        .. _motor: https://motor.readthedocs.org/
+        .. _aiopg: https://aiopg.readthedocs.org/
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Database
