@@ -1,0 +1,86 @@
+Metadata-Version: 1.1
+Name: enslyon.opdsshowroom
+Version: 1.0.3
+Summary: Showroom for OPDS Feed
+Home-page: https://github.com/collective/enslyon.opdsshowroom
+Author: Encolpe DEGOUTE
+Author-email: encolpe@colpi.org
+License: GPL
+Description: Introduction
+        ============
+        
+        This product is a simple implementation of how quick you can integrate
+        REST data in a plone view with requests and lxml. 
+        
+        The showroom is a dexterity type that take a link to an OPDS library
+        and the url of a REST API returning an HTML page. This page should
+        contain the library presentation and content.
+        
+        It was done for the Ecole Normale Superieure de Lyon - Institut Francais de l'Education for the project
+        metnav (Metadata Navigation).
+        
+        
+        enslyon.opdsshowroom Installation
+        ---------------------------------
+        
+        To install enslyon.opdsshowroom using zc.buildout and the plone.recipe.zope2instance
+        recipe to manage your project, you can do this:
+        
+        * Add ``enslyon.opdsshowroom`` to the list of eggs to install, e.g.:
+        
+            [buildout]
+            ...
+            eggs =
+                ...
+                enslyon.opdsshowroom
+               
+        * Re-run buildout, e.g. with:
+        
+            $ ./bin/buildout
+        Changelog
+        =========
+        
+        1.0.3 (2015-10-28)
+        -------------------
+        
+        - Add 'Exclude Navigation' Behavior
+          [encolpe]
+        
+        1.0.2 (2015-10-26)
+        -------------------
+        
+        - Add the i18n script
+          [encolpe]
+        
+        - Add the first translation: English and French
+          [encolpe]
+        
+        - Fix duplicate description and add a class name to our base tag
+          [encolpe]
+        
+        
+        1.0.1 (2015-10-23)
+        -------------------
+        
+        - Add the missing MANIFEST.in file
+          [encolpe]
+        
+        
+        1.0 (2015-10-23)
+        -------------------
+        
+        - Initial release
+          [encolpe]
+        
+        
+        
+Keywords: Plone plone rest REST OPDS opds
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: 5.0
+Classifier: Framework :: Plone :: 4.3
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)

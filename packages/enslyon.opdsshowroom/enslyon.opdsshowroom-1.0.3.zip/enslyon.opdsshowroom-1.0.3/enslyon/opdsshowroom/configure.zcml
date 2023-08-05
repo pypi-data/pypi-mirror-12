@@ -1,0 +1,45 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="enslyon.opdsshowroom">
+
+  <!-- Include configuration for dependencies listed in setup.py -->
+  <includeDependencies package="." />
+
+  <!-- Register a resource directory from which we can deploy static
+   resource files. -->
+  <browser:resourceDirectory
+    name="enslyon.opdsshowroom"
+    directory="resources" />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <!-- Register an extension profile to make the product installable
+       in Plone -->
+  <genericsetup:registerProfile
+      name="default"
+      title="Showroom for OPDS Feed"
+      directory="profiles/default"
+      description="Extension profile for Showroom for OPDS Feed"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <!-- -*- extra stuff goes here -*- -->
+    <class class=".library_showroom.LibraryShowroom">
+        <implements interface=".library_showroom.ILibraryShowroom" />
+    </class>
+
+    <browser:page
+        for=".library_showroom.ILibraryShowroom"
+        name="showroom_view"
+        class=".library_showroom.ShowroomView"
+        template="library_showroom_templates/showroomview.pt"
+        permission="zope2.View"
+        />
+
+
+</configure>
