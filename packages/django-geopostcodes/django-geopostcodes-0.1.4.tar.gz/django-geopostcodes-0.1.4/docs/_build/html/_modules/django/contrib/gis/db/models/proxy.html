@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>django.contrib.gis.db.models.proxy &mdash; django-geopostcodes 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="django-geopostcodes 0.1.0 documentation" href="../../../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> django-geopostcodes
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../internals/reference/index.html">Internal Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../../index.html">django-geopostcodes</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>django.contrib.gis.db.models.proxy</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for django.contrib.gis.db.models.proxy</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The GeometryProxy object, allows for lazy-geometries.  The proxy uses</span>
+<span class="sd">Python descriptors for instantiating and setting Geometry objects</span>
+<span class="sd">corresponding to geographic model fields.</span>
+
+<span class="sd">Thanks to Robert Coup for providing this functionality (see #4322).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">six</span>
+
+
+<span class="k">class</span> <span class="nc">GeometryProxy</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">klass</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Proxy initializes on the given Geometry class (not an instance) and</span>
+<span class="sd">        the GeometryField.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_field</span> <span class="o">=</span> <span class="n">field</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_klass</span> <span class="o">=</span> <span class="n">klass</span>
+
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This accessor retrieves the geometry, initializing it using the geometry</span>
+<span class="sd">        class specified during initialization and the HEXEWKB value of the field.</span>
+<span class="sd">        Currently, only GEOS or OGR geometries are supported.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># Accessed on a class, not an instance</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="c"># Getting the value of the field.</span>
+        <span class="n">geom_value</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_field</span><span class="o">.</span><span class="n">attname</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geom_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_klass</span><span class="p">):</span>
+            <span class="n">geom</span> <span class="o">=</span> <span class="n">geom_value</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">geom_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">geom_value</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">):</span>
+            <span class="n">geom</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Otherwise, a Geometry object is built using the field&#39;s contents,</span>
+            <span class="c"># and the model&#39;s corresponding attribute is set.</span>
+            <span class="n">geom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_klass</span><span class="p">(</span><span class="n">geom_value</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field</span><span class="o">.</span><span class="n">attname</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">geom</span>
+
+    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This accessor sets the proxied geometry with the geometry class</span>
+<span class="sd">        specified during initialization.  Values of None, HEXEWKB, or WKT may</span>
+<span class="sd">        be used to set the geometry as well.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># The OGC Geometry type of the field.</span>
+        <span class="n">gtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field</span><span class="o">.</span><span class="n">geom_type</span>
+
+        <span class="c"># The geometry type must match that of the field -- unless the</span>
+        <span class="c"># general GeometryField is used.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_klass</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">geom_type</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="n">gtype</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="s">&#39;GEOMETRY&#39;</span><span class="p">):</span>
+            <span class="c"># Assigning the SRID to the geometry.</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">srid</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">value</span><span class="o">.</span><span class="n">srid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field</span><span class="o">.</span><span class="n">srid</span>
+        <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span> <span class="o">+</span> <span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">memoryview</span><span class="p">,)):</span>
+            <span class="c"># Set with None, WKT, HEX, or WKB</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&#39;Cannot set </span><span class="si">%s</span><span class="s"> GeometryProxy (</span><span class="si">%s</span><span class="s">) with value of type: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">obj</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">gtype</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+        <span class="c"># Setting the objects dictionary with the value, and returning.</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_field</span><span class="o">.</span><span class="n">attname</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Alex Hayes.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../../',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

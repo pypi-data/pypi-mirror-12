@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>django_geopostcodes.managers &mdash; django-geopostcodes 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="django-geopostcodes 0.1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> django-geopostcodes
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internals/reference/index.html">Internal Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">django-geopostcodes</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>django_geopostcodes.managers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for django_geopostcodes.managers</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    django_geopostcodes.managers</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Django model managers for django-geopostcodes.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">django.contrib.gis.db.models.query</span> <span class="kn">import</span> <span class="n">GeoQuerySet</span>
+<span class="kn">from</span> <span class="nn">django.db.models.manager</span> <span class="kn">import</span> <span class="n">Manager</span>
+<span class="kn">from</span> <span class="nn">django.contrib.gis.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+
+<div class="viewcode-block" id="LocalityQuerySet"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet">[docs]</a><span class="k">class</span> <span class="nc">LocalityQuerySet</span><span class="p">(</span><span class="n">GeoQuerySet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Locality QuerySet.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">anything_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;country&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;region1&#39;</span><span class="p">,</span> <span class="s">&#39;region2&#39;</span><span class="p">,</span> <span class="s">&#39;region3&#39;</span><span class="p">,</span> <span class="s">&#39;region4&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;locality&#39;</span><span class="p">,</span> <span class="s">&#39;postcode&#39;</span><span class="p">,</span> <span class="s">&#39;suburb&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="LocalityQuerySet.anything"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything">[docs]</a>    <span class="k">def</span> <span class="nf">anything</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">__</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">lookup_type</span><span class="p">):</span> <span class="n">value</span><span class="p">})</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">]</span>
+
+        <span class="c"># Take one Q object from the list</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">queries</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="c"># Or the Q object with the ones remaining in the list</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">|=</span> <span class="n">item</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_icontains"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_icontains">[docs]</a>    <span class="k">def</span> <span class="nf">anything_icontains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;icontains&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_contains"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_contains">[docs]</a>    <span class="k">def</span> <span class="nf">anything_contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;contains&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_exact"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_exact">[docs]</a>    <span class="k">def</span> <span class="nf">anything_exact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;exact&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_iexact"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_iexact">[docs]</a>    <span class="k">def</span> <span class="nf">anything_iexact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;iexact&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_startswith"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_startswith">[docs]</a>    <span class="k">def</span> <span class="nf">anything_startswith</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;startswith&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_istartswith"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_istartswith">[docs]</a>    <span class="k">def</span> <span class="nf">anything_istartswith</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;istartswith&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_endswith"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_endswith">[docs]</a>    <span class="k">def</span> <span class="nf">anything_endswith</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;endswith&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="LocalityQuerySet.anything_iendswith"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityQuerySet.anything_iendswith">[docs]</a>    <span class="k">def</span> <span class="nf">anything_iendswith</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">anything_fields</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anything</span><span class="p">(</span><span class="s">&#39;iendswith&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="LocalityManager"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.managers.html#django_geopostcodes.managers.LocalityManager">[docs]</a><span class="k">class</span> <span class="nc">LocalityManager</span><span class="p">(</span><span class="n">Manager</span><span class="o">.</span><span class="n">from_queryset</span><span class="p">(</span><span class="n">LocalityQuerySet</span><span class="p">)):</span>
+    <span class="s">&quot;Overrides Manager to return Geographic QuerySets.&quot;</span>
+
+    <span class="c"># This manager should be used for queries on related fields</span>
+    <span class="c"># so that geometry columns on Oracle and MySQL are selected</span>
+    <span class="c"># properly.</span>
+    <span class="n">use_for_related_fields</span> <span class="o">=</span> <span class="bp">True</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Alex Hayes.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
