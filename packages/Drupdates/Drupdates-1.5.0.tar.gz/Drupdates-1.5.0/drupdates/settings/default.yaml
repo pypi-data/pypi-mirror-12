@@ -1,0 +1,155 @@
+# YAML
+# Core Settings
+workingBranch:
+  value: ""
+  prompt: What is the default Git working branch
+baseDir:
+  value: ~/.drupdates
+backupDir:
+  value: ~/.drupdates/backups
+  prompt: Directory where site build backups are saved (default ~/.drupdates/backups)
+workingDir:
+  value: ~/.drupdates/builds
+  prompt: What is the working directory (default ~/.drupdates/builds)
+webrootDir:
+  value: ""
+  prompt: Any directory below the base site directory that acts as the web root
+blacklist:
+  value: ""
+  format: list
+  prompt: Name of site alias(es) you want ignored (seperate with spaces)
+singleSite:
+  value: ""
+  prompt: Do you want to run the script on a single site (which alias)
+debug:
+  value: ""
+  prompt: Create a dump of the system settings for debugging purposes
+verbose:
+  value: ""
+  prompt: Verbose mode
+# This setting determines what Drupdates will do
+# Change with care
+drupdatesPhases:
+  value:
+    - name: Sitebuild
+      method: build
+    - name: Siteupdate
+      method: update
+  prompt: 'What phases should Drupdates perform, ie Sitebuild and Siteupdate (seperate with spaces)'
+  format: list
+postBuildCmds:
+  value: ""
+  prompt: OS command/options to run after a site built (separate with spaces)
+  format: list
+# Git related settings
+gitRepoName:
+  value: repolist
+  prompt: Where is the list of git repos stored
+  required: True
+drushSiFiles:
+  value:
+    - sites/default/settings.php
+    - sites/default
+    - sites/default/files/.htaccess
+    - sites/default/default.services.yml
+    - sites/default/services.yml
+  prompt: What files will drush si set to file mode 0444
+commitAuthorName:
+  value: Security Updates
+  prompt: What user name should be used for commit messages (ex. Security Update)
+commitAuthorEmail:
+  value: updates@drupdates.org
+  prompt: What email should be used for commit messages (ex. updates@example.com)
+commonIgnore:
+  value:
+    - .htaccess
+    - robots.txt
+    - web.config
+    - .gitignore
+  prompt: What files and folders that ship with core are unique to local install (separate with spaces)
+ignoreCustomModules:
+  value: True
+  prompt: Ignore the custom folder under modules
+useFeatureBranch:
+  value: False
+  prompt: Use a feature branch in remote repo in lieu of pushing to working branch
+featureBranchName:
+  value: ""
+  prompt: Specify a feature branch name, defaults to "drupdates-<timestamp>"
+oneCommitPerProject:
+  value: ""
+  prompt: Perform a single commit per project (ie module, theme, core) updated
+# Project Management Settings
+submitDeployTicket:
+  value: False
+  prompt: Do you want to submit a deployment ticket
+deploymentTickets:
+  value:
+    - Staging
+    - Production
+  prompt: What are environments are you deploying to (default Staging Production)
+  format: list
+targetDate:
+  value: ""
+  prompt: What date should the deployment ticket(s) target?
+# Drush related settings
+# Note: this is one of the more important settings regarding Drupates behavior
+# change it only if you understand its implications regarding how the
+# Drush pm-updatecode (upc) command will behave.
+# Note: do not use pm-update (up)!!!
+upCmds:
+  value:
+    - pm-updatecode
+    - -y
+    - --check-disabled
+  format: list
+  prompt: Arguments and options for drush pm-update (up) cmd (separate with spaces)
+upsCmds:
+  value:
+    - pm-updatestatus
+    - --security-only
+    - --check-disabled
+  format: list
+  prompt: Arguments and options for drush pm-updatestatus (ups) cmd (separate with spaces)
+qdCmds:
+  value:
+    - core-quick-drupal
+    - --use-existing
+    - --writable
+    - -y
+    - --no-server
+    - --browser=none
+    - --profile=minimal
+  format: list
+  prompt: Arguments and options for drush core-quick-drupal (qd) cmd (separate with commas)
+drushAliasFile:
+  value: drupdates.aliases.drushrc.php
+# Drush make related
+useMakeFile:
+  value: ""
+  prompt: Build the site using a make file (note the make file will be updated)
+  requires: webrootDir
+makeFileName:
+  value: ""
+  prompt: What is the name of the make file, do not include extensions
+makeFormat:
+  value: make
+  prompt: What format and file extension will the make file be (ie .make or .yaml) (default make)
+makeFolder:
+  value: ""
+  prompt: Is the make file stored in a sub folder of the repo
+buildSource:
+  value: make
+  prompt: How will the site be built (using drush make or git)
+makeOpts:
+  value:
+    - --no-patch-txt
+    - --force-complete
+    - --no-gitinfofile
+# Reporting related
+reportingTool:
+  value: stdout
+  prompt: Tool to used to send the final report
+reportingFormat:
+  value: text
+  prompt: How should the report be formatted (text, yaml, json) (default text)
