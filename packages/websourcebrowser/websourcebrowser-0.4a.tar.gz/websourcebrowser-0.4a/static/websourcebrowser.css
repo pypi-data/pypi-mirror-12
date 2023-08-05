@@ -1,0 +1,210 @@
+body {
+    margin: 0px;
+    font-family: sans-serif;
+    background-color: white;
+    overflow: auto;
+    font-size: 10pt;
+}
+
+.top {
+    background-color: #9090ff;
+}
+
+.top_preset, .dir_preset, .file_preset {
+    position: fixed;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+}
+
+.top_preset {
+    top: 0%;
+    width: 99.99%;
+    height: 9.99%;
+}
+
+.dir_preset, .file_preset {
+    top: 10%;
+    height: 89.99%;
+}
+
+.dir_preset {
+    left: 0%;
+    width: 29.99%;
+    z-index: 10;
+}
+
+.file_preset {
+    left: 30.0%;
+    width: 69.99%;
+    z-index: 30;
+    border-left: 5px solid gray;
+}
+
+/* preset padding */
+.top_preset div {
+    padding: 5px 0px 0px 5px;
+}
+
+.dir_preset div {
+    /* negative values for _padding_ don't affect the list indentation */
+    margin-left: 5px;
+}
+
+.file_preset div {
+    padding: 0px 0px 0px 5px;
+}
+
+h1 {
+    font-size: 120%;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* tree view */
+ul {
+    list-style-type: none;
+    margin-left: 2em;
+    padding-left: 0px;
+}
+
+ul#directory_tree {
+    margin-top: 1.5ex;
+}
+
+.dir_preset ul {
+    margin-left: 1em;
+}
+
+a {
+    text-decoration: none;
+    /* don't wrap at whitespace or hyphens */
+    white-space: nowrap;
+}
+
+/* pane layout
+   see http://layout.jquery-dev.net/demos/simple.html */
+.ui-layout-pane { /* defaults for all panes */
+    display: block;
+    padding: 8px;
+    overflow: auto;
+}
+
+.ui-layout-pane-north {
+    /* background-color:  #e0e0ff; */
+}
+
+.ui-layout-west div {
+    padding-top: 0px;
+    margin-right: 5px;
+}
+
+.ui-layout-center strong {
+    /* why doesn't this work? */
+    /* margin-bottom: 5px; */
+}
+
+.ui-layout-center img {
+    /* for directory listings */
+    margin-right: 3px;
+}
+
+.ui-layout-center pre {
+    margin: 0px;
+    font-size: 9pt;
+}
+
+.ui-layout-resizer { /* all resize bars */ 
+    /* background-color: #c0c0ff; */
+    background-color: #ddd;
+} 
+
+.ui-layout-toggler { /* all toggle buttons */ 
+    /* background-color: #9090ff; */
+    background-color: #aaa; 
+} 
+
+/*
+h1.Error, .Error { background-color: #ff9090; }
+h1.Other { background-color: #90ff90; }
+.Main { margin: 0.8em; padding-bottom: 1ex;
+        position: absolute; top: 2.5em; z-index: 1; }
+a { text-decoration: none; }
+.Options { margin: 0px; margin-bottom: 1em; padding-left: 0em; }
+.Options a, .Options a:visited { text-decoration: none;
+    color: blue; border: solid blue 1px; padding: 1px;
+    padding-left: 3px; padding-right: 3px; }
+td.Options { padding-bottom: 0.8em; }
+span.Indent { color: #b0b0b0; font-size: 10px; }
+table { margin-top: 0px; padding-top: 0px; margin-bottom: 1em; }
+body, .Main, table { font-size: 12px; }
+small { font-size: 10px; }
+pre { margin-top: 0px; padding-top: 0px; }
+*/
+
+/* all lowercase for compatibility with pygments */
+td.linenos { padding-right: 1.5em; }
+
+/* Pygments defaults */
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #808080 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0040D0 } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #008000; font-weight: bold } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+/* workaround for Links browser: don't use italic font style:
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.sd { color: #BA2121 } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
