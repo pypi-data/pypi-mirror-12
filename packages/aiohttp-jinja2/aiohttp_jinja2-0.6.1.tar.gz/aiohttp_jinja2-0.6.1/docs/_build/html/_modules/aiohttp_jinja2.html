@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>aiohttp_jinja2 &mdash; aiohttp_jinja2 0.6.0-a0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0-a0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/aiohttp-icon.ico"/>
+    <link rel="top" title="aiohttp_jinja2 0.6.0-a0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for aiohttp_jinja2</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">jinja2</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">aiohttp</span> <span class="kn">import</span> <span class="n">web</span>
+
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="s">&#39;0.6.0a0&#39;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;setup&#39;</span><span class="p">,</span> <span class="s">&#39;get_env&#39;</span><span class="p">,</span> <span class="s">&#39;render_template&#39;</span><span class="p">,</span> <span class="s">&#39;template&#39;</span><span class="p">)</span>
+
+
+<span class="n">APP_KEY</span> <span class="o">=</span> <span class="s">&#39;aiohttp_jinja2_environment&#39;</span>
+<span class="n">REQUEST_CONTEXT_KEY</span> <span class="o">=</span> <span class="s">&#39;aiohttp_jinja2_context&#39;</span>
+<span class="n">APP_CONTEXT_PROCESSORS_KEY</span> <span class="o">=</span> <span class="s">&#39;aiohttp_jinja2_context_processors&#39;</span>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../index.html#aiohttp_jinja2.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">app_key</span><span class="o">=</span><span class="n">APP_KEY</span><span class="p">,</span> <span class="n">context_processors</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">app</span><span class="p">[</span><span class="n">app_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span>
+    <span class="k">if</span> <span class="n">context_processors</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">[</span><span class="n">APP_CONTEXT_PROCESSORS_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="n">context_processors</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">middlewares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">context_processors_middleware</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="n">__aiohttp_jinjs2_route_name</span><span class="p">,</span>  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">router</span><span class="p">[</span><span class="n">__aiohttp_jinjs2_route_name</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">env</span><span class="o">.</span><span class="n">globals</span><span class="p">[</span><span class="s">&#39;url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">globals</span><span class="p">[</span><span class="s">&#39;app&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">app</span>
+
+    <span class="k">return</span> <span class="n">env</span>
+
+</div>
+<div class="viewcode-block" id="get_env"><a class="viewcode-back" href="../index.html#aiohttp_jinja2.get_env">[docs]</a><span class="k">def</span> <span class="nf">get_env</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">app_key</span><span class="o">=</span><span class="n">APP_KEY</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app_key</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="render_string"><a class="viewcode-back" href="../index.html#aiohttp_jinja2.render_string">[docs]</a><span class="k">def</span> <span class="nf">render_string</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">app_key</span><span class="p">):</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app_key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;Template engine is not initialized, &quot;</span>
+                <span class="s">&quot;call aiohttp_jinja2.setup(..., app_key={}) first&quot;</span>
+                <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">app_key</span><span class="p">))</span>
+        <span class="c"># in order to see meaningful exception message both: on console</span>
+        <span class="c"># output and rendered page we add same message to *reason* and</span>
+        <span class="c"># *text* arguments.</span>
+        <span class="k">raise</span> <span class="n">web</span><span class="o">.</span><span class="n">HTTPInternalServerError</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">template_name</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">TemplateNotFound</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">web</span><span class="o">.</span><span class="n">HTTPInternalServerError</span><span class="p">(</span>
+            <span class="n">text</span><span class="o">=</span><span class="s">&quot;Template &#39;{}&#39; not found&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">template_name</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;context should be mapping, not {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">context</span><span class="p">))</span>
+        <span class="c"># same reason as above</span>
+        <span class="k">raise</span> <span class="n">web</span><span class="o">.</span><span class="n">HTTPInternalServerError</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">REQUEST_CONTEXT_KEY</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">REQUEST_CONTEXT_KEY</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+                <span class="n">context</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span>
+
+</div>
+<div class="viewcode-block" id="render_template"><a class="viewcode-back" href="../index.html#aiohttp_jinja2.render_template">[docs]</a><span class="k">def</span> <span class="nf">render_template</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                    <span class="n">app_key</span><span class="o">=</span><span class="n">APP_KEY</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">Response</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">render_string</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">app_key</span><span class="o">=</span><span class="n">app_key</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s">&#39;text/html&#39;</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">charset</span> <span class="o">=</span> <span class="n">encoding</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+</div>
+<div class="viewcode-block" id="template"><a class="viewcode-back" href="../index.html#aiohttp_jinja2.template">[docs]</a><span class="k">def</span> <span class="nf">template</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">app_key</span><span class="o">=</span><span class="n">APP_KEY</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="nd">@asyncio.coroutine</span>
+        <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+                <span class="n">coro</span> <span class="o">=</span> <span class="n">func</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">coro</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">coroutine</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">coro</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">web</span><span class="o">.</span><span class="n">StreamResponse</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">context</span>
+
+            <span class="n">request</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">render_template</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span>
+                                       <span class="n">app_key</span><span class="o">=</span><span class="n">app_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">set_status</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span>
+        <span class="k">return</span> <span class="n">wrapped</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+</div>
+<span class="nd">@asyncio.coroutine</span>
+<span class="k">def</span> <span class="nf">context_processors_middleware</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
+    <span class="nd">@asyncio.coroutine</span>
+    <span class="k">def</span> <span class="nf">middleware</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+        <span class="n">request</span><span class="p">[</span><span class="n">REQUEST_CONTEXT_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="n">app</span><span class="p">[</span><span class="n">APP_CONTEXT_PROCESSORS_KEY</span><span class="p">]:</span>
+            <span class="n">request</span><span class="p">[</span><span class="n">REQUEST_CONTEXT_KEY</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">(</span><span class="k">yield from</span> <span class="n">processor</span><span class="p">(</span><span class="n">request</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="p">(</span><span class="k">yield from</span> <span class="n">handler</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">middleware</span>
+
+
+<span class="nd">@asyncio.coroutine</span>
+<span class="k">def</span> <span class="nf">request_processor</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">}</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/aiohttp-icon-128x128.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">jinja2 template renderer for aiohttp.web</p>
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=aio-libs&repo=aiohttp_jinja2&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/aio-libs/aiohttp_jinja2">
+    <img
+        alt="https://secure.travis-ci.org/aio-libs/aiohttp_jinja2.png?branch=master"
+        src="https://secure.travis-ci.org/aio-libs/aiohttp_jinja2.png?branch=master"
+    >
+</a>
+</p>
+<h3>Navigation</h3>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Andrew Svetlov.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/aio-libs/aiohttp_jinja2" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
