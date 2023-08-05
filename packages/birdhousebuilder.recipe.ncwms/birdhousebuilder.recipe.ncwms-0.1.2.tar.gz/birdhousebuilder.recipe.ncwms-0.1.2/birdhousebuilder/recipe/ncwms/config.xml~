@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config>
+    <datasets>
+        <dataset id="test" title="test" location="/home/pingu/.conda/envs/birdhouse/var/lib/pywps/outputs/malleefowl/tasmax.nc" queryable="true" downloadable="false" dataReaderClass="" copyrightStatement="" moreInfo="" disabled="false" updateInterval="-1">
+            <variables>
+                <variable id="tasmax" title="tasmax" description="Daily Maximum Near-Surface Air Temperature" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="225.1 316.9" scaling="linear"/>
+            </variables>
+        </dataset>
+    </datasets>
+    <cache enabled="true">
+        <inMemorySizeMB>256</inMemorySizeMB>
+        <elementLifetimeMinutes>10.0</elementLifetimeMinutes>
+    </cache>
+    <dynamicServices>
+        <dynamicService alias="outputs" servicePath="/home/pingu/.conda/envs/birdhouse/var/lib/pywps/outputs" datasetIdMatch=".*" dataReaderClass="" copyrightStatement="" moreInfoUrl="" disabled="false" queryable="true" downloadable="false"/>
+    </dynamicServices>
+    <contact>
+        <name>birdhouse admin</name>
+        <organization>Birdhouse</organization>
+        <telephone></telephone>
+        <email>email</email>
+    </contact>
+    <server>
+        <title>ncWMS Server</title>
+        <allowFeatureInfo>true</allowFeatureInfo>
+        <maxImageWidth>1024</maxImageWidth>
+        <maxImageHeight>1024</maxImageHeight>
+        <abstract>birdhouse wms</abstract>
+        <keywords>birdhouse,wms</keywords>
+        <url>http://birdhouse</url>
+        <allowglobalcapabilities>true</allowglobalcapabilities>
+    </server>
+</config>

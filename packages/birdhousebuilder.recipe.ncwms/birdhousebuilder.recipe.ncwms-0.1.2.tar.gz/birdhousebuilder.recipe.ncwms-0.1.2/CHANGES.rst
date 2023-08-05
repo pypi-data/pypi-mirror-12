@@ -1,0 +1,19 @@
+Changes
+*******
+
+0.1.2 (2015-10-22)
+==================
+
+* added more options: title, abstract, ...
+* renamed option data_root to data_dir
+* updated to ncWMS2 >= 2.0.3
+
+0.1.1 (2015-10-20)
+==================
+
+* added Dataset config for PyWPS outputs.
+
+0.1.0 (2015-10-19)
+==================
+
+* Initial Release.
