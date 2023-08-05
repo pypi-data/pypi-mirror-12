@@ -1,0 +1,35 @@
+WinRemote
+=========
+
+This package is primarily a library which helps you remotely manage your
+windows machine. Secondly it's command line tool to manage windows
+machine remotely. The command line tool calls directly specific module.
+Modules are very easily extensible. You can write your own and use it
+from command line immediately, only specifying its name and module
+function.
+
+For example this command:
+
+.. code:: bash
+
+    $ winremote --username=Administrator --password=****** --ip=10.0.0.1 services get WinRM
+    {'Name': 'WinRM', 'StartMode': 'Auto', 'State': 'Running'}
+
+Equals to this python code:
+
+.. code:: python
+
+    import pprint
+    import winrm
+
+    from winremote import winremote
+
+    session = winrm.Session(target='10.0.0.1', auth=('Administrator', '******'))
+    win = winremote.Windows(session, winremote.WMI(session))
+    pprint.pprint(win.services.get('WinRM'))
+
+This package uses `pywinrm <https://pypi.python.org/pypi/pywinrm/>`__,
+so please follow its readme to setup your windows machine to work via
+WinRM.
+
+
