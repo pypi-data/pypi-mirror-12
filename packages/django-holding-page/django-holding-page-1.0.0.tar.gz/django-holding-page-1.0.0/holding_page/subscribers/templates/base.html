@@ -1,0 +1,53 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django Holding Page</title>
+    <meta name="Author" content="Daniel Davies" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Django Holding Page</h1>
+                <p class="lead">Launch a quick viral holding page to notify people when you launch.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            <div class="col-md-6">
+                <h2>Where am I?</h2>
+                <p>
+                    Django Holding Page collects names and email addresses that can be exported
+                    as a CSV, ready for import in to Campaign Monitor. This page is for demonstration
+                    purposes only!
+                </p>
+                <p>
+                    If you've checked out this project then well done - it's running! Now customise
+                    the templates and you're ready to go!
+                </p>
+                <p>
+                    Learn more on <a href="https://github.com/danux/django-holding-page/" title="Django Holding Page's GitHub">GitHub</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

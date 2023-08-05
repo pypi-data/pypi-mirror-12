@@ -1,0 +1,13 @@
+{% load i18n %}
+
+{% trans "Hi" %} {{ subscriber.full_name }},
+
+{% trans "Welcome to" %} {{ site.name }}!
+
+{% trans "Your unique share code" %}:
+http://{{ site.domain }}/{{ subscriber.share_code }}
+
+{% blocktrans %}Use this link to get enough mates to sign up, and we'll have a treat waiting for you on launch!{% endblocktrans %}
+
+{% blocktrans %}You can take your name off the list at any point too, just visit this link{% endblocktrans %}:
+http://{{ site.domain }}/unsubscribe/{{ subscriber.email }}/
