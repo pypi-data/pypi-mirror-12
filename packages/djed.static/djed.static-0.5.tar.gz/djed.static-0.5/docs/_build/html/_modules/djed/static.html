@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>djed.static &mdash; djed.static 0.5.dev0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="djed.static 0.5.dev0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> djed.static
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../local-components.html">Local Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multiple-components.html">Multiple Component Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Support and Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">djed.static</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>djed.static</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for djed.static</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">Interface</span>
+<span class="kn">from</span> <span class="nn">bowerstatic</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Bower</span><span class="p">,</span>
+    <span class="n">InjectorTween</span><span class="p">,</span>
+    <span class="n">PublisherTween</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyramid.interfaces</span> <span class="kn">import</span> <span class="n">IApplicationCreated</span>
+<span class="kn">from</span> <span class="nn">pyramid.path</span> <span class="kn">import</span> <span class="n">AssetResolver</span>
+<span class="kn">from</span> <span class="nn">pyramid.exceptions</span> <span class="kn">import</span> <span class="n">ConfigurationError</span>
+
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&#39;djed.static&#39;</span><span class="p">)</span>
+
+
+<span class="n">BowerComponentsInfo</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&#39;BowerComponentsInfo&#39;</span><span class="p">,</span> <span class="s">&#39;name path&#39;</span><span class="p">)</span>
+<span class="n">BowerComponentInfo</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&#39;BowerComponentInfo&#39;</span><span class="p">,</span> <span class="s">&#39;path components&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">IBower</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Bower interface</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">IBowerComponents</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Bower components interface</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">IBowerComponent</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Bower component interface for local components</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">bower_factory_from_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">):</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;djed.static.prefix&#39;</span><span class="p">,</span> <span class="s">&#39;djed.static.&#39;</span><span class="p">)</span>
+
+    <span class="n">bower</span> <span class="o">=</span> <span class="n">Bower</span><span class="p">()</span>
+
+    <span class="n">bower</span><span class="o">.</span><span class="n">initialized</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">bower</span><span class="o">.</span><span class="n">publisher_signature</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="n">prefix</span> <span class="o">+</span> <span class="s">&#39;publisher_signature&#39;</span><span class="p">,</span> <span class="s">&#39;bowerstatic&#39;</span><span class="p">)</span>
+    <span class="n">bower</span><span class="o">.</span><span class="n">components_path</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="n">prefix</span> <span class="o">+</span> <span class="s">&#39;components_path&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">bower</span><span class="o">.</span><span class="n">components_name</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="n">prefix</span> <span class="o">+</span> <span class="s">&#39;components_name&#39;</span><span class="p">,</span> <span class="s">&#39;components&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bower</span>
+
+
+<span class="k">def</span> <span class="nf">get_bower</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;registry&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">registry</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">registry</span> <span class="o">=</span> <span class="n">request</span>
+    <span class="k">return</span> <span class="n">registry</span><span class="o">.</span><span class="n">getUtility</span><span class="p">(</span><span class="n">IBower</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">bowerstatic_tween_factory</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">registry</span><span class="p">):</span>
+    <span class="n">bower</span> <span class="o">=</span> <span class="n">get_bower</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">bowerstatic_tween</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+        <span class="n">injector_handler</span> <span class="o">=</span> <span class="n">InjectorTween</span><span class="p">(</span><span class="n">bower</span><span class="p">,</span> <span class="n">handler</span><span class="p">)</span>
+        <span class="n">publisher_handler</span> <span class="o">=</span> <span class="n">PublisherTween</span><span class="p">(</span><span class="n">bower</span><span class="p">,</span> <span class="n">injector_handler</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">publisher_handler</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bowerstatic_tween</span>
+
+
+<div class="viewcode-block" id="add_bower_components"><a class="viewcode-back" href="../../api.html#djed.static.add_bower_components">[docs]</a><span class="k">def</span> <span class="nf">add_bower_components</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">registry</span>
+    <span class="n">resolver</span> <span class="o">=</span> <span class="n">AssetResolver</span><span class="p">()</span>
+    <span class="n">directory</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
+            <span class="s">&quot;Directory &#39;{0}&#39; does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">bower</span> <span class="o">=</span> <span class="n">get_bower</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">bower</span><span class="o">.</span><span class="n">components_name</span>
+
+    <span class="n">discr</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;djed:static&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">BowerComponentsInfo</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+        <span class="n">registry</span><span class="o">.</span><span class="n">registerUtility</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">IBowerComponents</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">discr</span><span class="p">,</span> <span class="n">register</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="add_bower_component"><a class="viewcode-back" href="../../api.html#djed.static.add_bower_component">[docs]</a><span class="k">def</span> <span class="nf">add_bower_component</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">registry</span>
+    <span class="n">resolver</span> <span class="o">=</span> <span class="n">AssetResolver</span><span class="p">()</span>
+    <span class="n">directory</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s">&#39;bower.json&#39;</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
+            <span class="s">&quot;Directory &#39;{0}&#39; does not contain &#39;bower.json&#39; file&quot;</span>
+            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">bower</span> <span class="o">=</span> <span class="n">get_bower</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">components</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+       <span class="n">components</span> <span class="o">=</span> <span class="n">bower</span><span class="o">.</span><span class="n">components_name</span>
+
+    <span class="n">discr</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;djed:static&#39;</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">components</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">BowerComponentInfo</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">components</span><span class="p">)</span>
+        <span class="n">registry</span><span class="o">.</span><span class="n">registerUtility</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">IBowerComponent</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">discr</span><span class="p">))</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">discr</span><span class="p">,</span> <span class="n">register</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="include"><a class="viewcode-back" href="../../api.html#djed.static.include">[docs]</a><span class="k">def</span> <span class="nf">include</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">path_or_resource</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">registry</span>
+    <span class="n">bower</span> <span class="o">=</span> <span class="n">get_bower</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">components</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">components</span> <span class="o">=</span> <span class="n">bower</span><span class="o">.</span><span class="n">components_name</span>
+
+    <span class="n">collection</span> <span class="o">=</span> <span class="n">bower</span><span class="o">.</span><span class="n">_component_collections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">collection</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s">&quot;Bower components &#39;{0}&#39; not found.&quot;</span>
+                                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">components</span><span class="p">))</span>
+
+    <span class="n">include</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">includer</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+    <span class="n">include</span><span class="p">(</span><span class="n">path_or_resource</span><span class="p">)</span>
+
+</div>
+<span class="k">def</span> <span class="nf">init_static</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">registry</span>
+    <span class="n">bower</span> <span class="o">=</span> <span class="n">get_bower</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">bower</span><span class="o">.</span><span class="n">initialized</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Initialize static resources...&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">registry</span><span class="o">.</span><span class="n">getUtilitiesFor</span><span class="p">(</span><span class="n">IBowerComponents</span><span class="p">):</span>
+            <span class="n">bower</span><span class="o">.</span><span class="n">components</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Add static bower components &#39;{0}&#39;: {1}&quot;</span>
+                     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">registry</span><span class="o">.</span><span class="n">getUtilitiesFor</span><span class="p">(</span><span class="n">IBowerComponent</span><span class="p">):</span>
+            <span class="n">collection</span> <span class="o">=</span> <span class="n">bower</span><span class="o">.</span><span class="n">_component_collections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">collection</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s">&quot;Bower components &#39;{0}&#39; not found.&quot;</span>
+                            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">components</span><span class="p">))</span>
+
+            <span class="n">component</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">load_component</span><span class="p">(</span>
+                <span class="n">info</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s">&#39;bower.json&#39;</span><span class="p">)</span>
+
+            <span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Add local bower component: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+
+        <span class="n">bower</span><span class="o">.</span><span class="n">initialized</span> <span class="o">=</span> <span class="bp">True</span>
+
+
+<span class="k">def</span> <span class="nf">includeme</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">bower</span> <span class="o">=</span> <span class="n">bower_factory_from_settings</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">registerUtility</span><span class="p">(</span><span class="n">bower</span><span class="p">,</span> <span class="n">IBower</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">add_tween</span><span class="p">(</span><span class="s">&#39;djed.static.bowerstatic_tween_factory&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_subscriber</span><span class="p">(</span><span class="n">init_static</span><span class="p">,</span> <span class="n">IApplicationCreated</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s">&#39;add_bower_components&#39;</span><span class="p">,</span> <span class="n">add_bower_components</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s">&#39;add_bower_component&#39;</span><span class="p">,</span> <span class="n">add_bower_component</span><span class="p">)</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">add_request_method</span><span class="p">(</span><span class="n">include</span><span class="p">,</span> <span class="s">&#39;include&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_request_method</span><span class="p">(</span><span class="n">get_bower</span><span class="p">,</span> <span class="s">&#39;get_bower&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">bower</span><span class="o">.</span><span class="n">components_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">add_bower_components</span><span class="p">(</span><span class="n">bower</span><span class="o">.</span><span class="n">components_path</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Djed developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.5.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

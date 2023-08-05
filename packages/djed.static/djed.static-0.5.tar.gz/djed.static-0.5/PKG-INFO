@@ -1,0 +1,105 @@
+Metadata-Version: 1.1
+Name: djed.static
+Version: 0.5
+Summary: Integration of BowerStatic into Pyramid for managing static resources with Bower
+Home-page: https://github.com/djedproject/djed.static
+Author: Djed developers
+Author-email: djedproject@googlegroups.com
+License: ISC License (ISCL)
+Description: ===========
+        djed.static
+        ===========
+        
+        .. image:: https://travis-ci.org/djedproject/djed.static.png?branch=master
+           :target: https://travis-ci.org/djedproject/djed.static
+        
+        ``djed.static`` integrates `BowerStatic <https://bowerstatic.readthedocs.org>`_
+        into the `Pyramid Web Framework <https://pyramid.readthedocs.org>`_.
+        BowerStatic is a WSGI component that can serve static resources from
+        front-end packages (JavaScript, CSS) that you install through the
+        `Bower <http://bower.io>`_ package manager.
+        
+        Dependencies
+        ============
+        
+        - python >= 3.3
+        - `pyramid <https://pypi.python.org/pypi/pyramid>`_
+        - `bowerstatic <https://pypi.python.org/pypi/bowerstatic>`_
+        
+        Documentation and Support
+        =========================
+        
+        Documentation can be found at `https://djedstatic.readthedocs.org/  <https://djedstatic.readthedocs.org/>`_
+        
+        If you've got questions, contact the `djedproject mailling list <https://groups.google.com/group/djedproject>`_.
+        
+        To report bugs, use the `issue tracker <https://github.com/djedproject/djed.static/issues>`_.
+        
+        License
+        =======
+        
+        ``djed.static`` is offered under the `ISC license`_.
+        
+        .. _ISC license: http://choosealicense.com/licenses/isc/
+        
+        Changes
+        =======
+        
+        0.5 (2015-10-06)
+        ----------------
+        
+        - Support Python 3.5
+        
+        - It's now possible to create local components before a ``bower_components``
+          directory has been defined.
+        
+        - Backward incompatible change: Remove ``version`` argument of
+          ``config.add_bower_component`` (version information from the
+          ``bower.json`` file is used instead).
+        
+        - Backward incompatible change: Rename keyword argument identifier ``name`` of
+          ``config.add_bower_components`` and ``request.include`` to
+          ``components_name``.
+        
+        - Add checks if components directory exists and if local components contain a
+          ``bower.json`` file.
+        
+        
+        0.4 (2015-05-24)
+        ----------------
+        
+        - Simplified creation of local components
+        
+        - Added setting option ``components_path``
+        
+        - Changed to PEP 420 namespace package
+        
+        
+        0.3 (2015-01-10)
+        ----------------
+        
+        - Support multiple ``bower_components`` directories
+        
+        
+        0.2 (2015-01-09)
+        ----------------
+        
+        - Added documentation
+        
+        - Added setting options via ini file
+        
+        
+        0.1 (2015-01-06)
+        ----------------
+        
+        - Initial release
+Keywords: djed pyramid pylons bower static bowerstatic
+Platform: UNKNOWN
+Classifier: Framework :: Pyramid
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
