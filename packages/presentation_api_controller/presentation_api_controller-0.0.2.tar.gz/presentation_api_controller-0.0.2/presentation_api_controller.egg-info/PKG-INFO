@@ -1,0 +1,76 @@
+Metadata-Version: 1.0
+Name: presentation-api-controller
+Version: 0.0.2
+Summary: Presentation API Controller for MCTS
+Home-page: https://github.com/askeing/presentation_api_controller
+Author: Askeing Yen
+Author-email: askeing@gmail.com
+License: UNKNOWN
+Description: Presentation API Controller
+        ===========================
+        
+        Presentation API Controller for MCTS.
+        
+        
+        Example
+        -------
+        
+        Open two terminals.
+        
+        1st terminal run controller.
+        
+        .. code-block:: bash
+        
+            // Terminal One
+            $ python presentation_controller/controller.py
+            INFO: Run server on address: 127.0.0.1, port: 43378
+        	Controller runs on 127.0.0.1 43378
+        
+        	# 1nd phase
+        
+        	Enter host:
+        
+        
+        And 2nd terminal run test presentation server.
+        
+        .. code-block:: bash
+        
+            // Terminal Two
+            $ python test/pserver.py
+            # 1st phase
+        
+        	[1st] Run server on address: 127.0.0.1, port: 52608
+        
+        
+        Back to 1st terminal, type pserver's `host` and `port`.
+        
+        .. code-block:: bash
+        
+            // Terminal One
+            $ python presentation_controller/controller.py
+            INFO: Run server on address: 127.0.0.1, port: 43378
+        	Controller runs on 127.0.0.1 43378
+        
+        	# 1nd phase
+        
+        	Enter host: 127.0.0.1
+        	Enter port: 52608
+        
+        
+        Then they will talk to each other.
+        
+        
+        Release History
+        ---------------
+        
+        0.0.2 (2015-10-26)
+        ++++++++++++++++++
+        - Add the first phase of controller.
+        - Improve the pserver (from test/client.py to test/pserver.py).
+        
+        0.0.1 (2015-10-23)
+        ++++++++++++++++++
+        - Initiate the project.
+        
+Keywords: mozilla b2g firefoxos fxos MCTS
+Platform: UNKNOWN
