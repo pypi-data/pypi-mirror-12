@@ -1,0 +1,15 @@
+{% for nginx in nginx_list %}   upstream {{ nginx.upstream.name }} {{ '{' }}
+    {% for server in nginx.upstream.servers %}  server {{ server }};{% endfor %}
+    {{ '}' }}
+
+    server {{ '{' }}
+        listen {{  nginx.server.port }} {% if nginx.server.protocol == 'ssl' %}ssl{% endif %};
+        server_name {% for server_name in nginx.server.server_names %} {{ server_name }} {% endfor %};
+        {% if nginx.server.ssl_certificate %}ssl_certificate {{nginx.server.ssl_certificate}};{% endif %}
+        {% if nginx.server.ssl_certificate_key %}ssl_certificate_key {{ nginx.server.ssl_certificate_key }};{% endif %}
+        {% if nginx.server.ssl_ciphers %}ssl_ciphers {{ nginx.server.ciphers }};{% endif %}
+        location / {{ '{' }}
+        proxy_pass http://{{ nginx.upstream.name }};
+        {{ '}' }}
+    {{ '}' }}
+{% endfor %}
