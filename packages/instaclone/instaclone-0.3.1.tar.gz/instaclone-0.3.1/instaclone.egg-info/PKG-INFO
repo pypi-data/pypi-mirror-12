@@ -1,0 +1,36 @@
+Metadata-Version: 1.1
+Name: instaclone
+Version: 0.3.1
+Summary: instaclone: Fast, cached file installation
+Home-page: https://github.com/vivlabs/instaclone
+Author: Joshua Levy
+Author-email: UNKNOWN
+License: Apache 2
+Description: 
+        Instaclone is usually run from a directory where a instaclone.{yml,json}
+        settings file resides. It will then install to and publish from that
+        directory, based on settings in that file.
+        
+        Settings may be overridden with corresponding command-line args.
+        
+        The install method determines how items are installed from cache:
+        - symlink: Symlink to read-only cache (the default)
+        - copy: A slow, full copy of the file or directory
+        - fastcopy: A faster copy using rsync (preferred over copy)
+        - hardlink: A hard link (files only)
+        
+        For further documentation, see: https://github.com/vivlabs/instaclone
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Utilities
+Classifier: Topic :: Software Development
