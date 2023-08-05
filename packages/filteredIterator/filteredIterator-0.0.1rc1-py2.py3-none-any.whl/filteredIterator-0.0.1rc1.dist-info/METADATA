@@ -1,0 +1,48 @@
+Metadata-Version: 2.0
+Name: filteredIterator
+Version: 0.0.1rc1
+Summary: Iterator class with post call filtering
+Home-page: http://tonyflury.github.io/py-filterediterator/
+Author: Anthony Flury
+Author-email: anthony.flury@btinternet.com
+License: GNU General Public License (GPL)
+Keywords: iterator development data
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python :: 2.7
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage; extra == 'test'
+
+===========================================
+filterediterator Library
+===========================================
+
+The filteredIterator library implements the FilteredIterator class. This class provides a iterator wrap, which can be initialised from any other iterator, Iterable or sequence, and provides easy to use chained filtering methods
+
+
+*filterediterator*.FilteredIterator( *source iterable* )
+--------------------------------------------------------
+Initialises the FilteredIterator wrap around the source iterable. On it's own there is no benefit to placing the Filter wrap around an existing iterable.
+
+
+*FilteredIterator*.filter( *predicate* )
+----------------------------------------
+returns a modified Iterator which is filtered based on the predicate. The predicate is a callable which is passed the data item from the iterator. The item is retained in the iterator if and only if the predicate callable returns True for that item.
+
+*FilteredIterator*.dropwhile( *predicate* )
+-------------------------------------------
+returns a modified Iterator which is filtered based on the predicate. The predicate is a callable which is passed the data item from the iterator. The items are removed from the iterator while the predicate callable returns True. Once the predicate returns True, no future items are removed by dropwhile.
+
+*FilteredIterator*.takewhile( *predicate* )
+-------------------------------------------
+returns a modified Iterator which is filtered based on the predicate. The predicate is a callable which is passed the data item from the iterator. The items are retained in the iterator while the predicate callable returns True. Once the predicate returns False, the iterator Stops.
+
+Chaining methods
+----------------
+All of the above methods return a FilteredIterator instance, and therefore can be chained together to create complex filters as required.
+
