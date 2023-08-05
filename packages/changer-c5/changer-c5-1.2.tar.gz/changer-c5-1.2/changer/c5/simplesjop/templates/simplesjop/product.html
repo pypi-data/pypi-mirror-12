@@ -1,0 +1,66 @@
+{% extends 'site.tmpl' %}
+
+{% load thumbnail %}
+{% load i18n %}
+
+{% block _title %}{{ product }} | {{ subcategory }} | {% trans 'Product' %} | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}{% include 'includes/breadcrumbs.html' %}{% endblock %}
+
+{% block content %}
+	<div class="product-detail">
+		<div class="product-titlebar">{{ product }}</div>
+		<table cellpadding="2" cellspacing="2" width="100%">
+			<tr>
+				<td class="product-image">
+					{% thumbnail product.image "110x110" crop="80% top" as im %}
+						<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ product.image.filename }}">
+					{% endthumbnail %}
+				</td>
+				<td class="product-documentation">
+					{% if product.documentation %}
+					<img src="{{ STATIC_URL }}img/pdf.gif" />&nbsp;<a target="_blank" href="{{ product.documentation.url }}">{% blocktrans %}Documentation for {{ product }}{% endblocktrans %}</a>
+					{% endif %}
+					
+					{% for version in versions %}
+					<form class="product-form" method="post" action="{% url 'cart-add' %}">
+						{% csrf_token %}
+						
+						{{ version.title }}:&#160;
+						<input type="hidden" name="product" value="{{ version.pk }}">
+						<select name="quantity">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="10">10</option>
+							<option value="20">20</option>
+						</select> 
+						<input type="submit" value="{% trans 'Order' %}" />
+						<br />
+					</form>
+					{% endfor %}
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="product-specs">
+		<div class="tabbox">
+			<table class="tabs">
+				<tr>
+					{# {% if product.features %}<td><a href="javascript:void(0);">Properties</a></td>{% endif %} #}
+					{% if product.description %}<td class="no-border"><a href="javascript:void(0);">{% trans 'Description' %}</a></td>{% endif %}
+					{% if product.specifications %}<td><a href="javascript:void(0);">{% trans 'Specifications' %}</a></td>{% endif %}
+				</tr>
+			</table>
+			<div class="boxes">
+				{# {% if product.features %}<div><span class="box-title">Import properties</span>{{ product.features|safe }}</div>{% endif %} #}
+				{% if product.description %}<div><span class="box-title">{% trans 'Description' %}</span>{{ product.description|safe }}</div>{% endif %}
+				{% if product.specifications %}<div><span class="box-title">{% trans 'Specifications' %}</span>{{ product.specifications|safe }}</div>{% endif %}
+			</div>
+		</div>
+	</div> 
+
+{% endblock %}

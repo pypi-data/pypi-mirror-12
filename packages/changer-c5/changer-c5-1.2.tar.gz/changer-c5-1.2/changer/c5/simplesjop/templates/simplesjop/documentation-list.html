@@ -1,0 +1,26 @@
+{% extends 'site.tmpl' %}
+
+{% load i18n %}
+{% load cms_tags %}
+{% load cache %}
+{% load menu_tags %}
+
+{% block _title %}{% trans 'Documentation' %} | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}{% include 'includes/breadcrumbs.html' %}{% endblock %}
+
+{% block content %}
+	<h1>{% trans 'Documentation' %}</h1>
+
+	{% placeholder content %}
+
+	{% comment %}
+	{# Bas has opted to upload documentation himself apart from the product documentation #}
+	{% for product in object_list %}
+	<div class="category-list-item">
+		<a href="{{ product.documentation.url }}"><img src="/layout/img/pdf.gif" />{{ product.name }}</a>
+	</div>
+	{% endfor %}
+	{% endcomment %}
+
+{% endblock %}

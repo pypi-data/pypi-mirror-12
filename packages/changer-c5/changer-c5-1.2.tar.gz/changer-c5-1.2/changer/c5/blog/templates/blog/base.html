@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>{% block title %}Wentzel blog{% endblock %}</title>
+    <meta http-equiv="content-type" 
+        content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=640;">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}blog/blog.css" />
+</head>
+
+<body>
+    <div id="page">
+        <div id="header">
+            <h1><a href="/blog/"><img src="{{ STATIC_URL }}blog/bloglogo.gif" alt="Wentzel blog" /></a></h1>
+            <a id="backlink" href="/">Terug naar de hoofdsite</a>
+            {% block header %}{% endblock %}
+        </div>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

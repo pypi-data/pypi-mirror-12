@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Wentzel blog{% endblock %}
+
+{% block content %}
+    <ul>
+    {% for post in posts %}
+        <li>{% include "blog/post.html" %}</li>
+    {% endfor %}
+    </ul>
+    <div id="pages">
+        <p>Pagina: 
+        {% for page in paginator.page_range %}
+            {% if page != curpage %}<a href="?page={{ page }}">{% endif %}{{ page }}{% if page != curpage %}</a>{% endif %}
+        {% endfor %}
+        </p>
+    </div>
+{% endblock %}

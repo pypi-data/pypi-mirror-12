@@ -1,0 +1,44 @@
+{# Example template for the shopping cart, override in your own template directory #}
+{% extends 'site.tmpl' %}
+
+{% block content %}
+
+	<table width="100%" cellpadding="2" cellspacing="1">
+		<thead>
+			<tr>
+				<td>Aantal</td>
+				<td class="description">Product</td>
+				<td>Prijs per stuk</td>
+				<td>Subtotaal</td>
+			</tr>
+		</thead>
+		<tbody>
+	{% for item in items %}
+			<tr>
+				<td>
+					<a class="delete" href="{% url cart-remove item.id %}"><img src="/layout/img/delete.gif" alt="Verwijderen" /></a>
+					<a class="increase" href="{% url cart-increase item.id %}"><img src="/layout/img/add.gif" alt="Meer" /></a>
+					<a class="decrease" href="{% url cart-decrease item.id %}"><img src="/layout/img/subtract.gif" alt="Minder" /></a>
+				</td>
+				<td>{{ item.quantity }}x </td>
+				<td><strong>{{ item.content_object }}</strong></td>
+				<td>{{ item.unit_price }}</td>
+				<td>{{ item.total_price }}</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><p>{{ item.content_object.description }}</p></td>
+				<td colspan="2"></td>
+			</tr>
+	{% endfor %}
+		</tbody>
+		<tfooter>
+			<tr>
+				<td colspan="2"></td>
+				<td><strong>Totaal</strong></td>
+				<td>{{ cart.total_price }}</td>
+			</tr>
+		</tfooter>
+	</table>
+	
+{% endblock %}

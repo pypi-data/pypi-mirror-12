@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }} - Wentzel blog{% endblock %}
+
+{% block header %}
+    <a id="listlink" href="../">&laquo; Terug naar het overzicht</a>
+{% endblock %}
+
+{% block content %}
+    {% include "blog/post.html" %}
+{% endblock %}

@@ -1,0 +1,4 @@
+    <h2 class="posttitle">{% if posts %}<a href="{{ post.id }}/">{% endif %}{{ post.title }}{% if posts %}</a>{% endif %}</h2>
+    <em class="postdate">{{ post.pub_date|date:"d/M/Y, H:i" }} uur</em><br />
+    {% if post.image %}<img class="postimg" src="{{ post.image }}" alt="{{ post.image.filename }}" />{% endif %}
+    <div class="postcontent">{{ post.content|safe }}<div class="clear"></div></div>

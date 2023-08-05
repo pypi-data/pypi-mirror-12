@@ -1,0 +1,32 @@
+{% extends 'site.tmpl' %}
+
+{% load thumbnail %}
+{% load i18n %}
+
+{% block _title %}{{ category_name }} | {% trans 'Products' %} | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}{% include 'includes/breadcrumbs.html' %}{% endblock %}
+
+{% block content %}
+	<h1>{% blocktrans %}Products in '{{ category }}' {% endblocktrans %}</h1>
+	
+	<table class="product-list">
+			<tr>
+    {% for product in products %}
+			<td class="tile">
+				<a href="{% url 'changer.c5.simplesjop:product' category.slug product.id product.slug %}">
+				<h2>{{ product.name }}</h2>
+					{% thumbnail product.image "100x100" as im %}
+						<img class="product-image" style="margin: {{ im|margin:"100x100" }}" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ product.image.filename }}" />
+					{% endthumbnail %}
+				</a>
+			</td>
+	{% if forloop.counter|divisibleby:"3" %}
+		</tr>
+		<tr>
+		{% endif %}
+	{% endfor %}
+		</tr>
+	</table>
+	
+{% endblock %}
