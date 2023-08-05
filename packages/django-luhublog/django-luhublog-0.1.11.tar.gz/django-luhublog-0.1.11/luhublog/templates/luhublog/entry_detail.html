@@ -1,0 +1,24 @@
+{% extends 'luhublog/base.html' %}
+
+{% load entry_tags %}
+{% load blog_twittercard_tags %}
+{% load blog_opengraph_tags %}
+
+{% block title %}{{ entry.title }}{% endblock %}
+
+{% block seo_meta %}
+
+	{% open_graph_tags %}
+	{% twitter_card %}
+	
+{% endblock seo_meta %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{{ entry.title }}
+			</div>
+		</div>
+	</div>
+{% endblock content %}
