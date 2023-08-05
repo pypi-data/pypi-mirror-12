@@ -1,0 +1,86 @@
+Metadata-Version: 1.1
+Name: pynosh
+Version: 0.2.1
+Summary: Nonlinear Schrödinger equations
+Home-page: https://github.com/nschloe/pynosh/
+Author: Nico Schlömer
+Author-email: nico.schloemer@gmail.com
+License: UNKNOWN
+Description: PyNosh
+        ======
+        
+        |Build Status| |Coverage Status| |Code Health| |Documentation Status|
+        |doi|
+        
+        PyNosh is a solver package for nonlinear Schrödinger equations. It
+        contains the respective model evaluators along with an implementation of
+        Newton's method and optional preconditioner for its linearization.
+        
+        PyNosh uses `KryPy <https://github.com/andrenarchy/krypy>`__ for the
+        solution of linear equation systems and employs its deflation
+        capabilities. The package `VoroPy <https://github.com/nschloe/voropy>`__
+        is used to construct the finite-volume discrezation.
+        
+        Usage
+        =====
+        
+        Documentation
+        ~~~~~~~~~~~~~
+        
+        The documentation is hosted at
+        `pynosh.readthedocs.org <http://pynosh.readthedocs.org>`__.
+        
+        Example
+        ~~~~~~~
+        
+        |Ginzburg-Landau solution| |Ginzburg-Landau solution|
+        
+        Absolute value and complex argument of a solution of the
+        *Ginzburg-Landau equations*, a particular instance of nonlinear
+        Schrödinger equations. The number of nodes in the discretization is
+        72166 for this example.
+        
+        Development
+        ===========
+        
+        PyNosh is currently maintained by `Nico
+        Schlömer <https://github.com/nschloe>`__. Feel free to contact Nico.
+        Please submit feature requests and bugs as GitHub issues.
+        
+        PyNosh is developed with continuous integration. Current status: |Build
+        Status|
+        
+        License
+        =======
+        
+        PyNosh is free software licensed under the GPL3 License.
+        
+        References
+        ==========
+        
+        PyNosh was used to conduct the numerical experiments in the paper
+        
+        -  `Preconditioned Recycling Krylov subspace methods for self-adjoint
+           problems, A. Gaul and N. Schlömer, arxiv: 1208.0264,
+           2012 <http://arxiv.org/abs/1208.0264>`__.
+        
+        .. |Build Status| image:: https://travis-ci.org/nschloe/pynosh.png?branch=master
+           :target: https://travis-ci.org/nschloe/pynosh
+        .. |Coverage Status| image:: https://img.shields.io/coveralls/nschloe/pynosh.svg
+           :target: https://coveralls.io/r/nschloe/pynosh?branch=master
+        .. |Code Health| image:: https://landscape.io/github/nschloe/pynosh/master/landscape.png
+           :target: https://landscape.io/github/nschloe/pynosh/master
+        .. |Documentation Status| image:: https://readthedocs.org/projects/pynosh/badge/?version=latest
+           :target: https://readthedocs.org/projects/pynosh/?badge=latest
+        .. |doi| image:: https://zenodo.org/badge/doi/10.5281/zenodo.10341.png
+           :target: https://zenodo.org/record/10341
+        .. |Ginzburg-Landau solution| image:: figures/solution-abs.png
+        .. |Ginzburg-Landau solution| image:: figures/solution-arg.png
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering :: Mathematics
