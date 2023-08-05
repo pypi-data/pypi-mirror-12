@@ -1,0 +1,61 @@
+Metadata-Version: 1.1
+Name: dispatk
+Version: 0.1
+Summary: Multiple dispatcher on arguments values.
+Home-page: https://github.com/hephs/dispatk
+Author: hephaestus
+Author-email: UNKNOWN
+License: MIT
+Description: 
+        # dispatk
+        
+        ## Description
+        
+        This function is inspired by singledispatch of Python 3.4+ (PEP 443),
+        but the dispatch happens on the key extracted fro the arguments values.
+        
+        ```
+        from dispatk import dispatk
+        
+        @dispatk(lambda n: int(n))
+        def fib(n):
+            return fib(n-1) + fib(n-2)
+        @fib.register(0)
+        def _(n):
+            return 0
+        @fib.register(1, 2)
+        def _(n):
+            return 1
+        @fib.register(41)
+        def _(n):
+            return 165580141
+        ```
+        
+        *register* accepts one or more keys, so
+        
+        ```
+        @fib.register(1, 2)
+        def _(n):
+            return 1
+        ```
+        
+        is equivalent to
+        
+        ```
+        @fib.register(1)
+        @fib.register(2)
+        def _(n):
+            return 1
+        ```
+        
+Keywords: multiple dispatch generic functions genericfunctions decorator
+Platform: any
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
