@@ -1,0 +1,8 @@
+[program:{{name}}]
+user={{user}}
+directory={% if directory %}{{directory}}{% else %}/home/{{user}}{% endif %}
+command={{command}}
+{% if environment %}environment={% for key, val in environment.items() %}{{key}}='{{val}}',{% endfor %}{% endif %}
+autorestart={% if autorestart == False %}false{% else %}true{% endif %}
+autostart={% if autostart == False %}false{% else %}true{% endif %}
+redirect_stderr={% if redirect_stderr %}true{% else %}false{% endif %}
