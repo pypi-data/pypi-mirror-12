@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <utility
+      name="ja"
+      provides="plone.i18n.normalizer.interfaces.IFileNameNormalizer"
+      component=".normalizer.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="ja"
+      provides="plone.i18n.normalizer.interfaces.IURLNormalizer"
+      component=".normalizer.normalizer"
+      permission="zope.Public" />
+
+</configure>
