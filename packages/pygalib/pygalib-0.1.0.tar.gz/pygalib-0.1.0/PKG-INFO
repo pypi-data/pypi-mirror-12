@@ -1,0 +1,66 @@
+Metadata-Version: 1.1
+Name: pygalib
+Version: 0.1.0
+Summary: A simple and easy-to-use genetic algirthm library
+Home-page: https://github.com/lfzark/pygalib
+Author: ark1ee
+Author-email: lfzlfz@126.com
+License: MIT
+Description: Python Genetic Algorithm Library (pygalib)
+        =======================
+        ### A simple and easy-to-use genetic algirthm library
+        
+        ----
+        
+        ## Installation
+        Use pip:
+        '''
+        pip install pygalib
+        '''
+        if you want to install from source code , you can download from pypi or simple use:
+        '''
+        git clone https://github.com/lfzark/pygalib 
+        '''
+        then run:
+        '''
+        python setup.py install
+        '''
+        
+        ## Example
+        '''python
+        
+        import pygalib
+        
+        if __name__ == "__main__":
+        
+          indiv = pygalib.Individual(
+                gene_set=range(1,10),
+                chrom_len = 4,
+                fitness_func=lambda x:(x[0]+x[1])/x[2]-x[3]
+          )
+        
+          ga = pygalib.GA(
+                p_size = 100,
+                individual=indiv,
+                n_generation = 1000
+          )
+            
+          print ga.run().chromosome
+        
+        
+        
+        '''
+        
+Keywords: genetic algorithm library
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
