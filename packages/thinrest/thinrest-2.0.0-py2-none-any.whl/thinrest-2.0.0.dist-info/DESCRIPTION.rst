@@ -1,0 +1,126 @@
+Copyright (c) 2015 anuragal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Description: # thinrest
+        
+        #### Very thin layer over Django to implement REST API using [Tastypie library](https://github.com/django-tastypie/django-tastypie).
+        
+        ## Technology
+        * Python 2.7
+        * Django 1.5
+        * Tastypie 0.12.2
+        
+        ## Aim
+        
+        To build a simple interface that can provide for CRUD operations for two types of Database tables:
+        
+        1. Column based e.g. EMPLOYEE(FIRST_NAME, LAST_NAME, ADDRESS, CITY, STATE, ZIP)
+        
+        2. Key Value pairs e.g. SYSTEM_SETTINGS(SETTING_NAME, SETTING_VALUE)
+        
+        ## Quick start
+        
+        1. ```pip install thinrest```
+        
+        2. Add `thinrest` to your `INSTALLED_APPS` setting:
+        
+            ```python
+                INSTALLED_APPS = (
+                    ...
+                    'thinrest',
+                )
+            ```
+        
+        3. Include the thinrest URLs to a path of your choice
+        
+            ```python
+            patterns = ('',
+                ...
+                url(r'^thinrest/', include('thinrest.urls')),
+            )
+            ```
+        
+        ## Usage
+        
+        ####Employee Table
+        
+        Sample Data:
+        
+        ```{
+            "fields": {
+                "first_name": "Anurag",
+                "last_name": "Agarwal",
+                "address": "Wakad",
+                "city": "Pune",
+                "state": "Maharashtra",
+                "zip_code": "411057"
+            },
+            "model": "thinrest.employee",
+            "pk":1
+        }```
+        
+        Employee LIST: GET http://www.example.com/thinrest/api/v1/employee?format=json
+        
+        Employee DETAIL: GET http://www.example.com/thinrest/api/v1/employee/1?format=json
+        
+        Employee CREATE / UPDATE: POST http://www.example.com/thinrest/api/v1/employee/
+        
+        Employee DETELE: DELETE http://www.example.com/thinrest/api/v1/employee/1/
+        
+        ####Settings Table
+        
+        Settings table is a key-value pair type table. Passing `id` to REST will not work for this type of table. So little tweaking is done in api of this table to handle column `name` as input param.
+        
+        Sample Data:
+        
+        ```{
+            "fields": {
+                "name": "email",
+                "value": 1
+            },
+            "model": "thinrest.systemsetting",
+            "pk": 1
+        }```
+        
+        Setting LIST: GET http://www.example.com/thinrest/api/v1/setting?format=json
+        
+        Setting DETAIL: GET http://www.example.com/thinrest/api/v1/setting/email?format=json
+        
+        Setting CREATE / UPDATE: POST http://www.example.com/thinrest/api/v1/setting/
+        
+        Setting DETELE: DELETE http://www.example.com/thinrest/api/v1/employee/setting/email/
+        
+        ## Running Test
+        
+        ```python manage.py test```
+        
+        ## Bugs & Contributions
+        
+        Please report bugs by opening an issue
+        
+Keywords: rest implementation tastypie
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
