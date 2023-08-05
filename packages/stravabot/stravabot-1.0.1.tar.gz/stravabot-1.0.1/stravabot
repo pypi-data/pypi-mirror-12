@@ -1,0 +1,172 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import re
+import sys
+import time
+import socket
+import eventlet
+import requests
+
+from eventlet import backdoor
+
+re_line = re.compile(r'(?:[^ ]+ )?(?P<cmd>[^ ]+) (?P<data>.*)')
+re_activity = re.compile(r'https?://(?:[^\.]+\.)?strava.com/activities/(\d+)')
+
+class StravaBot(object):
+    def __init__(self, server, port, nickname, channel, club_id, access_token, update_interval, latency):
+        self.server = server
+        self.port = int(port)
+        self.nickname = nickname
+        self.channel = channel
+        self.club_id = int(club_id)
+        self.access_token = access_token
+        self.update_interval = int(update_interval)
+        self.latency = int(latency)
+
+        self.socket = socket.socket()
+        self.seen = set()
+        self.announced = {} # {activity_id: time.time}
+
+    def run(self):
+        eventlet.spawn(
+            backdoor.backdoor_server,
+            eventlet.listen(('127.0.0.1', 3000)),
+            locals={'bot': self},
+        )
+
+        # Stay connected
+        while True:
+            self.mainloop()
+
+    def mainloop(self):
+        self.socket.connect((self.server, self.port))
+
+        self.send("NICK %s" % self.nickname)
+        self.send("USER %(nick)s %(nick)s %(nick)s :%(url)s" % {
+            'url': 'https://github.com/lamby/stravabot',
+            'nick': self.nickname,
+        })
+
+        while True:
+            data = self.socket.recv(4096)
+
+            if not data:
+                break
+
+            for line in data.split('\r\n'):
+                if not line:
+                    continue
+
+                print "< %s" % line
+
+                m = re_line.match(line.strip())
+
+                if m is None:
+                    continue
+
+                try:
+                    fn = getattr(self, 'cmd_%s' % m.group('cmd'))
+                except AttributeError:
+                    continue
+
+                eventlet.spawn_n(fn, m.group('data'))
+
+        self.socket.close()
+
+    def cmd_001(self, data):
+        self.send('JOIN #%s' % self.channel)
+        self.poll(initial=True)
+
+    def cmd_PING(self, data):
+        self.send('PONG %s' % data)
+
+    def cmd_PRIVMSG(self, data):
+        # Only messages on "our" channel
+        if not data.startswith('#%s' % self.channel):
+            return
+
+        for x in re_activity.findall(data):
+            self.activity(self.GET('/activities/%s' % x))
+
+    def GET(self, url, **params):
+        params.setdefault('access_token', self.access_token)
+
+        return requests.get(
+            'https://www.strava.com/api/v3%s' % url,
+            params=params,
+        ).json()
+
+    def send(self, x):
+        print "> %s" % x.encode('utf-8')
+        self.socket.send('%s\r\n' % x.encode('utf-8'))
+
+    def poll(self, initial=False):
+        eventlet.spawn_after(self.update_interval, self.poll)
+
+        data = self.GET(
+            '/clubs/%d/activities' % self.club_id,
+            # Prevent spam & deleting entries revealing old ones
+            per_page=200 if initial else 5,
+        )
+
+        for x in data:
+            if not initial and x['id'] not in self.seen:
+                # Allow time for activities to be renamed, etc.
+                eventlet.spawn_after(
+                    self.latency,
+                    lambda x: self.activity(self.GET(x)),
+                    '/activities/%s' % x['id'],
+                )
+
+            self.seen.add(x['id'])
+
+    def activity(self, x):
+        # Print activity once at most every X secs
+        if self.announced.get(x['id'], 0) >= time.time() - 1800:
+            return
+
+        self.seen.add(x['id'])
+        self.announced[x['id']] = time.time()
+
+        m, s = divmod(x['moving_time'], 60)
+        h, m = divmod(m, 60)
+
+        # Some returned activities do not contain enough athlete data
+        if x['athlete']['resource_state'] == 1:
+            x['athlete'] = self.GET('/athletes/%s' % x['athlete']['id'])
+
+        def fmt(ys, separator):
+            return separator.join(y.strip().format(**x) for y in ys if y)
+
+        inner = []
+
+        if x['distance'] > 100:
+            inner.extend((
+                '{:,.1f}km'.format(x['distance'] / 1000),
+                '{:,.1f}km/h'.format(x['average_speed'] * 60 * 60 / 1000)
+                    if x['type'] == 'Ride' else '',
+                '{total_elevation_gain:,.0f}m',
+            ))
+
+        if x.get('device_watts'):
+            inner.extend((
+                '{kilojoules:,.0f}kJ',
+                '{average_watts:,.0f}W AP',
+                '{weighted_average_watts:,.0f}W NP',
+            ))
+
+        inner.append('%s%02d:%02d' % (('%d:' % h if h else ''), m, s))
+
+        outer = (
+            u'\x0303{athlete[firstname]} {athlete[lastname]}\x0f: '
+                '\x02{name}\x0f',
+            fmt(inner, ', '),
+            'https://app.strava.com/activities/{id}',
+        )
+
+        self.send('NOTICE #%s :%s' % (self.channel, fmt(outer, u' — ')))
+
+if __name__ == '__main__':
+    eventlet.monkey_patch()
+    StravaBot(*sys.argv[1:]).run()
