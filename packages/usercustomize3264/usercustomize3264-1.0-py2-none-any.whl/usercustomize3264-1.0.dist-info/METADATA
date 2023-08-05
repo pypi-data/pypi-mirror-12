@@ -1,0 +1,25 @@
+Metadata-Version: 2.0
+Name: usercustomize3264
+Version: 1.0
+Summary: Maintain separate win32 and win32_amd64 user site package directories
+Home-page: https://gist.github.com/lpinner/a396d42d08cc936a139b
+Author: Luke Pinner
+Author-email: lukepinner at mailinator dot com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 2 :: Only
+
+Simple usercustomize.py to keep separate site.USER_BASE/USER_SITE directories for 32 and 64bit
+python installs on Windows.
+
+Only required if you're installing extension modules (compiled pyd/dll) to the user site-packages directory, i.e.:
+
+    python setup.py install --user
+    pip install --user somepackage
+
+Save to %AppData%\Roaming\Python\Python27\site-packages\usercustomize.py
+
