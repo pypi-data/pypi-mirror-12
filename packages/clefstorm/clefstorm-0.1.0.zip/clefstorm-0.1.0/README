@@ -1,0 +1,30 @@
+**Pure python module that provides async API calls for www.getclef.com with tornado.**
+
+This project provides the clefstorm.ClefStorm class that implements API calls for www.getclef.com, and lets you
+easily create a web server that authenticates users with two factor authentication. This is an asynchronous library
+that works with tornado's ioloop. High level methods of the clefstorm.ClefStorm class are awaitable, and can
+be used in a non-blocking way.
+
+A demonstration webserver is provided in the test directory. In order to test it, you need to take the following steps:
+
+1. Prepare a server that has a fully qualified domain name, and can run Python 3.5 with Tornado 4.3.
+
+2. Download the Clef app onto your phone, and create a new clef account.
+
+3. Go to https://www.getclef.com, login with your account using your phone.
+
+4. Go to profile/my integrations, and add a new custom application.
+
+  * Use http://yourdomain.com for application domain
+
+  * Use http://yourdomain.com:8080/clef_logout for Webhook/logout hook
+
+  * Look up your API keys (App id and App secret)
+
+5. Copy your app id and secret values into the test/local.py file.
+
+6. Start your server (test/main.py)
+
+7. Point your browser to http://yourdomain.com:8080 and try the different login methods with your clef app.
+
+8. Try to do a remote logout with your Clef app, and see how it logs you out from all of your browser pages immediately.
