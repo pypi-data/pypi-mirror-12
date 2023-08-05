@@ -1,0 +1,72 @@
+Metadata-Version: 1.1
+Name: cinderdiags
+Version: 0.0.1
+Summary: Cinder Diagnostics CLI
+Home-page: http://github.com/hp-storage/diags
+Author: HP Storage Cloud Team
+Author-email: richard.hagarty@hpe.com
+License: UNKNOWN
+Description: ===============================
+        cinderdiags
+        ===============================
+        
+        HP Storage OpenStack Cinder Diagnostic CLI
+        
+        * Free software: Apache license
+        
+        Overview
+        ---------
+        
+        This CLI tool can be used to validate a user cinder.conf file and also
+        to verify software installed on Cinder and Nova nodes.
+        
+        Requirements
+        ------------
+        
+        cliff
+        cliff-tab
+        hp3parclient
+        
+        Installation instructions
+        -------------------------
+        
+        pip install configdiags
+        
+        A cli.conf must exist and should contain the following format::
+        
+            [EXAMPLE-CINDER-NODE]
+            service=cinder
+            host_ip=15.125.224.1
+            ssh_user=admin
+            ssh_password=admin
+            conf_source=/etc/cinder/cinder.conf
+        
+            [EXAMPLE-NOVA-NODE]
+            service=nova
+            host_ip=15.125.224.1
+            ssh_user=admin
+        
+        By default, this file needs to exist in /etc/cinderdiags/cli.conf. Alternatively, this file location
+        can be passed into the CLI using the -configfile option.
+        
+        Starting the CLI
+        ----------------
+        
+        To view command options::
+        
+            cinderdiags --help
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: OpenStack
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
