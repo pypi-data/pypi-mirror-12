@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>flyforms.core &mdash; flyforms 1.0.0b1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="flyforms 1.0.0b1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> flyforms
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../concept.html">Introduction to FlyForms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">FlyForms reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">FlyForms Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">flyforms</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>flyforms.core</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for flyforms.core</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Callable</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">simplejson</span> <span class="kn">as</span> <span class="nn">json</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">UNSET</span>
+<span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">with_metaclass</span><span class="p">,</span> <span class="n">itervalues</span><span class="p">,</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">.validators</span> <span class="kn">import</span> <span class="n">validate_not_null</span><span class="p">,</span> <span class="n">validate_required</span><span class="p">,</span> <span class="n">TypeValidator</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+
+<div class="viewcode-block" id="UnboundForm"><a class="viewcode-back" href="../../api.html#flyforms.core.UnboundForm">[docs]</a><span class="k">class</span> <span class="nc">UnboundForm</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Raises when you try to serialize an :py:class:`.Form` bound with invalid data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="Field"><a class="viewcode-back" href="../../api.html#flyforms.core.Field">[docs]</a><span class="k">class</span> <span class="nc">Field</span><span class="p">(</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">ABCMeta</span><span class="p">,</span> <span class="nb">object</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is the base class for all builtin and user defined Fields.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_types</span> <span class="o">=</span> <span class="nb">type</span>  <span class="c"># valid types of field value</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="n">UNSET</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field value may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+
+<span class="sd">        :raises TypeError: if passed arguments invalid</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Define validators container</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c"># Add not null validation, if necessary</span>
+        <span class="k">if</span> <span class="n">null</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">validate_not_null</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="o">=</span> <span class="n">null</span>
+
+        <span class="c"># Add required validation, if necessary</span>
+        <span class="k">if</span> <span class="n">required</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">validate_required</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">required</span> <span class="o">=</span> <span class="n">required</span>
+
+        <span class="c"># Check given default value</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_types</span><span class="p">)</span> <span class="ow">and</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">UNSET</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s">&quot;Bad default value type. </span><span class="se">\n</span><span class="s">Expected {}, got {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value_types</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">default</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span>
+
+        <span class="c"># Add type validation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TypeValidator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value_types</span><span class="p">))</span>
+
+        <span class="c"># Clean given list of validators, if necessary</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">validators</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Validators should be an iterable object&quot;</span><span class="p">)</span>
+
+        <span class="c"># Check is given validators are callable object and extend validators list</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">validator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">)</span> <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="n">validators</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Each validator should be a callable object&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">custom_validators</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">validators</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">validators</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. versionchanged:: 1.0.0</span>
+
+<span class="sd">        Generator that returns :code:`base_validators` and :code:`custom_validators` items successively</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_validators</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Field.field_validation_hook"><a class="viewcode-back" href="../../api.html#flyforms.core.Field.field_validation_hook">[docs]</a>    <span class="k">def</span> <span class="nf">field_validation_hook</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hook to avoid code duplicating in :py:meth:`Field.validate` method realizations</span>
+<span class="sd">        that provides checking the value to :code:`None` and :py:data:`.UNSET`</span>
+
+<span class="sd">        You may use it as decorator for :py:meth:`Field.validate` method in your custom fields</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">Field</span><span class="p">)</span>  <span class="c"># fixme debug</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">required</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">UNSET</span><span class="p">:</span>  <span class="c"># check is value set</span>
+                <span class="k">return</span>
+
+            <span class="k">if</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">null</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># check for null</span>
+                <span class="k">return</span>
+
+            <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">validators</span><span class="p">:</span>  <span class="c"># run validators for full sequence</span>
+                <span class="n">validator</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+            <span class="n">method</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Field.field_binding_hook"><a class="viewcode-back" href="../../api.html#flyforms.core.Field.field_binding_hook">[docs]</a>    <span class="k">def</span> <span class="nf">field_binding_hook</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hook to avoid code duplicating in :py:meth:`Field.bind` method realizations</span>
+<span class="sd">        that provides checking the value to :code:`None` and :py:data:`.UNSET`</span>
+
+<span class="sd">        You may use it as decorator for :py:meth:`Field.bind` method in your custom fields</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">Field</span><span class="p">)</span>  <span class="c"># fixme debug</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">required</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">UNSET</span><span class="p">:</span>  <span class="c"># check is value set</span>
+                <span class="k">return</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">default</span><span class="p">,</span> <span class="bp">None</span>
+
+            <span class="k">if</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">null</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># check is given value null</span>
+                <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="bp">None</span>
+
+            <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+</div>
+<div class="viewcode-block" id="Field.bind"><a class="viewcode-back" href="../../api.html#flyforms.core.Field.bind">[docs]</a>    <span class="k">def</span> <span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. versionadded:: 0.2.0</span>
+
+<span class="sd">        .. versionchanged:: 1.0.0</span>
+
+<span class="sd">        Validates given value via defined set of :code:`Validators`, wraps it into :py:attr:`.wrapper` and returns</span>
+<span class="sd">        wrapped value and :code:`None` in second position.</span>
+<span class="sd">        If some errors occurred returns an :py:data:`.UNSET` and this errors</span>
+
+<span class="sd">        If value is mutable obj (for example :code:`list`) it&#39;ll be converted to immutable (for example :code:`tuple`)</span>
+
+<span class="sd">        :param value: the value to bind</span>
+<span class="sd">        :returns: bound value and occurred errors (if there were no errors - :code:`None` will be returned in second position)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">required</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">UNSET</span><span class="p">:</span>  <span class="c"># check is value set</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">,</span> <span class="bp">None</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># check is given value null</span>
+            <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="bp">None</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="bp">None</span>
+
+            <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">validators</span><span class="p">:</span>  <span class="c"># Run all validators</span>
+                <span class="n">validator</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># Wrap value</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">UNSET</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+        <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="n">error</span>
+</div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Field.validate"><a class="viewcode-back" href="../../api.html#flyforms.core.Field.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates given value via defined set of :code:`Validators`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+</div></div>
+<div class="viewcode-block" id="UnboundField"><a class="viewcode-back" href="../../api.html#flyforms.core.UnboundField">[docs]</a><span class="k">class</span> <span class="nc">UnboundField</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Field without value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;field&quot;</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">field_type</span><span class="p">,</span> <span class="n">errors</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param name: field name</span>
+<span class="sd">        :param field_type: field class</span>
+<span class="sd">        :param errors: field errors</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">=</span> <span class="n">errors</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;&lt;Unbound{}({}, errors: {})&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+
+</div>
+<span class="k">class</span> <span class="nc">DefaultMetaOptions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">skip_extra</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">unbound_field_render</span> <span class="o">=</span> <span class="n">UnboundField</span>
+
+
+<div class="viewcode-block" id="FormMetaOptions"><a class="viewcode-back" href="../../api.html#flyforms.core.FormMetaOptions">[docs]</a><span class="k">class</span> <span class="nc">FormMetaOptions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provides customization of :py:class:`.Form` instances behaviour.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. py:attribute:: skip_extra</span>
+
+<span class="sd">            (default: :code:`False`)</span>
+<span class="sd">            if not defined, all extra field will be interpreted as errors during Form instantiation</span>
+
+<span class="sd">        .. py:attribute:: unbound_field_render</span>
+
+<span class="sd">            (default: :py:class:`.UnboundField`)</span>
+<span class="sd">            all unbound Form fields will be replaced with instances of this class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">skip_extra</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&quot;skip_extra&quot;</span><span class="p">,</span> <span class="n">DefaultMetaOptions</span><span class="o">.</span><span class="n">skip_extra</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unbound_field_render</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&quot;unbound_field_render&quot;</span><span class="p">,</span> <span class="n">DefaultMetaOptions</span><span class="o">.</span><span class="n">unbound_field_render</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+</div>
+<div class="viewcode-block" id="FormMeta"><a class="viewcode-back" href="../../api.html#flyforms.core.FormMeta">[docs]</a><span class="k">class</span> <span class="nc">FormMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The metaclass for Form and it&#39;s subclasses. It`s main responsibility</span>
+<span class="sd">    - find all declared fields in the form and it`s bases.</span>
+<span class="sd">    It also replaces the declared fields with :py:class:`.FormField` descriptor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">):</span>
+
+        <span class="c"># Parse meta options from defined Meta</span>
+        <span class="n">meta_opt_cls</span> <span class="o">=</span> <span class="n">dct</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&quot;Meta&quot;</span><span class="p">,</span> <span class="n">DefaultMetaOptions</span><span class="p">)</span>
+        <span class="n">meta_opt</span> <span class="o">=</span> <span class="p">{</span><span class="n">k_opt</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta_opt_cls</span><span class="p">,</span> <span class="n">k_opt</span><span class="p">)</span> <span class="k">for</span> <span class="n">k_opt</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">meta_opt_cls</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">k_opt</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="p">)}</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c"># create a container for Form&#39;s fields names</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">dct</span><span class="p">):</span>  <span class="c"># walk through class attributes</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>  <span class="c"># find all Field instances</span>
+                <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>  <span class="c"># catch them</span>
+                <span class="n">dct</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">FormField</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>  <span class="c"># and replace with descriptor</span>
+
+        <span class="c"># Update class attributes</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s">&quot;_fields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s">&quot;_meta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">FormMetaOptions</span><span class="p">(</span><span class="o">**</span><span class="n">meta_opt</span><span class="p">)</span>
+
+        <span class="n">cls</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">FormMeta</span><span class="p">,</span> <span class="n">mcs</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span>  <span class="c"># create new class</span>
+
+        <span class="c"># Get all fields names from MRO</span>
+        <span class="n">_fields</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c"># prepare container for Form fields names</span>
+        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">__mro__</span><span class="p">:</span>  <span class="c"># walk through the MRO</span>
+            <span class="n">_fields</span> <span class="o">|=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="s">&quot;_fields&quot;</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>  <span class="c"># get fields names from each base</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">_fields</span> <span class="o">=</span> <span class="n">_fields</span>  <span class="c"># update Form&#39;s fields</span>
+        <span class="k">return</span> <span class="n">cls</span>
+
+
+<span class="c"># noinspection PyProtectedMember</span></div>
+<div class="viewcode-block" id="FormField"><a class="viewcode-back" href="../../api.html#flyforms.core.FormField">[docs]</a><span class="k">class</span> <span class="nc">FormField</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The descriptor for fields in :py:class:`.Form`. It`s behavior depends on whether the form is instantiated or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">field_obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param name: declared field class attribute name</span>
+<span class="sd">        :param field_obj: instance of declared field</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>  <span class="c"># fixme debug</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;You should bind FormField with Field subclass instance, not {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">field_obj</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field_obj</span>
+
+<div class="viewcode-block" id="FormField.__get__"><a class="viewcode-back" href="../../api.html#flyforms.core.FormField.__get__">[docs]</a>    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If form is instantiated returns bound data, otherwise - instance of declared field</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">Form</span><span class="p">):</span>  <span class="c"># fixme debug</span>
+            <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t use FormField without Form&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">instance</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span>
+        <span class="k">return</span> <span class="n">instance</span><span class="o">.</span><span class="n">_raw_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="FormField.__set__"><a class="viewcode-back" href="../../api.html#flyforms.core.FormField.__set__">[docs]</a>    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calls :py:meth:`.Field.bind` method and puts the result to :py:attr:`.Form._raw_data`.</span>
+
+<span class="sd">        If :py:meth:`.Field.bind` returns :py:data:`.UNSET` value or there are errors</span>
+<span class="sd">        (second return value is not :code:`None`) an instance of :py:class:`.UnboundField` will be</span>
+<span class="sd">        put into :py:attr:`.Form._raw_data`.</span>
+
+<span class="sd">        If form is instantiated :code:`AttributeError` will be raised.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">Form</span><span class="p">):</span>  <span class="c"># fixme debug</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t use FormField without Form&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">_raw_data</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t overwrite already bound field {}!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">bound_value</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">errors</span>
+        <span class="k">if</span> <span class="n">bound_value</span> <span class="ow">is</span> <span class="n">UNSET</span><span class="p">:</span>
+            <span class="n">bound_value</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">unbound_field_render</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">_raw_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">bound_value</span>
+</div>
+    <span class="k">def</span> <span class="nf">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t delete Form fields!&quot;</span><span class="p">)</span>
+
+
+<span class="c"># noinspection PyProtectedMember</span></div>
+<div class="viewcode-block" id="Form"><a class="viewcode-back" href="../../api.html#flyforms.core.Form">[docs]</a><span class="k">class</span> <span class="nc">Form</span><span class="p">(</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">FormMeta</span><span class="p">,</span> <span class="nb">object</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The root class for all Forms</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_fields</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">_meta</span> <span class="o">=</span> <span class="n">FormMetaOptions</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param data: additional data to form</span>
+<span class="sd">        :type data: dict</span>
+
+<span class="sd">        When a Form is instantiated you can access given data via instance attributes or get everything at once</span>
+<span class="sd">        using :py:meth:`.to_python()` method</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raw_data</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># create a container for Form data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># create a container for Form&#39;s errors</span>
+
+        <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>  <span class="c"># walk through class fields</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">))</span>  <span class="c"># and try to set up them</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">skip_extra</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">unk</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c"># if some extra fields given it&#39;s an error</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="n">unk</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Unknown field </span><span class="si">%s</span><span class="s"> in data for Form </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">unk</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks is Form instance valid.</span>
+<span class="sd">        Returns True if there are no errors. Otherwise, False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">==</span> <span class="p">{}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_bound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks is Form instance bound.</span>
+<span class="sd">        Returns True if there are no :py:class:`.UnboundField` instances in :py:attr:`._raw_data`. Otherwise, False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">UnboundField</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">itervalues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_raw_data</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Form.to_python"><a class="viewcode-back" href="../../api.html#flyforms.core.Form.to_python">[docs]</a>    <span class="k">def</span> <span class="nf">to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. versionchanged:: 1.0.0</span>
+
+<span class="sd">        .. versionadded:: 0.3.0</span>
+
+<span class="sd">        Get form data as a :code:`dict`</span>
+
+<span class="sd">        :returns: dictionary that contains bound data of valid form</span>
+
+<span class="sd">        :raise UnboundForm: if :py:attr:`is_valid` returns False</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">UnboundForm</span><span class="p">(</span><span class="s">&quot;Form bound with invalid data&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_data</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_raw_data</span><span class="p">[</span><span class="n">f</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">unbound_field_render</span><span class="p">)}</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Form.validate"><a class="viewcode-back" href="../../api.html#flyforms.core.Form.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">schema</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Class method provides data validation without :py:class:`.Form` instantiation by calling</span>
+<span class="sd">        :py:meth:`.Field.validate` method of all declared fields</span>
+
+<span class="sd">        :param schema: data to validate</span>
+
+<span class="sd">        :return: boolean flag is data valid for this :py:class:`.Form`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>
+            <span class="n">field_obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">field_obj</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">))</span>
+            <span class="k">except</span> <span class="n">ValidationError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">d</span><span class="p">)</span> <span class="ow">or</span> <span class="n">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">skip_extra</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Sizov.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0b1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
