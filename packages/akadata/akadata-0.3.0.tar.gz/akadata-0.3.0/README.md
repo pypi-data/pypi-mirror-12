@@ -1,0 +1,51 @@
+Python Akamai EdgeScape client
+==============================
+
+[![Build Status](https://img.shields.io/travis/redjack/akadata-py/master.svg)](https://travis-ci.org/redjack/akadata-py)
+
+Python client for Akamai EdgeScape. Supports Python 2.7/3.3+, and PyPy.
+
+## Installation
+
+```
+pip install akadata
+```
+
+## Usage
+
+To lookup an IP address, initialize an `akadata.EdgeScape` object with the host
+and port of the EdgeScape Facilitator server, and call its `ip_lookup` method.
+See the docstring for `akadata.EdgeScape.ip_lookup` for details about the
+resulting dictionary, parsing, and possible exceptions.
+
+```pycon
+>>> from pprint import pprint
+>>> from akadata import EdgeScape
+>>>
+>>> client = EdgeScape('192.168.59.103', 49158)
+>>>
+>>> pprint(client.ip_lookup('208.78.4.5', timeout=1))
+{u'areacode': [301],
+ u'asnum': [40287],
+ u'bw': 5000,
+ u'city': u'SILVERSPRING',
+ u'company': u'RedJack_LLC',
+ u'continent': u'NA',
+ u'country_code': u'US',
+ u'county': [u'MONTGOMERY'],
+ 'default_answer': False,
+ u'dma': 511,
+ u'domain': u'redjack.com',
+ u'fips': ['24031'],
+ 'ip': u'208.78.4.5',
+ u'lat': 39.0245,
+ u'long': -77.0094,
+ u'msa': 8872,
+ u'pmsa': 8840,
+ u'region_code': u'MD',
+ u'throughput': u'vhigh',
+ u'timezone': u'EST',
+ u'zip': ['20901', '20902', '20903', '20904', '20905', '20906', '20907',
+          '20908', '20910', '20911', '20914', '20915', '20916', '20918',
+          '20993', '20997']}
+```
