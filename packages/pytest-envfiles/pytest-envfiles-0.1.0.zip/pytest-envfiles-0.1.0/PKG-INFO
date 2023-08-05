@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: pytest-envfiles
+Version: 0.1.0
+Summary: A py.test plugin that parses environment files before running tests
+Home-page: https://github.com/JonnyFunFun/pytest-envfiles
+Author: Jonathan Enzinna
+Author-email: jonnyfunfun@gmail.com
+License: UNKNOWN
+Description: .. include globals.rst
+        
+        .. image:: https://travis-ci.org/JonnyFunFun/pytest-envfiles.svg?branch=master
+            :target: https://travis-ci.org/JonnyFunFun/pytest-envfiles
+        
+        pytest-envfiles
+        ===============
+        
+        pytest-envfiles is a py.test plugin that allows you to specify environment variable files that are to be parsed prior
+        to executing tests.  These files contain environment variables in a KEY=VALUE format.
+        
+        Installation
+        ------------
+        
+        Use pip:
+        
+        .. code:: shell
+        
+            pip install pytest-envfiles
+        
+        
+        Usage
+        -----
+        
+        In your pytest.ini file add a key, `env_files` and the environment variable files as a line
+        separated list.  The listed files will be parsed prior to test execution
+        
+        .. code:: shell
+        
+            [pytest]
+            env_files =
+                ./common.env
+                ./tests.env
+                /opt/secrets.env
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
