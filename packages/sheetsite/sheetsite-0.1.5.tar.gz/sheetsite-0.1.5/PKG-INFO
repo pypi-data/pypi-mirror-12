@@ -1,0 +1,55 @@
+Metadata-Version: 1.1
+Name: sheetsite
+Version: 0.1.5
+Summary: read google sheets, use them for sites
+Home-page: https://github.com/paulfitz/sheetsite
+Author: Paul Fitzpatrick
+Author-email: paul.michael.fitzpatrick@gmail.com
+License: MIT
+Description: # sheetsite: sheets for sites
+        
+        Manage your website or directory with a google sheet.
+        
+        Features:
+        
+        * Copy a private google sheet to local json (or excel).
+        * Strip specially marked columns or cells from the spreadsheet.
+        
+        Handy for keeping a static website up-to-date with information
+        kept in a google sheet, when not all of that information should 
+        be made public.
+        
+        ## Usage
+        
+        1. `pip install sheetsite`
+        
+        2. [Obtain OAuth2 credentials from Google Developers Console](http://gspread.readthedocs.org/en/latest/oauth2.html) - thanks to gspread developers for creating this documentation!
+        
+        3. Find the key of the sheet you care about from its url (e.g. `2LvBgFe...F2qAIuBk`).
+        
+        4. Make sure you share the sheet with the email address in the OAuth2 credentials.  Read-only permission is fine.
+        
+        5. `sheetsite --credential credential.json 2LvBgFe...F2qAIuBk output.json` (or `output.xls`)
+        
+        6. Build a website around the json, as for example http://datacommons.coop/tap/ = https://github.com/datacommons/tap
+        
+        ## Privacy
+        
+        By default, sheetsite will strip:
+        
+        * Any columns whose name is in parentheses, e.g. `(Private Notes)`
+        * Any cells or text within cells surrounded by double parentheses, e.g. `((private@email.address))`
+        
+        ## License
+        
+        sheetsite is distributed under the MIT License.
+        
+        
+Keywords: google sheet xls json
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Requires: gspread
+Requires: oauth2client
+Requires: xlwt
