@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contacts &mdash; Lino-Cosi Benutzerhandbuch 0.1 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Lino-Cosi Benutzerhandbuch 0.1 Dokumentation" href="index.html" />
+    <link rel="next" title="Products" href="products.html" />
+    <link rel="prev" title="Countries" href="countries.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             accesskey="I">Index</a></li>
+        <li class="right" >
+          <a href="products.html" title="Products"
+             accesskey="N">weiter</a> |</li>
+        <li class="right" >
+          <a href="countries.html" title="Countries"
+             accesskey="P">zurück</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="contacts">
+<span id="cosi-contacts"></span><h1>Contacts<a class="headerlink" href="#contacts" title="Permalink zu dieser Überschrift">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#partner-modell" id="id1">Partner (Modell)</a></li>
+<li><a class="reference internal" href="#person-modell" id="id2">Person (Modell)</a></li>
+<li><a class="reference internal" href="#organisation-modell" id="id3">Organisation (Modell)</a></li>
+<li><a class="reference internal" href="#kontaktperson-modell" id="id4">Kontaktperson (Modell)</a></li>
+<li><a class="reference internal" href="#funktion-modell" id="id5">Funktion (Modell)</a></li>
+<li><a class="reference internal" href="#organisationsart-modell" id="id6">Organisationsart (Modell)</a></li>
+<li><a class="reference internal" href="#kontakte-verwalten" id="id7">Kontakte verwalten</a></li>
+<li><a class="reference internal" href="#produkte-verwalten" id="id8">Produkte verwalten</a></li>
+</ul>
+</div>
+<div class="section" id="partner-modell">
+<span id="contacts-partner"></span><span id="index-0"></span><h2><a class="toc-backref" href="#id1">Partner (Modell)</a><a class="headerlink" href="#partner-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">contacts.Partner</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.contacts.models.html#lino.modlib.contacts.models.Partner" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Partner</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>A Partner is any physical or moral person for which you want to
+keep contact data (address, phone numbers, ...).</p>
+<p>Every <a class="reference internal" href="#contacts-partner"><em>Partner</em></a>
+can <em>also</em> be a
+<a class="reference internal" href="#contacts-person"><em>Person</em></a>
+or a
+<a class="reference internal" href="#contacts-company"><em>Organisation</em></a>
+(or both).</p>
+<p>Lino differentiates the following subclasses of Partner:</p>
+<p class="graphviz">
+<img src="_images/graphviz-fe87ec1dfc4d982993b98f958439dafbeca82f8d.png" alt="digraph foo {
+  &quot;Partner&quot; -&gt; &quot;Person&quot;
+  &quot;Partner&quot; -&gt; &quot;Organisation&quot;   
+}" />
+</p>
+<p><strong>Auf Partner basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Partner</em> (<tt class="xref py py-class docutils literal"><span class="pre">Partners</span></tt>) (Menu <em class="menuselection">Kontakte ‣ Partner</em>)</li>
+<li><em class="xref std std-ref">Partner</em> (<tt class="xref py py-class docutils literal"><span class="pre">PartnersByCity</span></tt>)</li>
+<li><em class="xref std std-ref">Partner</em> (<tt class="xref py py-class docutils literal"><span class="pre">PartnersByCountry</span></tt>)</li>
+</ul>
+<p><strong>Datenfelder in Partner</strong></p>
+<ul class="simple">
+<li><strong>Adresszeile vor Straße</strong> (<tt class="docutils literal"><span class="pre">addr1</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Address line before street</li>
+<li><strong>Präfix Straße</strong> (<tt class="docutils literal"><span class="pre">street_prefix</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Text to print before name of street, but to ignore for sorting.</li>
+<li><strong>Straße</strong> (<tt class="docutils literal"><span class="pre">street</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Name of street. Without house number.</li>
+<li><strong>Nr.</strong> (<tt class="docutils literal"><span class="pre">street_no</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; House number</li>
+<li><strong>Box</strong> (<tt class="docutils literal"><span class="pre">street_box</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Text to print after <tt class="xref py py-attr docutils literal"><span class="pre">steet_no</span></tt> on the same line</li>
+<li><strong>Adresszeile nach Straße</strong> (<tt class="docutils literal"><span class="pre">addr2</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Address line to print below street line</li>
+<li><strong>Sprache</strong> (<tt class="docutils literal"><span class="pre">language</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.LanguageField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">LanguageField</span></tt></a>) &#8211; Die Sprache, in der Dokumente ausgestellt werden sollen.</li>
+<li><strong>MWSt.-Regime</strong> (<tt class="docutils literal"><span class="pre">vat_regime</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <a class="reference internal" href="sales.html#vat-vatregimes"><em>VatRegimes</em></a>) &#8211; The default VAT regime for         sales and purchases of this partner.</li>
+<li><strong>Zahlungsbedingung</strong> (<tt class="docutils literal"><span class="pre">payment_term</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="sales.html#vat-paymentterm"><em>Zahlungsbedingung</em></a>) &#8211; The default payment term for sales invoices to this customer.</li>
+<li>... and <strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Land</strong> (<tt class="docutils literal"><span class="pre">country</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-country"><em>Land</em></a>), <strong>Ort</strong> (<tt class="docutils literal"><span class="pre">city</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-place"><em>Ort</em></a>), <strong>Region</strong> (<tt class="docutils literal"><span class="pre">region</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-place"><em>Ort</em></a>), <strong>Postleitzahl</strong> (<tt class="docutils literal"><span class="pre">zip_code</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Name</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>E-Mail</strong> (<tt class="docutils literal"><span class="pre">email</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">EmailField</span></tt>), <strong>URL</strong> (<tt class="docutils literal"><span class="pre">url</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">URLField</span></tt>), <strong>Telefon</strong> (<tt class="docutils literal"><span class="pre">phone</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>GSM</strong> (<tt class="docutils literal"><span class="pre">gsm</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Fax</strong> (<tt class="docutils literal"><span class="pre">fax</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Bemerkungen</strong> (<tt class="docutils literal"><span class="pre">remarks</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">TextField</span></tt>), <strong>Fakturationsadresse</strong> (<tt class="docutils literal"><span class="pre">invoicing_address</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#contacts-partner"><em>Partner</em></a>)</li>
+</ul>
+<p><strong>Aktionen auf  Partner</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Etiketten</strong> (<tt class="docutils literal"><span class="pre">print_labels</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintLabelsAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintLabelsAction</span></tt></a>) &#8211; Generate mailing labels for these recipients</li>
+<li><strong>Schulden</strong> (<tt class="docutils literal"><span class="pre">due</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ShowSlaveTable</span></tt>)</li>
+</ul>
+<p><strong>Tabellen, die auf Partner verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Rechnungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">InvoicesByPartner</span></tt>)</li>
+<li><em class="xref std std-ref">Unregistered invoices</em> (<tt class="xref py py-class docutils literal"><span class="pre">InvoicesByPartner</span></tt>)</li>
+<li><em class="xref std std-ref">Bewegungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">MovementsByPartner</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="person-modell">
+<span id="contacts-person"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id2">Person (Modell)</a><a class="headerlink" href="#person-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">contacts.Person</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.contacts.models.html#lino.modlib.contacts.models.Person" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Person</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>A Person is a <a class="reference internal" href="#contacts-partner"><em>Partner</em></a> which corresponds to
+a physical person or human being.</p>
+<p><strong>Auf Person basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Personen</em> (<a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.contacts.models.html#lino.modlib.contacts.models.Persons" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Persons</span></tt></a>) (Menu <em class="menuselection">Kontakte ‣ Personen</em>)</li>
+</ul>
+<p><strong>Datenfelder in Person</strong></p>
+<ul class="simple">
+<li><strong>Adresszeile vor Straße</strong> (<tt class="docutils literal"><span class="pre">addr1</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Address line before street</li>
+<li><strong>Präfix Straße</strong> (<tt class="docutils literal"><span class="pre">street_prefix</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Text to print before name of street, but to ignore for sorting.</li>
+<li><strong>Straße</strong> (<tt class="docutils literal"><span class="pre">street</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Name of street. Without house number.</li>
+<li><strong>Nr.</strong> (<tt class="docutils literal"><span class="pre">street_no</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; House number</li>
+<li><strong>Box</strong> (<tt class="docutils literal"><span class="pre">street_box</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Text to print after <tt class="xref py py-attr docutils literal"><span class="pre">steet_no</span></tt> on the same line</li>
+<li><strong>Adresszeile nach Straße</strong> (<tt class="docutils literal"><span class="pre">addr2</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Address line to print below street line</li>
+<li><strong>Sprache</strong> (<tt class="docutils literal"><span class="pre">language</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.LanguageField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">LanguageField</span></tt></a>) &#8211; Die Sprache, in der Dokumente ausgestellt werden sollen.</li>
+<li><strong>MWSt.-Regime</strong> (<tt class="docutils literal"><span class="pre">vat_regime</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <a class="reference internal" href="sales.html#vat-vatregimes"><em>VatRegimes</em></a>) &#8211; The default VAT regime for         sales and purchases of this partner.</li>
+<li><strong>Zahlungsbedingung</strong> (<tt class="docutils literal"><span class="pre">payment_term</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="sales.html#vat-paymentterm"><em>Zahlungsbedingung</em></a>) &#8211; The default payment term for sales invoices to this customer.</li>
+<li><strong>Anrede</strong> (<tt class="docutils literal"><span class="pre">title</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Text to print before first_name as part of the first address line.</li>
+<li>... and <strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Land</strong> (<tt class="docutils literal"><span class="pre">country</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-country"><em>Land</em></a>), <strong>Ort</strong> (<tt class="docutils literal"><span class="pre">city</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-place"><em>Ort</em></a>), <strong>Region</strong> (<tt class="docutils literal"><span class="pre">region</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-place"><em>Ort</em></a>), <strong>Postleitzahl</strong> (<tt class="docutils literal"><span class="pre">zip_code</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Name</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>E-Mail</strong> (<tt class="docutils literal"><span class="pre">email</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">EmailField</span></tt>), <strong>URL</strong> (<tt class="docutils literal"><span class="pre">url</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">URLField</span></tt>), <strong>Telefon</strong> (<tt class="docutils literal"><span class="pre">phone</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>GSM</strong> (<tt class="docutils literal"><span class="pre">gsm</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Fax</strong> (<tt class="docutils literal"><span class="pre">fax</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Bemerkungen</strong> (<tt class="docutils literal"><span class="pre">remarks</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">TextField</span></tt>), <strong>Fakturationsadresse</strong> (<tt class="docutils literal"><span class="pre">invoicing_address</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#contacts-partner"><em>Partner</em></a>), <strong>Partner</strong> (<tt class="docutils literal"><span class="pre">partner_ptr</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">OneToOneField</span></tt> nach <a class="reference internal" href="#contacts-partner"><em>Partner</em></a>), <strong>Vorname</strong> (<tt class="docutils literal"><span class="pre">first_name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Familienname</strong> (<tt class="docutils literal"><span class="pre">last_name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Geschlecht</strong> (<tt class="docutils literal"><span class="pre">gender</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <em class="xref std std-ref">Genders</em>)</li>
+</ul>
+<p><strong>Aktionen auf  Person</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Etiketten</strong> (<tt class="docutils literal"><span class="pre">print_labels</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintLabelsAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintLabelsAction</span></tt></a>) &#8211; Generate mailing labels for these recipients</li>
+<li><strong>Merge</strong> (<tt class="docutils literal"><span class="pre">merge_row</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">MergeAction</span></tt>) &#8211; Merge this object into another object of same class.</li>
+<li><strong>Schulden</strong> (<tt class="docutils literal"><span class="pre">due</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ShowSlaveTable</span></tt>)</li>
+</ul>
+<p><strong>Tabellen, die auf Person verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Kontaktperson für</em> (<tt class="xref py py-class docutils literal"><span class="pre">RolesByPerson</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="organisation-modell">
+<span id="contacts-company"></span><span id="index-2"></span><h2><a class="toc-backref" href="#id3">Organisation (Modell)</a><a class="headerlink" href="#organisation-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">contacts.Company</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.contacts.models.html#lino.modlib.contacts.models.Company" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Company</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>A Company is a <a class="reference internal" href="#contacts-partner"><em>Partner</em></a> which corresponds to
+a company or any other type of organization.</p>
+<p><strong>Auf Organisation basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Organisationen</em> (<tt class="xref py py-class docutils literal"><span class="pre">Companies</span></tt>) (Menu <em class="menuselection">Kontakte ‣ Organisationen</em>)</li>
+</ul>
+<p><strong>Datenfelder in Organisation</strong></p>
+<ul class="simple">
+<li><strong>Adresszeile vor Straße</strong> (<tt class="docutils literal"><span class="pre">addr1</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Address line before street</li>
+<li><strong>Präfix Straße</strong> (<tt class="docutils literal"><span class="pre">street_prefix</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Text to print before name of street, but to ignore for sorting.</li>
+<li><strong>Straße</strong> (<tt class="docutils literal"><span class="pre">street</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Name of street. Without house number.</li>
+<li><strong>Nr.</strong> (<tt class="docutils literal"><span class="pre">street_no</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; House number</li>
+<li><strong>Box</strong> (<tt class="docutils literal"><span class="pre">street_box</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Text to print after <tt class="xref py py-attr docutils literal"><span class="pre">steet_no</span></tt> on the same line</li>
+<li><strong>Adresszeile nach Straße</strong> (<tt class="docutils literal"><span class="pre">addr2</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Address line to print below street line</li>
+<li><strong>Sprache</strong> (<tt class="docutils literal"><span class="pre">language</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.LanguageField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">LanguageField</span></tt></a>) &#8211; Die Sprache, in der Dokumente ausgestellt werden sollen.</li>
+<li><strong>MWSt.-Regime</strong> (<tt class="docutils literal"><span class="pre">vat_regime</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <a class="reference internal" href="sales.html#vat-vatregimes"><em>VatRegimes</em></a>) &#8211; The default VAT regime for         sales and purchases of this partner.</li>
+<li><strong>Zahlungsbedingung</strong> (<tt class="docutils literal"><span class="pre">payment_term</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="sales.html#vat-paymentterm"><em>Zahlungsbedingung</em></a>) &#8211; The default payment term for sales invoices to this customer.</li>
+<li>... and <strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Land</strong> (<tt class="docutils literal"><span class="pre">country</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-country"><em>Land</em></a>), <strong>Ort</strong> (<tt class="docutils literal"><span class="pre">city</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-place"><em>Ort</em></a>), <strong>Region</strong> (<tt class="docutils literal"><span class="pre">region</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="countries.html#countries-place"><em>Ort</em></a>), <strong>Postleitzahl</strong> (<tt class="docutils literal"><span class="pre">zip_code</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Name</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>E-Mail</strong> (<tt class="docutils literal"><span class="pre">email</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">EmailField</span></tt>), <strong>URL</strong> (<tt class="docutils literal"><span class="pre">url</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">URLField</span></tt>), <strong>Telefon</strong> (<tt class="docutils literal"><span class="pre">phone</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>GSM</strong> (<tt class="docutils literal"><span class="pre">gsm</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Fax</strong> (<tt class="docutils literal"><span class="pre">fax</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Bemerkungen</strong> (<tt class="docutils literal"><span class="pre">remarks</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">TextField</span></tt>), <strong>Fakturationsadresse</strong> (<tt class="docutils literal"><span class="pre">invoicing_address</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#contacts-partner"><em>Partner</em></a>), <strong>Partner</strong> (<tt class="docutils literal"><span class="pre">partner_ptr</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">OneToOneField</span></tt> nach <a class="reference internal" href="#contacts-partner"><em>Partner</em></a>), <strong>prefix</strong> (<tt class="docutils literal"><span class="pre">prefix</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Organisationsart</strong> (<tt class="docutils literal"><span class="pre">type</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#contacts-companytype"><em>Organisationsart</em></a>), <strong>MWSt.-Nr.</strong> (<tt class="docutils literal"><span class="pre">vat_id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>)</li>
+</ul>
+<p><strong>Aktionen auf  Organisation</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Etiketten</strong> (<tt class="docutils literal"><span class="pre">print_labels</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintLabelsAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintLabelsAction</span></tt></a>) &#8211; Generate mailing labels for these recipients</li>
+<li><strong>Merge</strong> (<tt class="docutils literal"><span class="pre">merge_row</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">MergeAction</span></tt>) &#8211; Merge this object into another object of same class.</li>
+<li><strong>Schulden</strong> (<tt class="docutils literal"><span class="pre">due</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ShowSlaveTable</span></tt>)</li>
+</ul>
+<p><strong>Tabellen, die auf Organisation verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Kontaktpersonen</em> (<tt class="xref py py-class docutils literal"><span class="pre">RolesByCompany</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="kontaktperson-modell">
+<span id="contacts-role"></span><span id="index-3"></span><h2><a class="toc-backref" href="#id4">Kontaktperson (Modell)</a><a class="headerlink" href="#kontaktperson-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">contacts.Role</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.contacts.models.html#lino.modlib.contacts.models.Role" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Role</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>A Role is when a given
+<a class="reference internal" href="#contacts-person"><em>Person</em></a>
+plays a given
+<a class="reference internal" href="#contacts-roletype"><em>Funktion</em></a>
+in a given
+<a class="reference internal" href="#contacts-company"><em>Organisation</em></a>.</p>
+<p><strong>Auf Kontaktperson basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Kontaktpersonen</em> (<tt class="xref py py-class docutils literal"><span class="pre">Roles</span></tt>) (Menu <em class="menuselection">Explorer ‣ Kontakte ‣ Kontaktpersonen</em>)</li>
+<li><em class="xref std std-ref">Kontaktpersonen</em> (<tt class="xref py py-class docutils literal"><span class="pre">RolesByCompany</span></tt>)</li>
+<li><em class="xref std std-ref">Kontaktperson für</em> (<tt class="xref py py-class docutils literal"><span class="pre">RolesByPerson</span></tt>)</li>
+</ul>
+<p><strong>Datenfelder in Kontaktperson</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Funktion</strong> (<tt class="docutils literal"><span class="pre">type</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#contacts-roletype"><em>Funktion</em></a>), <strong>Person</strong> (<tt class="docutils literal"><span class="pre">person</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#contacts-person"><em>Person</em></a>), <strong>Organisation</strong> (<tt class="docutils literal"><span class="pre">company</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#contacts-company"><em>Organisation</em></a>)</li>
+</ul>
+<p><strong>Aktionen auf  Kontaktperson</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+</ul>
+</div>
+<div class="section" id="funktion-modell">
+<span id="contacts-roletype"></span><span id="index-4"></span><h2><a class="toc-backref" href="#id5">Funktion (Modell)</a><a class="headerlink" href="#funktion-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">contacts.RoleType</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.contacts.models.html#lino.modlib.contacts.models.RoleType" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">RoleType</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>A <a class="reference internal" href="#contacts-roletype"><em>Funktion</em></a> is
+&#8220;what a given <a class="reference internal" href="#contacts-person"><em>Person</em></a> can be for a given
+<a class="reference internal" href="#contacts-company"><em>Organisation</em></a>&#8221;.</p>
+<p>The default database comes with the following list of
+<em class="xref std std-ref">Funktionen</em>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="23%" />
+<col width="32%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>ID</td>
+<td>Bezeichnung</td>
+<td>Bezeichnung (de)</td>
+<td>Bezeichnung (fr)</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>Manager</td>
+<td>Geschäftsführer</td>
+<td>Gérant</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Director</td>
+<td>Direktor</td>
+<td>Directeur</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Secretary</td>
+<td>Sekretär</td>
+<td>Secrétaire</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>IT Manager</td>
+<td>EDV-Manager</td>
+<td>Gérant informatique</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>President</td>
+<td>Präsident</td>
+<td>Président</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auf Funktion basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Funktionen</em> (<tt class="xref py py-class docutils literal"><span class="pre">RoleTypes</span></tt>) (Menu <em class="menuselection">Konfigurierung ‣ Kontakte ‣ Funktionen</em>)</li>
+</ul>
+<p><strong>Datenfelder in Funktion</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Bezeichnung</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>)</li>
+</ul>
+<p><strong>Aktionen auf  Funktion</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+</ul>
+</div>
+<div class="section" id="organisationsart-modell">
+<span id="contacts-companytype"></span><span id="index-5"></span><h2><a class="toc-backref" href="#id6">Organisationsart (Modell)</a><a class="headerlink" href="#organisationsart-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">contacts.CompanyType</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.contacts.models.html#lino.modlib.contacts.models.CompanyType" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">CompanyType</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>The default database comes with the following list of
+organization types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="31%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Bezeichnung</td>
+<td>Bezeichnung (de)</td>
+<td>Bezeichnung (fr)</td>
+</tr>
+<tr class="row-even"><td>Public Limited Company</td>
+<td>Aktiengesellschaft</td>
+<td>Société Anonyme</td>
+</tr>
+<tr class="row-odd"><td>Limited Liability Company</td>
+<td>Private Gesellschaft mit beschränkter Haft</td>
+<td>Société Privée à Responsabilité Limitée</td>
+</tr>
+<tr class="row-even"><td>One-person Private Limited Company</td>
+<td>&nbsp;</td>
+<td>Société d&#8217;Une Personne à Responsabilité Limitée</td>
+</tr>
+<tr class="row-odd"><td>Cooperative Company with Limited Liability</td>
+<td>&nbsp;</td>
+<td>Société Coopérative à Responsabilité Limitée</td>
+</tr>
+<tr class="row-even"><td>Cooperative Company with Unlimited Liability</td>
+<td>&nbsp;</td>
+<td>Société Coopérative à Responsabilité Illimitée</td>
+</tr>
+<tr class="row-odd"><td>General Partnership</td>
+<td>&nbsp;</td>
+<td>Société en Nom Collectif</td>
+</tr>
+<tr class="row-even"><td>Limited Partnership</td>
+<td>&nbsp;</td>
+<td>Société en Commandite Simple</td>
+</tr>
+<tr class="row-odd"><td>Non-stock Corporation</td>
+<td>Gesellschaft öffentlichen Rechts</td>
+<td>Société de Droit Commun</td>
+</tr>
+<tr class="row-even"><td>Charity/Company established for social purposes</td>
+<td>Vereinigung ohne Gewinnabsicht</td>
+<td>Association sans But Lucratif</td>
+</tr>
+<tr class="row-odd"><td>Cooperative Company</td>
+<td>Genossenschaft</td>
+<td>Société Coopérative</td>
+</tr>
+<tr class="row-even"><td>Company</td>
+<td>Firma</td>
+<td>Société</td>
+</tr>
+<tr class="row-odd"><td>Public service</td>
+<td>Öffentlicher Dienst</td>
+<td>Service Public</td>
+</tr>
+<tr class="row-even"><td>Ministry</td>
+<td>Ministerium</td>
+<td>Ministère</td>
+</tr>
+<tr class="row-odd"><td>School</td>
+<td>Schule</td>
+<td>école</td>
+</tr>
+<tr class="row-even"><td>Freelancer</td>
+<td>Freier Mitarbeiter</td>
+<td>Travailleur libre</td>
+</tr>
+<tr class="row-odd"><td>Sole proprietorship</td>
+<td>Einzelunternehmen</td>
+<td>Entreprise individuelle</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auf Organisationsart basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Organisationsarten</em> (<tt class="xref py py-class docutils literal"><span class="pre">CompanyTypes</span></tt>) (Menu <em class="menuselection">Konfigurierung ‣ Kontakte ‣ Organisationsarten</em>)</li>
+</ul>
+<p><strong>Datenfelder in Organisationsart</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Bezeichnung</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>Abkürzung</strong> (<tt class="docutils literal"><span class="pre">abbr</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>)</li>
+</ul>
+<p><strong>Aktionen auf  Organisationsart</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+</ul>
+</div>
+<div class="section" id="kontakte-verwalten">
+<h2><a class="toc-backref" href="#id7">Kontakte verwalten</a><a class="headerlink" href="#kontakte-verwalten" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Im Menü <em class="menuselection">Kontakte</em>
+haben wir drei Befehle:
+<em class="menuselection">Kontakte ‣ Personen</em>,
+<em class="menuselection">Kontakte ‣ Organisationen</em>
+und
+<em class="menuselection">Kontakte ‣ Partner</em>.</p>
+<p>In Lino Così müssen Empfänger von Verkaufsrechnungen und Absender
+von Einkaufsrechnungen <em>zumindest</em> als &#8220;Partner&#8221; erfasst werden.
+Ein Partner ist normalerweise entweder eine Organisation
+(Firma, Institution,...) oder eine Person.
+Theoretisch kann er auch beides zugleich sein:
+Zum Beispiel kann ein befreundeter selbstständiger
+Schreiner zugleich Person und Organisation (Einzelunternehmen) sein.</p>
+<p>Ein Partner kann (noch theoretischer) auch weder Person noch Organisation
+sein: zum Beispiel eine Verteilerliste.</p>
+</div>
+<div class="section" id="produkte-verwalten">
+<h2><a class="toc-backref" href="#id8">Produkte verwalten</a><a class="headerlink" href="#produkte-verwalten" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Produkte sind alle Dinge, die Sie verkaufen wollen.
+Also das können auch Dienstleistungen sein.
+Ein Produkt hat eine Bezeichnung und einen Stückpreis.</p>
+<p>Wenn Sie viele Produkte haben, können Sie diese
+optional in Kategorien ordnen.</p>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/lino-logo-2.png" alt="Logo"/>
+            </a></p><p align="center">
+  <a href="../contacts.html">EN</a>
+  DE
+  <a href="../fr/contacts.html">FR</a> 
+</p>
+<h3><a href="index.html">Inhalt</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tour.html">An introduction to Lino-Così</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Contacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sales.html">Sales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ledger.html">General Ledger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><p align="center">
+<a href="http://code.google.com/p/lino-faggio/" target="_blank">code</a>
+<a href="http://pypi.python.org/pypi/lino-faggio" target="_blank">pypi</a>
+<br/>
+user |
+<a href="http://faggio.lino-framework.org" target="_blank">technical</a>
+
+
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             >Index</a></li>
+        <li class="right" >
+          <a href="products.html" title="Products"
+             >weiter</a> |</li>
+        <li class="right" >
+          <a href="countries.html" title="Countries"
+             >zurück</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luc Saffre.
+      Zuletzt aktualisiert am Feb 10, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.    
+    <a href="http://code.google.com/p/lino-welfare/source/browse/docs/contacts.rst"
+           rel="nofollow">Quelltext anzeigen</a>.
+    <a href="http://welfare.lino-framework.org/contacts.html">Online Link</a>.
+    </div>
+  </body>
+</html>

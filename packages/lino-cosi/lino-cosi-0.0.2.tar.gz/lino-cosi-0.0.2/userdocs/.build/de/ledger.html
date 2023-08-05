@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>General Ledger &mdash; Lino-Cosi Benutzerhandbuch 0.1 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Lino-Cosi Benutzerhandbuch 0.1 Dokumentation" href="index.html" />
+    <link rel="next" title="System" href="system.html" />
+    <link rel="prev" title="Sales" href="sales.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             accesskey="I">Index</a></li>
+        <li class="right" >
+          <a href="system.html" title="System"
+             accesskey="N">weiter</a> |</li>
+        <li class="right" >
+          <a href="sales.html" title="Sales"
+             accesskey="P">zurück</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="general-ledger">
+<span id="cosi-ledger"></span><h1>General Ledger<a class="headerlink" href="#general-ledger" title="Permalink zu dieser Überschrift">¶</a></h1>
+<div class="section" id="konto-modell">
+<span id="accounts-account"></span><span id="index-0"></span><h2>Konto (Modell)<a class="headerlink" href="#konto-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">accounts.Account</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.accounts.models.html#lino.modlib.accounts.models.Account" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Account</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auf Konto basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Konten</em> (<tt class="xref py py-class docutils literal"><span class="pre">Accounts</span></tt>) (Menu <em class="menuselection">Konfigurierung ‣ Buchhaltung ‣ Konten</em>)</li>
+<li><em class="xref std std-ref">Konten</em> (<tt class="xref py py-class docutils literal"><span class="pre">AccountsByGroup</span></tt>)</li>
+</ul>
+<p><strong>Datenfelder in Konto</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Bezeichnung</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>Seq.-Nr.</strong> (<tt class="docutils literal"><span class="pre">seqno</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>), <strong>Kontenplan</strong> (<tt class="docutils literal"><span class="pre">chart</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#accounts-chart"><em>Kontenplan</em></a>), <strong>Kontengruppe</strong> (<tt class="docutils literal"><span class="pre">group</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#accounts-group"><em>Kontengruppe</em></a>), <strong>ref</strong> (<tt class="docutils literal"><span class="pre">ref</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">NullCharField</span></tt>), <strong>Kontenart</strong> (<tt class="docutils literal"><span class="pre">type</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <em class="xref std std-ref">AccountTypes</em>), <strong>Verkauf</strong> (<tt class="docutils literal"><span class="pre">sales_allowed</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">BooleanField</span></tt>), <strong>Einkauf</strong> (<tt class="docutils literal"><span class="pre">purchases_allowed</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">BooleanField</span></tt>), <strong>Löhne und Gehälter</strong> (<tt class="docutils literal"><span class="pre">wages_allowed</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">BooleanField</span></tt>), <strong>Lettrierend</strong> (<tt class="docutils literal"><span class="pre">clearable</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">BooleanField</span></tt>)</li>
+</ul>
+<p><strong>Aktionen auf  Konto</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Duplizieren</strong> (<tt class="docutils literal"><span class="pre">duplicate</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DuplicateSequenced</span></tt>)</li>
+<li><strong>Schulden</strong> (<tt class="docutils literal"><span class="pre">due</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ShowSlaveTable</span></tt>)</li>
+<li><strong>Rauf</strong> (<tt class="docutils literal"><span class="pre">move_up</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">MoveUp</span></tt>) &#8211; Move this row one row upwards</li>
+<li><strong>Down</strong> (<tt class="docutils literal"><span class="pre">move_down</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">MoveDown</span></tt>) &#8211; Move this row one row downwards</li>
+</ul>
+<p><strong>Tabellen, die auf Konto verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Bewegungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">MovementsByAccount</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="kontengruppe-modell">
+<span id="accounts-group"></span><span id="index-1"></span><h2>Kontengruppe (Modell)<a class="headerlink" href="#kontengruppe-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">accounts.Group</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.accounts.models.html#lino.modlib.accounts.models.Group" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Group</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auf Kontengruppe basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Kontengruppen</em> (<tt class="xref py py-class docutils literal"><span class="pre">Groups</span></tt>) (Menu <em class="menuselection">Konfigurierung ‣ Buchhaltung ‣ Kontengruppen</em>)</li>
+<li><em class="xref std std-ref">Kontengruppen</em> (<tt class="xref py py-class docutils literal"><span class="pre">GroupsByChart</span></tt>)</li>
+</ul>
+<p><strong>Datenfelder in Kontengruppe</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Bezeichnung</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>Kontenplan</strong> (<tt class="docutils literal"><span class="pre">chart</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#accounts-chart"><em>Kontenplan</em></a>), <strong>ref</strong> (<tt class="docutils literal"><span class="pre">ref</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">NullCharField</span></tt>), <strong>Kontenart</strong> (<tt class="docutils literal"><span class="pre">account_type</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <em class="xref std std-ref">AccountTypes</em>)</li>
+</ul>
+<p><strong>Aktionen auf  Kontengruppe</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+</ul>
+<p><strong>Tabellen, die auf Kontengruppe verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Konten</em> (<tt class="xref py py-class docutils literal"><span class="pre">AccountsByGroup</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="kontenplan-modell">
+<span id="accounts-chart"></span><span id="index-2"></span><h2>Kontenplan (Modell)<a class="headerlink" href="#kontenplan-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">accounts.Chart</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.accounts.models.html#lino.modlib.accounts.models.Chart" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Chart</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auf Kontenplan basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Kontenpläne</em> (<tt class="xref py py-class docutils literal"><span class="pre">Charts</span></tt>) (Menu <em class="menuselection">Konfigurierung ‣ Buchhaltung ‣ Kontenpläne</em>)</li>
+</ul>
+<p><strong>Datenfelder in Kontenplan</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Bezeichnung</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>)</li>
+</ul>
+<p><strong>Aktionen auf  Kontenplan</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+</ul>
+<p><strong>Tabellen, die auf Kontenplan verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Kontengruppen</em> (<tt class="xref py py-class docutils literal"><span class="pre">GroupsByChart</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="journal-modell">
+<span id="ledger-journal"></span><span id="index-3"></span><h2>Journal (Modell)<a class="headerlink" href="#journal-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ledger.Journal</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.ledger.models.html#lino.modlib.ledger.models.Journal" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Journal</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auf Journal basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Journale</em> (<tt class="xref py py-class docutils literal"><span class="pre">Journals</span></tt>) (Menu <em class="menuselection">Konfigurierung ‣ Buchhaltung ‣ Journale</em>)</li>
+</ul>
+<p><strong>Datenfelder in Journal</strong></p>
+<ul class="simple">
+<li><strong>dc</strong> (<tt class="docutils literal"><span class="pre">dc</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.accounts.models.html#lino.modlib.accounts.models.DebitOrCreditField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">DebitOrCreditField</span></tt></a>) &#8211; Debit (checked) or Credit (not checked)</li>
+<li>... and <strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Bezeichnung</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>Seq.-Nr.</strong> (<tt class="docutils literal"><span class="pre">seqno</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>), <strong>Konstruktionsmethode</strong> (<tt class="docutils literal"><span class="pre">build_method</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Vorlage</strong> (<tt class="docutils literal"><span class="pre">template</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>ref</strong> (<tt class="docutils literal"><span class="pre">ref</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">NullCharField</span></tt>), <strong>Handelsart</strong> (<tt class="docutils literal"><span class="pre">trade_type</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <a class="reference internal" href="sales.html#vat-tradetypes"><em>TradeTypes</em></a>), <strong>voucher type</strong> (<tt class="docutils literal"><span class="pre">voucher_type</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <em class="xref std std-ref">VoucherTypes</em>), <strong>Force chronological sequence</strong> (<tt class="docutils literal"><span class="pre">force_sequence</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">BooleanField</span></tt>), <strong>Kontenplan</strong> (<tt class="docutils literal"><span class="pre">chart</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#accounts-chart"><em>Kontenplan</em></a>), <strong>Konto</strong> (<tt class="docutils literal"><span class="pre">account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#accounts-account"><em>Konto</em></a>), <strong>printed name</strong> (<tt class="docutils literal"><span class="pre">printed_name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>)</li>
+</ul>
+<p><strong>Aktionen auf  Journal</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Duplizieren</strong> (<tt class="docutils literal"><span class="pre">duplicate</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DuplicateSequenced</span></tt>)</li>
+<li><strong>Rauf</strong> (<tt class="docutils literal"><span class="pre">move_up</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">MoveUp</span></tt>) &#8211; Move this row one row upwards</li>
+<li><strong>Down</strong> (<tt class="docutils literal"><span class="pre">move_down</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">MoveDown</span></tt>) &#8211; Move this row one row downwards</li>
+</ul>
+<p><strong>Tabellen, die auf Journal verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Zahlungsaufträge</em> (<tt class="xref py py-class docutils literal"><span class="pre">PaymentOrdersByJournal</span></tt>) (Menu <em class="menuselection">Einkauf ‣ Zahlungsaufträge (PO)</em>)</li>
+<li><em class="xref std std-ref">Kontoauszüge</em> (<tt class="xref py py-class docutils literal"><span class="pre">BankStatementsByJournal</span></tt>) (Menu <em class="menuselection">Financial ‣ Bestbank (B)</em>)</li>
+<li><em class="xref std std-ref">Diverse Buchungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">JournalEntriesByJournal</span></tt>) (Menu <em class="menuselection">Financial ‣ Diverse Buchungen (M)</em>)</li>
+<li><em class="xref std std-ref">Rechnungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">InvoicesByJournal</span></tt>) (Menu <em class="menuselection">Einkauf ‣ Einkaufsrechnungen (P)</em>)</li>
+<li><em class="xref std std-ref">MWSt.-Erklärungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">DeclarationsByJournal</span></tt>) (Menu <em class="menuselection">Financial ‣ MWSt-Erklärungen (V)</em>)</li>
+<li><em class="xref std std-ref">Rechnungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">InvoicesByJournal</span></tt>) (Menu <em class="menuselection">Verkauf ‣ Verkaufsrechnungen (S)</em>)</li>
+</ul>
+</div>
+<div class="section" id="beleg-modell">
+<span id="ledger-voucher"></span><span id="index-4"></span><h2>Beleg (Modell)<a class="headerlink" href="#beleg-modell" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ledger.Voucher</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.ledger.models.html#lino.modlib.ledger.models.Voucher" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Voucher</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auf Beleg basierende Ansichten</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Belege</em> (<a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.ledger.models.html#lino.modlib.ledger.models.Vouchers" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Vouchers</span></tt></a>) (Menu <em class="menuselection">Explorer ‣ Buchhaltung ‣ Belege</em>)</li>
+<li><em class="xref std std-ref">Belege</em> (<tt class="xref py py-class docutils literal"><span class="pre">VouchersByDeclaration</span></tt>)</li>
+</ul>
+<p><strong>Datenfelder in Beleg</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Autor</strong> (<tt class="docutils literal"><span class="pre">user</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="users.html#users-user"><em>Benutzer</em></a>), <strong>Datum</strong> (<tt class="docutils literal"><span class="pre">date</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DateField</span></tt>), <strong>Journal</strong> (<tt class="docutils literal"><span class="pre">journal</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="#ledger-journal"><em>Journal</em></a>), <strong>Geschäftsjahr</strong> (<tt class="docutils literal"><span class="pre">year</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> nach <em class="xref std std-ref">Geschäftsjahre</em>), <strong>number</strong> (<tt class="docutils literal"><span class="pre">number</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>), <strong>Narration</strong> (<tt class="docutils literal"><span class="pre">narration</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>MWSt.-Erklärung</strong> (<tt class="docutils literal"><span class="pre">declared_in</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> nach <a class="reference internal" href="sales.html#declarations-declaration"><em>MWSt.-Erklärung</em></a>)</li>
+</ul>
+<p><strong>Aktionen auf  Beleg</strong></p>
+<ul class="simple">
+<li><strong>Tabelle (Querformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+<li><strong>Tabelle (Hochformat)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Diese Tabelle in eine .pdf-Datei exportieren</li>
+</ul>
+<p><strong>Tabellen, die auf Beleg verweisen</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">invoice items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoicePrint</span></tt>)</li>
+<li><em class="xref std std-ref">Bewegungen</em> (<tt class="xref py py-class docutils literal"><span class="pre">MovementsByVoucher</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByPaymentOrder</span></tt>)</li>
+<li><em class="xref std std-ref">Belege</em> (<tt class="xref py py-class docutils literal"><span class="pre">VouchersByDeclaration</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByJournalEntry</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByBankStatement</span></tt>)</li>
+<li><em class="xref std std-ref">invoice items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoice</span></tt>)</li>
+<li><em class="xref std std-ref">Belegszeilen</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoice</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="schuldner-ansicht">
+<span id="ledger-debtors"></span><h2>Schuldner (Ansicht)<a class="headerlink" href="#schuldner-ansicht" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ledger.Debtors</span></tt> (<tt class="xref py py-class docutils literal"><span class="pre">Debtors</span></tt>)</td>
+</tr>
+</tbody>
+</table>
+<p>List of partners (usually clients)     who are in debt towards us.</p>
+</div>
+<div class="section" id="glaubiger-ansicht">
+<span id="ledger-creditors"></span><h2>Gläubiger (Ansicht)<a class="headerlink" href="#glaubiger-ansicht" title="Permalink zu dieser Überschrift">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ledger.Creditors</span></tt> (<tt class="xref py py-class docutils literal"><span class="pre">Creditors</span></tt>)</td>
+</tr>
+</tbody>
+</table>
+<p>List of partners (usually suppliers)     who are giving credit to us.</p>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/lino-logo-2.png" alt="Logo"/>
+            </a></p><p align="center">
+  <a href="../ledger.html">EN</a>
+  DE
+  <a href="../fr/ledger.html">FR</a> 
+</p>
+<h3><a href="index.html">Inhalt</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tour.html">An introduction to Lino-Così</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sales.html">Sales</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">General Ledger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><p align="center">
+<a href="http://code.google.com/p/lino-faggio/" target="_blank">code</a>
+<a href="http://pypi.python.org/pypi/lino-faggio" target="_blank">pypi</a>
+<br/>
+user |
+<a href="http://faggio.lino-framework.org" target="_blank">technical</a>
+
+
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             >Index</a></li>
+        <li class="right" >
+          <a href="system.html" title="System"
+             >weiter</a> |</li>
+        <li class="right" >
+          <a href="sales.html" title="Sales"
+             >zurück</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luc Saffre.
+      Zuletzt aktualisiert am Feb 10, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.    
+    <a href="http://code.google.com/p/lino-welfare/source/browse/docs/ledger.rst"
+           rel="nofollow">Quelltext anzeigen</a>.
+    <a href="http://welfare.lino-framework.org/ledger.html">Online Link</a>.
+    </div>
+  </body>
+</html>

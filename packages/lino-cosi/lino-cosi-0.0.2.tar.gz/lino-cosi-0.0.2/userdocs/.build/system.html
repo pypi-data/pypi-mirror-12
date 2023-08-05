@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>System &mdash; Lino-Cosi Benutzerhandbuch 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Lino-Cosi Benutzerhandbuch 0.1 documentation" href="index.html" />
+    <link rel="prev" title="General Ledger" href="ledger.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ledger.html" title="General Ledger"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="system">
+<span id="cosi-system"></span><h1>System<a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#content-type-model" id="id1">content type (model)</a></li>
+<li><a class="reference internal" href="#site-configuration-model" id="id2">Site configuration (model)</a></li>
+</ul>
+</div>
+<div class="section" id="content-type-model">
+<span id="contenttypes-contenttype"></span><span id="index-0"></span><h2><a class="toc-backref" href="#id1">content type (model)</a><a class="headerlink" href="#content-type-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">contenttypes.ContentType</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">ContentType</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on content type</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">content types</em> (<a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.system.models.html#lino.modlib.system.models.ContentTypes" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ContentTypes</span></tt></a>) (Menu <em class="menuselection">Configure ‣ System ‣ content types</em>)</li>
+</ul>
+<p><strong>Fields in content type</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>name</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>app label</strong> (<tt class="docutils literal"><span class="pre">app_label</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>python model class name</strong> (<tt class="docutils literal"><span class="pre">model</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>)</li>
+</ul>
+<p><strong>Actions on content type</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+</div>
+<div class="section" id="site-configuration-model">
+<span id="system-siteconfig"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id2">Site configuration (model)</a><a class="headerlink" href="#site-configuration-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">system.SiteConfig</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.system.models.html#lino.modlib.system.models.SiteConfig" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">SiteConfig</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on Site configuration</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="general.html#system-siteconfigs"><em>Site configurations</em></a> (<a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.system.models.html#lino.modlib.system.models.SiteConfigs" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">SiteConfigs</span></tt></a>)</li>
+</ul>
+<p><strong>Fields in Site configuration</strong></p>
+<ul>
+<li><p class="first"><strong>Next partner id</strong> (<tt class="docutils literal"><span class="pre">next_partner_id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>) &#8211; The next automatic id for any new partner.</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Site owner</strong> (<tt class="docutils literal"><span class="pre">site_company</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="contacts.html#contacts-company"><em>Organization</em></a>) &#8211; The organisation who runs this site.</dt>
+<dd><p class="first last">This is used e.g. as sender in documents.
+Or, newly created partners inherit the country of the site owner.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">... and <strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Default build method</strong> (<tt class="docutils literal"><span class="pre">default_build_method</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Clients account</strong> (<tt class="docutils literal"><span class="pre">clients_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>), <strong>Sales VAT account</strong> (<tt class="docutils literal"><span class="pre">sales_vat_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>), <strong>Sales Base account</strong> (<tt class="docutils literal"><span class="pre">sales_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>), <strong>Suppliers account</strong> (<tt class="docutils literal"><span class="pre">suppliers_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>), <strong>Purchases VAT account</strong> (<tt class="docutils literal"><span class="pre">purchases_vat_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>), <strong>Purchases Base account</strong> (<tt class="docutils literal"><span class="pre">purchases_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>)</p>
+</li>
+</ul>
+<p><strong>Actions on Site configuration</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+<li><strong>Rebuild site cache</strong> (<tt class="docutils literal"><span class="pre">do_build</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.system.models.html#lino.modlib.system.models.BuildSiteCache" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">BuildSiteCache</span></tt></a>)</li>
+</ul>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/lino-logo-2.png" alt="Logo"/>
+            </a></p><p align="center">
+  EN
+  <a href="de/system.html">DE</a>
+  <a href="fr/system.html">FR</a> 
+</p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tour.html">An introduction to Lino-Così</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sales.html">Sales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ledger.html">General Ledger</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">System</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><p align="center">
+<a href="http://code.google.com/p/lino-faggio/" target="_blank">code</a>
+<a href="http://pypi.python.org/pypi/lino-faggio" target="_blank">pypi</a>
+<br/>
+user |
+<a href="http://faggio.lino-framework.org" target="_blank">technical</a>
+
+
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ledger.html" title="General Ledger"
+             >previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luc Saffre.
+      Last updated on Feb 10, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.    
+    <a href="http://code.google.com/p/lino-welfare/source/browse/docs/system.rst"
+           rel="nofollow">Show Source</a>.
+    <a href="http://welfare.lino-framework.org/system.html">Online Link</a>.
+    </div>
+  </body>
+</html>

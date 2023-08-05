@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Products &mdash; Lino-Cosi Benutzerhandbuch 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Lino-Cosi Benutzerhandbuch 0.1 documentation" href="index.html" />
+    <link rel="next" title="Sales" href="sales.html" />
+    <link rel="prev" title="Contacts" href="contacts.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sales.html" title="Sales"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="products">
+<span id="cosi-products"></span><h1>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="product-model">
+<span id="products-product"></span><span id="index-0"></span><h2>Product (model)<a class="headerlink" href="#product-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">products.Product</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.products.models.html#lino.modlib.products.models.Product" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Product</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on Product</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Products</em> (<tt class="xref py py-class docutils literal"><span class="pre">Products</span></tt>) (Menu <em class="menuselection">Products ‣ Products</em>)</li>
+<li><em class="xref std std-ref">Products</em> (<tt class="xref py py-class docutils literal"><span class="pre">ProductsByCategory</span></tt>)</li>
+</ul>
+<p><strong>Fields in Product</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Designation</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>Long description</strong> (<tt class="docutils literal"><span class="pre">description</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.BabelTextField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">BabelTextField</span></tt></a>), <strong>Category</strong> (<tt class="docutils literal"><span class="pre">cat</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#products-productcat"><em>Product Category</em></a>), <strong>VAT Class</strong> (<tt class="docutils literal"><span class="pre">vat_class</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <em class="xref std std-ref">VatClasses</em>), <strong>Sales Base account</strong> (<tt class="docutils literal"><span class="pre">sales_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>), <strong>Sales price</strong> (<tt class="docutils literal"><span class="pre">sales_price</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Purchases Base account</strong> (<tt class="docutils literal"><span class="pre">purchases_account</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#accounts-account"><em>Account</em></a>)</li>
+</ul>
+<p><strong>Actions on Product</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+<p><strong>Tables referring to Product</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">invoice items</em> (<tt class="xref py py-class docutils literal"><span class="pre">InvoiceItemsByProduct</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="product-category-model">
+<span id="products-productcat"></span><span id="index-1"></span><h2>Product Category (model)<a class="headerlink" href="#product-category-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">products.ProductCat</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.products.models.html#lino.modlib.products.models.ProductCat" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ProductCat</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on Product Category</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Product Categories</em> (<tt class="xref py py-class docutils literal"><span class="pre">ProductCats</span></tt>) (Menu <em class="menuselection">Products ‣ Product Categories</em>)</li>
+</ul>
+<p><strong>Fields in Product Category</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Designation</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>description</strong> (<tt class="docutils literal"><span class="pre">description</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">TextField</span></tt>)</li>
+</ul>
+<p><strong>Actions on Product Category</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+<p><strong>Tables referring to Product Category</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Products</em> (<tt class="xref py py-class docutils literal"><span class="pre">ProductsByCategory</span></tt>)</li>
+</ul>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/lino-logo-2.png" alt="Logo"/>
+            </a></p><p align="center">
+  EN
+  <a href="de/products.html">DE</a>
+  <a href="fr/products.html">FR</a> 
+</p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tour.html">An introduction to Lino-Così</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sales.html">Sales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ledger.html">General Ledger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><p align="center">
+<a href="http://code.google.com/p/lino-faggio/" target="_blank">code</a>
+<a href="http://pypi.python.org/pypi/lino-faggio" target="_blank">pypi</a>
+<br/>
+user |
+<a href="http://faggio.lino-framework.org" target="_blank">technical</a>
+
+
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sales.html" title="Sales"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             >previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luc Saffre.
+      Last updated on Feb 10, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.    
+    <a href="http://code.google.com/p/lino-welfare/source/browse/docs/products.rst"
+           rel="nofollow">Show Source</a>.
+    <a href="http://welfare.lino-framework.org/products.html">Online Link</a>.
+    </div>
+  </body>
+</html>

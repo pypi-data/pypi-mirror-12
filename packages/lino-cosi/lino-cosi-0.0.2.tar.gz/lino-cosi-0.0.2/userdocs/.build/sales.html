@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sales &mdash; Lino-Cosi Benutzerhandbuch 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Lino-Cosi Benutzerhandbuch 0.1 documentation" href="index.html" />
+    <link rel="next" title="General Ledger" href="ledger.html" />
+    <link rel="prev" title="Products" href="products.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ledger.html" title="General Ledger"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="products.html" title="Products"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="sales">
+<span id="cosi-sales"></span><h1>Sales<a class="headerlink" href="#sales" title="Permalink to this headline">¶</a></h1>
+<p>This is work in progress.</p>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="invoice-model">
+<span id="sales-invoice"></span><span id="index-0"></span><h3>Invoice (model)<a class="headerlink" href="#invoice-model" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">sales.Invoice</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.sales.models.html#lino.modlib.sales.models.Invoice" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on Invoice</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Invoices</em> (<tt class="xref py py-class docutils literal"><span class="pre">Invoices</span></tt>)</li>
+<li><em class="xref std std-ref">Invoices</em> (<tt class="xref py py-class docutils literal"><span class="pre">DocumentsToSign</span></tt>)</li>
+<li><em class="xref std std-ref">Invoices</em> (<tt class="xref py py-class docutils literal"><span class="pre">InvoicesByJournal</span></tt>) (Menu <em class="menuselection">Sales ‣ Sales invoices (S)</em>)</li>
+<li><em class="xref std std-ref">Invoices</em> (<tt class="xref py py-class docutils literal"><span class="pre">InvoicesByPartner</span></tt>)</li>
+</ul>
+<p><strong>Fields in Invoice</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Author</strong> (<tt class="docutils literal"><span class="pre">user</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="users.html#users-user"><em>User</em></a>), <strong>Date</strong> (<tt class="docutils literal"><span class="pre">date</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DateField</span></tt>), <strong>Journal</strong> (<tt class="docutils literal"><span class="pre">journal</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#ledger-journal"><em>Journal</em></a>), <strong>Fiscal Year</strong> (<tt class="docutils literal"><span class="pre">year</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <em class="xref std std-ref">Fiscal Years</em>), <strong>number</strong> (<tt class="docutils literal"><span class="pre">number</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>), <strong>Narration</strong> (<tt class="docutils literal"><span class="pre">narration</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>VAT declaration</strong> (<tt class="docutils literal"><span class="pre">declared_in</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#declarations-declaration"><em>VAT declaration</em></a>), <strong>Voucher</strong> (<tt class="docutils literal"><span class="pre">voucher_ptr</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">OneToOneField</span></tt> to <a class="reference internal" href="ledger.html#ledger-voucher"><em>Voucher</em></a>), <strong>build time</strong> (<tt class="docutils literal"><span class="pre">build_time</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DateTimeField</span></tt>), <strong>Total incl. VAT</strong> (<tt class="docutils literal"><span class="pre">total_incl</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Total excl. VAT</strong> (<tt class="docutils literal"><span class="pre">total_base</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>VAT</strong> (<tt class="docutils literal"><span class="pre">total_vat</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Partner</strong> (<tt class="docutils literal"><span class="pre">partner</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="contacts.html#contacts-partner"><em>Partner</em></a>), <strong>VAT Regime</strong> (<tt class="docutils literal"><span class="pre">vat_regime</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <a class="reference internal" href="#vat-vatregimes"><em>VatRegimes</em></a>), <strong>Payment Term</strong> (<tt class="docutils literal"><span class="pre">payment_term</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#vat-paymentterm"><em>Payment Term</em></a>), <strong>Match</strong> (<tt class="docutils literal"><span class="pre">match</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">MatchField</span></tt>), <strong>Language</strong> (<tt class="docutils literal"><span class="pre">language</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.LanguageField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">LanguageField</span></tt></a>), <strong>Your reference</strong> (<tt class="docutils literal"><span class="pre">your_ref</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Shipping Mode</strong> (<tt class="docutils literal"><span class="pre">shipping_mode</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#sales-shippingmode"><em>Shipping Mode</em></a>), <strong>Subject line</strong> (<tt class="docutils literal"><span class="pre">subject</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Introductive Text</strong> (<tt class="docutils literal"><span class="pre">intro</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">TextField</span></tt>), <strong>Discount</strong> (<tt class="docutils literal"><span class="pre">discount</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PercentageField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PercentageField</span></tt></a>), <strong>Date of payment</strong> (<tt class="docutils literal"><span class="pre">due_date</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DateField</span></tt>), <strong>State</strong> (<tt class="docutils literal"><span class="pre">state</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <em class="xref std std-ref">States</em>)</li>
+</ul>
+<p><strong>Actions on Invoice</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+<li><strong>Register</strong> (<tt class="docutils literal"><span class="pre">wf1</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.workflows.html#lino.core.workflows.ChangeStateAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChangeStateAction</span></tt></a>) &#8211; Register. Mark this as Registered</li>
+<li><strong>Duplicate</strong> (<tt class="docutils literal"><span class="pre">duplicate</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.mixins.duplicable.html#lino.mixins.duplicable.Duplicate" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Duplicate</span></tt></a>)</li>
+<li><strong>Deregister</strong> (<tt class="docutils literal"><span class="pre">wf2</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.workflows.html#lino.core.workflows.ChangeStateAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChangeStateAction</span></tt></a>) &#8211; Deregister. Mark this as Draft</li>
+<li><strong>Print</strong> (<tt class="docutils literal"><span class="pre">do_print</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.mixins.printable.html#lino.mixins.printable.CachedPrintAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">CachedPrintAction</span></tt></a>)</li>
+<li><strong>Clear cache</strong> (<tt class="docutils literal"><span class="pre">do_clear_cache</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.mixins.printable.html#lino.mixins.printable.ClearCacheAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ClearCacheAction</span></tt></a>)</li>
+</ul>
+<p><strong>Tables referring to Invoice</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">invoice items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoicePrint</span></tt>)</li>
+<li><em class="xref std std-ref">Movements</em> (<tt class="xref py py-class docutils literal"><span class="pre">MovementsByVoucher</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByPaymentOrder</span></tt>)</li>
+<li><em class="xref std std-ref">Vouchers</em> (<tt class="xref py py-class docutils literal"><span class="pre">VouchersByDeclaration</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByJournalEntry</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByBankStatement</span></tt>)</li>
+<li><em class="xref std std-ref">invoice items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoice</span></tt>)</li>
+<li><em class="xref std std-ref">Voucher items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoice</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="shipping-mode-model">
+<span id="sales-shippingmode"></span><span id="index-1"></span><h3>Shipping Mode (model)<a class="headerlink" href="#shipping-mode-model" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">sales.ShippingMode</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.sales.models.html#lino.modlib.sales.models.ShippingMode" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ShippingMode</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on Shipping Mode</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Shipping Modes</em> (<a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.sales.models.html#lino.modlib.sales.models.ShippingModes" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ShippingModes</span></tt></a>) (Menu <em class="menuselection">Configure ‣ Sales ‣ Shipping Modes</em>)</li>
+</ul>
+<p><strong>Fields in Shipping Mode</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Designation</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>price</strong> (<tt class="docutils literal"><span class="pre">price</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>)</li>
+</ul>
+<p><strong>Actions on Shipping Mode</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+</div>
+<div class="section" id="payment-term-model">
+<span id="vat-paymentterm"></span><span id="index-2"></span><h3>Payment Term (model)<a class="headerlink" href="#payment-term-model" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">vat.PaymentTerm</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.vat.models.html#lino.modlib.vat.models.PaymentTerm" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PaymentTerm</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on Payment Term</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Payment Terms</em> (<tt class="xref py py-class docutils literal"><span class="pre">PaymentTerms</span></tt>) (Menu <em class="menuselection">Configure ‣ VAT ‣ Payment Terms</em>)</li>
+</ul>
+<p><strong>Fields in Payment Term</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Designation</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>), <strong>days</strong> (<tt class="docutils literal"><span class="pre">days</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>), <strong>months</strong> (<tt class="docutils literal"><span class="pre">months</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>), <strong>end of month</strong> (<tt class="docutils literal"><span class="pre">end_of_month</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">BooleanField</span></tt>)</li>
+</ul>
+<p><strong>Actions on Payment Term</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+</div>
+<div class="section" id="vatregimes-view">
+<span id="vat-vatregimes"></span><h3>VatRegimes (view)<a class="headerlink" href="#vatregimes-view" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">vat.VatRegimes</span></tt> (<tt class="xref py py-class docutils literal"><span class="pre">VatRegimes</span></tt>)</td>
+</tr>
+</tbody>
+</table>
+<p>Determines how the VAT is being handled,         i.e. whether and how it is to be paid.</p>
+</div>
+<div class="section" id="tradetypes-view">
+<span id="vat-tradetypes"></span><h3>TradeTypes (view)<a class="headerlink" href="#tradetypes-view" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">vat.TradeTypes</span></tt> (<tt class="xref py py-class docutils literal"><span class="pre">TradeTypes</span></tt>)</td>
+</tr>
+</tbody>
+</table>
+<p>The type of trade: usually either <cite>sales</cite> or <cite>purchases</cite>.</p>
+</div>
+<div class="section" id="vat-declaration-model">
+<span id="declarations-declaration"></span><span id="index-3"></span><h3>VAT declaration (model)<a class="headerlink" href="#vat-declaration-model" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">declarations.Declaration</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.declarations.models.html#lino.modlib.declarations.models.Declaration" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Declaration</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on VAT declaration</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">VAT declarations</em> (<tt class="xref py py-class docutils literal"><span class="pre">Declarations</span></tt>) (Menu <em class="menuselection">Explorer ‣ VAT ‣ VAT declarations</em>)</li>
+<li><em class="xref std std-ref">VAT declarations</em> (<tt class="xref py py-class docutils literal"><span class="pre">DeclarationsByJournal</span></tt>) (Menu <em class="menuselection">Financial ‣ VAT declarations (V)</em>)</li>
+</ul>
+<p><strong>Fields in VAT declaration</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Author</strong> (<tt class="docutils literal"><span class="pre">user</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="users.html#users-user"><em>User</em></a>), <strong>Date</strong> (<tt class="docutils literal"><span class="pre">date</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DateField</span></tt>), <strong>Journal</strong> (<tt class="docutils literal"><span class="pre">journal</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="ledger.html#ledger-journal"><em>Journal</em></a>), <strong>Fiscal Year</strong> (<tt class="docutils literal"><span class="pre">year</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <em class="xref std std-ref">Fiscal Years</em>), <strong>number</strong> (<tt class="docutils literal"><span class="pre">number</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IntegerField</span></tt>), <strong>Narration</strong> (<tt class="docutils literal"><span class="pre">narration</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>VAT declaration</strong> (<tt class="docutils literal"><span class="pre">declared_in</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#declarations-declaration"><em>VAT declaration</em></a>), <strong>Voucher</strong> (<tt class="docutils literal"><span class="pre">voucher_ptr</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">OneToOneField</span></tt> to <a class="reference internal" href="ledger.html#ledger-voucher"><em>Voucher</em></a>), <strong>VAT Period</strong> (<tt class="docutils literal"><span class="pre">period</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <em class="xref std std-ref">VAT Periods</em>), <strong>State</strong> (<tt class="docutils literal"><span class="pre">state</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <em class="xref std std-ref">States</em>), <strong>Sales base</strong> (<tt class="docutils literal"><span class="pre">sales_base</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Sales VAT</strong> (<tt class="docutils literal"><span class="pre">sales_vat</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Purchases base</strong> (<tt class="docutils literal"><span class="pre">purchases_base</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Purchases VAT</strong> (<tt class="docutils literal"><span class="pre">purchases_vat</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Investments</strong> (<tt class="docutils literal"><span class="pre">purchases_investments</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Ware</strong> (<tt class="docutils literal"><span class="pre">purchases_ware</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>), <strong>Services</strong> (<tt class="docutils literal"><span class="pre">purchases_services</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.fields.html#lino.core.fields.PriceField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PriceField</span></tt></a>)</li>
+</ul>
+<p><strong>Actions on VAT declaration</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+<li><strong>Register</strong> (<tt class="docutils literal"><span class="pre">wf1</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.workflows.html#lino.core.workflows.ChangeStateAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChangeStateAction</span></tt></a>) &#8211; Mark this as Registered</li>
+<li><strong>Deregister</strong> (<tt class="docutils literal"><span class="pre">wf2</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.workflows.html#lino.core.workflows.ChangeStateAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChangeStateAction</span></tt></a>) &#8211; Mark this as Draft</li>
+<li><strong>Submit</strong> (<tt class="docutils literal"><span class="pre">wf3</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.workflows.html#lino.core.workflows.ChangeStateAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChangeStateAction</span></tt></a>) &#8211; Mark this as Submitted</li>
+</ul>
+<p><strong>Tables referring to VAT declaration</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">invoice items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoicePrint</span></tt>)</li>
+<li><em class="xref std std-ref">Movements</em> (<tt class="xref py py-class docutils literal"><span class="pre">MovementsByVoucher</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByPaymentOrder</span></tt>)</li>
+<li><em class="xref std std-ref">Vouchers</em> (<tt class="xref py py-class docutils literal"><span class="pre">VouchersByDeclaration</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByJournalEntry</span></tt>)</li>
+<li><em class="xref std std-ref">Items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByBankStatement</span></tt>)</li>
+<li><em class="xref std std-ref">invoice items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoice</span></tt>)</li>
+<li><em class="xref std std-ref">Voucher items</em> (<tt class="xref py py-class docutils literal"><span class="pre">ItemsByInvoice</span></tt>)</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/lino-logo-2.png" alt="Logo"/>
+            </a></p><p align="center">
+  EN
+  <a href="de/sales.html">DE</a>
+  <a href="fr/sales.html">FR</a> 
+</p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tour.html">An introduction to Lino-Così</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Sales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ledger.html">General Ledger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><p align="center">
+<a href="http://code.google.com/p/lino-faggio/" target="_blank">code</a>
+<a href="http://pypi.python.org/pypi/lino-faggio" target="_blank">pypi</a>
+<br/>
+user |
+<a href="http://faggio.lino-framework.org" target="_blank">technical</a>
+
+
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ledger.html" title="General Ledger"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="products.html" title="Products"
+             >previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luc Saffre.
+      Last updated on Feb 10, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.    
+    <a href="http://code.google.com/p/lino-welfare/source/browse/docs/sales.rst"
+           rel="nofollow">Show Source</a>.
+    <a href="http://welfare.lino-framework.org/sales.html">Online Link</a>.
+    </div>
+  </body>
+</html>

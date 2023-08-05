@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Users &mdash; Lino-Cosi Benutzerhandbuch 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Lino-Cosi Benutzerhandbuch 0.1 documentation" href="index.html" />
+    <link rel="next" title="Countries" href="countries.html" />
+    <link rel="prev" title="General concepts" href="general.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="countries.html" title="Countries"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="general.html" title="General concepts"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="users">
+<span id="patrols-users"></span><h1>Users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#user-model" id="id1">User (model)</a></li>
+<li><a class="reference internal" href="#user-profile-field" id="id2">User Profile (field)</a></li>
+<li><a class="reference internal" href="#authority-model" id="id3">Authority (model)</a></li>
+<li><a class="reference internal" href="#team-model" id="id4">Team (model)</a></li>
+<li><a class="reference internal" href="#teams-view" id="id5">Teams (view)</a></li>
+<li><a class="reference internal" href="#membership-model" id="id6">Membership (model)</a></li>
+<li><a class="reference internal" href="#user-profiles-view" id="id7">User Profiles (view)</a></li>
+</ul>
+</div>
+<div class="section" id="user-model">
+<span id="users-user"></span><span id="index-0"></span><h2><a class="toc-backref" href="#id1">User (model)</a><a class="headerlink" href="#user-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">users.User</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.users.models.html#lino.modlib.users.models.User" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">User</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on User</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Users</em> (<tt class="xref py py-class docutils literal"><span class="pre">Users</span></tt>) (Menu <em class="menuselection">Configure ‣ System ‣ Users</em>) &#8211; Shows the list of all users on this site.</li>
+<li><em class="xref std std-ref">Users</em> (<tt class="xref py py-class docutils literal"><span class="pre">MySettings</span></tt>)</li>
+<li><em class="xref std std-ref">Users</em> (<a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.users.models.html#lino.modlib.users.models.UsersOverview" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">UsersOverview</span></tt></a>)</li>
+</ul>
+<p><strong>Fields in User</strong></p>
+<ul class="simple">
+<li><strong>Username</strong> (<tt class="docutils literal"><span class="pre">username</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>) &#8211; Required. Must be unique.</li>
+<li><strong>User Profile</strong> (<tt class="docutils literal"><span class="pre">profile</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.core.choicelists.html#lino.core.choicelists.ChoiceListField" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">ChoiceListField</span></tt></a> to <a class="reference internal" href="#lino-userprofiles"><em>User Profiles</em></a>) &#8211; Users with an empty <cite>profile</cite> field are considered inactive and cannot log in.</li>
+<li>... and <strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Created</strong> (<tt class="docutils literal"><span class="pre">created</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DateTimeField</span></tt>), <strong>Modified</strong> (<tt class="docutils literal"><span class="pre">modified</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">DateTimeField</span></tt>), <strong>Password</strong> (<tt class="docutils literal"><span class="pre">password</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Initials</strong> (<tt class="docutils literal"><span class="pre">initials</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>First name</strong> (<tt class="docutils literal"><span class="pre">first_name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>Last name</strong> (<tt class="docutils literal"><span class="pre">last_name</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CharField</span></tt>), <strong>e-mail address</strong> (<tt class="docutils literal"><span class="pre">email</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">EmailField</span></tt>), <strong>Remarks</strong> (<tt class="docutils literal"><span class="pre">remarks</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">TextField</span></tt>), <strong>Language</strong> (<tt class="docutils literal"><span class="pre">language</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.LanguageField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">LanguageField</span></tt></a>), <strong>Partner</strong> (<tt class="docutils literal"><span class="pre">partner</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="contacts.html#contacts-partner"><em>Partner</em></a>)</li>
+</ul>
+<p><strong>Actions on User</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+<p><strong>Tables referring to User</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">My Memberships</em> (<tt class="xref py py-class docutils literal"><span class="pre">MembershipsByUser</span></tt>)</li>
+<li><em class="xref std std-ref">Authorities taken</em> (<tt class="xref py py-class docutils literal"><span class="pre">AuthoritiesTaken</span></tt>)</li>
+<li><em class="xref std std-ref">My Text Field Templates</em> (<tt class="xref py py-class docutils literal"><span class="pre">MyTextFieldTemplates</span></tt>) (Menu <em class="menuselection">Configure ‣ Office ‣ My Text Field Templates</em>)</li>
+<li><em class="xref std std-ref">Authorities given</em> (<tt class="xref py py-class docutils literal"><span class="pre">AuthoritiesGiven</span></tt>)</li>
+</ul>
+</div>
+<div class="section" id="user-profile-field">
+<span id="index-1"></span><h2><a class="toc-backref" href="#id2">User Profile (field)</a><a class="headerlink" href="#user-profile-field" title="Permalink to this headline">¶</a></h2>
+<p>The profile of a user is what defines her or his permissions.</p>
+<p>Users with an empty <em class="xref std std-ref">User Profile</em>
+field are considered inactive and cannot log in.</p>
+</div>
+<div class="section" id="authority-model">
+<span id="users-authority"></span><span id="index-2"></span><h2><a class="toc-backref" href="#id3">Authority (model)</a><a class="headerlink" href="#authority-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">users.Authority</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.users.models.html#lino.modlib.users.models.Authority" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Authority</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Views on Authority</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Authorities</em> (<tt class="xref py py-class docutils literal"><span class="pre">Authorities</span></tt>) (Menu <em class="menuselection">Explorer ‣ System ‣ Authorities</em>)</li>
+<li><em class="xref std std-ref">Authorities given</em> (<tt class="xref py py-class docutils literal"><span class="pre">AuthoritiesGiven</span></tt>)</li>
+<li><em class="xref std std-ref">Authorities taken</em> (<tt class="xref py py-class docutils literal"><span class="pre">AuthoritiesTaken</span></tt>)</li>
+</ul>
+<p><strong>Fields in Authority</strong></p>
+<ul class="simple">
+<li><strong>User</strong> (<tt class="docutils literal"><span class="pre">authorized</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#users-user"><em>User</em></a>) &#8211; The user who gets authority to act in your name.</li>
+<li>... and <strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Author</strong> (<tt class="docutils literal"><span class="pre">user</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#users-user"><em>User</em></a>)</li>
+</ul>
+<p><strong>Actions on Authority</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+</div>
+<div class="section" id="team-model">
+<span id="users-team"></span><span id="index-3"></span><h2><a class="toc-backref" href="#id4">Team (model)</a><a class="headerlink" href="#team-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">users.Team</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.users.models.html#lino.modlib.users.models.Team" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Team</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>A <a class="reference internal" href="#users-team"><em>Team</em></a> is a group of users that work together.</p>
+<p>Belonging to a <a class="reference internal" href="#users-team"><em>Team</em></a> or not has no influence on
+access permissions.
+These depend on your <a class="reference internal" href="#lino-userprofiles"><em>user profile</em></a>.</p>
+<p><strong>Views on Team</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="#users-teams"><em>Teams</em></a> (<tt class="xref py py-class docutils literal"><span class="pre">Teams</span></tt>) (Menu <em class="menuselection">Configure ‣ System ‣ Teams</em>)</li>
+</ul>
+<p><strong>Fields in Team</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Designation</strong> (<tt class="docutils literal"><span class="pre">name</span></tt>, <a class="reference external" href="http://north.lino-framework.org/api/north.dbutils.dbutils_babel.html#north.dbutils.dbutils_babel.BabelCharField" title="(in north v0.1)"><tt class="xref py py-class docutils literal"><span class="pre">BabelCharField</span></tt></a>)</li>
+</ul>
+<p><strong>Actions on Team</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+</div>
+<div class="section" id="teams-view">
+<span id="users-teams"></span><h2><a class="toc-backref" href="#id5">Teams (view)</a><a class="headerlink" href="#teams-view" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">users.Teams</span></tt> (<tt class="xref py py-class docutils literal"><span class="pre">Teams</span></tt>)</td>
+</tr>
+</tbody>
+</table>
+<p>For illustration, the demo site has the following teams:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="25%" />
+<col width="34%" />
+<col width="34%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>ID</td>
+<td>Designation</td>
+<td>Designation (de)</td>
+<td>Designation (fr)</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="membership-model">
+<span id="users-membership"></span><span id="index-4"></span><h2><a class="toc-backref" href="#id6">Membership (model)</a><a class="headerlink" href="#membership-model" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">users.Membership</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference external" href="http://docs.lino-framework.org/api/lino.modlib.users.models.html#lino.modlib.users.models.Membership" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">Membership</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>A membership is when a given <a class="reference internal" href="#users-user"><em>User</em></a>
+belongs to a given <a class="reference internal" href="#users-team"><em>Team</em></a>.</p>
+<p><strong>Views on Membership</strong></p>
+<ul class="simple">
+<li><em class="xref std std-ref">Memberships</em> (<tt class="xref py py-class docutils literal"><span class="pre">Memberships</span></tt>)</li>
+<li><em class="xref std std-ref">My Memberships</em> (<tt class="xref py py-class docutils literal"><span class="pre">MembershipsByUser</span></tt>)</li>
+</ul>
+<p><strong>Fields in Membership</strong></p>
+<ul class="simple">
+<li><strong>ID</strong> (<tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AutoField</span></tt>), <strong>Author</strong> (<tt class="docutils literal"><span class="pre">user</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#users-user"><em>User</em></a>), <strong>Team</strong> (<tt class="docutils literal"><span class="pre">team</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ForeignKey</span></tt> to <a class="reference internal" href="#users-team"><em>Team</em></a>)</li>
+</ul>
+<p><strong>Actions on Membership</strong></p>
+<ul class="simple">
+<li><strong>Table (landscape)</strong> (<tt class="docutils literal"><span class="pre">as_pdf</span></tt>, <a class="reference external" href="http://docs.lino-framework.org/api/lino.utils.appy_pod.html#lino.utils.appy_pod.PrintTableAction" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">PrintTableAction</span></tt></a>) &#8211; Show this table as a pdf document</li>
+<li><strong>Table (portrait)</strong> (<tt class="docutils literal"><span class="pre">as_pdf_p</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">PortraitPrintTableAction</span></tt>) &#8211; Show this table as a pdf document</li>
+</ul>
+</div>
+<div class="section" id="user-profiles-view">
+<span id="lino-userprofiles"></span><h2><a class="toc-backref" href="#id7">User Profiles (view)</a><a class="headerlink" href="#user-profiles-view" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Internal name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">lino.UserProfiles</span></tt> (<a class="reference external" href="http://docs.lino-framework.org/api/lino.core.perms.html#lino.core.perms.UserProfiles" title="(in Lino v1.6)"><tt class="xref py py-class docutils literal"><span class="pre">UserProfiles</span></tt></a>)</td>
+</tr>
+</tbody>
+</table>
+<p>The list of user profiles available on this site.</p>
+<p>Each user profile is a set of user levels
+(one for each functional group),
+leading to an individual combination of permissions.</p>
+<p>The demo database has defined the following user profiles:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="28%" />
+<col width="39%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>value</td>
+<td>name</td>
+<td>text</td>
+<td>User Level (System)</td>
+</tr>
+<tr class="row-even"><td>000</td>
+<td>anonymous</td>
+<td>Anonymous</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>100</td>
+<td>user</td>
+<td>User</td>
+<td>User</td>
+</tr>
+<tr class="row-even"><td>900</td>
+<td>admin</td>
+<td>Administrator</td>
+<td>Administrator</td>
+</tr>
+</tbody>
+</table>
+<p>Note that we show here only the &#8220;general&#8221; or &#8220;system&#8221; userlevel.
+Open <em class="menuselection">Explorer ‣ System ‣ User Profiles</em>
+in your Lino to see all application-specific userlevels.</p>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/lino-logo-2.png" alt="Logo"/>
+            </a></p><p align="center">
+  EN
+  <a href="de/users.html">DE</a>
+  <a href="fr/users.html">FR</a> 
+</p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tour.html">An introduction to Lino-Così</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="products.html">Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sales.html">Sales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ledger.html">General Ledger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><p align="center">
+<a href="http://code.google.com/p/lino-faggio/" target="_blank">code</a>
+<a href="http://pypi.python.org/pypi/lino-faggio" target="_blank">pypi</a>
+<br/>
+user |
+<a href="http://faggio.lino-framework.org" target="_blank">technical</a>
+
+
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="countries.html" title="Countries"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="general.html" title="General concepts"
+             >previous</a> |</li>
+        <li><a href="index.html">Lino-Cosi Benutzerhandbuch 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luc Saffre.
+      Last updated on Feb 10, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.    
+    <a href="http://code.google.com/p/lino-welfare/source/browse/docs/users.rst"
+           rel="nofollow">Show Source</a>.
+    <a href="http://welfare.lino-framework.org/users.html">Online Link</a>.
+    </div>
+  </body>
+</html>
