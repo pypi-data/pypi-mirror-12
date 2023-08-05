@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Forms &mdash; flyforms 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="flyforms 0.1.0 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-flyforms.form">
+<span id="forms"></span><h1>Forms<a class="headerlink" href="#module-flyforms.form" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="form-s-api">
+<h2>Form&#8217;s API<a class="headerlink" href="#form-s-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="form-api">
+<h3>Form API<a class="headerlink" href="#form-api" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.form.Form">
+<em class="property">class </em><code class="descclassname">flyforms.form.</code><code class="descname">Form</code><span class="sig-paren">(</span><em>**data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/form.html#Form"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.form.Form" title="Permalink to this definition">¶</a></dt>
+<dd><p>The root class for all Forms</p>
+<dl class="method">
+<dt id="flyforms.form.Form.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/form.html#Form.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.form.Form.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for Form&#8217;s instances</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; additional data to form</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flyforms.form.Form.is_bound">
+<code class="descname">is_bound</code><a class="headerlink" href="#flyforms.form.Form.is_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property that checks is Form instance bound.
+Return True if all fields is bound. Otherwise, False.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flyforms.form.Form.is_valid">
+<code class="descname">is_valid</code><a class="headerlink" href="#flyforms.form.Form.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property that checks is Form instance valid.
+Return True when it&#8217;s bound and there are no errors. Otherwise, False.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="nonbindingform-api">
+<h3>NonbindingForm API<a class="headerlink" href="#nonbindingform-api" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.form.NonbindingForm">
+<em class="property">class </em><code class="descclassname">flyforms.form.</code><code class="descname">NonbindingForm</code><a class="reference internal" href="_modules/flyforms/form.html#NonbindingForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.form.NonbindingForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The root class for all NonbindingForms</p>
+<dl class="method">
+<dt id="flyforms.form.NonbindingForm.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flyforms.form.NonbindingForm.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flyforms.form.NonbindingForm.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>**schema</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/form.html#NonbindingForm.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.form.NonbindingForm.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate the given data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>schema</strong> (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; the from data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raise:</th><td class="field-body">ValidationError if data is not valid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="flyforms.form.NonbindingForm.is_valid">
+<code class="descname">is_valid</code><span class="sig-paren">(</span><em>**schema</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/form.html#NonbindingForm.is_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.form.NonbindingForm.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check is given data valid.
+It is the same as the validate method but without rising ValidationError.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>schema</strong> (<em>dict.</em>) &#8211; the from data.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">boolean flag.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="form-s-usage">
+<h2>Form&#8217;s usage<a class="headerlink" href="#form-s-usage" title="Permalink to this headline">¶</a></h2>
+<p>This section contains usage cases for Forms</p>
+<div class="section" id="basic-usage">
+<h3>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">flyforms</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">LoginForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span>
+        <span class="n">min_length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">regex</span><span class="o">=</span><span class="s">r&quot;^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&amp;\*])&quot;</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">64</span>
+    <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">lf</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">(</span>
+        <span class="n">email</span><span class="o">=</span><span class="s">&quot;qwerty@gmail.com&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s">&quot;Qwerty_#123&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">lf</span><span class="o">.</span><span class="n">is_bound</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; True</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">lf</span><span class="o">.</span><span class="n">is_valid</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; True</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">lf</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; {}</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">lf</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; Qwerty_#123</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">lf</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; qwerty@gmail.com</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="form-s-inheritance">
+<h3>Form&#8217;s inheritance<a class="headerlink" href="#form-s-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>As a normal Python object Forms have inheritance. See an example below:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">LoginForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span>
+        <span class="n">min_length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">regex</span><span class="o">=</span><span class="s">r&quot;^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&amp;\*])&quot;</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">64</span>
+    <span class="p">)</span>
+
+<span class="n">countries</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&quot;United Kingdom&quot;</span><span class="p">,</span>
+    <span class="s">&quot;United States&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Russia&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Venezuela&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Ukraine&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Cuba&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Egypt&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Finland&quot;</span><span class="p">,</span>
+    <span class="s">&quot;France&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Germany&quot;</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">RegistrationForm</span><span class="p">(</span><span class="n">LoginForm</span><span class="p">):</span>
+
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span>
+        <span class="n">regex</span><span class="o">=</span><span class="s">r&quot;^[A-Z].*$&quot;</span><span class="p">,</span>
+        <span class="n">min_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">64</span>
+    <span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span>
+        <span class="n">regex</span><span class="o">=</span><span class="s">r&quot;^[A-Z].*$&quot;</span><span class="p">,</span>
+        <span class="n">min_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">64</span>
+    <span class="p">)</span>
+    <span class="n">country</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">countries</span><span class="p">)</span>
+    <span class="n">company</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span>
+        <span class="n">regex</span><span class="o">=</span><span class="s">r&quot;^[A-Z].*$&quot;</span><span class="p">,</span>
+        <span class="n">min_length</span><span class="o">=</span><span class="mi">3</span>
+    <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">reg_f</span> <span class="o">=</span> <span class="n">RegistrationForm</span><span class="p">(</span>
+        <span class="n">first_name</span><span class="o">=</span><span class="s">&quot;John&quot;</span><span class="p">,</span>
+        <span class="n">last_name</span><span class="o">=</span><span class="s">&quot;Smith&quot;</span><span class="p">,</span>
+        <span class="n">email</span><span class="o">=</span><span class="s">&quot;qwerty@gmail.com&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s">&quot;Qwerty_#123&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">reg_f</span><span class="o">.</span><span class="n">is_bound</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; False</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">reg_f</span><span class="o">.</span><span class="n">is_valid</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; False</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">reg_f</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>  <span class="c"># &gt;&gt;&gt; {&#39;country&#39;: &#39;Field is required.&#39;, &#39;company&#39;: &#39;Field is required.&#39;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Forms</a><ul>
+<li><a class="reference internal" href="#form-s-api">Form&#8217;s API</a><ul>
+<li><a class="reference internal" href="#form-api">Form API</a></li>
+<li><a class="reference internal" href="#nonbindingform-api">NonbindingForm API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#form-s-usage">Form&#8217;s usage</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li><a class="reference internal" href="#form-s-inheritance">Form&#8217;s inheritance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/forms.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Pavel Sizov.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/forms.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

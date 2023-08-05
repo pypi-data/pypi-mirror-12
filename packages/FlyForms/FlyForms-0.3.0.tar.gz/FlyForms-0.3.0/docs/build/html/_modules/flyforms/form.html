@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>flyforms.form &mdash; flyforms 0.3.0dev documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="flyforms 0.3.0dev documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> flyforms
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../concept.html">Introduction to FlyForms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">FlyForms reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">FlyForms Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">flyforms</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>flyforms.form</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for flyforms.form</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">isclass</span>
+
+<span class="kn">from</span> <span class="nn">flyforms.validators</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">flyforms.common</span> <span class="kn">import</span> <span class="n">UNSET</span>
+<span class="kn">from</span> <span class="nn">flyforms.fields</span> <span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">flyforms.compatibility</span> <span class="kn">import</span> <span class="n">with_metaclass</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;Form&quot;</span><span class="p">,</span> <span class="s">&quot;validate_schema&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">FormMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The metaclass for Form and it&#39;s subclasses</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">):</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c"># create a container for Form&#39;s fields names</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>  <span class="c"># walk through class attributes</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>  <span class="c"># find all Field instances</span>
+                <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>  <span class="c"># catch them</span>
+                <span class="n">dct</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">FormField</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>  <span class="c"># and replace with descriptor</span>
+
+        <span class="c"># Update class attributes</span>
+        <span class="n">dct</span><span class="p">[</span><span class="s">&quot;_fields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">FormMeta</span><span class="p">,</span> <span class="n">mcs</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span>  <span class="c"># create new class</span>
+
+        <span class="c"># Get all fields names from MRO</span>
+        <span class="n">_fields</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c"># prepare container for Form fields names</span>
+        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">__mro__</span><span class="p">:</span>  <span class="c"># walk through the MRO</span>
+            <span class="n">_fields</span> <span class="o">|=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="s">&quot;_fields&quot;</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>  <span class="c"># get fields names from each base</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">_fields</span> <span class="o">=</span> <span class="n">_fields</span>  <span class="c"># update Form&#39;s fields</span>
+        <span class="k">return</span> <span class="n">cls</span>
+
+
+<span class="k">class</span> <span class="nc">FormField</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">field_obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field_obj</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;You should bind FormField with Field subclass instance, not {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">field_obj</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field_obj</span>
+
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">Form</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">Form</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">instance</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">instance</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">Form</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t use FormField without Form&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">Form</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t use FormField without Form&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">UNSET</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t overwrite already bound field {}!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">UNSET</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s">&quot;You can</span><span class="se">\&#39;</span><span class="s">t delete Form fields!&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Form"><a class="viewcode-back" href="../../api.html#flyforms.form.Form">[docs]</a><span class="k">class</span> <span class="nc">Form</span><span class="p">(</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">FormMeta</span><span class="p">,</span> <span class="nb">object</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The root class for all Forms</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_fields</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param data: additional data to form</span>
+<span class="sd">        :type data: dict</span>
+
+<span class="sd">        When a Form is instantiated you can access given data via instance attributes or get everything at once</span>
+<span class="sd">        using :py:attr:`.data` attribute</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># create a container for Form data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># create a container for Form&#39;s errors</span>
+
+        <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>  <span class="c"># walk through class fields</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">))</span>  <span class="c"># and try to set up them</span>
+        <span class="k">for</span> <span class="n">unk</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c"># if some extra fields given it&#39;s an error</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="n">unk</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Unknown field </span><span class="si">%s</span><span class="s"> in data for Form </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">unk</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_bound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks is Form instance bound.</span>
+<span class="sd">        Returns True if all fields is bound. Otherwise, False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">UNSET</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks is Form instance valid.</span>
+<span class="sd">        Returns there are no errors. Otherwise, False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">==</span> <span class="p">{}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        .. deprecated:: 0.3.0</span>
+<span class="sd">            Will be removed in v1.0.0. Use :py:meth:`.Form.to_python()` instead</span>
+
+<span class="sd">        Returns :code:`dict` with bound data (if you need all data even :py:data:`.UNSET` values -</span>
+<span class="sd">        use :py:attr:`.raw_data`)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">field</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">UNSET</span><span class="p">}</span>
+
+<div class="viewcode-block" id="Form.to_python"><a class="viewcode-back" href="../../api.html#flyforms.form.Form.to_python">[docs]</a>    <span class="k">def</span> <span class="nf">to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns :code:`dict` with bound data (if you need all data even :py:data:`.UNSET` values -</span>
+<span class="sd">        use :py:attr:`.raw_data`)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">field</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">UNSET</span><span class="p">}</span>
+
+</div></div>
+<div class="viewcode-block" id="validate_schema"><a class="viewcode-back" href="../../api.html#flyforms.form.validate_schema">[docs]</a><span class="k">def</span> <span class="nf">validate_schema</span><span class="p">(</span><span class="n">form_cls</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function validates given data via given :py:class:`.Form` subclass</span>
+<span class="sd">    without defined Form instantiation.</span>
+
+<span class="sd">    :param form_cls: user-defined Form</span>
+<span class="sd">    :type form_cls: :py:class:`.Form`</span>
+
+<span class="sd">    :param data: data to validate</span>
+
+<span class="sd">    :return: boolean flag is data valid for given :code:`form_cls`</span>
+
+<span class="sd">    :raises TypeError: if given :code:`form_cls` is not class</span>
+<span class="sd">        or not :py:class:`.Form` subclass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">isclass</span><span class="p">(</span><span class="n">form_cls</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">form_cls</span><span class="p">,</span> <span class="n">Form</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;You should pass Form subclass, not instance as first arg&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">form_cls</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>
+        <span class="n">field_obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">form_cls</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Sizov.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3.0dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

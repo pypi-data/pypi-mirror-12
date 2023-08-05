@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fields &mdash; flyforms 0.2.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="flyforms 0.2.0 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> flyforms
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="concept.html">Introduction to FlyForms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">FlyForms reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">FlyForms Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">flyforms</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Fields</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/fields.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fields">
+<h1>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h1>
+<p>Fields represent a set of rules to data validation via set of <a class="reference internal" href="api.html#flyforms.validators.Validator" title="flyforms.validators.Validator"><code class="xref py py-class docutils literal"><span class="pre">Validator</span></code></a> instances. When you define yours
+custom <a class="reference internal" href="api.html#flyforms.form.Form" title="flyforms.form.Form"><code class="xref py py-class docutils literal"><span class="pre">Form</span></code></a> you define Fields as its class attributes.
+This is the most common usage of Fields, but nothing prevents you to use them standalone.</p>
+<span class="target" id="module-flyforms.fields"></span><div class="section" id="field-class">
+<h2>Field class<a class="headerlink" href="#field-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flyforms.fields.Field">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">Field</code><a class="reference internal" href="_modules/flyforms/fields.html#Field"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Construction</strong></p>
+<dl class="method">
+<dt id="flyforms.fields.Field.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>required=True</em>, <em>choices=()</em>, <em>validators=()</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#Field.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.Field.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>required</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; boolean flag is this field required or can be empty</li>
+<li><strong>choices</strong> (<em>iterable</em>) &#8211; iterable object contains possible values of this field</li>
+<li><strong>validators</strong> (<em>list of callable</em>) &#8211; the additional validators for field</li>
+<li><strong>default</strong> (<em>instance of value_types</em>) &#8211; the default value of the field</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises TypeError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if passed arguments invalid</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Methods</strong></p>
+<dl class="method">
+<dt id="flyforms.fields.Field.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#Field.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.Field.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates given value via defined set of <code class="code docutils literal"><span class="pre">Validators</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> &#8211; the value to validate</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="flyforms.fields.Field.is_valid">
+<code class="descname">is_valid</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#Field.is_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.Field.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#8216;silent&#8217; variant of value validation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> &#8211; the value to validate</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if given value is valid, otherwise - False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="flyforms.fields.Field.bind">
+<code class="descname">bind</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#Field.bind"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.Field.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates and given value via defined set of <code class="code docutils literal"><span class="pre">Validators</span></code> and returns it</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> &#8211; the value to bind</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">given value or <code class="code docutils literal"><span class="pre">field.default</span></code> if value is <code class="code docutils literal"><span class="pre">UNSET</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0.</span></p>
+</div>
+</dd></dl>
+
+<p><strong>Attributes</strong></p>
+<dl class="attribute">
+<dt id="flyforms.fields.Field.required">
+<code class="descname">required</code><a class="headerlink" href="#flyforms.fields.Field.required" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boolean flag passed to constructor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flyforms.fields.Field.default">
+<code class="descname">default</code><a class="headerlink" href="#flyforms.fields.Field.default" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default value for Field (passed to constructor value or <a class="reference internal" href="api.html#flyforms.common.UNSET" title="flyforms.common.UNSET"><code class="xref py py-data docutils literal"><span class="pre">UNSET</span></code></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flyforms.fields.Field.base_validators">
+<code class="descname">base_validators</code><a class="headerlink" href="#flyforms.fields.Field.base_validators" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of attached by processing construction arguments <code class="code docutils literal"><span class="pre">Validators</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flyforms.fields.Field.custom_validators">
+<code class="descname">custom_validators</code><a class="headerlink" href="#flyforms.fields.Field.custom_validators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterable object contains <code class="code docutils literal"><span class="pre">custom_validators</span></code> passed to constructor</p>
+</dd></dl>
+
+<p><strong>Property</strong></p>
+<dl class="attribute">
+<dt id="flyforms.fields.Field.validators">
+<code class="descname">validators</code><a class="headerlink" href="#flyforms.fields.Field.validators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chain, contains <code class="code docutils literal"><span class="pre">base_validators</span></code> and <code class="code docutils literal"><span class="pre">custom_validators</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="basic-fields">
+<h2>Basic Fields<a class="headerlink" href="#basic-fields" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stringfield">
+<h3>StringField<a class="headerlink" href="#stringfield" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.StringField">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">StringField</code><span class="sig-paren">(</span><em>min_length=None</em>, <em>max_length=None</em>, <em>regex=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#StringField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.StringField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects Python strings</p>
+<dl class="method">
+<dt id="flyforms.fields.StringField.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>min_length=None</em>, <em>max_length=None</em>, <em>regex=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#StringField.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.StringField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>required</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; boolean flag is this field required</li>
+<li><strong>min_length</strong> (<em>int or None</em>) &#8211; the minimum length of the string</li>
+<li><strong>max_length</strong> (<em>int or None</em>) &#8211; the maximum length of the string</li>
+<li><strong>regex</strong> (<em>str or regexp</em>) &#8211; the regular expression to validate</li>
+<li><strong>choices</strong> (<em>iterable</em>) &#8211; iterable object contains possible values of this field</li>
+<li><strong>validators</strong> (<em>list of callable</em>) &#8211; the additional validators for field</li>
+<li><strong>default</strong> (<em>instance of value_types</em>) &#8211; the default value of the field</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="emailfield">
+<h3>EmailField<a class="headerlink" href="#emailfield" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.EmailField">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">EmailField</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#EmailField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.EmailField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects Python string corresponding to an email</p>
+<dl class="method">
+<dt id="flyforms.fields.EmailField.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#EmailField.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.EmailField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>required</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; boolean flag is this field required</li>
+<li><strong>choices</strong> (<em>iterable</em>) &#8211; iterable object contains possible values of this field</li>
+<li><strong>validators</strong> (<em>list of callable</em>) &#8211; the additional validators for field</li>
+<li><strong>default</strong> (<em>instance of value_types</em>) &#8211; the default value of the field</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="intfield">
+<h3>IntField<a class="headerlink" href="#intfield" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.IntField">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">IntField</code><span class="sig-paren">(</span><em>min_value=None</em>, <em>max_value=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#IntField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.IntField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects Python integer (<code class="code docutils literal"><span class="pre">int</span></code>)</p>
+<dl class="method">
+<dt id="flyforms.fields.IntField.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>min_value=None</em>, <em>max_value=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#IntField.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.IntField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>required</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; boolean flag is this field required</li>
+<li><strong>min_value</strong> &#8211; the minimum valid value</li>
+<li><strong>max_value</strong> &#8211; the maximum valid value</li>
+<li><strong>choices</strong> (<em>iterable</em>) &#8211; iterable object contains possible values of this field</li>
+<li><strong>validators</strong> (<em>list of callable</em>) &#8211; the additional validators for field</li>
+<li><strong>default</strong> (<em>instance of value_types</em>) &#8211; the default value of the field</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="floatfield">
+<h3>FloatField<a class="headerlink" href="#floatfield" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.FloatField">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">FloatField</code><span class="sig-paren">(</span><em>min_value=None</em>, <em>max_value=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#FloatField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.FloatField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects Python float (<code class="code docutils literal"><span class="pre">float</span></code>)</p>
+<dl class="method">
+<dt id="flyforms.fields.FloatField.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>min_value=None</em>, <em>max_value=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flyforms.fields.FloatField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>required</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; boolean flag is this field required</li>
+<li><strong>min_value</strong> &#8211; the minimum valid value</li>
+<li><strong>max_value</strong> &#8211; the maximum valid value</li>
+<li><strong>choices</strong> (<em>iterable</em>) &#8211; iterable object contains possible values of this field</li>
+<li><strong>validators</strong> (<em>list of callable</em>) &#8211; the additional validators for field</li>
+<li><strong>default</strong> (<em>instance of value_types</em>) &#8211; the default value of the field</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="booleanfield">
+<h3>BooleanField<a class="headerlink" href="#booleanfield" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.BooleanField">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">BooleanField</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#BooleanField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.BooleanField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects Python boolean (<code class="code docutils literal"><span class="pre">bool</span></code>)</p>
+<dl class="method">
+<dt id="flyforms.fields.BooleanField.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#BooleanField.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.BooleanField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>required</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; boolean flag is this field required</li>
+<li><strong>validators</strong> (<em>list of callable</em>) &#8211; the additional validators for field</li>
+<li><strong>default</strong> (<em>instance of value_types</em>) &#8211; the default value of the field</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ip4field">
+<h3>Ip4Field<a class="headerlink" href="#ip4field" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.Ip4Field">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">Ip4Field</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#Ip4Field"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.Ip4Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects Python string corresponding to an IPv4 address</p>
+<dl class="method">
+<dt id="flyforms.fields.Ip4Field.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#Ip4Field.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.Ip4Field.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>required</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; boolean flag is this field required</li>
+<li><strong>choices</strong> (<em>iterable</em>) &#8211; iterable object contains possible values of this field</li>
+<li><strong>validators</strong> (<em>list of callable</em>) &#8211; the additional validators for field</li>
+<li><strong>default</strong> (<em>instance of value_types</em>) &#8211; the default value of the field</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="schema-field">
+<h2>Schema Field<a class="headerlink" href="#schema-field" title="Permalink to this headline">¶</a></h2>
+<p>Schema Fields is a set of rules to validation data structures such as lists, dicts.</p>
+<div class="section" id="listfield">
+<h3>ListField<a class="headerlink" href="#listfield" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.ListField">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">ListField</code><span class="sig-paren">(</span><em>min_length=None</em>, <em>max_length=None</em>, <em>jsonify=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#ListField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.ListField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects iterable Python objects</p>
+<dl class="method">
+<dt id="flyforms.fields.ListField.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>min_length=None</em>, <em>max_length=None</em>, <em>jsonify=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#ListField.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.ListField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>min_length</strong> &#8211; minimum iterable length</li>
+<li><strong>max_length</strong> &#8211; maximum iterable length</li>
+<li><strong>jsonify</strong> &#8211; if passed <code class="code docutils literal"><span class="pre">item_type</span></code> should be one of <a class="reference internal" href="api.html#flyforms.common.jsonify_types" title="flyforms.common.jsonify_types"><code class="xref py py-data docutils literal"><span class="pre">jsonify_types</span></code></a></li>
+<li><strong>kwargs</strong> &#8211; basic <a class="reference internal" href="#flyforms.fields.Field" title="flyforms.fields.Field"><code class="xref py py-class docutils literal"><span class="pre">Field</span></code></a> parameters</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="arrayfield">
+<h3>ArrayField<a class="headerlink" href="#arrayfield" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="flyforms.fields.ArrayField">
+<em class="property">class </em><code class="descclassname">flyforms.fields.</code><code class="descname">ArrayField</code><span class="sig-paren">(</span><em>item_type</em>, <em>jsonify=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#ArrayField"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.ArrayField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflects iterable objects where each item same type</p>
+<dl class="method">
+<dt id="flyforms.fields.ArrayField.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>item_type</em>, <em>jsonify=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flyforms/fields.html#ArrayField.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flyforms.fields.ArrayField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>item_type</strong> &#8211; type of each item in the list</li>
+<li><strong>kwargs</strong> &#8211; basic <a class="reference internal" href="#flyforms.fields.ListField" title="flyforms.fields.ListField"><code class="xref py py-class docutils literal"><span class="pre">ListField</span></code></a> parameters</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="custom-fields">
+<h2>Custom Fields<a class="headerlink" href="#custom-fields" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, it is necessary to design custom fields for validation of some special data structures.
+If you want do this, you should design your custom subclass of the <a class="reference internal" href="#flyforms.fields.Field" title="flyforms.fields.Field"><code class="xref py py-class docutils literal"><span class="pre">Field</span></code></a>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Sizov.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
