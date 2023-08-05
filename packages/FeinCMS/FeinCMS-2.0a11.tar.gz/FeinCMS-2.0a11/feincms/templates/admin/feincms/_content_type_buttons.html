@@ -1,0 +1,64 @@
+{% load feincms_admin_tags %}
+<script type="text/javascript">
+/*
+type: content type identifier (required)
+cssclass: quickbutton CSS class
+raw_id_picker: URL of raw_id_fields picker which should be automatically opened
+after: callback, receives new fieldset as argument
+keep: keep entry in content type dropdown (defaults to false)
+*/
+{% url "admin:medialibrary_mediafile_changelist" as media_library_url %}
+var CONTENT_TYPE_BUTTONS = [
+    {
+        type: 'richtextcontent',
+        cssclass: 'fa-pencil',
+        keep: true
+    }, {
+        type: 'imagecontent',
+        cssclass: 'fa-file-image-o',
+        keep: true
+    }, {
+        type: 'filecontent',
+        cssclass: 'fa-file-pdf-o',
+        keep: true
+    }, {
+        type: 'filerimagecontent',
+        cssclass: 'fa-file-image-o',
+        keep: true
+    }, {
+        type: 'filerfilecontent',
+        cssclass: 'fa-file-pdf-o',
+        keep: true
+    }, {
+        type: 'videocontent',
+        keep: true,
+        cssclass: 'oembedcontent'
+{% if media_library_url %}
+    }, {
+        type: 'mediafilecontent',
+        cssclass: 'fa-file-image-o',
+        keep: true,
+        raw_id_picker: '{{ media_library_url }}?type__exact=image&_popup=1'
+    }, {
+        type: 'gallerycontent',
+        keep: true
+    }, {
+        type: 'mediafilecontent',
+        cssclass: 'fa-file-pdf-o',
+        keep: true,
+        raw_id_picker: '{{ media_library_url }}?type__exact=pdf&_popup=1'
+{% endif %}
+    }, {
+        type: 'oembedcontent',
+        cssclass: 'fa-file-video-o',
+        keep: true
+{% if media_library_url %}
+    }, {
+        type: 'mediafilecontent',
+        cssclass: 'fa-file-audio-o',
+        keep: true,
+        raw_id_picker: '{{ media_library_url }}?type__exact=audio&_popup=1'
+{% endif %}
+    }
+];
+</script>
