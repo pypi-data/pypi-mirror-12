@@ -1,0 +1,94 @@
+Metadata-Version: 1.1
+Name: hdbscan
+Version: 0.1
+Summary: Clustering based on density with variable density clusters
+Home-page: http://github.com/lmcinnes/hdbscan
+Author: Leland McInnes
+Author-email: leland.mcinnes@gmail.com
+License: BSD
+Description: =======
+        HDBSCAN
+        =======
+        
+        HDBSCAN - Hierarchical Density-Based Spatial Clustering of Applications
+        with Noise. Performs DBSCAN over varying epsilon values and integrates 
+        the result to find a clustering that gives the best stability over epsilon.
+        This allows HDBSCAN to find clusters of varying densities (unlike DBSCAN),
+        and be more robust to parameter selection.
+        
+        Based on the paper:
+            R. Campello, D. Moulavi, and J. Sander, *Density-Based Clustering Based on
+            Hierarchical Density Estimates*
+            In: Advances in Knowledge Discovery and Data Mining, Springer, pp 160-172.
+            2013
+        
+        ------------------
+        How to use HDBSCAN
+        ------------------
+        
+        The hdbscan package inherits from sklearn classes, and thus drops in neatly
+        next to other sklearn clusterers with an indentical calling API. Similarly it
+        supports input in a variety of formats: an array (or pandas dataframe, or
+        sparse matrix) of shape `(num_samples x num_features)`; an array (or sparse matrix)
+        giving a distance matrix between samples.
+        
+        .. code:: python
+        
+            import hdbscan
+            
+            clusterer = hdbscan.HDBSCAN(min_cluster_size=10)
+            cluster_labels = clusterer.fit_predict(data)
+        
+        ----------
+        Installing
+        ----------
+        
+        Fast install
+        
+        .. code:: bash
+        
+            pip install hdbscan
+        
+        For a manual install get this package:
+        
+        .. code:: bash
+        
+            wget https://github.com/lmcinnes/hdbscan/archive/master.zip
+            unzip master.zip
+            rm master.zip
+            cd hdbscan-master
+        
+        Install the requirements
+        
+        .. code:: bash
+        
+            sudo pip install -r requirements.txt
+        
+        Install the package
+        
+        .. code:: bash
+        
+            python setup.py install
+        
+        ---------
+        Licensing
+        ---------
+        
+        The hdbscan package is BSD licensed. Enjoy.
+        
+Keywords: cluster clustering density hierarchical
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Classifier: Topic :: Scientific/Engineering
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
