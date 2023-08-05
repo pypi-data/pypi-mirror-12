@@ -1,0 +1,24 @@
+# Documentation:
+#   https://hitchtest.readthedocs.org/en/latest/api/engine_api.html
+
+- name: Stub
+  scenario:
+{% if webapp and django %}
+    - Load website
+{% endif %}
+{% if webapp %}
+    - Click: button-html-id
+    - Click: First htmlclass1
+    - Click: 2nd htmlclass2 htmlclass3
+    - Click: Last htmlclass4
+    - Type: Some text
+    - Fill form:
+        username_html_id: username
+        password1: password
+        password2: password
+{% endif %}
+{% if cli %}
+    - Run: command argument1 --optionalarg 1
+    - Expect: Continue?
+    - Send keys: Y
+{% endif %}
