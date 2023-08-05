@@ -1,0 +1,96 @@
+###
+# app configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/environment.html
+###
+
+[app:main]
+use = egg:{{project}}
+
+pyramid.reload_templates = false
+pyramid.debug_authorization = false
+pyramid.debug_notfound = false
+pyramid.debug_routematch = false
+pyramid.default_locale_name = de
+pyramid.includes =
+    pyramid_tm
+
+[score.init]
+modules =
+    score.webassets
+    score.tpl
+    score.html
+    score.js
+    score.css
+    score.svg
+    score.db
+
+[score.db]
+base = {{package}}.db.base.Storable
+sqlalchemy.url = sqlite:///${here}/database.sqlite3
+
+[score.webassets]
+cachedir = ${here}/_cache
+versionmanager = score.webassets.versioning.VersionManager
+versionmanager.folder = ${here}/_assets
+
+[score.tpl]
+rootdir = ${here}/{{package}}/tpl/
+engine.jinja2 = score.tpl.jinja2.Engine
+default_format = html
+
+[score.js]
+combine = true
+minifier = score.js.minifier.Uglifyjs
+
+[score.css]
+combine = true
+minify = true
+
+###
+# wsgi server configuration
+###
+
+[server:main]
+use = egg:waitress#main
+host = 0.0.0.0
+port = 6543
+
+###
+# logging configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/logging.html
+###
+
+[loggers]
+keys = root, {{package_logger}}, sqlalchemy
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = WARN
+handlers = console
+
+[logger_{{package_logger}}]
+level = WARN
+handlers =
+qualname = {{package}}
+
+[logger_sqlalchemy]
+level = WARN
+handlers =
+qualname = sqlalchemy.engine
+# "level = INFO" logs SQL queries.
+# "level = DEBUG" logs SQL queries and results.
+# "level = WARN" logs neither.  (Recommended for production systems.)
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+level = NOTSET
+formatter = generic
+
+[formatter_generic]
+format = %(asctime)s %(levelname)-5.5s [%(name)s][%(threadName)s] %(message)s
