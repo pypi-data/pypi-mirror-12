@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>primer_designer.designer &mdash; primer-designer 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="primer-designer 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="primer_designer" href="../primer_designer.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> primer-designer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">Release History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">primer-designer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../primer_designer.html">primer_designer</a> &raquo;</li>
+      
+    <li>primer_designer.designer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for primer_designer.designer</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">Bio.Alphabet</span> <span class="kn">import</span> <span class="n">IUPAC</span>
+<span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio.SeqIO</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">is_fasta</span>
+
+
+<div class="viewcode-block" id="PrimerDesigner"><a class="viewcode-back" href="../../primer_designer.html#primer_designer.designer.PrimerDesigner">[docs]</a><span class="k">class</span> <span class="nc">PrimerDesigner</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Class for designing primers from FASTA files.</span>
+
+<span class="sd">    It will send a FASTA alignment to `primers4clades`_ in order to design</span>
+<span class="sd">    degenerate primers. Input data needed is an alignment in FASTA format</span>
+<span class="sd">    containing at least 4 sequences.</span>
+<span class="sd">    It is recommended that the beginning of each FASTA sequence description</span>
+<span class="sd">    contains the taxon name between square brackets.</span>
+
+<span class="sd">    Parameters:</span>
+
+<span class="sd">        folder (str):                path of folder containing the FASTA file alignments</span>
+<span class="sd">        taxon_for_codon_usage (str): optional taxon name that will be inserted in the</span>
+<span class="sd">                                     description of FASTA sequences between square</span>
+<span class="sd">                                     brackets so that can be used by primer4clades</span>
+<span class="sd">                                     to infer the codon table to use</span>
+<span class="sd">        tm (str):                    temperature</span>
+<span class="sd">        min_amplength (str):         minimum amplicon length</span>
+<span class="sd">        max_amplength (str):         maximum amplicon length</span>
+<span class="sd">        gencode (str):               genetic code. See below for all available genetic</span>
+<span class="sd">                                     codes</span>
+<span class="sd">        clustype (str):              cluster distance metric: ``dna``, ``protein``.</span>
+<span class="sd">        amptype (str):               substitution model used to estimate phylogenetic</span>
+<span class="sd">                                     information</span>
+<span class="sd">        email (str):                 your email address so that primer4clades can send</span>
+<span class="sd">                                     you email with detailed results</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        &gt;&gt;&gt; # The values shown are the default. Change them if needed.</span>
+<span class="sd">        &gt;&gt;&gt; from primer_designer import PrimerDesigner</span>
+<span class="sd">        &gt;&gt;&gt; pd = PrimerDesigner()</span>
+<span class="sd">        &gt;&gt;&gt; pd.folder = &quot;alignments&quot;   # folder containing the FASTA file alignments</span>
+<span class="sd">        &gt;&gt;&gt; pd.tm = &quot;55&quot;               # annealing temperature</span>
+<span class="sd">        &gt;&gt;&gt; pd.min_amplength = &quot;250&quot;   # minimum amplicon length</span>
+<span class="sd">        &gt;&gt;&gt; pd.max_amplength = &quot;500&quot;   # maximum amplicon length</span>
+<span class="sd">        &gt;&gt;&gt; pd.gencode = &quot;universal&quot;   # see below for all available genetic codes</span>
+<span class="sd">        &gt;&gt;&gt; pd.mode  = &quot;primers&quot;</span>
+<span class="sd">        &gt;&gt;&gt; pd.clustype = &quot;dna&quot;</span>
+<span class="sd">        &gt;&gt;&gt; pd.amptype = &quot;dna_GTRG&quot;    # substitution model used to estimate phylogenetic information</span>
+<span class="sd">        &gt;&gt;&gt; pd.email = &quot;youremail@email.com&quot;   # primer4clades will send you an email with very detailed results</span>
+<span class="sd">        &gt;&gt;&gt; pd.design_primers()</span>
+
+<span class="sd">    The best primer pairs will be printed to your screen. Detailed results will</span>
+<span class="sd">    be saved as HTML files in your alignments folder. But it is recommended if</span>
+<span class="sd">    you also get the results by email. primers4clades_ will send you one email</span>
+<span class="sd">    for each alignment.</span>
+<span class="sd">    The genetic code table (variable ``gencode``) can be any of the following:</span>
+
+<span class="sd">        * ``universal`` for standard</span>
+<span class="sd">        * ``2`` for vertebrate mitochondrial</span>
+<span class="sd">        * ``3`` for yeast mitochondrial</span>
+<span class="sd">        * ``4`` for mold and protozoa mitochondrial</span>
+<span class="sd">        * ``5`` for invertebrate mitochondrial</span>
+<span class="sd">        * ``6`` for ciliate</span>
+<span class="sd">        * ``9`` for echinoderm and flatworm</span>
+<span class="sd">        * ``10`` for  euplotid nuclear</span>
+<span class="sd">        * ``11`` for  bacterial and plastid</span>
+<span class="sd">        * ``12`` for  alternative yeast nuclear</span>
+<span class="sd">        * ``13`` for  ascidian mitochondrial</span>
+<span class="sd">        * ``14`` for  flatworm mitochondrial</span>
+<span class="sd">        * ``15`` for  Blepharisma nuclear</span>
+<span class="sd">        * ``16`` for  Chlorophycean mitochondrial</span>
+<span class="sd">        * ``21`` for  Trematode mitochondrial</span>
+<span class="sd">        * ``22`` for  Scenedesmus obliquus mitochondrial</span>
+<span class="sd">        * ``23`` for  Thraustochytrium mitochondrial</span>
+
+<span class="sd">    The evolutionary substitution model can be any of the following (variable</span>
+<span class="sd">    ``amptype``):</span>
+
+<span class="sd">        * ``protein_WAGG``  for protein WAG+G</span>
+<span class="sd">        * ``protein_JTTG``  for protein JTT+G</span>
+<span class="sd">        * ``protein_Blosum62G``  for protein Blosum62+G</span>
+<span class="sd">        * ``protein_VTG``  for protein VT+G</span>
+<span class="sd">        * ``protein_DayhoffG``  for protein Dayhoff+G</span>
+<span class="sd">        * ``protein_MtREVG``  for protein MtREV+G</span>
+<span class="sd">        * ``dna_HKYG``  for dna HKY+G</span>
+<span class="sd">        * ``dna_GTRG``  for dna GTR+G</span>
+<span class="sd">        * ``dna_K80G``  for dna K80+G</span>
+<span class="sd">        * ``dna_TrNG``  for dna TrN+G</span>
+<span class="sd">        * ``dna_JC69G``  for dna JC69+G</span>
+
+<span class="sd">    .. _primers4clades: http://floresta.eead.csic.es/primers4clades/#0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">taxon_for_codon_usage</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tm</span><span class="o">=</span><span class="s">&quot;55&quot;</span><span class="p">,</span>
+                 <span class="n">min_amplength</span><span class="o">=</span><span class="s">&quot;100&quot;</span><span class="p">,</span> <span class="n">max_amplength</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">,</span> <span class="n">gencode</span><span class="o">=</span><span class="s">&quot;universal&quot;</span><span class="p">,</span>
+                 <span class="n">mode</span><span class="o">=</span><span class="s">&quot;primers&quot;</span><span class="p">,</span> <span class="n">clustype</span><span class="o">=</span><span class="s">&quot;dna&quot;</span><span class="p">,</span> <span class="n">amptype</span><span class="o">=</span><span class="s">&quot;dna_GTR&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">taxon_for_codon_usage</span> <span class="o">=</span> <span class="n">taxon_for_codon_usage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tm</span> <span class="o">=</span> <span class="n">tm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_amplength</span> <span class="o">=</span> <span class="n">min_amplength</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_amplength</span> <span class="o">=</span> <span class="n">max_amplength</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gencode</span> <span class="o">=</span> <span class="n">gencode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustype</span> <span class="o">=</span> <span class="n">clustype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amptype</span> <span class="o">=</span> <span class="n">amptype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">designed_primers</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="PrimerDesigner.design_primers"><a class="viewcode-back" href="../../primer_designer.html#primer_designer.designer.PrimerDesigner.design_primers">[docs]</a>    <span class="k">def</span> <span class="nf">design_primers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">):</span>
+            <span class="n">all_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="s">&quot;*&quot;</span><span class="p">)</span>
+            <span class="n">alns</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">all_files</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">alns</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">aln</span> <span class="ow">in</span> <span class="n">alns</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">is_fasta</span><span class="p">(</span><span class="n">aln</span><span class="p">):</span>
+
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">taxon_for_codon_usage</span><span class="p">:</span>
+                            <span class="n">aln</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">insert_taxon_in_new_fasta_file</span><span class="p">(</span><span class="n">aln</span><span class="p">)</span>
+
+                        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Processing file </span><span class="se">\&quot;</span><span class="s">{0}</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aln</span><span class="p">))</span>
+
+                        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_primers</span><span class="p">(</span><span class="n">aln</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="p">(</span><span class="n">aln</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+                <span class="c"># Write primers to alignment file</span>
+                <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">designed_primers</span><span class="p">,</span> <span class="s">&quot;primers.fasta&quot;</span><span class="p">,</span> <span class="s">&quot;fasta&quot;</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Done.</span><span class="se">\n</span><span class="s">All primers have been saved in the file </span><span class="se">\&quot;</span><span class="s">primers.fasta</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">designed_primers</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Error! the folder {0} is empty.</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Error! the folder {0} does not exist.</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="PrimerDesigner.insert_taxon_in_new_fasta_file"><a class="viewcode-back" href="../../primer_designer.html#primer_designer.designer.PrimerDesigner.insert_taxon_in_new_fasta_file">[docs]</a>    <span class="k">def</span> <span class="nf">insert_taxon_in_new_fasta_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aln</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;primer4clades infers the codon usage table from the taxon names in the</span>
+<span class="sd">        sequences.</span>
+
+<span class="sd">        These names need to be enclosed by square brackets and be</span>
+<span class="sd">        present in the description of the FASTA sequence. The position is not</span>
+<span class="sd">        important. I will insert the names in the description in a new FASTA</span>
+<span class="sd">        file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Filename of modified FASTA file that includes the name of the taxon.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_seq_records</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">seq_record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">aln</span><span class="p">,</span> <span class="s">&#39;fasta&#39;</span><span class="p">):</span>
+            <span class="n">new_seq_record_id</span> <span class="o">=</span> <span class="s">&quot;[{0}] {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">taxon_for_codon_usage</span><span class="p">,</span> <span class="n">seq_record</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">new_seq_record</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">seq_record</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">new_seq_record_id</span><span class="p">)</span>
+            <span class="n">new_seq_records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_seq_record</span><span class="p">)</span>
+
+        <span class="n">base_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">aln</span><span class="p">)</span>
+        <span class="n">new_filename</span> <span class="o">=</span> <span class="s">&#39;{0}_modified{1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base_filename</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">base_filename</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_seq_records</span><span class="p">,</span> <span class="n">new_filename</span><span class="p">,</span> <span class="s">&quot;fasta&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_filename</span>
+</div>
+<div class="viewcode-block" id="PrimerDesigner.process_response"><a class="viewcode-back" href="../../primer_designer.html#primer_designer.designer.PrimerDesigner.process_response">[docs]</a>    <span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aln</span><span class="p">,</span> <span class="n">response_body</span><span class="p">):</span>
+        <span class="n">this_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">aln</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">this_file</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&quot;.fas.*&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">this_file</span><span class="p">)</span>
+
+        <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;Writing detailed results as file &quot;{0}.html&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aln</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;{0}.html&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aln</span><span class="p">),</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+            <span class="n">handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+
+        <span class="c"># Show primer pair to user</span>
+        <span class="n">html_file</span> <span class="o">=</span> <span class="n">response_body</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">html_file</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s">&quot;degen_corr&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">seq</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                    <span class="n">description</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                    <span class="n">this_id</span> <span class="o">=</span> <span class="n">this_file</span> <span class="o">+</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">this_id</span> <span class="o">+=</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+                    <span class="n">seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">IUPAC</span><span class="o">.</span><span class="n">ambiguous_dna</span><span class="p">)</span>
+                    <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+                    <span class="n">seq_record</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">this_id</span>
+                    <span class="n">seq_record</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">designed_primers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</div>
+<div class="viewcode-block" id="PrimerDesigner.request_primers"><a class="viewcode-back" href="../../primer_designer.html#primer_designer.designer.PrimerDesigner.request_primers">[docs]</a>    <span class="k">def</span> <span class="nf">request_primers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aln</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://floresta.eead.csic.es/primers4clades/primers4clades.cgi&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;tm&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tm</span><span class="p">,</span>
+            <span class="s">&#39;min_amplength&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_amplength</span><span class="p">,</span>
+            <span class="s">&#39;max_amplength&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_amplength</span><span class="p">,</span>
+            <span class="s">&#39;mode&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+            <span class="s">&#39;gencode&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gencode</span><span class="p">,</span>
+            <span class="s">&#39;clustype&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustype</span><span class="p">,</span>
+            <span class="s">&#39;email&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;sequencefile&#39;</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">aln</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)}</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">r</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Carlos Peña.
+      Last updated on Oct 22, 2015.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
