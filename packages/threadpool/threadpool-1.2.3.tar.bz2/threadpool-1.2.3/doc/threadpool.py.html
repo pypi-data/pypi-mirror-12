@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>threadpool.py</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Generator" content="colorize.py (version 0.3)">
+</head>
+<body>
+<style type="text/css">
+pre.code {
+    font-style: Lucida,"Courier New";
+}
+
+.number {
+    color: #0080C0;
+}
+.operator {
+    color: #000000;
+}
+.string {
+    color: #008000;
+}
+.comment {
+    color: #808080;
+}
+.name {
+    color: #000000;
+}
+.error {
+    color: #FF8080;
+    border: solid 1.5pt #FF0000;
+}
+.keyword {
+    color: #0000FF;
+    font-weight: bold;
+}
+.text {
+    color: #000000;
+}
+
+</style>
+
+<pre class="code">
+<span class="string">"""Easy to use object-oriented thread pool framework.
+
+A thread pool is an object that maintains a pool of worker threads to perform
+time consuming operations in parallel. It assigns jobs to the threads
+by putting them in a work request queue, where they are picked up by the
+next available thread. This then performs the requested operation in the
+background and puts the results in a another queue.
+
+The thread pool object can then collect the results from all threads from
+this queue as soon as they become available or after all threads have
+finished their work. It's also possible, to define callbacks to handle
+each result as it comes in.
+
+The basic concept and some code was taken from the book "Python in a Nutshell"
+by Alex Martelli, copyright 2003, ISBN 0-596-00188-6, from section 14.5
+"Threaded Program Architecture". I wrapped the main program logic in the
+ThreadPool class, added the WorkRequest class and the callback system and
+tweaked the code here and there. Kudos also to Florent Aide for the exception
+handling mechanism.
+
+Basic usage:
+
+&gt;&gt;&gt; pool = TreadPool(poolsize)
+&gt;&gt;&gt; requests = makeRequests(some_callable, list_of_args, callback)
+&gt;&gt;&gt; [pool.putRequest(req) for req in requests]
+&gt;&gt;&gt; pool.wait()
+
+See the end of the module code for a brief, annotated usage example.
+
+Website : http://chrisarndt.de/en/software/python/threadpool/
+"""</span>
+
+<span class="name">__all__</span> <span class="operator">=</span> <span class="operator">[</span>
+  <span class="string">'makeRequests'</span><span class="operator">,</span>
+  <span class="string">'NoResultsPending'</span><span class="operator">,</span>
+  <span class="string">'NoWorkersAvailable'</span><span class="operator">,</span>
+  <span class="string">'ThreadPool'</span><span class="operator">,</span>
+  <span class="string">'WorkRequest'</span><span class="operator">,</span>
+  <span class="string">'WorkerThread'</span>
+<span class="operator">]</span>
+
+<span class="name">__author__</span> <span class="operator">=</span> <span class="string">"Christopher Arndt"</span>
+<span class="name">__version__</span> <span class="operator">=</span> <span class="string">"1.2.3"</span>
+<span class="name">__revision__</span> <span class="operator">=</span> <span class="string">"$Revision: 1.5 $"</span>
+<span class="name">__date__</span> <span class="operator">=</span> <span class="string">"$Date: 2006/06/23 12:32:25 $"</span>
+<span class="name">__license__</span> <span class="operator">=</span> <span class="string">'Python license'</span>
+
+<span class="comment"># standard library modules
+</span><span class="keyword">import</span> <span class="name">sys</span>
+<span class="keyword">import</span> <span class="name">threading</span>
+<span class="keyword">import</span> <span class="name">Queue</span>
+
+<span class="comment"># exceptions
+</span><span class="keyword">class</span> <span class="name">NoResultsPending</span><span class="operator">(</span><span class="name">Exception</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="string">"""All work requests have been processed."""</span>
+    <span class="keyword">pass</span>
+
+<span class="keyword">class</span> <span class="name">NoWorkersAvailable</span><span class="operator">(</span><span class="name">Exception</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="string">"""No worker threads available to process remaining requests."""</span>
+    <span class="keyword">pass</span>
+
+<span class="comment"># classes
+</span><span class="keyword">class</span> <span class="name">WorkerThread</span><span class="operator">(</span><span class="name">threading</span><span class="operator">.</span><span class="name">Thread</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="string">"""Background thread connected to the requests/results queues.
+
+    A worker thread sits in the background and picks up work requests from
+    one queue and puts the results in another until it is dismissed.
+    """</span>
+
+    <span class="keyword">def</span> <span class="name">__init__</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="name">requestsQueue</span><span class="operator">,</span> <span class="name">resultsQueue</span><span class="operator">,</span> <span class="operator">**</span><span class="name">kwds</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Set up thread in daemonic mode and start it immediatedly.
+
+        requestsQueue and resultQueue are instances of Queue.Queue passed
+        by the ThreadPool class when it creates a new worker thread.
+        """</span>
+
+        <span class="name">threading</span><span class="operator">.</span><span class="name">Thread</span><span class="operator">.</span><span class="name">__init__</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="operator">**</span><span class="name">kwds</span><span class="operator">)</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">setDaemon</span><span class="operator">(</span><span class="number">1</span><span class="operator">)</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">workRequestQueue</span> <span class="operator">=</span> <span class="name">requestsQueue</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">resultQueue</span> <span class="operator">=</span> <span class="name">resultsQueue</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">_dismissed</span> <span class="operator">=</span> <span class="name">threading</span><span class="operator">.</span><span class="name">Event</span><span class="operator">(</span><span class="operator">)</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">start</span><span class="operator">(</span><span class="operator">)</span>
+
+    <span class="keyword">def</span> <span class="name">run</span><span class="operator">(</span><span class="name">self</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Repeatedly process the job queue until told to exit."""</span>
+
+        <span class="keyword">while</span> <span class="keyword">not</span> <span class="name">self</span><span class="operator">.</span><span class="name">_dismissed</span><span class="operator">.</span><span class="name">isSet</span><span class="operator">(</span><span class="operator">)</span><span class="operator">:</span>
+            <span class="comment"># thread blocks here, if queue empty
+</span>            <span class="name">request</span> <span class="operator">=</span> <span class="name">self</span><span class="operator">.</span><span class="name">workRequestQueue</span><span class="operator">.</span><span class="name">get</span><span class="operator">(</span><span class="operator">)</span>
+            <span class="keyword">if</span> <span class="name">self</span><span class="operator">.</span><span class="name">_dismissed</span><span class="operator">.</span><span class="name">isSet</span><span class="operator">(</span><span class="operator">)</span><span class="operator">:</span>
+                <span class="comment"># if told to exit, return the work request we just picked up
+</span>                <span class="name">self</span><span class="operator">.</span><span class="name">workRequestQueue</span><span class="operator">.</span><span class="name">put</span><span class="operator">(</span><span class="name">request</span><span class="operator">)</span>
+                <span class="keyword">break</span> <span class="comment"># and exit</span>
+            <span class="keyword">try</span><span class="operator">:</span>
+                <span class="name">self</span><span class="operator">.</span><span class="name">resultQueue</span><span class="operator">.</span><span class="name">put</span><span class="operator">(</span>
+                    <span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">request</span><span class="operator">.</span><span class="name">callable</span><span class="operator">(</span><span class="operator">*</span><span class="name">request</span><span class="operator">.</span><span class="name">args</span><span class="operator">,</span> <span class="operator">**</span><span class="name">request</span><span class="operator">.</span><span class="name">kwds</span><span class="operator">)</span><span class="operator">)</span>
+                <span class="operator">)</span>
+            <span class="keyword">except</span><span class="operator">:</span>
+                <span class="name">request</span><span class="operator">.</span><span class="name">exception</span> <span class="operator">=</span> <span class="name">True</span>
+                <span class="name">self</span><span class="operator">.</span><span class="name">resultQueue</span><span class="operator">.</span><span class="name">put</span><span class="operator">(</span><span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">sys</span><span class="operator">.</span><span class="name">exc_info</span><span class="operator">(</span><span class="operator">)</span><span class="operator">)</span><span class="operator">)</span>
+
+    <span class="keyword">def</span> <span class="name">dismiss</span><span class="operator">(</span><span class="name">self</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Sets a flag to tell the thread to exit when done with current job.
+        """</span>
+
+        <span class="name">self</span><span class="operator">.</span><span class="name">_dismissed</span><span class="operator">.</span><span class="name">set</span><span class="operator">(</span><span class="operator">)</span>
+
+
+<span class="keyword">class</span> <span class="name">WorkRequest</span><span class="operator">:</span>
+    <span class="string">"""A request to execute a callable for putting in the request queue later.
+
+    See the module function makeRequests() for the common case
+    where you want to build several WorkRequests for the same callable
+    but with different arguments for each call.
+    """</span>
+
+    <span class="keyword">def</span> <span class="name">__init__</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="name">callable</span><span class="operator">,</span> <span class="name">args</span><span class="operator">=</span><span class="name">None</span><span class="operator">,</span> <span class="name">kwds</span><span class="operator">=</span><span class="name">None</span><span class="operator">,</span> <span class="name">requestID</span><span class="operator">=</span><span class="name">None</span><span class="operator">,</span>
+      <span class="name">callback</span><span class="operator">=</span><span class="name">None</span><span class="operator">,</span> <span class="name">exc_callback</span><span class="operator">=</span><span class="name">None</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Create a work request for a callable and attach callbacks.
+
+        A work request consists of the a callable to be executed by a
+        worker thread, a list of positional arguments, a dictionary
+        of keyword arguments.
+
+        A callback function can be specified, that is called when the results
+        of the request are picked up from the result queue. It must accept
+        two arguments, the request object and the results of the callable,
+        in that order. If you want to pass additional information to the
+        callback, just stick it on the request object.
+
+        You can also give a callback for when an exception occurs. It should
+        also accept two arguments, the work request and a tuple with the
+        exception details as returned by sys.exc_info().
+
+        requestID, if given, must be hashable since it is used by the
+        ThreadPool object to store the results of that work request in a
+        dictionary. It defaults to the return value of id(self).
+        """</span>
+
+        <span class="keyword">if</span> <span class="name">requestID</span> <span class="keyword">is</span> <span class="name">None</span><span class="operator">:</span>
+            <span class="name">self</span><span class="operator">.</span><span class="name">requestID</span> <span class="operator">=</span> <span class="name">id</span><span class="operator">(</span><span class="name">self</span><span class="operator">)</span>
+        <span class="keyword">else</span><span class="operator">:</span>
+            <span class="keyword">try</span><span class="operator">:</span>
+                <span class="name">hash</span><span class="operator">(</span><span class="name">requestID</span><span class="operator">)</span>
+            <span class="keyword">except</span> <span class="name">TypeError</span><span class="operator">:</span>
+                <span class="keyword">raise</span> <span class="name">TypeError</span><span class="operator">(</span><span class="string">"requestID must be hashable."</span><span class="operator">)</span>
+            <span class="name">self</span><span class="operator">.</span><span class="name">requestID</span> <span class="operator">=</span> <span class="name">requestID</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">exception</span> <span class="operator">=</span> <span class="name">False</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">callback</span> <span class="operator">=</span> <span class="name">callback</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">exc_callback</span> <span class="operator">=</span> <span class="name">exc_callback</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">callable</span> <span class="operator">=</span> <span class="name">callable</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">args</span> <span class="operator">=</span> <span class="name">args</span> <span class="keyword">or</span> <span class="operator">[</span><span class="operator">]</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">kwds</span> <span class="operator">=</span> <span class="name">kwds</span> <span class="keyword">or</span> <span class="operator">{</span><span class="operator">}</span>
+
+
+<span class="keyword">class</span> <span class="name">ThreadPool</span><span class="operator">:</span>
+    <span class="string">"""A thread pool, distributing work requests and collecting results.
+
+    See the module doctring for more information.
+    """</span>
+
+    <span class="keyword">def</span> <span class="name">__init__</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="name">num_workers</span><span class="operator">,</span> <span class="name">q_size</span><span class="operator">=</span><span class="number">0</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Set up the thread pool and start num_workers worker threads.
+
+        num_workers is the number of worker threads to start initialy.
+        If q_size &gt; 0 the size of the work request queue is limited and
+        the thread pool blocks when the queue is full and it tries to put
+        more work requests in it (see putRequest method).
+        """</span>
+
+        <span class="name">self</span><span class="operator">.</span><span class="name">requestsQueue</span> <span class="operator">=</span> <span class="name">Queue</span><span class="operator">.</span><span class="name">Queue</span><span class="operator">(</span><span class="name">q_size</span><span class="operator">)</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">resultsQueue</span> <span class="operator">=</span> <span class="name">Queue</span><span class="operator">.</span><span class="name">Queue</span><span class="operator">(</span><span class="operator">)</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">workers</span> <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">workRequests</span> <span class="operator">=</span> <span class="operator">{</span><span class="operator">}</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">createWorkers</span><span class="operator">(</span><span class="name">num_workers</span><span class="operator">)</span>
+
+    <span class="keyword">def</span> <span class="name">createWorkers</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="name">num_workers</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Add num_workers worker threads to the pool."""</span>
+
+        <span class="keyword">for</span> <span class="name">i</span> <span class="keyword">in</span> <span class="name">range</span><span class="operator">(</span><span class="name">num_workers</span><span class="operator">)</span><span class="operator">:</span>
+            <span class="name">self</span><span class="operator">.</span><span class="name">workers</span><span class="operator">.</span><span class="name">append</span><span class="operator">(</span><span class="name">WorkerThread</span><span class="operator">(</span><span class="name">self</span><span class="operator">.</span><span class="name">requestsQueue</span><span class="operator">,</span>
+              <span class="name">self</span><span class="operator">.</span><span class="name">resultsQueue</span><span class="operator">)</span><span class="operator">)</span>
+
+    <span class="keyword">def</span> <span class="name">dismissWorkers</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="name">num_workers</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Tell num_workers worker threads to quit after their current task.
+        """</span>
+
+        <span class="keyword">for</span> <span class="name">i</span> <span class="keyword">in</span> <span class="name">range</span><span class="operator">(</span><span class="name">min</span><span class="operator">(</span><span class="name">num_workers</span><span class="operator">,</span> <span class="name">len</span><span class="operator">(</span><span class="name">self</span><span class="operator">.</span><span class="name">workers</span><span class="operator">)</span><span class="operator">)</span><span class="operator">)</span><span class="operator">:</span>
+            <span class="name">worker</span> <span class="operator">=</span> <span class="name">self</span><span class="operator">.</span><span class="name">workers</span><span class="operator">.</span><span class="name">pop</span><span class="operator">(</span><span class="operator">)</span>
+            <span class="name">worker</span><span class="operator">.</span><span class="name">dismiss</span><span class="operator">(</span><span class="operator">)</span>
+
+    <span class="keyword">def</span> <span class="name">putRequest</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="name">request</span><span class="operator">,</span> <span class="name">block</span><span class="operator">=</span><span class="name">True</span><span class="operator">,</span> <span class="name">timeout</span><span class="operator">=</span><span class="number">0</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Put work request into work queue and save its id for later."""</span>
+
+        <span class="keyword">assert</span> <span class="name">isinstance</span><span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">WorkRequest</span><span class="operator">)</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">requestsQueue</span><span class="operator">.</span><span class="name">put</span><span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">block</span><span class="operator">,</span> <span class="name">timeout</span><span class="operator">)</span>
+        <span class="name">self</span><span class="operator">.</span><span class="name">workRequests</span><span class="operator">[</span><span class="name">request</span><span class="operator">.</span><span class="name">requestID</span><span class="operator">]</span> <span class="operator">=</span> <span class="name">request</span>
+
+    <span class="keyword">def</span> <span class="name">poll</span><span class="operator">(</span><span class="name">self</span><span class="operator">,</span> <span class="name">block</span><span class="operator">=</span><span class="name">False</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Process any new results in the queue."""</span>
+
+        <span class="keyword">while</span> <span class="name">True</span><span class="operator">:</span>
+            <span class="comment"># still results pending?
+</span>            <span class="keyword">if</span> <span class="keyword">not</span> <span class="name">self</span><span class="operator">.</span><span class="name">workRequests</span><span class="operator">:</span>
+                <span class="keyword">raise</span> <span class="name">NoResultsPending</span>
+            <span class="comment"># are there still workers to process remaining requests?
+</span>            <span class="keyword">elif</span> <span class="name">block</span> <span class="keyword">and</span> <span class="keyword">not</span> <span class="name">self</span><span class="operator">.</span><span class="name">workers</span><span class="operator">:</span>
+                <span class="keyword">raise</span> <span class="name">NoWorkersAvailable</span>
+            <span class="keyword">try</span><span class="operator">:</span>
+                <span class="comment"># get back next results
+</span>                <span class="name">request</span><span class="operator">,</span> <span class="name">result</span> <span class="operator">=</span> <span class="name">self</span><span class="operator">.</span><span class="name">resultsQueue</span><span class="operator">.</span><span class="name">get</span><span class="operator">(</span><span class="name">block</span><span class="operator">=</span><span class="name">block</span><span class="operator">)</span>
+                <span class="comment"># has an exception occured?
+</span>                <span class="keyword">if</span> <span class="name">request</span><span class="operator">.</span><span class="name">exception</span> <span class="keyword">and</span> <span class="name">request</span><span class="operator">.</span><span class="name">exc_callback</span><span class="operator">:</span>
+                    <span class="name">request</span><span class="operator">.</span><span class="name">exc_callback</span><span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">result</span><span class="operator">)</span>
+                <span class="comment"># hand results to callback, if any
+</span>                <span class="keyword">if</span> <span class="name">request</span><span class="operator">.</span><span class="name">callback</span> <span class="keyword">and</span> <span class="keyword">not</span> \
+                  <span class="operator">(</span><span class="name">request</span><span class="operator">.</span><span class="name">exception</span> <span class="keyword">and</span> <span class="name">request</span><span class="operator">.</span><span class="name">exc_callback</span><span class="operator">)</span><span class="operator">:</span>
+                    <span class="name">request</span><span class="operator">.</span><span class="name">callback</span><span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">result</span><span class="operator">)</span>
+                <span class="keyword">del</span> <span class="name">self</span><span class="operator">.</span><span class="name">workRequests</span><span class="operator">[</span><span class="name">request</span><span class="operator">.</span><span class="name">requestID</span><span class="operator">]</span>
+            <span class="keyword">except</span> <span class="name">Queue</span><span class="operator">.</span><span class="name">Empty</span><span class="operator">:</span>
+                <span class="keyword">break</span>
+
+    <span class="keyword">def</span> <span class="name">wait</span><span class="operator">(</span><span class="name">self</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="string">"""Wait for results, blocking until all have arrived."""</span>
+
+        <span class="keyword">while</span> <span class="number">1</span><span class="operator">:</span>
+            <span class="keyword">try</span><span class="operator">:</span>
+                <span class="name">self</span><span class="operator">.</span><span class="name">poll</span><span class="operator">(</span><span class="name">True</span><span class="operator">)</span>
+            <span class="keyword">except</span> <span class="name">NoResultsPending</span><span class="operator">:</span>
+                <span class="keyword">break</span>
+
+<span class="comment"># helper functions
+</span><span class="keyword">def</span> <span class="name">makeRequests</span><span class="operator">(</span><span class="name">callable</span><span class="operator">,</span> <span class="name">args_list</span><span class="operator">,</span> <span class="name">callback</span><span class="operator">=</span><span class="name">None</span><span class="operator">,</span> <span class="name">exc_callback</span><span class="operator">=</span><span class="name">None</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="string">"""Create several work requests for same callable with different arguments.
+
+    Convenience function for creating several work requests for the same
+    callable where each invocation of the callable receives different values
+    for its arguments.
+
+    args_list contains the parameters for each invocation of callable.
+    Each item in 'args_list' should be either a 2-item tuple of the list of
+    positional arguments and a dictionary of keyword arguments or a single,
+    non-tuple argument.
+
+    See docstring for WorkRequest for info on callback and exc_callback.
+    """</span>
+
+    <span class="name">requests</span> <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>
+    <span class="keyword">for</span> <span class="name">item</span> <span class="keyword">in</span> <span class="name">args_list</span><span class="operator">:</span>
+        <span class="keyword">if</span> <span class="name">isinstance</span><span class="operator">(</span><span class="name">item</span><span class="operator">,</span> <span class="name">tuple</span><span class="operator">)</span><span class="operator">:</span>
+            <span class="name">requests</span><span class="operator">.</span><span class="name">append</span><span class="operator">(</span>
+              <span class="name">WorkRequest</span><span class="operator">(</span><span class="name">callable</span><span class="operator">,</span> <span class="name">item</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span><span class="operator">,</span> <span class="name">item</span><span class="operator">[</span><span class="number">1</span><span class="operator">]</span><span class="operator">,</span> <span class="name">callback</span><span class="operator">=</span><span class="name">callback</span><span class="operator">,</span>
+                <span class="name">exc_callback</span><span class="operator">=</span><span class="name">exc_callback</span><span class="operator">)</span>
+            <span class="operator">)</span>
+        <span class="keyword">else</span><span class="operator">:</span>
+            <span class="name">requests</span><span class="operator">.</span><span class="name">append</span><span class="operator">(</span>
+              <span class="name">WorkRequest</span><span class="operator">(</span><span class="name">callable</span><span class="operator">,</span> <span class="operator">[</span><span class="name">item</span><span class="operator">]</span><span class="operator">,</span> <span class="name">None</span><span class="operator">,</span> <span class="name">callback</span><span class="operator">=</span><span class="name">callback</span><span class="operator">,</span>
+                <span class="name">exc_callback</span><span class="operator">=</span><span class="name">exc_callback</span><span class="operator">)</span>
+            <span class="operator">)</span>
+    <span class="keyword">return</span> <span class="name">requests</span>
+
+<span class="comment">################
+</span><span class="comment"># USAGE EXAMPLE
+</span><span class="comment">################
+</span>
+<span class="keyword">if</span> <span class="name">__name__</span> <span class="operator">==</span> <span class="string">'__main__'</span><span class="operator">:</span>
+    <span class="keyword">import</span> <span class="name">random</span>
+    <span class="keyword">import</span> <span class="name">time</span>
+
+    <span class="comment"># the work the threads will have to do (rather trivial in our example)
+</span>    <span class="keyword">def</span> <span class="name">do_something</span><span class="operator">(</span><span class="name">data</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="name">time</span><span class="operator">.</span><span class="name">sleep</span><span class="operator">(</span><span class="name">random</span><span class="operator">.</span><span class="name">randint</span><span class="operator">(</span><span class="number">1</span><span class="operator">,</span><span class="number">5</span><span class="operator">)</span><span class="operator">)</span>
+        <span class="name">result</span> <span class="operator">=</span> <span class="name">round</span><span class="operator">(</span><span class="name">random</span><span class="operator">.</span><span class="name">random</span><span class="operator">(</span><span class="operator">)</span> <span class="operator">*</span> <span class="name">data</span><span class="operator">,</span> <span class="number">5</span><span class="operator">)</span>
+        <span class="comment"># just to show off, we throw an exception once in a while
+</span>        <span class="keyword">if</span> <span class="name">result</span> <span class="operator">&gt;</span> <span class="number">3</span><span class="operator">:</span>
+            <span class="keyword">raise</span> <span class="name">RuntimeError</span><span class="operator">(</span><span class="string">"Something extraordinary happened!"</span><span class="operator">)</span>
+        <span class="keyword">return</span> <span class="name">result</span>
+
+    <span class="comment"># this will be called each time a result is available
+</span>    <span class="keyword">def</span> <span class="name">print_result</span><span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">result</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="keyword">print</span> <span class="string">"**Result: %s from request #%s"</span> <span class="operator">%</span> <span class="operator">(</span><span class="name">result</span><span class="operator">,</span> <span class="name">request</span><span class="operator">.</span><span class="name">requestID</span><span class="operator">)</span>
+
+    <span class="comment"># this will be called when an exception occurs within a thread
+</span>    <span class="keyword">def</span> <span class="name">handle_exception</span><span class="operator">(</span><span class="name">request</span><span class="operator">,</span> <span class="name">exc_info</span><span class="operator">)</span><span class="operator">:</span>
+        <span class="keyword">print</span> <span class="string">"Exception occured in request #%s: %s"</span> <span class="operator">%</span> \
+          <span class="operator">(</span><span class="name">request</span><span class="operator">.</span><span class="name">requestID</span><span class="operator">,</span> <span class="name">exc_info</span><span class="operator">[</span><span class="number">1</span><span class="operator">]</span><span class="operator">)</span>
+
+    <span class="comment"># assemble the arguments for each job to a list...
+</span>    <span class="name">data</span> <span class="operator">=</span> <span class="operator">[</span><span class="name">random</span><span class="operator">.</span><span class="name">randint</span><span class="operator">(</span><span class="number">1</span><span class="operator">,</span><span class="number">10</span><span class="operator">)</span> <span class="keyword">for</span> <span class="name">i</span> <span class="keyword">in</span> <span class="name">range</span><span class="operator">(</span><span class="number">20</span><span class="operator">)</span><span class="operator">]</span>
+    <span class="comment"># ... and build a WorkRequest object for each item in data
+</span>    <span class="name">requests</span> <span class="operator">=</span> <span class="name">makeRequests</span><span class="operator">(</span><span class="name">do_something</span><span class="operator">,</span> <span class="name">data</span><span class="operator">,</span> <span class="name">print_result</span><span class="operator">,</span> <span class="name">handle_exception</span><span class="operator">)</span>
+
+    <span class="comment"># or the other form of args_lists accepted by makeRequests: ((,), {})
+</span>    <span class="name">data</span> <span class="operator">=</span> <span class="operator">[</span><span class="operator">(</span><span class="operator">(</span><span class="name">random</span><span class="operator">.</span><span class="name">randint</span><span class="operator">(</span><span class="number">1</span><span class="operator">,</span><span class="number">10</span><span class="operator">)</span><span class="operator">,</span><span class="operator">)</span><span class="operator">,</span> <span class="operator">{</span><span class="operator">}</span><span class="operator">)</span> <span class="keyword">for</span> <span class="name">i</span> <span class="keyword">in</span> <span class="name">range</span><span class="operator">(</span><span class="number">20</span><span class="operator">)</span><span class="operator">]</span>
+    <span class="name">requests</span><span class="operator">.</span><span class="name">extend</span><span class="operator">(</span>
+      <span class="name">makeRequests</span><span class="operator">(</span><span class="name">do_something</span><span class="operator">,</span> <span class="name">data</span><span class="operator">,</span> <span class="name">print_result</span><span class="operator">,</span> <span class="name">handle_exception</span><span class="operator">)</span>
+    <span class="operator">)</span>
+
+    <span class="comment"># we create a pool of 3 worker threads
+</span>    <span class="name">main</span> <span class="operator">=</span> <span class="name">ThreadPool</span><span class="operator">(</span><span class="number">3</span><span class="operator">)</span>
+
+    <span class="comment"># then we put the work requests in the queue...
+</span>    <span class="keyword">for</span> <span class="name">req</span> <span class="keyword">in</span> <span class="name">requests</span><span class="operator">:</span>
+        <span class="name">main</span><span class="operator">.</span><span class="name">putRequest</span><span class="operator">(</span><span class="name">req</span><span class="operator">)</span>
+        <span class="keyword">print</span> <span class="string">"Work request #%s added."</span> <span class="operator">%</span> <span class="name">req</span><span class="operator">.</span><span class="name">requestID</span>
+    <span class="comment"># or shorter:
+</span>    <span class="comment"># [main.putRequest(req) for req in requests]
+</span>
+    <span class="comment"># ...and wait for the results to arrive in the result queue
+</span>    <span class="comment"># by using ThreadPool.wait(). This would block until results for
+</span>    <span class="comment"># all work requests have arrived:
+</span>    <span class="comment"># main.wait()
+</span>
+    <span class="comment"># instead we can poll for results while doing something else:
+</span>    <span class="name">i</span> <span class="operator">=</span> <span class="number">0</span>
+    <span class="keyword">while</span> <span class="number">1</span><span class="operator">:</span>
+        <span class="keyword">try</span><span class="operator">:</span>
+            <span class="name">main</span><span class="operator">.</span><span class="name">poll</span><span class="operator">(</span><span class="operator">)</span>
+            <span class="keyword">print</span> <span class="string">"Main thread working..."</span>
+            <span class="name">time</span><span class="operator">.</span><span class="name">sleep</span><span class="operator">(</span><span class="number">0.5</span><span class="operator">)</span>
+            <span class="keyword">if</span> <span class="name">i</span> <span class="operator">==</span> <span class="number">10</span><span class="operator">:</span>
+                <span class="keyword">print</span> <span class="string">"Adding 3 more worker threads..."</span>
+                <span class="name">main</span><span class="operator">.</span><span class="name">createWorkers</span><span class="operator">(</span><span class="number">3</span><span class="operator">)</span>
+            <span class="name">i</span> <span class="operator">+=</span> <span class="number">1</span>
+        <span class="keyword">except</span> <span class="name">KeyboardInterrupt</span><span class="operator">:</span>
+            <span class="keyword">print</span> <span class="string">"Interrupted!"</span>
+            <span class="keyword">break</span>
+        <span class="keyword">except</span> <span class="name">NoResultsPending</span><span class="operator">:</span>
+            <span class="keyword">print</span> <span class="string">"All results collected."</span>
+            <span class="keyword">break</span><span class="text"></span>
+</pre></body>
+</html>

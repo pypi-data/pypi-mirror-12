@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>threadpool</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th bgcolor="#70b0f0" class="navselect">&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://chrisarndt.de/en/software/python/threadpool/">Threadpool</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        Module&nbsp;threadpool
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="threadpool-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF MODULE DESCRIPTION =========== -->
+<h2 class="module">Module threadpool</h2>
+
+<p>Easy to use object-oriented thread pool framework.</p>
+<p>A thread pool is an object that maintains a pool of worker threads to perform
+time consuming operations in parallel. It assigns jobs to the threads
+by putting them in a work request queue, where they are picked up by the
+next available thread. This then performs the requested operation in the
+background and puts the results in a another queue.</p>
+<p>The thread pool object can then collect the results from all threads from
+this queue as soon as they become available or after all threads have
+finished their work. It's also possible, to define callbacks to handle
+each result as it comes in.</p>
+<p>The basic concept and some code was taken from the book &quot;Python in a Nutshell&quot;
+by Alex Martelli, copyright 2003, ISBN 0-596-00188-6, from section 14.5
+&quot;Threaded Program Architecture&quot;. I wrapped the main program logic in the
+ThreadPool class, added the WorkRequest class and the callback system and
+tweaked the code here and there. Kudos also to Florent Aide for the exception
+handling mechanism.</p>
+<p>Basic usage:</p>
+<pre class="doctest-block">
+&gt;&gt;&gt; pool = TreadPool(poolsize)
+&gt;&gt;&gt; requests = makeRequests(some_callable, list_of_args, callback)
+&gt;&gt;&gt; [pool.putRequest(req) for req in requests]
+&gt;&gt;&gt; pool.wait()
+</pre>
+<p>See the end of the module code for a brief, annotated usage example.</p>
+<p>Website : <a class="reference" href="http://chrisarndt.de/en/software/python/threadpool/">http://chrisarndt.de/en/software/python/threadpool/</a></p>
+<hr/>
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="threadpool.ThreadPool-class.html"><code>ThreadPool</code></a></b></td>
+  <td>A thread pool, distributing work requests and collecting results.</td></tr>
+<tr><td width="15%">
+  <b><a href="threadpool.WorkerThread-class.html"><code>WorkerThread</code></a></b></td>
+  <td>Background thread connected to the requests/results queues.</td></tr>
+<tr><td width="15%">
+  <b><a href="threadpool.WorkRequest-class.html"><code>WorkRequest</code></a></b></td>
+  <td>A request to execute a callable for putting in the request queue later.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF EXCEPTIONS =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Exceptions</th></tr>
+<tr><td width="15%">
+  <b><a href="threadpool.NoResultsPending-class.html"><code>NoResultsPending</code></a></b></td>
+  <td>All work requests have been processed.</td></tr>
+<tr><td width="15%">
+  <b><a href="threadpool.NoWorkersAvailable-class.html"><code>NoWorkersAvailable</code></a></b></td>
+  <td>No worker threads available to process remaining requests.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Function Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="threadpool-module.html#makeRequests" class="summary-sig-name"><code>makeRequests</code></a>(<span class=summary-sig-arg>callable</span>,
+          <span class=summary-sig-arg>args_list</span>,
+          <span class=summary-sig-arg>callback</span>,
+          <span class=summary-sig-arg>exc_callback</span>)</span></code>
+<br />
+Create several work requests for same callable with different arguments.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Function Details</th></tr>
+</table>
+
+<a name="makeRequests"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">makeRequests</span>(<span class=sig-arg>callable</span>,
+          <span class=sig-arg>args_list</span>,
+          <span class=sig-arg>callback</span>=<span class=sig-default>None</span>,
+          <span class=sig-arg>exc_callback</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+<p>Create several work requests for same callable with different arguments.</p>
+<p>Convenience function for creating several work requests for the same
+callable where each invocation of the callable receives different values
+for its arguments.</p>
+<p>args_list contains the parameters for each invocation of callable.
+Each item in 'args_list' should be either a 2-item tuple of the list of
+positional arguments and a dictionary of keyword arguments or a single,
+non-tuple argument.</p>
+<p>See docstring for WorkRequest for info on callback and exc_callback.</p>
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th bgcolor="#70b0f0" class="navselect">&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://chrisarndt.de/en/software/python/threadpool/">Threadpool</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Fri Jun 23 13:37:22 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>
