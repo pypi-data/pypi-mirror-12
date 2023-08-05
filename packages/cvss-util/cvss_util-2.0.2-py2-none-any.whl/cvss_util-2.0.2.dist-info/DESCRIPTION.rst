@@ -1,0 +1,23 @@
+After this package has been installed the command line cvss calculator
+from this package can be accessed by running:
+	python -m cvss_util.cli
+
+Home-page: https://bitbucket.org/asecurityteam/cvss_util
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: BSD
+Description: This package contains cvss calculation utilities.
+        After this package has been installed the command line cvss calculator
+        from this package can be accessed by running:
+        	python -m cvss_util.cli
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: License :: OSI Approved :: BSD License
