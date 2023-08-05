@@ -1,0 +1,35 @@
+import click
+from score.init import init_from_file as scoreinit
+
+
+@click.command()
+@click.argument('conf', metavar='CONFIG-FILE', type=click.Path(exists=True))
+def main(conf):
+    """
+    Allows operating on the project in a REPL.
+    """
+    import {{package}}
+    score = scoreinit(conf)
+    with score.ctx.Context() as ctx:
+        env = {
+            '{{package}}': {{package}},
+            'db': {{package}}.db,
+            'score': score,
+            'ctx': ctx,
+        }
+        try:
+            import IPython
+            IPython.embed(user_ns=env)
+        except ImportError:
+            try:
+                import bpython
+                bpython.embed(locals_=env)
+            except ImportError:
+                import code
+                code.interact(local=env)
+    print('done')
+
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
