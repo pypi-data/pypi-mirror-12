@@ -1,0 +1,32 @@
+await
+=====
+
+`PEP 0492 <https://www.python.org/dev/peps/pep-0492/>`__ inspired async
+goodness.
+
+Installation
+------------
+
+``await`` is conveniently available via pip:
+
+::
+
+    pip install await
+
+or installable via ``git clone`` and ``setup.py``
+
+::
+
+    git clone git@github.com:madisonmay/await.git
+    python setup.py install
+
+To ensure ``await`` is properly installed, you can run the unittest
+suite from the project root:
+
+::
+
+    nosetests -v 
+
+Usage
+-----
+
