@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: ibmdbpy
+Version: 0.1.0b2
+Summary: A Pandas-like SQL-wrapper for in-database analytics with IBM dashDB/DB2.
+Home-page: https://github.com/ibmdbanalytics/ibmdbpy
+Author: IBM Corp.
+Author-email: fouche@de.ibm.com
+License: BSD
+Requires-Dist: future
+Requires-Dist: lazy
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: pypyodbc
+Requires-Dist: six
+Provides-Extra: bench
+Requires-Dist: bokeh; extra == 'bench'
+Provides-Extra: doc
+Requires-Dist: sphinx; extra == 'doc'
+Provides-Extra: jdbc
+Requires-Dist: jaydebeapi; extra == 'jdbc'
+Provides-Extra: test
+Requires-Dist: pytest; extra == 'test'
+
+Ibmdbpy is an open-source project developed at IBM. Ibmdbpy provides a Python interface for data manipulation and in-database algorithms in IBM dashDB/DB2 and accelerates Python Analytics by seamlessly pushing operations written in Python into the underlying database for execution to benefit from in-database performance-enhancing features such as columnar store and parallel processing. 
+
+
