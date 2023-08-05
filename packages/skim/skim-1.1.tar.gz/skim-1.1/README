@@ -1,0 +1,95 @@
+skim is an alternative text file viewer with a graphical interface and
+advanced searching and browsing features. It requires Python 2.2 or
+later with Tkinter, and it can make use of Wordnet with pywn.
+
+DEPENDENCIES
+
+You can obtain the dependencies from these sites:
+
+  http://python.org
+
+The following dependencies are optional and enable certain features
+when available:  (At time of press, WordNet is not supported, so
+don't bother with it yet -dm)
+
+  http://pywn.sourceforge.net (Python WordNet)
+
+  http://www.cogsci.princeton.edu/~wn (WordNet database)
+
+  http://www.crazy-compilers.com/py-lib/shellwords.html (Shellwords)
+
+skim itself is available from:
+
+  http://bigasterisk.com/skim
+
+INVOCATION
+
+skim will take a single (for now) filename as an argument. If there
+are no arguments, it will read from stdin. 
+
+skim opens a window with three parts: the text view, the birdseye
+view, and the search terms entry box. The birdseye view is like a
+zoomed-out version of the text view, which lets you see where your
+search terms match throughout your document.
+
+NAVIGATION
+
+As the less/vi bindings don't work yet, please use the mousewheel or
+middle mousebutton to scroll the text view. The MMB binding is the
+native Tk binding: drag with MMB anywhere in the text view to slide
+the text underneath at ten times the speed. For now, you can also
+click in the text view and use ctrl-home/ctrl-end/etc to move around.
+Those keys will work in the search terms box (which is where your
+focus should be) someday.
+
+The green rectangle on the birdseye view shows what's visible in the
+text view. You can drag the view rectangle with LMB or drag outside of
+the rectangle to snap the view to a new line.
+
+ZOOMING AND PANNING THE BIRDSEYE VIEW
+
+The birdseye view is a special type of canvas. It scrolls with MMB the
+way a Tk user might expect, and it also zooms with ctrl-MMB. The zoom
+origin for the current c-MMB drag is set to where you start your
+drag. So move the mouse to your point of interest, hold down ctrl, and
+drag up (-y) with MMB to zoom in. Dragging down (+y) zooms out.
+
+The zoomable canvas is more general than its use in skim shows. It can
+handle any canvas objects in its own coordinate system, and you can
+set many types of constraints on the pan region and scale factors.
+Please email me if you'd like to discuss using the zoomable canvas in
+your own application.
+
+SEARCHING
+
+Type space-separated words into the search terms box. Hit enter in
+that box to refresh the highlighting. Your search terms will be
+assigned colors and their matches will be highlighted in both the text
+view and the birdseye view. 
+
+Presently, the matching is exact-substring, although in the future I
+will introduce whole-word and regexp features. (Also, the future will
+contain many exciting developments involving wordnet. You'll be able
+to search by synonym, and any form of any word will match.)
+
+SEARCH TIPS
+
+If you're trying to locate a particular topic, enter as many relevant
+words as you can think of into the search terms box. It doesn't matter
+that some of the words will be used in other topics; the birdseye view
+will let you quickly find the *clusters of matches*.
+
+BUGS AND TODO
+
+The TODO file lists a current todo list.  Then, please complete an item
+of your choice and send us a patch :) Or send us new items.
+
+Some of my compound words (birdseye, mousebutton, mousewheel) and
+other neologisms (zoomable) are questionable to spell checkers.
+
+AUTHORS
+
+Drew Perttula (drewp@bigasterisk.com)
+David McClosky (dmcc@bigasterisk.com)
+
+Thanks to Michael Twomey for writing the original setup.py.
