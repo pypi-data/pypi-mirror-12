@@ -1,0 +1,82 @@
+Changes
+-------
+
+0.2.4 (2015-10-13)
+^^^^^^^^^^^^^^^^^^
+
+* Python 3.5 ``async`` support:
+
+  - New scan commands API (``iscan``, ``izscan``, ``ihscan``);
+
+  - Pool made awaitable (allowing ``with await pool: ...`` constructs);
+
+* Fixed dropping closed connections from free pool
+  (see `#83 <https://github.com/aio-libs/aioredis/issues/83>`_);
+
+* Docs updated;
+
+
+0.2.3 (2015-08-14)
+^^^^^^^^^^^^^^^^^^
+
+* Redis cluster support work in progress;
+
+* Fixed pool issue causing pool growth over max size & ``acquire`` call hangs
+  (see `#71 <https://github.com/aio-libs/aioredis/issues/71>`_);
+
+* ``info`` server command result parsing implemented;
+
+* Fixed behavior of util functions
+  (see `#70 <https://github.com/aio-libs/aioredis/issues/70>`_);
+
+* ``hstrlen`` command added;
+
+* Few fixes in examples;
+
+* Few fixes in documentation;
+
+
+0.2.2 (2015-07-07)
+^^^^^^^^^^^^^^^^^^
+
+* Decoding data with ``encoding`` paramter now takes into account
+  list (array) replies
+  (see `#68 <https://github.com/aio-libs/aioredis/pull/68>`_);
+
+* ``encoding`` parameter added to following commands:
+
+  - generic commands: keys, randomkey;
+
+  - hash commands: hgetall, hkeys, hmget, hvals;
+
+  - list commands: blpop, brpop, brpoplpush, lindex, lpop, lrange, rpop, rpoplpush;
+
+  - set commands: smembers, spop, srandmember;
+
+  - string commands: getrange, getset, mget;
+
+* Backward incompatibility:
+
+  ``ltrim`` command now returns bool value instead of 'OK';
+
+* Tests updated;
+
+
+0.2.1 (2015-07-06)
+^^^^^^^^^^^^^^^^^^
+
+* Logging added (aioredis.log module);
+
+* Fixed issue with ``wait_message`` in pub/sub
+  (see `#66 <https://github.com/aio-libs/aioredis/issues/66>`_);
+
+
+0.2.0 (2015-06-04)
+^^^^^^^^^^^^^^^^^^
+
+* Pub/Sub support added;
+
+* Fix in ``zrevrangebyscore`` command
+  (see `#62 <https://github.com/aio-libs/aioredis/pull/62>`_);
+
+* Fixes/tests/docs;
