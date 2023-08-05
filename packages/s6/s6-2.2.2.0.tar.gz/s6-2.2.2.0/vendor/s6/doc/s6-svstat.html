@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>s6: the s6-svstat program</title>
+    <meta name="Description" content="s6: the s6-svstat program" />
+    <meta name="Keywords" content="s6 command s6-svstat servicedir checking supervision s6-supervise" />
+    <!-- <link rel="stylesheet" type="text/css" href="http://skarnet.org/default.css" /> -->
+  </head>
+<body>
+
+<p>
+<a href="index.html">s6</a><br />
+<a href="http://skarnet.org/software/">Software</a><br />
+<a href="http://skarnet.org/">skarnet.org</a>
+</p>
+
+<h1> The s6-svstat program </h1>
+
+<p>
+s6-svstat prints a short, human-readable summary of the state of a process
+monitored by <a href="s6-supervise.html">s6-supervise</a>.
+</p>
+
+<h2> Interface </h2>
+
+<pre>
+     s6-svstat [ -n ] <em>servicedir</em>
+</pre>
+
+<p>
+ s6-svstat gives information about the process being monitored
+at the <em>servicedir</em> <a href="servicedir.html">service directory</a>, then
+exits 0. The information includes the following:
+</p>
+
+<ul>
+ <li> whether the process is up or down, and if it's up, the number of
+seconds that it has been up. </li>
+ <li> the process' pid, if it is up, or its last exit code or terminating
+signal, if it is down </li>
+ <li> what its default state is, if it is different from its current state </li>
+ <li> the number of seconds since it last changed states </li>
+ <li> if the current state is transient and will change as soon as the
+kernel's scheduler picks up s6-supervise </li>
+ <li> whether the service is <a href="notifywhenup.html">ready</a>,
+as notified by the daemon itself, and
+if it is, the number of seconds that it has been.
+A service reported as down and ready simply means that it is ready
+to be brought up. A service is down and not ready when it is in the
+cleanup phase, i.e. the <tt>./finish</tt> script is still being executed. </li>
+ </li>
+</ul>
+
+<h2> Options </h2>
+
+<ul>
+ <li> <tt>-n</tt>&nbsp;: if the monitored process has been killed by a signal,
+print the signal number. By default, a symbolic name for the signal will be
+printed instead. </li>
+</ul>
+
+<h2> Exit codes </h2>
+
+<ul>
+ <li> 0: success </li>
+ <li> 1: s6-supervise not running on <em>servicedir</em> </li>
+ <li> 100: wrong usage </li>
+ <li> 111: system call failed </li>
+</ul>
+
+</body>
+</html>
