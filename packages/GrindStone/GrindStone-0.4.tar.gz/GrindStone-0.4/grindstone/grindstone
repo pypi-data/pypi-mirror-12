@@ -1,0 +1,198 @@
+#!/usr/bin/env python
+"""
+File: lib.py
+Package: grindstone
+Author: Elijah Caine
+Description:
+    Grindstone is a small package to keep track of your to-do items.
+"""
+from grindstone.lib import GrindStone, key_of, keys_of
+from sys import argv
+from os import environ, path, getcwd
+
+def main():
+    """
+    Core functionality grindstone
+    """
+    # Dict of args and corresponding function calls
+    funcs = {
+        'add'       : add,
+        'init'      : init,
+        'top'       : top,
+        'pop'       : pop,
+        'prioritize': prioritize,
+        'remove'    : remove,
+        'list'      : list_tasks,
+        'help'      : help_msg,
+    }
+
+    try:
+        if argv[1] in keys_of(funcs):
+            funcs[argv[1]]()
+    except IndexError:
+        funcs['top']()
+
+
+def open_gs():
+    """
+    Returns the opened grindstone.
+    First tries to open the grindstone in the current working directory,
+    then returns the HOME grindstone.
+    """
+    gs_path = getcwd() + '/.grindstone'
+    # Check to see if the cwd has a grindstone file
+    if path.isfile(gs_path):
+        return GrindStone(getcwd())
+    else:
+        return GrindStone(environ['HOME'])
+
+
+def add():
+    """
+    Add a task to the grindstone.
+    """
+    gs = open_gs()
+    try:
+        desc = ''.join(str(e)+' ' for e in argv[3:])
+    except:
+        desc = None
+
+    try:
+        name = argv[2]
+    except:
+        print('Please provide a task name and description')
+        return False
+
+    try:
+        gs.add_task(name, desc)
+        gs.write_grindstone()
+    except ValueError as e:
+        print('{}: {}'.format(e, name))
+
+
+def init():
+    """
+    Initialize a grindstone to a given path.
+    """
+    try:
+        p = argv[2]
+        gs = GrindStone(argv[2])
+        gs.write_grindstone()
+    except IndexError:
+        p = environ['HOME']
+        gs = GrindStone(p)
+        gs.write_grindstone()
+    finally:
+        print('Grindstone Created at {}'.format(path.abspath(p)))
+
+
+def remove(task=None):
+    """
+    Delete a specific task.
+    """
+    if task is None:
+        try:
+            task = argv[2]
+        except IndexError:
+            print('Please provide a task to be deleted')
+            return False
+
+    gs = open_gs()
+    for t in gs.get_tasks():
+        if key_of(t) == task:
+            gs.grindstone['tasks'].remove(t)
+            gs.write_grindstone()
+
+
+def pop():
+    """
+    Delete the 'top' task.
+    """
+    gs = open_gs()
+    try:
+        remove(key_of(gs.get_tasks()[0]))
+    except IndexError:
+        pass
+
+
+def top():
+    """
+    Move a task to the top of the grindstone tasks.
+    """
+    gs = open_gs()
+    try:
+        print_task(gs.get_tasks()[0])
+    except IndexError:
+        pass
+
+
+def prioritize():
+    """
+    Moves a given task to the top of the list of tasks.
+    """
+    gs = open_gs()
+    try:
+        task = argv[2]
+    except:
+        print('Please pass a task to prioritize')
+        return False
+
+    # Iterate over the list of objects
+    for t in gs.get_tasks():
+        # if we find the item in the tasks
+        if task == key_of(t):
+            # Remove it,
+            gs.grindstone['tasks'].remove(t)
+            # Move it to the front of the list
+            gs.grindstone['tasks'].insert(0,t)
+            # Write the grindstone
+            gs.write_grindstone()
+            return True
+
+    print('Task {} not found'.format(task))
+    return False
+
+
+def help_msg():
+    """
+    Prints the help menu.
+    """
+    help_msg =  "GrindStone: Keeping you on task since 2015.\n" +\
+                "Usage:\n" +\
+                "   grindstone [top]\n" +\
+                "       Prints the top task on the grindstone\n" +\
+                "   grindstone init <path>\n" +\
+                "       Initializes a .grindstone in the <path> directory\n" +\
+                "   grindstone add <task_name> <description of task>\n" +\
+                "       Adds a task to the closest .grindstone\n" +\
+                "   grindstone remove <task_name>\n" +\
+                "       Removes the specified task with <task_name>\n" +\
+                "   grindstone prioritize <task_name>\n" +\
+                "       Move a given task to the top of the grindstone\n" +\
+                "   grindstone pop\n" +\
+                "       Removes the top task on the grindstone\n" +\
+                "   grindstone list\n" +\
+                "       Lists all tasks on the grindstone\n" +\
+                "   grindstone help\n" +\
+                "       Prints this help message"
+    print(help_msg)
+
+
+def print_task(task=None):
+    """
+    Prints a JSON formatted {task: desc} object
+    """
+    print('[{}] {}'.format(key_of(task), task[key_of(task)]))
+
+
+def list_tasks(task=None):
+    """
+    Pretty print tasks
+    """
+    gs = open_gs()
+    for t in gs.get_tasks():
+        print_task(t)
+
+
+if __name__ == '__main__':
+    main()
