@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: steam-comments
+Version: 0.0.1
+Summary: Steal commentaries from steam community
+Home-page: https://github.com/xacce/steam_comments
+Author: Xacce
+Author-email: thiscie@gmail.com
+License: MIT
+Description: # steam_comments
+        Simple comments parser from Steam community
+        
+        # Install
+            pip install steam_comments
+            
+            
+        # Usage:
+            from steam_comments.post import Post
+            url = "https://steamcommunity.com/groups/ns2rus/discussions/0/527273452871150509/"
+            p = Post(url=url)
+            print p.count_comments()
+            
+            for comment in p.comments():
+                print comment
+            # {'profile_url':'..', 'image_url'='..', 'text':'...', 'id'='..', 'author'='..'}
+            
+        # Details
+        * profile_url - Absolute url to steam profile
+        * image_url - Absolute url to author avatar
+        * text - html code of  comment
+        * id - Steam id 
+        * author - Author of comment 
+        
+Keywords: s,t,e,a,m, ,p,a,r,s,e,r, ,c,o,m,m,e,n,t,s
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
