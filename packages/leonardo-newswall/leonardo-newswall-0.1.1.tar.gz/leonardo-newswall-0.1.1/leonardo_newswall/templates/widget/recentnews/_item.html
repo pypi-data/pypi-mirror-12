@@ -1,0 +1,17 @@
+{% load i18n applicationcontent_tags %}
+
+{% fragment request "_page_title" %}{% block page_title %}{{ item }}{% endblock %}{% endfragment %}
+
+<article>
+    <small>
+        <a href="{{ item.source.get_absolute_url }}">{{ item.source }}</a> |
+        {{ item.timestamp|date:"j F Y" }}<i class="fa fa-calendar" style="margin-left: 3px;"></i>
+    </small><br>
+    <a data-toggle="collapse" href="#collapse{{ item.id }}" aria-expanded="false" aria-controls="collapse{{ item.id }}">{{ item }}</a>
+	<div class="collapse" id="collapse{{ item.id }}">
+	  <div class="well">
+	    <p>{{ item.body|striptags|truncatewords:20|safe|urlize }}</p>
+	    <a class="label label-primary" href="{{ item.get_absolute_url }}">{% trans "Read More" %}</a>
+	  </div>
+	</div>
+</article>
