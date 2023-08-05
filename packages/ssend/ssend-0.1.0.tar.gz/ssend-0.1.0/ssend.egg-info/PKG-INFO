@@ -1,0 +1,100 @@
+Metadata-Version: 1.1
+Name: ssend
+Version: 0.1.0
+Summary: Send messages to a room/user in slack from the command line
+Home-page: https://github.com/sarlalian/ssend
+Author: Will L. Fife
+Author-email: sarlalian+pip@gmail.com
+License: MIT
+Description: ================================
+        slacksend
+        ================================
+        
+        Send a file or message to a slack chatroom or user.
+        
+        Configuration
+        ================================
+        The slacksend script supports getting its configuration from a central config file, from a per user config file and from the command line.  The order of precedence is command lien options > user config > system config.
+        
+        The user config file is:
+        
+        ```bash
+            /home/slacker/.slack.yml
+        ```
+        
+        The system config file is:
+        
+        ```bash
+            /usr/local/etc/slack.yml
+        ```
+        
+        ```yaml
+        ---
+        
+            slack:
+                api_token: xoxb-0000000000-MYSPECIALTOKEN
+                channel: archer
+                name: woodhouse
+                icon_emoji: ':sake:'
+        ```
+        
+        Usage
+        ================================
+        
+        ```
+        usage: ssend [-h] [-c CHANNEL] [-u USER] [-n NAME] [-t API_TOKEN]
+                         [-f FILE] [-a] [-i ICON_EMOJI] [--icon-url ICON_URL]
+        
+        optional arguments:
+          -h, --help            show this help message and exit
+          -c CHANNEL, --channel CHANNEL
+                                Channel to send message to
+          -u USER, --user USER  User to send message to
+          -n NAME, --name NAME  Slack sender name
+          -t API_TOKEN, --token API_TOKEN
+                                Slack API token
+          -f FILE, --file FILE  File to upload
+          -a, --as-user         Send as the token owner
+          -i ICON_EMOJI, --icon-emoji ICON_EMOJI
+                                Sender emoji icon
+          --icon-url ICON_URL   Sender icon image from URL
+        ```
+        
+        Send a message to a channel or user or both.
+        
+        ```bash
+            echo "Hello world!" | ssend
+        ```
+        Upload a file to a channel
+        
+        
+        ```bash
+            ssend -f carol.jpg
+        ```
+        
+        Override the bot name on the command line.
+        
+        ```bash
+            ssend -n Pam
+        ```
+        
+        
+        
+        Installation
+        ================================
+        
+        ```bash
+            pip install ssend
+        ```
+        
+        Origin
+        ================================
+        This code is derived from [slacker-cli](https://github.com/juanpabloaj/slacker-cli) however you can statically configure all options with a config file.
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
