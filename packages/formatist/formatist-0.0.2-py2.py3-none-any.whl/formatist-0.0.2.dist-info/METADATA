@@ -1,0 +1,44 @@
+Metadata-Version: 2.0
+Name: formatist
+Version: 0.0.2
+Summary: Converts %-style format strings to newer {}-style
+Home-page: https://github.com/moreati/formatist
+Author: Glyph
+Author-email: glyph@twistedmatrix.com
+License: MIT
+Keywords: string format pep3101 percent braces
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+
+formatist
+=========
+
+.. image:: https://travis-ci.org/moreati/formatist.svg?branch=master
+   :target: https://travis-ci.org/moreati/formatist
+
+A Python library to convert from older `%` style format strings, to newer
+`{}` style.
+
+.. code:: python
+
+    >>> import formatist
+    >>> greeting = "Hello %(name)s. It's %(temp).1f C"
+    >>> print(greeting % {'name': 'Alice', 'temp': 23.45678})
+    Hello Alice. It's 23.5 C
+    >>> greeting2 = formatist.convert(greeting)
+    >>> print(greeting2)
+    Hello {name!s:}. It's {temp:>.1f} C
+    >>> print(greeting2.format(name='Alice', temp=23.45678))
+    Hello Alice. It's 23.5 C
+
+
