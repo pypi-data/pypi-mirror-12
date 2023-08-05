@@ -1,0 +1,163 @@
+Metadata-Version: 1.0
+Name: zdir
+Version: 0.0.4
+Summary: Library for handling many small files. Packs files into directory, nameing by hash of content. 
+Home-page: https://github.com/oskarnyqvist/zdir
+Author: oskarnyqvist
+Author-email: oskarnyqvist@gmail.com
+License: The MIT License (MIT)
+
+Copyright (c) 2015 Oskar Nyqvist
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Description: zdir
+        ====
+        
+        Library for handling many small files. Packs files into directory,
+        nameing by hash of content.
+        
+        Installation
+        ------------
+        
+        pip install zdir
+        
+        Usage
+        -----
+        
+        .. code:: python
+        
+            # coding=utf8
+            import zdir
+        
+            # for testing
+            import datetime
+            import os
+        
+        
+            # test directory
+            pwd = "/home/oskar/test/zdir"
+            # create a new zdir
+            z = zdir.Z(pwd)
+        
+            # store some files
+            for i in range(500):
+                z.put(
+                    name="file-%s" % i,
+                    mime="test-%s/mime" % i,
+                    content="Data: %d\n%s" % (i, datetime.datetime.utcnow().isoformat()))
+        
+            print os.listdir(pwd)
+            #>>> ['20151015-989c.zdir']
+        
+            # create zip
+            z.finalize()
+            print os.listdir(pwd)
+            #>>> ['20151015-989c.zdir.zip']
+        
+        
+            # Get list of stored files, (or at least 3 of them)
+            # Path, created, date, mime, length
+            for x in z.items[0:3]:
+                print x
+        
+            # >>> ('/home/oskar/test/zdir/20151015-989c.zdir.zip/a3/a397f24e44d677c1a79ea02e07ffe75bb8b1bf8d', datetime.datetime(2015, 10, 15, 19, 28, 55, 710758), 'file-0', 'test-0/mime', 34)
+            # >>> ('/home/oskar/test/zdir/20151015-989c.zdir.zip/79/79625e9b86892b74745d9ad458dd90e18f509d04', datetime.datetime(2015, 10, 15, 19, 28, 55, 711143), 'file-1', 'test-1/mime', 34)
+            # >>> ('/home/oskar/test/zdir/20151015-989c.zdir.zip/77/7776bd6fe6891a1bbbda7e26bea3bb8527f079b1', datetime.datetime(2015, 10, 15, 19, 28, 55, 711446), 'file-2', 'test-2/mime', 34)
+        
+            # Read specific file
+            name = z.items[0][0]
+            print "Name:", name
+            # >>> Name: /home/oskar/test/zdir/20151015-989c.zdir.zip/a3/a397f24e44d677c1a79ea02e07ffe75bb8b1bf8d
+        
+            print z.read(name)
+            # >>> Data: 0
+            # >>> 2015-10-15T19:28:55.710473
+        
+            # Read a bunch of files
+        
+            for name, blob in z.filter(lambda x: "40" in x[2]):
+                print name
+                print blob
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/2c/2c8190ad51ed4b429aeeca995df588b288f48e1c', datetime.datetime(2015, 10, 15, 19, 32, 41, 272739), 'file-40', 'test-40/mime', 35)
+            # Data: 40
+            # 2015-10-15T19:32:41.272644
+        
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/85/8515d2680d148a83ea0c6178cd50acc8ad280496', datetime.datetime(2015, 10, 15, 19, 32, 41, 294231), 'file-140', 'test-140/mime', 36)
+            # Data: 140
+            # 2015-10-15T19:32:41.294089
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/7a/7aca8dbe5fd22f01db7fc92b9b00cd5749263baa', datetime.datetime(2015, 10, 15, 19, 32, 41, 312538), 'file-240', 'test-240/mime', 36)
+            # Data: 240
+            # 2015-10-15T19:32:41.312478
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/a6/a647d77c2bbe3f25c0ef564c0041e99e2342aee6', datetime.datetime(2015, 10, 15, 19, 32, 41, 329076), 'file-340', 'test-340/mime', 36)
+            # Data: 340
+            # 2015-10-15T19:32:41.329020
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/04/0465a228df1f606aefd071dc6df3d6f58c36a7a7', datetime.datetime(2015, 10, 15, 19, 32, 41, 338529), 'file-400', 'test-400/mime', 36)
+            # Data: 400
+            # 2015-10-15T19:32:41.338474
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/b4/b4654281829673bb0644af2c83329328d979e629', datetime.datetime(2015, 10, 15, 19, 32, 41, 338679), 'file-401', 'test-401/mime', 36)
+            # Data: 401
+            # 2015-10-15T19:32:41.338625
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/92/92beadaed1275b17079ddf5e39e510fabfeb818a', datetime.datetime(2015, 10, 15, 19, 32, 41, 338825), 'file-402', 'test-402/mime', 36)
+            # Data: 402
+            # 2015-10-15T19:32:41.338772
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/d3/d362be42dce169331b8fc2d90ebcd43607df00de', datetime.datetime(2015, 10, 15, 19, 32, 41, 338972), 'file-403', 'test-403/mime', 36)
+            # Data: 403
+            # 2015-10-15T19:32:41.338918
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/49/492316c4925100193a8a0bc4e2a17e8fbf00add7', datetime.datetime(2015, 10, 15, 19, 32, 41, 339119), 'file-404', 'test-404/mime', 36)
+            # Data: 404
+            # 2015-10-15T19:32:41.339065
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/0c/0cea8dbc4dd1f37610c0ebf10be2ebc2795410b0', datetime.datetime(2015, 10, 15, 19, 32, 41, 339267), 'file-405', 'test-405/mime', 36)
+            # Data: 405
+            # 2015-10-15T19:32:41.339213
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/9d/9d227feb2850bf0b6e116407303bf8118dfce1ae', datetime.datetime(2015, 10, 15, 19, 32, 41, 339415), 'file-406', 'test-406/mime', 36)
+            # Data: 406
+            # 2015-10-15T19:32:41.339361
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/8f/8f5a321971eaa27c4a9c0d3c1990fcb8790f9926', datetime.datetime(2015, 10, 15, 19, 32, 41, 339562), 'file-407', 'test-407/mime', 36)
+            # Data: 407
+            # 2015-10-15T19:32:41.339509
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/96/96a32b2e3988a8e2119cf9a68d529be8a531bc76', datetime.datetime(2015, 10, 15, 19, 32, 41, 339710), 'file-408', 'test-408/mime', 36)
+            # Data: 408
+            # 2015-10-15T19:32:41.339656
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/1e/1ee0d9e154fe7c48e8824e20cd5b027632a2b9ba', datetime.datetime(2015, 10, 15, 19, 32, 41, 339857), 'file-409', 'test-409/mime', 36)
+            # Data: 409
+            # 2015-10-15T19:32:41.339803
+        
+            # ('/home/oskar/test/zdir/20151015-df9b.zdir.zip/cf/cfd7f535085933b20b29af65e004163e929b3830', datetime.datetime(2015, 10, 15, 19, 32, 41, 344571), 'file-440', 'test-440/mime', 36)
+            # Data: 440
+            # 2015-10-15T19:32:41.344498
+        
+        
+        
+Platform: UNKNOWN
