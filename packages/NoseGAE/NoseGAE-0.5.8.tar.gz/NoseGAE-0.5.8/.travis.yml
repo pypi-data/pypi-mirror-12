@@ -1,0 +1,9 @@
+language: python
+python:
+  - "2.7"
+install:
+  - ./examples/install-gcloud-sdk.sh
+  - pip install -r examples/test_requirements.txt
+  - python setup.py install
+script:
+  - ./runtests.sh

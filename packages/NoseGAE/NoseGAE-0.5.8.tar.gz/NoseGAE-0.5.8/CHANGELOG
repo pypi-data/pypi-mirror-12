@@ -1,0 +1,120 @@
+0.5.7
+- Re-added code that removes GAE log handler. Thanks obmarg!
+
+0.5.6
+- Fixes issue #34 by reloading the google module instead of deleting it from
+  sys.modules on setup.
+
+0.5.5
+- Fix for taskqueue queue.yaml discovery in the case of --gae-application values that contain yaml files
+  example: --gae-application "dispatch.yaml,default/app.yaml,mod1/module.yaml" where queue.yaml is in default/
+
+0.5.4
+- Override module stub initialization based on SO post
+  http://stackoverflow.com/questions/28166558/invalidmoduleerror-when-using-testbed-to-unit-test-google-app-engine
+
+0.5.3
+- Fix regression in automatic taskqueue stup initialization due to app_path becoming a list in 0.5.2
+- Add Travis-CI configuration for automated testing so this won't happen again
+
+0.5.2
+- Accept multiple modules comma-delimited --gae-application (Issue #22) (see support/modules_example/runtests.sh)
+- Prepend GAE lib directory to path instead of append (Issue #23)
+
+0.5.1
+
+- Populate os.environ['CURRENT_VERSION_ID'] using devappserver2's built in
+  generation via the 
+  google.appengine.tools.devappserver2.application_configuration.ModuleConfiguration
+  instance that is part of the ApplicationConfiguration's modules list
+
+0.4.1
+
+- Fix issue with timezone mismatch discovered by viorelsfetea by importing
+  google.appengine.tools.os_compat which explicitly sets the timezone to UTC
+  so that datetime and time objects created in tests match the ones created
+  in the appengine runtime.
+
+0.4.0
+
+- Huge rewrite to support dev_appserver2
+- Remove --with-sandbox because it does not work with dev_appserver2
+- Automatically configure a TestBed instance and inject it into the test code
+  for ease of configuration
+
+0.3.0
+
+- Initial dev_appserver2 support for sdk 1.9.17 via Dmitry Sadovnychyi
+  (https://github.com/sadovnychyi/NoseGAE/commit/3452d77cae4e02d536f7eb3907602e3f4ddff16d)
+
+0.2.1
+
+- Updated import for old_dev_appserver for SDK 1.9.1+ (ec4011d2102893569f4f88d7e6c40687cc99754a)
+- Added default options patch from gregorynicholas (https://code.google.com/p/nose-gae/issues/detail?id=62)
+- Moved code to https://github.com/Trii/NoseGAE since old google code repo is no longer maintained
+
+0.2.0
+
+- Updated hook for compatibility with SDK 1.6.0+ (#59). 
+
+0.1.9
+
+ - Fixed import hook for compatibility with SDK 1.5.1+ (#50)
+
+0.1.8
+
+- A task queue with something other than a default queue can be accessed in your app under test now 
+  (bugfix from #42)
+
+0.1.7
+
+- Added support for Google App Engine SDK 1.3.1 (#36).  Actually, the 3rd party lib support is identical 
+  to what dev_appserver does now so future lib additions should work seamlessly.
+- Worked around setuptools conflicts that may be introduced by globally installed eggs having the 
+  google namespace, e.g. protobuf (#34).
+
+0.1.6
+
+- Added option --without-sandbox so that import hooks can be bypassed to 
+  use coverage and other edge case modules.  Patch contributed by jgeewax (#26)
+
+0.1.5
+
+- Worked around SDK 1.2.5's way of aggressively adding logging handlers (#25). 
+  Note that this still allows Nose to capture and report your app's log messages.
+  Thanks to Jason H. Smith for the bug report and patch.
+
+0.1.4
+
+- Added support for Google App Engine SDK 1.1.9 (#18).  Thanks to Mahmoud Arram
+  and hackerblinks for patches.
+- Fixed a path issue that causes ImportError on Windows (#19).  Thanks to kveretennicov 
+  for the patch.
+- There is a more informative error now if tests run with something lower than 
+  Python 2.5 (#14).
+
+0.1.3
+
+- Fixed bug in handling of modules shared between sandboxed and
+  non-sandboxed code that caused sys.modules to be empty in sandbox
+  (among other problems). Thanks to Kumar McMillan for the bug report
+  (#2).
+- Changed sys.path munging to ensure that libs that may be in google
+  and system libraries are loaded from google's libdir. Thanks to
+  Kumar McMillan for the bug report and patch (#6).
+- Fixed bug in how the sandbox shared module set was maintained between
+  entries into the sandbox, which could cause a cascade of import errors
+  under certain arrangments of test and app code. Thanks to Kumar McMillan
+  for the bug report (#7).
+  
+0.1.2
+
+- Updated datastore handling to use a nosegae-specific datastore by
+  default. This prevents the test run from clearing the default
+  dev_appserver datastore, as would happen with earlier
+  releases. Thanks to Andy for raising the issue.
+
+0.1.1
+
+- Updated self-test to use trestle so that the resulting documentation
+  is more clear for end users.
