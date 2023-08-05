@@ -1,0 +1,309 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Remote jupyter kernel via SSH
+Make sure that you can login to a remote machine without entering password.
+
+"""
+
+from datetime import datetime
+from errno import EACCES, ENOTDIR
+from getpass import getuser
+from json import load
+from os import chmod, getcwd, getpid, makedirs, remove
+from os.path import dirname, exists, expanduser, isfile, join, split
+from site import getsitepackages
+from sys import argv
+
+from configobj import ConfigObj
+from execnet import makegateway
+from paramiko.util import log_to_file
+
+from rk.ssh import paramiko_tunnel
+
+arguments_number = 3 # interpreter, local_connection_file,
+                     # remote_username_at_remote_host
+messages = {} # Strings for output
+week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+        'Sunday']
+
+module_name = "rk"
+module_location = join(getsitepackages()[0], module_name)
+config_rk_abs_path = join(module_location, "config/rk.ini")
+config = ConfigObj(config_rk_abs_path)
+
+def create_directory(directory_name, mode=0o777):
+    """Recursive directory creation function
+    os.chmod work only for last directory
+
+    """
+
+    try:
+        makedirs(directory_name, mode)
+    except Exception as exception:
+        error_code = exception.errno
+        if error_code == EACCES: # 13 (Python3 PermissionError)
+            print(messages["_error_NoRoot"])
+            exit(1)
+        elif error_code == ENOTDIR: # 20 (Python3 NotADirectoryError)
+            path = directory_name
+            while path != '/':
+                if isfile(path):
+                    try:
+                        remove(path)
+                    except Exception as exception: # Python3 PermissionError
+                        error_code = exception.errno
+                        if error_code == EACCES: # 13
+                            print(messages["_error_NoRoot"])
+                            exit(1)
+                        else:
+                            print(messages["_error_Oops"] %
+                                    strerror(error_code))
+                            exit(1)
+                path = dirname(path)
+            try:
+                makedirs(directory_name, mode)
+            except Exception as exception: # Python3 PermissionError
+                error_code = exception.errno
+                if error_code == EACCES: # 13
+                    print(messages["_error_NoRoot"])
+                    exit(1)
+                else:
+                    print(messages["_error_Oops"] % strerror(error_code))
+                    exit(1)
+        else:
+            print(messages["_error_Oops"] % strerror(error_code))
+            exit(1)
+
+def get_date_time():
+    """Get yyyy-mm-dd_hh.mm.ss"""
+
+    def normalize(element):
+        """Add '0' from front"""
+
+        if len(element) == 1:
+            element = '0' + element
+        return element
+
+    now = datetime.now()
+    year = str(now.year)
+    month = normalize(str(now.month))
+    day = normalize(str(now.day))
+    hour = normalize(str(now.hour))
+    minute = normalize(str(now.minute))
+    second = normalize(str(now.second))
+    date = year + '-' + month + '-' + day
+    time = hour + '.' + minute + '.' + second
+    date_time = date + '_' + time
+    return date_time
+
+def create_messages():
+    """Create "messages" dictionary"""
+
+    config_messages_rel_path = config["config_messages_rel_path"]
+    config_messages_abs_path = join(module_location, config_messages_rel_path)
+    with open(config_messages_abs_path, 'r') as f:
+        messages_list = f.read().splitlines()
+    for i in range(0, len(messages_list), 2):
+        messages[messages_list[i]] = messages_list[i+1]
+
+create_messages()
+argv_len = len(argv) - 1 # argv[0]: is the script name
+if argv_len == arguments_number:
+    interpreter = argv[1] # An entry point or an absolute path
+            # to language interpreter on a remote machine
+    local_connection_file = argv[2] # Absolute path of a local connection file
+    remote_username_at_remote_host = argv[3] # Just a remote host or,
+            # if your username is different on a remote machine,
+            # use this syntax: remote username AT remote host.
+else:
+    print(messages["_error_ArgumentsNumber"] % (arguments_number, argv_len))
+    exit(1)
+local_username = getuser()
+if '@' in remote_username_at_remote_host:
+    remote_username, remote_host = remote_username_at_remote_host.split('@')
+    if local_username != remote_username:
+        # Local username is NOT the same as a remote username
+        remote_connection_file = local_connection_file.replace(local_username,
+                                                               remote_username)
+    else:
+        # Local username is the same as a remote username
+        remote_connection_file = local_connection_file
+        remote_username_at_remote_host = remote_host
+else:
+    # Local username is the same as a remote username
+    remote_connection_file = local_connection_file
+    remote_username = local_username
+    remote_host = remote_username_at_remote_host
+# Load a connection file
+with open(local_connection_file, 'r') as f:
+    cfg = load(f)
+# GET a current working directory of a process
+cwd = getcwd()
+# Launch a kernel process on a remote machine
+gw = makegateway("ssh=%s//python=%s" % (remote_username_at_remote_host,
+                                        interpreter))
+ch = gw.remote_exec("""
+    import socket
+    from json import dumps
+    from os import chdir, getcwd, getpid, remove
+    from os.path import exists, expanduser, isdir, isfile, join, split
+    from struct import pack
+
+    try:
+        from ipykernel.kernelapp import launch_new_instance
+    except ImportError:
+        from IPython.kernel.zmq.kernelapp import launch_new_instance
+
+    remote_connection_file = "%s"
+    cfg = %s
+    last_cwd = "%s"
+    remote_ports = {}
+
+    ports = [k for k,v in cfg.items() if k.endswith("_port")]
+    # Select random ports
+    for port in ports:
+        sock = socket.socket()
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER, pack("ii", 0, 0))
+        sock.bind(('', 0)) # Random free port from 1024 to 65535
+        sock_name = sock.getsockname()[1]
+        remote_ports[port] = sock_name
+        cfg[port] = sock_name
+        sock.close()
+    channel.send(remote_ports)
+    remote_pid = getpid()
+    channel.send(remote_pid)
+    if not exists(remote_connection_file):
+        dir_name, file_name = split(remote_connection_file)
+        if exists(dir_name) and isdir(dir_name):
+            # Write a connection file
+            with open(remote_connection_file, 'w') as f:
+                f.write(dumps(cfg))
+        else:
+            default_j4_dir_name = "/run/user/1000/jupyter"
+            if ((default_j4_dir_name != dir_name) and
+                    exists(default_j4_dir_name) and
+                    isdir(default_j4_dir_name)):
+                remote_connection_file = join(default_j4_dir_name, file_name)
+                # Write a connection file to jupyter 4 "j4" default dir
+                with open(remote_connection_file, 'w') as f:
+                    f.write(dumps(cfg))
+            else:
+                path = "~/.ipython/profile_default/security"
+                default_j3_dir_name = (expanduser(path))
+                if ((default_j3_dir_name != dir_name) and
+                        exists(default_j3_dir_name) and
+                        isdir(default_j3_dir_name)):
+                    remote_connection_file = join(default_j3_dir_name,
+                                                  file_name)
+                    # Write a connection file to jupyter 3 "j3" default dir
+                    with open(remote_connection_file, 'w') as f:
+                        f.write(dumps(cfg))
+                else:
+                    cwd = getcwd()
+                    remote_connection_file = join(cwd, file_name)
+                    # Write a connection file to cwd
+                    with open(remote_connection_file, 'w') as f:
+                        f.write(dumps(cfg))
+    # SET a current working directory of a process
+    if exists(last_cwd) and isdir(last_cwd):
+        chdir(last_cwd)
+    launch_new_instance(["-f", remote_connection_file])
+    # Delete a connection file
+    if exists(remote_connection_file) and isfile(remote_connection_file):
+        remove(remote_connection_file)
+                    """ % (remote_connection_file, cfg, cwd))
+# Local and remote ports dicts
+local_ports = {k: v for k,v in cfg.items() if k.endswith("_port")}
+remote_ports = ch.receive()
+# Local and remote PIDs
+local_pid = getpid()
+remote_pid = ch.receive()
+# Create paramiko log file
+paramiko_log_location, paramiko_log_file_name = split(local_connection_file)
+paramiko_log_file_name = paramiko_log_file_name.replace("kernel", "paramiko")
+paramiko_log_file_name = paramiko_log_file_name.replace(".json", ".txt")
+paramiko_log_abs_path = join(paramiko_log_location, paramiko_log_file_name)
+log_to_file(paramiko_log_abs_path)
+# Redirect localhost:local_port to remote_host:remote_port
+for k,v in local_ports.items():
+    paramiko_tunnel(v, remote_ports[k], remote_username_at_remote_host)
+# Create rk log file
+date_time = get_date_time()
+date, time = date_time.replace('.', ':').split('_')
+date = date + ' ' + week[datetime.weekday(datetime.now())]
+rk_log_file_name = "%s@%s_%s.txt" % (local_username, remote_host, date_time)
+rk_log_location = config["rk_log_location"]
+if '~' in rk_log_location:
+    rk_log_location = expanduser(rk_log_location)
+rk_log_abs_path = join(rk_log_location, rk_log_file_name)
+if exists(rk_log_location) and isfile(rk_log_location):
+    try:
+        remove(rk_log_location)
+    except Exception as exception: # Python3 PermissionError
+        error_code = exception.errno
+        if error_code == EACCES: # 13
+            print(messages["_error_NoRoot"])
+            exit(1)
+        else:
+            print(messages["_error_Oops"] % strerror(error_code))
+            exit(1)
+if not exists(rk_log_location):
+    create_directory(rk_log_location, 0o777)
+    path = rk_log_location
+    while path != '/':
+        try:
+            chmod(path, 0o777)
+        except OSError:
+            break
+        path = dirname(path)
+try:
+    with open(rk_log_abs_path, 'w') as f:
+        f.write("date: %s\n" % date)
+        f.write("time: %s\n" % time)
+        f.write("\n")
+        if local_username == remote_username:
+            f.write("usernames: %s\n" % local_username)
+        else:
+            f.write("usernames: %s<->%s\n" % (local_username, remote_username))
+        f.write("remote host: %s\n" % remote_host)
+        f.write("\n")
+        for k,v in local_ports.items():
+            f.write("%ss: %s<->%s\n" % (k.replace('_', ' '), v,
+                                        remote_ports[k]))
+        f.write("\n")
+        f.write("pids: %s<->%s\n" % (local_pid, remote_pid))
+except Exception as exception:
+    error_code = exception.errno
+    if error_code == EACCES: # 13 (Python3 PermissionError)
+        print(messages["_error_NoRoot"])
+        exit(1)
+    else:
+        print(messages["_error_Oops"] % strerror(error_code))
+        exit(1)
+# Waits for closing, i.e. remote_exec() finish
+ch.waitclose()
+# Delete paramiko log file
+if exists(paramiko_log_abs_path) and isfile(paramiko_log_abs_path):
+    try:
+        remove(paramiko_log_abs_path)
+    except Exception as exception:
+        error_code = exception.errno
+        if error_code == EACCES: # 13 (Python3 PermissionError)
+            print(messages["_error_NoRoot"])
+            exit(1)
+        else:
+            print(messages["_error_Oops"] % strerror(error_code))
+            exit(1)
+# Delete rk log file
+if exists(rk_log_abs_path) and isfile(rk_log_abs_path):
+    try:
+        remove(rk_log_abs_path)
+    except Exception as exception:
+        error_code = exception.errno
+        if error_code == EACCES: # 13 (Python3 PermissionError)
+            print(messages["_error_NoRoot"])
+            exit(1)
+        else:
+            print(messages["_error_Oops"] % strerror(error_code))
+            exit(1)
