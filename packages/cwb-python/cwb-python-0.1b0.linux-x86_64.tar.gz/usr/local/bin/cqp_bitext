@@ -1,0 +1,10 @@
+#!/usr/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'cwb-python==0.1b0','console_scripts','cqp_bitext'
+__requires__ = 'cwb-python==0.1b0'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('cwb-python==0.1b0', 'console_scripts', 'cqp_bitext')()
+    )
