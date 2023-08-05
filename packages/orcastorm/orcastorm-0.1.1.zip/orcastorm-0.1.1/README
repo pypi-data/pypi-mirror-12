@@ -1,0 +1,38 @@
+**Pure python module that provides async API calls for www.saaspass.com with tornado.**
+
+This project provides the orcastorm.OrcaStorm class that implements API calls for www.saaspass.com, and lets you
+easily create a web server that authenticates users with two factor authentication. This is an asynchronous library
+that works with tornado's ioloop. High level methods of the orcastorm.OrcaStorm class are awaitable, and can
+be used in a non-blocking way.
+
+A demonstration webserver is provided in the test directory. In order to test it, you need to take the following steps:
+
+1. Prepare a server that has a fully qualified domain name, and can run Python 3.5 with Tornado 4.3. You must also     have access to at least one email account within the given domain.
+
+2. Download the saaspass app onto your phone, and create a new saaspass account.
+
+3. Go to https://www.saaspass.com, login with your account using your phone.
+
+4. Add your email address, to your account and verify it.
+
+5. Go to enterprise mode on the saaspass website and add your domain name. You will become the admin of the domain.
+
+6. Go to applications (in enterprise mode), and add a new "CUSTOM" type application. For the application, use the following parameters:
+
+  * Give the IP of your server in the IP filter field (or use 0.0.0.0/0 if you want to use OTP logins from multiple devices.)
+
+  * For testing, check "one time password", "scan barcode login" "instant registration" and "single sign on "functions.
+
+  * Specify URLs for instant login and instant register. For the example application, this will be:
+
+    * http://yourdomain.com:8080/saaspass_login - for instant login
+    * http://yourdomain.com:8080/saaspass_register - for instant register
+    * http://yourdomain.com:8080/saaspass_sso - for single sign on
+
+  (You should use HTTPS on a production server, but you need to setup certificates for the server for that.)
+
+7. Look up the API key and API password values, and copy them into the test/local.py file.
+
+8. Start your server (test/main.py)
+
+9. Point your browser to http://yourdomain.com:8080 and try the different login methods with your saaspass app.
