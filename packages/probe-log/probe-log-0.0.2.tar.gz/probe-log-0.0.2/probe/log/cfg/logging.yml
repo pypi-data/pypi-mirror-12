@@ -1,0 +1,64 @@
+formatters:
+    MultiLineFormatter:
+        '()': probe.log.MultiLineFormatter
+        format: '%(asctime)s.%(msecs).03d %(process)+5s %(levelname)-8s %(filename)s:%(lineno)d:%(funcName)s(): %(message)s'
+        datefmt: '%Y-%m-%d %H:%M:%S'
+
+filters:
+    FilterNotD:
+        '()': probe.log.NotLevelFilter
+        levels: [DEBUG]
+    FilterWIC:
+        '()': probe.log.LevelFilter
+        levels: [WARNING, INFO, CRITICAL]
+    FilterNotWIC:
+        '()': probe.log.NotLevelFilter
+        levels: [WARNING, INFO, CRITICAL]
+    FilterWEC:
+        '()': probe.log.LevelFilter
+        levels: [WARNING, ERROR, CRITICAL]
+
+handlers:
+    null:
+        class: logging.NullHandler
+    file:
+        class: logging.FileHandler
+        formatter: MultiLineFormatter
+        mode: a
+        filename: /tmp/logger
+    file_rdirwatcher:
+        class: logging.FileHandler
+        formatter: MultiLineFormatter
+        mode: w
+        filename: rdirwatcher.log
+    consoleAll:
+        class: logging.StreamHandler
+        formatter: MultiLineFormatter
+        stream: ext://sys.stderr
+    consoleErrors:
+        filters: ['FilterWEC']
+        class: logging.StreamHandler
+        formatter: MultiLineFormatter
+        stream: ext://sys.stderr
+    consoleNotDebug:
+        filters: ['FilterNotD']
+        class: logging.StreamHandler
+        formatter: MultiLineFormatter
+        stream: ext://sys.stderr
+
+loggers:
+    default:
+        level: DEBUG
+        handlers: [consoleAll]
+        propagate: False
+    test_console:
+        level: DEBUG
+        handlers: [consoleAll]
+        propagate: false
+    rdirwatcher:
+        level: DEBUG
+        handlers: [consoleAll, file_rdirwatcher]
+        propagate: False
+root:
+    level: DEBUG
+    handlers: [consoleAll]
