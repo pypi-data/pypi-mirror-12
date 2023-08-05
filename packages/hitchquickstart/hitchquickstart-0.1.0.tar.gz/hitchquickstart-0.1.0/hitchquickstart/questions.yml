@@ -1,0 +1,82 @@
+---
+- python:
+    text: Are you testing a python application (including Django, Celery, Flask, Command line python, etc.)?
+    default: true
+    type: BOOL
+    subquestions:
+      - python_version:
+          text: Which *exact* version of python do you want to test your code with?
+          default: 3.5.0
+          type: STRING
+      - django:
+          text: Are you testing Django??
+          dependencies:
+            - hitchserve
+          default: false
+          type: BOOL
+      - celery:
+          text: Are you testing Celery?
+          dependencies:
+            - hitchserve
+          default: false
+          type: BOOL
+- webapp:
+    text: Are you testing a web site / web app?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- postgres:
+    text: Are you testing an application that uses postgresql?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- mysql:
+    text: Are you testing an application that uses MySQL?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- rabbitmq:
+    text: Are you testing an application that uses RabbitMQ?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- redis:
+    text: Are you testing an application that uses Redis?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- memcache:
+    text: Are you testing an application that uses Memcache?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- elasticsearch:
+    text: Are you testing an application that uses Elastic search?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- smtp:
+    text: Are you testing an application that sends emails?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- cron:
+    text: Are you testing an application that runs code periodically (i.e. using something like a cron)?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL
+- cli:
+    text: Are you testing a command line application?
+    dependencies:
+      - hitchserve
+    default: false
+    type: BOOL

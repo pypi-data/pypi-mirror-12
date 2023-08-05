@@ -1,0 +1,206 @@
+{% if hitchserve %}
+from hitchserve import ServiceBundle
+{% endif %}
+from os import path, system, chdir
+from subprocess import check_call, PIPE
+{% if postgres %}
+import hitchpostgres
+{% endif %}
+{% if webapp %}
+import hitchselenium
+{% endif %}
+{% if python %}
+import hitchpython
+{% endif %}
+{% if redis %}
+import hitchredis
+{% endif %}
+{% if smtp %}
+import hitchsmtp
+{% endif %}
+{% if cron %}
+import hitchcron
+{% endif %}
+import hitchtest
+
+# Get directory above this file
+PROJECT_DIRECTORY = path.abspath(path.join(path.dirname(__file__), '..'))
+
+class ExecutionEngine(hitchtest.ExecutionEngine):
+    """Python engine for running tests."""
+
+    def set_up(self):
+        """Set up your applications and the test environment."""
+{% if python %}
+        python_package = hitchpython.PythonPackage(
+            python_version=self.settings['python_version']
+        )
+        python_package.build()
+        python_package.verify()
+
+        check_call([
+            python_package.pip, "install", "-r",
+            path.join(PROJECT_DIRECTORY, "requirements.txt")
+        ])
+
+{% endif %}
+{% if postgres %}
+        postgres_package = hitchpostgres.PostgresPackage(
+            version=self.settings["postgres_version"],
+        )
+        postgres_package.build()
+
+{% endif %}
+{% if redis %}
+        redis_package = hitchredis.RedisPackage(
+            version=self.settings.get("redis_version")
+        )
+        redis_package.build()
+
+{% endif %}
+{% if hitchserve %}
+        self.services = ServiceBundle(
+            project_directory=PROJECT_DIRECTORY,
+            startup_timeout=float(self.settings["startup_timeout"]),
+            shutdown_timeout=float(self.settings["shutdown_timeout"]),
+        )
+
+{% endif %}
+{% if postgres %}
+        # Postgres user and database
+        postgres_user = hitchpostgres.PostgresUser("example", "password")
+
+        self.services['Postgres'] = hitchpostgres.PostgresService(
+            postgres_package=postgres_package,
+            users=[postgres_user, ],
+            databases=[hitchpostgres.PostgresDatabase("example", postgres_user), ]
+        )
+
+{% endif %}
+{% if smtp %}
+        self.services['HitchSMTP'] = hitchsmtp.HitchSMTPService(port=10025)
+
+{% endif %}
+{% if redis %}
+        self.services['Redis'] = hitchredis.RedisService(
+            redis_package=redis_package,
+            port=16379,
+        )
+
+{% endif %}
+{% if django %}
+        self.services['Django'] = hitchpython.DjangoService(
+            python=python_package.python,
+            settings="remindme.settings",
+            port=18080,
+            needs=[{% if postgres %}self.services['Postgres'], {% endif %}{% if mysql %}self.services['MySQL'], {% endif %}
+            ],
+        )
+
+{% endif %}
+{% if celery %}
+        self.services['Celery'] = hitchpython.CeleryService(
+            python=python_package.python,
+            app="remindme", loglevel="INFO",
+            needs=[
+                self.services['Redis'], self.services['Postgres'],
+            ],
+        )
+
+{% endif %}
+{% if webapp %}
+        self.services['Firefox'] = hitchselenium.SeleniumService(
+            xvfb=self.settings.get("xvfb", False) or self.settings.get("quiet", False),
+            no_libfaketime=True,
+        )
+
+{% endif %}
+{% if cron %}
+        self.services['Cron'] = hitchcron.CronService(
+            run=self.services['Django'].manage("trigger").command,
+            every=1,
+            needs=[ self.services['Django'], self.services['Celery'], ],
+        )
+
+{% endif %}
+{% if hitchserve %}
+        self.services.startup(interactive=False)
+
+{% endif %}
+{% if webapp %}
+        # Configure selenium driver
+        screen_res = self.settings.get(
+            "screen_resolution", {"width": 1024, "height": 768, }
+        )
+        self.driver = self.services['Firefox'].driver
+        self.driver.set_window_size(
+            int(screen_res['width']), int(screen_res['height'])
+        )
+        self.driver.set_window_position(0, 0)
+        self.driver.implicitly_wait(2.0)
+        self.driver.accept_next_alert = True
+
+{% endif %}
+    def pause(self, message=None):
+        """Pause test and launch IPython"""
+{% if hitchserve %}
+        if hasattr(self, 'services'):
+            self.services.start_interactive_mode()
+{% endif %}
+        self.ipython(message)
+{% if hitchserve %}
+        if hasattr(self, 'services'):
+            self.services.stop_interactive_mode()
+{% endif %}
+
+{% if django and webapp %}
+    def load_website(self):
+        """Navigate to website in Firefox."""
+        self.driver.get(self.services['Django'].url())
+
+{% endif %}
+{% if smtp %}
+    def wait_for_email(self, containing=None):
+        """Wait for email."""
+        self.services['HitchSMTP'].logs.out.tail.until_json(
+            lambda email: containing in email['payload'] or containing in email['subject'],
+            timeout=45,
+            lines_back=1,
+        )
+
+    def confirm_emails_sent(self, number):
+        """Count number of emails sent by app."""
+        assert len(self.services['HitchSMTP'].logs.json()) == int(number)
+
+{% endif %}
+{% if hitchserve %}
+    def time_travel(self, days=""):
+        """Get in the Delorean, Marty!"""
+        self.services.time_travel(days=int(days))
+
+{% endif %}
+{% if hitchserve %}
+    def connect_to_kernel(self, service_name):
+        """Connect to IPython kernel embedded in service_name."""
+        self.services.connect_to_ipykernel(service_name)
+
+{% endif %}
+    def on_failure(self):
+        """Runs if there is a test failure"""
+        if not self.settings['quiet']:
+            if self.settings.get("pause_on_failure", False):
+                self.pause(message=self.stacktrace.to_template())
+
+    def on_success(self):
+        """Runs when a test successfully passes"""
+        if self.settings.get("pause_on_success", False):
+            self.pause(message="SUCCESS")
+
+    def tear_down(self):
+        """Run at the end of all tests."""
+{% if hitchserve %}
+        if hasattr(self, 'services'):
+            self.services.shutdown()
+{% else %}
+        pass
+{% endif %}
