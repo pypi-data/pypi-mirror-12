@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load admin_static %}
+
+{% block extrahead %}
+<script>
+    window.__csrf_token = '{{ csrf_token }}';
+    window.__admin_keywords_submit_url = '{% url "admin_keywords_submit" %}';
+</script>
+<script src="{% static "mezzanine/js/admin/ajax_csrf.js" %}"></script>
+{% endblock %}
