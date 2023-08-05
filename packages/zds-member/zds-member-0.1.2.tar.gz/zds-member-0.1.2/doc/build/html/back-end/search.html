@@ -1,0 +1,748 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>La recherche &mdash; Zds Member 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Zds Member 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Le back-end" href="../back-end.html"/>
+        <link rel="next" title="Documentation technique du back-end" href="../back-end-code.html"/>
+        <link rel="prev" title="Les messages privés" href="private-message.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> Zds Member
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-linux-install.html">Installation du backend sous Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-et-configuration-de-virtualenv">Installation et configuration de <cite>virtualenv</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-os-x-install.html">Installation du backend sous OS X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-virtualenv">Installation de virtualenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#creation-de-votre-environnement">Création de votre environnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-la-librairie-lxml-pour-python-2-7-via-macports">Récupération de la librairie lxml pour python 2.7 via MacPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-cairo-svg">Récupération de cairo (svg)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#ajout-de-flags-pour-compiler-avec-gcc-plutot-que-clang-lors-de-l-installation-de-lxml">Ajout de flags pour compiler avec gcc plutôt que clang lors de l&#8217;installation de lxml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-toutes-les-dependances">Installation de toutes les dépendances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-windows-install.html">Installation du backend sous Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#prerequis">Prérequis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#suite-de-l-installation">Suite de l&#8217;installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/deploy-in-production.html">Configuration des serveurs de production</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#parametres">Paramètres</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-generaux">Paramètres généraux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-specifiques">Paramètres spécifiques</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#premier-deploiement">Premier déploiement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#utilisateur-local">Utilisateur local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-des-outils">Installation des outils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#clone-du-repo-et-configuration-de-prod">Clone du repo et configuration de prod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-de-l-application-de-base">Installation de l&#8217;application de base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#outils-specifiques-a-un-serveur-de-run">Outils spécifiques à un serveur de run</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#mise-a-jour-d-une-instance-existante">Mise à jour d&#8217;une instance existante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#personnalisation-d-une-instance">Personnalisation d&#8217;une instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/frontend-install.html">Installation du frontend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#installation-de-node-js-et-npm">Installation de Node.js et npm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#freebsd-openbsd">FreeBSD / OpenBSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mise-a-jour-de-node-js-et-npm">Mise à jour de Node.js et npm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#installation-des-dependances-npm">Installation des dépendances npm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#utilisation-des-outils">Utilisation des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#presentation-de-gulp">Présentation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#utilisation-de-gulp">Utilisation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#quelques-informations-supplementaires">Quelques informations supplémentaires</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#nettoyage-des-outils">Nettoyage des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances">Désinstaller les dépendances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances-inutilisees">Désinstaller les dépendances inutilisées</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/install-solr.html">Installation de Solr (pour la recherche)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-linux">Prérequis sur linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-windows">Prérequis sur windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#procedure-commune">Procédure commune</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../back-end.html">Le <em>back-end</em></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contents.html">Les tutoriels et articles v2.0 (ZEP 12)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#vocabulaire-et-definitions">Vocabulaire et définitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#de-la-structure-generale-d-un-contenu">De la structure générale d&#8217;un contenu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-extraits">Des extraits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-conteneurs">Des conteneurs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#un-contenu">Un contenu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-objets-en-general">Des objets en général</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#cycle-de-vie-des-contenus">Cycle de vie des contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-brouillon">Le brouillon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-beta">La bêta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-validation">La validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-publication">La publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#l-entraide">L&#8217;entraide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#import-de-contenus">Import de contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#import-d-image">Import d&#8217;image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#regles">Règles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#aspects-techniques-et-fonctionnels">Aspects techniques et fonctionnels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#les-metadonnees">Les métadonnées</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-stockage-en-base-de-donnees">Le stockage en base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-stockage-via-des-dossiers">Le stockage <em>via</em> des dossiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#les-permissions">Les permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#processus-de-publication">Processus de publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#consultation-d-un-contenu-publie">Consultation d&#8217;un contenu publié</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#qu-en-est-il-des-images">Qu&#8217;en est-il des images ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#passage-des-tutos-v1-aux-tutos-v2">Passage des tutos v1 aux tutos v2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#migrer-une-archive-v1-vers-une-archive-v2">Migrer une archive v1 vers une archive v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#migrer-la-base-de-donnees">Migrer la base de données</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contents_manifest.html">Les fichiers de manifeste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contents_manifest.html#les-versions-du-manifeste">Les versions du manifeste</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#nomenclature">Nomenclature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#version-1-0">Version 1.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#version-2-0">Version 2.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forum.html">Les forums</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#le-decoupage-des-forums">Le découpage des forums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#la-moderation-des-forums">La modération des forums</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-sujets">La modération des sujets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-messages">La modération des messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#les-filtres-sur-les-sujets">Les filtres sur les sujets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#dans-un-forum">Dans un forum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#suivre-un-sujet">Suivre un sujet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#etre-notifie-sur-le-site-lui-meme">Être notifié sur le site lui même</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gallery.html">Les galeries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#generalites">Généralités</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#creation-et-remplissage">Création et remplissage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#les-utilisateurs-et-leurs-droits">Les utilisateurs et leurs droits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#la-suppression">La suppression</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#lien-galerie-tutoriel">Lien galerie &lt;-&gt; Tutoriel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#aspects-techniques">Aspects techniques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#outils-logiciels-utilises">Outils logiciels utilisés</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="member.html">Les membres</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="member.html#inscription">Inscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member.html#desinscription">Désinscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member.html#les-membres-dans-les-environnement-de-test-et-de-developpement">Les membres dans les environnement de test et de développement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-promotion">L&#8217;interface de promotion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-karma">L&#8217;interface de karma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-reinitialisation-de-mot-de-passe">L&#8217;interface de réinitialisation de mot de passe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="private-message.html">Les messages privés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="private-message.html#envoi-et-participation">Envoi et participation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">La recherche</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#l-indexation-des-donnees">L&#8217;indexation des données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">La recherche</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dans-le-code">Dans le code ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pourquoi-avoir-utilise-haystack-ne-peut-t-on-pas-appeller-solr-directement">Pourquoi avoir utilisé Haystack, ne peut t-on pas appeller Solr directement ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pourquoi-solr-et-pas-un-autre-moteur-de-recherche">Pourquoi Solr et pas un autre moteur de recherche ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment-fonctionne-le-code-de-l-indexation">Comment fonctionne le code de l&#8217;indexation ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-cas-particulier-de-l-indexation-des-tutoriels-et-articles">Le cas particulier de l&#8217;indexation des tutoriels et articles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment-lancer-l-indexation-et-ou-comment-verifier-les-donnees-indexees">Comment lancer l&#8217;indexation et/ou comment vérifier les données indexées ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment-fonctionne-le-code-de-la-recherche">Comment fonctionne le code de la recherche ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quels-sont-les-fichiers-de-configuration-importants">Quels sont les fichiers de configuration importants ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-de-la-commande-index-content">Utilisation de la commande <code class="docutils literal"><span class="pre">index_content</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../back-end-code.html">Documentation technique du <em>back-end</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/arborescence-back.html">Arborescence du <em>back-end</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#arborescence-generale-de-zds">Arborescence générale de <code class="docutils literal"><span class="pre">zds/</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#contenu-d-un-module">Contenu d&#8217;un module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#fichiers-principaux">Fichiers principaux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#tests-unitaires">Tests unitaires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#gestion-de-la-base-de-donnees">Gestion de la base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#api">API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#autres">Autres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/article.html">Les articles (<code class="docutils literal"><span class="pre">article/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/forum.html">Les forums (<code class="docutils literal"><span class="pre">forum/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/gallery.html">Les galleries (<code class="docutils literal"><span class="pre">gallery/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/member.html">Les membres (<code class="docutils literal"><span class="pre">member/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/pages.html">Les pages (<code class="docutils literal"><span class="pre">pages/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/pages.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/private-message.html">Les messages privés (<code class="docutils literal"><span class="pre">mp/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/search.html">La recherche (<code class="docutils literal"><span class="pre">search/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorial.html">Les tutoriels (<code class="docutils literal"><span class="pre">tutorial/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorialv2.html">Les tutoriels v2 (ZEP12) (<code class="docutils literal"><span class="pre">tutorialv2/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-models">Modèles (<code class="docutils literal"><span class="pre">models/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-de-la-base-de-donnee-models-database-py">Modèles de la base de donnée (<code class="docutils literal"><span class="pre">models_database.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-versionnes-models-versioned-py">Modèles &#8220;versionnés&#8221; (<code class="docutils literal"><span class="pre">models_versioned.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#vues-views">Vues (<code class="docutils literal"><span class="pre">views/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-views-views-contents-py">Contenus (<code class="docutils literal"><span class="pre">views/views_contents.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#validations-views-views-validations-py">Validations (<code class="docutils literal"><span class="pre">views/views_validations.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-publies-views-views-published-py">Contenus publiés (<code class="docutils literal"><span class="pre">views/views_published.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#mixins-mixins-py">Mixins (<code class="docutils literal"><span class="pre">mixins.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-forumulaires-forms-py">Les forumulaires (<code class="docutils literal"><span class="pre">forms.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/utils.html">Les utilitaires (<code class="docutils literal"><span class="pre">utils/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#articles-articles-py">Articles (<code class="docutils literal"><span class="pre">articles.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#forums-forums-py">Forums (<code class="docutils literal"><span class="pre">forums.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#messages-prives-mps-py">Messages privés (<code class="docutils literal"><span class="pre">mps.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#tutoriels-tutorials-py">Tutoriels (<code class="docutils literal"><span class="pre">tutorials.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#les-processeurs-de-contexte-context-processor-py">Les processeurs de contexte (<code class="docutils literal"><span class="pre">context_processor.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#autres-misc-py">Autres (<code class="docutils literal"><span class="pre">misc.py</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#informations-generales">Informations générales</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#version-courante">Version courante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#schema">Schéma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-verbes-http">Les verbes HTTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-formats-d-entrees-sorties">Les formats d&#8217;entrées/sorties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#etag">ETag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#throttling">Throttling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#pagination">Pagination</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#authentification">Authentification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#bibliotheque-tierce-choisie">Bibliothèque tierce choisie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#utilisation">Utilisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#creer-un-client">Créer un client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#recuperer-les-tokens-d-authentification">Récupérer les tokens d&#8217;authentification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-access-token">Utiliser un access_token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-refresh-token">Utiliser un refresh_token</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#django-rest-swagger">Django REST Swagger</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Zds Member</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../back-end.html">Le <em>back-end</em></a> &raquo;</li>
+      
+    <li>La recherche</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/back-end/search.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="la-recherche">
+<h1>La recherche<a class="headerlink" href="#la-recherche" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>La recherche se découpe en deux parties distinctes :</dt>
+<dd><ul class="first last simple">
+<li>L&#8217;indexation des données</li>
+<li>La recherche par l&#8217;utilisateur</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="l-indexation-des-donnees">
+<h2>L&#8217;indexation des données<a class="headerlink" href="#l-indexation-des-donnees" title="Permalink to this headline">¶</a></h2>
+<p><strong>L&#8217;indexation</strong> des données consiste à <strong>rassembler toutes les données</strong> sur lesquelles l&#8217;utilisateur va <strong>pouvoir rechercher</strong>. Elle est faite au préalable.
+L&#8217;indexation est faite de telle façon qu&#8217;on puisse rechercher sur les éléments suivants :</p>
+<blockquote>
+<div><ul class="simple">
+<li>Les tutoriels (les parties, les chapitres, les extraits)</li>
+<li>Les articles (titre, description, date de publication, contenu en markdown)</li>
+<li>Les sujets (titre, sous-titre, auteurs, le contenu en markdown, le nom du forum)</li>
+<li>Les réponses au sujets (auteur et contenu en markdown)</li>
+</ul>
+</div></blockquote>
+<p>L&#8217;indexation est réalisée à la demande, même si un jour, elle pourrait être en <a class="reference external" href="https://zestedesavoir.com/forums/sujet/3334/indexation-en-temps-reel/">temps réel</a>.</p>
+<p>Aujourd&#8217;hui, l&#8217;indexation est réalisée toutes les trentaines de minutes, sur le serveur de production. Tout le contenu est ré-indexé à chaque fois, ce qui prend 100&nbsp;pourcents du processus toutes les 5 minutes.
+Des solutions sont présentes dans <a class="reference external" href="http://django-haystack.readthedocs.org/en/latest/searchindex_api.html#get-updated-field">la documentation d&#8217;Haystack (en)</a>, sans qu&#8217;on puisse réellement <a class="reference external" href="https://github.com/zestedesavoir/zds-site/pull/2771">les appliquer</a>.</p>
+</div>
+<div class="section" id="id1">
+<h2>La recherche<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>L&#8217;utilisateur peut utiliser la recherche, en utilisant la recherche de <a class="reference external" href="../front-end/structure-du-site.html#l-en-tete">l&#8217;en-tête</a>.</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/en-tete.png" src="../_images/en-tete.png" />
+</div>
+</div></blockquote>
+<p>Des critères de recherche, peuvent être ajoutés sur la page de recherche. Plus tard, on pourrait ajouter des facets, plus d&#8217;information sur <a class="reference external" href="https://zestedesavoir.com/forums/sujet/1082/zep-15-navigation-a-facettes-a-travers-le-site/">la ZEP&nbsp;correspondante</a>.
+Les critères de recherches sont uniquement sur le type de contenu (tutoriel, article, sujet, réponse).</p>
+</div>
+<div class="section" id="dans-le-code">
+<h2>Dans le code ?<a class="headerlink" href="#dans-le-code" title="Permalink to this headline">¶</a></h2>
+<p>On utilise pour <strong>l&#8217;indexation</strong> une <strong>bibliothèque</strong> Python nommée <strong>Haystack</strong> et le <strong>moteur de recherche Solr</strong>.</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/schema-recherche-lib.png" src="../_images/schema-recherche-lib.png" />
+</div>
+</div></blockquote>
+<p>Pour l&#8217;indexation, on indique à Haystack quels contenus on doit indexer. Haystack appelle une bibliothèque Python nommée PySolr.
+PySolr n&#8217;est jamais utilisé directement dans le code, on doit toujours passer par la bibliothèque Haystack. PySolr effectue des appels à une API&nbsp;REST exposée par le moteur de recherche Solr.</p>
+<p>Pour la recherche, c&#8217;est le même principe : bibliothèque Haystack -&gt; bibliothèque PySolr -&gt; l&#8217;API&nbsp;REST de Solr.</p>
+<div class="section" id="pourquoi-avoir-utilise-haystack-ne-peut-t-on-pas-appeller-solr-directement">
+<h3>Pourquoi avoir utilisé Haystack, ne peut t-on pas appeller Solr directement ?<a class="headerlink" href="#pourquoi-avoir-utilise-haystack-ne-peut-t-on-pas-appeller-solr-directement" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>On pourrait directement appeler Solr mais Haystack nous propose plusieurs avantages :</dt>
+<dd><ul class="first last simple">
+<li>Nous permet d&#8217;être indépendant, du moteur de recherche utilisé, aujourd&#8217;hui, on utilise Solr mais demain, on pourrait assez facilement le remplacer par un autre moteur de recherche tel que <a class="reference external" href="http://xapian.org/">Xapian (en)</a>, <a class="reference external" href="https://www.elastic.co/">Elasticsearch (en)</a> ou <a class="reference external" href="http://whoosh.ca/">Whoosh (en)</a></li>
+<li>Assez facile à utiliser</li>
+<li>Nous permet d&#8217;avoir relativement facilement, les facets, la recherche spatiale, suggestions des mots clés, autocomplétion…</li>
+<li>Nous permet de générer les fichiers de configuration plus facilement.</li>
+<li>Libre (BSD) et gratuit.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="pourquoi-solr-et-pas-un-autre-moteur-de-recherche">
+<h3>Pourquoi Solr et pas un autre moteur de recherche ?<a class="headerlink" href="#pourquoi-solr-et-pas-un-autre-moteur-de-recherche" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Les principaux avantages sont :</dt>
+<dd><ul class="first last simple">
+<li>Une interface web complète</li>
+<li>Libre et Gratuit</li>
+<li>Multiplateforme</li>
+<li>Simple à utiliser</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="comment-fonctionne-le-code-de-l-indexation">
+<h3>Comment fonctionne le code de l&#8217;indexation ?<a class="headerlink" href="#comment-fonctionne-le-code-de-l-indexation" title="Permalink to this headline">¶</a></h3>
+<p>Tout d&#8217;abord, avant d&#8217;attaquer le code, il faut bien faire la différence entre :</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Le contenu &#8220;indexé&#8221;</strong>, c&#8217;est-à-dire le contenu sur lequel <strong>Solr va chercher</strong> quand un utilisateur utilise la recherche.</li>
+<li><strong>Le contenu &#8220;stocké&#8221;</strong>, c&#8217;est le contenu qui va <strong>être retourné après la recherche</strong>. C&#8217;est très utile, si vous voulez afficher des informations supplémentaires lors de l&#8217;affichage des résultats. Par exemple, quand on indexe, un tutoriel, on peut souhaiter lors de l&#8217;affichage, afficher tous les noms des auteurs sans pour autant permettre à l&#8217;utilisateur de rechercher sur le nom des auteurs. C&#8217;est à ça que servent les informations stockés.</li>
+<li><strong>Les champs</strong> qui vont permettre de définir les <strong>critères de recherches</strong>.</li>
+</ul>
+</div></blockquote>
+<p><strong>Chaque module</strong> qui possède du contenu à indexer, possède <strong>un fichier ``search_indexes.py``</strong>.
+Ce fichier permet d&#8217;indiquer quels contenus vont être indexés et sur quels champs l&#8217;utilisateur pourrait faire sa recherche.</p>
+<p>Pour chaque type de contenu, une classe est nécessaire, cette classe étend toujours deux classes de Haystack : <code class="docutils literal"><span class="pre">indexes.SearchIndex</span></code> et <code class="docutils literal"><span class="pre">indexes.Indexable</span></code>.</p>
+<p>Prenons un exemple, cette classe permet d&#8217;indexer les sujets du forum.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">TopicIndex</span><span class="p">(</span><span class="n">indexes</span><span class="o">.</span><span class="n">SearchIndex</span><span class="p">,</span> <span class="n">indexes</span><span class="o">.</span><span class="n">Indexable</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Indexes topic data&quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">document</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">use_template</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s">&#39;title&#39;</span><span class="p">)</span>
+    <span class="n">subtitle</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s">&#39;subtitle&#39;</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s">&#39;author&#39;</span><span class="p">)</span>
+    <span class="n">pubdate</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s">&#39;pubdate&#39;</span><span class="p">,</span> <span class="n">stored</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">indexed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Topic</span>
+
+    <span class="k">def</span> <span class="nf">index_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_visible</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Le premier champ, permet de définir un fichier de <em>template</em>, ou seront gardées les informations à <strong>indexer</strong> et les <strong>informations stockés</strong>.</p>
+<p>Grâce au nom du module, et du champ, on peut déterminer où ce trouve le fichier de <em>template</em>. Le <em>template</em>, se trouve, par défaut dans le dossier <code class="docutils literal"><span class="pre">templates/search/indexes/nom_module/nom_classe_nom_champs.txt</span></code>.
+Par exemple, le fichier <em>template</em> qui définit le contenu à indexer et les informations stockés pour les sujets sera dans <code class="docutils literal"><span class="pre">templates/search/indexes/forum/post_text.txt</span></code>.</p>
+<p>Voici le fichier de <em>template</em>, on voit ici, qu&#8217;on indexe deux types d&#8217;informations : le nom de l&#8217;auteur et le contenu en markdown, retourné par la fonction <code class="docutils literal"><span class="pre">Text</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{{</span> <span class="nb">object</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="nb">object</span><span class="o">.</span><span class="n">text</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>Les autres champs de la classe, forment les critères de recherches. C&#8217;est les champs sur lesquels, l&#8217;utilisateur pourrait rechercher s&#8217;il le souhaite.
+L&#8217;utilisateur pourrait donc rechercher, si on lui fournit l&#8217;interface graphique, sur le titre, le sous-titre, l&#8217;auteur ou la date de publication.</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Les champs de la classe ne sont pas forcément des contenus indexés (par exemple, ici, le contenu n&#8217;est pas indexé), c&#8217;est-à-dire que par défaut, si l&#8217;utilisateur ne précise pas le champ explicitement.
+Solr ne va pas rechercher sur ces champs.</p>
+</div>
+<p>Le dernier champ est précisé comme &#8220;stocké&#8221; mais pas indexé, c&#8217;est-à-dire que les données seront disponibles dans l&#8217;affichage des résultats, on ne peut pas rechercher autrement qu&#8217;en explicitant le nom du champ.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Topic</span>
+
+<span class="k">def</span> <span class="nf">index_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_visible</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Spacefox est le plus fort!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>La première méthode permet de définir le modèle du contenu à indexer et la deuxième méthode, permet d&#8217;exclure du contenu qu&#8217;on ne voudrait pas indexer.</p>
+<dl class="docutils">
+<dt>Plus d&#8217;information :</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://django-haystack.readthedocs.org/en/v2.3.1/tutorial.html">Documentation de Haystack (en)</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="le-cas-particulier-de-l-indexation-des-tutoriels-et-articles">
+<h3>Le cas particulier de l&#8217;indexation des tutoriels et articles<a class="headerlink" href="#le-cas-particulier-de-l-indexation-des-tutoriels-et-articles" title="Permalink to this headline">¶</a></h3>
+<p>Depuis la ZEP-12, les tables dans la base de données pour les parties, chapitres et extraits ont été supprimées.</p>
+<p>Les contenus (tutoriels et articles) sont stockés dans des tables spéciales qui ne servent qu&#8217;à l&#8217;indexation.
+Ces tables sont nommés <code class="docutils literal"><span class="pre">SearchIndexContent</span></code>, <code class="docutils literal"><span class="pre">SearchIndexContainer</span></code>, <code class="docutils literal"><span class="pre">SearchIndexExtract</span></code>, <code class="docutils literal"><span class="pre">SearchIndexAuthors</span></code> et <code class="docutils literal"><span class="pre">SearchIndexTag</span></code>.</p>
+<p>Mais ces tables doivent-être remplies, il est impossible de le faire à la publication de façon synchrone et bloquante, car cette opération prend du temps et des I/O. Pour rappel,</p>
+<ul>
+<li><p class="first">I/O : <code class="docutils literal"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">nombre</span> <span class="pre">de</span> <span class="pre">conteneurs</span> <span class="pre">+</span> <span class="pre">nombre</span> <span class="pre">d'extraits</span></code> (bien que cette opération se fasse au travers d&#8217;une archive compressée ZIP, ce qui modifie les performances)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Pour la base de données :</dt>
+<dd><ul class="first last simple">
+<li>En suppression : <code class="docutils literal"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">nombre</span> <span class="pre">de</span> <span class="pre">conteneurs</span> <span class="pre">+</span> <span class="pre">nombre</span> <span class="pre">d'extraits</span></code>,</li>
+<li>En ajout : <code class="docutils literal"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">nombre</span> <span class="pre">de</span> <span class="pre">conteneurs</span> <span class="pre">+</span> <span class="pre">nombre</span> <span class="pre">d'extraits</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Pour rappel, lors de la publication d&#8217;un contenu, dans la table <code class="docutils literal"><span class="pre">PublishableContent</span></code>, le champ <code class="docutils literal"><span class="pre">must_reindex</span></code> est passé à <code class="docutils literal"><span class="pre">True</span></code> indiquant que le contenu doit-être ré-indexé.</p>
+<p>Plus tard, souvent avant l&#8217;utilisation de la commande <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">rebuild_index</span></code>, la commande <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">index_content</span></code> est utilisée.
+Elle permet de copier les données des articles et tutoriels dans les tables de recherche. Elle utilise pour cela la version du contenu qui est stocké dans le fichier ZIP généré à la publication, afin de gagner du temps.</p>
+<p>Vous pouvez trouver plus d&#8217;information, sur cette commande <a class="reference external" href="#utilisation-de-la-commande-index-content">ici</a>.</p>
+</div>
+<div class="section" id="comment-lancer-l-indexation-et-ou-comment-verifier-les-donnees-indexees">
+<h3>Comment lancer l&#8217;indexation et/ou comment vérifier les données indexées ?<a class="headerlink" href="#comment-lancer-l-indexation-et-ou-comment-verifier-les-donnees-indexees" title="Permalink to this headline">¶</a></h3>
+<p>Il faut installer et démarrer Solr, régénérer le <code class="docutils literal"><span class="pre">schema.xml</span></code> et réindexer les données, pour cela, consulter la <a class="reference external" href="../install/install-solr.html">documentation d&#8217;installation</a>.</p>
+<p>Cette procédure est nécessaire à chaque modification des critères d&#8217;indexation.</p>
+<p>Si vous voulez, vérifier les données indexées, il faut vous rendre dans l&#8217;interface d&#8217;administration de Solr. Entrez dans un navigateur, l&#8217;adresse <a class="reference external" href="http://localhost:8983/solr/">http://localhost:8983/solr/</a> pour vous rendre dans l&#8217;interface d&#8217;administration.</p>
+<p>Sélectionnez dans la colonne à gauche, à l&#8217;aide du menu déroulant le nom de votre collection.</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/webinterface-solr.png" src="../_images/webinterface-solr.png" />
+</div>
+</div></blockquote>
+<dl class="docutils">
+<dt>Deux options s&#8217;offrent à vous :</dt>
+<dd><ul class="first simple">
+<li>Rechercher le contenu grâce à l&#8217;interface, « Query » dans Solr. Pour accéder à cette interface, cliquer sur &#8220;Query&#8221; dans le menu à gauche.</li>
+</ul>
+<div class="figure align-center">
+<img alt="../_images/query.png" src="../_images/query.png" />
+</div>
+<p>Vous arrivez sur l&#8217;interface, vous permettant de faire une recherche directement dans Solr.</p>
+<div class="figure align-center">
+<img alt="../_images/interface-query.png" src="../_images/interface-query.png" />
+</div>
+<p>De nombreuses abbréviations sont utilisées dans cette interface, vous pouvez rechercher leurs significations dans la <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Common+Query+Parameters">documentation de Solr (en)</a>.</p>
+<p>Un seul champ va nous intéresser, il est nommé &#8220;q&#8221;. Ce champs vous permet de définir les mots-clés recherchés. Dans l&#8217;exemple, du dessus, j&#8217;ai choisi le mot clé &#8220;Java&#8221;.
+Cliquez sur &#8220;Execute Query&#8221;, le bouton bleu en bas de l&#8217;interface, pour effectuer la recherche. Vous avez ainsi les résultats qui s&#8217;affichent dans la partie de gauche.</p>
+<ul class="simple">
+<li>Vous pouvez aussi avoir besoin de vérifier si tel champ indexe des données, ou quelles sont ces données. Pour cela, il faut vous rendre dans l&#8217;interface &#8220;Schema browser&#8221;.</li>
+</ul>
+<p>Pour cela, utilisez le menu de gauche.</p>
+<div class="last figure align-center">
+<img alt="../_images/schemabrowser.png" src="../_images/schemabrowser.png" />
+</div>
+</dd>
+</dl>
+<p>Vous arrivez sur une nouvelle interface :</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/interface-webbrowser.png" src="../_images/interface-webbrowser.png" />
+</div>
+</div></blockquote>
+<p>En haut, à gauche, vous devez définir le nom du champ, sélectionnez-en un grâce à la liste déroutante. Dans la capture, j&#8217;ai choisi le champ &#8220;subtitle&#8221;.</p>
+<p>Vous pouvez lire très facilement si le champ est indexé ou/et stocké grâce au tableau sur la droite.</p>
+<p>Une autre information, très utile est de voir quels sont les mots indexés, pour cela cliquez sur le bouton &#8220;Load Term Info&#8221;.</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/bouton-loadterminfo.png" src="../_images/bouton-loadterminfo.png" />
+</div>
+</div></blockquote>
+<p>Un nouveau tableau s&#8217;affiche, avec les différents mots les plus utilisés :</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/result-terminfo.png" src="../_images/result-terminfo.png" />
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="comment-fonctionne-le-code-de-la-recherche">
+<h3>Comment fonctionne le code de la recherche ?<a class="headerlink" href="#comment-fonctionne-le-code-de-la-recherche" title="Permalink to this headline">¶</a></h3>
+<p>Le code de la recherche se situe principalement dans le module <code class="docutils literal"><span class="pre">search</span></code>. Le code est très simple, dans le fichier <code class="docutils literal"><span class="pre">urls.py</span></code> :</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;haystack.views&#39;</span><span class="p">,</span>
+   <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">search_view_factory</span><span class="p">(</span>
+       <span class="n">view_class</span><span class="o">=</span><span class="n">CustomSearchView</span><span class="p">,</span>
+       <span class="n">template</span><span class="o">=</span><span class="s">&#39;search/search.html&#39;</span><span class="p">,</span>
+       <span class="n">form_class</span><span class="o">=</span><span class="n">CustomSearchForm</span>
+   <span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;haystack_search&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>On a défini un <code class="docutils literal"><span class="pre">CustomSearchView</span></code> et un <code class="docutils literal"><span class="pre">CustomSearchForm</span></code> qui vont nous permettre de redéfinir les critères sur la recherche de contenu ainsi que le formulaire.</p>
+<p>Les filtres pour la recherche, se trouvent dans le <code class="docutils literal"><span class="pre">get_results</span></code> du fichier <code class="docutils literal"><span class="pre">views.py</span></code>.</p>
+</div>
+</div>
+<div class="section" id="quels-sont-les-fichiers-de-configuration-importants">
+<h2>Quels sont les fichiers de configuration importants ?<a class="headerlink" href="#quels-sont-les-fichiers-de-configuration-importants" title="Permalink to this headline">¶</a></h2>
+<p>Les fichiers de configurations les plus importants sont le fichier <code class="docutils literal"><span class="pre">schema.xml</span></code> et le fichier <code class="docutils literal"><span class="pre">solrconfig.xml</span></code>.
+Ces deux fichiers sont stockés dans le dossier d&#8217;installation de Solr à l&#8217;intérieur du sous-dossier <code class="docutils literal"><span class="pre">example/solr/collection1/conf/</span></code>.</p>
+<p>Le fichier <code class="docutils literal"><span class="pre">schema.xml</span></code> permet de définir les types de champs qu&#8217;on pourrait créer, par exemple, définir ce qu&#8217;est un champ de type texte, ce qu&#8217;en est un de type date…
+Il permet de définir aussi des filtres (et des <em>tokenizers</em> (des filtres qui découpent des mots)) lors de l&#8217;indexation du contenu et avant la recherche.</p>
+<p>Le fichier de <code class="docutils literal"><span class="pre">solrconfig.xml</span></code>, permet de définir les paramètres de configuration du moteur de recherche. On a gardé les paramètres par défaut.</p>
+<p>La question qui se pose naturellement est pourquoi veut-on appliquer des filtres (et des <em>tokenizers</em>) avant l&#8217;indexation et avant la recherche ?</p>
+<p>Tout simplement car il faut traiter le contenu avant de l&#8217;indexer car certains mots ne doivent pas apparaître dans l&#8217;indexation. Par exemple, les mots comme &#8220;le&#8221;, &#8220;la&#8221;, &#8220;les&#8221;, &#8220;ou&#8221;, &#8220;de&#8221;, &#8220;par&#8221; ne sont pas des mots importants et ne vont pas permettre de représenter ce que l&#8217;utilisateur cherche.</p>
+<p>Il est aussi très important d&#8217;enlever les radicaux et les pluriels des mots car ils ne sont pas nécessaires.
+Si un utilisateur veut rechercher, par exemple, la phrase &#8220;Les Cornichons n&#8217;aiment pas les poissons&#8221;, lors de l&#8217;indexation et de la recherche, on va appliquer des filtres pour découper les mots. On aura ainsi dans le contenu &#8220;Les&#8221; &#8220;Conichons&#8221;, &#8220;n&#8217;aiment&#8221;, &#8220;pas&#8221;, &#8220;les&#8221;, &#8220;poissons&#8221;.
+Ensuite le moteur de recherche, peut choisir d&#8217;enlever les pluriels, on aura donc &#8220;Le&#8221; &#8220;Conichon&#8221;, &#8220;aime&#8221;, &#8220;pas&#8221;, &#8220;le&#8221;, &#8220;poisson&#8221;. On peut aussi choisir de supprimer tous les mots pas ou peu importants, on aura donc à la fin de cette étape : &#8220;Conichon&#8221;, &#8220;aime&#8221;, &#8220;pas&#8221;, &#8220;poisson&#8221;. Ces quatres mots formeront le contenu à indexer.</p>
+<p>Le <code class="docutils literal"><span class="pre">schema.xml</span></code> comme dit plus haut permet de définir ces filtres, lors de la génération du fichier <code class="docutils literal"><span class="pre">schema.xml</span></code> par Haystack (la commande <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">build_solr_schema</span></code>), les filtres sont ajoutés.
+Le projet Zeste de Savoir a eu besoin de définir des filtres. En effet, les filtres par défaut traitent uniquement du contenu en anglais. Quand la bibliothèque Haystack va générer le fichier <code class="docutils literal"><span class="pre">schema.xml</span></code>, le projet va remplacer le <em>template</em> de génération par celui du projet qui inclut les filtres.
+Ce fichier de <em>template</em> est défini dans <code class="docutils literal"><span class="pre">templates/search_configuration/solr.xml</span></code>. Les filtres appliqués sont dans la balise <code class="docutils literal"><span class="pre">fieldType</span></code> avec le nom <code class="docutils literal"><span class="pre">text_french</span></code>.</p>
+<p>Vous pouvez constater les filtres avec l&#8217;interface d&#8217;administration web de Solr.</p>
+<p>Allez dans l&#8217;administration <a class="reference external" href="http://localhost:8983/solr/">http://localhost:8983/solr/</a>, dans la liste déroulante sur votre gauche et choisissez &#8220;collection1&#8221;. Puis juste en-dessous, cliquez sur le bouton &#8220;Analysis&#8221;. Une nouvelle page s&#8217;ouvre,</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/interface-listefiltres.png" src="../_images/interface-listefiltres.png" />
+</div>
+</div></blockquote>
+<p>Cette interface permet de savoir quels filtres sont appliqués et comment. Le champ à gauche, c&#8217;est pour l&#8217;indexation et à droite pour la recherche.</p>
+<p>Tapez une phrase d&#8217;exemple en français dans le champ à gauche comme dans la capture. Choisissez le champ, par exemple &#8220;text&#8221;. Cliquez maintenant sur le bouton &#8220;Analyse Values&#8221; en bleu à droite. Vous avez un tableau avec chaque mot en colonne et sur les lignes ce sont les résultats après chaque filtre, dans la première colonne vous avez le nom des filtres, si vous passez votre curseur dessus.</p>
+<div class="section" id="utilisation-de-la-commande-index-content">
+<h3>Utilisation de la commande <code class="docutils literal"><span class="pre">index_content</span></code><a class="headerlink" href="#utilisation-de-la-commande-index-content" title="Permalink to this headline">¶</a></h3>
+<p>Cette commande permet de recopier les informations du contenu dans les tables spécifiques pour l&#8217;indexation. Ces contenus ne peuvent en effet pas être indexés directement (Solr ne permet pas d&#8217;indexer les fichiers), l&#8217;utilisation de cette commande est donc nécessaire.</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Ne pas lancer en même temps, la commande <code class="docutils literal"><span class="pre">index_content</span></code> et la commande <code class="docutils literal"><span class="pre">rebuild_index</span></code> de Solr.</p>
+</div>
+<p>Elle possède plusieurs options, vous pouvez les consulter en utilisant la commande <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">index_content</span> <span class="pre">-h</span></code> ou en lisant directement le code source dans le fichier <code class="docutils literal"><span class="pre">zds/search/management/commands/index_content.py</span></code>.</p>
+<p>Si vous utilisez directement la commande <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">index_content</span></code> sans argument, tous les objets <code class="docutils literal"><span class="pre">SearchIndex*</span></code> correspondant aux contenus (articles et tutoriels) sont supprimés puis à nouveau recopiés dans les tables de recherche.</p>
+<p>La commande <code class="docutils literal"><span class="pre">index_content</span></code> peut recevoir des arguments : les <em>pk</em> correspondant aux <code class="docutils literal"><span class="pre">PublishableContent</span></code>. Un exemple serait <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">index_content</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">12</span></code>: si vous préciser ces arguments, les informations des contenus 1, 2 et 12&nbsp;seront recopiées dans les tables de recherche.</p>
+<p>L&#8217;option <code class="docutils literal"><span class="pre">--only-flagged</span></code> peut être uilisée. Elle permet de sélectionner uniquement les contenus (articles et tutoriels) qui ont le champ <code class="docutils literal"><span class="pre">must_reindex</span></code> à <code class="docutils literal"><span class="pre">True</span></code>, afin de ne ré-indexer que ce qui est nécesssaire.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../back-end-code.html" class="btn btn-neutral float-right" title="Documentation technique du back-end" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="private-message.html" class="btn btn-neutral" title="Les messages privés" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, zds-member.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

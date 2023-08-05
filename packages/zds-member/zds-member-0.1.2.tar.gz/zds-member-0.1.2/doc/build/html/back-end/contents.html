@@ -1,0 +1,980 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Les tutoriels et articles v2.0 (ZEP 12) &mdash; Zds Member 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Zds Member 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Le back-end" href="../back-end.html"/>
+        <link rel="next" title="Les fichiers de manifeste" href="contents_manifest.html"/>
+        <link rel="prev" title="Le back-end" href="../back-end.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> Zds Member
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-linux-install.html">Installation du backend sous Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-et-configuration-de-virtualenv">Installation et configuration de <cite>virtualenv</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-os-x-install.html">Installation du backend sous OS X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-virtualenv">Installation de virtualenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#creation-de-votre-environnement">Création de votre environnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-la-librairie-lxml-pour-python-2-7-via-macports">Récupération de la librairie lxml pour python 2.7 via MacPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-cairo-svg">Récupération de cairo (svg)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#ajout-de-flags-pour-compiler-avec-gcc-plutot-que-clang-lors-de-l-installation-de-lxml">Ajout de flags pour compiler avec gcc plutôt que clang lors de l&#8217;installation de lxml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-toutes-les-dependances">Installation de toutes les dépendances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-windows-install.html">Installation du backend sous Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#prerequis">Prérequis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#suite-de-l-installation">Suite de l&#8217;installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/deploy-in-production.html">Configuration des serveurs de production</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#parametres">Paramètres</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-generaux">Paramètres généraux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-specifiques">Paramètres spécifiques</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#premier-deploiement">Premier déploiement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#utilisateur-local">Utilisateur local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-des-outils">Installation des outils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#clone-du-repo-et-configuration-de-prod">Clone du repo et configuration de prod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-de-l-application-de-base">Installation de l&#8217;application de base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#outils-specifiques-a-un-serveur-de-run">Outils spécifiques à un serveur de run</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#mise-a-jour-d-une-instance-existante">Mise à jour d&#8217;une instance existante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#personnalisation-d-une-instance">Personnalisation d&#8217;une instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/frontend-install.html">Installation du frontend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#installation-de-node-js-et-npm">Installation de Node.js et npm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#freebsd-openbsd">FreeBSD / OpenBSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mise-a-jour-de-node-js-et-npm">Mise à jour de Node.js et npm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#installation-des-dependances-npm">Installation des dépendances npm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#utilisation-des-outils">Utilisation des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#presentation-de-gulp">Présentation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#utilisation-de-gulp">Utilisation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#quelques-informations-supplementaires">Quelques informations supplémentaires</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#nettoyage-des-outils">Nettoyage des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances">Désinstaller les dépendances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances-inutilisees">Désinstaller les dépendances inutilisées</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/install-solr.html">Installation de Solr (pour la recherche)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-linux">Prérequis sur linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-windows">Prérequis sur windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#procedure-commune">Procédure commune</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../back-end.html">Le <em>back-end</em></a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Les tutoriels et articles v2.0 (ZEP 12)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vocabulaire-et-definitions">Vocabulaire et définitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#de-la-structure-generale-d-un-contenu">De la structure générale d&#8217;un contenu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#des-extraits">Des extraits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#des-conteneurs">Des conteneurs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#un-contenu">Un contenu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#des-objets-en-general">Des objets en général</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cycle-de-vie-des-contenus">Cycle de vie des contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#le-brouillon">Le brouillon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#la-beta">La bêta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#la-validation">La validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#la-publication">La publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l-entraide">L&#8217;entraide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#import-de-contenus">Import de contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#import-d-image">Import d&#8217;image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regles">Règles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#aspects-techniques-et-fonctionnels">Aspects techniques et fonctionnels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#les-metadonnees">Les métadonnées</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-stockage-en-base-de-donnees">Le stockage en base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-stockage-via-des-dossiers">Le stockage <em>via</em> des dossiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-permissions">Les permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processus-de-publication">Processus de publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#consultation-d-un-contenu-publie">Consultation d&#8217;un contenu publié</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qu-en-est-il-des-images">Qu&#8217;en est-il des images ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#passage-des-tutos-v1-aux-tutos-v2">Passage des tutos v1 aux tutos v2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#migrer-une-archive-v1-vers-une-archive-v2">Migrer une archive v1 vers une archive v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrer-la-base-de-donnees">Migrer la base de données</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contents_manifest.html">Les fichiers de manifeste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contents_manifest.html#les-versions-du-manifeste">Les versions du manifeste</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#nomenclature">Nomenclature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#version-1-0">Version 1.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#version-2-0">Version 2.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forum.html">Les forums</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#le-decoupage-des-forums">Le découpage des forums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#la-moderation-des-forums">La modération des forums</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-sujets">La modération des sujets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-messages">La modération des messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#les-filtres-sur-les-sujets">Les filtres sur les sujets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#dans-un-forum">Dans un forum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#suivre-un-sujet">Suivre un sujet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#etre-notifie-sur-le-site-lui-meme">Être notifié sur le site lui même</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gallery.html">Les galeries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#generalites">Généralités</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#creation-et-remplissage">Création et remplissage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#les-utilisateurs-et-leurs-droits">Les utilisateurs et leurs droits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#la-suppression">La suppression</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#lien-galerie-tutoriel">Lien galerie &lt;-&gt; Tutoriel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#aspects-techniques">Aspects techniques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#outils-logiciels-utilises">Outils logiciels utilisés</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="member.html">Les membres</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="member.html#inscription">Inscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member.html#desinscription">Désinscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member.html#les-membres-dans-les-environnement-de-test-et-de-developpement">Les membres dans les environnement de test et de développement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-promotion">L&#8217;interface de promotion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-karma">L&#8217;interface de karma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-reinitialisation-de-mot-de-passe">L&#8217;interface de réinitialisation de mot de passe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="private-message.html">Les messages privés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="private-message.html#envoi-et-participation">Envoi et participation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">La recherche</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search.html#l-indexation-des-donnees">L&#8217;indexation des données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#id1">La recherche</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#dans-le-code">Dans le code ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="search.html#pourquoi-avoir-utilise-haystack-ne-peut-t-on-pas-appeller-solr-directement">Pourquoi avoir utilisé Haystack, ne peut t-on pas appeller Solr directement ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#pourquoi-solr-et-pas-un-autre-moteur-de-recherche">Pourquoi Solr et pas un autre moteur de recherche ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-fonctionne-le-code-de-l-indexation">Comment fonctionne le code de l&#8217;indexation ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#le-cas-particulier-de-l-indexation-des-tutoriels-et-articles">Le cas particulier de l&#8217;indexation des tutoriels et articles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-lancer-l-indexation-et-ou-comment-verifier-les-donnees-indexees">Comment lancer l&#8217;indexation et/ou comment vérifier les données indexées ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-fonctionne-le-code-de-la-recherche">Comment fonctionne le code de la recherche ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#quels-sont-les-fichiers-de-configuration-importants">Quels sont les fichiers de configuration importants ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="search.html#utilisation-de-la-commande-index-content">Utilisation de la commande <code class="docutils literal"><span class="pre">index_content</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../back-end-code.html">Documentation technique du <em>back-end</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/arborescence-back.html">Arborescence du <em>back-end</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#arborescence-generale-de-zds">Arborescence générale de <code class="docutils literal"><span class="pre">zds/</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#contenu-d-un-module">Contenu d&#8217;un module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#fichiers-principaux">Fichiers principaux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#tests-unitaires">Tests unitaires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#gestion-de-la-base-de-donnees">Gestion de la base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#api">API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#autres">Autres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/article.html">Les articles (<code class="docutils literal"><span class="pre">article/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/forum.html">Les forums (<code class="docutils literal"><span class="pre">forum/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/gallery.html">Les galleries (<code class="docutils literal"><span class="pre">gallery/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/member.html">Les membres (<code class="docutils literal"><span class="pre">member/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/pages.html">Les pages (<code class="docutils literal"><span class="pre">pages/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/pages.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/private-message.html">Les messages privés (<code class="docutils literal"><span class="pre">mp/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/search.html">La recherche (<code class="docutils literal"><span class="pre">search/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorial.html">Les tutoriels (<code class="docutils literal"><span class="pre">tutorial/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorialv2.html">Les tutoriels v2 (ZEP12) (<code class="docutils literal"><span class="pre">tutorialv2/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-models">Modèles (<code class="docutils literal"><span class="pre">models/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-de-la-base-de-donnee-models-database-py">Modèles de la base de donnée (<code class="docutils literal"><span class="pre">models_database.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-versionnes-models-versioned-py">Modèles &#8220;versionnés&#8221; (<code class="docutils literal"><span class="pre">models_versioned.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#vues-views">Vues (<code class="docutils literal"><span class="pre">views/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-views-views-contents-py">Contenus (<code class="docutils literal"><span class="pre">views/views_contents.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#validations-views-views-validations-py">Validations (<code class="docutils literal"><span class="pre">views/views_validations.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-publies-views-views-published-py">Contenus publiés (<code class="docutils literal"><span class="pre">views/views_published.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#mixins-mixins-py">Mixins (<code class="docutils literal"><span class="pre">mixins.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-forumulaires-forms-py">Les forumulaires (<code class="docutils literal"><span class="pre">forms.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/utils.html">Les utilitaires (<code class="docutils literal"><span class="pre">utils/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#articles-articles-py">Articles (<code class="docutils literal"><span class="pre">articles.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#forums-forums-py">Forums (<code class="docutils literal"><span class="pre">forums.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#messages-prives-mps-py">Messages privés (<code class="docutils literal"><span class="pre">mps.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#tutoriels-tutorials-py">Tutoriels (<code class="docutils literal"><span class="pre">tutorials.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#les-processeurs-de-contexte-context-processor-py">Les processeurs de contexte (<code class="docutils literal"><span class="pre">context_processor.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#autres-misc-py">Autres (<code class="docutils literal"><span class="pre">misc.py</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#informations-generales">Informations générales</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#version-courante">Version courante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#schema">Schéma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-verbes-http">Les verbes HTTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-formats-d-entrees-sorties">Les formats d&#8217;entrées/sorties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#etag">ETag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#throttling">Throttling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#pagination">Pagination</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#authentification">Authentification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#bibliotheque-tierce-choisie">Bibliothèque tierce choisie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#utilisation">Utilisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#creer-un-client">Créer un client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#recuperer-les-tokens-d-authentification">Récupérer les tokens d&#8217;authentification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-access-token">Utiliser un access_token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-refresh-token">Utiliser un refresh_token</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#django-rest-swagger">Django REST Swagger</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Zds Member</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../back-end.html">Le <em>back-end</em></a> &raquo;</li>
+      
+    <li>Les tutoriels et articles v2.0 (ZEP 12)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/back-end/contents.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="les-tutoriels-et-articles-v2-0-zep-12">
+<h1>Les tutoriels et articles v2.0 (ZEP 12)<a class="headerlink" href="#les-tutoriels-et-articles-v2-0-zep-12" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vocabulaire-et-definitions">
+<h2>Vocabulaire et définitions<a class="headerlink" href="#vocabulaire-et-definitions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Contenu</strong> (<em>content</em>): désigne, de manière générale, tout ce qui peut être produit et édité sur Zeste de Savoir, c&#8217;est-à-dire, à l&#8217;heure actuelle, un article ou un tutoriel. Tout contenu est rattaché à un dossier qui lui est propre et dont l&#8217;organisation est explicitée plus bas. Ce dossier comporte des informations sur le contenu lui-même (<em>metadata</em> : un auteur, une description, une licence...) ainsi que des textes, agencés dans une arborescence bien précise.</li>
+<li><strong>Article</strong> : contenu, généralement court, visant à faire découvrir un sujet plus qu&#8217;à l&#8217;expliquer au lecteur (introduit sans rentrer dans les détails) ou à fournir un état des lieux sur un point donné de manière concise (rapports de <em>release</em>, actualité...).</li>
+<li><strong>Tutoriel</strong> : contenu, en général plus long, ayant pour objectif d&#8217;enseigner un savoir-faire au lecteur.</li>
+<li><strong>git</strong>: système de gestion de versions employé (entre autres) par ZdS. Il permet de faire coexister différentes versions d&#8217;un contenu de manière simple et transparente pour l&#8217;auteur.</li>
+<li><strong>Version</strong> : état du contenu à un moment donné. Toute mise à jour du contenu (ou d&#8217;une de ses composantes) génère une nouvelle version de ce dernier, laquelle est désignée par un <em>hash</em>, c&#8217;est-à-dire par une chaîne de 20 caractères de long (aussi appelée <em>sha</em>, en référence à l&#8217;algorithme employé pour les générer). Ce <em>hash</em> permet d&#8217;identifier de manière unique cette version parmi toutes celles du contenu. Certaines versions, en plus du <em>sha</em>, sont désignées par un nom. On distingue ainsi la version brouillon (<em>draft</em>), la version en bêta (<em>beta</em>), la version en validation (<em>validation</em>) et la version publiée (<em>public</em>). Pour ce faire, les <em>hash</em> correspondant à ces versions sont simplement mis de côté.</li>
+<li>Fichier <strong>manifest.json</strong> : fichier à la racine de tout contenu dont l&#8217;objectif est de décrire ce dernier. Un tel fichier comporte deux types d&#8217;informations : à propos du contenu en lui-même (les métadonnées mentionnées plus haut) et à propos de son arborescence. La spécification de ce fichier est détaillée plus loin. On retiendra qu&#8217;à chaque version correspond un fichier <code class="docutils literal"><span class="pre">manifest.json</span></code> et que le contenu de ce dernier peut fortement varier d&#8217;une version à l&#8217;autre.</li>
+<li><strong>Conteneur</strong> (<em>container</em>) : sous-structure d&#8217;un contenu. Explicité plus bas.</li>
+<li><strong>Extrait</strong> (<em>extract</em>) : base atomique (plus petite unité) d&#8217;un contenu. Explicité plus bas.</li>
+</ul>
+</div>
+<div class="section" id="de-la-structure-generale-d-un-contenu">
+<h2>De la structure générale d&#8217;un contenu<a class="headerlink" href="#de-la-structure-generale-d-un-contenu" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="des-extraits">
+<h3>Des extraits<a class="headerlink" href="#des-extraits" title="Permalink to this headline">¶</a></h3>
+<p>Un <strong>extrait</strong> est une unité de texte. Il possède un titre (<em>title</em>) et du
+texte (<em>text</em>). Dans l&#8217;interface d&#8217;édition d&#8217;un tutoriel, un extrait est
+désigné par le terme « section ».</p>
+</div>
+<div class="section" id="des-conteneurs">
+<h3>Des conteneurs<a class="headerlink" href="#des-conteneurs" title="Permalink to this headline">¶</a></h3>
+<p>Un conteneur est une boîte ayant pour rôle de regrouper des éléments
+sémantiquement proches. Il est caractérisé par son titre (<em>title</em>) et possède
+une introduction (<em>introduction</em>) ainsi qu&#8217;une conclusion (<em>conclusion</em>),
+possiblement vides.</p>
+<p>Les éléments regroupés, appelés « enfants » (<em>children</em>) peuvent être de deux
+types : conteneur ou extrait. La structure d&#8217;un conteneur obéit à certaines
+règles :</p>
+<ul class="simple">
+<li>Un conteneur ne peut comporter un conteneur composé lui-même d&#8217;un conteneur ;</li>
+<li>Un conteneur ne peut comporter d&#8217;enfants directs à la fois des conteneurs et des extraits.</li>
+</ul>
+<p>Au niveau de la terminologie, on désigne par « partie » tout conteneur de
+niveau 1, c&#8217;est-à-dire n&#8217;étant pas inclus dans un autre conteneur, et par
+« chapitre » tout conteneur enfant d&#8217;une partie.</p>
+</div>
+<div class="section" id="un-contenu">
+<h3>Un contenu<a class="headerlink" href="#un-contenu" title="Permalink to this headline">¶</a></h3>
+<p>Un <strong>contenu</strong> est un agencement particulier de conteneurs et d&#8217;extraits. Il
+est décrit par des métadonnées (<em>metadata</em>), détaillées
+<a class="reference external" href="./contents_manifest.html">ici</a>. Une de ces métadonnées est le type : article
+ou tutoriel. Leur visée pédagogique diffère, mais aussi leur structure : un
+article ne peut comporter de conteneurs, seulement des extraits, ce qui n&#8217;est
+pas le cas d&#8217;un tutoriel.</p>
+<p>Les exemples suivants devraient éclairer ces notions.</p>
+<p>Communément appelé « mini-tutoriel » :</p>
+<div class="highlight-none"><div class="highlight"><pre>+ Tutoriel
+    + Section
+    + Section
+    + Section
+</pre></div>
+</div>
+<p>Communément appelé « moyen-tutoriel » :</p>
+<div class="highlight-none"><div class="highlight"><pre>+ Tutoriel
+    + Partie
+        + Section
+    + Partie
+        + Section
+        + Section
+</pre></div>
+</div>
+<p>Communément appelé « big-tutoriel » :</p>
+<div class="highlight-none"><div class="highlight"><pre>+ Tutoriel
+    + Partie
+        + Chapitre
+            + Section
+            + Section
+        + Chapitre
+            + Section
+    + Partie
+        + Chapitre
+            + Section
+            + Section
+</pre></div>
+</div>
+<p>On peut aussi faire un mélange des conteneurs :</p>
+<div class="highlight-none"><div class="highlight"><pre>+ Tutoriel
+    + Partie
+        + Section
+        + Section
+    + Partie
+        + Chapitre
+            + Section
+        + Chapitre
+            + Section
+</pre></div>
+</div>
+<p>Mais pas de conteneurs et d&#8217;extraits adjacents :</p>
+<div class="highlight-none"><div class="highlight"><pre>/!\ Invalide !
+
++ Tutoriel
+    + Partie
+        + Section
+    + Section /!\ Impossible !
+    + Partie
+        + Chapitre
+            + Section
+        + Section /!\ Impossible !
+</pre></div>
+</div>
+<p>Pour finir, un article. Même structure qu&#8217;un mini-tutoriel, mais vocation
+pédagogique différente :</p>
+<div class="highlight-none"><div class="highlight"><pre>+ Article
+    + Section
+    + Section
+</pre></div>
+</div>
+<p>D&#8217;autre part, tout contenu se voit attribuer un identifiant unique sous la
+forme d&#8217;un entier naturel (en anglais : <em>pk</em>, pour <em>primary key</em>). Cet
+identifiant apparaît dans les URLs, qui sont de la forme
+<code class="docutils literal"><span class="pre">/contenus/{pk}/{slug}</span></code>. Il rend plus efficace la recherche en base de
+données. Le <em>slug</em>, quant à lui, a le mérite d&#8217;être compréhensible par un être
+humain et permet de gérer les cas de redirection 301 (voir plus bas).</p>
+</div>
+<div class="section" id="des-objets-en-general">
+<h3>Des objets en général<a class="headerlink" href="#des-objets-en-general" title="Permalink to this headline">¶</a></h3>
+<p>Tous les textes (introductions, conclusions et extraits) sont formatés en
+Markdown (dans la version étendue de ZdS).</p>
+<p>Conteneurs et extraits sont des <strong>objets</strong> (<em>object</em>). Dès lors, ils possèdent
+tous deux un <em>slug</em> (littéralement, « limace ») : il s&#8217;agit d&#8217;une chaîne de
+caractères générée à partir du titre de l&#8217;objet et qui, tout en restant lisible
+par un être humain, le simplifie considérablement. Un <em>slug</em> est uniquement
+composé de caractères alphanumériques minuscules et non-accentués
+(<code class="docutils literal"><span class="pre">[a-z0-9]*</span></code>) ainsi que des caractères <code class="docutils literal"><span class="pre">-</span></code> (tiret) et <code class="docutils literal"><span class="pre">_</span></code> (<em>underscore</em>).
+Ce <em>slug</em> a deux utilités : il est employé dans l&#8217;URL permettant de consulter
+l&#8217;objet depuis le site Web et dans le nom des fichiers ou dossiers employés pour le
+stocker (détails plus bas). Dès lors, cette spécification <strong>impose</strong> que ce
+<em>slug</em> soit unique au sein du conteneur parent, et que le <em>slug</em> du contenu
+soit unique au sein de tous les contenus de ZdS.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">À noter que l&#8217;<em>underscore</em> est conservé par compatibilité avec l&#8217;ancien
+système, les nouveaux <em>slugs</em> générés par le système d&#8217;édition de ZdS
+n&#8217;en contiendront pas.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lors du déplacement d&#8217;un conteneur ou d&#8217;un extrait, les <em>slugs</em> sont modifiés
+de manière à ce qu&#8217;il n&#8217;y ait pas de collision.</p>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">L&#8217;introduction et la conclusion d&#8217;un conteneur possèdent également un
+<em>slug</em>, pour des raisons de stockage (voir plus bas). Il ne faut pas
+oublier la contrainte d&#8217;unicité à l&#8217;intérieur d&#8217;un conteneur.</p>
+</div>
+</div>
+</div>
+<div class="section" id="cycle-de-vie-des-contenus">
+<h2>Cycle de vie des contenus<a class="headerlink" href="#cycle-de-vie-des-contenus" title="Permalink to this headline">¶</a></h2>
+<p>Quelque soit le type de contenu, le cycle de vie de celui-ci reste toujours le même.
+Un contenu peut être rédigé par un ou plusieurs auteurs. Chaque modification
+est conservée afin de pouvoir retrouver l&#8217;historique des modifications et éventuellement
+récupérer un morceau de texte perdu. Lorsqu&#8217;un contenu est créé il rentre dans
+sa première étape.</p>
+<div class="section" id="le-brouillon">
+<h3>Le brouillon<a class="headerlink" href="#le-brouillon" title="Permalink to this headline">¶</a></h3>
+<p>Le brouillon est la première étape du cycle de vie d&#8217;un contenu. Il donne
+toujours l&#8217;état le plus récent d&#8217;un contenu vu par les auteurs. Chaque fois
+que le contenu est modifié, c&#8217;est la version brouillon qui est mise à jour.
+La version brouillon est accessible uniquement pour les auteurs et validateurs
+d&#8217;un tutoriel. Si on souhaite donner un accès en lecture seule à nos écrits,
+il faut passer par la méthode adéquate.</p>
+</div>
+<div class="section" id="la-beta">
+<h3>La bêta<a class="headerlink" href="#la-beta" title="Permalink to this headline">¶</a></h3>
+<p>Lorsque les auteurs estiment que leur tutoriel a atteint un certain niveau de
+maturité, et qu&#8217;ils souhaitent recueillir des retours de la communauté, ils ont
+la possibilité de le mettre à la disposition de cette dernière le contenu en
+lecture seule. C&#8217;est le mode bêta.</p>
+<p>Lors de la mise en bêta d&#8217;un contenu, un sujet est automatiquement ouvert dans
+la Bêta-zone, contenant l&#8217;adresse de la bêta. Cette dernière est de la forme :
+<code class="docutils literal"><span class="pre">/contenus/beta/{pk}/{slug}/</span></code>.</p>
+<p>Il faut en outre noter que seule une version précise du contenu est mise en
+bêta. Au moment de la mise en bêta, les versions brouillon et bêta coïncident
+mais l&#8217;auteur peut tout à fait poursuivre son travail sans affecter la seconde.
+Seulement, la version brouillon ne sera plus identique à la version en bêta et
+il ne faudra pas oublier de mettre à jour cette dernière pour que la communauté
+puisse juger des dernières modifications.</p>
+</div>
+<div class="section" id="la-validation">
+<h3>La validation<a class="headerlink" href="#la-validation" title="Permalink to this headline">¶</a></h3>
+<p>Une fois que l&#8217;auteur a eu assez de retours sur son contenu, et qu&#8217;il estime
+qu&#8217;il est prêt à être publié, il décide d&#8217;envoyer son contenu en validation.
+<em>Via</em> l&#8217;interface idoine, un validateur peut alors réserver le contenu et
+commencer à vérifier qu&#8217;il satisfait la politique éditoriale du site. Dans le
+cas contraire, le contenu est rejeté et un message est envoyé aux auteurs pour
+expliquer les raisons du refus.</p>
+<p>L&#8217;envoi en validation n&#8217;est pas définitif, dans le sens où vous pouvez à tout
+moment mettre à jour la version en cours de validation. Évitez d&#8217;en abuser tout
+de même, car, si un validateur commence à lire votre tutoriel, il devra
+recommencer son travail si vous faites une mise à jour dessus. Cela pourrait non
+seulement ralentir le processus de validation de votre tutoriel, mais aussi ceux
+autres tutoriels !</p>
+<p>Comme pour la bêta, la version brouillon du tutoriel peut continuer à être
+améliorée pendant que la version de validation reste figée. Auteurs et validateurs
+peuvent donc continuer à travailler chacun de leur côté.</p>
+</div>
+<div class="section" id="la-publication">
+<h3>La publication<a class="headerlink" href="#la-publication" title="Permalink to this headline">¶</a></h3>
+<p>Une fois que le contenu est passé en validation et a satisfait les critères
+éditoriaux, il est publié. Il faut bien préciser que le processus de
+validation peut être assez long. De plus, un historique de validation est
+disponible pour les validateurs.</p>
+<p>La publication d&#8217;un contenu entraîne l&#8217;exportation du contenu en plusieurs formats :</p>
+<ul class="simple">
+<li>Markdown : disponible uniquement pour les membres du staff et les auteurs du contenu</li>
+<li>HTML</li>
+<li>PDF</li>
+<li>EPUB : format de lecture adapté aux liseuses</li>
+<li>Archive : un export de l&#8217;archive contenant la version publiée du contenu</li>
+</ul>
+<p>Pour différentes raisons, il se peut que l&#8217;export dans divers formats échoue.
+Dans ce cas, le lien de téléchargement n&#8217;est pas présenté. Un fichier de log
+sur le serveur enregistre les problèmes liés à l&#8217;export d&#8217;un format.</p>
+<p>Aujourd&#8217;hui, il existe des bugs dans la conversion en PDF (notamment les blocs spécifiques à ZdS),
+qui devraient être réglés plus tard avec la
+<a class="reference external" href="http://zestedesavoir.com/forums/sujet/676/zep-05-refonte-du-traitement-markdown-pour-lexport">ZEP-05</a>)</p>
+<p>Enfin, signalons qu&#8217;il est possible à tout moment pour un membre de l&#8217;équipe
+de dépublier un contenu. Le cas échéant, un message sera envoyé aux auteurs,
+indiquant les raisons de la dépublication.</p>
+</div>
+<div class="section" id="l-entraide">
+<h3>L&#8217;entraide<a class="headerlink" href="#l-entraide" title="Permalink to this headline">¶</a></h3>
+<p>Afin d&#8217;aider les auteurs de contenus à rédiger ces derniers, des options lors
+de la création/édition de ce dernier sont disponibles. L&#8217;auteur peut ainsi
+faire aisément une demande d&#8217;aide pour les raisons suivantes
+(liste non exhaustive) :</p>
+<ul class="simple">
+<li>Besoin d&#8217;aide à l&#8217;écriture</li>
+<li>Besoin d&#8217;aide à la correction/relecture</li>
+<li>Besoin d&#8217;aide pour illustrer</li>
+<li>Désir d&#8217;abandonner le contenu et recherche d&#8217;un repreneur</li>
+</ul>
+<p>L&#8217;ensemble des contenus à la recherche d&#8217;aide est visible via la page
+<code class="docutils literal"><span class="pre">/contenus/aides/</span></code>. Cette page génère un tableau récapitulatif de toutes les
+demandes d&#8217;aides pour les différents contenus et des filtres peuvent être
+appliqués.</p>
+<p>Il est également possible <strong>pour tout membre qui n&#8217;est pas auteur du contenu consulté</strong>
+de signaler une erreur, en employant le bouton prévu à cet effet et situé en
+bas d&#8217;une page du contenu.</p>
+<blockquote>
+<div><div class="figure align-center" id="id1">
+<img alt="../_images/warn-typo-button.png" src="../_images/warn-typo-button.png" />
+<p class="caption"><span class="caption-text">Bouton permentant de signaler une erreur</span></p>
+</div>
+</div></blockquote>
+<p>Ce bouton est disponible sur la version publiée ou en bêta d&#8217;un contenu. Cliquer sur celui-ci ouvre une boite de dialogue :</p>
+<blockquote>
+<div><div class="figure align-center" id="id2">
+<img alt="../_images/warn-typo-dial.png" src="../_images/warn-typo-dial.png" />
+<p class="caption"><span class="caption-text">Boite de dialogue permettant de signaler à l&#8217;auteur une erreur qu&#8217;il aurait commise</span></p>
+</div>
+</div></blockquote>
+<p>Le message ne peut pas être vide, mais n&#8217;hésitez pas à être précis et à fournir
+des détails. Cliquer sur &#8220;Envoyer&#8221; enverra un message privé aux auteurs du
+contenu, reprenant votre message sous forme d&#8217;une citation. Vous participerez
+également à la conversation, afin que les auteurs puissent vous demander plus
+de détails si nécessaire.</p>
+</div>
+</div>
+<div class="section" id="import-de-contenus">
+<h2>Import de contenus<a class="headerlink" href="#import-de-contenus" title="Permalink to this headline">¶</a></h2>
+<p>Zeste de Savoir permet d&#8217;importer des contenus provenant de sources
+extérieures.</p>
+<p>Ce système est utilisable pour créer de nouveaux contenus à partir de zéros,
+ou bien si vous avez téléchargé l&#8217;archive correspondante à votre contenu, modifiée et
+que vous souhaitez importer les modifications.</p>
+<p>Il suffit de faire une archive zip du répertoire
+dans lequel se trouvent les fichiers de votre contenu, puis de vous rendre soit sur
+&#8220;Importer un nouveau contenu&#8221;, soit sur &#8220;Importer une nouvelle version&#8221; dans n&#8217;importe quel contenu
+et de renseigner les champs relatifs à l&#8217;import d&#8217;une archive, puis de cliquer sur &#8220;Importer&#8221;.</p>
+<blockquote>
+<div><div class="figure align-center" id="id3">
+<img alt="../_images/import-archive.png" src="../_images/import-archive.png" />
+<p class="caption"><span class="caption-text">Exemple de formulaire d&#8217;importation : mise à jour d&#8217;un contenu</span></p>
+</div>
+</div></blockquote>
+<div class="section" id="import-d-image">
+<h3>Import d&#8217;image<a class="headerlink" href="#import-d-image" title="Permalink to this headline">¶</a></h3>
+<p>À noter que si vous souhaitez importer des images de manière à ce qu&#8217;elles soient
+directement intégrée à votre contenu, vous devez écrire les liens vers cette image sous la
+forme <code class="docutils literal"><span class="pre">![légende](archive:image.extension)</span></code>, puis créer une archive contenant toutes celles-ci.
+Le système se chargera alors d&#8217;importer les images dans la gallerie correspondante, puis de remplacer
+les liens quand c&#8217;est nécessaire. Ainsi,</p>
+<div class="highlight-text"><div class="highlight"><pre>Voici ma belle image : ![Mon image](archive:image.png)
+</pre></div>
+</div>
+<p>Sera remplacé en</p>
+<div class="highlight-text"><div class="highlight"><pre>Voici ma belle image : ![Mon image](/media/galleries/xx/yyyyyy.png)
+</pre></div>
+</div>
+<p>À condition que <code class="docutils literal"><span class="pre">image.png</span></code> soit présent dans l&#8217;archive (à sa racine) et soit une image valide.</p>
+</div>
+<div class="section" id="regles">
+<h3>Règles<a class="headerlink" href="#regles" title="Permalink to this headline">¶</a></h3>
+<p>Au maximum, le système d&#8217;importation tentera d&#8217;être compréhensif envers une arborescence qui
+différente de celle énoncée ci-dessus. Par contre
+<strong>l&#8217;importation réorganisera les fichiers importés de la manière décrite ci-dessus</strong>,
+afin de parer aux mauvaises surprises.</p>
+<p>Tout contenu qui ne correspond pas aux règles précisées ci-dessus ne sera pas
+ré-importable. Ne sera pas ré-importable non plus tout contenu dont les
+fichiers indiqués dans le <code class="docutils literal"><span class="pre">manifest.json</span></code> n&#8217;existent pas ou sont incorrects.
+Seront supprimés les fichiers qui seraient inutiles (images, qui actuellement
+doivent être importées séparément dans une galerie, autres fichiers
+supplémentaires) pour des raisons élémentaires de sécurité.</p>
+</div>
+</div>
+<div class="section" id="aspects-techniques-et-fonctionnels">
+<h2>Aspects techniques et fonctionnels<a class="headerlink" href="#aspects-techniques-et-fonctionnels" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="les-metadonnees">
+<h3>Les métadonnées<a class="headerlink" href="#les-metadonnees" title="Permalink to this headline">¶</a></h3>
+<p>On distingue actuellement deux types de métadonnées (<em>metadata</em>) : celles
+versionnées (et donc reprises dans le <code class="docutils literal"><span class="pre">manifest.json</span></code>) et celles qui ne le
+sont pas. La liste exhaustive de ces dernières (à l&#8217;heure actuelle) est la
+suivante :</p>
+<ul class="simple">
+<li>Les <em>hash</em> des différentes versions du tutoriel (<code class="docutils literal"><span class="pre">sha_draft</span></code>, <code class="docutils literal"><span class="pre">sha_beta</span></code>, <code class="docutils literal"><span class="pre">sha_public</span></code> et <code class="docutils literal"><span class="pre">sha_validation</span></code>) ;</li>
+<li>Les auteurs du contenu ;</li>
+<li>Les catégories auxquelles appartient le contenu ;</li>
+<li>La miniature ;</li>
+<li>L&#8217;origine du contenu, s&#8217;il n&#8217;a pas été créé sur ZdS mais importé avec une licence compatible ;</li>
+<li>L&#8217;utilisation ou pas de JSFiddle dans le contenu ;</li>
+<li>Différentes informations temporelles : date de création (<code class="docutils literal"><span class="pre">creation_date</span></code>), de publication (<code class="docutils literal"><span class="pre">pubdate</span></code>) et de dernière modification (<code class="docutils literal"><span class="pre">update_date</span></code>)</li>
+<li>La galerie ;</li>
+<li>Le sujet de la bêta, s&#8217;il existe.</li>
+</ul>
+</div>
+<div class="section" id="le-stockage-en-base-de-donnees">
+<h3>Le stockage en base de données<a class="headerlink" href="#le-stockage-en-base-de-donnees" title="Permalink to this headline">¶</a></h3>
+<p>Les métadonnées non versionnées sont stockées dans la base de données, à l&#8217;aide
+du modèle <code class="docutils literal"><span class="pre">PublishableContent</span></code>. Pour des raisons de facilité, certaines des
+métadonnées versionnées sont également intégrées dans la base :</p>
+<ul class="simple">
+<li>Le titre</li>
+<li>Le type de contenu</li>
+<li>La licence</li>
+<li>La description</li>
+</ul>
+<p>En ce qui concerne cette dernière, celle stockée en base est <strong>toujours</strong>
+celle de <strong>la version brouillon</strong>. Il ne faut donc <strong>en aucun cas</strong> les
+employer pour résoudre une URL ou à travers une template correspondant
+à la version publiée.</p>
+<p>Les métadonnées versionnées sont stockées dans le fichier <code class="docutils literal"><span class="pre">manifest.json</span></code>. Ce
+dernier est rattaché à une version du contenu par le truchement de git.</p>
+<p>À la publication du contenu, un objet <code class="docutils literal"><span class="pre">PublishedContent</span></code> est créé, reprenant
+les informations importantes de cette version. C&#8217;est alors cet objet qui est
+utilisé pour résoudre les URLs. C&#8217;est également lui qui se cache derrière le
+mécanisme de redirection si, entre deux versions, le <em>slug</em> du contenu change.</p>
+</div>
+<div class="section" id="le-stockage-via-des-dossiers">
+<h3>Le stockage <em>via</em> des dossiers<a class="headerlink" href="#le-stockage-via-des-dossiers" title="Permalink to this headline">¶</a></h3>
+<p>Comme énoncé plus haut, chaque contenu possède un dossier qui lui est propre
+(dont le nom est le <em>slug</em> du contenu), stocké dans l&#8217;endroit défini par la
+variable <code class="docutils literal"><span class="pre">ZDS_APP['content']['repo_path']</span></code>. Dans ce dossier se trouve le
+fichier <code class="docutils literal"><span class="pre">manifest.json</span></code>.</p>
+<p>Pour chaque conteneur, un dossier est créé, contenant les éventuels fichiers
+correspondant aux introduction, conclusion et différents extraits, ainsi que
+des dossiers pour les éventuels conteneurs enfants. Il s&#8217;agit de la forme d&#8217;un
+contenu tel que généré par ZdS en utilisant l&#8217;éditeur en ligne.</p>
+<p>Il est demandé de se conformer au maximum à cette structure pour éviter les
+mauvaises surprises en cas d&#8217;édition externe (voir ci-dessous).</p>
+</div>
+<div class="section" id="les-permissions">
+<h3>Les permissions<a class="headerlink" href="#les-permissions" title="Permalink to this headline">¶</a></h3>
+<p>Afin de gérer ce module, trois permissions peuvent être utilisées :</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">tutorialv2.change_publishablecontent</span></code> : pour le droit d&#8217;accéder et de modifier les contenus même sans en être l&#8217;auteur ;</li>
+<li><code class="docutils literal"><span class="pre">tutorialv2.change_validation</span></code> : pour le droit à accéder à l&#8217;interface de validation, réserver, valider ou refuser des contenus ;</li>
+<li><code class="docutils literal"><span class="pre">tutorialv2.change_contentreaction</span></code> : pour le droit à modérer les commentaires sur les contenus une fois publiés (masquer, éditer, ...).</li>
+</ul>
+<p>Ces permissions doivent être accordées au administateurs/modérateurs/validateurs selon les besoins via l&#8217;interface d&#8217;administration de Django.</p>
+</div>
+<div class="section" id="processus-de-publication">
+<h3>Processus de publication<a class="headerlink" href="#processus-de-publication" title="Permalink to this headline">¶</a></h3>
+<p>Apès avoir passé les étapes de validation, le contenu est près à être publié.
+Cette action est effectuée par un membre du Staff. Le but de la publication
+est double : permettre aux visiteurs de consulter le contenu, mais aussi
+d’effectuer certains traitements (détaillés ci-après) afin que celui-ci soit
+sous une forme qui soit plus rapidement affichable par ZdS. C’est pourquoi ces
+contenus ne sont pas stockés au même endroit (voir
+<code class="docutils literal"><span class="pre">ZDS_AP['content']['repo_public_path']</span></code>) que les brouillons.</p>
+<p>La publication se passe comme suit :</p>
+<ol class="arabic">
+<li><p class="first">Un dossier temporaire est créé, afin de ne pas affecter la version publique précédente, si elle existe. Ce dossier est nommé <code class="docutils literal"><span class="pre">{slug}__build</span></code>;</p>
+</li>
+<li><dl class="first docutils">
+<dt>Le code <em>markdown</em> est converti en HTML afin de gagner du temps à l&#8217;affichage. Pour chaque conteneur, deux cas se présentent :</dt>
+<dd><ul class="first last simple">
+<li>Si celui-ci contient des extraits, ils sont tous rassemblés dans un seul fichier HTML, avec l&#8217;introduction et la conclusion ;</li>
+<li>Dans le cas contraire, l&#8217;introduction et la conclusion sont placées dans des fichiers séparés, et les champs correspondants dans le <em>manifest</em> sont mis à jour.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Le <em>manifest</em> correspondant à la version de validation est copié. Il sera nécessaire afin de valider les URLs et générer le sommaire. Néanmoins, les informations inutiles sont enlevées (champ <code class="docutils literal"><span class="pre">text</span></code> des extraits, champs <code class="docutils literal"><span class="pre">introduction</span></code> et <code class="docutils literal"><span class="pre">conclusion</span></code> des conteneurs comportant des extraits), une fois encore pour gagner du temps ;</p>
+</li>
+<li><p class="first">L&#8217;exportation vers les autres formats est ensuite effectué (PDF, EPUB, ...) en utilisant <a class="reference external" href="http://pandoc.org/">pandoc (en)</a>. Cette étape peut être longue si le contenu possède une taille importante. Il est également important de mentionner que pendant cette étape, l&#8217;ensemble des images qu&#8217;utilise le contenu est récupéré et que si ce n&#8217;est pas possible, une image par défaut est employée à la place, afin d&#8217;éviter les erreurs ;</p>
+</li>
+<li><p class="first">Finalement, si toutes les étapes précédentes se sont bien déroulées, le dossier temporaire est déplacé à la place de celui de l&#8217;ancienne version publiée. Un objet <code class="docutils literal"><span class="pre">PublishedContent</span></code> est alors créé (ou mis à jour si le contenu avait déjà été publié par le passé), contenant les informations nécessaire à l&#8217;affichage dans la liste des contenus publiés. Le <code class="docutils literal"><span class="pre">sha_public</span></code> est mis à jour dans la base de données et l&#8217;objet <code class="docutils literal"><span class="pre">Validation</span></code> est changé de même.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="consultation-d-un-contenu-publie">
+<h3>Consultation d&#8217;un contenu publié<a class="headerlink" href="#consultation-d-un-contenu-publie" title="Permalink to this headline">¶</a></h3>
+<p>On n&#8217;utilise pas git pour afficher la version publiée d&#8217;un contenu. Dès lors,
+deux cas se présentent :</p>
+<ul class="simple">
+<li>L&#8217;utilisateur consulte un conteneur dont les enfants sont eux-mêmes des conteneurs (c&#8217;est-à-dire le conteneur principal ou une partie d&#8217;un big-tutoriel) : le <code class="docutils literal"><span class="pre">manifest.json</span></code> est employé pour générer le sommaire, comme c&#8217;est le cas actuellement. L&#8217;introduction et la conclusion sont également affichées.</li>
+<li>L&#8217;utilisateur consulte un conteneur dont les enfants sont des extraits : le fichier HTML généré durant la publication est employé tel quel par le gabarit correspondant, additionné de l&#8217;éventuelle possibilité de faire suivant/précédent (qui nécessite la lecture du <code class="docutils literal"><span class="pre">manifest.json</span></code>).</li>
+</ul>
+</div>
+<div class="section" id="qu-en-est-il-des-images">
+<h3>Qu&#8217;en est-il des images ?<a class="headerlink" href="#qu-en-est-il-des-images" title="Permalink to this headline">¶</a></h3>
+<p>Le versionnage des images d&#8217;un contenu (celles qui font partie de la galerie
+rattachée) continue à faire débat, et il a été décidé pour le moment de ne
+pas les versionner, pour des raisons simples :</p>
+<ul class="simple">
+<li>Versionner les images peut rendre très rapidement une archive lourde : si l&#8217;auteur change beaucoup d&#8217;images, il va se retrouver avec des images plus jamais utilisées qui traînent dans son archive ;</li>
+<li>Avoir besoin d&#8217;interroger le dépôt à chaque fois pour lire les images peut rapidement devenir lourd pour la lecture.</li>
+</ul>
+<p>Le parti a été pris de ne pas versionner les images qui sont stockées sur le
+serveur. Ce n&#8217;est pas critique et on peut très bien travailler ainsi. Par
+contre, il vaudra mieux y réfléchir pour une version 3 afin de proposer
+une rédaction totale en mode hors-ligne.</p>
+</div>
+</div>
+<div class="section" id="passage-des-tutos-v1-aux-tutos-v2">
+<h2>Passage des tutos v1 aux tutos v2<a class="headerlink" href="#passage-des-tutos-v1-aux-tutos-v2" title="Permalink to this headline">¶</a></h2>
+<p>Le parseur v2 ne permettant qu&#8217;un support minimal des tutoriels à l&#8217;ancien
+format, il est nécessaire de mettre en place des procédures de migration.</p>
+<div class="section" id="migrer-une-archive-v1-vers-une-archive-v2">
+<h3>Migrer une archive v1 vers une archive v2<a class="headerlink" href="#migrer-une-archive-v1-vers-une-archive-v2" title="Permalink to this headline">¶</a></h3>
+<p>Le premier cas qu&#8217;il est possible de rencontrer est la présence d&#8217;une
+archive <em>hors ligne</em> d&#8217;un tutoriel à la version 1.</p>
+<p>La migration de cette archive consistera alors à ne migrer que le <em>manifest</em>.
+En effet, la nouvelle architecture étant bien plus souple du
+point de vue des nomenclatures, il ne sera pas nécessaire de l&#8217;adapter.</p>
+<p>Un outil intégré au code de ZdS a été mis en place. Il vous faudra alors :</p>
+<ul class="simple">
+<li>Décompresser l&#8217;archive ;</li>
+<li>Exécuter <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">upgrade_manifest_to_v2</span> <span class="pre">/chemin/vers/archive/decompressee/manifest.json</span></code> ;</li>
+<li>Recompresser l&#8217;archive.</li>
+</ul>
+<p>Si vous souhaitez implémenter votre propre convertisseur, voici l&#8217;algorithme utilisé en Python :</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_file</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json_reader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+<span class="n">_type</span> <span class="o">=</span> <span class="s">&quot;TUTORIAL&quot;</span>
+<span class="k">if</span> <span class="s">&quot;type&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">_type</span> <span class="o">=</span> <span class="s">&quot;ARTICLE&quot;</span>
+<span class="n">versioned</span> <span class="o">=</span> <span class="n">VersionedContent</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">_type</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">],</span> <span class="n">slugify</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]))</span>
+<span class="n">versioned</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&quot;description&quot;</span><span class="p">]</span>
+<span class="n">versioned</span><span class="o">.</span><span class="n">introduction</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&quot;introduction&quot;</span><span class="p">]</span>
+<span class="n">versioned</span><span class="o">.</span><span class="n">conclusion</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&quot;conclusion&quot;</span><span class="p">]</span>
+<span class="n">versioned</span><span class="o">.</span><span class="n">licence</span> <span class="o">=</span> <span class="n">Licence</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s">&quot;licence&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">versioned</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;2.0&quot;</span>
+<span class="n">versioned</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">])</span>
+<span class="k">if</span> <span class="s">&quot;parts&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="c"># if it is a big tutorial</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s">&quot;parts&quot;</span><span class="p">]:</span>
+        <span class="n">current_part</span> <span class="o">=</span> <span class="n">Container</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">],</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="s">&quot;pk&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]))</span>
+        <span class="n">current_part</span><span class="o">.</span><span class="n">introduction</span> <span class="o">=</span> <span class="n">part</span><span class="p">[</span><span class="s">&quot;introduction&quot;</span><span class="p">]</span>
+        <span class="n">current_part</span><span class="o">.</span><span class="n">conclusion</span> <span class="o">=</span> <span class="n">part</span><span class="p">[</span><span class="s">&quot;conclusion&quot;</span><span class="p">]</span>
+        <span class="n">versioned</span><span class="o">.</span><span class="n">add_container</span><span class="p">(</span><span class="n">current_part</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">chapter</span> <span class="ow">in</span> <span class="n">part</span><span class="p">[</span><span class="s">&quot;chapters&quot;</span><span class="p">]:</span>
+            <span class="n">current_chapter</span> <span class="o">=</span> <span class="n">Container</span><span class="p">(</span><span class="n">chapter</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">],</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">chapter</span><span class="p">[</span><span class="s">&quot;pk&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">chapter</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]))</span>
+            <span class="n">current_chapter</span><span class="o">.</span><span class="n">introduction</span> <span class="o">=</span> <span class="n">chapter</span><span class="p">[</span><span class="s">&quot;introduction&quot;</span><span class="p">]</span>
+            <span class="n">current_chapter</span><span class="o">.</span><span class="n">conclusion</span> <span class="o">=</span> <span class="n">chapter</span><span class="p">[</span><span class="s">&quot;conclusion&quot;</span><span class="p">]</span>
+            <span class="n">current_part</span><span class="o">.</span><span class="n">add_container</span><span class="p">(</span><span class="n">current_chapter</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">extract</span> <span class="ow">in</span> <span class="n">chapter</span><span class="p">[</span><span class="s">&quot;extracts&quot;</span><span class="p">]:</span>
+                <span class="n">current_extract</span> <span class="o">=</span> <span class="n">Extract</span><span class="p">(</span><span class="n">extract</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">],</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">extract</span><span class="p">[</span><span class="s">&quot;pk&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">extract</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]))</span>
+                <span class="n">current_chapter</span><span class="o">.</span><span class="n">add_extract</span><span class="p">(</span><span class="n">current_extract</span><span class="p">)</span>
+                <span class="n">current_extract</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">current_extract</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="s">&quot;chapter&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="c"># if it is a mini tutorial</span>
+    <span class="k">for</span> <span class="n">extract</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s">&quot;chapter&quot;</span><span class="p">][</span><span class="s">&quot;extracts&quot;</span><span class="p">]:</span>
+        <span class="n">current_extract</span> <span class="o">=</span> <span class="n">Extract</span><span class="p">(</span><span class="n">extract</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">],</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">extract</span><span class="p">[</span><span class="s">&quot;pk&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">extract</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]))</span>
+        <span class="n">current_extract</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">current_extract</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">versioned</span><span class="o">.</span><span class="n">add_extract</span><span class="p">(</span><span class="n">current_extract</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">versioned</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s">&quot;ARTICLE&quot;</span><span class="p">:</span>
+    <span class="n">extract</span> <span class="o">=</span> <span class="n">Extract</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">],</span> <span class="s">&quot;text&quot;</span><span class="p">)</span>
+    <span class="n">versioned</span><span class="o">.</span><span class="n">add_extract</span><span class="p">(</span><span class="n">extract</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migrer-la-base-de-donnees">
+<h3>Migrer la base de données<a class="headerlink" href="#migrer-la-base-de-donnees" title="Permalink to this headline">¶</a></h3>
+<p>Si vous faites tourner une instance du code de Zeste de Savoir sous la version 1.X et que vous passez à la v2.X, vous allez
+devoir migrer les différents tutoriels. Pour cela, il faudra simplement exécuter la commande <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate_to_zep12.py</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contents_manifest.html" class="btn btn-neutral float-right" title="Les fichiers de manifeste" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../back-end.html" class="btn btn-neutral" title="Le back-end" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, zds-member.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
