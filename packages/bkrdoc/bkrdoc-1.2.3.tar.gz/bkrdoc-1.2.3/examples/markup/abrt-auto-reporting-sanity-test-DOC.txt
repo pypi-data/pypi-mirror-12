@@ -1,0 +1,57 @@
+Description: Apache example test
+Author: Petr Splichal <psplicha@redhat.com>
+Keywords: 
+
+Phases:
+  Outside Phase
+    key apache
+
+  Setup "Setup"
+    Sums up phase asserts and reports the overall phase result
+      Make sure the httpd package is installed
+      Make sure the httpd service is running with fresh configuration
+      (restarts if necessary, remembers the original state)
+
+  Test "Test Existing Page"
+    Check if the file is correct
+      Make sure the content is OK
+      Check the access log for the corresponding record
+
+  Test "Test Missing Page"
+    Trying to access a nonexistent page
+      An error message should be reported to stderr
+      The access log should contain a 404 record
+
+  Cleanup "Cleanup"
+    Cleanup after test
+      Restore the www and log directories to their original state
+      condition: Restore httpd service to it's original state
+        inside first if comment
+      elif-condition: Elif description
+        condition: description of if inside elif
+          comment in if
+        else-condition:
+          comment in else
+      else-condition: comment at the end of elif
+        comment in else
+
+Expected results:
+
+Additional information:
+  Conditions:
+    if [ $year -eq "0" ]; then
+      Restore httpd service to it's original state
+      inside first if comment
+    elif [ $year -eq 0 ]; then
+      Elif description
+      comment at the end of elif
+    else
+      comment in else
+    fi
+
+    if [ $year -ne 0 ]; then
+      description of if inside elif
+      comment in if
+    else
+      comment in else
+    fi
