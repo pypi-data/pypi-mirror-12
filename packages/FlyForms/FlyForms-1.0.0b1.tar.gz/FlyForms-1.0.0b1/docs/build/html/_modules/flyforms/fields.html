@@ -1,0 +1,719 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>flyforms.fields &mdash; flyforms 1.0.0b1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="flyforms 1.0.0b1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> flyforms
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../concept.html">Introduction to FlyForms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">FlyForms reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">FlyForms Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">flyforms</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>flyforms.fields</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for flyforms.fields</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains a collection of fields classes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">jsonify_types</span><span class="p">,</span> <span class="n">FrozenDict</span><span class="p">,</span> <span class="n">UNSET</span>
+<span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">Form</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">.validators</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">string_base</span><span class="p">,</span> <span class="n">text_type</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&quot;StringField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;EmailField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;IntField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;FloatField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;BooleanField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Ip4Field&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ListField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ArrayField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;DatetimeField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;DictField&quot;</span><span class="p">,</span>
+    <span class="s">&quot;EmbeddedFormField&quot;</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="SelectField"><a class="viewcode-back" href="../../api.html#flyforms.fields.SelectField">[docs]</a><span class="k">class</span> <span class="nc">SelectField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. versionadded:: 1.0.0</span>
+
+<span class="sd">    This is the base class for all Fields that reflect single values such as :code:`int`, :code:`float`, :code:`bool`</span>
+<span class="sd">    and etc. It provides to specify list of valid values (choices). Any passed values which are not in the defined</span>
+<span class="sd">    choices will cause validation fails.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field required or may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+
+<span class="sd">        :param choices: iterable object contains possible values of this field</span>
+<span class="sd">        :type choices: Iterable</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SelectField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c"># Add choices validation, if necessary</span>
+        <span class="k">if</span> <span class="n">choices</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EntryValidator</span><span class="p">(</span><span class="n">choices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_types</span><span class="p">))</span>
+
+    <span class="nd">@Field.field_validation_hook</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="StringField"><a class="viewcode-back" href="../../api.html#flyforms.fields.StringField">[docs]</a><span class="k">class</span> <span class="nc">StringField</span><span class="p">(</span><span class="n">SelectField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflects Python strings</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_types</span> <span class="o">=</span> <span class="n">string_base</span>  <span class="c"># valid types of field value</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="n">text_type</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field required</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param min_length: the minimum length of the string</span>
+<span class="sd">        :type min_length: int or None</span>
+
+<span class="sd">        :param max_length: the maximum length of the string</span>
+<span class="sd">        :type max_length: int or None</span>
+
+<span class="sd">        :param regex: the regular expression to validate</span>
+<span class="sd">        :type regex: str or regexp</span>
+
+<span class="sd">        :param choices: iterable object contains possible values of this field</span>
+<span class="sd">        :type choices: iterable</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">StringField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">min_length</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MinLengthValidator</span><span class="p">(</span><span class="n">min_length</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">max_length</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MaxLengthValidator</span><span class="p">(</span><span class="n">max_length</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">regex</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="EmailField"><a class="viewcode-back" href="../../api.html#flyforms.fields.EmailField">[docs]</a><span class="k">class</span> <span class="nc">EmailField</span><span class="p">(</span><span class="n">StringField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflects Python string corresponding to an email</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field required</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param choices: iterable object contains possible values of this field</span>
+<span class="sd">        :type choices: iterable</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EmailField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EmailValidator</span><span class="p">())</span>
+
+</div>
+<div class="viewcode-block" id="IntField"><a class="viewcode-back" href="../../api.html#flyforms.fields.IntField">[docs]</a><span class="k">class</span> <span class="nc">IntField</span><span class="p">(</span><span class="n">SelectField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflects Python :code:`int` values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_types</span> <span class="o">=</span> <span class="nb">int</span>  <span class="c"># valid types of field value</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field required</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param min_value: the minimum valid value</span>
+
+<span class="sd">        :param max_value: the maximum valid value</span>
+
+<span class="sd">        :param choices: iterable object contains possible values of this field</span>
+<span class="sd">        :type choices: iterable</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">IntField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">min_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MinValueValidator</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">max_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MaxValueValidator</span><span class="p">(</span><span class="n">max_value</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="FloatField"><a class="viewcode-back" href="../../api.html#flyforms.fields.FloatField">[docs]</a><span class="k">class</span> <span class="nc">FloatField</span><span class="p">(</span><span class="n">IntField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflects Python :code:`float` values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_types</span> <span class="o">=</span> <span class="nb">float</span>  <span class="c"># valid types of field value</span>
+
+</div>
+<div class="viewcode-block" id="BooleanField"><a class="viewcode-back" href="../../api.html#flyforms.fields.BooleanField">[docs]</a><span class="k">class</span> <span class="nc">BooleanField</span><span class="p">(</span><span class="n">SelectField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflects Python :code:`bool` values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_types</span> <span class="o">=</span> <span class="nb">bool</span>  <span class="c"># valid types of field value</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field value may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">BooleanField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="Ip4Field"><a class="viewcode-back" href="../../api.html#flyforms.fields.Ip4Field">[docs]</a><span class="k">class</span> <span class="nc">Ip4Field</span><span class="p">(</span><span class="n">StringField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflects Python string corresponding to an IPv4 address</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field required</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param choices: iterable object contains possible values of this field</span>
+<span class="sd">        :type choices: iterable</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Ip4Field</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ip4AddressValidator</span><span class="p">())</span>
+
+</div>
+<div class="viewcode-block" id="SequenceField"><a class="viewcode-back" href="../../api.html#flyforms.fields.SequenceField">[docs]</a><span class="k">class</span> <span class="nc">SequenceField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. versionadded:: 1.0.0</span>
+
+<span class="sd">    This is the base class for all Fields that reflect iterable values such as list, tuple and etc.</span>
+<span class="sd">    It provides to specify such as minimum and maximum possible iterable length and validators for each item.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_types</span> <span class="o">=</span> <span class="n">Iterable</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="nb">tuple</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">item_validators</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field required or may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+
+<span class="sd">        :param min_length: minimum iterable length</span>
+<span class="sd">        :type min_length: int</span>
+
+<span class="sd">        :param max_length: maximum iterable length</span>
+<span class="sd">        :type max_length: int</span>
+
+<span class="sd">        :param item_validators: the additional validators for every item</span>
+<span class="sd">        :type item_validators: list of Callable</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SequenceField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c"># Check is given item validators are callable object and extend validators list</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">validator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">)</span> <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="n">item_validators</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Each validator should be a callable object&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_validators</span> <span class="o">=</span> <span class="p">[</span><span class="n">validate_required</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">item_validators</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">min_length</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MinLengthValidator</span><span class="p">(</span><span class="n">min_length</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">max_length</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MaxLengthValidator</span><span class="p">(</span><span class="n">max_length</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+
+    <span class="nd">@Field.field_validation_hook</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>  <span class="c"># run item validators</span>
+            <span class="k">for</span> <span class="n">item_validator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_validators</span><span class="p">:</span>
+                <span class="n">item_validator</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="ListField"><a class="viewcode-back" href="../../api.html#flyforms.fields.ListField">[docs]</a><span class="k">class</span> <span class="nc">ListField</span><span class="p">(</span><span class="n">SequenceField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflects iterable Python objects</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jsonify</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field required or may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param min_length: minimum iterable length</span>
+<span class="sd">        :type min_length: int</span>
+
+<span class="sd">        :param max_length: maximum iterable length</span>
+<span class="sd">        :type max_length: int</span>
+
+<span class="sd">        :param item_validators: the additional validators for every item</span>
+<span class="sd">        :type item_validators: list of Callable</span>
+
+<span class="sd">        :param jsonify: if True all items should be one of :py:data:`.jsonify_types`</span>
+<span class="sd">        :type jsonify: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ListField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">jsonify</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TypeValidator</span><span class="p">(</span><span class="n">jsonify_types</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="ArrayField"><a class="viewcode-back" href="../../api.html#flyforms.fields.ArrayField">[docs]</a><span class="k">class</span> <span class="nc">ArrayField</span><span class="p">(</span><span class="n">SequenceField</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    .. versionadded:: 0.2.0</span>
+
+<span class="sd">    Reflects iterable objects where each item same type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_type</span><span class="p">,</span> <span class="n">jsonify</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param item_type: type of each item in the list</span>
+
+<span class="sd">        :param required: boolean flag is this field required or may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param min_length: minimum iterable length</span>
+<span class="sd">        :type min_length: int</span>
+
+<span class="sd">        :param max_length: maximum iterable length</span>
+<span class="sd">        :type max_length: int</span>
+
+<span class="sd">        :param item_validators: the additional validators for every item</span>
+<span class="sd">        :type item_validators: list of Callable</span>
+
+<span class="sd">        :param jsonify: if True all items should be one of :py:data:`.jsonify_types`</span>
+<span class="sd">        :type jsonify: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">jsonify</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">item_type</span><span class="p">,</span> <span class="n">jsonify_type</span><span class="p">)</span> <span class="k">for</span> <span class="n">jsonify_type</span> <span class="ow">in</span> <span class="n">jsonify_types</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Type </span><span class="si">%s</span><span class="s"> is not supported for JSON encoding and decoding operations&quot;</span> <span class="o">%</span> <span class="n">item_type</span><span class="p">)</span>
+
+        <span class="n">item_validators</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&quot;item_validators&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">item_validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TypeValidator</span><span class="p">(</span><span class="n">item_type</span><span class="p">))</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">ArrayField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">item_validators</span><span class="o">=</span><span class="n">item_validators</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="DatetimeField"><a class="viewcode-back" href="../../api.html#flyforms.fields.DatetimeField">[docs]</a><span class="k">class</span> <span class="nc">DatetimeField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. versionadded:: 0.3.0</span>
+
+<span class="sd">    A datetime field.</span>
+
+<span class="sd">    Parse string contains datetime via datetime.strptime</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_types</span> <span class="o">=</span> <span class="n">string_base</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="n">text_type</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&quot;</span><span class="p">,</span> <span class="n">now</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param required: boolean flag is this field value may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param fmt: datetime format</span>
+<span class="sd">        :type fmt: str</span>
+
+<span class="sd">        :param now: if passed the default value will be datetime.now()</span>
+<span class="sd">        :type now: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">default</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fmt</span><span class="p">)</span> <span class="k">if</span> <span class="n">now</span> <span class="k">else</span> <span class="n">UNSET</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">DatetimeField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="n">required</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="n">null</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="n">validators</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span>
+
+    <span class="nd">@Field.field_validation_hook</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmt</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="DictField"><a class="viewcode-back" href="../../api.html#flyforms.fields.DictField">[docs]</a><span class="k">class</span> <span class="nc">DictField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    .. versionadded:: 0.3.0</span>
+
+<span class="sd">    Reflects Python dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value_types</span> <span class="o">=</span> <span class="nb">dict</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="n">FrozenDict</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param schema: template to dict validation</span>
+<span class="sd">        :type schema: dict</span>
+
+<span class="sd">        :param required: boolean flag is this field value may be :py:data:`.UNSET`</span>
+<span class="sd">        :type required: bool</span>
+
+<span class="sd">        :param null: boolean flag is field value may be :code:`None`</span>
+<span class="sd">        :type null: bool</span>
+
+<span class="sd">        :param validators: the additional validators for field</span>
+<span class="sd">        :type validators: list of callable</span>
+
+<span class="sd">        :param default: the default value of the field</span>
+<span class="sd">        :type default: instance of value_types</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Schema for DictField should be dict instance&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s">&quot;Bad field </span><span class="si">%s</span><span class="s"> in schema. Expected Field subclass instance, got </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                        <span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">DictField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="o">=</span> <span class="n">schema</span>
+
+    <span class="nd">@Field.field_validation_hook</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
+            <span class="n">field_obj</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="p">{}:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Unknown fields: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="nd">@Field.field_binding_hook</span>
+    <span class="k">def</span> <span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">validators</span><span class="p">:</span>  <span class="c"># run validators for whole dict</span>
+                <span class="n">validator</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c"># if ValidationError occurred</span>
+            <span class="n">bound</span> <span class="o">=</span> <span class="n">UNSET</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bound</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">bv</span><span class="p">,</span> <span class="n">er</span> <span class="o">=</span> <span class="n">field_obj</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">er</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">bv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">UNSET</span><span class="p">:</span>
+                        <span class="n">bound</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">bv</span>
+                    <span class="k">continue</span>
+                <span class="n">error</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">er</span>
+            <span class="k">for</span> <span class="n">unk</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+                <span class="n">error</span><span class="p">[</span><span class="n">unk</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Unknown field: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">unk</span>
+            <span class="n">bound</span> <span class="o">=</span> <span class="n">FrozenDict</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="bp">None</span> <span class="k">if</span> <span class="n">error</span> <span class="o">==</span> <span class="p">{}</span> <span class="k">else</span> <span class="n">error</span>
+        <span class="k">return</span> <span class="n">bound</span><span class="p">,</span> <span class="n">error</span>
+
+</div>
+<div class="viewcode-block" id="EmbeddedFormField"><a class="viewcode-back" href="../../api.html#flyforms.fields.EmbeddedFormField">[docs]</a><span class="k">class</span> <span class="nc">EmbeddedFormField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form_cls</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">form_cls</span><span class="p">,</span> <span class="n">Form</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Bad form type: expected Form subclass, got </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">form_cls</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_cls</span> <span class="o">=</span> <span class="n">form_cls</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">EmbeddedFormField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="n">required</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="n">null</span><span class="p">)</span>
+
+    <span class="c"># noinspection PyProtectedMember</span>
+    <span class="nd">@Field.field_binding_hook</span>
+    <span class="k">def</span> <span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_cls</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>
+            <span class="n">field_obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_cls</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">field_obj</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">UNSET</span><span class="p">))</span>
+            <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">UNSET</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_cls</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">d</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">skip_extra</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FrozenDict</span><span class="p">(</span><span class="o">**</span><span class="n">value</span><span class="p">),</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">UNSET</span><span class="p">,</span> <span class="s">&quot;Unknown fields </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="nd">@Field.field_validation_hook</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_cls</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Sizov.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0b1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>flyforms.validators &mdash; flyforms 1.0.0b1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="flyforms 1.0.0b1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> flyforms
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../concept.html">Introduction to FlyForms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">FlyForms reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">FlyForms Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">flyforms</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>flyforms.validators</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for flyforms.validators</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">UNSET</span>
+<span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">with_metaclass</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&quot;EntryValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;MaxValueValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;MaxLengthValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;MinLengthValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;MinValueValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;EmailValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;RegexValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Ip4AddressValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;RequiredValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;TypeValidator&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ValidationError&quot;</span><span class="p">,</span>
+    <span class="s">&quot;validate_required&quot;</span><span class="p">,</span>
+    <span class="s">&quot;validate_email&quot;</span><span class="p">,</span>
+    <span class="s">&quot;validate_ip&quot;</span><span class="p">,</span>
+    <span class="s">&quot;validate_not_null&quot;</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="ValidationError"><a class="viewcode-back" href="../../api.html#flyforms.validators.ValidationError">[docs]</a><span class="k">class</span> <span class="nc">ValidationError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Raised when a validator fails to validate it&#39;s input.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="Validator"><a class="viewcode-back" href="../../api.html#flyforms.validators.Validator">[docs]</a><span class="k">class</span> <span class="nc">Validator</span><span class="p">(</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">ABCMeta</span><span class="p">,</span> <span class="nb">object</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The abstract root class for all Validators.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validate the given value</span>
+
+<span class="sd">        :param value: given value to validate</span>
+
+<span class="sd">        :raises ValidationError: if given value is not valid</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="SimpleValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.SimpleValidator">[docs]</a><span class="k">class</span> <span class="nc">SimpleValidator</span><span class="p">(</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">ABCMeta</span><span class="p">,</span> <span class="n">Validator</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Validator&#39;s subclass with only one validation case.</span>
+<span class="sd">    Given value should satisfies condition in :py:meth:`validation_case` method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="n">abstractmethod</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">is</span> <span class="n">x</span><span class="p">)</span>  <span class="c"># Given value should satisfies this condition</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">validation_case</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>  <span class="c"># check validation case</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>  <span class="c"># and raise ValidationError if result is not match</span>
+
+</div>
+<div class="viewcode-block" id="RequiredValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.RequiredValidator">[docs]</a><span class="k">class</span> <span class="nc">RequiredValidator</span><span class="p">(</span><span class="n">SimpleValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates is given value not :py:data:`.UNSET` object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Field is required&quot;</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">UNSET</span>
+
+</div>
+<div class="viewcode-block" id="TypeValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.TypeValidator">[docs]</a><span class="k">class</span> <span class="nc">TypeValidator</span><span class="p">(</span><span class="n">SimpleValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates is given value instance of passed :code:`value_types`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;value_types&quot;</span><span class="p">,)</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Bad value type&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value_types</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param value_types: list of possible value types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value_types</span> <span class="o">=</span> <span class="n">value_types</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_types</span><span class="p">)</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">UNSET</span>
+
+</div>
+<div class="viewcode-block" id="EntryValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.EntryValidator">[docs]</a><span class="k">class</span> <span class="nc">EntryValidator</span><span class="p">(</span><span class="n">SimpleValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates is given value in specified during initialization iterable object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;iterable&quot;</span><span class="p">,)</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Value not in choices.&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">item_type</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param iterable: the iterable object</span>
+
+<span class="sd">        :raise: TypeError if given object is not iterable</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Entry validator instance need an iterable object&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">item_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">item_type</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Bad type object found in given iterable&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterable</span> <span class="o">=</span> <span class="n">iterable</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterable</span>
+
+</div>
+<div class="viewcode-block" id="MinValueValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.MinValueValidator">[docs]</a><span class="k">class</span> <span class="nc">MinValueValidator</span><span class="p">(</span><span class="n">SimpleValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates is given value greater than specified during initialization value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;min_value&quot;</span><span class="p">,</span> <span class="s">&quot;strong&quot;</span><span class="p">)</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Given value is less than minimum valid value.&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_value</span><span class="p">,</span> <span class="n">strong</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param min_value: the minimum valid value</span>
+
+<span class="sd">        :param strong: boolean flag should be comparison strict or not</span>
+<span class="sd">        :type strong: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span> <span class="o">=</span> <span class="n">min_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strong</span> <span class="o">=</span> <span class="n">strong</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strong</span> <span class="k">else</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span>
+
+</div>
+<div class="viewcode-block" id="MaxValueValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.MaxValueValidator">[docs]</a><span class="k">class</span> <span class="nc">MaxValueValidator</span><span class="p">(</span><span class="n">SimpleValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates is given value less than specified during initialization value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;max_value&quot;</span><span class="p">,</span> <span class="s">&quot;strong&quot;</span><span class="p">)</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Given value is greater than maximum valid&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">strong</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param max_value: the maximum valid value</span>
+
+<span class="sd">        :param strong: boolean flag should be comparison strict or not</span>
+<span class="sd">        :type strong: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span> <span class="o">=</span> <span class="n">max_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strong</span> <span class="o">=</span> <span class="n">strong</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strong</span> <span class="k">else</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span>
+
+</div>
+<div class="viewcode-block" id="MinLengthValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.MinLengthValidator">[docs]</a><span class="k">class</span> <span class="nc">MinLengthValidator</span><span class="p">(</span><span class="n">SimpleValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates the minimum object length</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;len&quot;</span><span class="p">,</span> <span class="s">&quot;strong&quot;</span><span class="p">)</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Value length less than minimum valid&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_length</span><span class="p">,</span> <span class="n">strong</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param min_length: the minimum valid length</span>
+
+<span class="sd">        :param strong: boolean flag should be comparison strict or not</span>
+<span class="sd">        :type strong: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len</span> <span class="o">=</span> <span class="n">min_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strong</span> <span class="o">=</span> <span class="n">strong</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&#39;__len__&#39;</span><span class="p">):</span>  <span class="c"># check for __len__ attribute</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Validation failed because value of type &#39;</span><span class="si">%s</span><span class="s">&#39; has no length&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MinLengthValidator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__call__</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value_len</span><span class="p">:</span> <span class="n">value_len</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strong</span> <span class="k">else</span> <span class="n">value_len</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span>
+
+</div>
+<div class="viewcode-block" id="MaxLengthValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.MaxLengthValidator">[docs]</a><span class="k">class</span> <span class="nc">MaxLengthValidator</span><span class="p">(</span><span class="n">MinLengthValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates the maximum object length</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;len&quot;</span><span class="p">,</span> <span class="s">&quot;strong&quot;</span><span class="p">)</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Value length greater than maximum valid&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">,</span> <span class="n">strong</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param max_length: the maximum valid length</span>
+
+<span class="sd">        :param strong: boolean flag should be comparison strict or not</span>
+<span class="sd">        :type strong: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MaxLengthValidator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">max_length</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value_len</span><span class="p">:</span> <span class="n">value_len</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strong</span> <span class="k">else</span> <span class="n">value_len</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span>
+
+</div>
+<div class="viewcode-block" id="RegexValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.RegexValidator">[docs]</a><span class="k">class</span> <span class="nc">RegexValidator</span><span class="p">(</span><span class="n">SimpleValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates string matching with regular expression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">,)</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Value does not match the regular expression.&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regex</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param regex: the regular expression</span>
+
+<span class="sd">        :param flags: flags passed to re.match function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The Validator&#39;s validate method implementation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RegexValidator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__call__</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">validation_case</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="EmailValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.EmailValidator">[docs]</a><span class="k">class</span> <span class="nc">EmailValidator</span><span class="p">(</span><span class="n">RegexValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates an email address via simple regex.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Bad e-mail address&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EmailValidator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="n">regex</span><span class="o">=</span><span class="s">r&quot;^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$&quot;</span>
+        <span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="Ip4AddressValidator"><a class="viewcode-back" href="../../api.html#flyforms.validators.Ip4AddressValidator">[docs]</a><span class="k">class</span> <span class="nc">Ip4AddressValidator</span><span class="p">(</span><span class="n">RegexValidator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates an IPv4 address via simple regex.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Bad ip address&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Ip4AddressValidator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="n">regex</span><span class="o">=</span><span class="s">r&quot;^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$&quot;</span>
+        <span class="p">)</span>
+
+</div>
+<span class="k">def</span> <span class="nf">validate_email</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates an email address via simple regex.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s">r&quot;^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$&quot;</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="n">email</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Bad e-mail address&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">validate_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates an IPv4 address via simple regex.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s">r&quot;^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$&quot;</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="n">ip</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Bad ip address&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">validate_required</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates is given value not :py:data:`.UNSET` object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">UNSET</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Field is required&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">validate_not_null</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates is given value not :code:`None`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Field is required&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Sizov.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0b1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
