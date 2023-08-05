@@ -1,0 +1,51 @@
+Metadata-Version: 2.0
+Name: datapackage-validate
+Version: 0.0.1
+Summary: A Python library to validate Data Package datapackage.json files.
+Home-page: https://github.com/okfn/datapackage-validate-py
+Author: Open Knowledge Foundation
+Author-email: info@okfn.org
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Requires-Dist: requests (>=2.8.0)
+Requires-Dist: jsonschema (>=2.5.1)
+Requires-Dist: datapackage-registry (>=0.0.2)
+
+# datapackage-validate-py
+
+Validate [Data Package][] datapackage.json files against a jsonschema.
+
+[Data Package]: http://data.okfn.org/doc/data-package
+
+## Usage
+
+```python
+import datapackage_validate
+
+valid, errors = datapackage_validate.validate(datapackage, schema)
+```
+
+The `datapackage` can be a json string or python object.
+
+The `schema` can be a json string, python object, or a schema id corresponding with a schema from the registry of [Data Package Profiles][]. `schema` is optional, and will default to the `base` schema id if not provided.
+
+`validate()` returns a tuple (valid, errors):
+
+`valid` is a boolean determining whether the datapackage validates against the schema.
+
+`errors` is an array of error string messages. Empty if `valid` is True.
+
+[Data Package Profiles]: https://github.com/dataprotocols/registry
+
+
