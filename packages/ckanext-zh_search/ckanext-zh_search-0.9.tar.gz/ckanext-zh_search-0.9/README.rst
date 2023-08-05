@@ -1,0 +1,1 @@
+An improved harvest package to collect Chinese language data sets for CKAN.
