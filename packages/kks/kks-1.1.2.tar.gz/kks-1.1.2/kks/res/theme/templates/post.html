@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="{{ root }}/{{ blog.theme }}/static/images/favicon.ico">
+<link rel="stylesheet" href="{{ root }}/{{ blog.theme }}/static/css/code.css" type="text/css" />
+<link rel="stylesheet" href="{{ root }}/{{ blog.theme }}/static/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="{{ root }}/{{ blog.theme }}/static/css/main.css" type="text/css" />
+<title>{% block title %}{{ post.title}}|{{ blog.long_name }}{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" style="opacity: .9" role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{{ root }}/">{{ blog.short_name }}</a>
+</div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+<li class="active"><a href="{{ root }}/">Blog</a></li>
+{% if 'theme' in config %}
+{% set github = config['theme'].get('github', None) %}
+{% if github %}
+<li><a href="https://github.com/{{ github }}" target="_blank"  rel="nofollow">GitHub</a></li>
+{% endif %}
+{% endif %}
+</ul>
+</div>
+</div>
+</nav>
+<div class="row" style="padding-top: 60px">
+<div class="container center-block">
+<div class="col-md-1"></div>
+<div class="col-md-10 col-sm-12">
+<div class="panel panel-success">
+{% block content %}
+<div class="panel-heading">
+<h1 class="panel-title ">{{post.title}}</h1>
+</div>
+<div class="panel-body">
+{{post.html}}
+</div>
+<div class="panel-footer">
+{{ author.name }}
+</div>
+</div>
+</div>
+<div class="col-md-1"></div>
+</div>
+</div>
+{% endblock %}
+</body>
+<script src="{{ root }}/{{ blog.theme }}/static/js/code.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+{% block script %}
+{% endblock %}
+</script>
+</html>

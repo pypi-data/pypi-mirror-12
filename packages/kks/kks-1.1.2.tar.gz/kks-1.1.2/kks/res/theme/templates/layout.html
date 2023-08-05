@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="{{ root }}/{{ blog.theme }}/static/images/favicon.ico">
+<link rel="stylesheet" href="{{ root }}/{{ blog.theme }}/static/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="{{ root }}/{{ blog.theme }}/static/css/home.css" type="text/css" />
+<title>{% block title %}{{ blog.long_name }}{% endblock %}</title>
+{% block header_extra %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{{ root }}/">{{ blog.short_name }}</a>
+</div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+<li class="active"><a href="{{ root }}/">Blog</a></li>
+{% if 'theme' in config %}
+{% set github = config['theme'].get('github', None) %}
+{% if github %}
+<li><a href="https://github.com/{{ github }}" target="_blank"  rel="nofollow">GitHub</a></li>
+{% endif %}
+{% endif %}
+</ul>
+</div>
+</div>
+</nav>
+{% block content %}
+{% endblock %}
+<div class="footer">
+{{ author.name }}
+</div>
+</div>
+</body>
+<script>
+{% block script %}
+{% endblock %}
+</script>
+</html>
