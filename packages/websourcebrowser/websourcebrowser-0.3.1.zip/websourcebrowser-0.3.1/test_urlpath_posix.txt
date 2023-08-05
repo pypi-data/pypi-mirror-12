@@ -1,0 +1,72 @@
+The ``urlpath`` module under Posix
+==================================
+
+The ``urlpath`` module contains functions for converting between an
+URL and the corresponding file system path. To avoid, for example,
+unintended access to directories and files, we have to pay special
+attention to tricks used by crackers.
+
+So, let's begin:
+
+    >>> import urlpath
+
+
+The ``to_url`` function
+-----------------------
+
+The function ``to_url`` converts a file system path ``path``, rooted
+at the document root ``root`` to an absolute URL::
+
+    >>> urlpath.to_url(u"/the/root", u"/the/root")
+    '/'
+    >>> urlpath.to_url(u"/the/root/some_file", u"/the/root")
+    '/some_file'
+    >>> urlpath.to_url(u"/some_dir/some_file", u"/")
+    '/some_dir/some_file'
+
+The function also escapes special characters::
+
+    >>> urlpath.to_url(u"/the/root/some file", u"/the/root")
+    '/some%20file'
+    >>> urlpath.to_url(u"/the/root/some<file>", u"/the/root")
+    '/some%3Cfile%3E'
+    >>> urlpath.to_url(u"/the/root/some\\file", u"/the/root")
+    '/some%5Cfile'
+
+If the path isn't actually below the document root, a ``NotUnderRoot``
+exception is raised::
+
+    >>> urlpath.to_url(u"/somewhere/else", u"/the/root")
+    ... #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+        ...
+    NotUnderRoot: path "..." isn't under root directory "..."
+    >>> urlpath.to_url(u"/the/root/../somewhere/else", u"/the/root")
+    ... #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+        ...
+    NotUnderRoot: path "..." isn't under root directory "..."
+
+
+The ``to_file_system`` function
+-------------------------------
+
+The function ``to_file_system`` converts an absolute URL ``url`` to
+a file system path, using the document root directory ``root``::
+
+    >>> urlpath.to_file_system("/some%20dir/", u"/the/root")
+    u'/the/root/some dir'
+    >>> urlpath.to_file_system("/", u"/the/root")
+    u'/the/root'
+    >>> urlpath.to_file_system("/some%20dir/", u"/")
+    u'/some dir'
+
+URLs trying to access forbidden files are refused with a
+``NotUnderRoot`` exception::
+
+    >>> urlpath.to_file_system("/../some_dir/", u"/the/root")
+    ... #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+        ...
+    NotUnderRoot: path "..." isn't under root directory "..."
+
