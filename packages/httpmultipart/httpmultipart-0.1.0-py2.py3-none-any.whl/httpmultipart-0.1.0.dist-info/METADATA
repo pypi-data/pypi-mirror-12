@@ -1,0 +1,44 @@
+Metadata-Version: 2.0
+Name: httpmultipart
+Version: 0.1.0
+Summary: A httpmultipart post handler
+Home-page: https://github.com/tao12345666333/httpmultipart
+Author: TaoBeier
+Author-email: zhangjintao9020@gmail.com
+License: MIT
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+
+HttpMultipart
+======
+
+Just a Python Http Multipart Post Handler.
+You can use it to post multipart requests.
+
+
+Usage
+------
+
+- PostMultipart
+
+.. code-block:: python
+
+    >>> import httpmultipart
+    >>> multipart = httpmultipart.PostMultipart()
+    >>> multipart.post(url, fields, files)
+    ...
+
+
+The fields and files are both sequence.
+After run post function, it will return the response.
+
+
+
+
