@@ -1,0 +1,89 @@
+Testing the ``dirtree`` module
+==============================
+
+The ``dirtree`` module contains functions and classes to scan
+directory trees recursively.
+
+Testing the ``dir_level`` helper function
+-----------------------------------------
+
+The function ``dir_level`` returns the "depth" of a directory. For
+this it uses the heuristics of counting the path separators in a
+path. The following tests are intended to run under Posix systems::
+
+    >>> import dirtree
+
+    >>> dirtree.dir_level("/the/root/directory")
+    3
+    >>> dirtree.dir_level("/dir")
+    1
+
+As a special case, the root directory has a directory level of 0,
+since it's "above" a directory located in the root directory::
+
+    >>> dirtree.dir_level("/")
+    0
+
+Testing the ``DirectoryTree`` class
+-----------------------------------
+
+The class is instantiated with the root of the directory tree to
+scan. To test the class, use it on a known directory, the
+Websourcebrowser project directory. Note that the test routine sets
+the project directory as the current directory, so the following code
+should work. (To make the test independent of the actual directory,
+we have to jump through some hoops.)
+
+::
+
+    >>> import os
+    >>> # assume the current directory holds the project
+    >>> project_dir = os.getcwd()
+    >>> dt = dirtree.DirectoryTree(".")
+    >>> dt.read()
+    >>> for item_type, path in dt.items:
+    ...   print item_type, path.replace(project_dir, "pd")  #doctest: +ELLIPSIS
+    directory pd/.hg
+    ...
+    file pd/graphics/logo.png
+    ...
+    file pd/browser.py
+    ...
+    file pd/directory_converter.py
+    ...
+
+If the root directory isn't accessible, raise a ``ReadError``
+exception::
+
+    >>> dt = dirtree.DirectoryTree("/root/testdir")
+    >>> dt.read()   #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+        ...
+    ReadError: root '/root/testdir' can't be scanned
+
+If we limit the directory depth (``depth``) to 1, the "lower"
+directory items shouldn't be present::
+
+    >>> dt = dirtree.DirectoryTree(".")
+    >>> dt.read(depth=1)
+    >>> paths = [path.replace(project_dir, "pd")
+    ...          for (item_type, path) in dt.items]
+    >>> "pd/browser.py" in paths
+    True
+    >>> "pd/graphics" in paths
+    True
+    >>> "pd/graphics/logo.png" in paths
+    False
+
+Upon reading the directory, the ignore patterns from the ``config``
+module are applied automatically::
+
+    >>> import config
+    >>> config.ignore_patterns = ["*.pyc"]
+    >>> dt = dirtree.DirectoryTree(".")
+    >>> dt.read()
+    >>> paths = [path.replace(project_dir, "pd")
+    ...          for (item_type, path) in dt.items]
+    >>> "pd/browser.pyc" in paths
+    False
+

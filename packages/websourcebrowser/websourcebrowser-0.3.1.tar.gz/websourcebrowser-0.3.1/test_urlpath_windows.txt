@@ -1,0 +1,89 @@
+The ``urlpath`` module under Posix
+==================================
+
+The ``urlpath`` module contains functions for converting between an
+URL and the corresponding file system path. To avoid, for example,
+unintended access to directories and files, we have to pay special
+attention to tricks used by crackers.
+
+So, let's begin:
+
+    >>> import urlpath
+
+
+The ``is_safe_path`` function
+-----------------------------
+
+The function ``is_safe_path`` takes two parameters, the document
+root directory ``root`` and a file system path ``path`` and returns
+a boolean value indicating whether the path is contained in the
+named document root directory.
+
+Some simple examples, assuming this test runs on Windows:
+
+    >>> urlpath.is_safe_path("C:\\the\\root", "c:\\the\\root\\some_file")
+    True
+
+    >>> urlpath.is_safe_path("c:\\the\\root", "c:\\somewhere\\else\\some_file")
+    False
+
+Some more complex examples:
+
+    >>> urlpath.is_safe_path("c:\\", "C:\\")
+    True
+    >>> urlpath.is_safe_path("c:\\", "C:\\test")
+    True
+    >>> urlpath.is_safe_path("c:\\test", "C:\\Test\\xyz")
+    True
+    >>> urlpath.is_safe_path("c:\\test", "C:\\Test\\..\\xyz")
+    False
+    >>> urlpath.is_safe_path("c:\\test", "d:\\test\\xyz")
+    False
+
+
+The ``to_url`` function
+-----------------------
+
+The function ``to_url`` converts a file system path ``path``, rooted
+at the document root ``root`` to an absolute URL:
+
+    >>> urlpath.to_url("c:\\the\\root", "C:\\the\\root\\some_file")
+    '/some_file'
+    >>> urlpath.to_url("c:\\", "c:\\some_dir\\some_file")
+    '/some_dir/some_file'
+
+The function also escapes special characters:
+
+    >>> urlpath.to_url("c:\\the\\ro.ot", "C:\\the\\ro.ot\\some file")
+    '/some%20file'
+
+If the path isn't actually below the document root, a ``NotUnderRoot``
+exception is raised:
+
+    >>> urlpath.to_url("c:\\the\\root", "d:\\the\\root\\some_file")
+    ... #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+        ...
+    NotUnderRoot: path "..." isn't under root directory "..."
+
+
+The ``to_file_system`` function
+-------------------------------
+
+The function ``to_file_system`` converts an absolute URL ``url`` to
+a file system path, using the document root directory ``root``:
+
+    >>> urlpath.to_file_system("C:\\the\\root\\", "/some%20dir/")
+    'c:\\the\\root\\some dir'
+    >>> urlpath.to_file_system("c:\\", "/some%20dir/")
+    'c:\\some dir'
+
+URLs trying to access forbidden files are refused with a
+``NotUnderRoot`` exception:
+
+    >>> urlpath.to_file_system("c:\\the\\root", "/../some_dir/")
+    ... #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+        ...
+    NotUnderRoot: path "..." isn't under root directory "..."
+

@@ -1,0 +1,44 @@
+The ``converter`` module
+========================
+
+The ``converter`` module contains several functions which turn certain
+data into HTML code. For example, ``dir_to_html`` takes a file system
+path and returns HTML code representing the directory tree rooted at
+the specified path.
+
+Start with the import::
+
+    >>> import converter
+
+
+Helper functions
+----------------
+
+There are some helper functions to check if a path denotes an
+image file or a binary file. The latter code uses an heuristic,
+namely checking how large the fraction of control characters is
+in the first kilobyte of the file.
+
+    >>> converter._is_image_path(u"graphics/logo.png")
+    True
+    >>> converter._is_image_path(u"graphics/logo.odg")
+    False
+    >>> converter._is_image_path(u"browser.py")
+    False
+
+    >>> converter._is_binary_path(u"graphics/logo.odg")
+    True
+    >>> converter._is_binary_path(u"browser.py")
+    False
+
+Both functions return ``False`` if the path can't be accessed::
+
+    >>> converter._is_image_path(u"nonexistent")
+    False
+    >>> converter._is_binary_path(u"nonexistent")
+    False
+
+In the case that the path leads to a directory, the behavior is
+undefined. Thus, the functions shouldn't be called with a directory
+path as argument.
+
