@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+
+{% block subtitle %}{{ _('Sync') }}{% endblock %}
+
+{% block secondary_content %}
+  <div class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+      <i class="icon-info-sign"></i>
+      {{ _('Sync') }}
+    </h2>
+    <div class="module-content">
+      {% trans %}
+        <p>You can manage sync sources here!</p>
+      {% endtrans %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block primary_content_inner %}
+  {% set truncate = truncate or 180 %}
+  {% set truncate_title = truncate_title or 80 %}
+
+  <form method="POST" id="form-purge-packages">
+      <a class="btn" href="/harvest">Harvest</a>
+  </form>
+{% endblock %}
