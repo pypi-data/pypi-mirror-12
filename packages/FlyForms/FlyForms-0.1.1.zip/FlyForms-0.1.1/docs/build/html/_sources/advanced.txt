@@ -1,0 +1,66 @@
+
+.. _advanced_usage:
+
+Advanced usage
+==============
+
+This section provides advanced usages of FlyForms such as :ref:`custom_fields`
+and :ref:`custom_validators`.
+
+.. _custom_fields:
+
+Custom Fields
+-------------
+
+Sometimes, it is necessary to design custom fields for validation of some special data structures.
+If you want do this, you should design your custom subclass of the :ref:`field_api`.
+
+
+.. module:: flyforms.fields
+
+.. _field_api:
+
+Field class
+~~~~~~~~~~~
+
+.. class:: Field
+
+    This the base class for all Fields.
+
+    :: automethod:: __init__
+
+    .. automethod:: validate
+
+    .. automethod:: is_valid
+
+.. _custom_validators:
+
+Custom Validators
+-----------------
+
+If you need to make additional data validation you can use your custom validators.
+There is one requirement: **validator should be an initialized and callable object**.
+If you want, you can use and extend one of this classes: :ref:`validator_api` or :ref:`simple_validator_api`.
+
+.. module:: flyforms.validators
+
+.. _validator_api:
+
+Validator
+~~~~~~~~~
+
+.. class:: Validator
+
+    This the base class for all Fields.
+
+    .. automethod:: validate
+
+    .. automethod:: is_valid
+
+
+.. _simple_validator_api:
+
+Simple Validator
+~~~~~~~~~~~~~~~~
+
+.. autoclass:: SimpleValidator
