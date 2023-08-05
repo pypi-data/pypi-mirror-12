@@ -1,0 +1,147 @@
+
+     README for the Examples Directory of the Watershed Distribution
+     ---------------------------------------------------------------
+
+
+This directory illustrates the different ways in which you can use this
+module.  If you just want to play with dilate-erode methods of the module,
+execute the script
+
+    DilateErode.py
+
+This script assumes a disk structuring element whose radius in pixels is
+supplied as the first argument to the methods 'dilate()' and 'erode()'.
+The second argument lets you choose between a "square" and a "circular"
+structuring element. As currently programmed, this script produces results
+on a binary image called "triangle1.jpg".  You can change the filename
+supplied through the constructor parameter 'data_image' to compute the
+dilations and erosions for any binary image of your choice.  To demonstrate
+the usefulness of these operations for "repairing" breaks in edges, execute
+the script
+
+    EdgeRepair.py
+
+See the comment block at the beginning of the above script as to when
+dilation followed by erosion can be expected to repair breakds in shape
+boundaries.
+
+
+                           -----------------
+
+
+
+If you want to play with the distance mapping code in the module, execute
+the script:            
+
+    DistanceMapping.py
+
+This script will ask you to place a mark with a mouse click in one of the
+blobs in your binary image.  Subsequently, it presents a distance map of
+the blob with respect to that mark.  For a demonstration that involves more
+complex blobs --- these being blobs with holes in them --- execute the
+script
+
+    DistanceMapping2.py
+
+
+                           -----------------
+
+
+
+For a demonstration of the calculation of the influence zones (IZ) in a
+binary blob, execute the script
+
+    InfluenceZones.py
+
+For a visually interesting demonstration, you must place at least two marks
+inside a blob.  Each mark is dilated into its IZ and the boundaries between
+the IZs constitute the geodesic skeleton of the binary blob.
+
+
+
+                           -----------------
+
+
+
+All of the scripts mentioned above run on binary image files.  As a first
+demonstration involving grayscale or color images, execute the script
+
+    LoG.py
+
+that calculates the Laplacian-of-Gaussian of an image.  The LoG is
+calculated by taking a difference of two Gaussian-smoothed images with
+two different values of sigma.  The first Gaussian smoothed image is
+calculated with the sigma as set in the constructor and the second with
+a sigma that 20% larger.
+
+
+                           -----------------
+
+
+
+To see wathershed segmentation of an image that does not require any user
+interaction, execute the script:        
+
+    WatershedSegmentationWith_no_Marks.py
+
+As you will notice that, when no user interaction is involved, the
+Wathershed algorithm over-segments the image.  For an example of the
+segmentation produced by this script, for the following image
+
+    orchid0001.jpg
+
+of an orchid, the script produced the segmentation shown in
+
+    _output_segmentation_for_orchid_with_no_marks.jpg
+
+
+
+                           -----------------
+
+
+Now execute the following script
+
+    WatershedSegmentationWithMarks.py
+
+that first elicits from the user a delineation of polygonal regions in
+the image that should be subject to gradient modification.  For the same
+orchid image, the segmentation produced is shown in the following image
+
+    _output_segmentation_for_orchid_with_marks.jpg
+
+The marks that were used for this segmentation are shown in
+
+    _composite_image_with_all_marks_orchid0001.jpg
+
+
+
+                           -----------------
+
+
+Here are some additional examples of the segmentations produced by the
+module, the first without marks and the second with user-supplied marks.
+The marks used in the second image are shown in the third image.
+
+    _output_segmentation_for_stacey_with_no_marks.jpg
+    _output_segmentation_for_stacey_with_marks.jpg
+    _composite_image_with_all_marks_stacey_in_peru.jpg
+
+
+                           -----------------
+
+
+
+Finally, if you want to create your own binary images for some of the
+scripts mentioned above, execute the script
+
+    DataGen.py
+
+Do not forget to execute the script
+
+    cleanup.py
+
+in this directory after running the scripts mentioned above to cleanup the
+intermediate images created by the scripts.  Ordinarily, the destructor of
+the class would take care of such cleanup.  But depending on how you exit
+the module, that may not always happen.
+
