@@ -1,0 +1,33 @@
+Metadata-Version: 2.0
+Name: sloth-ci.validators.gitlab
+Version: 1.0.0
+Summary: GitLab validator for Sloth CI
+Home-page: https://bitbucket.org/moigagoo/sloth-ci-validators
+Author: Vladimir Akritskiy
+Author-email: lenin.lin@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: sloth-ci (>=1.1.9)
+
+GitLab Sloth CI validator that validates the `GitLab <https://about.gitlab.com/>`_ payload against username and repo name (obtained from the Sloth app config).
+
+Usage in the app config::
+
+    provider:
+        gitlab:
+            # Repository title as it appears in the URL, i.e. slug.
+            # Mandatory parameter.
+            repo: sloth-ci
+
+            # Only pushes to these branches will initiate a build.
+            # Skip this parameter to allow all branches to fire builds.
+            branches:
+                - master
+                - staging
+
+
