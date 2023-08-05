@@ -1,0 +1,97 @@
+Metadata-Version: 1.1
+Name: hmac_authentication
+Version: 1.0.0
+Summary: Signs and validates HTTP requests based on a shared-secret HMAC signature
+Home-page: https://github.com/18F/hmac_authentication_py
+Author: Mike Bland
+Author-email: mbland@acm.org
+License: As a work of the United States Government, this project is in the
+public domain within the United States.
+
+Additionally, we waive copyright and related rights in the work
+worldwide through the CC0 1.0 Universal public domain dedication.
+
+## CC0 1.0 Universal Summary
+
+This is a human-readable summary of the [Legal Code (read the full text)](https://creativecommons.org/publicdomain/zero/1.0/legalcode).
+
+### No Copyright
+
+The person who associated a work with this deed has dedicated the work to
+the public domain by waiving all of his or her rights to the work worldwide
+under copyright law, including all related and neighboring rights, to the
+extent allowed by law.
+
+You can copy, modify, distribute and perform the work, even for commercial
+purposes, all without asking permission.
+
+### Other Information
+
+In no way are the patent or trademark rights of any person affected by CC0,
+nor are the rights that other persons may have in the work or in how the
+work is used, such as publicity or privacy rights.
+
+Unless expressly stated otherwise, the person who associated a work with
+this deed makes no warranties about the work, and disclaims liability for
+all uses of the work, to the fullest extent permitted by applicable law.
+When using or citing the work, you should not imply endorsement by the
+author or the affirmer.
+
+Description: # hmac_authentication Python package
+        
+        Signs and authenticates HTTP requests based on a shared-secret HMAC signature.
+        
+        Developed in parallel with the following packages for other languages:
+        - Go: [github.com/18F/hmacauth](https://github.com/18F/hmacauth/)
+        - Ruby: [hmac_authentication](https://rubygems.org/gems/hmac_authentication)
+        - Node.js: [hmac-authentication](https://www.npmjs.com/package/hmac-authentication)
+        
+        ## Installation
+        
+        ```sh
+        $ pip install hmac-authentication
+        ```
+        
+        ## Validating incoming requests
+        
+        Inject something resembling the following code fragment into your request
+        handling logic as the first thing that happens before the request body is
+        parsed, where `headers` is a list of headers factored into the signature and
+        `secret_key` is the shared secret between your application and the service
+        making the request:
+        
+        _...coming soon..._
+        
+        ## Signing outgoing requests
+        
+        _...coming soon..._
+        
+        ## Running tests
+        
+        ```sh
+        $ pip install nose
+        $ nosetests
+        ```
+        
+        ## Public domain
+        
+        This project is in the worldwide [public domain](LICENSE.md). As stated in [CONTRIBUTING](CONTRIBUTING.md):
+        
+        > This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+        >
+        > All contributions to this project will be released under the CC0
+        >dedication. By submitting a pull request, you are agreeing to comply
+        >with this waiver of copyright interest.
+        
+Keywords: hmac-authentication
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
