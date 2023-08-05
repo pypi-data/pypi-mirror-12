@@ -1,0 +1,101 @@
+Metadata-Version: 1.1
+Name: gipsy-pages
+Version: 0.3.1
+Summary: Gipsy Pages
+Home-page: http://github.org/revsquare/gipsy-pages
+Author: Rafał Selewońko
+Author-email: rafal@selewonko.com
+License: MIT
+Description: ===========
+        gipsy-pages
+        ===========
+        **gipsy-pages** is a software for things. Short description here.
+        -----------------------------------------------------------------
+        
+        Installation
+        ============
+        
+        .. code-block::  shell-session
+        
+            pip install gipsy-pages
+        
+        or
+        
+        .. code-block::  shell-session
+        
+            git clone ssh://git@git.revsquare.com/seler/gipsy-pages
+            cd gipsy-pages
+            python setup.py install
+        
+        or for development
+        
+        .. code-block::  shell-session
+        
+            git clone ssh://git@git.revsquare.com/seler/gipsy-pages
+            cd gipsy-pages
+            pip install -r requirements/dev.txt
+            python setup.py develop
+        
+        
+        Usage
+        =====
+        
+        Add to requirements `gipsy-pages`, `gipsy-sections` and other used libraries:
+        
+        .. code-block:: python
+        
+            'filebrowser',
+            'gipsy.sections',
+            'gipsy.pages',
+            'mptt',
+            'django_extensions',
+        
+        
+        List templates for pages and sections:
+        
+        .. code-block:: python
+        
+            GIPSY_PAGES_PAGE_TEMPLATE_NAME_ARTICLE = 'pages/article.html'
+            GIPSY_PAGES_PAGE_TEMPLATE_NAME_SIMPLE = 'pages/simple.html'
+        
+            GIPSY_PAGES_PAGE_TEMPLATE_NAME_CHOICES = (
+                (GIPSY_PAGES_PAGE_TEMPLATE_NAME_ARTICLE, 'Article'),
+                (GIPSY_PAGES_PAGE_TEMPLATE_NAME_SIMPLE, 'Simple'),
+            )
+        
+            GIPSY_SECTIONS_SECTION_TEMPLATE_NAME_TEXT = 'sections/text.html'
+            GIPSY_SECTIONS_SECTION_TEMPLATE_NAME_IMAGE = 'sections/image.html'
+        
+            GIPSY_SECTIONS_SECTION_TEMPLATE_NAME_CHOICES = (
+                (GIPSY_SECTIONS_SECTION_TEMPLATE_NAME_TEXT, 'Text'),
+                (GIPSY_SECTIONS_SECTION_TEMPLATE_NAME_IMAGE, 'Image'),
+            )
+        
+        add pages to urls:
+        
+        .. code-block:: python
+        
+            url(r'^', include('gipsy.pages.urls', namespace='pages')),
+            # or
+            url(r'^pages/', include('gipsy.pages.urls', namespace='pages')),
+        
+        and then run migrations:
+        
+        .. code-block:: shell-session
+        
+            django-admin migrate
+        
+        
+        
+        
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet :: WWW/HTTP
