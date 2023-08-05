@@ -1,0 +1,6 @@
+Timers should always be incremented.
+So the must be some kind of integer, since with floats, rounding errors may prevent incrementing: 1e20 + 1 == 1e20.
+A long integer is too short, because it will wrap around at 2^32 micros == 71.58 minutes.
+Two long integers would work fine.
+
+We could only have the sweeptime accurately, but other timers less so, e.g. with a resolution of 0.01 sec (able to run for 500 days). 
