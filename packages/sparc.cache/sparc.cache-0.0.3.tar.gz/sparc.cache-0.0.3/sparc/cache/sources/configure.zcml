@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="sparc.cache">
+    
+    
+    <!-- IFactory for CSV Implementation of ICachableSource
+    -->
+    <utility
+        component=".CSVSourceFactory"
+        name="cache.sources.CSVSourceFactory"
+        />
+    
+    <!-- IFactory for Implementation of INormalizedDateTime
+    -->
+    <utility
+        component=".normalizedDateTimeFactory"
+        name="cache.sources.normalizedDateTime"
+        />
+    
+    <!--
+    Support Central Date Implementation of IManagedCachedItemMapperAttribute
+    -->
+    <adapter
+        provides="..IManagedCachedItemMapperAttribute"
+        for=".INormalizedDateTime"
+        factory=".normalizedDateTimeResolver"
+        />
+</configure>
