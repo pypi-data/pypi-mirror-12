@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>spammcan.forms.base</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="spammcan-module.html">Package&nbsp;spammcan</a> ::
+        <a href="spammcan.forms-module.html">Package&nbsp;forms</a> ::
+        Module&nbsp;base
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="spammcan.forms.base-module.html">Module spammcan.forms.base</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""Form widgets and validators are defined here."""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line">    <tt class="py-string">'paste_form'</tt><tt class="py-op">,</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-string">'style_select'</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-op">]</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">tgmochikit</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">turbogears</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package spammcan.config=spammcan.config-module.html"><a title="spammcan.config" class="py-name" href="#" onclick="return doclink('link-0', 'config', 'link-0');">config</a></tt><tt class="py-op">,</tt> <tt id="link-1" class="py-name" targets="Module spammcan.forms.validators=spammcan.forms.validators-module.html"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-1', 'validators', 'link-1');">validators</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">turbogears</tt><tt class="py-op">.</tt><tt class="py-name">widgets</tt> <tt class="py-keyword">import</tt> <tt class="py-name">register_static_directory</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">tw</tt><tt class="py-op">.</tt><tt class="py-name">api</tt> <tt class="py-keyword">import</tt> <tt class="py-name">JSLink</tt><tt class="py-op">,</tt> <tt class="py-name">WidgetsList</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">tw</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Package spammcan.forms=spammcan.forms-module.html"><a title="spammcan.forms" class="py-name" href="#" onclick="return doclink('link-2', 'forms', 'link-2');">forms</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">ListForm</tt><tt class="py-op">,</tt> <tt class="py-name">TableForm</tt><tt class="py-op">,</tt> <tt class="py-name">TextArea</tt><tt class="py-op">,</tt> <tt class="py-name">TextField</tt><tt class="py-op">,</tt> <tt class="py-name">SingleSelectField</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-3', 'validators', 'link-1');">validators</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class spammcan.forms.validators.SpamBayesFilter=spammcan.forms.validators.SpamBayesFilter-class.html"><a title="spammcan.forms.validators.SpamBayesFilter" class="py-name" href="#" onclick="return doclink('link-4', 'SpamBayesFilter', 'link-4');">SpamBayesFilter</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Class spammcan.forms.validators.ValidFormat=spammcan.forms.validators.ValidFormat-class.html"><a title="spammcan.forms.validators.ValidFormat" class="py-name" href="#" onclick="return doclink('link-5', 'ValidFormat', 'link-5');">ValidFormat</a></tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name" targets="Class spammcan.forms.validators.ValidStyle=spammcan.forms.validators.ValidStyle-class.html"><a title="spammcan.forms.validators.ValidStyle" class="py-name" href="#" onclick="return doclink('link-6', 'ValidStyle', 'link-6');">ValidStyle</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-name">tgmochikit</tt><tt class="py-op">.</tt><tt class="py-name">init</tt><tt class="py-op">(</tt><tt class="py-name">register_static_directory</tt><tt class="py-op">,</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable spammcan.release.version=spammcan.release-module.html#version,Variable spammcan.rest.version=spammcan.rest-module.html#version"><a title="spammcan.release.version
+spammcan.rest.version" class="py-name" href="#" onclick="return doclink('link-7', 'version', 'link-7');">version</a></tt><tt class="py-op">=</tt><tt id="link-8" class="py-name"><a title="spammcan.config" class="py-name" href="#" onclick="return doclink('link-8', 'config', 'link-0');">config</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'tg_mochikit.version'</tt><tt class="py-op">,</tt> <tt class="py-string">'1.4'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-name">packed</tt><tt class="py-op">=</tt><tt id="link-9" class="py-name"><a title="spammcan.config" class="py-name" href="#" onclick="return doclink('link-9', 'config', 'link-0');">config</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'tg_mochikit.packed'</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-name">xhtml</tt><tt class="py-op">=</tt><tt id="link-10" class="py-name"><a title="spammcan.config" class="py-name" href="#" onclick="return doclink('link-10', 'config', 'link-0');">config</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'tg_mochikit.xhtml'</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt class="py-name">draganddrop</tt><tt class="py-op">=</tt><tt id="link-11" class="py-name"><a title="spammcan.config" class="py-name" href="#" onclick="return doclink('link-11', 'config', 'link-0');">config</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'tg_mochikit.draganddrop'</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable spammcan.forms.base.mochikit_js=spammcan.forms.base-module.html#mochikit_js"><a title="spammcan.forms.base.mochikit_js" class="py-name" href="#" onclick="return doclink('link-12', 'mochikit_js', 'link-12');">mochikit_js</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">JSLink</tt><tt class="py-op">(</tt><tt class="py-name">link</tt><tt class="py-op">=</tt><tt class="py-string">'/tg_widgets/tgmochikit/%s'</tt> <tt class="py-op">%</tt> <tt id="link-13" class="py-name" targets="Variable spammcan.forms.base.p=spammcan.forms.base-module.html#p"><a title="spammcan.forms.base.p" class="py-name" href="#" onclick="return doclink('link-13', 'p', 'link-13');">p</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt id="link-14" class="py-name"><a title="spammcan.forms.base.p" class="py-name" href="#" onclick="return doclink('link-14', 'p', 'link-13');">p</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">tgmochikit</tt><tt class="py-op">.</tt><tt class="py-name">get_paths</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable spammcan.forms.base.styleselect_js=spammcan.forms.base-module.html#styleselect_js"><a title="spammcan.forms.base.styleselect_js" class="py-name" href="#" onclick="return doclink('link-15', 'styleselect_js', 'link-15');">styleselect_js</a></tt> <tt class="py-op">=</tt> <tt class="py-name">JSLink</tt><tt class="py-op">(</tt><tt class="py-name">modname</tt><tt class="py-op">=</tt><tt class="py-string">'spammcan'</tt><tt class="py-op">,</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-name">filename</tt><tt class="py-op">=</tt><tt class="py-string">"static/javascript/styleselect.js"</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="PasteFormSchema"></a><div id="PasteFormSchema-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="PasteFormSchema-toggle" onclick="return toggle('PasteFormSchema');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.base.PasteFormSchema-class.html">PasteFormSchema</a><tt class="py-op">(</tt><tt class="py-base-class">validators</tt><tt class="py-op">.</tt><tt class="py-base-class">Schema</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PasteFormSchema-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="PasteFormSchema-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt id="link-16" class="py-name" targets="Variable spammcan.forms.base.PasteFormFields.title=spammcan.forms.base.PasteFormFields-class.html#title,Variable spammcan.forms.base.PasteFormSchema.title=spammcan.forms.base.PasteFormSchema-class.html#title,Variable spammcan.model.Paste.title=spammcan.model.Paste-class.html#title,Variable spammcan.rest.title=spammcan.rest-module.html#title"><a title="spammcan.forms.base.PasteFormFields.title
+spammcan.forms.base.PasteFormSchema.title
+spammcan.model.Paste.title
+spammcan.rest.title" class="py-name" href="#" onclick="return doclink('link-16', 'title', 'link-16');">title</a></tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-17', 'validators', 'link-1');">validators</a></tt><tt class="py-op">.</tt><tt class="py-name">UnicodeString</tt><tt class="py-op">(</tt><tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-name">strip</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">    <tt id="link-18" class="py-name" targets="Variable spammcan.forms.base.PasteFormFields.code=spammcan.forms.base.PasteFormFields-class.html#code,Variable spammcan.forms.base.PasteFormSchema.code=spammcan.forms.base.PasteFormSchema-class.html#code,Variable spammcan.model.Paste.code=spammcan.model.Paste-class.html#code"><a title="spammcan.forms.base.PasteFormFields.code
+spammcan.forms.base.PasteFormSchema.code
+spammcan.model.Paste.code" class="py-name" href="#" onclick="return doclink('link-18', 'code', 'link-18');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-19', 'validators', 'link-1');">validators</a></tt><tt class="py-op">.</tt><tt class="py-name">UnicodeString</tt><tt class="py-op">(</tt><tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">10000</tt><tt class="py-op">,</tt> <tt class="py-name">strip</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">not_empty</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Variable spammcan.forms.base.PasteFormFields.format=spammcan.forms.base.PasteFormFields-class.html#format,Variable spammcan.forms.base.PasteFormSchema.format=spammcan.forms.base.PasteFormSchema-class.html#format,Variable spammcan.model.Paste.format=spammcan.model.Paste-class.html#format"><a title="spammcan.forms.base.PasteFormFields.format
+spammcan.forms.base.PasteFormSchema.format
+spammcan.model.Paste.format" class="py-name" href="#" onclick="return doclink('link-20', 'format', 'link-20');">format</a></tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="spammcan.forms.validators.ValidFormat" class="py-name" href="#" onclick="return doclink('link-21', 'ValidFormat', 'link-5');">ValidFormat</a></tt><tt class="py-op">(</tt><tt class="py-name">if_invalid</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt id="link-22" class="py-name" targets="Variable spammcan.forms.base.PasteFormSchema.chained_validators=spammcan.forms.base.PasteFormSchema-class.html#chained_validators"><a title="spammcan.forms.base.PasteFormSchema.chained_validators" class="py-name" href="#" onclick="return doclink('link-22', 'chained_validators', 'link-22');">chained_validators</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt id="link-23" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter" class="py-name" href="#" onclick="return doclink('link-23', 'SpamBayesFilter', 'link-4');">SpamBayesFilter</a></tt><tt class="py-op">(</tt><tt class="py-string">'code'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"> </tt>
+<a name="PasteFormFields"></a><div id="PasteFormFields-def"><a name="L33"></a><tt class="py-lineno">33</tt> <a class="py-toggle" href="#" id="PasteFormFields-toggle" onclick="return toggle('PasteFormFields');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.base.PasteFormFields-class.html">PasteFormFields</a><tt class="py-op">(</tt><tt class="py-base-class">WidgetsList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PasteFormFields-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="PasteFormFields-expanded"><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt id="link-24" class="py-name"><a title="spammcan.forms.base.PasteFormFields.code
+spammcan.forms.base.PasteFormSchema.code
+spammcan.model.Paste.code" class="py-name" href="#" onclick="return doclink('link-24', 'code', 'link-18');">code</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextArea</tt><tt class="py-op">(</tt><tt class="py-name">suppress_label</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">attrs</tt><tt class="py-op">=</tt><tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-name">cols</tt><tt class="py-op">=</tt><tt class="py-number">75</tt><tt class="py-op">,</tt> <tt class="py-name">rows</tt><tt class="py-op">=</tt><tt class="py-number">15</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt id="link-25" class="py-name"><a title="spammcan.forms.base.PasteFormFields.title
+spammcan.forms.base.PasteFormSchema.title
+spammcan.model.Paste.title
+spammcan.rest.title" class="py-name" href="#" onclick="return doclink('link-25', 'title', 'link-16');">title</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-name">label_text</tt><tt class="py-op">=</tt><tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">u'Title:'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">attrs</tt><tt class="py-op">=</tt><tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-name">maxlength</tt><tt class="py-op">=</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-name">size</tt><tt class="py-op">=</tt><tt class="py-number">50</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">help_text</tt><tt class="py-op">=</tt><tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">u'(Optional)'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt id="link-26" class="py-name"><a title="spammcan.forms.base.PasteFormFields.format
+spammcan.forms.base.PasteFormSchema.format
+spammcan.model.Paste.format" class="py-name" href="#" onclick="return doclink('link-26', 'format', 'link-20');">format</a></tt> <tt class="py-op">=</tt> <tt class="py-name">SingleSelectField</tt><tt class="py-op">(</tt><tt class="py-name">label_text</tt><tt class="py-op">=</tt><tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">u'Format:'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt id="link-27" class="py-name" targets="Class Method spammcan.model.Format.options()=spammcan.model.Format-class.html#options,Class Method spammcan.model.Style.options()=spammcan.model.Style-class.html#options,Variable spammcan.rest.options=spammcan.rest-module.html#options"><a title="spammcan.model.Format.options
+spammcan.model.Style.options
+spammcan.rest.options" class="py-name" href="#" onclick="return doclink('link-27', 'options', 'link-27');">options</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'text'</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">u'No highliting'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="StyleSelectForm"></a><div id="StyleSelectForm-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="StyleSelectForm-toggle" onclick="return toggle('StyleSelectForm');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.base.StyleSelectForm-class.html">StyleSelectForm</a><tt class="py-op">(</tt><tt class="py-base-class">ListForm</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StyleSelectForm-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="StyleSelectForm-expanded"><a name="StyleSelectForm.fields"></a><div id="StyleSelectForm.fields-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="StyleSelectForm.fields-toggle" onclick="return toggle('StyleSelectForm.fields');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.base.StyleSelectForm.fields-class.html">fields</a><tt class="py-op">(</tt><tt class="py-base-class">WidgetsList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StyleSelectForm.fields-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="StyleSelectForm.fields-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt id="link-28" class="py-name" targets="Variable spammcan.forms.base.StyleSelectForm.fields.st=spammcan.forms.base.StyleSelectForm.fields-class.html#st"><a title="spammcan.forms.base.StyleSelectForm.fields.st" class="py-name" href="#" onclick="return doclink('link-28', 'st', 'link-28');">st</a></tt> <tt class="py-op">=</tt> <tt class="py-name">SingleSelectField</tt><tt class="py-op">(</tt><tt class="py-name">label_text</tt><tt class="py-op">=</tt><tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">u'Color scheme:'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">            <tt id="link-29" class="py-name"><a title="spammcan.model.Format.options
+spammcan.model.Style.options
+spammcan.rest.options" class="py-name" href="#" onclick="return doclink('link-29', 'options', 'link-27');">options</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'default'</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">u'Default'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">    <tt id="link-30" class="py-name" targets="Variable spammcan.forms.base.StyleSelectForm.submit_text=spammcan.forms.base.StyleSelectForm-class.html#submit_text"><a title="spammcan.forms.base.StyleSelectForm.submit_text" class="py-name" href="#" onclick="return doclink('link-30', 'submit_text', 'link-30');">submit_text</a></tt> <tt class="py-op">=</tt> <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">u'Go'</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">    <tt id="link-31" class="py-name" targets="Variable spammcan.forms.base.StyleSelectForm.javascript=spammcan.forms.base.StyleSelectForm-class.html#javascript"><a title="spammcan.forms.base.StyleSelectForm.javascript" class="py-name" href="#" onclick="return doclink('link-31', 'javascript', 'link-31');">javascript</a></tt> <tt class="py-op">=</tt> <tt id="link-32" class="py-name"><a title="spammcan.forms.base.mochikit_js" class="py-name" href="#" onclick="return doclink('link-32', 'mochikit_js', 'link-12');">mochikit_js</a></tt> <tt class="py-op">+</tt> <tt class="py-op">[</tt><tt id="link-33" class="py-name"><a title="spammcan.forms.base.styleselect_js" class="py-name" href="#" onclick="return doclink('link-33', 'styleselect_js', 'link-15');">styleselect_js</a></tt><tt class="py-op">]</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt id="link-34" class="py-name" targets="Variable spammcan.forms.base.style_select=spammcan.forms.base-module.html#style_select"><a title="spammcan.forms.base.style_select" class="py-name" href="#" onclick="return doclink('link-34', 'style_select', 'link-34');">style_select</a></tt> <tt class="py-op">=</tt> <tt id="link-35" class="py-name" targets="Class spammcan.forms.base.StyleSelectForm=spammcan.forms.base.StyleSelectForm-class.html"><a title="spammcan.forms.base.StyleSelectForm" class="py-name" href="#" onclick="return doclink('link-35', 'StyleSelectForm', 'link-35');">StyleSelectForm</a></tt><tt class="py-op">(</tt><tt class="py-string">'styleselect'</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt id="link-36" class="py-name" targets="Variable spammcan.forms.base.paste_form=spammcan.forms.base-module.html#paste_form"><a title="spammcan.forms.base.paste_form" class="py-name" href="#" onclick="return doclink('link-36', 'paste_form', 'link-36');">paste_form</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TableForm</tt><tt class="py-op">(</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">    <tt id="link-37" class="py-name" targets="Variable spammcan.forms.base.PasteFormSchema.fields=spammcan.forms.base.PasteFormSchema-class.html#fields,Class spammcan.forms.base.StyleSelectForm.fields=spammcan.forms.base.StyleSelectForm.fields-class.html"><a title="spammcan.forms.base.PasteFormSchema.fields
+spammcan.forms.base.StyleSelectForm.fields" class="py-name" href="#" onclick="return doclink('link-37', 'fields', 'link-37');">fields</a></tt> <tt class="py-op">=</tt> <tt id="link-38" class="py-name" targets="Class spammcan.forms.base.PasteFormFields=spammcan.forms.base.PasteFormFields-class.html"><a title="spammcan.forms.base.PasteFormFields" class="py-name" href="#" onclick="return doclink('link-38', 'PasteFormFields', 'link-38');">PasteFormFields</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">    <tt class="py-name">validator</tt> <tt class="py-op">=</tt> <tt id="link-39" class="py-name" targets="Class spammcan.forms.base.PasteFormSchema=spammcan.forms.base.PasteFormSchema-class.html"><a title="spammcan.forms.base.PasteFormSchema" class="py-name" href="#" onclick="return doclink('link-39', 'PasteFormSchema', 'link-39');">PasteFormSchema</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Nov 18 21:35:03 2008
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

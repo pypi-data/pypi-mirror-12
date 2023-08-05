@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>spammcan.release</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="spammcan-module.html">Package&nbsp;spammcan</a> ::
+        Module&nbsp;release
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="spammcan.release-module.html">Module spammcan.release</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-docstring">"""A simple pastbin built on TurboGears and Pygments.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">General Information</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">-------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">SpammCan is yet another pastbin web application. It distinguishes itself from</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">its competitors by the following features:</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">* Has syntax highlighting support for over 100 languages thanks to the use of</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">  Pygments_.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">* Is easy to install thanks to setuptools_.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">* Uses large, random GUIDs for paste entries in its URLs instead of sequential</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">  paste numbers to discourage spammers.</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">  Also detects and rejects spamming attempts with the help of a SpamBayes_</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring">  filter.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">* Is built on TurboGears_ 1.1, Genshi_, and SQLAlchemy_.</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-docstring">* Uses a SQLite database by default, but can use any database system supported</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">  by SQLAlchemy and TurboGears.</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">Getting the Code</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">----------------</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">You can run your own SpammCan server! For more information, downloads, and</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring">source code, visit the project home page at</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    http://chrisarndt.de/projects/spammcan</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">You can also install SpammCan via its Python Package Index (aka Cheeseshop_)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">entry_::</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-docstring">    $ [sudo] easy_install SpammCan</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">Finally, if you want the latest development code for SpammCan, you can check it</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-docstring">out from the Subversion repository::</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring">    $ svn co svn://chrisarndt.de/projects/SpammCan/trunk SpammCan</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">.. _cheeseshop: http://pypi.python.org/</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">.. _entry: http://pypi.python.org/pypi/SpammCan</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring">.. _pygments: http://pygments.pocoo.org/</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-docstring">.. _turbogears: http://www.turbogears.org/</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-docstring">.. _setuptools: http://pypi.python.org/pypi/setuptools</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-docstring">.. _spambayes: http://spambayes.sourceforge.net/</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">.. _genshi: http://genshi.edgewall.org/</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring">.. _sqlalchemy: http://sqlalchemy.org/</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable spammcan.forms.validators.ValidFormat.name=spammcan.forms.validators.ValidFormat-class.html#name,Variable spammcan.forms.validators.ValidModelValue.name=spammcan.forms.validators.ValidModelValue-class.html#name,Variable spammcan.forms.validators.ValidPasteGuid.name=spammcan.forms.validators.ValidPasteGuid-class.html#name,Variable spammcan.forms.validators.ValidStyle.name=spammcan.forms.validators.ValidStyle-class.html#name,Variable spammcan.model.Format.name=spammcan.model.Format-class.html#name,Variable spammcan.model.Style.name=spammcan.model.Style-class.html#name,Variable spammcan.release.name=spammcan.release-module.html#name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-0', 'name', 'link-0');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"SpammCan"</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable spammcan.release.version=spammcan.release-module.html#version,Variable spammcan.rest.version=spammcan.rest-module.html#version"><a title="spammcan.release.version
+spammcan.rest.version" class="py-name" href="#" onclick="return doclink('link-1', 'version', 'link-1');">version</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"0.2b"</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable spammcan.release.date=spammcan.release-module.html#date"><a title="spammcan.release.date" class="py-name" href="#" onclick="return doclink('link-2', 'date', 'link-2');">date</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"$Date: 2008-11-18 20:57:25 +0100 (Tue, 18 Nov 2008) $"</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable spammcan.model.Permission.description=spammcan.model.Permission-class.html#description,Variable spammcan.release.description=spammcan.release-module.html#description"><a title="spammcan.model.Permission.description
+spammcan.release.description" class="py-name" href="#" onclick="return doclink('link-3', 'description', 'link-3');">description</a></tt> <tt class="py-op">=</tt> <tt class="py-name">__doc__</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'\n'</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable spammcan.release.long_description=spammcan.release-module.html#long_description"><a title="spammcan.release.long_description" class="py-name" href="#" onclick="return doclink('link-4', 'long_description', 'link-4');">long_description</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"\n"</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">__doc__</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'\n'</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable spammcan.release.author=spammcan.release-module.html#author"><a title="spammcan.release.author" class="py-name" href="#" onclick="return doclink('link-5', 'author', 'link-5');">author</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Christopher Arndt"</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable spammcan.release.email=spammcan.release-module.html#email"><a title="spammcan.release.email" class="py-name" href="#" onclick="return doclink('link-6', 'email', 'link-6');">email</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"chris@chrisarndt.de"</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable spammcan.release.copyright=spammcan.release-module.html#copyright"><a title="spammcan.release.copyright" class="py-name" href="#" onclick="return doclink('link-7', 'copyright', 'link-7');">copyright</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Copyright &#169; 2008 Christopher Arndt"</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"><tt class="py-comment"># if it's open source, you might want to specify these</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-8" class="py-name" targets="Variable spammcan.release.url=spammcan.release-module.html#url"><a title="spammcan.release.url" class="py-name" href="#" onclick="return doclink('link-8', 'url', 'link-8');">url</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"http://chrisarndt.de/project/%s/"</tt> <tt class="py-op">%</tt> <tt id="link-9" class="py-name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-9', 'name', 'link-0');">name</a></tt><tt class="py-op">.</tt><tt class="py-name">lower</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable spammcan.release.download_url=spammcan.release-module.html#download_url"><a title="spammcan.release.download_url" class="py-name" href="#" onclick="return doclink('link-10', 'download_url', 'link-10');">download_url</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"http://cheeseshop.python.org/pypi/%s"</tt> <tt class="py-op">%</tt> <tt id="link-11" class="py-name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-11', 'name', 'link-0');">name</a></tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable spammcan.release.license=spammcan.release-module.html#license"><a title="spammcan.release.license" class="py-name" href="#" onclick="return doclink('link-12', 'license', 'link-12');">license</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"MIT, Zope Public License (rest.py)"</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Nov 18 21:35:02 2008
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

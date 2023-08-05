@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>spammcan.forms.validators</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="spammcan-module.html">Package&nbsp;spammcan</a> ::
+        <a href="spammcan.forms-module.html">Package&nbsp;forms</a> ::
+        Module&nbsp;validators
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="spammcan.forms.validators-module.html">Module spammcan.forms.validators</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""Basic custom validators."""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line">    <tt class="py-string">'Range'</tt><tt class="py-op">,</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line">    <tt class="py-string">'SpamBayesFilter'</tt><tt class="py-op">,</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line">    <tt class="py-string">'ValidFormat'</tt><tt class="py-op">,</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line">    <tt class="py-string">'ValidModelValue'</tt><tt class="py-op">,</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line">    <tt class="py-string">'ValidPasteGuid'</tt><tt class="py-op">,</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">    <tt class="py-string">'ValidStyle'</tt><tt class="py-op">,</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-op">]</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">socket</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">xmlrpclib</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">sqlalchemy</tt><tt class="py-op">.</tt><tt class="py-name">exceptions</tt> <tt class="py-keyword">import</tt> <tt class="py-name">InvalidRequestError</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">turbogears</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package spammcan.config=spammcan.config-module.html"><a title="spammcan.config" class="py-name" href="#" onclick="return doclink('link-0', 'config', 'link-0');">config</a></tt><tt class="py-op">,</tt> <tt id="link-1" class="py-name" targets="Module spammcan.forms.validators=spammcan.forms.validators-module.html"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-1', 'validators', 'link-1');">validators</a></tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">turbojson</tt><tt class="py-op">.</tt><tt class="py-name">jsonify</tt> <tt class="py-keyword">import</tt> <tt class="py-name">jsonify</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Package spammcan=spammcan-module.html"><a title="spammcan" class="py-name" href="#" onclick="return doclink('link-2', 'spammcan', 'link-2');">spammcan</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Module spammcan.model=spammcan.model-module.html"><a title="spammcan.model" class="py-name" href="#" onclick="return doclink('link-3', 'model', 'link-3');">model</a></tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable spammcan.controllers.log=spammcan.controllers-module.html#log,Variable spammcan.forms.validators.log=spammcan.forms.validators-module.html#log,Variable spammcan.util.log=spammcan.util-module.html#log"><a title="spammcan.controllers.log
+spammcan.forms.validators.log
+spammcan.util.log" class="py-name" href="#" onclick="return doclink('link-4', 'log', 'link-4');">log</a></tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-string">'spammcan.controllers'</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="ValidModelValue"></a><div id="ValidModelValue-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="ValidModelValue-toggle" onclick="return toggle('ValidModelValue');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.validators.ValidModelValue-class.html">ValidModelValue</a><tt class="py-op">(</tt><tt class="py-base-class">validators</tt><tt class="py-op">.</tt><tt class="py-base-class">FancyValidator</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ValidModelValue-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ValidModelValue-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-docstring">"""Check if given value is a valid key to an existing model object.</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable spammcan.forms.validators.ValidFormat.class_=spammcan.forms.validators.ValidFormat-class.html#class_,Variable spammcan.forms.validators.ValidModelValue.class_=spammcan.forms.validators.ValidModelValue-class.html#class_,Variable spammcan.forms.validators.ValidPasteGuid.class_=spammcan.forms.validators.ValidPasteGuid-class.html#class_,Variable spammcan.forms.validators.ValidStyle.class_=spammcan.forms.validators.ValidStyle-class.html#class_"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-5', 'class_', 'link-5');">class_</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable spammcan.forms.validators.ValidFormat.attr=spammcan.forms.validators.ValidFormat-class.html#attr,Variable spammcan.forms.validators.ValidModelValue.attr=spammcan.forms.validators.ValidModelValue-class.html#attr,Variable spammcan.forms.validators.ValidPasteGuid.attr=spammcan.forms.validators.ValidPasteGuid-class.html#attr,Variable spammcan.forms.validators.ValidStyle.attr=spammcan.forms.validators.ValidStyle-class.html#attr"><a title="spammcan.forms.validators.ValidFormat.attr
+spammcan.forms.validators.ValidModelValue.attr
+spammcan.forms.validators.ValidPasteGuid.attr
+spammcan.forms.validators.ValidStyle.attr" class="py-name" href="#" onclick="return doclink('link-6', 'attr', 'link-6');">attr</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'id'</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable spammcan.forms.validators.ValidFormat.name=spammcan.forms.validators.ValidFormat-class.html#name,Variable spammcan.forms.validators.ValidModelValue.name=spammcan.forms.validators.ValidModelValue-class.html#name,Variable spammcan.forms.validators.ValidPasteGuid.name=spammcan.forms.validators.ValidPasteGuid-class.html#name,Variable spammcan.forms.validators.ValidStyle.name=spammcan.forms.validators.ValidStyle-class.html#name,Variable spammcan.model.Format.name=spammcan.model.Format-class.html#name,Variable spammcan.model.Style.name=spammcan.model.Style-class.html#name,Variable spammcan.release.name=spammcan.release-module.html#name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-7', 'name', 'link-7');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'value'</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable spammcan.forms.validators.ValidFormat.convert_value=spammcan.forms.validators.ValidFormat-class.html#convert_value,Variable spammcan.forms.validators.ValidModelValue.convert_value=spammcan.forms.validators.ValidModelValue-class.html#convert_value,Variable spammcan.forms.validators.ValidPasteGuid.convert_value=spammcan.forms.validators.ValidPasteGuid-class.html#convert_value,Variable spammcan.forms.validators.ValidStyle.convert_value=spammcan.forms.validators.ValidStyle-class.html#convert_value"><a title="spammcan.forms.validators.ValidFormat.convert_value
+spammcan.forms.validators.ValidModelValue.convert_value
+spammcan.forms.validators.ValidPasteGuid.convert_value
+spammcan.forms.validators.ValidStyle.convert_value" class="py-name" href="#" onclick="return doclink('link-8', 'convert_value', 'link-8');">convert_value</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt id="link-9" class="py-name" targets="Variable spammcan.forms.validators.Range.messages=spammcan.forms.validators.Range-class.html#messages,Variable spammcan.forms.validators.SpamBayesFilter.messages=spammcan.forms.validators.SpamBayesFilter-class.html#messages,Variable spammcan.forms.validators.ValidModelValue.messages=spammcan.forms.validators.ValidModelValue-class.html#messages"><a title="spammcan.forms.validators.Range.messages
+spammcan.forms.validators.SpamBayesFilter.messages
+spammcan.forms.validators.ValidModelValue.messages" class="py-name" href="#" onclick="return doclink('link-9', 'messages', 'link-9');">messages</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-string">'notExistant'</tt><tt class="py-op">:</tt> <tt class="py-string">u"There is no %(class_)s with the %(name)s '%(value)s'."</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-op">}</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="ValidModelValue._to_python"></a><div id="ValidModelValue._to_python-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="ValidModelValue._to_python-toggle" onclick="return toggle('ValidModelValue._to_python');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.forms.validators.ValidModelValue-class.html#_to_python">_to_python</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">,</tt> <tt class="py-param">state</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ValidModelValue._to_python-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ValidModelValue._to_python-expanded"><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">model_cls</tt> <tt class="py-op">=</tt> <tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt id="link-10" class="py-name"><a title="spammcan.model" class="py-name" href="#" onclick="return doclink('link-10', 'model', 'link-3');">model</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-11', 'class_', 'link-5');">class_</a></tt> <tt class="py-keyword">or</tt> <tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">model_cls</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt class="py-name">model_inst</tt> <tt class="py-op">=</tt> <tt class="py-name">model_cls</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Variable spammcan.model.Format.query=spammcan.model.Format-class.html#query,Variable spammcan.model.Group.query=spammcan.model.Group-class.html#query,Variable spammcan.model.Paste.query=spammcan.model.Paste-class.html#query,Variable spammcan.model.Permission.query=spammcan.model.Permission-class.html#query,Variable spammcan.model.Style.query=spammcan.model.Style-class.html#query,Variable spammcan.model.User.query=spammcan.model.User-class.html#query,Variable spammcan.model.Visit.query=spammcan.model.Visit-class.html#query,Variable spammcan.model.VisitIdentity.query=spammcan.model.VisitIdentity-class.html#query"><a title="spammcan.model.Format.query
+spammcan.model.Group.query
+spammcan.model.Paste.query
+spammcan.model.Permission.query
+spammcan.model.Style.query
+spammcan.model.User.query
+spammcan.model.Visit.query
+spammcan.model.VisitIdentity.query" class="py-name" href="#" onclick="return doclink('link-12', 'query', 'link-12');">query</a></tt><tt class="py-op">.</tt><tt class="py-name">filter_by</tt><tt class="py-op">(</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">                    <tt class="py-op">**</tt><tt class="py-op">{</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="spammcan.forms.validators.ValidFormat.attr
+spammcan.forms.validators.ValidModelValue.attr
+spammcan.forms.validators.ValidPasteGuid.attr
+spammcan.forms.validators.ValidStyle.attr" class="py-name" href="#" onclick="return doclink('link-13', 'attr', 'link-6');">attr</a></tt><tt class="py-op">:</tt> <tt class="py-name">value</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">one</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                <tt class="py-name">msg</tt> <tt class="py-op">=</tt> <tt class="py-string">u'Model class %s not found.'</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-14', 'class_', 'link-5');">class_</a></tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                <tt id="link-15" class="py-name"><a title="spammcan.controllers.log
+spammcan.forms.validators.log
+spammcan.util.log" class="py-name" href="#" onclick="return doclink('link-15', 'log', 'link-4');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">debug</tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-op">(</tt><tt class="py-name">ValueError</tt><tt class="py-op">,</tt> <tt class="py-name">InvalidRequestError</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">exc</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt id="link-16" class="py-name"><a title="spammcan.controllers.log
+spammcan.forms.validators.log
+spammcan.util.log" class="py-name" href="#" onclick="return doclink('link-16', 'log', 'link-4');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">debug</tt><tt class="py-op">(</tt><tt class="py-string">'Could not validate %s.%s == %r: %r'</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-17', 'class_', 'link-5');">class_</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-18', 'class_', 'link-5');">class_</a></tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">exc</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-19" class="py-name"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-19', 'validators', 'link-1');">validators</a></tt><tt class="py-op">.</tt><tt class="py-name">Invalid</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">(</tt><tt class="py-string">'notExistant'</tt><tt class="py-op">,</tt> <tt class="py-name">state</tt><tt class="py-op">,</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">                <tt id="link-20" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-20', 'class_', 'link-5');">class_</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-21', 'class_', 'link-5');">class_</a></tt><tt class="py-op">,</tt> <tt id="link-22" class="py-name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-22', 'name', 'link-7');">name</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-23', 'name', 'link-7');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">=</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">state</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="spammcan.forms.validators.ValidFormat.convert_value
+spammcan.forms.validators.ValidModelValue.convert_value
+spammcan.forms.validators.ValidPasteGuid.convert_value
+spammcan.forms.validators.ValidStyle.convert_value" class="py-name" href="#" onclick="return doclink('link-24', 'convert_value', 'link-8');">convert_value</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">model_inst</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">value</tt> </tt>
+</div></div><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="ValidPasteGuid"></a><div id="ValidPasteGuid-def"><a name="L59"></a><tt class="py-lineno"> 59</tt> <a class="py-toggle" href="#" id="ValidPasteGuid-toggle" onclick="return toggle('ValidPasteGuid');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.validators.ValidPasteGuid-class.html">ValidPasteGuid</a><tt class="py-op">(</tt><tt class="py-base-class">ValidModelValue</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ValidPasteGuid-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ValidPasteGuid-expanded"><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt id="link-25" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-25', 'class_', 'link-5');">class_</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Paste'</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt id="link-26" class="py-name"><a title="spammcan.forms.validators.ValidFormat.attr
+spammcan.forms.validators.ValidModelValue.attr
+spammcan.forms.validators.ValidPasteGuid.attr
+spammcan.forms.validators.ValidStyle.attr" class="py-name" href="#" onclick="return doclink('link-26', 'attr', 'link-6');">attr</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'guid'</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt id="link-27" class="py-name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-27', 'name', 'link-7');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'GUID'</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt id="link-28" class="py-name"><a title="spammcan.forms.validators.ValidFormat.convert_value
+spammcan.forms.validators.ValidModelValue.convert_value
+spammcan.forms.validators.ValidPasteGuid.convert_value
+spammcan.forms.validators.ValidStyle.convert_value" class="py-name" href="#" onclick="return doclink('link-28', 'convert_value', 'link-8');">convert_value</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="ValidFormat"></a><div id="ValidFormat-def"><a name="L65"></a><tt class="py-lineno"> 65</tt> <a class="py-toggle" href="#" id="ValidFormat-toggle" onclick="return toggle('ValidFormat');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.validators.ValidFormat-class.html">ValidFormat</a><tt class="py-op">(</tt><tt class="py-base-class">ValidModelValue</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ValidFormat-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ValidFormat-expanded"><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt id="link-29" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-29', 'class_', 'link-5');">class_</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Format'</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt id="link-30" class="py-name"><a title="spammcan.forms.validators.ValidFormat.attr
+spammcan.forms.validators.ValidModelValue.attr
+spammcan.forms.validators.ValidPasteGuid.attr
+spammcan.forms.validators.ValidStyle.attr" class="py-name" href="#" onclick="return doclink('link-30', 'attr', 'link-6');">attr</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'name'</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt id="link-31" class="py-name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-31', 'name', 'link-7');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'name'</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt id="link-32" class="py-name"><a title="spammcan.forms.validators.ValidFormat.convert_value
+spammcan.forms.validators.ValidModelValue.convert_value
+spammcan.forms.validators.ValidPasteGuid.convert_value
+spammcan.forms.validators.ValidStyle.convert_value" class="py-name" href="#" onclick="return doclink('link-32', 'convert_value', 'link-8');">convert_value</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="ValidStyle"></a><div id="ValidStyle-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="ValidStyle-toggle" onclick="return toggle('ValidStyle');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.validators.ValidStyle-class.html">ValidStyle</a><tt class="py-op">(</tt><tt class="py-base-class">ValidModelValue</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ValidStyle-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ValidStyle-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt id="link-33" class="py-name"><a title="spammcan.forms.validators.ValidFormat.class_
+spammcan.forms.validators.ValidModelValue.class_
+spammcan.forms.validators.ValidPasteGuid.class_
+spammcan.forms.validators.ValidStyle.class_" class="py-name" href="#" onclick="return doclink('link-33', 'class_', 'link-5');">class_</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Style'</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt id="link-34" class="py-name"><a title="spammcan.forms.validators.ValidFormat.attr
+spammcan.forms.validators.ValidModelValue.attr
+spammcan.forms.validators.ValidPasteGuid.attr
+spammcan.forms.validators.ValidStyle.attr" class="py-name" href="#" onclick="return doclink('link-34', 'attr', 'link-6');">attr</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'name'</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt id="link-35" class="py-name"><a title="spammcan.forms.validators.ValidFormat.name
+spammcan.forms.validators.ValidModelValue.name
+spammcan.forms.validators.ValidPasteGuid.name
+spammcan.forms.validators.ValidStyle.name
+spammcan.model.Format.name
+spammcan.model.Style.name
+spammcan.release.name" class="py-name" href="#" onclick="return doclink('link-35', 'name', 'link-7');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'name'</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt id="link-36" class="py-name"><a title="spammcan.forms.validators.ValidFormat.convert_value
+spammcan.forms.validators.ValidModelValue.convert_value
+spammcan.forms.validators.ValidPasteGuid.convert_value
+spammcan.forms.validators.ValidStyle.convert_value" class="py-name" href="#" onclick="return doclink('link-36', 'convert_value', 'link-8');">convert_value</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="Range"></a><div id="Range-def"><a name="L77"></a><tt class="py-lineno"> 77</tt> <a class="py-toggle" href="#" id="Range-toggle" onclick="return toggle('Range');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.validators.Range-class.html">Range</a><tt class="py-op">(</tt><tt class="py-base-class">validators</tt><tt class="py-op">.</tt><tt class="py-base-class">FancyValidator</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Range-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Range-expanded"><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt id="link-37" class="py-name"><a title="spammcan.forms.validators.Range.messages
+spammcan.forms.validators.SpamBayesFilter.messages
+spammcan.forms.validators.ValidModelValue.messages" class="py-name" href="#" onclick="return doclink('link-37', 'messages', 'link-9');">messages</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-string">'invalid'</tt><tt class="py-op">:</tt> <tt class="py-string">u"Invalid range."</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-op">}</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="Range._to_python"></a><div id="Range._to_python-def"><a name="L82"></a><tt class="py-lineno"> 82</tt> <a class="py-toggle" href="#" id="Range._to_python-toggle" onclick="return toggle('Range._to_python');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.forms.validators.Range-class.html#_to_python">_to_python</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">,</tt> <tt class="py-param">state</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Range._to_python-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Range._to_python-expanded"><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-name">parts</tt> <tt class="py-op">=</tt> <tt class="py-name">value</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">':'</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">parts</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">parts</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">parts</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">parts</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">ValueError</tt><tt class="py-op">,</tt> <tt class="py-name">exc</tt><tt class="py-op">:</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-38" class="py-name"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-38', 'validators', 'link-1');">validators</a></tt><tt class="py-op">.</tt><tt class="py-name">Invalid</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">(</tt><tt class="py-string">'invalid'</tt><tt class="py-op">,</tt> <tt class="py-name">state</tt><tt class="py-op">,</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                <tt class="py-name">value</tt><tt class="py-op">=</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">state</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="SpamBayesFilter"></a><div id="SpamBayesFilter-def"><a name="L93"></a><tt class="py-lineno"> 93</tt> <a class="py-toggle" href="#" id="SpamBayesFilter-toggle" onclick="return toggle('SpamBayesFilter');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.forms.validators.SpamBayesFilter-class.html">SpamBayesFilter</a><tt class="py-op">(</tt><tt class="py-base-class">validators</tt><tt class="py-op">.</tt><tt class="py-base-class">FancyValidator</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SpamBayesFilter-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SpamBayesFilter-expanded"><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-docstring">"""Check given value dict against SpamBayes xmlrpc server."""</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt id="link-39" class="py-name" targets="Variable spammcan.forms.validators.SpamBayesFilter.__unpackargs__=spammcan.forms.validators.SpamBayesFilter-class.html#__unpackargs__"><a title="spammcan.forms.validators.SpamBayesFilter.__unpackargs__" class="py-name" href="#" onclick="return doclink('link-39', '__unpackargs__', 'link-39');">__unpackargs__</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'error_field'</tt><tt class="py-op">]</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt id="link-40" class="py-name" targets="Variable spammcan.forms.validators.SpamBayesFilter.sbrpc_url=spammcan.forms.validators.SpamBayesFilter-class.html#sbrpc_url"><a title="spammcan.forms.validators.SpamBayesFilter.sbrpc_url" class="py-name" href="#" onclick="return doclink('link-40', 'sbrpc_url', 'link-40');">sbrpc_url</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'http://localhost:8001/sbrpc'</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt id="link-41" class="py-name" targets="Variable spammcan.forms.validators.SpamBayesFilter.spam_threshold=spammcan.forms.validators.SpamBayesFilter-class.html#spam_threshold"><a title="spammcan.forms.validators.SpamBayesFilter.spam_threshold" class="py-name" href="#" onclick="return doclink('link-41', 'spam_threshold', 'link-41');">spam_threshold</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0.8</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt id="link-42" class="py-name" targets="Variable spammcan.forms.validators.SpamBayesFilter.default_score=spammcan.forms.validators.SpamBayesFilter-class.html#default_score"><a title="spammcan.forms.validators.SpamBayesFilter.default_score" class="py-name" href="#" onclick="return doclink('link-42', 'default_score', 'link-42');">default_score</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0.5</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt id="link-43" class="py-name"><a title="spammcan.forms.validators.Range.messages
+spammcan.forms.validators.SpamBayesFilter.messages
+spammcan.forms.validators.ValidModelValue.messages" class="py-name" href="#" onclick="return doclink('link-43', 'messages', 'link-9');">messages</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-string">'isSpam'</tt><tt class="py-op">:</tt> <tt class="py-string">u'Your form submission was rejected as spam.'</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-op">}</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="SpamBayesFilter.validate_python"></a><div id="SpamBayesFilter.validate_python-def"><a name="L106"></a><tt class="py-lineno">106</tt> <a class="py-toggle" href="#" id="SpamBayesFilter.validate_python-toggle" onclick="return toggle('SpamBayesFilter.validate_python');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.forms.validators.SpamBayesFilter-class.html#validate_python">validate_python</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">,</tt> <tt class="py-param">state</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SpamBayesFilter.validate_python-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SpamBayesFilter.validate_python-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt id="link-44" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.sbrpc_url" class="py-name" href="#" onclick="return doclink('link-44', 'sbrpc_url', 'link-40');">sbrpc_url</a></tt> <tt class="py-op">=</tt> <tt id="link-45" class="py-name"><a title="spammcan.config" class="py-name" href="#" onclick="return doclink('link-45', 'config', 'link-0');">config</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'sbfilter.sbrpc_url'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.sbrpc_url" class="py-name" href="#" onclick="return doclink('link-46', 'sbrpc_url', 'link-40');">sbrpc_url</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-name">sb_proxy</tt> <tt class="py-op">=</tt> <tt class="py-name">xmlrpclib</tt><tt class="py-op">.</tt><tt class="py-name">ServerProxy</tt><tt class="py-op">(</tt><tt id="link-47" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.sbrpc_url" class="py-name" href="#" onclick="return doclink('link-47', 'sbrpc_url', 'link-40');">sbrpc_url</a></tt><tt class="py-op">,</tt> <tt class="py-name">allow_none</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-name">score</tt> <tt class="py-op">=</tt> <tt class="py-name">sb_proxy</tt><tt class="py-op">.</tt><tt class="py-name">score</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name" targets="Method spammcan.forms.validators.SpamBayesFilter.convert_values()=spammcan.forms.validators.SpamBayesFilter-class.html#convert_values"><a title="spammcan.forms.validators.SpamBayesFilter.convert_values" class="py-name" href="#" onclick="return doclink('link-48', 'convert_values', 'link-48');">convert_values</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-op">(</tt><tt class="py-name">socket</tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">,</tt> <tt class="py-name">xmlrpclib</tt><tt class="py-op">.</tt><tt class="py-name">Error</tt><tt class="py-op">,</tt> <tt class="py-name">TypeError</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">exc</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt id="link-49" class="py-name"><a title="spammcan.controllers.log
+spammcan.forms.validators.log
+spammcan.util.log" class="py-name" href="#" onclick="return doclink('link-49', 'log', 'link-4');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">warning</tt><tt class="py-op">(</tt><tt class="py-string">"SpamBayes XmlRPC call to 'score()' on '%s' failed: %r"</tt><tt class="py-op">,</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.sbrpc_url" class="py-name" href="#" onclick="return doclink('link-50', 'sbrpc_url', 'link-40');">sbrpc_url</a></tt><tt class="py-op">,</tt> <tt class="py-name">exc</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-name">score</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.default_score" class="py-name" href="#" onclick="return doclink('link-51', 'default_score', 'link-42');">default_score</a></tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt id="link-52" class="py-name"><a title="spammcan.controllers.log
+spammcan.forms.validators.log
+spammcan.util.log" class="py-name" href="#" onclick="return doclink('link-52', 'log', 'link-4');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">debug</tt><tt class="py-op">(</tt><tt class="py-string">"SpamBayes score for value with keys %s: %.4f"</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">            <tt class="py-name">score</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">score</tt> <tt class="py-op">&gt;=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.spam_threshold" class="py-name" href="#" onclick="return doclink('link-53', 'spam_threshold', 'link-41');">spam_threshold</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-name">msg</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">(</tt><tt class="py-string">'isSpam'</tt><tt class="py-op">,</tt> <tt class="py-name">state</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">=</tt><tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">score</tt><tt class="py-op">=</tt><tt class="py-name">score</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error_field</tt><tt class="py-op">:</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">                <tt class="py-name">error_dict</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error_field</tt><tt class="py-op">:</tt> <tt class="py-name">msg</tt><tt class="py-op">}</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                <tt class="py-name">error_dict</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-54" class="py-name"><a title="spammcan.forms.validators" class="py-name" href="#" onclick="return doclink('link-54', 'validators', 'link-1');">validators</a></tt><tt class="py-op">.</tt><tt class="py-name">Invalid</tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">state</tt><tt class="py-op">,</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                <tt class="py-name">error_dict</tt><tt class="py-op">=</tt><tt class="py-name">error_dict</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="SpamBayesFilter.convert_values"></a><div id="SpamBayesFilter.convert_values-def"><a name="L126"></a><tt class="py-lineno">126</tt> <a class="py-toggle" href="#" id="SpamBayesFilter.convert_values-toggle" onclick="return toggle('SpamBayesFilter.convert_values');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.forms.validators.SpamBayesFilter-class.html#convert_values">convert_values</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">values</tt><tt class="py-op">,</tt> <tt class="py-param">state</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SpamBayesFilter.convert_values-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SpamBayesFilter.convert_values-expanded"><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">values</tt><tt class="py-op">,</tt> <tt class="py-name">dict</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt> <tt class="py-keyword">in</tt> <tt class="py-name">values</tt><tt class="py-op">.</tt><tt class="py-name">iteritems</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">dict</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-string">'__iter__'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-55" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.convert_values" class="py-name" href="#" onclick="return doclink('link-55', 'convert_values', 'link-48');">convert_values</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">xmlrpclib</tt><tt class="py-op">.</tt><tt class="py-name">Marshaller</tt><tt class="py-op">.</tt><tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">jsonify</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">value</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name">values</tt><tt class="py-op">,</tt> <tt class="py-string">'__iter__'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">            <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">value</tt> <tt class="py-keyword">in</tt> <tt class="py-name">values</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">dict</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name">values</tt><tt class="py-op">,</tt> <tt class="py-string">'__iter__'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-56" class="py-name"><a title="spammcan.forms.validators.SpamBayesFilter.convert_values" class="py-name" href="#" onclick="return doclink('link-56', 'convert_values', 'link-48');">convert_values</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">xmlrpclib</tt><tt class="py-op">.</tt><tt class="py-name">Marshaller</tt><tt class="py-op">.</tt><tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">jsonify</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">            <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">value</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div></div><a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Nov 18 21:35:03 2008
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

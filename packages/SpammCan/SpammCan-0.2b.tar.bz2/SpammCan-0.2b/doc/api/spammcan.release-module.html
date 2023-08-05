@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>spammcan.release</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="spammcan-module.html">Package&nbsp;spammcan</a> ::
+        Module&nbsp;release
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module release</h1><p class="nomargin-top"><span class="codelink"><a href="spammcan.release-pysrc.html">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+A simple pastbin built on TurboGears and Pygments.
+
+General Information
+-------------------
+
+SpammCan is yet another pastbin web application. It distinguishes itself from
+its competitors by the following features:
+
+* Has syntax highlighting support for over 100 languages thanks to the use of
+  Pygments_.
+
+* Is easy to install thanks to setuptools_.
+
+* Uses large, random GUIDs for paste entries in its URLs instead of sequential
+  paste numbers to discourage spammers.
+
+  Also detects and rejects spamming attempts with the help of a SpamBayes_
+  filter.
+
+* Is built on TurboGears_ 1.1, Genshi_, and SQLAlchemy_.
+
+* Uses a SQLite database by default, but can use any database system supported
+  by SQLAlchemy and TurboGears.
+
+
+Getting the Code
+----------------
+
+You can run your own SpammCan server! For more information, downloads, and
+source code, visit the project home page at
+
+    http://chrisarndt.de/projects/spammcan
+
+You can also install SpammCan via its Python Package Index (aka Cheeseshop_)
+entry_::
+
+    $ [sudo] easy_install SpammCan
+
+Finally, if you want the latest development code for SpammCan, you can check it
+out from the Subversion repository::
+
+    $ svn co svn://chrisarndt.de/projects/SpammCan/trunk SpammCan
+
+.. _cheeseshop: http://pypi.python.org/
+.. _entry: http://pypi.python.org/pypi/SpammCan
+.. _pygments: http://pygments.pocoo.org/
+.. _turbogears: http://www.turbogears.org/
+.. _setuptools: http://pypi.python.org/pypi/setuptools
+.. _spambayes: http://spambayes.sourceforge.net/
+.. _genshi: http://genshi.edgewall.org/
+.. _sqlalchemy: http://sqlalchemy.org/
+
+</pre>
+
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="name"></a><span class="summary-name">name</span> = <code title="'SpammCan'"><code class="variable-quote">'</code><code class="variable-string">SpammCan</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="version"></a><span class="summary-name">version</span> = <code title="'0.2b'"><code class="variable-quote">'</code><code class="variable-string">0.2b</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="date"></a><span class="summary-name">date</span> = <code title="'$Date: 2008-11-18 20:57:25 +0100 (Tue, 18 Nov 2008) $'"><code class="variable-quote">'</code><code class="variable-string">$Date: 2008-11-18 20:57:25 +0100 (Tue, 18 Nov 2008) $</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="spammcan.release-module.html#description" class="summary-name">description</a> = <code title="'A simple pastbin built on TurboGears and Pygments.'"><code class="variable-quote">'</code><code class="variable-string">A simple pastbin built on TurboGears and Pygmen</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="spammcan.release-module.html#long_description" class="summary-name">long_description</a> = <code title="'''General Information
+-------------------
+
+SpammCan is yet another pastbin web application. It distinguishes itse\
+lf from
+its competitors by the following features:
+
+* Has syntax highlighting support for over 100 languages thanks to the\
+..."><code class="variable-quote">'</code><code class="variable-string">General Information\n-------------------\n</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="author"></a><span class="summary-name">author</span> = <code title="'Christopher Arndt'"><code class="variable-quote">'</code><code class="variable-string">Christopher Arndt</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="email"></a><span class="summary-name">email</span> = <code title="'chris@chrisarndt.de'"><code class="variable-quote">'</code><code class="variable-string">chris@chrisarndt.de</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="copyright"></a><span class="summary-name">copyright</span> = <code title="'Copyright \xc2\xa9 2008 Christopher Arndt'"><code class="variable-quote">'</code><code class="variable-string">Copyright \xc2\xa9 2008 Christopher Arndt</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="url"></a><span class="summary-name">url</span> = <code title="'http://chrisarndt.de/project/spammcan/'"><code class="variable-quote">'</code><code class="variable-string">http://chrisarndt.de/project/spammcan/</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="download_url"></a><span class="summary-name">download_url</span> = <code title="'http://cheeseshop.python.org/pypi/SpammCan'"><code class="variable-quote">'</code><code class="variable-string">http://cheeseshop.python.org/pypi/SpammCan</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="license"></a><span class="summary-name">license</span> = <code title="'MIT, Zope Public License (rest.py)'"><code class="variable-quote">'</code><code class="variable-string">MIT, Zope Public License (rest.py)</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="description"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">description</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">A simple pastbin built on TurboGears and Pygments.</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="long_description"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">long_description</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'''</code><code class="variable-string">General Information</code>
+<code class="variable-string">-------------------</code>
+<code class="variable-string"></code>
+<code class="variable-string">SpammCan is yet another pastbin web application. It distinguishes itse</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">lf from</code>
+<code class="variable-string">its competitors by the following features:</code>
+<code class="variable-string"></code>
+<code class="variable-string">* Has syntax highlighting support for over 100 languages thanks to the</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Nov 18 21:35:02 2008
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

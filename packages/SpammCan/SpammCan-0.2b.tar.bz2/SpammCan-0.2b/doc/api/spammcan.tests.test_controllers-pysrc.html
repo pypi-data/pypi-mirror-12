@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>spammcan.tests.test_controllers</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="spammcan-module.html">Package&nbsp;spammcan</a> ::
+        <a href="spammcan.tests-module.html">Package&nbsp;tests</a> ::
+        Module&nbsp;test_controllers
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="spammcan.tests.test_controllers-module.html">Module spammcan.tests.test_controllers</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">turbogears</tt> <tt class="py-keyword">import</tt> <tt class="py-name">testutil</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package spammcan=spammcan-module.html"><a title="spammcan" class="py-name" href="#" onclick="return doclink('link-0', 'spammcan', 'link-0');">spammcan</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module spammcan.controllers=spammcan.controllers-module.html"><a title="spammcan.controllers" class="py-name" href="#" onclick="return doclink('link-1', 'controllers', 'link-1');">controllers</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class spammcan.controllers.Root=spammcan.controllers.Root-class.html"><a title="spammcan.controllers.Root" class="py-name" href="#" onclick="return doclink('link-2', 'Root', 'link-2');">Root</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="spammcan" class="py-name" href="#" onclick="return doclink('link-3', 'spammcan', 'link-0');">spammcan</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module spammcan.model=spammcan.model-module.html"><a title="spammcan.model" class="py-name" href="#" onclick="return doclink('link-4', 'model', 'link-4');">model</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Class spammcan.model.User=spammcan.model.User-class.html"><a title="spammcan.model.User" class="py-name" href="#" onclick="return doclink('link-5', 'User', 'link-5');">User</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="TestPages"></a><div id="TestPages-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="TestPages-toggle" onclick="return toggle('TestPages');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="spammcan.tests.test_controllers.TestPages-class.html">TestPages</a><tt class="py-op">(</tt><tt class="py-base-class">testutil</tt><tt class="py-op">.</tt><tt class="py-base-class">TGTest</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestPages-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestPages-expanded"><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-name">root</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="spammcan.controllers.Root" class="py-name" href="#" onclick="return doclink('link-6', 'Root', 'link-2');">Root</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="TestPages.test_method"></a><div id="TestPages.test_method-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="TestPages.test_method-toggle" onclick="return toggle('TestPages.test_method');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.tests.test_controllers.TestPages-class.html#test_method">test_method</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestPages.test_method-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestPages.test_method-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-docstring">"""The index method should return a string called 'now'"""</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">raw</tt><tt class="py-op">[</tt><tt class="py-string">'now'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="TestPages.test_index_title"></a><div id="TestPages.test_index_title-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="TestPages.test_index_title-toggle" onclick="return toggle('TestPages.test_index_title');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.tests.test_controllers.TestPages-class.html#test_index_title">test_index_title</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestPages.test_index_title-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestPages.test_index_title-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-docstring">""""The index page should have the right title."""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Welcome to TurboGears&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">body</tt> </tt>
+</div><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="TestPages.test_login_title"></a><div id="TestPages.test_login_title-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="TestPages.test_login_title-toggle" onclick="return toggle('TestPages.test_login_title');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.tests.test_controllers.TestPages-class.html#test_login_title">test_login_title</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestPages.test_login_title-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestPages.test_login_title-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-docstring">"""The login page should have the right title."""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/login'</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Login&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"Please log in."</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"session cookies"</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"credentials"</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"not correct"</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="TestPages.test_login_errors"></a><div id="TestPages.test_login_errors-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="TestPages.test_login_errors-toggle" onclick="return toggle('TestPages.test_login_errors');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.tests.test_controllers.TestPages-class.html#test_login_errors">test_login_errors</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestPages.test_login_errors-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestPages.test_login_errors-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-docstring">"""The login page should display the right errors."""</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt id="link-7" class="py-name" targets="Method spammcan.controllers.Root.login()=spammcan.controllers.Root-class.html#login"><a title="spammcan.controllers.Root.login" class="py-name" href="#" onclick="return doclink('link-7', 'login', 'link-7');">login</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'/login?user_name=nobody&amp;password=wrong&amp;login=Login'</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="spammcan.controllers.Root.login" class="py-name" href="#" onclick="return doclink('link-8', 'login', 'link-7');">login</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Login&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"session cookies"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">cookie</tt> <tt class="py-op">=</tt> <tt class="py-string">', '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">,</tt> <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">cookies_set</tt><tt class="py-op">.</tt><tt class="py-name">values</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="spammcan.controllers.Root.login" class="py-name" href="#" onclick="return doclink('link-9', 'login', 'link-7');">login</a></tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-name">Cookie</tt><tt class="py-op">=</tt><tt class="py-name">cookie</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Login&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"credentials"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"not correct"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"> </tt>
+<a name="TestPages.test_login_and_logout"></a><div id="TestPages.test_login_and_logout-def"><a name="L42"></a><tt class="py-lineno">42</tt> <a class="py-toggle" href="#" id="TestPages.test_login_and_logout-toggle" onclick="return toggle('TestPages.test_login_and_logout');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="spammcan.tests.test_controllers.TestPages-class.html#test_login_and_logout">test_login_and_logout</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestPages.test_login_and_logout-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestPages.test_login_and_logout-expanded"><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-docstring">"""Login with correct credentials and then logout."""</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt id="link-10" class="py-name"><a title="spammcan.model.User" class="py-name" href="#" onclick="return doclink('link-10', 'User', 'link-5');">User</a></tt><tt class="py-op">(</tt><tt id="link-11" class="py-name" targets="Variable spammcan.model.User.user_name=spammcan.model.User-class.html#user_name"><a title="spammcan.model.User.user_name" class="py-name" href="#" onclick="return doclink('link-11', 'user_name', 'link-11');">user_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">u"scott"</tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name" targets="Variable spammcan.model.User.password=spammcan.model.User-class.html#password"><a title="spammcan.model.User.password" class="py-name" href="#" onclick="return doclink('link-12', 'password', 'link-12');">password</a></tt> <tt class="py-op">=</tt> <tt class="py-string">u"tiger"</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">            <tt id="link-13" class="py-name" targets="Variable spammcan.model.Format.display_name=spammcan.model.Format-class.html#display_name,Variable spammcan.model.Group.display_name=spammcan.model.Group-class.html#display_name,Variable spammcan.model.Style.display_name=spammcan.model.Style-class.html#display_name,Variable spammcan.model.User.display_name=spammcan.model.User-class.html#display_name"><a title="spammcan.model.Format.display_name
+spammcan.model.Group.display_name
+spammcan.model.Style.display_name
+spammcan.model.User.display_name" class="py-name" href="#" onclick="return doclink('link-13', 'display_name', 'link-13');">display_name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">u"Bruce Scott"</tt><tt class="py-op">,</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">            <tt id="link-14" class="py-name" targets="Variable spammcan.model.User.email_address=spammcan.model.User-class.html#email_address"><a title="spammcan.model.User.email_address" class="py-name" href="#" onclick="return doclink('link-14', 'email_address', 'link-14');">email_address</a></tt> <tt class="py-op">=</tt> <tt class="py-string">u"scott@enterprise.com"</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Welcome to TurboGears&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/login"'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/logout"'</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/login'</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Login&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'Please log in.'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-name">cookie</tt> <tt class="py-op">=</tt> <tt class="py-string">', '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">,</tt> <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">cookies_set</tt><tt class="py-op">.</tt><tt class="py-name">values</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt id="link-15" class="py-name"><a title="spammcan.controllers.Root.login" class="py-name" href="#" onclick="return doclink('link-15', 'login', 'link-7');">login</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'/login?user_name=scott&amp;password=tiger&amp;login=Login'</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">headers</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-name">Cookie</tt><tt class="py-op">=</tt><tt class="py-name">cookie</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="spammcan.controllers.Root.login" class="py-name" href="#" onclick="return doclink('link-16', 'login', 'link-7');">login</a></tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">headers</tt><tt class="py-op">,</tt> <tt class="py-name">status</tt><tt class="py-op">=</tt><tt class="py-number">302</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">location</tt> <tt class="py-op">=</tt> <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">[</tt><tt class="py-string">'Location'</tt><tt class="py-op">]</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">location</tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">headers</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Welcome to TurboGears&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"Welcome Bruce Scott"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/login"'</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/logout"'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">headers</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Welcome to TurboGears&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"Welcome Bruce Scott"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/login"'</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/logout"'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/logout'</tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">headers</tt><tt class="py-op">,</tt> <tt class="py-name">status</tt><tt class="py-op">=</tt><tt class="py-number">302</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">        <tt class="py-name">location</tt> <tt class="py-op">=</tt> <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">[</tt><tt class="py-string">'Location'</tt><tt class="py-op">]</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">location</tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">headers</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">"&lt;title&gt;Welcome to TurboGears&lt;/title&gt;"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/login"'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-string">'href="/logout"'</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt> </tt>
+</div></div><a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="spammcan-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://chrisarndt.de/project/spammcan/">SpammCan</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Nov 18 21:35:03 2008
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

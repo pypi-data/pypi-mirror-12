@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>SpammCan</title>
+<meta name="author" content="Christopher Arndt" />
+<meta name="date" content="2008-11-18" />
+<link rel="stylesheet" href="rest.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="spammcan">
+<h1 class="title">SpammCan</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Christopher Arndt</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>0.2b</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>2008-11-18</td></tr>
+<tr class="field"><th class="docinfo-name">Description:</th><td class="field-body">A simple pastbin built on TurboGears and Pygments.</td>
+</tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#general-information" id="id1">General Information</a></li>
+<li><a class="reference internal" href="#getting-the-code" id="id2">Getting the Code</a></li>
+<li><a class="reference internal" href="#todo" id="id3">Todo</a></li>
+<li><a class="reference internal" href="#changelog" id="id4">Changelog</a></li>
+</ul>
+</div>
+<div class="section" id="general-information">
+<h1><a class="toc-backref" href="#id1">General Information</a></h1>
+<p>SpammCan is yet another pastbin web application. It distinguishes itself from
+its competitors by the following features:</p>
+<ul>
+<li><p class="first">Has syntax highlighting support for over 100 languages thanks to the use of
+<a class="reference external" href="http://pygments.pocoo.org/">Pygments</a>.</p>
+</li>
+<li><p class="first">Is easy to install thanks to <a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a>.</p>
+</li>
+<li><p class="first">Uses large, random GUIDs for paste entries in its URLs instead of sequential
+paste numbers to discourage spammers.</p>
+<p>Also detects and rejects spamming attempts with the help of a <a class="reference external" href="http://spambayes.sourceforge.net/">SpamBayes</a>
+filter.</p>
+</li>
+<li><p class="first">Is built on <a class="reference external" href="http://www.turbogears.org/">TurboGears</a> 1.1, <a class="reference external" href="http://genshi.edgewall.org/">Genshi</a>, and <a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a>.</p>
+</li>
+<li><p class="first">Uses a SQLite database by default, but can use any database system supported
+by SQLAlchemy and TurboGears.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="getting-the-code">
+<h1><a class="toc-backref" href="#id2">Getting the Code</a></h1>
+<p>You can run your own SpammCan server! For more information, downloads, and
+source code, visit the project home page at</p>
+<blockquote>
+<a class="reference external" href="http://chrisarndt.de/projects/spammcan">http://chrisarndt.de/projects/spammcan</a></blockquote>
+<p>You can also install SpammCan via its Python Package Index (aka <a class="reference external" href="http://pypi.python.org/">Cheeseshop</a>)
+<a class="reference external" href="http://pypi.python.org/pypi/SpammCan">entry</a>:</p>
+<pre class="literal-block">
+$ [sudo] easy_install SpammCan
+</pre>
+<p>Finally, if you want the latest development code for SpammCan, you can check it
+out from the Subversion repository:</p>
+<pre class="literal-block">
+$ svn co svn://chrisarndt.de/projects/SpammCan/trunk SpammCan
+</pre>
+</div>
+<div class="section" id="todo">
+<h1><a class="toc-backref" href="#id3">Todo</a></h1>
+<ul class="simple">
+<li>Line number with anchors links - done</li>
+<li>Paste title - done</li>
+<li>Download plain text - done</li>
+<li>Toggle line numbers on/off via JS or new request - done</li>
+<li>Anti-Spam filter (Spambayes) - done</li>
+<li>&quot;My pastes&quot; (store client ID in cookie) - done</li>
+<li>Reply to paste - done</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li>Add backward compatibility for old Stickum pastes, i.e import the Stickum
+database in a legacy table and serve pastes from there, if the paste ID is
+not a 32-char hash.</li>
+<li>Export CSS color schemes from Pygments and include them in static files
+and render appropriate stylesheet link.</li>
+<li>Line wrapping with soft-linebreak markers and correct line numbers</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li>Paste statistics (for admin only?) (I installed awstats on my server instead,
+so this is not so urgent atm)</li>
+<li>Tags/Categories and Tag cloud - postponed</li>
+<li>Paste-Feed - postponed</li>
+<li>List of all pastes - postponed</li>
+</ul>
+</div>
+<div class="section" id="changelog">
+<h1><a class="toc-backref" href="#id4">Changelog</a></h1>
+<div class="section" id="b-2008-11-18">
+<h2>0.2b (2008-11-18)</h2>
+<ul class="simple">
+<li>Removed unused images and commented out unused CSS (r348).</li>
+<li>Keep current colour scheme when toggling line numbers even when JS is turned
+off (r343).</li>
+<li>Fix errors in SpamBayesfilter validator - did not affect SpammCan  (r340).</li>
+<li>Improve production logging configuration (r339).</li>
+<li>Add version number and full MIT license text to about page and fix project
+homepage link (r338, r346).</li>
+<li>Honour tgMochiKit configuration when including MochiKit via ToscaWidgets
+(r341).</li>
+<li>Fix project name in release upload script (r337).</li>
+</ul>
+</div>
+<div class="section" id="b-2008-11-10">
+<h2>0.1b (2008-11-10)</h2>
+<ul class="simple">
+<li>first public release</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2008-11-18 20:34 UTC.
+
+</div>
+</body>
+</html>
