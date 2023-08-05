@@ -1,0 +1,1096 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Templayer 1.5.1 Tutorial</title>
+<style type="text/css">
+	.title { text-align: center; }
+	.sectionhead { margin: 40px 0 0 0; padding: 10px;  background: #6d96e8;}
+	.subsectionhead { margin: 0 0 3px 0; padding: 12px 6px 6px 6px; background: #efef96;}
+	.code { background: #eeeecc; padding: 5px; margin: 7px 20px; }
+	.html { background: #aaaaee; padding: 5px; margin: 7px 20px; }
+	.eghead { background: #222233; color: white; padding: 5px; margin: 7px 20px; }
+	.egwrap {}
+	.result { border: solid black 2px; padding: 5px; margin: 7px 20px; }
+	.l1 { margin: 12px 0 0 0; }
+	.l2 { margin-left: 20px; }
+	.shot { padding: 5px 20px 5px 0px; float: left; }
+	.back { font-size:small; padding-left: 20px; }
+</style>
+<body>
+<a name="top"></a>
+<h1 class="title">Templayer 1.5.1 Tutorial</h1>
+
+<div style="text-align: center;">
+<a href="http://excess.org/templayer/">Templayer Home Page</a> /
+Tutorial /
+<a href="reference.html">Reference</a>
+</div>
+<br>
+
+<table width="100%"><tr><td width="50%" valign="top">
+
+<div class="l1">1. CGI Script: Gordon's Lawn Happenings</div>
+
+<div class="l2"><a href="#lawn1">1.1. Static HTML (before using Templayer)</a></div>
+
+<div class="l2"><a href="#lawn2">1.2. Minimal Templayer Template</a></div>
+
+<div class="l2"><a href="#lawn3">1.3. Using Slots</a></div>
+
+<div class="l2"><a href="#lawn4">1.4. Using a Simple Layer</a></div>
+
+<div class="l2"><a href="#lawn5">1.5. Using Nested Layers</a></div>
+
+<div class="l2"><a href="#lawn6">1.6. Advanced Nested Layers</a></div>
+
+</td><td width="50%" valign="top">
+
+<div class="l1">2. Django Applications and Templayer</div>
+
+<div class="l2"><a href="#simple.templayer">2.1. Simple Views</a></div>
+
+<div class="l2"><a href="#book.templayer">2.2. Forms</a></div>
+
+<div class="l2"><a href="#emulate.templayer">2.3. Emulating Django Templates</a></div>
+
+</td></tr></table>
+
+
+<h2 class="sectionhead">1. CGI Script: Gordon's Lawn Happenings</h2>
+
+<h3 class="subsectionhead"><a name="lawn1">1.1. Static HTML (before using Templayer)</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>
+Our examples will be based on a single-page web site:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn1.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Gordon's Lawn Happenings&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Gordon's Lawn Happenings&lt;/h1&gt;
+&lt;h3&gt;Sunday&lt;/h3&gt;
+&lt;p&gt;We've got a groundhog.  I will have to stay alert.&lt;/p&gt;
+&lt;p&gt;I lost half a tomato plant to that furry guy.&lt;/p&gt;
+&lt;h3&gt;Monday&lt;/h3&gt;
+&lt;p&gt;The grass grew - I saw it.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+
+<div class="result">
+<div>
+
+<html>
+<head><title>Gordon's Lawn Happenings</title></head>
+<body>
+<h1>Gordon's Lawn Happenings</h1>
+
+<h3>Sunday</h3>
+<p>We've got a groundhog.  I will have to stay alert.</p>
+<p>I lost half a tomato plant to that furry guy.</p>
+<h3>Monday</h3>
+<p>The grass grew - I saw it.</p>
+</body>
+</html>
+
+</div>
+</div>
+
+
+<p>
+All the example source code may be extracted from the docgen_tutorial.py
+script that is included with Templayer by running:
+<pre>python docgen_tutorial.py -s</pre>
+</p>
+
+
+<br clear="left">
+<br>
+
+<h3 class="subsectionhead"><a name="lawn2">1.2. Minimal Templayer Template</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>The first thing we need to do to use this page as a Templayer template
+file is to add "{contents}" and "{/contents}" labels to the file:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn2.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Gordon's Lawn Happenings&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Gordon's Lawn Happenings&lt;/h1&gt;
+{contents}
+
+{/contents}
+&lt;h3&gt;Sunday&lt;/h3&gt;
+&lt;p&gt;We've got a groundhog.  I will have to stay alert.&lt;/p&gt;
+&lt;p&gt;I lost half a tomato plant to that furry guy.&lt;/p&gt;
+&lt;h3&gt;Monday&lt;/h3&gt;
+&lt;p&gt;The grass grew - I saw it.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>Templayer searches the template file for the first occurrence of 
+"{contents}" and the last occurrence of "{/contents}".  This splits the
+file into <i>header</i>, <i>contents</i> and <i>footer</i>.</p>
+
+<p>The header and footer will appear in Templayer's output.  The
+contents is described in sections below.</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn2.py</div>
+<pre class="code">import templayer
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+tmpl = templayer.HTMLTemplate(&quot;lawn2.html&quot;)
+file_writer = tmpl.start_file()
+file_writer.open()
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>This is a minimal CGI script that uses Templayer to display the
+web site.  The result of running this script will be the same as
+if we just used the static page above.</p>
+
+<p>We first create an <a href="reference.html#HTMLTemplate">HTMLTemplate</a>
+object to handle parsing of the template above.</p>
+
+<p>The <a href="reference.html#HTMLTemplate-start_file">start_file</a> function
+creates a <a href="reference.html#FileWriter">FileWriter</a> object that will
+use the our HTMLTemplate object.  The FileWriter object handles a single
+output run for our template.  The start_file function allows you 
+to pass in a file-like object to use instead of the 
+standard output. For a CGI script we use the default.</p>
+
+<p>The FileWriter object's open function will be explained below.</p>
+
+<p>No output is written until the
+<a href="reference.html#FileWriter-close">close</a> function is called
+at the end of the script.  If you don't get any output from your script
+it might be because you forgot to call the close function on your FileWriter
+object.</p>
+
+<br clear="left">
+<br>
+
+<h3 class="subsectionhead"><a name="lawn3">1.3. Using Slots</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>The next step is to add slots to the header and footer of the template.
+Slots are like variables that can be filled in by the application.  
+In the template file slot names are wrapped in "%" characters:
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn3.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;%title%&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;%title%&lt;/h1&gt;
+{contents}
+
+{/contents}
+&lt;h3&gt;Sunday&lt;/h3&gt;
+&lt;p&gt;We've got a groundhog.  I will have to stay alert.&lt;/p&gt;
+&lt;p&gt;I lost half a tomato plant to that furry guy.&lt;/p&gt;
+&lt;h3&gt;Monday&lt;/h3&gt;
+&lt;p&gt;The grass grew - I saw it.&lt;/p&gt;
+
+&lt;hr&gt;
+&lt;p&gt;Generated on %date%.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>We have added two %title% slots to the header and one
+%date% slot to the footer of this template.</p>
+
+<p>Please note: "%" is <u>not</u> a special character in Templayer templates.
+You do not need to escape "%" characters that aren't part of a slot.
+When filling slots Templayer has a list of slot names and it only replaces
+those slots, leaving all the other "%" characters in the template intact.
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn3.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+tmpl = templayer.HTMLTemplate(&quot;lawn3.html&quot;)
+file_writer = tmpl.start_file()
+file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+		date=time.asctime())
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>Essentially only one line has changed in the code.
+The <a href="reference.html#FileWriter-open">open</a> function takes 
+keyword parameters where the names of the parameters correspond to slots
+in the header and footer.  Here <i>both</i> %title% slots will be filled
+with "Gordon's Lawn Happenings", and the %date% slot will be filled with
+the current date and time.</p>
+
+<p>The values passed in to fill slots are interpreted by our HTMLTemplate
+object.  The HTMLTemplate object expects HTML Markup described by the
+<a href="reference.html#expand_html_markup">expand_html_markup</a> function.
+Plain strings are treated as unsafe in HTML Markup and any characters
+that might be interpreted as HTML are escaped by this function.
+This means that Templayer's default behaviour is to escape values 
+being filled into HTML templates.</p>
+
+
+<div class="result">
+<div>
+
+<html>
+<head><title>Gordon's Lawn Happenings</title></head>
+<body>
+<h1>Gordon's Lawn Happenings</h1>
+
+<h3>Sunday</h3>
+<p>We've got a groundhog.  I will have to stay alert.</p>
+<p>I lost half a tomato plant to that furry guy.</p>
+<h3>Monday</h3>
+<p>The grass grew - I saw it.</p>
+
+<hr>
+<p>Generated on Sun Mar  8 17:24:33 2009.</p>
+</body>
+</html>
+
+</div>
+</div>
+
+
+
+<br clear="left">
+<br>
+
+<h3 class="subsectionhead"><a name="lawn4">1.4. Using a Simple Layer</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>Now we look at what we can do with the content of a template file.
+You will recall that this refers to everything between the first occurrence 
+of "{contents}" and the last occurrence of "{/contents}" in the template
+file.</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn4.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;%title%&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;%title%&lt;/h1&gt;
+{contents}
+
+{report}
+&lt;h3&gt;%day%&lt;/h3&gt;
+%happenings%
+{/report}
+
+{/contents}
+&lt;hr&gt;
+&lt;p&gt;Generated on %date%.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>We have now added a {report} layer to the template, and we have removed
+the "Lawn Happenings" from the template so that the application can fill
+them in.  Layers are placed one after the next in the template content.
+The {report} layer extends from the first occurrence of "{report}" to the
+last occurrence of "{/report}" in the template content.  Layers have slots
+just like the template header and footer.</p>
+
+<p>Splitting HTML into separate layers lets us reuse the layers
+throughout the generated HTML, consolidating duplicated layout information.
+This template format can also be loaded in a web browser to test changes
+without running the application.  Most templates can also be validated
+for compliance with HTML and CSS specs.</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn4a.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+tmpl = templayer.HTMLTemplate(&quot;lawn4.html&quot;)
+file_writer = tmpl.start_file()
+main_layer = file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+	date=time.asctime())
+main_layer.write_layer('report', day=&quot;Sunday&quot;, happenings=[
+	&quot;We've got a groundhog.  I will have to stay alert.&quot;,
+	&quot;I lost half a tomato plant to that furry guy.&quot;])
+main_layer.write_layer('report', day=&quot;Monday&quot;, happenings=[
+	&quot;The grass grew - I saw it.&quot;])
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>We are now storing the return value of our FileWriter object's open
+function.  The return value is a <a href="reference.html#Layer">Layer</a>
+object that represents the whole file.  It knows the value of the header
+and footer which were filled in the FileWriter object's 
+<a href="reference.html#FileWriter-open">open</a> function, but
+it can still have text filled into its content between the header and
+footer.<p>
+
+<p>Layer objects have a 
+<a href="reference.html#Layer-write_layer">write_layer</a> function that
+is passed a layer name followed by keyword parameters that correspond to
+slots in that layer.  Here we are adding two instances of our {report}
+layer to the content of the template's main Layer object.  Recall that
+values passed in to fill slots are interpreted as HTML Markup by the
+<a href="reference.html#expand_html_markup">expand_html_markup</a> function.
+The "happenings" lists are escaped, then concatenated by this function.</p>
+
+<p>Of course, we can separate the "Lawn Happenings" data from the code
+by creating a structure for it:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn4b.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+reports = [
+	('Sunday', [&quot;We've got a groundhog.  I will have to stay alert.&quot;,
+	&quot;I lost half a tomato plant to that furry guy.&quot;]),
+	('Monday', [&quot;The grass grew - I saw it.&quot;]),
+]
+
+tmpl = templayer.HTMLTemplate(&quot;lawn4.html&quot;)
+file_writer = tmpl.start_file()
+main_layer = file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+	date=time.asctime())
+for d, h in reports:
+	main_layer.write_layer('report', day=d, happenings=h)
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>This structure is a list of (day, happenings) tuples that is iterated
+through in the script.  The day and happenings values are treated as
+HTML Markup</p>
+
+
+<div class="result">
+<div>
+
+<html>
+<head><title>Gordon's Lawn Happenings</title></head>
+<body>
+<h1>Gordon's Lawn Happenings</h1>
+
+<h3>Sunday</h3>
+We've got a groundhog.  I will have to stay alert.I lost half a tomato plant to that furry guy.
+
+<h3>Monday</h3>
+The grass grew - I saw it.
+
+<hr>
+<p>Generated on Sun Mar  8 17:24:33 2009.</p>
+</body>
+</html>
+
+</div>
+</div>
+
+
+<p>Unfortunately, the HTML code that this generates is different than before
+we added the {report} layer &mdash; the "Happenings" are no longer in separate
+paragraphs.  One way to fix this is to use
+HTML Markup and avoid mixing actual HTML into the code:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn4c.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+reports = [
+	('Sunday', [('p',&quot;We've got a groundhog.  I will have to stay alert.&quot;),
+		('p',&quot;I lost half a tomato plant to that furry guy.&quot;)]),
+	('Monday', [('p',&quot;The grass grew - I saw it.&quot;)]),
+]
+
+tmpl = templayer.HTMLTemplate(&quot;lawn4.html&quot;)
+file_writer = tmpl.start_file()
+main_layer = file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+	date=time.asctime())
+for d, h in reports:
+	main_layer.write_layer('report', day=d, happenings=h)
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>The <a href="reference.html#expand_html_markup">expand_html_markup</a>
+function will take the ('p', text) tuples, 
+escape the text, wrap them in HTML paragraph tags then concatenate them.</p>
+
+
+<div class="result">
+<div>
+
+<html>
+<head><title>Gordon's Lawn Happenings</title></head>
+<body>
+<h1>Gordon's Lawn Happenings</h1>
+
+<h3>Sunday</h3>
+<p>We've got a groundhog.  I will have to stay alert.</p><p>I lost half a tomato plant to that furry guy.</p>
+
+<h3>Monday</h3>
+<p>The grass grew - I saw it.</p>
+
+<hr>
+<p>Generated on Sun Mar  8 17:24:33 2009.</p>
+</body>
+</html>
+
+</div>
+</div>
+
+
+
+<br clear="left">
+<br>
+
+<h3 class="subsectionhead"><a name="lawn5">1.5. Using Nested Layers</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>HTML Markup is not intended for anything beyond very simple formatting.
+A more flexible solution is to create another layer to nest within the
+first.</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn5.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;%title%&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;%title%&lt;/h1&gt;
+{contents}
+
+{report}
+&lt;h3&gt;%day%&lt;/h3&gt;
+%happenings%
+{/report}
+
+{happening}&lt;p&gt;%what%&lt;/p&gt;
+{/happening}
+
+{/contents}
+&lt;hr&gt;
+&lt;p&gt;Generated on %date%.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>Now the decision to format individual "Happenings" as paragraphs has
+been moved to the template in a {happening} layer.</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn5.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+reports = [
+	('Sunday', [&quot;We've got a groundhog.  I will have to stay alert.&quot;,
+		&quot;I lost half a tomato plant to that furry guy.&quot;]),
+	('Monday', [&quot;The grass grew - I saw it.&quot;]),
+]
+
+tmpl = templayer.HTMLTemplate(&quot;lawn5.html&quot;)
+file_writer = tmpl.start_file()
+main_layer = file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+	date=time.asctime())
+for d, h in reports:
+	happening_list = []
+	for w in h:
+		formatted = tmpl.format('happening', what=w)
+		happening_list.append(formatted)
+	main_layer.write_layer('report', day=d, happenings=happening_list)
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>Within the new inner loop we are calling our HTMLTemplate object's
+<a href="reference.html#HTMLTemplate-format">format</a> function.  This
+function is similar to the write_layer function except that it returns
+a <a href="reference.html#RawHTML">RawHTML</a> object instead of adding
+it to the content of a Layer object.  The
+<a href="reference.html#expand_html_markup">expand_html_markup</a> function
+will leave the contents of the RawHTML object intact, so we can use this
+object within HTML Markup.
+</p>
+
+
+<br clear="left">
+<br>
+
+<h3 class="subsectionhead"><a name="lawn6">1.6. Advanced Nested Layers</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>Since it is common to nest layers in Templayer another method is provided
+that is similar to FileWriter's open function.  First we need to rename a
+slot in the {report} to %contents%:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn6.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;%title%&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;%title%&lt;/h1&gt;
+{contents}
+
+{report}
+&lt;h3&gt;%day%&lt;/h3&gt;
+%contents%
+{/report}
+
+{happening}&lt;p&gt;%contents%&lt;/p&gt;
+{/happening}
+
+{/contents}
+&lt;hr&gt;
+&lt;p&gt;Generated on %date%.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>Now that we have a %contents% slot we can "open" this layer and write
+into it:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn6a.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+reports = [
+	('Sunday', [&quot;We've got a groundhog.  I will have to stay alert.&quot;,
+		&quot;I lost half a tomato plant to that furry guy.&quot;]),
+	('Monday', [&quot;The grass grew - I saw it.&quot;]),
+]
+
+tmpl = templayer.HTMLTemplate(&quot;lawn6.html&quot;)
+file_writer = tmpl.start_file()
+main_layer = file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+	date=time.asctime())
+for d, h in reports:
+	report_layer = main_layer.open_layer('report', day=d)
+	for happening in h:
+		report_layer.write_layer('happening', contents=happening)
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>The Layer object has an 
+<a href="reference.html#Layer-open_layer">open_layer</a> function that
+returns a new layer object. In this case the new Layer object represents
+a {report} layer that is being written. The Layer object stores everything
+above the %contents% slot as its header and everything below as its footer.
+It can have text filled into its content in the same way as our main
+Layer object. Here we are now using 
+<a href="reference.html#Layer-write_layer">write_layer</a> to fill
+{happening} layers into {report} layers.</p>
+
+<p>We also renamed the slot in {happening} to %contents%, so we can use
+the open_layer function on that as well:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn6b.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+reports = [
+	('Sunday', [&quot;We've got a groundhog.  I will have to stay alert.&quot;,
+		&quot;I lost half a tomato plant to that furry guy.&quot;]),
+	('Monday', [&quot;The grass grew - I saw it.&quot;]),
+]
+
+tmpl = templayer.HTMLTemplate(&quot;lawn6.html&quot;)
+file_writer = tmpl.start_file()
+main_layer = file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+	date=time.asctime())
+for d, h in reports:
+	report_layer = main_layer.open_layer('report', day=d)
+	for happening in h:
+		happening_layer = report_layer.open_layer('happening')
+		happening_layer.write(happening)
+file_writer.close()
+
+</pre>
+</div>
+
+
+<p>We want to send text into this new Layer object, so instead of calling
+write_layer we call the <a href="reference.html#Layer-write">write</a>
+function.  It takes a single parameter that is interpreted as HTML Markup.</p>
+
+<p>When using Templayer to produce very large files, or when parts of an HTML
+page take longer to complete, you might want to flush your output part
+of the way through:</p>
+
+
+<div class="egwrap">
+<div class="eghead">lawn6c.py</div>
+<pre class="code">import templayer
+import time
+import sys
+
+sys.stdout.write(&quot;Content-type: text/html\r\n\r\n&quot;)
+
+reports = [
+	('Sunday', [&quot;We've got a groundhog.  I will have to stay alert.&quot;,
+		&quot;I lost half a tomato plant to that furry guy.&quot;]),
+	('Monday', [&quot;The grass grew - I saw it.&quot;]),
+]
+
+tmpl = templayer.HTMLTemplate(&quot;lawn6.html&quot;)
+file_writer = tmpl.start_file()
+main_layer = file_writer.open(title=&quot;Gordon's Lawn Happenings&quot;,
+	date=time.asctime())
+for d, h in reports:
+	report_layer = main_layer.open_layer('report', day=d)
+	for happening in h:
+		happening_layer = report_layer.open_layer('happening')
+		happening_layer.write(happening)
+	main_layer.close_child()
+	file_writer.flush()
+file_writer.close()
+
+
+
+
+
+</pre>
+</div>
+
+
+<p>Layer objects have a 
+<a href="reference.html#Layer-close_child">close_child</a> function that
+forces any open "child" layers to finalize their output.  In this code
+we are closing the {report} layer. FileWriter objects have a
+<a href="reference.html#FileWriter-flush">flush</a> function that will
+send all the output possible.  We are first closing our {report} layer
+so that when we flush the output the whole report will appear.</p>
+
+
+
+<br clear="left">
+<br>
+
+<h2 class="sectionhead">2. Django Applications and Templayer</h2>
+
+<h3 class="subsectionhead"><a name="simple.templayer">2.1. Simple Views</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>
+Templayer has a number of functions that help integrate with the Django
+Web Framework.  This is an example of a simple Django view.  
+All the examples below assume you are starting from a working 
+project.  See the
+<a href="http://www.djangoproject.com/documentation/">Django documentation</a>
+about setting up a project.
+</p>
+
+<p>
+First place this Templayer template in your project's template directory:
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">simple.templayer.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;%title%&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;%title%&lt;/h1&gt;
+{contents}
+
+{/contents}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>
+Then we can use
+<a href="reference.html#get_django_template">get_django_template</a> function
+to find the template in the project's template directory without having
+to hard-code the system path in our view:
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">simple_views_1.py</div>
+<pre class="code">from django.http import HttpResponse
+import datetime
+import templayer
+
+tmpl = templayer.get_django_template(&quot;simple.templayer.html&quot;)
+
+def current_datetime(request):
+	file_writer = tmpl.start_file(HttpResponse())
+	now = datetime.datetime.now()
+	contents = file_writer.open(title=&quot;Current Date and Time&quot;)
+	contents.write(&quot;It is now %s.&quot; % now)
+	return file_writer.close()
+
+</pre>
+</div>
+
+
+<p>
+For this type view function you may also use the
+<a href="reference.html#django_view">django_view</a> decorator.  It takes
+care of creating and cleaning up the file writer object so that you don't
+need to "import HttpResponse" or remember to "return file_writer.close()"
+in every view function:
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">simple_views_2.py</div>
+<pre class="code">import datetime
+import templayer
+
+tmpl = templayer.get_django_template(&quot;simple.templayer.html&quot;)
+
+@templayer.django_view(tmpl)
+def current_datetime(file_writer, request):
+	now = datetime.datetime.now()
+	contents = file_writer.open(title=&quot;Current Date and Time&quot;)
+	contents.write(&quot;It is now %s.&quot; % now)
+
+</pre>
+</div>
+
+
+
+<br clear="left">
+<br>
+
+<h3 class="subsectionhead"><a name="book.templayer">2.2. Forms</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>
+Templayer includes a <a href="reference.html#django_form">django_form</a>
+helper function for working with forms.  This function converts a form
+object to a dictionary of fields suitable for passing to the
+format, open_layer or write_layer functions:
+</p>
+
+<p>
+Start with models like the following:
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">book_models.py</div>
+<pre class="code">from django.db import models
+
+RATING_CHOICES = (
+	('G', &quot;Great!&quot;),
+	('A', &quot;Average&quot;),
+	('U', &quot;Uninteresting&quot;),
+)
+
+class Entry(models.Model):
+	name = models.CharField(&quot;Your Name&quot;, max_length=100)
+	rating = models.CharField(&quot;Rate this site&quot;, max_length=1,
+		choices=RATING_CHOICES)
+	comment = models.TextField(&quot;Your Comments (optional)&quot;, blank=True)
+	posted = models.DateTimeField(auto_now_add=True)
+
+</pre>
+</div>
+
+
+<p>
+This template has two slots for each visible field in the form,
+one for the HTML input field and one for errors related to that field.
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">book.templayer.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;%title%&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;%title%&lt;/h1&gt;
+{contents}
+
+{new_entry}
+&lt;form method=&quot;POST&quot;&gt;
+&lt;h2&gt;Sign the guestbook&lt;/h2&gt;
+Your Name: %form.name% %form.name.errors%&lt;br/&gt;
+Rate the site: %form.rating% %form.rating.errors%&lt;br/&gt;
+Your Comments:&lt;br/&gt;
+%form.comment% %form.comment.errors%&lt;br/&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Submit&quot;/&gt;
+&lt;/form&gt;
+{/new_entry}
+
+{/contents}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>
+This code will populate the form widgets, accept input and redisplay
+the data (with errors if applicable) when the user clicks "Submit":
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">book_views.py</div>
+<pre class="code">from book.models import Entry
+from django.forms import ModelForm
+
+import templayer
+
+tmpl = templayer.get_django_template(&quot;book.templayer.html&quot;)
+
+class EntryForm(ModelForm):
+	class Meta:
+		model = Entry
+
+@templayer.django_view(tmpl)
+def guest_book(file_layer, request):
+	if request.POST:
+		entry_form = EntryForm(request.POST)
+		# TODO: do something with the data if all is well
+	else:
+		entry_form = EntryForm()
+	contents = file_writer.open(title=&quot;Guest Book&quot;)
+	contents.write_layer(&quot;new_entry&quot;, **templayer.django_form(entry_form))
+
+</pre>
+</div>
+
+
+<div class="egwrap">
+<div class="eghead">Guest Book</div>
+<pre class="html">
+<h2>Sign the guestbook</h2>
+Your Name: <input id="id_name" type="text" name="name" maxlength="100" /> <br/>
+Rate the site: <select name="rating" id="id_rating">
+<option value="" selected="selected">---------</option>
+
+<option value="G">Great!</option>
+<option value="A">Average</option>
+<option value="U">Uninteresting</option>
+</select> <br/>
+Your Comments:<br/>
+<textarea id="id_comment" rows="10" cols="40" name="comment"></textarea> <br/>
+<input type="submit" value="Submit"/>
+</pre>
+</div>
+
+
+<br clear="left">
+<br>
+
+<h3 class="subsectionhead"><a name="emulate.templayer">2.3. Emulating Django Templates</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+
+<p>
+Existing or third-party Django applications will expect to use the standard
+Django templating library.  To use these applications with Templayer we
+need to extend the Django template loader and processing mechanism to
+emulate Django's templates.
+</p>
+
+<p>
+This example will show how to use Templayer to create a 404 page and
+use the "flatpages" application.
+</p>
+
+<p>
+First add the 
+<a href="reference.html#django_template_loader">django_template_loader</a> 
+to the TEMPLATE_LOADERS in your project's settings.py file:
+</p>
+<div class="egwrap">
+<div class="eghead">Your Django project's settings.py</div>
+<pre class="code">...
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.load_template_source',
+    'django.template.loaders.app_directories.load_template_source',
+...
+    'templayer.django_template_loader',
+)
+...</pre>
+</div>
+
+<p>
+Also make sure that the "flatpages" application is installed.  See the
+<a href="http://docs.djangoproject.com/en/dev/ref/contrib/flatpages/#installation">Django flatpages app documentation</a> for details.
+
+</p>
+
+<p>
+Next copy this template into the project's template directory:
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">emulate.templayer.html</div>
+<pre class="html">
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;%title%&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;%title%&lt;/h1&gt;
+{contents}
+
+{show_404}
+The url %url% could not be found.
+{/show_404}
+
+{flatpage_body}
+%contents%
+{/flatpage_body}
+
+{/contents}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+<p>
+Templayer's Django template emulation will look for a module named
+"templayer_pages.py" <i>in the template directories</i> when trying to load
+templates.  The 
+<a href="reference.html#django_template">django_template</a> 
+decorator defines the Django template name that a function will handle.
+The function may take parameters with names matching values you know will
+be present in the context dictionary and the decorator will fill in 
+those values for you.
+</p>
+<p>
+Put this module <i>in the template directory</i>:
+</p>
+
+
+<div class="egwrap">
+<div class="eghead">templayer_pages.py</div>
+<pre class="code">import templayer
+
+tmpl = templayer.get_django_template(&quot;emulate.templayer.html&quot;)
+
+@templayer.django_template(tmpl, &quot;404.html&quot;)
+def show_404(file_writer, context, request_path):
+	contents = file_writer.open(title=&quot;Page not found&quot;)
+
+	# request_path == context['request_path']
+	contents.write_layer(&quot;show_404&quot;, url=request_path)
+
+@templayer.django_template(tmpl, &quot;flatpages/default.html&quot;)
+def show_flatpage(file_writer, context, flatpage):
+	contents = file_writer.open(title=flatpage.title)
+	fp_contents = contents.open_layer(&quot;flatpage_body&quot;)
+
+	# the flatpage content is HTML, so don't escape it.
+	fp_contents.write(templayer.RawHTML(flatpage.content))
+
+
+
+
+</pre>
+</div>
+
+
+<p>
+Now the 404 handler and the flatpages application will be formatted by
+Templayer.
+</p>
+
+
+</div>
+
+<br clear="left">
+<br>
+
+
+</body>
+</html>

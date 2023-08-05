@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Templayer %version% Tutorial</title>
+<style type="text/css">
+	.title { text-align: center; }
+	.sectionhead { margin: 40px 0 0 0; padding: 10px;  background: #6d96e8;}
+	.subsectionhead { margin: 0 0 3px 0; padding: 12px 6px 6px 6px; background: #efef96;}
+	.code { background: #eeeecc; padding: 5px; margin: 7px 20px; }
+	.html { background: #aaaaee; padding: 5px; margin: 7px 20px; }
+	.eghead { background: #222233; color: white; padding: 5px; margin: 7px 20px; }
+	.egwrap {}
+	.result { border: solid black 2px; padding: 5px; margin: 7px 20px; }
+	.l1 { margin: 12px 0 0 0; }
+	.l2 { margin-left: 20px; }
+	.shot { padding: 5px 20px 5px 0px; float: left; }
+	.back { font-size:small; padding-left: 20px; }
+</style>
+<body>
+<a name="top"></a>
+<h1 class="title">Templayer %version% Tutorial</h1>
+
+<div style="text-align: center;">
+<a href="http://excess.org/templayer/">Templayer Home Page</a> /
+Tutorial /
+<a href="reference.html">Reference</a>
+</div>
+<br>
+
+<table width="100%"><tr><td width="50%" valign="top">
+%toc_left%
+</td><td width="50%" valign="top">
+%toc_right%
+</td></tr></table>
+
+{contents}
+<div style="background:#ffff33; padding: 5px">
+<h1>Templayer Tutorial Template File</h1>
+This file is used by <b>docgen_tutorial.py</b> to generate the tutorial
+documentation <b>tutorial.html</b>.
+<p>
+</div>
+<div style="background:#ffffaa;">
+<br>
+Items in the list that follows are parsed by docgen_tutorial.py. 
+Each item has a tag and a name, separated by a tab character.  
+Items without tags are new sections.  
+A --- separates the left and right columns in the table of contents.
+<pre>
+<b>Tag	Section or Item Name</b>
+{section_data}
+	CGI Script: Gordon's Lawn Happenings
+lawn1	Static HTML (before using Templayer)
+lawn2	Minimal Templayer Template
+lawn3	Using Slots
+lawn4	Using a Simple Layer
+lawn5	Using Nested Layers
+lawn6	Advanced Nested Layers
+---
+	Django Applications and Templayer
+simple.templayer	Simple Views
+book.templayer	Forms
+emulate.templayer	Emulating Django Templates
+{/section_data}
+</pre>
+</div>
+<p>
+{toc_section}
+<div class="l1">%snum%. %name%</div>
+{/toc_section}
+<p>
+{toc_item}
+<div class="l2"><a href="#%tag%">%snum%.%inum%. %name%</a></div>
+{/toc_item}
+<p>
+{section_head}
+<h2 class="sectionhead">%snum%. %name%</h2>
+{/section_head}
+
+<hr/>
+
+{section_body}
+<h3 class="subsectionhead"><a name="%tag%">%snum%.%inum%. %name%</a>
+<span class="back">[<a href="#top">back to top</a>]</span></h3>
+%contents%
+<br clear="left">
+<br>
+{/section_body}
+
+<hr/>
+
+{html_example}
+<div class="egwrap">
+<div class="eghead">%name%</div>
+<pre class="html">%contents%</pre>
+</div>
+{/html_example}
+
+<hr/>
+
+{code_example}
+<div class="egwrap">
+<div class="eghead">%name%</div>
+<pre class="code">%contents%</pre>
+</div>
+{/code_example}
+
+<hr/>
+
+{result}
+<div class="result">
+<div>
+%contents%
+</div>
+</div>
+{/result}
+
+<hr/>
+
+{body[lawn1]}
+<p>
+Our examples will be based on a single-page web site:</p>
+
+%html%
+
+%result[0]%
+
+<p>
+All the example source code may be extracted from the docgen_tutorial.py
+script that is included with Templayer by running:
+<pre>python docgen_tutorial.py -s</pre>
+</p>
+
+{/body[lawn1]}
+
+<hr/>
+
+{body[lawn2]}
+<p>The first thing we need to do to use this page as a Templayer template
+file is to add "{contents}" and "{/contents}" labels to the file:</p>
+
+%html%
+
+<p>Templayer searches the template file for the first occurrence of 
+"{contents}" and the last occurrence of "{/contents}".  This splits the
+file into <i>header</i>, <i>contents</i> and <i>footer</i>.</p>
+
+<p>The header and footer will appear in Templayer's output.  The
+contents is described in sections below.</p>
+
+%code[0]%
+
+<p>This is a minimal CGI script that uses Templayer to display the
+web site.  The result of running this script will be the same as
+if we just used the static page above.</p>
+
+<p>We first create an <a href="reference.html#HTMLTemplate">HTMLTemplate</a>
+object to handle parsing of the template above.</p>
+
+<p>The <a href="reference.html#HTMLTemplate-start_file">start_file</a> function
+creates a <a href="reference.html#FileWriter">FileWriter</a> object that will
+use the our HTMLTemplate object.  The FileWriter object handles a single
+output run for our template.  The start_file function allows you 
+to pass in a file-like object to use instead of the 
+standard output. For a CGI script we use the default.</p>
+
+<p>The FileWriter object's open function will be explained below.</p>
+
+<p>No output is written until the
+<a href="reference.html#FileWriter-close">close</a> function is called
+at the end of the script.  If you don't get any output from your script
+it might be because you forgot to call the close function on your FileWriter
+object.</p>
+{/body[lawn2]}
+
+<hr/>
+
+{body[lawn3]}
+<p>The next step is to add slots to the header and footer of the template.
+Slots are like variables that can be filled in by the application.  
+In the template file slot names are wrapped in "%" characters:
+</p>
+
+%html%
+
+<p>We have added two %title% slots to the header and one
+%date% slot to the footer of this template.</p>
+
+<p>Please note: "%" is <u>not</u> a special character in Templayer templates.
+You do not need to escape "%" characters that aren't part of a slot.
+When filling slots Templayer has a list of slot names and it only replaces
+those slots, leaving all the other "%" characters in the template intact.
+</p>
+
+%code[0]%
+
+<p>Essentially only one line has changed in the code.
+The <a href="reference.html#FileWriter-open">open</a> function takes 
+keyword parameters where the names of the parameters correspond to slots
+in the header and footer.  Here <i>both</i> %title% slots will be filled
+with "Gordon's Lawn Happenings", and the %date% slot will be filled with
+the current date and time.</p>
+
+<p>The values passed in to fill slots are interpreted by our HTMLTemplate
+object.  The HTMLTemplate object expects HTML Markup described by the
+<a href="reference.html#expand_html_markup">expand_html_markup</a> function.
+Plain strings are treated as unsafe in HTML Markup and any characters
+that might be interpreted as HTML are escaped by this function.
+This means that Templayer's default behaviour is to escape values 
+being filled into HTML templates.</p>
+
+%result[0]%
+
+{/body[lawn3]}
+
+<hr/>
+
+{body[lawn4]}
+<p>Now we look at what we can do with the content of a template file.
+You will recall that this refers to everything between the first occurrence 
+of "{contents}" and the last occurrence of "{/contents}" in the template
+file.</p>
+
+%html%
+
+<p>We have now added a {report} layer to the template, and we have removed
+the "Lawn Happenings" from the template so that the application can fill
+them in.  Layers are placed one after the next in the template content.
+The {report} layer extends from the first occurrence of "{report}" to the
+last occurrence of "{/report}" in the template content.  Layers have slots
+just like the template header and footer.</p>
+
+<p>Splitting HTML into separate layers lets us reuse the layers
+throughout the generated HTML, consolidating duplicated layout information.
+This template format can also be loaded in a web browser to test changes
+without running the application.  Most templates can also be validated
+for compliance with HTML and CSS specs.</p>
+
+%code[0]%
+
+<p>We are now storing the return value of our FileWriter object's open
+function.  The return value is a <a href="reference.html#Layer">Layer</a>
+object that represents the whole file.  It knows the value of the header
+and footer which were filled in the FileWriter object's 
+<a href="reference.html#FileWriter-open">open</a> function, but
+it can still have text filled into its content between the header and
+footer.<p>
+
+<p>Layer objects have a 
+<a href="reference.html#Layer-write_layer">write_layer</a> function that
+is passed a layer name followed by keyword parameters that correspond to
+slots in that layer.  Here we are adding two instances of our {report}
+layer to the content of the template's main Layer object.  Recall that
+values passed in to fill slots are interpreted as HTML Markup by the
+<a href="reference.html#expand_html_markup">expand_html_markup</a> function.
+The "happenings" lists are escaped, then concatenated by this function.</p>
+
+<p>Of course, we can separate the "Lawn Happenings" data from the code
+by creating a structure for it:</p>
+
+%code[1]%
+
+<p>This structure is a list of (day, happenings) tuples that is iterated
+through in the script.  The day and happenings values are treated as
+HTML Markup</p>
+
+%result[0]%
+
+<p>Unfortunately, the HTML code that this generates is different than before
+we added the {report} layer &mdash; the "Happenings" are no longer in separate
+paragraphs.  One way to fix this is to use
+HTML Markup and avoid mixing actual HTML into the code:</p>
+
+%code[2]%
+
+<p>The <a href="reference.html#expand_html_markup">expand_html_markup</a>
+function will take the ('p', text) tuples, 
+escape the text, wrap them in HTML paragraph tags then concatenate them.</p>
+
+%result[1]%
+
+{/body[lawn4]}
+
+<hr/>
+
+{body[lawn5]}
+<p>HTML Markup is not intended for anything beyond very simple formatting.
+A more flexible solution is to create another layer to nest within the
+first.</p>
+
+%html%
+
+<p>Now the decision to format individual "Happenings" as paragraphs has
+been moved to the template in a {happening} layer.</p>
+
+%code[0]%
+
+<p>Within the new inner loop we are calling our HTMLTemplate object's
+<a href="reference.html#HTMLTemplate-format">format</a> function.  This
+function is similar to the write_layer function except that it returns
+a <a href="reference.html#RawHTML">RawHTML</a> object instead of adding
+it to the content of a Layer object.  The
+<a href="reference.html#expand_html_markup">expand_html_markup</a> function
+will leave the contents of the RawHTML object intact, so we can use this
+object within HTML Markup.
+</p>
+
+{/body[lawn5]}
+
+<hr/>
+
+{body[lawn6]}
+<p>Since it is common to nest layers in Templayer another method is provided
+that is similar to FileWriter's open function.  First we need to rename a
+slot in the {report} to %contents%:</p>
+
+%html%
+
+<p>Now that we have a %contents% slot we can "open" this layer and write
+into it:</p>
+
+%code[0]%
+
+<p>The Layer object has an 
+<a href="reference.html#Layer-open_layer">open_layer</a> function that
+returns a new layer object. In this case the new Layer object represents
+a {report} layer that is being written. The Layer object stores everything
+above the %contents% slot as its header and everything below as its footer.
+It can have text filled into its content in the same way as our main
+Layer object. Here we are now using 
+<a href="reference.html#Layer-write_layer">write_layer</a> to fill
+{happening} layers into {report} layers.</p>
+
+<p>We also renamed the slot in {happening} to %contents%, so we can use
+the open_layer function on that as well:</p>
+
+%code[1]%
+
+<p>We want to send text into this new Layer object, so instead of calling
+write_layer we call the <a href="reference.html#Layer-write">write</a>
+function.  It takes a single parameter that is interpreted as HTML Markup.</p>
+
+<p>When using Templayer to produce very large files, or when parts of an HTML
+page take longer to complete, you might want to flush your output part
+of the way through:</p>
+
+%code[2]%
+
+<p>Layer objects have a 
+<a href="reference.html#Layer-close_child">close_child</a> function that
+forces any open "child" layers to finalize their output.  In this code
+we are closing the {report} layer. FileWriter objects have a
+<a href="reference.html#FileWriter-flush">flush</a> function that will
+send all the output possible.  We are first closing our {report} layer
+so that when we flush the output the whole report will appear.</p>
+
+
+{/body[lawn6]}
+
+<hr/>
+
+{body[simple.templayer]}
+<p>
+Templayer has a number of functions that help integrate with the Django
+Web Framework.  This is an example of a simple Django view.  
+All the examples below assume you are starting from a working 
+project.  See the
+<a href="http://www.djangoproject.com/documentation/">Django documentation</a>
+about setting up a project.
+</p>
+
+<p>
+First place this Templayer template in your project's template directory:
+</p>
+
+%html%
+
+<p>
+Then we can use
+<a href="reference.html#get_django_template">get_django_template</a> function
+to find the template in the project's template directory without having
+to hard-code the system path in our view:
+</p>
+
+%code[0]%
+
+<p>
+For this type view function you may also use the
+<a href="reference.html#django_view">django_view</a> decorator.  It takes
+care of creating and cleaning up the file writer object so that you don't
+need to "import HttpResponse" or remember to "return file_writer.close()"
+in every view function:
+</p>
+
+%code[1]%
+
+{/body[simple.templayer]}
+
+<hr/>
+
+
+{body[book.templayer]}
+<p>
+Templayer includes a <a href="reference.html#django_form">django_form</a>
+helper function for working with forms.  This function converts a form
+object to a dictionary of fields suitable for passing to the
+format, open_layer or write_layer functions:
+</p>
+
+<p>
+Start with models like the following:
+</p>
+
+%code[0]%
+
+<p>
+This template has two slots for each visible field in the form,
+one for the HTML input field and one for errors related to that field.
+</p>
+
+%html%
+
+<p>
+This code will populate the form widgets, accept input and redisplay
+the data (with errors if applicable) when the user clicks "Submit":
+</p>
+
+%code[1]%
+
+<div class="egwrap">
+<div class="eghead">Guest Book</div>
+<pre class="html">
+<h2>Sign the guestbook</h2>
+Your Name: <input id="id_name" type="text" name="name" maxlength="100" /> <br/>
+Rate the site: <select name="rating" id="id_rating">
+<option value="" selected="selected">---------</option>
+
+<option value="G">Great!</option>
+<option value="A">Average</option>
+<option value="U">Uninteresting</option>
+</select> <br/>
+Your Comments:<br/>
+<textarea id="id_comment" rows="10" cols="40" name="comment"></textarea> <br/>
+<input type="submit" value="Submit"/>
+</pre>
+</div>
+
+{/body[book.templayer]}
+
+
+{body[emulate.templayer]}
+<p>
+Existing or third-party Django applications will expect to use the standard
+Django templating library.  To use these applications with Templayer we
+need to extend the Django template loader and processing mechanism to
+emulate Django's templates.
+</p>
+
+<p>
+This example will show how to use Templayer to create a 404 page and
+use the "flatpages" application.
+</p>
+
+<p>
+First add the 
+<a href="reference.html#django_template_loader">django_template_loader</a> 
+to the TEMPLATE_LOADERS in your project's settings.py file:
+</p>
+<div class="egwrap">
+<div class="eghead">Your Django project's settings.py</div>
+<pre class="code">...
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.load_template_source',
+    'django.template.loaders.app_directories.load_template_source',
+...
+    'templayer.django_template_loader',
+)
+...</pre>
+</div>
+
+<p>
+Also make sure that the "flatpages" application is installed.  See the
+<a href="http://docs.djangoproject.com/en/dev/ref/contrib/flatpages/#installation">Django flatpages app documentation</a> for details.
+
+</p>
+
+<p>
+Next copy this template into the project's template directory:
+</p>
+
+%html%
+
+<p>
+Templayer's Django template emulation will look for a module named
+"templayer_pages.py" <i>in the template directories</i> when trying to load
+templates.  The 
+<a href="reference.html#django_template">django_template</a> 
+decorator defines the Django template name that a function will handle.
+The function may take parameters with names matching values you know will
+be present in the context dictionary and the decorator will fill in 
+those values for you.
+</p>
+<p>
+Put this module <i>in the template directory</i>:
+</p>
+
+%code[0]%
+
+<p>
+Now the 404 handler and the flatpages application will be formatted by
+Templayer.
+</p>
+
+
+</div>
+{/body[emulate.templayer]}
+
+
+
+
+<hr/>
+{/contents}
+
+</body>
+</html>

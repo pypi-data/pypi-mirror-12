@@ -1,0 +1,359 @@
+<html>
+<head>
+<title>Templayer 1.5.1 Reference</title>
+<style type="text/css">
+	h1 { text-align: center; }
+	h2 { margin: 40px 0 0 0; padding: 10px;  background: #6d96e8;}
+	h3 { margin: 0 0 3px 0; padding: 12px 6px 6px 6px; background: #efef96;}
+	.l1 { margin: 12px 0 0 0; }
+	.l2 { margin-left: 20px; }
+</style>
+<body>
+<a name="top"></a>
+<h1>Templayer 1.5.1 Reference</h1>
+
+<div style="text-align: center;">
+<a href="http://excess.org/templayer/">Templayer Home Page</a> /
+<a href="tutorial.html">Tutorial</a> /
+Reference
+</div>
+<br>
+<table width="100%"><tr><td width="50%" valign="top"><div class="l1">Template classes</div><div class="l2"><a href="#Template">Template</a></div><div class="l2"><a href="#HTMLTemplate">HTMLTemplate</a></div><div class="l1">Output classes</div><div class="l2"><a href="#FileWriter">FileWriter</a></div><div class="l2"><a href="#Layer">Layer</a></div><div class="l1">Django integration</div><div class="l2"><a href="#django_form">django_form</a></div><div class="l2"><a href="#django_template_loader">django_template_loader</a></div><div class="l2"><a href="#django_template">django_template</a></div><div class="l2"><a href="#django_view">django_view</a></div><div class="l2"><a href="#get_django_template">get_django_template</a></div><div class="l1">Utility functions</div><div class="l2"><a href="#html_url_encode">html_url_encode</a></div><div class="l2"><a href="#html_href">html_href</a></div><div class="l2"><a href="#html_target">html_target</a></div><div class="l2"><a href="#html_escape">html_escape</a></div></td><td width="50%" valign="top"><div class="l1">HTML Markup (yes, markup language markup)</div><div class="l2"><a href="#join">join</a></div><div class="l2"><a href="#pluralize">pluralize</a></div><div class="l2"><a href="#urljoin">urljoin</a></div><div class="l2"><a href="#href">href</a></div><div class="l2"><a href="#target">target</a></div><div class="l2"><a href="#BR">BR</a></div><div class="l2"><a href="#P">P</a></div><div class="l2"><a href="#I">I</a></div><div class="l2"><a href="#B">B</a></div><div class="l2"><a href="#U">U</a></div><div class="l2"><a href="#entity">entity</a></div><div class="l2"><a href="#expand_html_markup">expand_html_markup</a></div><div class="l2"><a href="#RawHTML">RawHTML</a></div></td></tr></table>
+<br>
+<h2>Template classes</h2><a name="Template"></a><h3>function Template <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><h3><a name="Template">class <strong>Template</strong></a>(object) <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3>Methods defined here:<br>
+<dl><dt><a name="Template-__call__"><strong>__call__</strong></a> = <a href="#Template-format">format</a>(self, layer_name, **args)</dt></dl>
+
+<dl><dt><a name="Template-__init__"><strong>__init__</strong></a>(self, name, from_string<font color="#909090">=False</font>, auto_reload<font color="#909090">='never'</font>, allow_degenerate<font color="#909090">=False</font>, encoding<font color="#909090">='utf_8'</font>)</dt><dd><tt>name&nbsp;--&nbsp;template&nbsp;file&nbsp;name&nbsp;or&nbsp;file-like&nbsp;object<br>
+from_string&nbsp;--&nbsp;if&nbsp;True&nbsp;treat&nbsp;name&nbsp;as&nbsp;a&nbsp;string&nbsp;containing&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template&nbsp;data&nbsp;instead&nbsp;of&nbsp;a&nbsp;file&nbsp;to&nbsp;read&nbsp;from<br>
+auto_reload&nbsp;--&nbsp;if&nbsp;the&nbsp;template&nbsp;has&nbsp;not&nbsp;been&nbsp;checked&nbsp;in&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;many&nbsp;seconds&nbsp;then&nbsp;check&nbsp;it&nbsp;and&nbsp;reload&nbsp;if&nbsp;there<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;any&nbsp;changes.&nbsp;&nbsp;If&nbsp;'never'&nbsp;only&nbsp;load&nbsp;the&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template&nbsp;file&nbsp;once.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checking&nbsp;and&nbsp;reloading&nbsp;is&nbsp;done&nbsp;by&nbsp;the&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start_file()&nbsp;function.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignored&nbsp;if&nbsp;from_string&nbsp;is&nbsp;True&nbsp;or&nbsp;if&nbsp;name&nbsp;is&nbsp;a&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file-like&nbsp;object.<br>
+allow_degenerate&nbsp;--&nbsp;If&nbsp;True&nbsp;then&nbsp;template&nbsp;is&nbsp;allowed&nbsp;to&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;have&nbsp;a&nbsp;{contents}...{/contents}&nbsp;block.&nbsp;&nbsp;In&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;the&nbsp;entire&nbsp;file&nbsp;is&nbsp;available&nbsp;as&nbsp;a&nbsp;layer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;called&nbsp;'*'.&nbsp;&nbsp;eg.&nbsp;l&nbsp;=&nbsp;tmpl.format('*',&nbsp;...)<br>
+encoding&nbsp;--&nbsp;encoding&nbsp;for&nbsp;template&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="Template-finalize"><strong>finalize</strong></a>(self, value)</dt><dd><tt>Return&nbsp;unwrapped&nbsp;value&nbsp;as&nbsp;a&nbsp;string.<br>
+&nbsp;<br>
+Override&nbsp;this&nbsp;function&nbsp;to&nbsp;reverse&nbsp;wrapping&nbsp;applied&nbsp;before<br>
+sending&nbsp;to&nbsp;the&nbsp;output&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="Template-format"><strong>format</strong></a>(self, layer_name, **args)</dt><dd><tt>Return&nbsp;a&nbsp;layer&nbsp;with&nbsp;slots&nbsp;filled&nbsp;by&nbsp;args.<br>
+&nbsp;<br>
+format(...)&nbsp;and&nbsp;self(...)&nbsp;are&nbsp;equivalent.</tt></dd></dl>
+
+<dl><dt><a name="Template-format_header_footer"><strong>format_header_footer</strong></a>(self, **args)</dt><dd><tt>Returns&nbsp;header&nbsp;and&nbsp;footer&nbsp;with&nbsp;slots&nbsp;filled&nbsp;by&nbsp;args.</tt></dd></dl>
+
+<dl><dt><a name="Template-layer"><strong>layer</strong></a>(self, name)</dt><dd><tt>Return&nbsp;the&nbsp;complete&nbsp;layer&nbsp;named&nbsp;name&nbsp;as&nbsp;a&nbsp;string.</tt></dd></dl>
+
+<dl><dt><a name="Template-layer_split"><strong>layer_split</strong></a>(self, name)</dt><dd><tt>Return&nbsp;the&nbsp;layer&nbsp;named&nbsp;name&nbsp;split&nbsp;on&nbsp;SLOT_MARKs.</tt></dd></dl>
+
+<dl><dt><a name="Template-missing_slot"><strong>missing_slot</strong></a>(self, names, layer)</dt><dd><tt>Called&nbsp;when&nbsp;one&nbsp;or&nbsp;more&nbsp;slots&nbsp;are&nbsp;not&nbsp;found&nbsp;in&nbsp;a&nbsp;layer.</tt></dd></dl>
+
+<dl><dt><a name="Template-post_process"><strong>post_process</strong></a>(self, value)</dt><dd><tt>Returns&nbsp;wrapped&nbsp;value.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;wrap&nbsp;processed&nbsp;text&nbsp;in&nbsp;order&nbsp;to&nbsp;mark&nbsp;it&nbsp;as&nbsp;<br>
+having&nbsp;been&nbsp;processed.</tt></dd></dl>
+
+<dl><dt><a name="Template-pre_process"><strong>pre_process</strong></a>(self, key, value)</dt><dd><tt>Returns&nbsp;key,&nbsp;filtered/escaped&nbsp;value.<br>
+&nbsp;<br>
+Override&nbsp;this&nbsp;function&nbsp;to&nbsp;provide&nbsp;escaping&nbsp;or&nbsp;filtering&nbsp;of<br>
+text&nbsp;sent&nbsp;from&nbsp;the&nbsp;module&nbsp;user.</tt></dd></dl>
+
+<dl><dt><a name="Template-reload_template"><strong>reload_template</strong></a>(self)</dt><dd><tt>Reload&nbsp;the&nbsp;template&nbsp;data&nbsp;from&nbsp;the&nbsp;template&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="Template-set_template_data"><strong>set_template_data</strong></a>(self, tmpl)</dt><dd><tt>Parse&nbsp;and&nbsp;store&nbsp;the&nbsp;template&nbsp;data&nbsp;passed.</tt></dd></dl>
+
+<dl><dt><a name="Template-start_file"><strong>start_file</strong></a>(self, file<font color="#909090">=None</font>, encoding<font color="#909090">='utf_8'</font>)</dt><dd><tt>Return&nbsp;a&nbsp;FileWriter&nbsp;object&nbsp;that&nbsp;uses&nbsp;this&nbsp;template.<br>
+&nbsp;<br>
+file&nbsp;--&nbsp;file&nbsp;object&nbsp;or&nbsp;None&nbsp;to&nbsp;use&nbsp;sys.stdout.<br>
+&nbsp;<br>
+If&nbsp;self.<strong>auto_reload</strong>&nbsp;is&nbsp;not&nbsp;None&nbsp;this&nbsp;function&nbsp;will&nbsp;first&nbsp;<br>
+check&nbsp;and&nbsp;reload&nbsp;the&nbsp;template&nbsp;file&nbsp;if&nbsp;it&nbsp;has&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Template-template_file_changed"><strong>template_file_changed</strong></a>(self)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;the&nbsp;template&nbsp;file&nbsp;has&nbsp;been&nbsp;modified&nbsp;since<br>
+the&nbsp;last&nbsp;time&nbsp;it&nbsp;was&nbsp;loaded.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<a name="HTMLTemplate"></a><h3>function HTMLTemplate <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><h3><a name="HTMLTemplate">class <strong>HTMLTemplate</strong></a>(Template) <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt>Method resolution order:</dt>
+<dd>HTMLTemplate</dd>
+<dd>Template</dd>
+<dd>object</dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="HTMLTemplate-finalize"><strong>finalize</strong></a>(self, value)</dt><dd><tt>Unwrap&nbsp;RawHTML&nbsp;object&nbsp;value&nbsp;for&nbsp;output.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-post_process"><strong>post_process</strong></a>(self, value)</dt><dd><tt>Wrap&nbsp;value&nbsp;in&nbsp;RawHTML&nbsp;object.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-pre_process"><strong>pre_process</strong></a>(self, key, value)</dt><dd><tt>Use&nbsp;expand_html_markup&nbsp;to&nbsp;process&nbsp;value.</tt></dd></dl>
+
+<hr>
+Methods inherited from Template:<br>
+<dl><dt><a name="HTMLTemplate-__call__"><strong>__call__</strong></a> = format(self, layer_name, **args)</dt><dd><tt>Return&nbsp;a&nbsp;layer&nbsp;with&nbsp;slots&nbsp;filled&nbsp;by&nbsp;args.<br>
+&nbsp;<br>
+format(...)&nbsp;and&nbsp;self(...)&nbsp;are&nbsp;equivalent.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-__init__"><strong>__init__</strong></a>(self, name, from_string<font color="#909090">=False</font>, auto_reload<font color="#909090">='never'</font>, allow_degenerate<font color="#909090">=False</font>, encoding<font color="#909090">='utf_8'</font>)</dt><dd><tt>name&nbsp;--&nbsp;template&nbsp;file&nbsp;name&nbsp;or&nbsp;file-like&nbsp;object<br>
+from_string&nbsp;--&nbsp;if&nbsp;True&nbsp;treat&nbsp;name&nbsp;as&nbsp;a&nbsp;string&nbsp;containing&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template&nbsp;data&nbsp;instead&nbsp;of&nbsp;a&nbsp;file&nbsp;to&nbsp;read&nbsp;from<br>
+auto_reload&nbsp;--&nbsp;if&nbsp;the&nbsp;template&nbsp;has&nbsp;not&nbsp;been&nbsp;checked&nbsp;in&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;many&nbsp;seconds&nbsp;then&nbsp;check&nbsp;it&nbsp;and&nbsp;reload&nbsp;if&nbsp;there<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;any&nbsp;changes.&nbsp;&nbsp;If&nbsp;'never'&nbsp;only&nbsp;load&nbsp;the&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template&nbsp;file&nbsp;once.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checking&nbsp;and&nbsp;reloading&nbsp;is&nbsp;done&nbsp;by&nbsp;the&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start_file()&nbsp;function.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignored&nbsp;if&nbsp;from_string&nbsp;is&nbsp;True&nbsp;or&nbsp;if&nbsp;name&nbsp;is&nbsp;a&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file-like&nbsp;object.<br>
+allow_degenerate&nbsp;--&nbsp;If&nbsp;True&nbsp;then&nbsp;template&nbsp;is&nbsp;allowed&nbsp;to&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;have&nbsp;a&nbsp;{contents}...{/contents}&nbsp;block.&nbsp;&nbsp;In&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;the&nbsp;entire&nbsp;file&nbsp;is&nbsp;available&nbsp;as&nbsp;a&nbsp;layer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;called&nbsp;'*'.&nbsp;&nbsp;eg.&nbsp;l&nbsp;=&nbsp;tmpl.format('*',&nbsp;...)<br>
+encoding&nbsp;--&nbsp;encoding&nbsp;for&nbsp;template&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-format"><strong>format</strong></a>(self, layer_name, **args)</dt><dd><tt>Return&nbsp;a&nbsp;layer&nbsp;with&nbsp;slots&nbsp;filled&nbsp;by&nbsp;args.<br>
+&nbsp;<br>
+format(...)&nbsp;and&nbsp;self(...)&nbsp;are&nbsp;equivalent.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-format_header_footer"><strong>format_header_footer</strong></a>(self, **args)</dt><dd><tt>Returns&nbsp;header&nbsp;and&nbsp;footer&nbsp;with&nbsp;slots&nbsp;filled&nbsp;by&nbsp;args.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-layer"><strong>layer</strong></a>(self, name)</dt><dd><tt>Return&nbsp;the&nbsp;complete&nbsp;layer&nbsp;named&nbsp;name&nbsp;as&nbsp;a&nbsp;string.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-layer_split"><strong>layer_split</strong></a>(self, name)</dt><dd><tt>Return&nbsp;the&nbsp;layer&nbsp;named&nbsp;name&nbsp;split&nbsp;on&nbsp;SLOT_MARKs.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-missing_slot"><strong>missing_slot</strong></a>(self, names, layer)</dt><dd><tt>Called&nbsp;when&nbsp;one&nbsp;or&nbsp;more&nbsp;slots&nbsp;are&nbsp;not&nbsp;found&nbsp;in&nbsp;a&nbsp;layer.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-reload_template"><strong>reload_template</strong></a>(self)</dt><dd><tt>Reload&nbsp;the&nbsp;template&nbsp;data&nbsp;from&nbsp;the&nbsp;template&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-set_template_data"><strong>set_template_data</strong></a>(self, tmpl)</dt><dd><tt>Parse&nbsp;and&nbsp;store&nbsp;the&nbsp;template&nbsp;data&nbsp;passed.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-start_file"><strong>start_file</strong></a>(self, file<font color="#909090">=None</font>, encoding<font color="#909090">='utf_8'</font>)</dt><dd><tt>Return&nbsp;a&nbsp;FileWriter&nbsp;object&nbsp;that&nbsp;uses&nbsp;this&nbsp;template.<br>
+&nbsp;<br>
+file&nbsp;--&nbsp;file&nbsp;object&nbsp;or&nbsp;None&nbsp;to&nbsp;use&nbsp;sys.stdout.<br>
+&nbsp;<br>
+If&nbsp;self.<strong>auto_reload</strong>&nbsp;is&nbsp;not&nbsp;None&nbsp;this&nbsp;function&nbsp;will&nbsp;first&nbsp;<br>
+check&nbsp;and&nbsp;reload&nbsp;the&nbsp;template&nbsp;file&nbsp;if&nbsp;it&nbsp;has&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="HTMLTemplate-template_file_changed"><strong>template_file_changed</strong></a>(self)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;the&nbsp;template&nbsp;file&nbsp;has&nbsp;been&nbsp;modified&nbsp;since<br>
+the&nbsp;last&nbsp;time&nbsp;it&nbsp;was&nbsp;loaded.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Template:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<h2>Output classes</h2><a name="FileWriter"></a><h3>function FileWriter <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><h3><a name="FileWriter">class <strong>FileWriter</strong></a>(object) <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3>Methods defined here:<br>
+<dl><dt><a name="FileWriter-__init__"><strong>__init__</strong></a>(self, file, template, encoding<font color="#909090">='utf_8'</font>)</dt><dd><tt>file&nbsp;--&nbsp;output&nbsp;stream&nbsp;or&nbsp;None&nbsp;to&nbsp;use&nbsp;sys.stdout<br>
+template&nbsp;--&nbsp;template&nbsp;object&nbsp;for&nbsp;generating&nbsp;this&nbsp;file<br>
+&nbsp;<br>
+This&nbsp;constructor&nbsp;is&nbsp;usually&nbsp;not&nbsp;called&nbsp;directly.&nbsp;&nbsp;Use<br>
+template.start_file()&nbsp;to&nbsp;create&nbsp;a&nbsp;FileWriter&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="FileWriter-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;all&nbsp;child&nbsp;layers&nbsp;and&nbsp;flush&nbsp;the&nbsp;output&nbsp;to&nbsp;the&nbsp;output&nbsp;<br>
+stream.&nbsp;&nbsp;This&nbsp;function&nbsp;must&nbsp;be&nbsp;called&nbsp;to&nbsp;generate&nbsp;a&nbsp;complete<br>
+file.<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;file&nbsp;object&nbsp;where&nbsp;output&nbsp;was&nbsp;sent.</tt></dd></dl>
+
+<dl><dt><a name="FileWriter-flush"><strong>flush</strong></a>(self)</dt><dd><tt>Flush&nbsp;as&nbsp;much&nbsp;output&nbsp;as&nbsp;possible&nbsp;to&nbsp;the&nbsp;output&nbsp;stream.</tt></dd></dl>
+
+<dl><dt><a name="FileWriter-open"><strong>open</strong></a>(self, **args)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;layer&nbsp;representing&nbsp;the&nbsp;content&nbsp;between&nbsp;the<br>
+header&nbsp;and&nbsp;footer.&nbsp;&nbsp;Use&nbsp;keyword&nbsp;arguments&nbsp;to&nbsp;fill&nbsp;the<br>
+slots&nbsp;in&nbsp;the&nbsp;header&nbsp;and&nbsp;footer.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<a name="Layer"></a><h3>function Layer <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><h3><a name="Layer">class <strong>Layer</strong></a>(object) <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3>Methods defined here:<br>
+<dl><dt><a name="Layer-__init__"><strong>__init__</strong></a>(self, template, header, footer)</dt><dd><tt>template&nbsp;--&nbsp;template&nbsp;object&nbsp;for&nbsp;generating&nbsp;this&nbsp;layer<br>
+header&nbsp;--&nbsp;text&nbsp;before&nbsp;the&nbsp;content&nbsp;of&nbsp;this&nbsp;layer<br>
+footer&nbsp;--&nbsp;text&nbsp;after&nbsp;the&nbsp;content&nbsp;of&nbsp;this&nbsp;layer<br>
+&nbsp;<br>
+This&nbsp;constructor&nbsp;should&nbsp;not&nbsp;be&nbsp;called&nbsp;directly.&nbsp;&nbsp;Use<br>
+the&nbsp;open()&nbsp;function&nbsp;in&nbsp;a&nbsp;FileWriter&nbsp;or&nbsp;the&nbsp;open_layer()<br>
+function&nbsp;in&nbsp;another&nbsp;Layer&nbsp;object&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;Layer.</tt></dd></dl>
+
+<dl><dt><a name="Layer-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;this&nbsp;layer&nbsp;and&nbsp;return&nbsp;its&nbsp;output.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;should&nbsp;not&nbsp;be&nbsp;called&nbsp;directly.&nbsp;&nbsp;Use&nbsp;the<br>
+close()&nbsp;function&nbsp;in&nbsp;the&nbsp;FileWriter&nbsp;object&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="Layer-close_child"><strong>close_child</strong></a>(self)</dt><dd><tt>If&nbsp;we&nbsp;have&nbsp;an&nbsp;open&nbsp;child&nbsp;layer&nbsp;close&nbsp;it&nbsp;and&nbsp;add&nbsp;its<br>
+output&nbsp;to&nbsp;our&nbsp;own.</tt></dd></dl>
+
+<dl><dt><a name="Layer-flush"><strong>flush</strong></a>(self)</dt><dd><tt>Flush&nbsp;as&nbsp;much&nbsp;output&nbsp;as&nbsp;possible&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;should&nbsp;not&nbsp;be&nbsp;called&nbsp;directly.&nbsp;&nbsp;Use&nbsp;the<br>
+flush()&nbsp;function&nbsp;in&nbsp;the&nbsp;FileWriter&nbsp;object&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="Layer-open_layer"><strong>open_layer</strong></a>(self, layer, **args)</dt><dd><tt>layer&nbsp;--&nbsp;name&nbsp;of&nbsp;layer&nbsp;in&nbsp;the&nbsp;template&nbsp;to&nbsp;open<br>
+Use&nbsp;keyword&nbsp;arguments&nbsp;to&nbsp;fill&nbsp;this&nbsp;layer's&nbsp;slots.<br>
+&nbsp;<br>
+open_layer(&nbsp;layer&nbsp;name,&nbsp;**&nbsp;args&nbsp;)&nbsp;-&gt;&nbsp;child&nbsp;Layer&nbsp;object<br>
+&nbsp;<br>
+open&nbsp;a&nbsp;layer&nbsp;as&nbsp;a&nbsp;child&nbsp;of&nbsp;this&nbsp;one,&nbsp;filling&nbsp;its&nbsp;slots&nbsp;with<br>
+values&nbsp;from&nbsp;args</tt></dd></dl>
+
+<dl><dt><a name="Layer-write"><strong>write</strong></a>(self, text)</dt><dd><tt>text&nbsp;--&nbsp;text&nbsp;or&nbsp;markup&nbsp;as&nbsp;interpreted&nbsp;by&nbsp;the&nbsp;template</tt></dd></dl>
+
+<dl><dt><a name="Layer-write_layer"><strong>write_layer</strong></a>(self, layer, **args)</dt><dd><tt>layer&nbsp;--&nbsp;name&nbsp;of&nbsp;layer&nbsp;in&nbsp;the&nbsp;template&nbsp;to&nbsp;write<br>
+Use&nbsp;keyword&nbsp;arguments&nbsp;to&nbsp;fill&nbsp;this&nbsp;layer's&nbsp;slots.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<h2>Django integration</h2><a name="django_form"></a><h3>function django_form <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-django_form"><strong>django_form</strong></a>(form, errors<font color="#909090">=True</font>, join_errors<font color="#909090">=&lt;function &lt;lambda&gt; at 0x2b15f74d78c0&gt;</font>)</dt><dd><tt>Converts&nbsp;a&nbsp;django&nbsp;FormWrapper&nbsp;object&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;that<br>
+can&nbsp;be&nbsp;used&nbsp;by&nbsp;Templayer.&nbsp;&nbsp;Each&nbsp;field&nbsp;is&nbsp;rendered&nbsp;into&nbsp;a<br>
+%form.NAME%&nbsp;slot.<br>
+&nbsp;<br>
+If&nbsp;errors&nbsp;is&nbsp;True&nbsp;then&nbsp;this&nbsp;function&nbsp;will&nbsp;also&nbsp;render<br>
+errors&nbsp;into&nbsp;%form.NAME.errors%&nbsp;slots.<br>
+&nbsp;<br>
+When&nbsp;there&nbsp;is&nbsp;more&nbsp;than&nbsp;one&nbsp;error&nbsp;on&nbsp;a&nbsp;single&nbsp;field&nbsp;the<br>
+errors&nbsp;will&nbsp;be&nbsp;joined&nbsp;with&nbsp;the&nbsp;join_errors&nbsp;function.<br>
+The&nbsp;default&nbsp;join_errors&nbsp;function&nbsp;puts&nbsp;a&nbsp;newline&nbsp;between&nbsp;each<br>
+error.<br>
+&nbsp;<br>
+eg:<br>
+If&nbsp;tmpl&nbsp;is&nbsp;an&nbsp;HTMLTemplate&nbsp;object&nbsp;with&nbsp;a&nbsp;{form_layer}&nbsp;layer<br>
+and&nbsp;form&nbsp;is&nbsp;a&nbsp;FormWrapper&nbsp;object&nbsp;with&nbsp;username&nbsp;and&nbsp;password<br>
+fields,&nbsp;then&nbsp;this&nbsp;code&nbsp;will&nbsp;fill&nbsp;the&nbsp;{form_layer}&nbsp;layer's&nbsp;<br>
+%title%,&nbsp;%form.username%,&nbsp;%form.password%,&nbsp;<br>
+%form.username.errors%&nbsp;and&nbsp;%form.password.errors%&nbsp;slots:<br>
+&nbsp;<br>
+tmpl.format('form_layer',&nbsp;title="hello",&nbsp;**django_form(form))</tt></dd></dl>
+<a name="django_template_loader"></a><h3>function django_template_loader <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-django_template_loader"><strong>django_template_loader</strong></a>(template_name, template_dirs<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;function&nbsp;should&nbsp;be&nbsp;included&nbsp;in&nbsp;settings.TEMPLATE_LOADERS&nbsp;when<br>
+using&nbsp;the&nbsp;django_template&nbsp;decorator.<br>
+&nbsp;<br>
+eg:<br>
+TEMPLATE_LOADERS&nbsp;+=&nbsp;['templayer.django_template_loader']</tt></dd></dl>
+<a name="django_template"></a><h3>function django_template <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-django_template"><strong>django_template</strong></a>(tmpl, template_name)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;decorator&nbsp;for&nbsp;functions&nbsp;you&nbsp;want&nbsp;to&nbsp;make&nbsp;behave&nbsp;like&nbsp;<br>
+standard&nbsp;Django&nbsp;templates.&nbsp;&nbsp;When&nbsp;django_template_loader&nbsp;is&nbsp;<br>
+included&nbsp;in&nbsp;settings.TEMPLATE_LOADERS&nbsp;Django&nbsp;will&nbsp;find&nbsp;the&nbsp;<br>
+decorated&nbsp;function&nbsp;when&nbsp;looking&nbsp;for&nbsp;template_name.<br>
+&nbsp;<br>
+tmpl&nbsp;is&nbsp;the&nbsp;Templayer&nbsp;template&nbsp;object&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;to&nbsp;create<br>
+the&nbsp;file&nbsp;layer&nbsp;passed&nbsp;to&nbsp;the&nbsp;decorated&nbsp;function.<br>
+&nbsp;<br>
+The&nbsp;decorated&nbsp;function&nbsp;must&nbsp;have&nbsp;a&nbsp;signature&nbsp;like:<br>
+@templayer.django_template(tmpl,&nbsp;"appname/somepage.html")<br>
+def&nbsp;mock_template(fwriter,&nbsp;context,&nbsp;optional1,&nbsp;optional2&nbsp;...)<br>
+&nbsp;<br>
+Where&nbsp;fwriter&nbsp;is&nbsp;a&nbsp;new&nbsp;FileWriter&nbsp;object,&nbsp;context&nbsp;is&nbsp;a&nbsp;context<br>
+instance&nbsp;and&nbsp;all&nbsp;parameters&nbsp;that&nbsp;follow&nbsp;will&nbsp;have&nbsp;their&nbsp;values<br>
+copied&nbsp;from&nbsp;the&nbsp;context&nbsp;based&nbsp;on&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;parameters.<br>
+&nbsp;<br>
+The&nbsp;function&nbsp;must&nbsp;call&nbsp;fwriter.open(..)&nbsp;to&nbsp;render&nbsp;the&nbsp;page&nbsp;then&nbsp;<br>
+return&nbsp;the&nbsp;fwriter&nbsp;object&nbsp;(or&nbsp;None)&nbsp;to&nbsp;send&nbsp;it&nbsp;to&nbsp;the&nbsp;client.&nbsp;&nbsp;<br>
+fwriter.close()&nbsp;is&nbsp;called&nbsp;automatically.&nbsp;&nbsp;Other&nbsp;objects&nbsp;returned&nbsp;<br>
+or&nbsp;exceptions&nbsp;raised&nbsp;will&nbsp;be&nbsp;passed&nbsp;through&nbsp;to&nbsp;Django.</tt></dd></dl>
+<a name="django_view"></a><h3>function django_view <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-django_view"><strong>django_view</strong></a>(tmpl)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;decorator&nbsp;for&nbsp;Django&nbsp;view&nbsp;functions&nbsp;that&nbsp;will&nbsp;handle<br>
+creation&nbsp;of&nbsp;the&nbsp;file&nbsp;layer&nbsp;object&nbsp;from&nbsp;the&nbsp;template&nbsp;tmpl.<br>
+&nbsp;<br>
+The&nbsp;function&nbsp;must&nbsp;have&nbsp;a&nbsp;signature&nbsp;like:<br>
+@templayer.django_view(tmpl)<br>
+def&nbsp;decorated_view(fwriter,&nbsp;request,&nbsp;...)<br>
+&nbsp;<br>
+fwriter&nbsp;is&nbsp;the&nbsp;new&nbsp;FileWriter&nbsp;object&nbsp;and&nbsp;the&nbsp;rest&nbsp;of&nbsp;the&nbsp;parameters<br>
+are&nbsp;the&nbsp;same&nbsp;as&nbsp;what&nbsp;was&nbsp;passed&nbsp;to&nbsp;the&nbsp;view.&nbsp;&nbsp;<br>
+&nbsp;<br>
+The&nbsp;function&nbsp;must&nbsp;call&nbsp;fwriter.open(..)&nbsp;to&nbsp;render&nbsp;the&nbsp;page&nbsp;then&nbsp;<br>
+return&nbsp;the&nbsp;fwriter&nbsp;object&nbsp;(or&nbsp;None)&nbsp;to&nbsp;send&nbsp;it&nbsp;to&nbsp;the&nbsp;client.&nbsp;&nbsp;<br>
+fwriter.close()&nbsp;is&nbsp;called&nbsp;automatically.&nbsp;&nbsp;Other&nbsp;objects&nbsp;returned&nbsp;<br>
+or&nbsp;exceptions&nbsp;raised&nbsp;will&nbsp;be&nbsp;passed&nbsp;through&nbsp;to&nbsp;Django.</tt></dd></dl>
+<a name="get_django_template"></a><h3>function get_django_template <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-get_django_template"><strong>get_django_template</strong></a>(name, auto_reload<font color="#909090">='debug'</font>, allow_degenerate<font color="#909090">=False</font>, encoding<font color="#909090">='utf_8'</font>)</dt><dd><tt>Use&nbsp;Django's&nbsp;template&nbsp;loading&nbsp;machinery&nbsp;to&nbsp;create&nbsp;an<br>
+HTMLTemplate&nbsp;object.<br>
+&nbsp;<br>
+auto_reload&nbsp;--&nbsp;when&nbsp;set&nbsp;to&nbsp;'debug'&nbsp;will&nbsp;auto-reload&nbsp;only&nbsp;when&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;settings.DEBUG&nbsp;is&nbsp;set&nbsp;to&nbsp;True</tt></dd></dl>
+<h2>Utility functions</h2><a name="html_url_encode"></a><h3>function html_url_encode <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-html_url_encode"><strong>html_url_encode</strong></a>(text, query<font color="#909090">=False</font>)</dt><dd><tt>text&nbsp;--&nbsp;text&nbsp;to&nbsp;be&nbsp;included&nbsp;as&nbsp;part&nbsp;of&nbsp;a&nbsp;URL<br>
+query&nbsp;--&nbsp;if&nbsp;True&nbsp;use&nbsp;"+"&nbsp;instead&nbsp;ot&nbsp;"%20"&nbsp;for&nbsp;spaces</tt></dd></dl>
+<a name="html_href"></a><h3>function html_href <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-html_href"><strong>html_href</strong></a>(link, value)</dt><dd><tt>Return&nbsp;'&lt;a&nbsp;href="link"&gt;value&lt;/a&gt;'.<br>
+&nbsp;<br>
+Neither&nbsp;link&nbsp;nor&nbsp;value&nbsp;is&nbsp;escaped&nbsp;by&nbsp;this&nbsp;function.</tt></dd></dl>
+<a name="html_target"></a><h3>function html_target <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-html_target"><strong>html_target</strong></a>(target, caption)</dt><dd><tt>Return&nbsp;'&lt;a&nbsp;name="target"&gt;caption&lt;/a&gt;'.<br>
+&nbsp;<br>
+Neither&nbsp;target&nbsp;nor&nbsp;caption&nbsp;is&nbsp;escaped&nbsp;by&nbsp;this&nbsp;function.</tt></dd></dl>
+<a name="html_escape"></a><h3>function html_escape <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-html_escape"><strong>html_escape</strong></a>(text)</dt><dd><tt>text&nbsp;--&nbsp;text&nbsp;to&nbsp;be&nbsp;escaped&nbsp;for&nbsp;inclusion&nbsp;within&nbsp;HTML.</tt></dd></dl>
+<h2>HTML Markup (yes, markup language markup)</h2><a name="join"></a><h3>function join <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-join"><strong>join</strong></a>(markup_list, separator)</dt><dd><tt>HTML&nbsp;Markup&nbsp;like&nbsp;markup_list.join(separator)</tt></dd></dl>
+<a name="pluralize"></a><h3>function pluralize <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-pluralize"><strong>pluralize</strong></a>(count, sigular_content, plural_content)</dt><dd><tt>HTML&nbsp;Markup&nbsp;(singular_content&nbsp;if&nbsp;count==1&nbsp;else&nbsp;plural_content)</tt></dd></dl>
+<a name="urljoin"></a><h3>function urljoin <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-urljoin"><strong>urljoin</strong></a>(head, tail)</dt><dd><tt>HTML&nbsp;Markup&nbsp;join&nbsp;safe&nbsp;url&nbsp;head&nbsp;with&nbsp;unsafe&nbsp;tail</tt></dd></dl>
+<a name="href"></a><h3>function href <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-href"><strong>href</strong></a>(link, content)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&lt;a&nbsp;href="link"&gt;content&lt;/a&gt;</tt></dd></dl>
+<a name="target"></a><h3>function target <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-target"><strong>target</strong></a>(name)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&lt;a&nbsp;name="name"&gt;&lt;/a&gt;</tt></dd></dl>
+<a name="BR"></a><h3>function BR <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-BR"><strong>BR</strong></a>(count<font color="#909090">=1</font>)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&lt;br/&gt;&nbsp;*&nbsp;count</tt></dd></dl>
+<a name="P"></a><h3>function P <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-P"><strong>P</strong></a>(content<font color="#909090">=''</font>)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&lt;p&gt;content&lt;/p&gt;</tt></dd></dl>
+<a name="I"></a><h3>function I <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-I"><strong>I</strong></a>(content)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&lt;i&gt;content&lt;/i&gt;</tt></dd></dl>
+<a name="B"></a><h3>function B <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-B"><strong>B</strong></a>(content)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&lt;b&gt;content&lt;/b&gt;</tt></dd></dl>
+<a name="U"></a><h3>function U <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-U"><strong>U</strong></a>(content)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&lt;u&gt;content&lt;/u&gt;</tt></dd></dl>
+<a name="entity"></a><h3>function entity <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-entity"><strong>entity</strong></a>(entity)</dt><dd><tt>HTML&nbsp;Markup&nbsp;&amp;entity;</tt></dd></dl>
+<a name="expand_html_markup"></a><h3>function expand_html_markup <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><dl><dt><a name="-expand_html_markup"><strong>expand_html_markup</strong></a>(v)</dt><dd><tt>Return&nbsp;an&nbsp;HTML&nbsp;string&nbsp;based&nbsp;on&nbsp;markup&nbsp;v.<br>
+&nbsp;<br>
+HTML&nbsp;markup&nbsp;is&nbsp;expanded&nbsp;recursively.&nbsp;Each&nbsp;of&nbsp;the&nbsp;content<br>
+values&nbsp;below&nbsp;are&nbsp;passed&nbsp;to&nbsp;expand_html_markup&nbsp;again&nbsp;before&nbsp;<br>
+applying&nbsp;the&nbsp;operation&nbsp;on&nbsp;the&nbsp;right:<br>
+&nbsp;<br>
+string&nbsp;or&nbsp;unicode&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;HTML-escaped&nbsp;version&nbsp;of&nbsp;string<br>
+[content1,&nbsp;content2,&nbsp;...]&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;concatenate&nbsp;content1,&nbsp;content2,&nbsp;...<br>
+('join',list,sep)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;join&nbsp;items&nbsp;in&nbsp;list&nbsp;with&nbsp;seperator&nbsp;sep<br>
+('pluralize',count,singular_content,plural_content)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;if&nbsp;count&nbsp;==&nbsp;1&nbsp;use&nbsp;singular_content,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;otherwise&nbsp;use&nbsp;plural_content<br>
+('urljoin',head,tail)&nbsp;-&gt;&nbsp;&nbsp;join&nbsp;safe&nbsp;url&nbsp;head&nbsp;with&nbsp;unsafe&nbsp;url-ending&nbsp;tail<br>
+('href',link,content)&nbsp;-&gt;&nbsp;&nbsp;HTML&nbsp;href&nbsp;to&nbsp;link&nbsp;wrapped&nbsp;around&nbsp;content<br>
+('target',name)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;HTML&nbsp;target&nbsp;name<br>
+('br',)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;HTML&nbsp;line&nbsp;break<br>
+('br',count)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;HTML&nbsp;line&nbsp;break&nbsp;*&nbsp;count<br>
+('p',)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;HTML&nbsp;paragraph&nbsp;break<br>
+('p',content)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;HTML&nbsp;paragraph<br>
+('i',content)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;italics<br>
+('b',content)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;bold<br>
+('u',content)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;underline<br>
+('&amp;',entity)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;HTML&nbsp;entity&nbsp;(entity&nbsp;has&nbsp;no&nbsp;&amp;&nbsp;or&nbsp;;)<br>
+RawHTML(value)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;value&nbsp;unmodified</tt></dd></dl>
+<a name="RawHTML"></a><h3>function RawHTML <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3><h3><a name="RawHTML">class <strong>RawHTML</strong></a>(object) <span style="font-size:small; padding-left: 20px">[<a href="#top">back to top</a>]</span></h3>Methods defined here:<br>
+<dl><dt><a name="RawHTML-__init__"><strong>__init__</strong></a>(self, value)</dt><dd><tt>value&nbsp;--&nbsp;segment&nbsp;of&nbsp;HTML&nbsp;as&nbsp;a&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="RawHTML-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+
+</body>
+</html>
