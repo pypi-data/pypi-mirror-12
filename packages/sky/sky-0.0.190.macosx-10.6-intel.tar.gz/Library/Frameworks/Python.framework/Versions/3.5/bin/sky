@@ -1,0 +1,10 @@
+#!/Library/Frameworks/Python.framework/Versions/3.5/bin/python3
+# EASY-INSTALL-ENTRY-SCRIPT: 'sky==0.0.190','console_scripts','sky'
+__requires__ = 'sky==0.0.190'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('sky==0.0.190', 'console_scripts', 'sky')()
+    )
