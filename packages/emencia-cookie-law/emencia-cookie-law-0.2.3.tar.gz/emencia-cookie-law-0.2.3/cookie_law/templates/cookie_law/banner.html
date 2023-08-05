@@ -1,0 +1,12 @@
+{% load i18n %}{% spaceless %}
+<div id="cookie-law-container" class="section">
+    <div class="row larger">
+        <div class="small-12 large-8 xlarge-10 columns">
+            {% blocktrans %}<p>By continuing to browse without changing your settings, you accept the use of cookies in order to access services and offers based on your interests in order to improve the user experience on our site. Click on &quot;More info&quot; to find out more about configuring cookies.</p>{% endblocktrans %}
+            <p class="more"><a href="{% trans "/cookie-law/" %}">{% trans "More info" %}</a></p>
+        </div>
+        <div class="small-12 large-4 xlarge-2 columns text-center">
+            <a class="button small" href="javascript:Cookielaw.accept();">{% trans "I accept" %}</a>
+        </div>
+    </div>
+</div>{% endspaceless %}
