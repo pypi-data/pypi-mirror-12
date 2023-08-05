@@ -1,0 +1,159 @@
+{% extends "panoramix/base.html" %}
+{% block content_fluid %}
+{% set datasource = viz.datasource %}
+{% set form = viz.form %}
+<div class="container-fluid datasource">
+  <div class="row">
+    <div id="form_container" class="col-md-3">
+      <h3>
+        {{ datasource.name }}
+        {% if datasource.description %}
+          <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="{{ datasource.description }}"></i>
+        {% endif %}
+        <div class="btn-group pull-right" role="group" >
+          <a class="btn btn-default" href="/{{ datasource.baselink }}/edit/{{ datasource.id }}" data-toggle="tooltip" title="Edit datasource">
+            <i class="fa fa-edit"></i>
+          </a>
+          <button type="button" class="btn btn-default druidify" data-toggle="tooltip" title="Slice!">
+            <i class="fa fa-bolt"></i>
+          </button>
+        </div>
+      </h3>
+
+      <hr>
+      <form id="query" method="GET" style="display: none;">
+        {% for fieldname in form.field_order %}
+        {% if not fieldname.__iter__ %}
+        <div>
+          {% set field = form.get_field(fieldname)%}
+          <div>
+            {{ field.label }}
+            {% if field.description %}
+            <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="right"
+              title="{{ field.description }}"></i>
+            {% endif %}:
+            {{ field(class_=form.field_css_classes(field.name)) }}
+          </div>
+        </div>
+        {% else %}
+        <div class="row">
+          <div class="form-group">
+            {% for name in fieldname %}
+            <div class="col-xs-{{ (12 / fieldname|length) | int }}">
+              {% if name %}
+                {% set field = form.get_field(name)%}
+                {{ field.label }}
+                {% if field.description %}
+                <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="right"
+                  title="{{ field.description }}"></i>
+                {% endif %}:
+                {{ field(class_=form.field_css_classes(field.name)) }}
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <hr>
+        <h4>Filters</h4>
+        <div id="flt0" style="display: none;">
+          <span class="">{{ form.flt_col_0(class_="form-control inc") }}</span>
+          <div class="row">
+            <span class="col col-sm-4">{{ form.flt_op_0(class_="form-control inc") }}</span>
+            <span class="col col-sm-6">{{ form.flt_eq_0(class_="form-control inc") }}</span>
+            <button type="button" class="btn btn-sm remove" aria-label="Delete filter">
+              <span class="glyphicon glyphicon-minus"  aria-hidden="true"></span>
+            </button>
+          </div>
+          <hr style="margin: 5px 0px;"/>
+        </div>
+        <div id="filters"></div>
+        <button type="button" id="plus" class="btn btn-sm" aria-label="Add a filter">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+        <hr>
+        <button type="button" class="btn btn-primary druidify">
+          <i class="fa fa-bolt"></i>
+          Slice!
+        </button>
+        <button type="button" class="btn btn-default" id="save">
+          <i class="fa fa-save"></i>
+          Save as Slice
+        </button>
+        <hr style="margin-bottom: 0px;">
+        <img src="{{ url_for("static", filename="img/tux_panoramix.png") }}" width=250>
+        <input type="hidden" id="slice_name" name="slice_name" value="TEST">
+        <input type="hidden" id="action" name="action" value="">
+        <input type="hidden" name="datasource_name" value="{{ datasource.name }}">
+        <input type="hidden" name="datasource_id" value="{{ datasource.id }}">
+        <input type="hidden" name="datasource_type" value="{{ datasource.type }}">
+        <input type="hidden" name="previous_viz_type" value="{{ viz.viz_type or "table" }}">
+      </form><br>
+    </div>
+
+    <div class="col-md-9">
+      <h3>{{ viz.verbose_name }}
+        {% if False %}
+        <span class="label label-success">
+          {{ "{0:0.4f}".format(results.duration.total_seconds()) }} s
+        </span>
+        {% endif %}
+        <span class="label pull-right label-info btn"
+          data-toggle="modal" data-target="#query_modal">query</span>
+      </h3>
+      <hr/>
+          {% block messages %}
+          {% endblock %}
+            {% include 'appbuilder/flash.html' %}
+      <div
+        class="viz widget"
+        data-widget="{{ viz.get_data_attribute() }}"
+        style="height: 700px;">
+        {% block viz_html %}
+        {% if viz.error_msg %}
+        <div class="alert alert-danger">{{ viz.error_msg }}</div>
+        {% endif %}
+        {% if viz.warning_msg %}
+        <div class="alert alert-warning">{{ viz.warning_msg }}</div>
+        {% endif %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="query_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Query</h4>
+      </div>
+      <div class="modal-body">
+        <pre id="query_container">
+          {% if viz.query %}
+          {% else %}
+            <img width="250" src="{{ url_for('static', filename="img/penguins.png") }}">
+          {% endif %}
+        </pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block tail_js %}
+{{ super() }}
+<script>
+  $(document).ready(px.initializeDatasourceView);
+  $(document).ready(function() {
+    var data = $('.widget').data('widget');
+    var widget = px.initializeWidget(data);
+    $('.widget').data('widget', widget);
+    widget.render();
+  });
+</script>
+{% endblock %}
