@@ -1,0 +1,91 @@
+Metadata-Version: 1.1
+Name: eval-scrubber
+Version: 0.0.2
+Summary: Finds and removes malicious eval base64 PHP code.
+Home-page: https://github.com/michigan-com/eval_scrubber
+Author: Eric Bower
+Author-email: neurosnap@gmail.com
+License: The MIT License (MIT)
+=====================
+
+Copyright (c) `2015` `Michigan.com`
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Description: Eval/Base64 File Scrubber [![Build Status](https://travis-ci.org/michigan-com/eval_scrubber.svg?branch=master)](https://travis-ci.org/michigan-com/eval_scrubber)
+        =========================
+        
+        This script will walk through all files in a directory, find, and remove
+        any content that is suspected to be malicious.
+        
+        This scan uses a regular expression to seek out any potentially malicious content
+        
+        ```
+        infected_pattern = re.compile(r"<\?php\s*eval\((.+\()*base64_decode\(.+\)\).+\s*?>")
+        ```
+        
+        What it is matching is `<?php eval(base64_decode()) ?>` or `<?php eval(gzinflate(base64_decode())) ?>`
+        
+        It is strongly advized to check that this regular expression will match your needs.
+        
+        We have not covered all of the edge cases for this script so be warned running this
+        script could have negative consequences.
+        
+        The script accepts two arguments: action and directory
+        
+        Actions:
+        
+        * Find - Scans directory recursively and lists all potentially infected files
+        * Remove - Scans directory recursively and removes the regular express match
+        from all potentially infected files
+        
+        ```
+        python -m eval_scrubber find <dir>
+        python -m eval_scrubber remove <dir>
+        ```
+        
+        Set the log level
+        ```
+        DEBUG=1 python -m eval_scrubber find <dir>
+        ```
+        
+        Install via PIP
+        ---------------
+        
+        ```
+        pip install eval_scrubber
+        ```
+        
+        
+        CHANGELOG
+        =========
+        
+        
+        0.0.1 2015-10-05
+        ----------------
+        
+        * Uploaded to pypi
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
