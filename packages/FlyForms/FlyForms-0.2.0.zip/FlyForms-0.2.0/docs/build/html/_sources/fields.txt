@@ -1,0 +1,125 @@
+Fields
+------
+
+Fields represent a set of rules to data validation via set of :py:class:`.Validator` instances. When you define yours
+custom :py:class:`.Form` you define Fields as its class attributes.
+This is the most common usage of Fields, but nothing prevents you to use them standalone.
+
+.. module:: flyforms.fields
+
+Field class
+~~~~~~~~~~~
+.. class:: Field
+
+    **Construction**
+
+    .. automethod:: __init__
+
+    **Methods**
+
+    .. automethod:: validate
+
+    .. automethod:: is_valid
+
+    .. automethod:: bind
+
+        .. versionadded:: 0.2.0
+
+
+    **Attributes**
+
+    .. py:attribute:: required
+
+        Boolean flag passed to constructor
+
+    .. py:attribute:: default
+
+        The default value for Field (passed to constructor value or :py:data:`.UNSET`)
+
+    .. py:attribute:: base_validators
+
+        List of attached by processing construction arguments :code:`Validators`
+
+    .. py:attribute:: custom_validators
+
+        Iterable object contains :code:`custom_validators` passed to constructor
+
+    **Property**
+
+    .. autoattribute:: validators
+
+
+Basic Fields
+~~~~~~~~~~~~
+
+
+StringField
+^^^^^^^^^^^
+.. autoclass:: StringField
+
+    .. automethod:: __init__
+
+
+EmailField
+^^^^^^^^^^
+.. autoclass:: EmailField
+
+    .. automethod:: __init__
+
+
+IntField
+^^^^^^^^
+
+.. autoclass:: IntField
+
+    .. automethod:: __init__
+
+
+FloatField
+^^^^^^^^^^
+
+.. autoclass:: FloatField
+
+    .. automethod:: __init__
+
+
+BooleanField
+^^^^^^^^^^^^
+
+.. autoclass:: BooleanField
+
+    .. automethod:: __init__
+
+
+Ip4Field
+^^^^^^^^
+
+.. autoclass:: Ip4Field
+
+    .. automethod:: __init__
+
+Schema Field
+~~~~~~~~~~~~
+
+Schema Fields is a set of rules to validation data structures such as lists, dicts.
+
+ListField
+^^^^^^^^^
+
+.. autoclass:: ListField
+
+    .. automethod:: __init__
+
+ArrayField
+^^^^^^^^^^
+
+.. autoclass:: ArrayField
+
+    .. automethod:: __init__
+
+
+Custom Fields
+~~~~~~~~~~~~~
+
+Sometimes, it is necessary to design custom fields for validation of some special data structures.
+If you want do this, you should design your custom subclass of the :py:class:`.Field`.
