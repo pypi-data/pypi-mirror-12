@@ -1,0 +1,44 @@
+Metadata-Version: 1.1
+Name: django-suit-rq
+Version: 1.0.1
+Summary: Support the django-rq admin when using django-suit
+Home-page: https://github.com/gsmke/django-suit-rq
+Author: Ryan Senkbeil
+Author-email: ryan.senkbeil@gsdesign.com
+License: BSD
+Description: django-suit-rq
+        ==============
+        
+        Support for the django-rq admin when using django-suit
+        
+        Quick Start
+        -----------
+        
+        1. Install the package from pypi:
+        
+            .. code-block:: bash
+        
+                pip install django-suit-rq
+        
+        2. Add "suit_rq" your INSTALLED_APPS. This needs to be added _before_ `django_rq`:
+        
+            .. code-block:: python
+        
+                INSTALLED_APPS = (
+                    'suit',
+                    'suit_rq',
+                    'django_rq',
+                )
+        
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet :: WWW/HTTP
