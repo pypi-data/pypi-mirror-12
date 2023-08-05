@@ -1,0 +1,123 @@
+
+Forms
+=====
+
+.. module:: flyforms.form
+
+
+Form's API
+----------
+
+Form API
+~~~~~~~~
+
+.. autoclass:: Form
+
+    .. automethod:: __init__
+
+    .. autoattribute:: is_bound
+    .. autoattribute:: is_valid
+
+NonbindingForm API
+~~~~~~~~~~~~~~~~~~
+
+.. autoclass:: NonbindingForm
+
+    .. automethod:: __init__
+
+    .. automethod:: validate
+    .. automethod:: is_valid
+
+Form's usage
+------------
+
+This section contains usage cases for Forms
+
+Basic usage
+~~~~~~~~~~~
+
+    .. code-block:: python
+
+        from flyforms import *
+
+        class LoginForm(Form):
+            email = EmailField()
+            password = StringField(
+                min_length=8,
+                regex=r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])",
+                max_length=64
+            )
+
+        if __name__ == '__main__':
+            lf = LoginForm(
+                email="qwerty@gmail.com",
+                password="Qwerty_#123"
+            )
+
+            print(lf.is_bound)  # >>> True
+            print(lf.is_valid)  # >>> True
+            print(lf.errors)  # >>> {}
+
+            print(lf.password)  # >>> Qwerty_#123
+            print(lf.email)  # >>> qwerty@gmail.com
+
+
+Form's inheritance
+~~~~~~~~~~~~~~~~~~
+
+As a normal Python object Forms have inheritance. See an example below:
+
+
+.. code-block:: python
+
+    class LoginForm(Form):
+        email = EmailField()
+        password = StringField(
+            min_length=8,
+            regex=r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])",
+            max_length=64
+        )
+
+    countries = (
+        "United Kingdom",
+        "United States",
+        "Russia",
+        "Venezuela",
+        "Ukraine",
+        "Cuba",
+        "Egypt",
+        "Finland",
+        "France",
+        "Germany"
+    )
+
+    class RegistrationForm(LoginForm):
+
+        first_name = StringField(
+            regex=r"^[A-Z].*$",
+            min_length=3,
+            max_length=64
+        )
+        last_name = StringField(
+            regex=r"^[A-Z].*$",
+            min_length=3,
+            max_length=64
+        )
+        country = StringField(choices=countries)
+        company = StringField(
+            regex=r"^[A-Z].*$",
+            min_length=3
+        )
+
+    if __name__ == '__main__':
+
+        reg_f = RegistrationForm(
+            first_name="John",
+            last_name="Smith",
+            email="qwerty@gmail.com",
+            password="Qwerty_#123"
+        )
+
+        print(reg_f.is_bound)  # >>> False
+        print(reg_f.is_valid)  # >>> False
+        print(reg_f.errors)  # >>> {'country': 'Field is required.', 'company': 'Field is required.'}
