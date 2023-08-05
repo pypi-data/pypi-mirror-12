@@ -1,0 +1,62 @@
+Metadata-Version: 1.1
+Name: cf_s3field
+Version: 0.0.2
+Summary: S3 fields to upload images to s3 instead of file system
+Home-page: UNKNOWN
+Author: Hitul Mistry
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: Django has ImageField and FileField which can be used for file and image operations. Django fields has problem that they store image and files on disk. They also don't delete older files when new files are uploaded. To solve this issue new field developed.  
+        
+        cf_s3field.S3ImageField
+        -----------------------
+        ``s3ImageField`` is django model field which is replacement for django ``ImageField``. 
+        ```python
+        from cf_s3field.files import S3ImageField
+        
+        class User(models.Model):
+            first_name = models.CharField(max_length=100)
+            profile_pic = S3ImageField(bucket='<your bucket>', key='profile_user_{first_name}')
+            
+        user = User.objects.get(id=1)
+        user.first_name = "Hitul"
+        user.save()
+        ```
+        In above example key ``first_name`` will be replaced by ``Hitul``. When doing migration at that time migrate value should be true and when running it in django project it should be False. ImageField will also accept default django ImageField parameters. key is file name format. In s3 you will store multiple files. To seperate all images from each other key is introduced. Key values will be repalced by values specified in as extra attributes.
+        
+        cf_s3field.S3FileField
+        -----------------------
+        ``s3FileField`` is django model field which is replacement for django ``FileField``. 
+        ```python
+        from cf_s3field.files import S3ImageField
+        
+        class User(models.Model):
+            first_name = models.CharField(max_length=100)
+            resume = S3FileField(bucket='<your bucket>', key='profile_user_{first_name}')
+            
+        user = User.objects.get(id=1)
+        user.first_name = "Hitul"
+        user.save()
+        ```
+        0.0.2 - Mon Oct 26
+        ------------------
+        - README.md file changed to README.rst
+        - Debug statements removed
+        
+        0.0.1 - Sat Oct 24 
+        ------------------
+        Initial release
+        
+Keywords: Django,s3field,coverfox,cf_s3_field
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development
