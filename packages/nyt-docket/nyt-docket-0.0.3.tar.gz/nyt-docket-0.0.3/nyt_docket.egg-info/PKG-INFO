@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: nyt-docket
+Version: 0.0.3
+Summary: Python client for parsing SCOTUS cases from the granted/noted and orders dockets.
+Home-page: https://github.com/newsdev/nyt-docket
+Author: Jeremy Bowers
+Author-email: jeremy.bowers@nytimes.com
+License: Apache License 2.0
+Description: .. figure:: https://cloud.githubusercontent.com/assets/109988/10271018/de09785a-6ad0-11e5-90d9-f50582d62824.png
+           :alt: 
+        
+        Getting started
+        ===============
+        
+        Run the demo app.
+        
+        ::
+        
+            python -m docket.demo
+        
+        Use the docket loader manually from within your Python script.
+        
+        .. code:: python
+        
+            from docket import grants
+        
+            g = grants.Load()
+            g.scrape()
+        
+            for case in g.cases:
+                print case.__dict__
+        
+Keywords: SCOTUS data parsing scraping legal law court
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
