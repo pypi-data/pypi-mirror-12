@@ -1,0 +1,77 @@
+Metadata-Version: 1.1
+Name: budiluhur-jadwal
+Version: 1.1.0
+Summary: Python API Jadwal Perkulahan Budiluhur
+Home-page: https://github.com/yanwarsolahudinn/budiluhur-jadwal
+Author: Yanwar Solahudin
+Author-email: yanwarsolahudinn@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/yanwarsolahudinn/budiluhur-jadwal/archive/master.zip
+Description: 
+        
+        API Sistem Pengecekan Jadwal Kuliah Universitas Budiluhur
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        
+        
+        .. topic:: Simple API Jadwal Budiluhur
+        
+               Application Programming Interface
+               untuk mengambil data Jadwal
+               harian perkuliahan dari semua
+               fakultas di Kampus `Universitas Budiluhur Jakarta`.
+        
+        **Quick Start**
+        
+        .. code:: python
+        
+            from budiluhur.jadwal import fakultas
+            # inisialisasi class Fakultas
+            f = fakultas.Fakultas()
+            fakultas_bl = f.get_all()
+            print(fakultas_bl)
+        
+        **Instalasi**
+        
+        .. code::
+        
+            $ pip install budiluhur-jadwal
+        
+        **Fakultas Class**
+        
+        .. code:: python
+        
+            from budiluhur.jadwal import fakultas
+        
+            # inisialisasi class Fakultas
+            f = fakultas.Fakultas()
+        
+        **dapatkan semua fakultas**
+        
+        
+        .. code:: python
+        
+            from budiluhur.jadwal import fakultas
+        
+            # inisialisasi class Fakultas
+            f = fakultas.Fakultas()
+            fakultas_bl = f.get_all()
+            print(fakultas_bl)
+        
+        **Full Dokumentasi**
+        
+        `Dokumentasi API Sistem Cek Jadwal Kehadiran Dosen <https://github.com/yanwarsolahudinn/budiluhur-jadwal>`_
+        
+        
+Keywords: API,JSON,budiluhur,jadwal,track,schedule,kuliah
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: Indonesian
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
