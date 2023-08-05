@@ -1,0 +1,86 @@
+<form method="post" enctype="multipart/form-data" tal:condition="not:view/result">
+<br />
+  <table class="form-table">
+    <tr>
+      <td i18n:translate="" class="fieldname">
+        Applicant Id:
+      </td>
+      <td>
+        <input class="textType half" type="text" name="applicant_id" />
+      </td>
+    </tr>
+    <tr>
+      <td i18n:translate="" class="fieldname">
+        Lastname (Surname):
+      </td>
+      <td>
+        <input class="textType half" type="text" name="lastname" />
+      </td>
+    </tr>
+    <tr tal:condition="view/captcha_code">
+      <td i18n:translate="">
+        Please solve the captcha<br />to prevent misuse of this service:
+      </td>
+      <td>
+        <div tal:content="structure view/captcha_code"></div>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <input class="btn btn-primary" type="submit" name="SUBMIT"
+      tal:attributes="value view/buttonname" />
+</form>
+
+<div tal:condition="view/result">
+
+  <br />
+
+  <tal:admitted condition="view/admitted">
+    <p i18n:translate="">
+      <strong>Congratulations!</strong> You have been offered provisional
+      admission into the <span tal:replace="view/entry_session"></span>
+      Academic Session of <span tal:replace="layout/getAppTitle"></span>.
+    </p>
+    <span tal:condition="view/course_admitted">
+      <table class="form-table half">
+        <tr>
+          <td i18n:translate="">Study Course:
+          </td>
+          <td><span tal:replace="view/longtitle"></span>
+          </td>
+        </tr>
+        <tr>
+          <td i18n:translate=""> Department:
+          </td>
+          <td><span tal:replace="view/department"></span>
+          </td>
+        </tr>
+        <tr>
+          <td i18n:translate="">Faculty:
+          </td>
+          <td><span tal:replace="view/faculty"></span>
+          </td>
+        </tr>
+      </table>
+    </span>
+  </tal:admitted>
+
+  <tal:notadmitted condition="view/not_admitted">
+    <p i18n:translate="">
+      Sorry, you have not been offered admission.
+    </p>
+  </tal:notadmitted>
+
+  <tal:submitted condition="view/submitted">
+    <p i18n:translate="">
+      Your submitted application is being processed.
+    </p>
+  </tal:submitted>
+
+  <tal:notsubmitted condition="view/not_submitted">
+    <p i18n:translate="">
+      You have not yet submitted your application.
+    </p>
+  </tal:notsubmitted>
+
+</div>
