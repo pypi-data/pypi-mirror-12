@@ -1,0 +1,10 @@
+#!/home/travis/virtualenv/python3.4.2/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'PyBuilder==0.11.2','console_scripts','pyb_'
+__requires__ = 'PyBuilder==0.11.2'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('PyBuilder==0.11.2', 'console_scripts', 'pyb_')()
+    )
