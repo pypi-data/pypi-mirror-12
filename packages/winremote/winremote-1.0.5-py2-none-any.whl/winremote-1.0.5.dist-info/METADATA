@@ -1,0 +1,54 @@
+Metadata-Version: 2.0
+Name: winremote
+Version: 1.0.5
+Summary: Tool to manage your windows machines remotely
+Home-page: https://github.com/machacekondra/winremote
+Author: Ondra Machacek
+Author-email: machacek.ondra@gmail.com
+License: GPLv3+
+Keywords: windows winrm
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: System :: Systems Administration
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: argparse
+Requires-Dist: pypandoc
+Requires-Dist: pywinrm
+
+WinRemote
+=========
+
+This package is primarily a library which helps you remotely manage your
+windows machine. Secondly it's command line tool to manage windows
+machine remotely. The command line tool calls directly specific module.
+Modules are very easily extensible. You can write your own and use it
+from command line immediately, only specifying its name and module
+function.
+
+For example this command:
+
+.. code:: bash
+
+    $ winremote --username=X--password=Y--ip=IP services list
+
+Equals to this python code:
+
+.. code:: python
+
+    from winremote import winremote
+    import winrm
+    import pprint
+
+    session = winrm.Session(target=IP, auth=(X, Y))
+    win = winremote.Windows(session, winremote.WMI(session))
+    pprint.pprint(win.services.list())
+
+
