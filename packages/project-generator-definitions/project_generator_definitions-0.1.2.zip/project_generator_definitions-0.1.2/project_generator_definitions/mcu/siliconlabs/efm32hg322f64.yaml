@@ -1,0 +1,25 @@
+mcu:
+    vendor:
+        - Silicon Labs
+    name:
+        - efm32hg322f64
+    core:
+        - cortex-m0
+tool_specific:
+    uvision:
+        TargetOption:
+            Device:
+                - EFM32HG322F64
+            DeviceId:
+                - 0
+            SFDFile:
+                - $$Device:EFM32HG322F64$SVD\EFM32HG\EFM32HG322F64.svd
+            RegisterFile:
+                - $$Device:EFM32HG322F64$Device\EFM32HG\Include\em_device.h
+    iar:
+        OGChipSelectEditMenu:
+          state:
+          - EFM32HG322F64 SiliconLaboratories EFM32HG322F64
+        OGCoreOrChip:
+          state:
+          - 1
