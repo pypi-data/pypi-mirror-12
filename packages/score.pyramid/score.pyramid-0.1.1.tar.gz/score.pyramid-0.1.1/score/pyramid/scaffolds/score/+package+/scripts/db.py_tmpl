@@ -1,0 +1,44 @@
+from {{package}} import init
+import click
+
+
+@click.group()
+def main():
+    """
+    Provides database management commands.
+    """
+
+
+@main.command()
+@click.argument('conf', metavar='CONFIG-FILE', type=click.Path(exists=True))
+@click.option('-d', '--gendummy', is_flag=True,
+              help='Generate dummy data afterwards.')
+def reset(conf, gendummy=False):
+    """
+    Deletes and re-creates all tables, views, sequences, etc.
+
+    The provided configuration must explicitly allow this by having a
+    configuration value called ``destroyable``, which must evaluate to True.
+    """
+    score = init(conf)[1]
+    with score.ctx.Context():
+        score.db.destroy()
+        if hasattr(score, 'es'):
+            score.es.destroy()
+    with score.ctx.Context():
+        score.db.create()
+        if hasattr(score, 'es'):
+            score.es.create()
+    with score.ctx.Context():
+        # XXX: create project-specific mandatory objects here
+        if gendummy:
+            # XXX: add dummy objects here
+            pass
+        for cls in objects:
+            for id in objects[cls]:
+                ctx.db.add(objects[cls][id])
+
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
