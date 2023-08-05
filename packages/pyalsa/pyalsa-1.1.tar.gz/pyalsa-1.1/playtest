@@ -1,0 +1,16 @@
+import pyalsa
+
+snd = open("test.raw","rb").read()
+p = pyalsa.Pcm()
+p.setup(rate=48000, channels=2, format_name="S16_LE")
+p.dump()
+import time
+frame=0
+while 1:
+    wrote = p.writei(snd[frame*2*2:],len(snd)/2/2-frame)
+    if wrote is not None:
+        frame = frame + wrote
+        print frame
+        if frame>=len(snd)/2/2:
+            frame=0
+    time.sleep(.001)
