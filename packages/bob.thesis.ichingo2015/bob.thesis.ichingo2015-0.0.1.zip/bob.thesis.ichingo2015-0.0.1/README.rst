@@ -1,0 +1,43 @@
+==============================================================================
+ Code supporting the PhD thesis of Ivana Chingovska - Idiap Research Institute
+==============================================================================
+
+This package contains scripts to be used to reproduce the results of my PhD thesis titled: "Trustworthy Biometric Recognition Under Spoofing Attacks: Application to the Face Mode". It was done during my work at the `Biometrics group <http://www.idiap.ch/~marcel/professional/Research_Team.html>`_ in `Idiap Research Institute <https://www.idiap.ch>`_ and `Ecole Polytechnique Fédérale de Lausanne (EPFL) <www.epfl.ch>`_ .
+
+Raw data
+--------
+
+The data used in the paper is publicly available and should be downloaded and
+installed **prior** to try using the programs described in this package. Visit
+`the REPLAY-ATTACK database portal
+<https://www.idiap.ch/dataset/replayattack>`_ for more information.
+
+Installation
+------------
+
+The ``bob.thesis.ichingo2015`` package is a satellite package of the free signal processing and machine learning library Bob_. This dependency has to be downloaded manually. This version of the package depends on Bob_ version 2 or greater. To install `packages of Bob <https://github.com/idiap/bob/wiki/Packages>`_, please read the `Installation Instructions <https://github.com/idiap/bob/wiki/Installation>`_. For Bob_ to be able to work properly, some dependent Bob packages are required to be installed. Please make sure that you have read the Dependencies for your operating system.
+
+The most simple solution is to download and extract ``bob.thesis.ichingo2015`` package, and then run the following::
+
+  $ cd bob.thesis.ichingo2015
+  $ python bootstrap-buildout.py
+  $ bin/buildout
+
+This will download all required dependent Bob_ and other packages and install them locally. 
+
+
+Using the package
+-----------------
+
+After instalation of the package, you can generate a documentation locally::
+
+  $ ./bin/sphinx-build doc sphinx
+
+Now, the full documentation of the package, including a User Guide, will be availabe in ``sphinx/index.html``. It contains all the necessary information about how to run the scripts and reproduce the results.
+
+Problems
+--------
+
+In case of problems, please contact Ivana Chingovska
+
+.. _Bob: http://www.idiap.ch/software/bob
