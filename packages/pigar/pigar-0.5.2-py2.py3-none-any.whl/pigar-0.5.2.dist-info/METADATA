@@ -1,0 +1,110 @@
+Metadata-Version: 2.0
+Name: pigar
+Version: 0.5.2
+Summary: Python requirements tool -- pigar
+Home-page: https://github.com/Damnever/pigar
+Author: Damnever
+Author-email: dxc.wolf@gmail.com
+License: The BSD 3-Clause License
+Keywords: requirements tool
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: colorama
+Requires-Dist: futures
+
+Python requirements tool -- pigar
+=================================
+
+.. image:: https://travis-ci.org/Damnever/pigar.svg?style=flat-square   :target: https://travis-ci.org/Damnever/pigar
+
+.. image:: https://img.shields.io/pypi/v/pigar.svg?style=flat-square   :target: https://pypi.python.org/pypi/pigar
+
+
+What pigar can do?
+------------------
+
+- Generate requirements for project, ``pigar`` can consider all kinds of complicated situations. In this project, `py2_requirements.txt <https://github.com/Damnever/pigar/blob/master/py2_requirements.txt>`_ and `py3_requirements.txt <https://github.com/Damnever/pigar/blob/master/py3_requirements.txt>`_ for different python versions ::
+
+    # Generate requirements.txt for current directory.
+    $ pigar
+
+    # Generate requirements for given directory in given file.
+    $ pigar -p ../dev-requirements.txt -P ../
+
+- If you do not know the import name belong to which package (more generally, are you crazy for ``Import Error: xxx``?), such as ``bs4`` may come from ``beautifulsoup4``, ``MySQLdb`` may come from ``MySQL_Python``, search it: ::
+
+    $ pigar -s bs4 MySQLdb
+
+- Check requirements latest version, just do: ::
+
+    # Specific a requirements file.
+    $ pigar -c ./requirements.txt
+
+    # Or, you can leave pigar search *requirements.txt in current directory
+    # level by itself, if not found, pigar will generate requirements.txt
+    # for current project then check latest version.
+    $ pigar -c
+
+Installation
+------------
+
+Available in Python: 2.7.x, 3.x ::
+
+    [sudo] pip install pigar
+
+Usage
+-----
+
+::
+
+    usage: pigar [-h] [-v] [-u] [-s NAME [NAME ...]] [-c [PATH]] [-l LOG_LEVEL]
+                 [-p SAVE_PATH] [-P PROJECT_PATH]
+
+    Python requirements tool -- pigar, it will do only one thing at each time.
+    Default action is generate requirements.txt in current directory.
+
+    optional arguments:
+      -h, --help          show this help message and exit
+      -v, --version       show pigar version information and exit
+      -u, --update        update database, use it when pigar failed you, exit when
+                          action done
+      -s NAME [NAME ...]  search package name by import name, use it if you do not
+                          know import name come from which package, exit when
+                          action done
+      -c [PATH]           check requirements latest version. If file path not
+                          given, search *requirements.txt in current directory, if
+                          not found, generate file requirements.txt, exit when
+                          action done
+      -l LOG_LEVEL        Show given level log messages, argument can be (ERROR,
+                          WARNING, INFO, DEBUG), case-insensitive
+      -p SAVE_PATH        save requirements in given file path, *used for* default
+                          action
+      -P PROJECT_PATH     project path, which is directory, *used for* default
+                          action
+
+
+More
+----
+
+``pigar`` do not use regular expression such a violence way, it use AST, that is a better method to extracting imported names from arguments of ``exec``/``eval``, doctest of docstring, etc.
+
+Also, ``pigar`` can consider difference between differen Python versions. For example, you can find ``concurrent.futures`` from Python 3.2 standart library, but you will need install ``futures`` before 3.2 version in Python to get ``concurrent.futures``.
+
+Finally, you already saw ``What pigar can do?``. You can learn more from source code.
+
+Hope `pigar <https://github.com/Damnever/pigar>`_ is useful to you.
+
+LISENSE
+-------
+
+`The BSD 3-Clause License <https://github.com/Damnever/pigar/blob/master/LICENSE>`_
+
+
