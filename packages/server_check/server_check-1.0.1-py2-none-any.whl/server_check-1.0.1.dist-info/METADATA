@@ -1,0 +1,53 @@
+Metadata-Version: 2.0
+Name: server-check
+Version: 1.0.1
+Summary: Check a DirectAdmin server to see if all components are (still) operating correctly
+Home-page: https://github.com/exonet/scripts/server-check
+Author: Rick van den Hof
+Author-email: r.vandenhof@exonet.nl
+License: MIT
+Keywords: DirectAdmin check pop3 imap ftp smtp phpmyadmin mod_ruid2 spamassasassin roundcube
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Utilities
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Requires-Dist: MySQL-python
+Requires-Dist: requests
+Requires-Dist: argparse
+
+.. image:: https://travis-ci.org/exonet/server-check.svg
+  :target: https://travis-ci.org/exonet/server-check
+     :alt: Build Status
+
+.. image:: https://coveralls.io/repos/exonet/server-check/badge.svg?branch=master&service=github
+  :target: https://coveralls.io/github/exonet/server-check?branch=master
+
+
+server\_check
+-------------
+
+The goal of this tool is to check a server to see if all components are still operating correctly.
+It will check the following:
+
+* PHP sessions
+* PHP: mod\_ruid2 (files created with PHP have proper ownership)
+* PHP: sending email
+* PHP: php -v does not generate errors (all modules could be loaded)
+* MySQL: able to login with the password in mysql.conf
+* MySQL: able to log in to phpMyAdmin.
+* Email: able to connect to dovecot (POP3/IMAP)
+* Email: able to connect to exim and deliver a message
+* Email: mail should be filtered by SpamAssassin
+* Email: able to access roundcube.
+* FTP: able to connect, upload and download a file
+
+Requirements
+------------
+Currently this tool is only supported on DirectAdmin servers.
+
+
