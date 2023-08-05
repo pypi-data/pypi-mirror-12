@@ -1,0 +1,63 @@
+.. -*- mode: rst -*-
+
+====================================
+Mercurial Extension Utils
+====================================
+
+This module contains group of reusable functions, which I found useful
+while writing Mercurial extensions.
+
+For Mercurial users
+===========================
+
+This module is of no direct use to you, but some extensions you may
+wish to use (for example `dynamic_username`_ or `path_pattern`_) need
+it to work.
+
+In normal cases it should be installed automatically by commands like
+``pip install mercurial_dynamic_username``, without requiring your
+attention.
+
+If something went wrong, and some extension fails to import
+``mercurial_extension_utils``, install this module using one of the
+following methods:
+
+1. ::
+
+    pip install mercurial_extension_utils
+
+2. Clone (or download) this repository and::
+
+    python setup.py install
+
+3. Download file ``mercurial_extension_utils.py`` and save
+   it anywhere in Python search path.
+
+For Mercurial extensions developers
+====================================
+
+Contained functions are mostly tiny utilities related to configuration
+processing or location matching. See docstrings for details.
+
+History
+==================================================
+
+0.6.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First public release. ``belongs_to_tree``, ``belongs_to_tree_group``,
+``rgxp_config_items``, ``rgxp_configlist_items``.
+
+Development, bug reports, enhancement suggestions
+===================================================
+
+Development is tracked on BitBucket, see 
+http://bitbucket.org/Mekk/mercurial-extension_utils/
+
+Use BitBucket issue tracker for bug reports and enhancement
+suggestions.
+
+.. _Mercurial: http://mercurial.selenic.com
+.. _dynamic_username: http://bitbucket.org/Mekk/mercurial-dynamic_username/
+.. _path_pattern: http://bitbucket.org/Mekk/mercurial-path_pattern/
+
