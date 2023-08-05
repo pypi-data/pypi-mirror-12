@@ -1,0 +1,43 @@
+import os
+
+from setuptools import setup, find_packages
+
+here = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(here, 'README.txt')) as f:
+    README = f.read()
+
+setup(
+    name='{{project}}',
+    version='0.1',
+    description='{{project}}',
+    long_description=README,
+    author='strg.at',
+    author_email='support@strg.at',
+    url='http://strg.at',
+    packages=find_packages(),
+    include_package_data=True,
+    zip_safe=False,
+    install_requires=[
+        'score.init',
+        'score.cli',
+        'score.db',
+        'score.webassets',
+        'score.tpl',
+        'score.html',
+        'score.js',
+        'score.css',
+        'pyramid >= 1.4',
+        'pyramid-debugtoolbar',
+        'pyramid_tm',
+        'waitress',
+    ],
+    entry_points={
+        'paste.app_factory': [
+            'main={{package}}:main'
+        ],
+        'score.cli': [
+            'db = {{package}}.scripts.db:main',
+            'shell = {{package}}.scripts.shell:main',
+        ],
+    },
+)
