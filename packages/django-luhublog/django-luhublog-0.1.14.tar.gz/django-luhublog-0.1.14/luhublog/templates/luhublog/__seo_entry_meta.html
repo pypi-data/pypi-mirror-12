@@ -1,0 +1,29 @@
+<!-- Open Graph data -->
+<meta property="og:title" content="{{ meta.title }}" />
+<meta property="og:url" content="{{ entry.full_url }}" />
+<meta property="og:type" content="{{ meta.og_type }}" />
+<meta property="og:description" content="{{ meta.og_description }}"/>
+<meta property="og:image" content="{{ meta.image_url }}" />
+<meta property="og:site_name" content="{{ entry.blog.title }}" />
+<meta property="article:published_time" content="{{ entry.start_publication|date:"c" }}" />
+<meta property="article:modified_time" content="{{ entry.modified|date:"c" }}" />
+
+<!-- Facebook -->
+<meta property="fb:admins" content="{{ meta.og_app_id }}" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="{{ meta.twitter_type }}" />
+<meta name="twitter:title" content="{{ meta.title }}" />
+<meta name="twitter:description" content="{{ meta.twitter_description }}" />
+<meta name="twitter:url" content="{{ entry.full_url }}" />
+<meta name="twitter:site" content="{{ meta.twitter_site }}">
+<meta name="twitter:creator" content="{{ meta.twitter_author }}">
+
+<!-- Google Plus -->
+<link rel="canonical" href="{{ entry.full_url }}" />
+<link rel="author" href="{{ meta.gplus_author }}"/>
+<link rel="publisher" href="{{ meta.gplus_publisher }}"/>
+
+<!-- Locale -->
+<meta property="og:locale" content="{{ meta.og_locale }}" />
+<meta property="og:locale:alternate" content="{{ meta.og_locale_alternate }}" />
