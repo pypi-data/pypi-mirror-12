@@ -1,0 +1,70 @@
+Metadata-Version: 1.1
+Name: plorma
+Version: 0.3.b2
+Summary: Plorma is a task management application to plan organise and manage your tasks.
+Home-page: UNKNOWN
+Author: Torsten Irländer
+Author-email: torsten@irlaender.de
+License: UNKNOWN
+Description: plorma README
+        =============
+        Plorma is a webapplication to plan, organise and manage tasks. While it tries to be as generic as possible it can be especially used as a simple issue or bug tracker in software development.
+        
+        Prerequisites
+        -------------
+        Plorma requires a PostgreSQL database. The default database (configured in the
+        ini file) is named plorma. Please make sure this database is created and
+        accessible before invoking the following commands.
+        
+        Getting Started
+        ---------------
+        
+        - cd <directory containing this file>
+        
+        - $venv/bin/python setup.py develop
+        
+        - $venv/bin/plorma-admin db init
+        
+        The following steps are optional and only needed if you want to have some demo
+        data to play around.
+        
+        - $venv/bin/plorma-admin fixtures load --path plorma/fixtures/demo
+        
+        - $venv/bin/plorma-admin db fixsequence
+        
+        Finally start the sperver
+        
+        - $venv/bin/pserve development.ini
+        
+        Testuser
+        --------
+        
+        - Admin: Login: admin Passwort: secret
+        - Productowner: Login: peter Passwort: peter
+        - Developer: Login: dave Passwort: dave
+        
+        
+        0.3
+        ---
+        - Added Sprint modul
+        - Added Workbench to show the most important tasks.
+        - Added stats on sprints on the start page
+        
+        0.2
+        ---
+        - Added tag extension
+        
+        0.1
+        ---
+        - Added first version of a task modul
+        
+        0.0
+        ---
+        -  Initial version
+        
+Keywords: web wsgi bfg pylons pyramid
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Pyramid
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
