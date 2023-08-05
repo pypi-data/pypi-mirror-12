@@ -1,0 +1,73 @@
+Metadata-Version: 1.1
+Name: django-sticky-files
+Version: 0.1
+Summary: Application to make Django file fields save their values between page reloads
+Home-page: https://github.com/asyncee/django-sticky-files
+Author: asyncee
+Author-email: UNKNOWN
+License: MIT
+Download-URL: https://pypi.python.org/pypi/django-sticky-files/
+Description: Django-sticky-files
+        ===================
+        
+        An application that solves a problem, when you need to save
+        form's file field values between page reloads
+        (including form validation errors).
+        
+        
+        Currently in development.
+        
+        Installation
+        ------------
+        
+        Install an application::
+        
+            pip install django-sticky-files
+        
+        
+        Then add ``sticky_files`` to ``INSTALLED_APPS``.
+        
+        Include urls::
+        
+            url(r'^sticky-images/', include('sticky_files.urls', namespace='sticky_files')),
+        
+        
+        Usage
+        -----
+        
+        There are four model fields that implement sticky files behaviour::
+        
+        
+            from sticky_files import fields
+        
+            class SomeModel(models.Model):
+                main_image = fields.StickyImageField(related_name='+')
+                images = fields.ManyStickyImageField(
+                    max_objects=4,
+                    related_name='galleries_images',
+                )
+                file = fields.StickyFileField(related_name='+')
+                files = fields.ManyStickyFileField(
+                    max_objects=4,
+                    related_name='galleries_files',
+                )
+        
+        
+        It looks like this:
+        
+        .. image:: https://github.com/asyncee/django-sticky-files/raw/master/screenshots/intro.png
+            :target: https://github.com/asyncee/django-sticky-files/raw/master/screenshots/intro.png
+        
+        
+        Project is in development, so there are no documentation and tests **yet**.
+        
+Keywords: django sticky_files
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Widget Sets

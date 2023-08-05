@@ -1,0 +1,32 @@
+{% load sticky_files_tags %}
+
+{% make_unique_id "sticky-uploader" as node_id %}
+<div id="{{ node_id }}"></div>
+<script>
+    (function(){
+        function ready() {
+            var options = {
+                {% if value %}
+                    file: {
+                        {% get_file_by_id value as f %}
+                        {% if f %}
+                            name: '{{ f.file.name }}',
+                            url: '{{ f.file.url }}',
+                            id: '{{ f.id }}',
+                            filetype: '{{ f.filetype }}',
+                            progress: 100
+                        {% endif %}
+                    },
+                {% else %}
+                    file: null,
+                {% endif %}
+                uploadUrl: '{% url "sticky_files:upload_file" %}',
+                formFieldName: '{{ name }}'
+            };
+
+            oneFileWidget('{{ node_id }}', options);
+        };
+
+        document.addEventListener("DOMContentLoaded", ready)
+    }())
+</script>

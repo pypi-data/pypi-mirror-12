@@ -1,0 +1,38 @@
+{% load sticky_files_tags %}
+
+{% make_unique_id "sticky-uploader" as node_id %}
+<div id="{{ node_id }}"></div>
+<script>
+    (function(){
+        function ready() {
+            var options = {
+                files: [
+                    {% if value %}
+                        {% for v in value %}
+                            {% if v %}
+                                {% get_file_by_id v as f %}
+                                {% if f %}
+                                    {
+                                        name: '{{ f.file.name }}',
+                                        url: '{{ f.file.url }}',
+                                        id: '{{ f.id }}',
+                                        filetype: '{{ f.filetype }}',
+                                        progress: 100
+                                    }{% if not forloop.last %},{% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                ],
+                uploadUrl: '{% url "sticky_files:upload_image" %}',
+                formFieldName: '{{ name }}',
+                maxObjects: {% if not max_objects == None %} {{ max_objects }} {% else %} null {% endif %},
+                acceptFileType: 'image/*'
+            };
+
+            manyImageWidget('{{ node_id }}', options);
+        };
+
+        document.addEventListener("DOMContentLoaded", ready)
+    }())
+</script>
