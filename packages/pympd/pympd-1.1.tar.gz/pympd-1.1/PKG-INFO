@@ -1,0 +1,33 @@
+Metadata-Version: 1.0
+Name: pympd
+Version: 1.1
+Summary: twisted interface to MPD (www.musicpd.org)
+Home-page: http://bigasterisk.com
+Author: Drew Perttula
+Author-email: drewp@bigasterisk.com
+License: UNKNOWN
+Download-URL: http://projects.bigasterisk.com/pympd-1.1.tar.gz
+Description: An alternative to the commonly-used mpdclient
+        module (http://mpd.wikicities.com/wiki/ClientLib:py-libmpdclient)
+        which uses twisted for the TCP communications. Important differences
+        between mpdclient and pympd:
+        
+        - pympd doesn't fall into 'not done processing current command' loops
+        
+        - pympd doesn't block, due to its use of the twisted communications libs
+        
+        - pympd has a very incomplete implementation of the mpd commands, but
+        they are easy to add
+        
+        - pympd supports my mpd patch for fractional-second accurate times,
+        and might even reject unpatched mpds
+        
+        cvs -z3 -d :pserver:anonymous@bigasterisk.com:/srcmirror co pympd
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Multimedia :: Sound/Audio :: Players
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
