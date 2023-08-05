@@ -1,0 +1,37 @@
+{% load i18n admin_urls %}
+<div class="spacer"></div>
+<footer class="footer">
+    
+    <div class="col-md-8 col-md-offset-2">
+
+        <div class="pull-left btn-group">
+            {% if show_delete_link %}
+                {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+                <a class="btn btn-danger deletelink" href="{% add_preserved_filters delete_url %}">{% trans "Delete" %}</a>
+            {% endif %}
+            <input id="main_form_reset" type="reset" form"{{opts.model_name}}_form" value="{% trans "Reset" %}" class="btn btn-link button black">
+        </div>
+
+        <div class="pull-right">
+            <button id="main_form_another" class="btn btn-info button hidden-xs">Save & Create Another</button>
+            <button id="main_form_create" class="btn btn-primary button hidden-xs">Save & Continue Editing</button>
+
+            {% if show_save_as_new %}<input type="submit" form="{{opts.model_name}}_form" value="{% trans 'Save as new' %}" class="btn btn-default" name="_saveasnew" {{ onclick_attrib }}/>{% endif %}
+            {% if show_save_and_add_another %}<input type="submit" form="{{opts.model_name}}_form" value="{% trans 'Save and add another' %}" class="btn btn-default" name="_addanother" {{ onclick_attrib }} />{% endif %}
+            {% if show_save_and_continue %}<input type="submit" form="{{opts.model_name}}_form" value="{% trans 'Save and continue editing' %}" class="btn btn-default" name="_continue" {{ onclick_attrib }}/>{% endif %}
+            <div class="btn-group dropup">
+
+            <input type="submit" form="{{opts.model_name}}_form" value="{% trans 'Save' %}" class="btn btn-primary default" name="_save" {{ onclick_attrib }}/>
+                <button type="button" class="btn btn-primary dropdown-toggle visible-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    {% if show_save_as_new %}<li><input type="submit" form="{{opts.model_name}}_form" value="{% trans 'Save as new' %}" class="btn btn-default" name="_saveasnew" {{ onclick_attrib }}/></li>{% endif %}
+                    {% if show_save_and_add_another %}<li><input type="submit" form="{{opts.model_name}}_form" value="{% trans 'Save and add another' %}" class="btn btn-default" name="_addanother" {{ onclick_attrib }} /></li>{% endif %}
+                    {% if show_save_and_continue %}<li><input type="submit" form="{{opts.model_name}}_form" value="{% trans 'Save and continue editing' %}" class="btn btn-default" name="_continue" {{ onclick_attrib }}/></li>{% endif %}
+                </ul>
+            </div>
+        </div>
+</footer>
+
