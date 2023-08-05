@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>django_geopostcodes.helpers &mdash; django-geopostcodes 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="django-geopostcodes 0.1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> django-geopostcodes
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internals/reference/index.html">Internal Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">django-geopostcodes</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>django_geopostcodes.helpers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for django_geopostcodes.helpers</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    django_geopostcodes.helpers</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Helper functions for django-geopostcodes.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">django.contrib.gis.geos</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">from</span> <span class="nn">django.db.transaction</span> <span class="kn">import</span> <span class="n">atomic</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Locality</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+
+
+<div class="viewcode-block" id="import_localities"><a class="viewcode-back" href="../../internals/reference/django_geopostcodes.helpers.html#django_geopostcodes.helpers.import_localities">[docs]</a><span class="k">def</span> <span class="nf">import_localities</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Import localities from a CSV file.</span>
+
+<span class="sd">    :param path: Path to the CSV file containing the localities.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LocalityExpected</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&#39;LocalityExpected&#39;</span><span class="p">,</span>
+                              <span class="p">(</span><span class="s">&#39;iso country language id region1 region2 &#39;</span>
+                               <span class="s">&#39;region3 region4 locality postcode suburb &#39;</span>
+                               <span class="s">&#39;latitude longitude elevation iso2 fips nuts &#39;</span>
+                               <span class="s">&#39;hasc stat timezone utc dst&#39;</span><span class="p">))</span>
+
+    <span class="n">creates</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">updates</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">delimiter</span><span class="p">))</span>
+
+        <span class="c"># Get names from column headers</span>
+        <span class="n">LocalityActual</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&quot;LocalityActual&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">))</span>
+
+        <span class="c"># Use names to very the format of the file</span>
+        <span class="k">if</span> <span class="n">LocalityActual</span><span class="o">.</span><span class="n">_fields</span> <span class="o">!=</span> <span class="n">LocalityExpected</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s">&quot;Expected fields ({expected_fields}) in {path} not ({actual_fields})&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">expected_fields</span><span class="o">=</span><span class="n">LocalityExpected</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span>
+                <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">actual_fields</span><span class="o">=</span><span class="n">LocalityActual</span><span class="o">.</span><span class="n">_fields</span>
+            <span class="p">))</span>
+
+        <span class="k">with</span> <span class="n">atomic</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="n">LocalityExpected</span><span class="o">.</span><span class="n">_make</span><span class="p">,</span> <span class="n">reader</span><span class="p">):</span>
+                <span class="n">defaults</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">__dict__</span>
+                <span class="n">defaults</span><span class="p">[</span><span class="s">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">longitude</span><span class="p">),</span>
+                                          <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+                <span class="n">locality</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Locality</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update_or_create</span><span class="p">(</span>
+                    <span class="nb">id</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                    <span class="n">defaults</span><span class="o">=</span><span class="n">defaults</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
+                    <span class="n">creates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">locality</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">updates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">locality</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">creates</span><span class="p">,</span> <span class="n">updates</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Alex Hayes.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
