@@ -1,0 +1,323 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright (c) 2012 Tyurin Anton noxiouz@yandex-team.ru
+#
+# This file is part of Distributed-flock.
+#
+# Distributed-flock is free software; you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# Combaine is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+
+import errno
+from functools import partial
+import json
+import logging
+import logging.handlers
+import os
+import optparse
+import shlex
+import subprocess
+import signal
+import sys
+import time
+from threading import Condition
+
+from distributedflock import Zookeeper
+from distributedflock import Daemon
+from distributedflock import pdeathsig
+
+DEFAULT_ZOOKEEPER_LOG_LEVEL = "WARN"
+DEFAULT_LOG_LEVEL = "INFO"
+DEFAULT_LOGFILE_PATH = "/dev/null"
+
+LOGGER = logging.getLogger("zk-flock")
+
+
+def initialize_logger(path, level):
+    level = getattr(logging, level.upper(), logging.ERROR)
+    _format = logging.Formatter('%(asctime)s %(levelname)-8s'
+                                '%(process)d %(message)s', '%Y-%m-%d %H:%M:%S')
+    app_log = logging.getLogger('zk-flock')
+    lhandler = logging.handlers.WatchedFileHandler(path, mode='a')
+    lhandler.setFormatter(_format)
+    lhandler.setLevel(level)
+    app_log.addHandler(lhandler)
+    app_log.setLevel(level)
+    app_log.info("Logger has been initialized successfully")
+
+
+def start_child(cmd, pdeathsig_func=None):
+    args = shlex.split(cmd)
+    try:
+        p = subprocess.Popen(args, close_fds=True,
+                             preexec_fn=pdeathsig_func)
+    except OSError as err:
+        LOGGER.error("Unable to start child process, because of %s", err)
+        sys.exit(1)
+    except ValueError as err:
+        LOGGER.error("ValueError: %s", err)
+        sys.exit(1)
+    else:
+        LOGGER.info("Start subprocess: %s (PID: %d)", cmd, p.pid)
+        return p
+
+
+def kill_child(prcs):
+    # Detach SIGCHLD handler, as we will kill it manually
+    signal.signal(signal.SIGCHLD, signal.SIG_IGN)
+
+    if prcs.poll() is not None:
+        LOGGER.info("Child exited with code: %d (PID: %d)",
+                    prcs.returncode, prcs.pid)
+        return prcs.returncode
+    elif prcs.poll() is None:
+        try:
+            LOGGER.info("Send SIGTERM to child process (PID: %d)", prcs.pid)
+            prcs.terminate()
+            time.sleep(1)
+            prcs.kill()
+            LOGGER.info("Send SIGKILL to child process (PID: %d)", prcs.pid)
+        except OSError as err:
+            if err.args[0] != errno.ESRCH:
+                # Trying to kill child two ways: kill and kill -9.
+                # Kill -9 may fail with no such process,
+                # so it should be ignored.
+                LOGGER.error("Kill child error: %s", err)
+                return
+        LOGGER.info("Killed child %d successfully", prcs.pid)
+
+
+def read_cfg(path):
+    try:
+        with open(path) as f:
+            cfg = json.load(f)
+        cfg['host']
+        cfg['app_id']
+        cfg['timeout']
+        logger_config = cfg.pop('logger', {})
+        cfg['path'] = logger_config.get('path', DEFAULT_LOGFILE_PATH)
+        cfg['ZookeeperLog'] = (logger_config.get('path',
+                                                 DEFAULT_LOGFILE_PATH),
+                               logger_config.get('zklevel',
+                                                 DEFAULT_ZOOKEEPER_LOG_LEVEL))
+
+        cfg['level'] = logger_config.get('level', DEFAULT_LOG_LEVEL)
+        cfg['logger_name'] = 'zk-flock'
+    except KeyError as err:
+        print "Missing parametr %s" % str(err)
+    except Exception as err:
+        print "Config error %s" % str(err)
+    else:
+        return cfg
+
+
+def get_la():
+    return os.getloadavg()[0]
+
+
+def notifier(cv):
+    with cv:
+        cv.notify()
+
+
+# ToDo: accept options as the last argument
+def main(cmd_arg, zk_cfg, period=None, exitcode=0, sequence=0, pdeathsig_num=0):
+    try:
+        z = Zookeeper.ZKLockServer(**cfg)
+    except Exception as err:
+        LOGGER.exception("%s", err)
+        print err
+        sys.exit(1)
+
+    # sequnce lock
+    if sequence > 0:
+        LOGGER.debug("Sequence lock %d", sequence)
+        base_lock_name = cfg["name"]
+        for i in xrange(0, sequence):
+            sequence_lock_name = "%s_%d" % (base_lock_name, i)
+            z.set_lock_name(sequence_lock_name)
+            # do NOT remove this print
+            print sequence_lock_name
+            if not z.getlock():
+                LOGGER.debug("Lock %s is busy", sequence_lock_name)
+                continue
+            else:
+                break
+        if not z.check_lock():
+            LOGGER.debug("Unable to acquire lock. Do exit")
+            sys.exit(exitcode)
+    # unique lock
+    else:
+        if not z.getlock():
+            if period is None:
+                LOGGER.debug("Unable to acquire lock. Do exit")
+                sys.exit(exitcode)
+
+            # trying to acquire the lock during timeout
+            LOGGER.info("Try to wait %d sec" % period)
+            limit_time = time.time() + period
+            cond_var = Condition()
+            watcher = partial(notifier, cond_var)
+            while limit_time - time.time() > 0.1:
+                time_to_wait = limit_time - time.time()
+                if not z.set_node_deleting_watcher(z.lockpath, watcher):
+                    LOGGER.error("unable to attach delete watcher")
+                    break
+
+                with cond_var:
+                    cond_var.wait(time_to_wait)
+
+                if z.getlock():
+                    break
+            if not z.check_lock():
+                LOGGER.debug("Unable to acquire lock. Do exit")
+                sys.exit(exitcode)
+
+    cv = Condition()
+
+    def sigterm_and_sigchld_handle(p, signum, frame):
+        # TBD - split by two handlers for each signal
+        if signum == signal.SIGTERM:
+            LOGGER.info("Stop work by SIGTERM")
+        elif signum == signal.SIGCHLD:
+            LOGGER.info("Stop work by SIGCHLD")
+        else:
+            LOGGER.info("Receive SIGNAL: %d", signum)
+        try:
+            z.destroy()
+        except Exception as err:
+            LOGGER.debug(str(err))
+        finally:
+            returncode = kill_child(p)
+            if returncode is not None:
+                # Means that child has ended work and return some sode
+                # That's for SIGCHLD
+                sys.exit(returncode)
+            else:
+                # Means we kill our child manualy
+                # That's true for SIGTERM
+                sys.exit(1)
+
+    def watcher_cb():
+        cv.acquire()
+        cv.notify()
+        cv.release()
+
+    if not z.set_async_check_lock(watcher_cb):
+        LOGGER.error("Unable to attach async watcher for lock")
+        sys.exit(1)
+
+    if pdeathsig.support_pdeathsig():
+        pdeathsig_func = partial(pdeathsig.set_pdeathsig, pdeathsig_num)
+        p = start_child(cmd_arg, pdeathsig_func)
+    else:
+        p = start_child(cmd_arg)
+    signal.signal(signal.SIGTERM, partial(sigterm_and_sigchld_handle, p))
+    signal.signal(signal.SIGCHLD, partial(sigterm_and_sigchld_handle, p))
+    if p.poll() is not None:
+        LOGGER.error("Child process exited")
+        sys.exit(1)
+
+    while True:
+        with cv:
+            cv.wait(100)
+        if not z.check_lock():
+            LOGGER.warning("Lock lost")
+            try:
+                kill_child(p)
+                z.destroy()
+            except Exception:
+                pass
+            finally:
+                sys.exit(1)
+
+
+if __name__ == "__main__":
+    usage = "Usage: %prog LOCKNAME COMMAND [-cdhs]"
+    parser = optparse.OptionParser(usage)
+    parser.add_option("-c", "--confpath", action="store",
+                      dest="confpath", default="/etc/distributed-flock.json",
+                      help="Configuration file (/etc/distributed-flock.json)")
+
+    parser.add_option("-d", "--daemonize", action="store_true",
+                      dest="isdaemonize", default=False, help="Daemonize this")
+
+    parser.add_option("-m", "--maxla", action="store",
+                      dest="maxla", default=-1,
+                      help="Maximum load average to start working (-1).")
+
+    parser.add_option("-s", "--sleep", action="store_true",
+                      dest="want_to_sleep", default=False,
+                      help="Yes, I want to sleep before work")
+
+    parser.add_option("-w", "--wait", action="store", type=float,
+                      dest="waittime", default=None,
+                      help="Try to acquire lock for some seconds")
+
+    parser.add_option("-x", "--exitcode", action="store", type=int,
+                      dest="exitcode", default=0,
+                      help="Exit code if lock isn't acquired (0).")
+
+    parser.add_option("-n", "", action="store", type=int,
+                      dest="sequence", default=0,
+                      help="Sequence of locks")
+
+    if pdeathsig.support_pdeathsig():
+        parser.add_option("-p", "--pdeathsig", action="store", type=int,
+                          dest="pdeathsig", default=signal.SIGTERM,
+                          help="signal that is sent to a child process "
+                               "if the parent dies (default SIGTERM)")
+    (options, args) = parser.parse_args()
+
+    if len(args) == 2:
+        pid_name = args[0]
+        cmd_arg = args[1]
+    else:
+        print "Invalid number of arguments"
+        parser.print_help()
+        sys.exit(1)
+
+    cfg = read_cfg(options.confpath)
+    if cfg is None:
+        print "Unable to read configuration file: %s" % options.confpath
+        sys.exit(1)
+
+    initialize_logger(cfg['path'], cfg['level'])
+    cfg['name'] = pid_name  # lockname
+
+    # Sleep
+    want_to_sleep = cfg.get("sleep", "ON" if options.want_to_sleep else "OFF")
+    if want_to_sleep not in ("ON", "OFF"):
+        LOGGER.info("Available values for sleep are ON/OFF, not a %s",
+                    want_to_sleep)
+        sys.exit(1)
+
+    # Read maxla
+    maxla = cfg.get("maxla", options.maxla)
+    if (0 < maxla <= get_la()):
+        LOGGER.info("la is more then limit. Max la %f, current la %f",
+                    maxla, get_la())
+        sys.exit(1)
+
+    if want_to_sleep == "ON":
+        time.sleep(get_la())
+
+    if options.isdaemonize:
+        daemon = Daemon()
+        daemon.run = main
+        daemon.start(cmd_arg, cfg, options.waittime,
+                     options.exitcode, options.sequence, options.pdeathsig)
+    else:
+        main(cmd_arg, cfg, options.waittime,
+             options.exitcode, options.sequence, options.pdeathsig)
