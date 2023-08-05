@@ -1,0 +1,179 @@
+Metadata-Version: 1.1
+Name: progressbar2
+Version: 3.2.0
+Summary: A Python Progressbar library to provide visual (yet text based) progress to
+long running operations.
+Home-page: https://github.com/WoLpH/python-progressbar
+Author: Rick van Hattem (Wolph)
+Author-email: wolph@wol.ph
+License: BSD
+Description: Text progress bar library for Python.
+        =====================================
+        
+        Introduction
+        ------------
+        
+        .. highlights::
+        
+            **NOTE:** This version has been completely rewritten and might not be
+            100% compatible with the old version. If you encounter any problems
+            while using it please let me know:
+            https://github.com/WoLpH/python-progressbar/issues
+        
+        A text progress bar is typically used to display the progress of a long
+        running operation, providing a visual cue that processing is underway.
+        
+        The ProgressBar class manages the current progress, and the format of the line
+        is given by a number of widgets. A widget is an object that may display
+        differently depending on the state of the progress bar. There are many types
+        of widgets:
+        
+         - `Timer`
+         - `ETA`
+         - `AdaptiveETA`
+         - `FileTransferSpeed`
+         - `AdaptiveTransferSpeed`
+         - `AnimatedMarker`
+         - `Counter`
+         - `Percentage`
+         - `FormatLabel`
+         - `SimpleProgress`
+         - `Bar`
+         - `ReverseBar`
+         - `BouncingBar`
+         - `RotatingMarker`
+        
+        The progressbar module is very easy to use, yet very powerful. It will also
+        automatically enable features like auto-resizing when the system supports it.
+        
+        Links
+        -----
+        
+        * Documentation
+            - http://progressbar-2.readthedocs.org/en/latest/
+        * Source
+            - https://github.com/WoLpH/python-progressbar
+        * Bug reports 
+            - https://github.com/WoLpH/python-progressbar/issues
+        * Package homepage
+            - https://pypi.python.org/pypi/progressbar2
+        * My blog
+            - http://w.wol.ph/
+        
+        
+        
+        =========
+        Changelog
+        =========
+        
+        Here you can find the recent changes to Python Progressbar..
+        
+        .. changelog::
+            :version: dev
+            :released: Ongoing
+        
+            .. change::
+                :tags:  docs
+        
+                Updated CHANGES.
+        
+        .. changelog::
+            :version: 3.2
+            :released: 2015-10-11
+        
+            .. change::
+                :tags: packaging
+        
+                Cookiecutter package
+        
+        .. changelog::
+            :version: 3.1
+            :released: 2015-07-11
+        
+            .. change::
+                :tags: python 3
+        
+                Python 3 support
+        
+        2011-05-15:
+          - Removed parse errors for Python2.4 (no, people *should not* be using it
+            but it is only 3 years old and it does not have that many differences)
+        
+          - split up progressbar.py into logical units while maintaining backwards
+            compatability
+        
+          - Removed MANIFEST.in because it is no longer needed and it was causing
+            distribute to show warnings
+        
+        
+        2011-05-14:
+          - Changes to directory structure so pip can install from Google Code
+          - Python 3.x related fixes (all examples work on Python 3.1.3)
+          - Added counters, timers, and action bars for iterators with unknown length
+        
+        2010-08-29:
+          - Refactored some code and made it possible to use a ProgressBar as
+            an iterator (actually as an iterator that is a proxy to another iterator).
+            This simplifies showing a progress bar in a number of cases.
+        
+        2010-08-15:
+          - Did some minor changes to make it compatible with python 3.
+        
+        2009-05-31:
+          - Included check for calling start before update.
+        
+        2009-03-21:
+          - Improved FileTransferSpeed widget, which now supports an unit parameter,
+            defaulting to 'B' for bytes. It will also show B/s, MB/s, etc instead of
+            B/s, M/s, etc.
+        
+        2009-02-24:
+          - Updated licensing.
+          - Moved examples to separated file.
+          - Improved _need_update() method, which is now as fast as it can be. IOW,
+            no wasted cycles when an update is not needed.
+        
+        2008-12-22:
+          - Added SimpleProgress widget contributed by Sando Tosi
+            <matrixhasu at gmail.com>.
+        
+        2006-05-07:
+          - Fixed bug with terminal width in Windows.
+          - Released version 2.2.
+        
+        2005-12-04:
+          - Autodetection of terminal width.
+          - Added start method.
+          - Released version 2.1.
+        
+        2005-12-04:
+          - Everything is a widget now!
+          - Released version 2.0.
+        
+        2005-12-03:
+          - Rewrite using widgets.
+          - Released version 1.0.
+        
+        2005-06-02:
+          - Rewrite.
+          - Released version 0.5.
+        
+        2004-06-15:
+          - First version.
+          - Released version 0.1.
+        
+        .. todo:: vim: set filetype=rst:
+        
+Keywords: Python Progressbar
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: Implementation :: PyPy
