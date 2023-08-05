@@ -1,0 +1,10 @@
+#!/usr/local/opt/python/bin/python2.7
+# EASY-INSTALL-ENTRY-SCRIPT: 'dbmanagr==0.28.3','console_scripts','dbexec'
+__requires__ = 'dbmanagr==0.28.3'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('dbmanagr==0.28.3', 'console_scripts', 'dbexec')()
+    )
