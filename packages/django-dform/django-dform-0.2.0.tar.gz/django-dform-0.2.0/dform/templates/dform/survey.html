@@ -1,0 +1,25 @@
+{% extends "dform/base.html" %}
+{% block title %}{{title}}{% endblock title %}
+
+{% block contents %}
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>{{title}}</h2>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form method="post" action="{{submit_action}}">
+      {% csrf_token %}
+      {{form.render_form}}
+      {% if form.has_required %}
+        <div class="form-group required-info">
+          <span class="required-mark">*</span> Required Field
+        </div>
+      {% endif %}
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock contents %}
