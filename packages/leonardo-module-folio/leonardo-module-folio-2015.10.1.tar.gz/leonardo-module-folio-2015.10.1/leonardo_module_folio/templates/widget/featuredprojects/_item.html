@@ -1,0 +1,22 @@
+{% extends widget.get_base_template %}
+
+{% load i18n %}
+{% load thumbnail %}
+{% load leonardo_tags %}
+
+<div class="folio_item object-list ui-helper-clearfix">
+	<a class="object-image" href="{% url 'folio_project_detail' 'leonardo_module_folio.apps.folio' item.translation.slug %}" title="{{ item }}">
+		{% if item.files.get_featured_image.file %}
+		{% thumbnail item.files.get_featured_image.file "120x90" crop="center" format="PNG" as image %}
+		<img alt="{{ item }}" src="{{ image.url }}" />
+		{% endthumbnail %}
+		{% else %}
+		{% thumbnail request.webcms_options.no_image "120x90" crop="center" format="PNG" as alt_image %}
+		<img alt="{{ item }}" src="{{ alt_image.url }}" />
+		{% endthumbnail %}
+		{% endif %}
+	</a>
+	<div class="object-text">
+		<h3><a href="{% url 'folio_project_detail' 'leonardo_module_folio.apps.folio' item.translation.slug %}" title="{{ item }}">{{ item }}</a></h3>
+	</div>
+</div>
