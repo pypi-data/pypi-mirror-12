@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: ebcloudstore
+Version: 1.0
+Summary: nullpa cloud store
+Home-page: http://open.53iq.com/guide
+Author: zdw
+Author-email: zhengdw@56iq.com
+License: http://www.apache.org/licenses/LICENSE-2.0
+Description: 53iq 浜戝瓨鍌╬ython sdk
+        ======================
+        
+        鐢ㄦ硶
+        ----
+        
+        .. code-block:: python
+        
+            from ebcloudstore.client import EbStore
+            myfile = open("/file/to/path/hello.jpg", "rb")
+            store = EbStore("your token")
+            r = store.upload(myfile, "hello.jpg", "image/jpeg")
+            print(r)
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
