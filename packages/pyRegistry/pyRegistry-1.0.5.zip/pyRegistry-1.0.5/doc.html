@@ -1,0 +1,216 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Jens B. Jorgensen">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Description" content="pyRegistry is a Python 2.0 module for object-oriented access to thewindows registry.">
+   <title>pyRegistry Documentation</title>
+</head>
+<body text="#000000" bgcolor="#FFFFCC">
+
+<center><font size=+3>pyRegistry</font>
+<br/>a Python 2.X module for object-oriented access to the Windows registry
+<br/><font size=-2>Copyright &copy; 2000-2010 Jens B. Jorgensen &lt;jbj1@ultraemail.net&gt;</font></center>
+<br/>
+<table>
+<tr><td><font size=-2>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.</font></td></tr>
+<tr><td><font size=-2>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+<a href="http://www.fsf.org/licenses/info/GPLv2.html">GNU General Public License</a> for more details.</font></td></tr>
+<tr><td><font size=-2>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</font></td></tr>
+</table>
+</center>
+<p><b><font size=+2>Synopsis:</font></b>
+<br>&nbsp;
+<blockquote><tt>import pyRegistry</tt>
+<p><tt>basereg = pyRegistry.open('HKLM\Software\MySubKey')</tt>
+<p><tt>reg = basereg.createKey('subkey')</tt>
+<p><tt>print 'base subkeys:', basereg.getKeyNames()</tt>
+<br><tt>print 'subkey subkeys:', reg.getKeyNames()</tt>
+<p><tt>reg.setValue('a string', 'foobar')</tt>
+<br><tt>reg.setValue('an int', 1234)</tt>
+<br><tt>reg.setValue('a long', 5678L)</tt>
+<br><tt>reg.setValue('a list', ['foo', 'bar', 'baz'])</tt>
+<br><tt>reg.setValue('an empty list', [])</tt>
+<br><tt>reg.setValue('a tuple', ('big', 'bear', 'runs'))</tt>
+<br><tt>reg.setValue('an empty tuple', ())</tt>
+<br><tt>reg.setValue('a unicode string', u'abcde')</tt>
+<br><tt>reg.setValue('none', None)</tt>
+<p><tt>for i in reg.getValueNames() :</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; print i, repr(reg.getValue(i))</tt>
+<p><tt>for i in reg.getValueNames() :</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; reg.deleteValue(i)</tt>
+<p><tt>reg.close()</tt>
+<br><tt>basereg.deleteKey('subkey')</tt></blockquote>
+<b><font size=+2>Module Contents:</font></b>
+<p><tt><a href="#open">open(reg_path) ==> registry object</a></tt>
+<p><tt>class registry :</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_getValue">getValue(name) ==> value</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_setValue">setValue(name, value) ==> None</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_getValueNames">getValueNames() ==> ('name1', 'name2', ...)</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_deleteValue">deleteValue(name) ==> None</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_getKeyNames">getKeyNames() ==> ('subkey1', ...)</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_open">open(subkey_name) ==> registry object</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_close">close() ==> None</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_deleteKey">deleteKey(subkey_name) ==> None</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#registry_createKey">createKey(subkey_name) ==> registry object</a></tt>
+<p><b><font size=+1><a name="open">open(reg_path)</a></font></b>
+<p>Parameters:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; reg_path -- string
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; registry object
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; ValueError -- if first component of path isn't valid
+<br>&nbsp;&nbsp;&nbsp; OSError -- for any error returned by Windows
+<p>Opens the registry key from the provided path. The first path component
+must be one of:
+<p>HKEY_LOCAL_MACHINE, HKLM,
+<br>HKEY_CURRENT_USER, HKCU,
+<br>HKEY_CLASSES_ROOT, HKCR,
+<br>HKEY_USERS, HKU,
+<br>HKEY_CURRENT_CONFIG, HKCC,
+<br>HKEY_PERFORMANCE_DATA, HKPD
+<p>If all is well a registry object is returned.
+<p><b><font size=+1><a name="registry_getValue">registry.getValue(name)</a></font></b>
+<p>Parameters:
+<br>&nbsp;&nbsp;&nbsp; name -- string
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; value with type dependent on underlying data
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; MemoryError
+<br>&nbsp;&nbsp;&nbsp; NotImplementedError -- if underlying registry data
+type isn't handled
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>getValue() will retrieve the requested value. The type of the returned
+data depends on the type of the underlying registry data. The types are
+mapped as follow:
+<p>&nbsp;&nbsp;&nbsp; REG_NONE ==> None
+<br>&nbsp;&nbsp;&nbsp; REG_DWORD ==> int
+<br>&nbsp;&nbsp;&nbsp; REG_SZ, REG_EXPAND_SZ, REG_BINARY ==> string
+<br>&nbsp;&nbsp;&nbsp; REG_MULTI_SZ ==> tuple of strings
+<p>Other types are not supported at this time. HKEY_PERFORMANCE_DATA is
+supported and is always returned as a string. Please see the registry.setValue()
+documentation for special notes about how empty REG_MULTI_SZ values are
+handled.
+<p><b><font size=+1><a name="registry_setValue">registry.setValue(name, value)</a></font></b>
+<p>Parameters:
+<br>&nbsp;&nbsp;&nbsp; name -- string
+<br>&nbsp;&nbsp;&nbsp; value -- string | int | long | list of strings |
+tuple of strings | unicode string | None
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; TypeError
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>setValue() sets the specified value under the key. The type of data
+stored in the registry is mapped as follows:
+<p>&nbsp;&nbsp;&nbsp; None ==> REG_NONE
+<br>&nbsp;&nbsp;&nbsp; int, long ==> REG_DWORD
+<br>&nbsp;&nbsp;&nbsp; list/tuple of strings ==> REG_MULTI_SZ
+<br>&nbsp;&nbsp;&nbsp; string, unicode string ==> REG_SZ
+<p>The M$ docs say that a REG_MULTI_SZ is returned as null-terminated strings
+ended with an exra null. This has some interesting implications. First,
+if you send in a list/tuple which has a string that has a null in it, you'll
+be suprised when you get it back because the null has to be interpreted
+as the end of a string. Also, we have to decide what to do if a REG_MULTI_SZ
+comes back from the registry as just two nulls. Does that mean we return
+a tuple with with a single empty string in it or a 0-length tuple? I've
+decided that it will mean a 0-length tuple. This means that if you pass
+setValue
+<br>a list/tuple with a single empty string in it when you later read it
+you'll instead get back an empty tuple. I wish there were a more elegant
+solution. If you think of one please email me. Also note that a long gets
+mapped into a DWORD, which of course isn't capable of holding a arbitrary
+size integer. Also, when you getValue() it it's going to come back as an
+int. Lastly, note that all strings in the registry are Unicode, but I figured
+most people would be happy with regular strings so although you can setValue()
+and unicode string to the registry it will come back from getValue() as
+a string.
+<p><b><font size=+1><a name="registry_getValueNames">registry.getValueNames()</a></font></b>
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; tuple of strings
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>getValueNames() returns the names of the values in the key.
+<p><b><font size=+1><a name="registry_deleteValue">registry.deleteValue(name)</a></font></b>
+<p>Parameters:
+<br>&nbsp;&nbsp;&nbsp; name -- string
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; None
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>deleteValue() deletes the specified value from the key.
+<p><b><font size=+1><a name="registry_getKeyNames">registry.getKeyNames()</a></font></b>
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; tuple of strings
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>getKeyNames() returns the names of the keys immediately under the key.
+<p><b><font size=+1><a name="registry_open">registry.open(subkey_name)</a></font></b>
+<p>Parameters:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; subkey_name -- string
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; registry object
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>open() opens the specified key under the key and returns a registry
+object for it. RegOpenKeyEx is used so this subkey must exist or an error is raised.
+<p><b><font size=+1><a name="registry_close">registry.close()</a></font></b>
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; None
+<p>close() closes the key. close() doesn't have to be called, the key will
+be closed properly if/when the object goes out of scope and is garbage
+collected.
+<p><b><font size=+1><a name="registry_deleteKey">registry.deleteKey(name)</a></font></b>
+<p>Parameters:
+<br>&nbsp;&nbsp;&nbsp; name -- string
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; None
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>deleteKey() deletes the specified key immediately under they key. Note
+that in Windows95/98 this will delete the key and any contents whereas
+in WindowsNT the key must already be empty to be deleted.
+<p><b><font size=+1><a name="registry_createKey">registry.createKey(name)</a></font></b>
+<p>Parameters:
+<br>&nbsp;&nbsp;&nbsp; name -- string
+<p>Returns:
+<br>&nbsp;&nbsp;&nbsp; registry object
+<p>Raises:
+<br>&nbsp;&nbsp;&nbsp; OSError
+<p>createKey() creates a key under the named key and returns a new registry object for this key. 
+This key is is created with KEY_ALL_ACCESS permissions. We discard the creation disposition
+indicating whether or not the key was created or an existing key was opened.
+<p><b><font size=+3>Issues:</font></b>
+<ul>
+<li>
+more elegant solution to the MULTI_SZ empty string problem</li>
+
+<li>
+unicode strings are always read back as ascii. Inside the registry the
+strings</li>
+
+<li>
+are all unicode. I don't think most people want all registry interaction
+to be with unicode strings though so I just make them ascii.</li>
+
+<li>
+setValue() can't take tuples/lists of unicode strings, just ascii</li>
+
+<li>
+perhaps make deleteKey work recursively on all platforms by doing it myself</li>
+
+<li>
+perhaps provide a way to allow users to specify what the target registry
+data type should be (e.g. pass a string have have it saved as REG_BINARY)</li>
+</ul>
+pyRegistry was written by <a href="mailto:jbj1@ultraemail.net">Jens B.
+Jorgensen</a>
+<br>&nbsp;
+</body>
+</html>
