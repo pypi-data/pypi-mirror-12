@@ -1,0 +1,76 @@
+/* Copyright (C) 2015 Red Hat, Inc.
+   This file is part of the Infinity Note Compiler.
+
+   The Infinity Note Compiler is free software: you can redistribute it
+   and/or modify it under the terms of the GNU General Public License
+   as published by the Free Software Foundation, either version 3 of
+   the License, or (at your option) any later version.
+
+   The Infinity Note Compiler is distributed in the hope that it will
+   be useful, but WITHOUT ANY WARRANTY; without even the implied
+   warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+   See the GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with the Infinity Note Compiler.  If not, see
+   <http://www.gnu.org/licenses/>. */
+
+define example::factorial returns int
+    argument int x
+    extern func int (int) factorial
+
+	// stack[0]: factorial
+	// stack[1]: x
+    swap
+	// stack[0]: x
+	// stack[1]: factorial
+    dup
+	// stack[0]: x
+	// stack[1]: x
+	// stack[2]: factorial
+    load 1
+	// stack[0]: 1
+	// stack[1]: x
+	// stack[2]: x
+	// stack[3]: factorial
+    bgt not_done_yet
+	// stack[0]: x <= 1
+	// stack[1]: factorial
+    load 1
+	// stack[0]: 1
+	// stack[1]: x <= 1
+	// stack[2]: factorial
+    return
+
+not_done_yet:
+	// stack[0]: x != 1
+	// stack[1]: factorial
+    dup
+	// stack[0]: x
+	// stack[1]: x
+	// stack[2]: factorial
+    load 1
+	// stack[0]: 1
+	// stack[1]: x
+	// stack[2]: x
+	// stack[3]: factorial
+    sub
+	// stack[0]: x - 1
+	// stack[1]: x
+	// stack[2]: factorial
+    swap
+	// stack[0]: x
+	// stack[1]: x - 1
+	// stack[2]: factorial
+    rot
+	// stack[0]: x - 1
+	// stack[1]: factorial
+	// stack[2]: x
+    swap
+	// stack[0]: factorial
+	// stack[1]: x - 1
+	// stack[2]: x
+    call
+	// stack[0]: (x - 1)!
+	// stack[1]: x
+    mul
