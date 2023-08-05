@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Django Back-end &mdash; Zds Member 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Zds Member 1.0 documentation" href="index.html"/>
+        <link rel="next" title="REST API" href="api.html"/>
+        <link rel="prev" title="Features" href="features.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Zds Member
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configure.html#specifying-files">Specifying files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure.html#url">Url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure.html#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#custom-forms">Custom forms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="features.html#sign-up">Sign up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html#unsuscribe">Unsuscribe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html#promote-member">Promote member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html#add-karma">Add karma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html#reset-password">Reset Password</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Django Back-end</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-member.models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-member.views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-member.forms">Forms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#member-s-infos">Member&#8217;s Infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#sanctions">Sanctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#read-only">Read Only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#ban">Ban</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Undocumented Python objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python.html#member-forms">member.forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#member-models">member.models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#member-views">member.views</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Zds Member</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Django Back-end</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/reference.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="django-back-end">
+<h1><a class="toc-backref" href="#id1">Django Back-end</a><a class="headerlink" href="#django-back-end" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="documented-files">
+<p class="topic-title first">Documented files:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#django-back-end" id="id1">Django Back-end</a><ul>
+<li><a class="reference internal" href="#module-member.models" id="id2">Models</a></li>
+<li><a class="reference internal" href="#module-member.views" id="id3">Views</a></li>
+<li><a class="reference internal" href="#module-member.forms" id="id4">Forms</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="module-member.models">
+<span id="models"></span><h2><a class="toc-backref" href="#id2">Models</a><a class="headerlink" href="#module-member.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="member.models.Ban">
+<em class="property">class </em><code class="descclassname">member.models.</code><code class="descname">Ban</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Ban" title="Permalink to this definition">¶</a></dt>
+<dd><p>This model stores all sanctions (not only bans).
+It stores sanctioned user, the moderator, the type of sanctions, the reason and the date.
+Note this stores also un-sanctions.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.models.KarmaNote">
+<em class="property">class </em><code class="descclassname">member.models.</code><code class="descname">KarmaNote</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.models.KarmaNote" title="Permalink to this definition">¶</a></dt>
+<dd><p>A karma note is a tool for staff to store data about a member.
+Data are:</p>
+<ul class="simple">
+<li>A note (negative values are bad)</li>
+<li>A comment about the member</li>
+<li>A date</li>
+</ul>
+<p>This helps the staff to react and stores history of stupidities of a member.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.models.Profile">
+<em class="property">class </em><code class="descclassname">member.models.</code><code class="descname">Profile</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>A user profile. Complementary data of standard Django <cite>auth.user</cite>.</p>
+<dl class="method">
+<dt id="member.models.Profile.can_read_now">
+<code class="descname">can_read_now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Profile.can_read_now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if you can read a web site content as user.
+If you can&#8217;t read, you can&#8217;t login on website.
+This happens when you have been banned (temporarily or definitively)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">False</span></code> if you are banned, <code class="docutils literal"><span class="pre">True</span></code> else.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="member.models.Profile.can_write_now">
+<code class="descname">can_write_now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Profile.can_write_now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if you can write something on a web site as user.
+This happens when you have been reading only (temporarily or definitively)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">False</span></code> if you are read only, <code class="docutils literal"><span class="pre">True</span></code> else.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="member.models.Profile.get_absolute_url">
+<code class="descname">get_absolute_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Profile.get_absolute_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Absolute URL to the profile page.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="member.models.Profile.get_avatar_url">
+<code class="descname">get_avatar_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Profile.get_avatar_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the avatar URL for this profile.
+If the user has defined a custom URL, use it.
+If not, use Gravatar.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The avatar URL for this profile</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="member.models.Profile.get_city">
+<code class="descname">get_city</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Profile.get_city" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses geo-localization to get physical localization of a profile through its last IP address.
+This works relatively good with IPv4 addresses (~city level), but is very imprecise with IPv6 or exotic internet
+providers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The city and the country name of this profile.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="member.models.Profile.is_private">
+<code class="descname">is_private</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.Profile.is_private" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the user belong to the bot&#8217;s group or not</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">True</span></code> if user belong to the bot&#8217;s group, <code class="docutils literal"><span class="pre">False</span></code> else.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="member.models.TokenForgotPassword">
+<em class="property">class </em><code class="descclassname">member.models.</code><code class="descname">TokenForgotPassword</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.models.TokenForgotPassword" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a user forgot its password, the website sends it an email with a token (embedded in a URL).
+If the user has the correct token, it can choose a new password on the dedicated page.
+This model stores the tokens for the users that have forgot their passwords, with an expiration date.</p>
+<dl class="method">
+<dt id="member.models.TokenForgotPassword.get_absolute_url">
+<code class="descname">get_absolute_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.TokenForgotPassword.get_absolute_url" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The absolute URL of the &#8220;New password&#8221; page, including the correct token.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="member.models.TokenRegister">
+<em class="property">class </em><code class="descclassname">member.models.</code><code class="descname">TokenRegister</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.models.TokenRegister" title="Permalink to this definition">¶</a></dt>
+<dd><p>On registration, a token is send by mail to the user. It must use this token (by clicking on a link) to activate its
+account (and prove the email address is correct) and connect itself.
+This model stores the registration token for each user, with an expiration date.</p>
+<dl class="method">
+<dt id="member.models.TokenRegister.get_absolute_url">
+<code class="descname">get_absolute_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.models.TokenRegister.get_absolute_url" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the absolute URL of the account validation page, including the token.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="member.models.auto_delete_token_on_unregistering">
+<code class="descclassname">member.models.</code><code class="descname">auto_delete_token_on_unregistering</code><span class="sig-paren">(</span><em>sender</em>, <em>instance</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.models.auto_delete_token_on_unregistering" title="Permalink to this definition">¶</a></dt>
+<dd><p>This signal receiver deletes forgotten password tokens and registering tokens for the un-registering user;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.models.logout_user">
+<code class="descclassname">member.models.</code><code class="descname">logout_user</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#member.models.logout_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logout the member.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> &#8211; the name of the user to logout.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-member.views">
+<span id="views"></span><h2><a class="toc-backref" href="#id3">Views</a><a class="headerlink" href="#module-member.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="member.views.MemberDetail">
+<em class="property">class </em><code class="descclassname">member.views.</code><code class="descname">MemberDetail</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.MemberDetail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays details about a profile.</p>
+<dl class="attribute">
+<dt id="member.views.MemberDetail.model">
+<code class="descname">model</code><a class="headerlink" href="#member.views.MemberDetail.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="member.views.MemberList">
+<em class="property">class </em><code class="descclassname">member.views.</code><code class="descname">MemberList</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.MemberList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the list of registered users.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.views.RegisterView">
+<em class="property">class </em><code class="descclassname">member.views.</code><code class="descname">RegisterView</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.RegisterView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a profile.</p>
+<dl class="attribute">
+<dt id="member.views.RegisterView.form_class">
+<code class="descname">form_class</code><a class="headerlink" href="#member.views.RegisterView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">RegisterForm</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="member.views.SendValidationEmailView">
+<em class="property">class </em><code class="descclassname">member.views.</code><code class="descname">SendValidationEmailView</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.SendValidationEmailView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a validation email on demand.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.views.UpdateMember">
+<em class="property">class </em><code class="descclassname">member.views.</code><code class="descname">UpdateMember</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.UpdateMember" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a profile.</p>
+<dl class="attribute">
+<dt id="member.views.UpdateMember.form_class">
+<code class="descname">form_class</code><a class="headerlink" href="#member.views.UpdateMember.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">ProfileForm</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="member.views.UpdatePasswordMember">
+<em class="property">class </em><code class="descclassname">member.views.</code><code class="descname">UpdatePasswordMember</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.UpdatePasswordMember" title="Permalink to this definition">¶</a></dt>
+<dd><p>User&#8217;s settings about his password.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.views.UpdateUsernameEmailMember">
+<em class="property">class </em><code class="descclassname">member.views.</code><code class="descname">UpdateUsernameEmailMember</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.UpdateUsernameEmailMember" title="Permalink to this definition">¶</a></dt>
+<dd><p>User&#8217;s settings about his username and email.</p>
+<dl class="attribute">
+<dt id="member.views.UpdateUsernameEmailMember.form_class">
+<code class="descname">form_class</code><a class="headerlink" href="#member.views.UpdateUsernameEmailMember.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">ChangeUserForm</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.active_account">
+<code class="descclassname">member.views.</code><code class="descname">active_account</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.active_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Active token for a user.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.forgot_password">
+<code class="descclassname">member.views.</code><code class="descname">forgot_password</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.forgot_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the user forgot his password, he can have a new one.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.generate_token_account">
+<code class="descclassname">member.views.</code><code class="descname">generate_token_account</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.generate_token_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate token for account.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.get_client_ip">
+<code class="descclassname">member.views.</code><code class="descname">get_client_ip</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.get_client_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the real IP address of the client.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.login_view">
+<code class="descclassname">member.views.</code><code class="descname">login_view</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.login_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log in user.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.logout_view">
+<code class="descclassname">member.views.</code><code class="descname">logout_view</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.logout_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log out user.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.member_from_ip">
+<code class="descclassname">member.views.</code><code class="descname">member_from_ip</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.member_from_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of user connected from a particular ip</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.modify_karma">
+<code class="descclassname">member.views.</code><code class="descname">modify_karma</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.modify_karma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a Karma note to the user profile</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.new_password">
+<code class="descclassname">member.views.</code><code class="descname">new_password</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.new_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new password for a user.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.settings_promote">
+<code class="descclassname">member.views.</code><code class="descname">settings_promote</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.settings_promote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage the admin right of user. Only super user can access</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.unregister">
+<code class="descclassname">member.views.</code><code class="descname">unregister</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.unregister" title="Permalink to this definition">¶</a></dt>
+<dd><p>allow members to unregister</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="member.views.warning_unregister">
+<code class="descclassname">member.views.</code><code class="descname">warning_unregister</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.views.warning_unregister" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a warning page showing what will happen when user unregisters.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-member.forms">
+<span id="forms"></span><h2><a class="toc-backref" href="#id4">Forms</a><a class="headerlink" href="#module-member.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="member.forms.ChangeUserForm">
+<em class="property">class </em><code class="descclassname">member.forms.</code><code class="descname">ChangeUserForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.ChangeUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update username and email</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.forms.LoginForm">
+<em class="property">class </em><code class="descclassname">member.forms.</code><code class="descname">LoginForm</code><span class="sig-paren">(</span><em>next=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.LoginForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The login form, including the &#8220;remember me&#8221; checkbox.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.forms.MiniProfileForm">
+<em class="property">class </em><code class="descclassname">member.forms.</code><code class="descname">MiniProfileForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.MiniProfileForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates some profile data: biography, website, avatar URL, signature.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.forms.NewPasswordForm">
+<em class="property">class </em><code class="descclassname">member.forms.</code><code class="descname">NewPasswordForm</code><span class="sig-paren">(</span><em>identifier</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.NewPasswordForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a new password (when the current one has been forgotten)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.forms.ProfileForm">
+<em class="property">class </em><code class="descclassname">member.forms.</code><code class="descname">ProfileForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.ProfileForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates main profile rules:</p>
+<ul class="simple">
+<li>Display email address to everybody</li>
+<li>Display signatures</li>
+<li>Display menus on hover</li>
+<li>Receive an email when receiving a personal message</li>
+</ul>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.forms.PromoteMemberForm">
+<em class="property">class </em><code class="descclassname">member.forms.</code><code class="descname">PromoteMemberForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.PromoteMemberForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Promotes a user to an arbitrary group</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="member.forms.RegisterForm">
+<em class="property">class </em><code class="descclassname">member.forms.</code><code class="descname">RegisterForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.RegisterForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to register a new member.</p>
+<dl class="method">
+<dt id="member.forms.RegisterForm.clean">
+<code class="descname">clean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#member.forms.RegisterForm.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleans the input data and performs following checks:</p>
+<ul class="simple">
+<li>Both passwords are the same</li>
+<li>Username doesn&#8217;t exist in database</li>
+<li>Username is not empty</li>
+<li>Username doesn&#8217;t contain any comma (this will break the personal message system)</li>
+<li>Username doesn&#8217;t begin or ends with spaces</li>
+<li>Password is different of username</li>
+<li>Email address is unique through all users</li>
+<li>Email provider is not a forbidden one</li>
+</ul>
+<p>Forbidden email providers are stored in <cite>forbidden_email_providers.txt</cite> on project root.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Cleaned data, and the error messages if they exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="REST API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="features.html" class="btn btn-neutral" title="Features" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, zds-member.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
