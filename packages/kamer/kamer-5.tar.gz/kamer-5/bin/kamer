@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+#
+#
+
+""" KAMER - mishandeling gepleegd door toediening van voor het leven of de gezondheid schadelijke stoffen """
+
+__copyright__ = "Copyright 2015, B.H.J Thate"
+
+## IMPORTS
+
+import sys, os
+sys.path.insert(0, os.getcwd())
+
+from meds.main import main, plugins
+from meds.bots.cli import CLI
+from meds.cfg import cfg
+from meds.log import log_init
+
+from kamer import __version__
+
+import readline
+import time
+import site
+import sys
+import os
+
+## MAIN
+
+def mainprog():
+    log_init("error")
+    main.boot("KAMER", version=__version__)
+    plugins.load("kamer")
+    plugins.init(cfg.main.init)
+    bot = CLI()
+    bot.start(collect=True)
+
+if __name__ == "__main__": 
+    try: mainprog()
+    except (EOFError, KeyboardInterrupt): print()
+    main.wait()
+    main.shutdown()
+    os._exit(0)
