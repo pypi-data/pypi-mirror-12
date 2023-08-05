@@ -1,0 +1,51 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+import argparse
+import os
+
+
+def _get_path(path, src, full=False):
+    return path if full else os.path.relpath(path, src)
+
+
+def _get_dirs(directory):
+    '''Generate full path to each subdir in directory'''
+    for f in os.listdir(directory):
+        p = os.path.join(directory, f)
+        if os.path.isdir(p):
+            yield p
+
+def find_import_path(src, pkg, full=False):
+    for sitepath in _get_dirs(src):
+        for path in _get_dirs(sitepath):
+            # case like gopkg.in/yaml.v2
+            if '.git' in os.listdir(path):
+                if pkg == os.path.basename(path):
+                    return _get_path(path, src, full)
+
+            # case like github.com/hvnsweeting/gogo
+            for f in os.listdir(path):
+                import_path = os.path.join(path, f)
+                if os.path.isdir(import_path):
+                    if pkg == f:
+                        return _get_path(import_path, src, full)
+
+
+def main():
+    argp = argparse.ArgumentParser()
+    argp.add_argument('package')
+    argp.add_argument('-i', '--import-path', help='print out import path',
+                      action='store_false')
+    args = argp.parse_args()
+
+    GOPATH = os.environ.get('GOPATH', '')
+    if not GOPATH:
+        os.exit("Environment variable GOPATH is not set, it is required.")
+
+    src = os.path.join(GOPATH, 'src')
+    print find_import_path(src, args.package, args.import_path)
+
+
+if __name__ == "__main__":
+    main()
