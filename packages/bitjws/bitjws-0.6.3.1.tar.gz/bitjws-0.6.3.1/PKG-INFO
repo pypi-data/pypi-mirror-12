@@ -1,0 +1,44 @@
+Metadata-Version: 1.1
+Name: bitjws
+Version: 0.6.3.1
+Summary: JWS using Bitcoin message signing
+Home-page: https://github.com/g-p-g/bitjws
+Author: Guilherme Polo
+Author-email: gp@deginner.com
+License: MIT
+Description: bitjws |Build Status| |Coverage Status| |Gitter|
+        ================================================
+        
+        JWS (`JSON Web
+        Signature <http://self-issued.info/docs/draft-ietf-jose-json-web-signature.html>`__)
+        using Bitcoin message signing as the algorithm.
+        
+        Install
+        -------
+        
+        By default it's expected that
+        `secp256k1 <https://github.com/bitcoin/secp256k1>`__ is available, so
+        install it before proceeding; make sure to run
+        ``./configure --enable-module-recovery``. If you're using some other
+        library that provides the functionality necessary for this, check the
+        **Using a custom library** section below.
+        
+        bitjws can be installed by running ``pip install bitjws``.
+        
+        Visit https://github.com/g-p-g/bitjws to see the full README, the
+        issue tracker, and others.
+        
+        
+        .. |Build Status| image:: https://travis-ci.org/deginner/bitjws.svg?branch=master
+           :target: https://travis-ci.org/deginner/bitjws
+        .. |Coverage Status| image:: https://coveralls.io/repos/deginner/bitjws/badge.svg?branch=master&service=github
+           :target: https://coveralls.io/github/deginner/bitjws?branch=master
+        .. |Gitter| image:: https://badges.gitter.im/Join%20Chat.svg
+           :target: https://gitter.im/deginner/bitjws?utm_source=share-link&utm_medium=link&utm_campaign=share-link
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Security :: Cryptography
