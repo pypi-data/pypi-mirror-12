@@ -1,0 +1,98 @@
+ftputil
+=======
+
+Purpose
+-------
+
+ftputil is a high-level alternative to Python's ftplib module. With
+ftputil, you can access directories and files on remote FTP servers
+almost as if they were in your local file system. This includes using
+file-like objects representing remote files.
+
+What's new?
+-----------
+
+From version 1.1 to 2.0, the following has changed:
+
+- ftputil has been re-organized and is now a Python package (the
+  import statement is still the same)
+
+- installation via Python distutils
+
+- stat, upload_if_newer, download_if_newer etc. work correctly if the
+  server is in another time zone than the client running ftputil (with
+  help from Andrew Ittner); see section "Time zone correction" in the
+  documentation
+
+- it's possible to set the directory listing format "manually" (though
+  in most cases it's recognized automatically); see section "Stat'ing
+  files and directories"
+
+- added a workaround regarding whitespace in directory names (thanks
+  to Tommy Sundström and H. Y. Chu)
+
+- extended documentation and converted it to HTML format (now
+  generated from reStructured Text)
+
+- several bugfixes
+
+- there's now a mailing list at http://codespeak.net/mailman/listinfo/ftputil
+  (thanks to Holger Krekel)
+
+Documentation
+-------------
+
+The documentation for ftputil can be found in the file ftputil.txt
+(reStructured Text format) or ftputil.html (recommended, generated
+from ftputil.txt).
+
+Prerequisites
+-------------
+
+To use ftputil, you need Python, at least version 2.0. Python is a
+programming language, available from http://www.python.org for free.
+
+Installation
+------------
+
+- *If you have an older version of ftputil installed, delete it or move
+  it somewhere else, so that it doesn't conflict with the new version!*
+
+- Unpack the archive file containing the distribution files. If you
+  had an hypothetical ftputil version 1.2, you would type at the shell
+  prompt:
+
+    tar xzf ftputil-1.2.tar.gz
+
+  However, if you read this, you probably unpacked the archive already. ;-)
+
+- Make the directory to where the files were unpacked your current directory.
+  Consider that after unpacking, you have a directory ftputil-1.2. Make it
+  the current directory with
+
+    cd ftputil-1.2
+
+- Type
+
+    python setup.py install
+
+  at the shell prompt. On Unix/Linux, you have to be root to perform the
+  installation. Likewise, you have to be logged in as administrator if you
+  install on Windows.
+
+  If you want to customize the installation paths, please read
+  http://www.python.org/doc/current/inst/inst.html .
+
+License
+-------
+
+ftputil is Open Source Software. It is distributed under a BSD-style
+license (see the top of ftputil.py).
+
+Author
+------
+
+Stefan Schwarzer <sschwarzer@sschwarzer.net>
+
+Please provide feedback! It's surely appreciated. :-)
+

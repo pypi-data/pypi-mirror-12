@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.1: http://docutils.sourceforge.net/" />
+<title>ftputil - a high-level FTP client library</title>
+<meta name="date" content="2004-07-29" />
+<meta name="author" content="Stefan Schwarzer &lt;sschwarzer&#64;sschwarzer.net&gt;" />
+<style type="text/css"><!--
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:date: $Date: 2004/01/28 20:46:38 $
+:version: $Revision: 1.36 $
+:copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+*/
+
+.first {
+  margin-top: 0 }
+
+.last {
+  margin-bottom: 0 }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dd {
+  margin-bottom: 0.5em }
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.attention, div.caution, div.danger, div.error, div.hint,
+div.important, div.note, div.tip, div.warning, div.admonition {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.hint p.admonition-title, div.important p.admonition-title,
+div.note p.admonition-title, div.tip p.admonition-title,
+div.admonition p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em }
+
+div.footer, div.header {
+  font-size: smaller }
+
+div.sidebar {
+  margin-left: 1em ;
+  border: medium outset ;
+  padding: 0em 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr {
+  width: 75% }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.line-block {
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.option-argument {
+  font-style: italic }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+table {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.citation {
+  border-left: solid thin gray ;
+  padding-left: 0.5ex }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.footnote {
+  border-left: solid thin black ;
+  padding-left: 0.5ex }
+
+td, th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+th.docinfo-name, th.field-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap }
+
+h1 tt, h2 tt, h3 tt, h4 tt, h5 tt, h6 tt {
+  font-size: 100% }
+
+tt {
+  background-color: #eeeeee }
+
+ul.auto-toc {
+  list-style-type: none }
+
+--></style>
+</head>
+<body>
+<div class="document" id="ftputil-a-high-level-ftp-client-library">
+<h1 class="title"><tt class="literal"><span class="pre">ftputil</span></tt> - a high-level FTP client library</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Version:</th>
+<td>2.0.3</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>2004-07-29</td></tr>
+<tr class="field"><th class="docinfo-name">Summary:</th><td class="field-body">high-level FTP client library for Python</td>
+</tr>
+<tr class="field"><th class="docinfo-name">Keywords:</th><td class="field-body">FTP, <tt class="literal"><span class="pre">ftplib</span></tt> substitute, virtual filesystem</td>
+</tr>
+<tr><th class="docinfo-name">Author:</th>
+<td>Stefan Schwarzer &lt;<a class="reference" href="mailto:sschwarzer&#64;sschwarzer.net">sschwarzer&#64;sschwarzer.net</a>&gt;</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title"><a name="contents">Contents</a></p>
+<ul class="simple">
+<li><a class="reference" href="#introduction" id="id1" name="id1">Introduction</a></li>
+<li><a class="reference" href="#exception-hierarchy" id="id2" name="id2">Exception hierarchy</a></li>
+<li><a class="reference" href="#ftphost-objects" id="id3" name="id3"><tt class="literal"><span class="pre">FTPHost</span></tt> objects</a><ul>
+<li><a class="reference" href="#construction" id="id4" name="id4">Construction</a></li>
+<li><a class="reference" href="#ftphost-attributes-and-methods" id="id5" name="id5"><tt class="literal"><span class="pre">FTPHost</span></tt> attributes and methods</a><ul>
+<li><a class="reference" href="#attributes" id="id6" name="id6">Attributes</a></li>
+<li><a class="reference" href="#time-zone-correction" id="id7" name="id7">Time zone correction</a></li>
+<li><a class="reference" href="#files-and-directories" id="id8" name="id8">Files and directories</a></li>
+<li><a class="reference" href="#uploading-and-downloading-files" id="id9" name="id9">Uploading and downloading files</a></li>
+<li><a class="reference" href="#stat-ing-files-and-directories" id="id10" name="id10">Stat'ing files and directories</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#ftphost-path" id="id11" name="id11"><tt class="literal"><span class="pre">FTPHost.path</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference" href="#ftpfile-objects" id="id12" name="id12"><tt class="literal"><span class="pre">FTPFile</span></tt> objects</a></li>
+<li><a class="reference" href="#tips-and-tricks-faq" id="id13" name="id13">Tips and tricks / FAQ</a><ul>
+<li><a class="reference" href="#where-can-i-get-the-latest-version" id="id14" name="id14">Where can I get the latest version?</a></li>
+<li><a class="reference" href="#is-there-a-mailing-list-on-ftputil" id="id15" name="id15">Is there a mailing list on <tt class="literal"><span class="pre">ftputil</span></tt>?</a></li>
+<li><a class="reference" href="#i-found-a-bug-what-now" id="id16" name="id16">I found a bug! What now?</a></li>
+<li><a class="reference" href="#connecting-on-another-port" id="id17" name="id17">Connecting on another port</a></li>
+<li><a class="reference" href="#using-active-or-passive-connections" id="id18" name="id18">Using active or passive connections</a></li>
+<li><a class="reference" href="#conditional-upload-download-to-from-a-server-in-a-different-time-zone" id="id19" name="id19">Conditional upload/download to/from a server in a different time zone</a></li>
+<li><a class="reference" href="#wrong-dates-or-times-when-stat-ing-on-a-server" id="id20" name="id20">Wrong dates or times when stat'ing on a server</a></li>
+<li><a class="reference" href="#file-related-query-methods-e-g-listdir-return-unexpected-results" id="id21" name="id21">File-related query methods (e. g. <tt class="literal"><span class="pre">listdir</span></tt>) return unexpected results</a></li>
+<li><a class="reference" href="#i-don-t-find-an-answer-to-my-problem-in-this-document" id="id22" name="id22">I don't find an answer to my problem in this document</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#bugs-and-limitations" id="id23" name="id23">Bugs and limitations</a></li>
+<li><a class="reference" href="#files" id="id24" name="id24">Files</a></li>
+<li><a class="reference" href="#references" id="id25" name="id25">References</a></li>
+<li><a class="reference" href="#author" id="id26" name="id26">Author</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h1><a class="toc-backref" href="#id1" name="introduction">Introduction</a></h1>
+<p>The <tt class="literal"><span class="pre">ftputil</span></tt> module is a high-level interface to the <a class="reference" href="http://www.python.org/doc/current/lib/module-ftplib.html">ftplib</a>
+module. The <a class="reference" href="#ftphost-objects">FTPHost objects</a> generated from it allow many operations
+similar to those of <a class="reference" href="http://www.python.org/doc/current/lib/module-os.html">os</a> and <a class="reference" href="http://www.python.org/doc/current/lib/module-os.path.html">os.path</a>.</p>
+<p>Examples:</p>
+<pre class="literal-block">
+import ftputil
+
+# download some files from the login directory
+host = ftputil.FTPHost('ftp.domain.com', 'user', 'password')
+names = host.listdir(host.curdir)
+for name in names:
+    if host.path.isfile(name):
+        host.download(name, name, 'b')  # remote, local, binary mode
+
+# make a new directory and copy a remote file into it
+host.mkdir('newdir')
+source = host.file('index.html', 'r')  # file-like object
+target = host.file('newdir/index.html', 'w')  # file-like object
+host.copyfileobj(source, target)  # similar to shutil.copyfileobj
+source.close()
+target.close()
+</pre>
+<p>Also, there are <a class="reference" href="#ftphost-lstat">FTPHost.lstat</a> and <a class="reference" href="#ftphost-stat">FTPHost.stat</a> to request size and
+modification time of a file. The latter can also follow links, similar
+to <a class="reference" href="http://www.python.org/doc/current/lib/os-file-dir.html#l2h-1455">os.stat</a>. Even <a class="reference" href="#ftphost-path-walk">FTPHost.path.walk</a> works.</p>
+<p>The distribution contains a custom <tt class="literal"><span class="pre">UserTuple</span></tt> module to provide <a class="reference" href="http://www.python.org/doc/current/lib/module-stat.html">stat</a>
+results with Python versions 2.0 and 2.1.</p>
+</div>
+<div class="section" id="exception-hierarchy">
+<h1><a class="toc-backref" href="#id2" name="exception-hierarchy">Exception hierarchy</a></h1>
+<p>The exceptions are in the namespace of the <tt class="literal"><span class="pre">ftputil</span></tt> package (e. g.
+<tt class="literal"><span class="pre">ftputil.TemporaryError</span></tt>). They are organized as follows:</p>
+<pre class="literal-block">
+FTPError
+    FTPOSError(FTPError, OSError)
+        TemporaryError(FTPOSError)
+        PermanentError(FTPOSError)
+        ParserError(FTPOSError)
+    FTPIOError(FTPError)
+    InternalError(FTPError)
+        RootDirError(InternalError)
+        InaccessibleLoginDirError(InternalError)
+    TimeShiftError(FTPError)
+</pre>
+<p>and are described here:</p>
+<ul>
+<li><p class="first"><tt class="literal"><span class="pre">FTPError</span></tt></p>
+<p>is the root of the exception hierarchy of the module.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">FTPOSError</span></tt></p>
+<p>is derived from <tt class="literal"><span class="pre">OSError</span></tt>. This is for similarity between the
+os module and <tt class="literal"><span class="pre">FTPHost</span></tt> objects. Compare</p>
+<pre class="literal-block">
+try:
+    os.chdir('nonexisting_directory')
+except OSError:
+    ...
+</pre>
+<p>with</p>
+<pre class="literal-block">
+host = ftputil.FTPHost('host', 'user', 'password')
+try:
+    host.chdir('nonexisting_directory')
+except OSError:
+    ...
+</pre>
+<p>Imagine a function</p>
+<pre class="literal-block">
+def func(path, file):
+    ...
+</pre>
+<p>which works on the local file system and catches <tt class="literal"><span class="pre">OSErrors</span></tt>. If you
+change the parameter list to</p>
+<pre class="literal-block">
+def func(path, file, os=os):
+    ...
+</pre>
+<p>where <tt class="literal"><span class="pre">os</span></tt> denotes the <tt class="literal"><span class="pre">os</span></tt> module, you can call the function also as</p>
+<pre class="literal-block">
+host = ftputil.FTPHost('host', 'user', 'password')
+func(path, file, os=host)
+</pre>
+<p>to use the same code for a local and remote file system. Another
+similarity between <tt class="literal"><span class="pre">OSError</span></tt> and <tt class="literal"><span class="pre">FTPOSError</span></tt> is that the latter
+holds the FTP server return code in the <tt class="literal"><span class="pre">errno</span></tt> attribute of the
+exception object and the error text in <tt class="literal"><span class="pre">strerror</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">TemporaryError</span></tt></p>
+<p>is raised for FTP return codes from the 4xx category. This
+corresponds to <tt class="literal"><span class="pre">ftplib.error_temp</span></tt> (though <tt class="literal"><span class="pre">TemporaryError</span></tt> and
+<tt class="literal"><span class="pre">ftplib.error_temp</span></tt> are <em>not</em> identical).</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">PermanentError</span></tt></p>
+<p>is raised for 5xx return codes from the FTP server
+(again, that's similar but <em>not</em> identical to <tt class="literal"><span class="pre">ftplib.error_perm</span></tt>).</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">ParserError</span></tt></p>
+<p>is used for errors during the parsing of directory
+listings from the server. This exception is used by the <tt class="literal"><span class="pre">FTPHost</span></tt>
+methods <tt class="literal"><span class="pre">stat</span></tt>, <tt class="literal"><span class="pre">lstat</span></tt>, and <tt class="literal"><span class="pre">listdir</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">FTPIOError</span></tt></p>
+<p>denotes an I/O error on the remote host. This appears
+mainly with file-like objects which are retrieved by invoking
+<tt class="literal"><span class="pre">FTPHost.file</span></tt> (<tt class="literal"><span class="pre">FTPHost.open</span></tt> is an alias). Compare</p>
+<pre class="literal-block">
+&gt;&gt;&gt; try:
+...     f = open('notthere')
+... except IOError, obj:
+...     print obj.errno
+...     print obj.strerror
+...
+2
+No such file or directory
+</pre>
+<p>with</p>
+<pre class="literal-block">
+&gt;&gt;&gt; host = ftputil.FTPHost('host', 'user', 'password')
+&gt;&gt;&gt; try:
+...     f = host.open('notthere')
+... except IOError, obj:
+...     print obj.errno
+...     print obj.strerror
+...
+550
+550 notthere: No such file or directory.
+</pre>
+<p>As you can see, both code snippets are similar. (However, the error
+codes aren't the same.)</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">InternalError</span></tt></p>
+<p>subsumes exception classes for signaling errors due to limitations
+of the FTP protocol or the concrete implementation of <tt class="literal"><span class="pre">ftputil</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">RootDirError</span></tt></p>
+<p>Because of the implementation of the <tt class="literal"><span class="pre">lstat</span></tt> method it is not
+possible to do a <tt class="literal"><span class="pre">stat</span></tt> call  on the root directory <tt class="literal"><span class="pre">/</span></tt>.
+If you know <em>any</em> way to do it, please let me know. :-)</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">InaccessibleLoginDirError</span></tt></p>
+<p>This exception is only raised if <em>both</em> of the following conditions
+are met:</p>
+<ul class="simple">
+<li>The directory in which &quot;you&quot; are placed upon login is not
+accessible, i. e. a <tt class="literal"><span class="pre">chdir</span></tt> call fails.</li>
+<li>You try to access a path which contains whitespace.</li>
+</ul>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">TimeShiftError</span></tt></p>
+<p>is used to denote errors which relate to setting the <a class="reference" href="#time-shift">time shift</a>,
+e. g. trying to set a value which is no multiple of a full hour.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="ftphost-objects">
+<h1><a class="toc-backref" href="#id3" name="ftphost-objects"><tt class="literal"><span class="pre">FTPHost</span></tt> objects</a></h1>
+<a class="target" id="ftphost-construction" name="ftphost-construction"></a><div class="section" id="construction">
+<h2><a class="toc-backref" href="#id4" name="construction">Construction</a></h2>
+<p><tt class="literal"><span class="pre">FTPHost</span></tt> instances may be generated with the following call:</p>
+<pre class="literal-block">
+host = ftputil.FTPHost(host, user, password, account,
+                       session_factory=ftplib.FTP)
+</pre>
+<p>The first four parameters are strings with the same meaning as for the
+FTP class in the <tt class="literal"><span class="pre">ftplib</span></tt> module. The keyword argument
+<tt class="literal"><span class="pre">session_factory</span></tt> may be used to generate FTP connections with other
+factories than the default <tt class="literal"><span class="pre">ftplib.FTP</span></tt>. For example, the M2Crypto
+distribution uses a secure FTP class which is derived from
+<tt class="literal"><span class="pre">ftplib.FTP</span></tt>.</p>
+<p>In fact, all positional and keyword arguments other than
+<tt class="literal"><span class="pre">session_factory</span></tt> are passed to the factory to generate a new background
+session (which happens for every remote file that is opened; see
+below).</p>
+<p>This functionality of the constructor also allows to wrap
+<tt class="literal"><span class="pre">ftplib.FTP</span></tt> objects to do something that wouldn't be possible with
+the <tt class="literal"><span class="pre">ftplib.FTP</span></tt> constructor alone.</p>
+<p>As an example, assume you want to connect to another than the default
+port but <tt class="literal"><span class="pre">ftplib.FTP</span></tt> only offers this by means of its <tt class="literal"><span class="pre">connect</span></tt>
+method, but not via its constructor. The solution is to provide a
+wrapper class:</p>
+<pre class="literal-block">
+import ftplib
+import ftputil
+
+EXAMPLE_PORT = 50001
+
+class MySession(ftplib.FTP):
+    def __init__(self, host, userid, password, port):
+        &quot;&quot;&quot;Act like ftplib.FTP's constructor but connect to other port.&quot;&quot;&quot;
+        ftplib.FTP.__init__(self)
+        self.connect(host, port)
+        self.login(userid, password)
+
+# try not to use MySession() as factory, - use the class itself
+host = ftputil.FTPHost(host, userid, password,
+                       port=EXAMPLE_PORT, session_factory=MySession)
+# use `host` as usual
+</pre>
+<p>On login, the format of the directory listings (needed for stat'ing
+files and directories) should be determined automatically. If not, you
+may use the method <a class="reference" href="#set-directory-format">set_directory_format</a> to set the format
+&quot;manually&quot;.</p>
+</div>
+<div class="section" id="ftphost-attributes-and-methods">
+<h2><a class="toc-backref" href="#id5" name="ftphost-attributes-and-methods"><tt class="literal"><span class="pre">FTPHost</span></tt> attributes and methods</a></h2>
+<div class="section" id="attributes">
+<h3><a class="toc-backref" href="#id6" name="attributes">Attributes</a></h3>
+<ul>
+<li><p class="first"><tt class="literal"><span class="pre">curdir</span></tt>, <tt class="literal"><span class="pre">pardir</span></tt>, <tt class="literal"><span class="pre">sep</span></tt></p>
+<p>are strings which denote the current and the parent directory on
+the remote server. sep identifies the path separator. Though <a class="reference" href="http://www.ietf.org/rfc/rfc959.txt">RFC
+959</a> (File Transfer Protocol) notes that these values may be server
+dependent, the Unix counterparts seem to work well in practice,
+even for non-Unix servers.</p>
+</li>
+</ul>
+<a class="target" id="time-shift" name="time-shift"></a></div>
+<div class="section" id="time-zone-correction">
+<h3><a class="toc-backref" href="#id7" name="time-zone-correction">Time zone correction</a></h3>
+<a class="target" id="set-time-shift" name="set-time-shift"></a><ul>
+<li><p class="first"><tt class="literal"><span class="pre">set_time_shift(time_shift)</span></tt></p>
+<p>sets the so-called time shift value (measured in seconds). The time
+shift is the difference between the local time of the server and the
+local time of the client at a given moment, i. e. by definition</p>
+<pre class="literal-block">
+time_shift = server_time - client_time
+</pre>
+<p>Setting this value is important if <a class="reference" href="#upload-if-newer">upload_if_newer</a> and
+<a class="reference" href="#download-if-newer">download_if_newer</a> should work correctly even if the time zone of
+the FTP server differs from that of the client (where <tt class="literal"><span class="pre">ftputil</span></tt>
+runs). Note that the time shift value <em>can</em> be negative.</p>
+<p>If the time shift value is invalid, e. g. no multiple of a full hour
+or its absolute (unsigned) value larger than 24 hours, a
+<tt class="literal"><span class="pre">TimeShiftError</span></tt> is raised.</p>
+<p>See also <a class="reference" href="#synchronize-times">synchronize_times</a> for a way to set the time shift with a
+simple method call.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">time_shift()</span></tt></p>
+<p>return the currently-set time shift value. See <tt class="literal"><span class="pre">set_time_shift</span></tt>
+(above) for its definition.</p>
+</li>
+</ul>
+<a class="target" id="synchronize-times" name="synchronize-times"></a><ul>
+<li><p class="first"><tt class="literal"><span class="pre">synchronize_times()</span></tt></p>
+<p>synchronizes the local times of the server and the client, so that
+<a class="reference" href="#upload-if-newer">upload_if_newer</a> and <a class="reference" href="#download-if-newer">download_if_newer</a> work as expected, even
+if the client and the server are in different time zones. For this
+to work, <em>all</em> of the following conditions must be true:</p>
+<ul class="simple">
+<li>The connection between server and client is established.</li>
+<li>The client has write access to the directory that is current when
+<tt class="literal"><span class="pre">synchronize_times</span></tt> is called.</li>
+<li>That directory is <em>not</em> the root directory (i. e. <tt class="literal"><span class="pre">/</span></tt>) of the
+FTP server.</li>
+</ul>
+<p>If you can't fulfill these conditions, you can nevertheless set the
+time shift value manually with <a class="reference" href="#set-time-shift">set_time_shift</a>. Trying to call
+<tt class="literal"><span class="pre">synchronize_times</span></tt> if the above conditions aren't true results in
+a <tt class="literal"><span class="pre">TimeShiftError</span></tt> exception.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="files-and-directories">
+<h3><a class="toc-backref" href="#id8" name="files-and-directories">Files and directories</a></h3>
+<ul>
+<li><p class="first"><tt class="literal"><span class="pre">file(path,</span> <span class="pre">mode='r')</span></tt></p>
+<p>returns a file-like object that is connected to the path on the
+remote host. This path may be absolute or relative to current
+directory on the remote host (this directory can be determined
+with the getcwd method). As with local file objects the default
+mode is &quot;r&quot;, i. e. reading text files. Valid modes are &quot;r&quot;, &quot;rb&quot;,
+&quot;w&quot;, and &quot;wb&quot;.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">open(path,</span> <span class="pre">mode='r')</span></tt></p>
+<p>is an alias for <tt class="literal"><span class="pre">file</span></tt> (see above).</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">copyfileobj(source,</span> <span class="pre">target,</span> <span class="pre">length=64*1024)</span></tt></p>
+<p>copies the contents from the file-like object source to the
+file-like object target. The only difference to
+<tt class="literal"><span class="pre">shutil.copyfileobj</span></tt> is the default buffer size.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">close()</span></tt></p>
+<p>closes the connection to the remote host. After this, no more
+interaction with the FTP server is possible without using a new
+<tt class="literal"><span class="pre">FTPHost</span></tt> object.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">getcwd()</span></tt></p>
+<p>returns the absolute current directory on the remote host. This
+method acts similar to <tt class="literal"><span class="pre">os.getcwd</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">chdir(directory)</span></tt></p>
+<p>sets the current directory on the FTP server. This resembles
+<tt class="literal"><span class="pre">os.chdir</span></tt>, as you may have expected. :-)</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">mkdir(path,</span> <span class="pre">[mode])</span></tt></p>
+<p>makes the given directory on the remote host. In the current
+implementation, this doesn't construct &quot;intermediate&quot; directories
+which don't already exist. The <tt class="literal"><span class="pre">mode</span></tt> parameter is ignored. This
+is for compatibilty with <tt class="literal"><span class="pre">os.mkdir</span></tt> if an <tt class="literal"><span class="pre">FTPHost</span></tt> object is
+passed into a function instead of the os module (see the subsection
+on Python exceptions above for an explanation).</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">rmdir(path)</span></tt></p>
+<p>removes the given remote directory.</p>
+<p>In previous versions of <tt class="literal"><span class="pre">ftputil</span></tt>, it depended on the remote
+server whether non-empty directories could be deleted. <tt class="literal"><span class="pre">ftputil</span></tt>
+version 2.0 and up by default allow only to delete empty
+directories.</p>
+<p>If you want to update to <tt class="literal"><span class="pre">ftputil</span></tt> 2.0 with minimal changes
+to your source code, pass in an additional parameter
+<tt class="literal"><span class="pre">_remove_only_empty=False</span></tt>. Note that this is deprecated and
+will probably be unsupported in future <tt class="literal"><span class="pre">ftputil</span></tt> versions.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">remove(path)</span></tt></p>
+<p>removes a file on the remote host (similar to <tt class="literal"><span class="pre">os.remove</span></tt>).</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">unlink(path)</span></tt></p>
+<p>is an alias for <tt class="literal"><span class="pre">remove</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">rename(source,</span> <span class="pre">target)</span></tt></p>
+<p>renames the source file (or directory) on the FTP server.</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">listdir(path)</span></tt></p>
+<p>returns a list containing the names of the files and directories
+in the given path; similar to <tt class="literal"><span class="pre">os.listdir</span></tt>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="uploading-and-downloading-files">
+<h3><a class="toc-backref" href="#id9" name="uploading-and-downloading-files">Uploading and downloading files</a></h3>
+<ul>
+<li><p class="first"><tt class="literal"><span class="pre">upload(source,</span> <span class="pre">target,</span> <span class="pre">mode='')</span></tt></p>
+<p>copies a local source file (given by a filename, i. e. a string)
+to the remote host under the name target. Both source and target
+may be absolute paths or relative to their corresponding current
+directory (on the local or the remote host, respectively). The
+mode may be &quot;&quot; or &quot;a&quot; for ASCII uploads or &quot;b&quot; for binary uploads.
+ASCII mode is the default (again, similar to regular local file
+objects).</p>
+</li>
+<li><p class="first"><tt class="literal"><span class="pre">download(source,</span> <span class="pre">target,</span> <span class="pre">mode='')</span></tt></p>
+<p>performs a download from the remote source to a target file. Both
+source and target are strings. Additionally, the description of
+the upload method applies here, too.</p>
+</li>
+</ul>
+<a class="target" id="upload-if-newer" name="upload-if-newer"></a><ul>
+<li><p class="first"><tt class="literal"><span class="pre">upload_if_newer(source,</span> <span class="pre">target,</span> <span class="pre">mode='')</span></tt></p>
+<p>is similar to the upload method. The only difference is that the
+upload is only invoked if the time of the last modification for
+the source file is more recent than that of the target file, or
+the target doesn't exist at all. If an upload actually happened,
+the return value is a true value, else a false value.</p>
+<p>Note that this method only checks the existence and/or the
+modification time of the source and target file; it can't recognize
+a change in the transfer mode, e. g.</p>
+<pre class="literal-block">
+# transfer in ASCII mode
+host.upload_if_newer('source_file', 'target_file', 'a')
+# won't transfer the file again
+host.upload_if_newer('source_file', 'target_file', 'b')
+</pre>
+<p>Similarly, if a transfer is interrupted, the remote file will have a
+newer modification time than the local file, and thus the transfer
+won't be repeated if <tt class="literal"><span class="pre">upload_if_newer</span></tt> is used a second time.
+There are (at least) two possibilities after a failed upload:</p>
+<ul class="simple">
+<li>use <tt class="literal"><span class="pre">upload</span></tt> instead of <tt class="literal"><span class="pre">upload_if_newer</span></tt>, or</li>
+<li>remove the incomplete target file with <tt class="literal"><span class="pre">FTPHost.remove</span></tt>, then
+use <tt class="literal"><span class="pre">upload</span></tt> or <tt class="literal"><span class="pre">upload_if_newer</span></tt> to transfer it again.</li>
+</ul>
+<p>If it seems that a file is uploaded unnecessarily, read the
+subsection on <a class="reference" href="#time-shift">time shift</a> settings.</p>
+</li>
+</ul>
+<a class="target" id="download-if-newer" name="download-if-newer"></a><ul>
+<li><p class="first"><tt class="literal"><span class="pre">download_if_newer(source,</span> <span class="pre">target,</span> <span class="pre">mode='')</span></tt></p>
+<p>corresponds to <tt class="literal"><span class="pre">upload_if_newer</span></tt> but performs a download from the
+server to the local host. Read the descriptions of download and
+<tt class="literal"><span class="pre">upload_if_newer</span></tt> for more. If a download actually happened, the
+return value is a true value, else a false value.</p>
+<p>If it seems that a file is downloaded unnecessarily, read the
+subsection on <a class="reference" href="#time-shift">time shift</a> settings.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="stat-ing-files-and-directories">
+<h3><a class="toc-backref" href="#id10" name="stat-ing-files-and-directories">Stat'ing files and directories</a></h3>
+<p>The methods <tt class="literal"><span class="pre">lstat</span></tt> and <tt class="literal"><span class="pre">stat</span></tt> (and others) rely on the
+directory listing format used by the FTP server. When connecting
+to a host, <tt class="literal"><span class="pre">FTPHost</span></tt>'s constructor tries to guess the right
+format, which mostly succeeds. However, if you get strange results
+(or exceptions), it may be necessary to set the directory format
+&quot;manually&quot;. This is done - immediately after connecting - with</p>
+<a class="target" id="set-directory-format" name="set-directory-format"></a><ul>
+<li><p class="first"><tt class="literal"><span class="pre">set_directory_format(server_format)</span></tt></p>
+<p><tt class="literal"><span class="pre">server_format</span></tt> is one of the strings &quot;unix&quot; or &quot;ms&quot;. To choose
+the correct format, you have to start a command line FTP client and
+request a directory listing (most clients do this with the <tt class="literal"><span class="pre">DIR</span></tt>
+command).</p>
+<p>If the resulting lines look like</p>
+<pre class="literal-block">
+drwxr-sr-x   2 45854    200           512 Jul 30 17:14 image
+-rw-r--r--   1 45854    200          4604 Jan 19 23:11 index.html
+</pre>
+<p>use &quot;unix&quot; as the argument.</p>
+<p>If the output looks like</p>
+<pre class="literal-block">
+12-07-01  02:05PM       &lt;DIR&gt;          XPLaunch
+07-17-00  02:08PM             12266720 digidash.exe
+</pre>
+<p>use &quot;ms&quot; as the argument string <tt class="literal"><span class="pre">server_format</span></tt>.</p>
+<p>If none of the above settings help, contact me. It would be very
+helpful if you could provide an example listing (<tt class="literal"><span class="pre">DIR</span></tt>'s output).</p>
+</li>
+</ul>
+<p>If calling <tt class="literal"><span class="pre">lstat</span></tt> or <tt class="literal"><span class="pre">stat</span></tt> yields wrong modification dates
+or times, look at the methods that deal with time zone differences
+(<a class="reference" href="#time-shift">time shift</a>).</p>
+<a class="target" id="ftphost-lstat" name="ftphost-lstat"></a><ul>
+<li><p class="first"><tt class="literal"><span class="pre">lstat(path)</span></tt></p>
+<p>returns an object similar that from <tt class="literal"><span class="pre">os.lstat</span></tt> (a &quot;tuple&quot; with
+additional attributes; see the documentation of the <tt class="literal"><span class="pre">os</span></tt> module for
+details). However, due to the nature of the application, there are
+some important aspects to keep in mind:</p>
+<ul class="simple">
+<li>The result is derived by parsing the output of a <tt class="literal"><span class="pre">DIR</span></tt> command on
+the server. Therefore, the result from <tt class="literal"><span class="pre">FTPHost.lstat</span></tt> can not
+contain more information than the received text. In particular:</li>
+<li>User and group ids can only be determined as strings, not as
+numbers, and that only if the server supplies them. This is
+usually the case with Unix servers but may not be for other FTP
+server programs.</li>
+<li>Values for the time of the last modification may be rough,
+depending on the information from the server. For timestamps
+older than a year, this usually means that the precision of the
+modification timestamp value is not better than days. For newer
+files, the information may be accurate to a minute.</li>
+<li>Links can only be recognized on servers that provide this
+information in the <tt class="literal"><span class="pre">DIR</span></tt> output.</li>
+<li>Items that can't be determined at all are set to <tt class="literal"><span class="pre">None</span></tt>.</li>
+<li>There's a special problem with stat'ing the root directory. In
+this case, a <tt class="literal"><span class="pre">RootDirError</span></tt> is raised. This has to do with the
+algorithm used by <tt class="literal"><span class="pre">(l)stat</span></tt> and I know of no approach which
+solves this problem.</li>
+</ul>
+</li>
+</ul>
+<!-- update for other servers -->
+<!--  -->
+<blockquote>
+Currently, <tt class="literal"><span class="pre">ftputil</span></tt> recognizes the MS Robin FTP server.
+Otherwise, a format commonly used by Unix servers is assumed. If you
+need to parse output from another server type, please contact me
+under the email address at the end of this text.</blockquote>
+<!-- implement and document support for setting the directory parser
+"manually" -->
+<a class="target" id="ftphost-stat" name="ftphost-stat"></a><ul class="simple">
+<li><tt class="literal"><span class="pre">stat(path)</span></tt>
+returns <tt class="literal"><span class="pre">stat</span></tt> information also for files which are pointed to by a
+link. This method follows multiple links until a regular file or
+directory is found. If an infinite link chain is encountered, a
+<tt class="literal"><span class="pre">PermanentError</span></tt> is raised.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ftphost-path">
+<h2><a class="toc-backref" href="#id11" name="ftphost-path"><tt class="literal"><span class="pre">FTPHost.path</span></tt></a></h2>
+<p><tt class="literal"><span class="pre">FTPHost</span></tt> objects contain an attribute named <tt class="literal"><span class="pre">path</span></tt>, similar to
+<a class="reference" href="http://www.python.org/doc/current/lib/module-os.path.html">os.path</a>. The following methods can be applied to the remote host
+with the same semantics as for <tt class="literal"><span class="pre">os.path</span></tt>:</p>
+<a class="target" id="ftphost-path-walk" name="ftphost-path-walk"></a><pre class="literal-block">
+abspath(path)
+basename(path)
+commonprefix(path_list)
+dirname(path)
+exists(path)
+getmtime(path)
+getsize(path)
+isabs(path)
+isdir(path)
+isfile(path)
+islink(path)
+join(path1, path2, ...)
+normcase(path)
+normpath(path)
+split(path)
+splitdrive(path)
+splitext(path)
+walk(path, func, arg)
+</pre>
+</div>
+</div>
+<div class="section" id="ftpfile-objects">
+<h1><a class="toc-backref" href="#id12" name="ftpfile-objects"><tt class="literal"><span class="pre">FTPFile</span></tt> objects</a></h1>
+<p><tt class="literal"><span class="pre">FTPFile</span></tt> objects as returned by a call to <tt class="literal"><span class="pre">FTPHost.file</span></tt> (or
+<tt class="literal"><span class="pre">FTPHost.open</span></tt>) have the following methods - with the same arguments and
+semantics as for local files:</p>
+<pre class="literal-block">
+close()
+read([count])
+readline([count])
+readlines()
+write(data)
+writelines(string_sequence)
+xreadlines()
+</pre>
+<p>and the attribute <tt class="literal"><span class="pre">closed</span></tt>. For details, see the section <a class="reference" href="http://www.python.org/doc/current/lib/bltin-file-objects.html">File objects</a>
+in the Library Reference.</p>
+<p>Note that <tt class="literal"><span class="pre">ftputil</span></tt> supports both binary mode and text mode with the
+appropriate line ending conversions.</p>
+</div>
+<div class="section" id="tips-and-tricks-faq">
+<h1><a class="toc-backref" href="#id13" name="tips-and-tricks-faq">Tips and tricks / FAQ</a></h1>
+<div class="section" id="where-can-i-get-the-latest-version">
+<h2><a class="toc-backref" href="#id14" name="where-can-i-get-the-latest-version">Where can I get the latest version?</a></h2>
+<p>See <a class="reference" href="http://www.sschwarzer.net/python/python_software.html#ftputil">http://www.sschwarzer.net/python/python_software.html#ftputil</a> .
+Announcements will also be sent to the mailing list (see the question
+below). Announcements on major updates will also be posted to the
+newsgroup <a class="reference" href="news:comp.lang.python">comp.lang.python</a> .</p>
+</div>
+<div class="section" id="is-there-a-mailing-list-on-ftputil">
+<h2><a class="toc-backref" href="#id15" name="is-there-a-mailing-list-on-ftputil">Is there a mailing list on <tt class="literal"><span class="pre">ftputil</span></tt>?</a></h2>
+<p>Yes, you can subscribe at <a class="reference" href="http://codespeak.net/mailman/listinfo/ftputil">http://codespeak.net/mailman/listinfo/ftputil</a>
+or read the archives at <a class="reference" href="http://codespeak.net/pipermail/ftputil/">http://codespeak.net/pipermail/ftputil/</a> .</p>
+</div>
+<div class="section" id="i-found-a-bug-what-now">
+<h2><a class="toc-backref" href="#id16" name="i-found-a-bug-what-now">I found a bug! What now?</a></h2>
+<p>Before reporting a bug, make sure that you already tried the latest
+version of <tt class="literal"><span class="pre">ftputil</span></tt>. There the bug might have already been fixed.</p>
+<p>Please send your bug report to the <tt class="literal"><span class="pre">ftputil</span></tt> mailing list (see
+above for the address) or to me (email address at the top of this
+file). In <em>either</em> case you <em>must not</em> include confidential
+information (user id, password, file names, etc.) in the mail.</p>
+<p>When reporting a bug, please provide the following information:</p>
+<ul class="simple">
+<li>version of <tt class="literal"><span class="pre">ftputil</span></tt></li>
+<li>version of Python</li>
+<li>type and version of FTP server (should be visible in its &quot;welcome
+message&quot;)</li>
+<li>operating system and version for server and client (output of
+<tt class="literal"><span class="pre">uname</span> <span class="pre">-a</span></tt> on Unix)</li>
+<li>bug description</li>
+<li>if possible, a short code example which reproduces the bug</li>
+<li>if possible, ideas that might help to find the cause of the bug</li>
+</ul>
+</div>
+<div class="section" id="connecting-on-another-port">
+<h2><a class="toc-backref" href="#id17" name="connecting-on-another-port">Connecting on another port</a></h2>
+<p>By default, an instantiated <tt class="literal"><span class="pre">FTPHost</span></tt> object connects on the usual
+FTP ports. If you have to use a different port, refer to the
+section <a class="reference" href="#ftphost-construction">FTPHost construction</a>.</p>
+<p>You can use the same approach to connect in active or passive mode, as
+you like.</p>
+</div>
+<div class="section" id="using-active-or-passive-connections">
+<h2><a class="toc-backref" href="#id18" name="using-active-or-passive-connections">Using active or passive connections</a></h2>
+<p>Please see the previous tip.</p>
+</div>
+<div class="section" id="conditional-upload-download-to-from-a-server-in-a-different-time-zone">
+<h2><a class="toc-backref" href="#id19" name="conditional-upload-download-to-from-a-server-in-a-different-time-zone">Conditional upload/download to/from a server in a different time zone</a></h2>
+<p>You may find that <tt class="literal"><span class="pre">ftputil</span></tt> uploads or downloads files
+unnecessarily, or not when it should. This can happen when the FTP
+server is in a different time zone than the client on which
+<tt class="literal"><span class="pre">ftputil</span></tt> runs. Please see the the section on setting the
+<a class="reference" href="#time-shift">time shift</a>. It may even be sufficient to call <a class="reference" href="#synchronize-times">synchronize_times</a>.</p>
+</div>
+<div class="section" id="wrong-dates-or-times-when-stat-ing-on-a-server">
+<h2><a class="toc-backref" href="#id20" name="wrong-dates-or-times-when-stat-ing-on-a-server">Wrong dates or times when stat'ing on a server</a></h2>
+<p>Please see the previous and the next tip.</p>
+</div>
+<div class="section" id="file-related-query-methods-e-g-listdir-return-unexpected-results">
+<h2><a class="toc-backref" href="#id21" name="file-related-query-methods-e-g-listdir-return-unexpected-results">File-related query methods (e. g. <tt class="literal"><span class="pre">listdir</span></tt>) return unexpected results</a></h2>
+<p>If, for example, <tt class="literal"><span class="pre">listdir</span></tt> or <tt class="literal"><span class="pre">lstat</span></tt> return a wrong value or
+raise an exception, it may be because of a wrongly determined
+directory format. Please see the discussion of
+<a class="reference" href="#set-directory-format">set_directory_format</a>.</p>
+</div>
+<div class="section" id="i-don-t-find-an-answer-to-my-problem-in-this-document">
+<h2><a class="toc-backref" href="#id22" name="i-don-t-find-an-answer-to-my-problem-in-this-document">I don't find an answer to my problem in this document</a></h2>
+<p>Please send me an email with your question, and I'll see what I can
+do for you. :-) Probably a better way is to send your question to the
+mailing list at <a class="reference" href="mailto:ftputil&#64;codespeak.net">ftputil&#64;codespeak.net</a>; potentially more people might
+be able to help you.</p>
+</div>
+</div>
+<div class="section" id="bugs-and-limitations">
+<h1><a class="toc-backref" href="#id23" name="bugs-and-limitations">Bugs and limitations</a></h1>
+<ul class="simple">
+<li><tt class="literal"><span class="pre">ftputil</span></tt> needs at least Python 2.0 to work.</li>
+<li>Due to the implementation of <tt class="literal"><span class="pre">lstat</span></tt> it can not return a sensible
+value for the root directory <tt class="literal"><span class="pre">/</span></tt>. If you know an implementation that
+can do this, please let me know. The root directory is handled
+appropriately in <tt class="literal"><span class="pre">FTPHost.path.exists/isfile/isdir/islink</span></tt>, though.</li>
+<li>Timeouts of individual child sessions currently are not handled.
+This is only a problem if your <tt class="literal"><span class="pre">FTPHost</span></tt> object or the generated
+<tt class="literal"><span class="pre">FTPFile</span></tt> objects are inactive for about ten minutes or longer.</li>
+<li>Until now, I haven't paid attention to thread safety. In principle,
+at least, different <tt class="literal"><span class="pre">FTPFile</span></tt> objects should be usable in different
+threads.</li>
+<li><tt class="literal"><span class="pre">FTPFile</span></tt> objects in text mode <em>may not</em> support charsets with more
+than one byte per character. Please email me your experiences
+(address above), if you work with multibyte text streams in FTP
+sessions.</li>
+<li>Currently, it is not possible to continue an interrupted upload or
+download. Contact me if you have problems with that.</li>
+<li>The <tt class="literal"><span class="pre">UserTuple</span></tt> class, provided in <tt class="literal"><span class="pre">UserTuple.py</span></tt>, is not thoroughly
+tested. If you encouter problems, please notify me.</li>
+</ul>
+</div>
+<div class="section" id="files">
+<h1><a class="toc-backref" href="#id24" name="files">Files</a></h1>
+<p>If not overwritten via installation options, the <tt class="literal"><span class="pre">ftputil</span></tt> files
+reside in the <tt class="literal"><span class="pre">ftputil</span></tt> package. The documentation (in
+<a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructured Text</a> and in HTML format) is in the same directory.</p>
+<p>The files <tt class="literal"><span class="pre">_test_*.py</span></tt> and <tt class="literal"><span class="pre">_mock_ftplib.py</span></tt> are for unit-testing.
+If you only <em>use</em> <tt class="literal"><span class="pre">ftputil</span></tt> (i. e. <em>not</em> modifying it), you can
+delete these files.</p>
+</div>
+<div class="section" id="references">
+<h1><a class="toc-backref" href="#id25" name="references">References</a></h1>
+<ul class="simple">
+<li>Mackinnon T, Freeman S, Craig P. 2000. <a class="reference" href="http://www.connextra.com/aboutUs/mockobjects.pdf">Endo-Testing:
+Unit Testing with Mock Objects</a>.</li>
+<li>Postel J, Reynolds J. 1985. <a class="reference" href="http://www.ietf.org/rfc/rfc959.txt">RFC 959 - File Transfer Protocol (FTP)</a>.</li>
+<li>Van Rossum G, Drake Jr FL. 2003. <a class="reference" href="http://www.python.org/doc/current/lib/lib.html">Python Library Reference</a>.</li>
+</ul>
+</div>
+<div class="section" id="author">
+<h1><a class="toc-backref" href="#id26" name="author">Author</a></h1>
+<p><tt class="literal"><span class="pre">ftputil</span></tt> is written by Stefan Schwarzer &lt;<a class="reference" href="mailto:sschwarzer&#64;sschwarzer.net">sschwarzer&#64;sschwarzer.net</a>&gt;.</p>
+<p>Feedback is appreciated. :-)</p>
+</div>
+</div>
+</body>
+</html>
