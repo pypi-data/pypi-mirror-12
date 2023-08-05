@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abilian.core.celery &mdash; Abilian 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Abilian 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Abilian
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">About Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installing.html">Installing Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Constributing to Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coding-standard.html">Coding standard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog for Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Abilian</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>abilian.core.celery</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for abilian.core.celery</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+
+<span class="kn">from</span> <span class="nn">multiprocessing.util</span> <span class="kn">import</span> <span class="n">register_after_fork</span>
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">Celery</span>
+<span class="kn">from</span> <span class="nn">celery.app.task</span> <span class="kn">import</span> <span class="n">Task</span>
+<span class="kn">from</span> <span class="nn">celery.task</span> <span class="kn">import</span> <span class="n">PeriodicTask</span> <span class="k">as</span> <span class="n">CeleryPeriodicTask</span>
+<span class="kn">from</span> <span class="nn">celery.loaders.base</span> <span class="kn">import</span> <span class="n">BaseLoader</span>
+<span class="kn">from</span> <span class="nn">celery.utils.imports</span> <span class="kn">import</span> <span class="n">symbol_by_name</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">has_app_context</span><span class="p">,</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">flask_current_app</span>
+<span class="kn">from</span> <span class="nn">flask.helpers</span> <span class="kn">import</span> <span class="n">locked_cached_property</span>
+
+
+<span class="k">def</span> <span class="nf">default_app_factory</span><span class="p">():</span>
+  <span class="kn">from</span> <span class="nn">abilian.app</span> <span class="kn">import</span> <span class="n">Application</span>
+  <span class="k">return</span> <span class="n">Application</span><span class="p">()</span>
+
+
+<span class="n">CELERY_CONF_KEY_PREFIXES</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;CELERY_&#39;</span><span class="p">,</span> <span class="s">&#39;CELERYD_&#39;</span><span class="p">,</span> <span class="s">&#39;BROKER_&#39;</span><span class="p">,</span>
+                            <span class="s">&#39;CELERYBEAT_&#39;</span><span class="p">,</span> <span class="s">&#39;CELERYMON_&#39;</span><span class="p">,)</span>
+
+
+<span class="k">def</span> <span class="nf">is_celery_setting</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span> <span class="k">for</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">CELERY_CONF_KEY_PREFIXES</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">FlaskLoader</span><span class="p">(</span><span class="n">BaseLoader</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c">#: override this in your project</span>
+  <span class="c">#: this can be a function or a class</span>
+  <span class="n">flask_app_factory</span> <span class="o">=</span> <span class="s">&quot;abilian.core.celery.default_app_factory&quot;</span>
+  <span class="n">app_context</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="nd">@locked_cached_property</span>
+  <span class="k">def</span> <span class="nf">flask_app</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">has_app_context</span><span class="p">():</span>
+      <span class="k">return</span> <span class="n">flask_current_app</span><span class="o">.</span><span class="n">_get_current_object</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">flask_app_factory</span> <span class="o">=</span> <span class="n">symbol_by_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">flask_app_factory</span><span class="p">)</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flask_app_factory</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="s">&#39;sentry&#39;</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">:</span>
+      <span class="kn">from</span> <span class="nn">raven.contrib.celery</span> <span class="kn">import</span> <span class="n">register_signal</span><span class="p">,</span> <span class="n">register_logger_signal</span>
+      <span class="n">client</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s">&#39;sentry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">client</span>
+      <span class="n">client</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s">&#39;process_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;celery task&#39;</span>
+      <span class="n">register_signal</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+      <span class="n">register_logger_signal</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+    <span class="n">register_after_fork</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup_after_fork</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">app</span>
+
+  <span class="k">def</span> <span class="nf">_setup_after_fork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+    <span class="n">binds</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;SQLALCHEMY_BINDS&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">())</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">db</span>
+    <span class="k">for</span> <span class="n">bind</span> <span class="ow">in</span> <span class="n">binds</span><span class="p">:</span>
+      <span class="n">engine</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_engine</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">bind</span><span class="p">)</span>
+      <span class="n">engine</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
+
+
+  <span class="k">def</span> <span class="nf">read_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flask_app</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&#39;CELERY_DEFAULT_EXCHANGE&#39;</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&#39;CELERY_DEFAULT_QUEUE&#39;</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&#39;CELERY_BROADCAST_EXCHANGE&#39;</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#39;ctl&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&#39;CELERY_BROADCAST_QUEUE&#39;</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#39;ctl&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&#39;CELERY_RESULT_EXCHANGE&#39;</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#39;results&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&#39;CELERY_DEFAULT_ROUTING_KEY&#39;</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">is_celery_setting</span><span class="p">(</span><span class="n">k</span><span class="p">)}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">configured</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="k">class</span> <span class="nc">FlaskTask</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Base Task class for :FlaskCelery: based applications.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+      <span class="c"># this is here mainly because flask_sqlalchemy (as of 2.0) will remove</span>
+      <span class="c"># session on app context teardown.</span>
+      <span class="c">#</span>
+      <span class="c"># Unfortunatly when using eager tasks (during dev and tests, mostly),</span>
+      <span class="c"># calling apply_async() during after_commit() will remove session because</span>
+      <span class="c"># app_context would be pushed and popped. The TB looks like:</span>
+      <span class="c">#</span>
+      <span class="c"># sqlalchemy/orm/session.py: in transaction.commit:</span>
+      <span class="c">#     if self.session._enable_transaction_accounting:</span>
+      <span class="c"># AttributeError: &#39;NoneType&#39; object has no attribute</span>
+      <span class="c">#                 &#39;_enable_transaction_accounting&#39;</span>
+      <span class="c">#</span>
+      <span class="c"># FIXME: also test has_app_context()?</span>
+      <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">FlaskTask</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">flask_app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+      <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">FlaskTask</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">PeriodicTask</span><span class="p">(</span><span class="n">FlaskTask</span><span class="p">,</span> <span class="n">CeleryPeriodicTask</span><span class="p">):</span>
+  <span class="n">__doc__</span> <span class="o">=</span> <span class="n">CeleryPeriodicTask</span><span class="o">.</span><span class="n">__doc__</span>
+  <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+
+
+<span class="k">def</span> <span class="nf">periodic_task</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Deprecated decorator, please use :setting:`CELERYBEAT_SCHEDULE`.&quot;&quot;&quot;</span>
+  <span class="c"># FIXME: &#39;task&#39; below is not callable. Fix or remove.</span>
+  <span class="k">return</span> <span class="n">task</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">({</span><span class="s">&#39;base&#39;</span><span class="p">:</span> <span class="n">PeriodicTask</span><span class="p">},</span> <span class="o">**</span><span class="n">options</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">FlaskCelery</span><span class="p">(</span><span class="n">Celery</span><span class="p">):</span>
+  <span class="c"># can be overriden on command line with --loader</span>
+  <span class="n">loader_cls</span> <span class="o">=</span> <span class="n">FlaskLoader</span>
+  <span class="n">task_cls</span> <span class="o">=</span> <span class="n">FlaskTask</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2015, Abilian SAS.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

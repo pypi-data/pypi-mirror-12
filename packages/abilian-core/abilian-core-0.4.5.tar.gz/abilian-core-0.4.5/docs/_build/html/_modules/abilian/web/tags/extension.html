@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abilian.web.tags.extension &mdash; Abilian 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Abilian 0.1 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Abilian
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction.html">About Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installing.html">Installing Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Constributing to Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../coding-standard.html">Coding standard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog for Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Abilian</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>abilian.web.tags.extension</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for abilian.web.tags.extension</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+
+<span class="kn">from</span> <span class="nn">abilian.i18n</span> <span class="kn">import</span> <span class="n">_l</span>
+<span class="kn">from</span> <span class="nn">abilian.core.models.tag</span> <span class="kn">import</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">TAGS_ATTR</span><span class="p">,</span> <span class="n">is_support_tagging</span>
+<span class="kn">from</span> <span class="nn">abilian.web</span> <span class="kn">import</span> <span class="n">url_for</span>
+<span class="kn">from</span> <span class="nn">abilian.web.forms</span> <span class="kn">import</span> <span class="n">Form</span>
+<span class="kn">from</span> <span class="nn">abilian.web.views.object</span> <span class="kn">import</span> <span class="n">EDIT_BUTTON</span>
+
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">TagsField</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">bp</span> <span class="k">as</span> <span class="n">tags_bp</span><span class="p">,</span> <span class="n">entity_bp</span>
+
+<span class="n">ENTITY_DEFAULT_NS_ATTR</span> <span class="o">=</span> <span class="s">&#39;__tags_default_ns__&#39;</span>
+
+<span class="k">def</span> <span class="nf">ns</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Class decorator that set default tags namespace to use with its instances.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">setup_ns</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">ENTITY_DEFAULT_NS_ATTR</span><span class="p">,</span> <span class="n">ns</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cls</span>
+
+  <span class="k">return</span> <span class="n">setup_ns</span>
+
+
+<span class="k">class</span> <span class="nc">_TagsForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Form to workaround a wtforms limitation: fields cannot start with an</span>
+<span class="sd">  underscore, so &#39;__tags__&#39; is not accepted.</span>
+
+<span class="sd">  This form help process tags (and only tags).</span>
+
+<span class="sd">  .. seealso:: :py:meth:`~TagsExtension.entity_tags_form`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">formdata</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">tags</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">TAGS_ATTR</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>
+
+    <span class="nb">super</span><span class="p">(</span><span class="n">_TagsForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">formdata</span><span class="o">=</span><span class="n">formdata</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                                   <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="TagsExtension"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension">[docs]</a><span class="k">class</span> <span class="nc">TagsExtension</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  API for tags, installed as an application extension</span>
+
+<span class="sd">  It is also available in templates as `tags`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s">&#39;tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_template_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;tags&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">tags_bp</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">entity_bp</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TagsExtension.is_support_tagging"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.is_support_tagging">[docs]</a>  <span class="k">def</span> <span class="nf">is_support_tagging</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">is_support_tagging</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TagsExtension.entity_tags"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.entity_tags">[docs]</a>  <span class="k">def</span> <span class="nf">entity_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">TAGS_ATTR</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TagsExtension.tags_from_hit"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.tags_from_hit">[docs]</a>  <span class="k">def</span> <span class="nf">tags_from_hit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag_ids</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param tag_ids: indexed ids of tags in hit result. Do not pass hit instance.</span>
+
+<span class="sd">    :returns: an iterable of :class:`Tag` instances.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tag_ids</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+      <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+      <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ids</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">return</span> <span class="n">Tag</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Tag</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="TagsExtension.entity_default_ns"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.entity_default_ns">[docs]</a>  <span class="k">def</span> <span class="nf">entity_default_ns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">ENTITY_DEFAULT_NS_ATTR</span><span class="p">,</span> <span class="s">&#39;default&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TagsExtension.entity_tags_form"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.entity_tags_form">[docs]</a>  <span class="k">def</span> <span class="nf">entity_tags_form</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Construct a form class with a field for tags in namespace `ns`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ns</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">ns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">entity_default_ns</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+
+    <span class="n">field</span>  <span class="o">=</span> <span class="n">TagsField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">_l</span><span class="p">(</span><span class="s">u&#39;Tags&#39;</span><span class="p">),</span> <span class="n">ns</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+    <span class="n">cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s">&#39;EntityNSTagsForm&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">_TagsForm</span><span class="p">,),</span> <span class="p">{</span><span class="s">&#39;tags&#39;</span><span class="p">:</span> <span class="n">field</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">cls</span>
+</div>
+<div class="viewcode-block" id="TagsExtension.get"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.get">[docs]</a>  <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ns</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return :class:`tags instances&lt;~Tag&gt;` for the namespace `ns`, ordered by</span>
+<span class="sd">    label.</span>
+
+<span class="sd">    If `label` is not None the only one instance may be returned, or `None` if</span>
+<span class="sd">    no tags exists for this label.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">Tag</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Tag</span><span class="o">.</span><span class="n">ns</span> <span class="o">==</span> <span class="n">ns</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Tag</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="TagsExtension.add"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.add">[docs]</a>  <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">tag</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">assert</span> <span class="bp">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">tag</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="n">ns</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">entity_tag</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+    <span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="TagsExtension.remove"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.remove">[docs]</a>  <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">tag</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">assert</span> <span class="bp">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">entity_tag</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">tags</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+      <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="TagsExtension.get_form_context"><a class="viewcode-back" href="../../../../api.html#abilian.web.tags.TagsExtension.get_form_context">[docs]</a>  <span class="k">def</span> <span class="nf">get_form_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a dict: form instance, action button, submit url...</span>
+<span class="sd">    Used by macro m_tags_form(entity)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ctx</span><span class="p">[</span><span class="s">&#39;url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;entity_tags.edit&#39;</span><span class="p">,</span> <span class="n">object_id</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">ctx</span><span class="p">[</span><span class="s">&#39;form&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">entity_tags_form</span><span class="p">(</span><span class="n">obj</span><span class="p">)(</span><span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+    <span class="n">ctx</span><span class="p">[</span><span class="s">&#39;buttons&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">EDIT_BUTTON</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ctx</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2015, Abilian SAS.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

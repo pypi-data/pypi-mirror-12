@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abilian.web.nav &mdash; Abilian 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Abilian 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Abilian
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">About Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installing.html">Installing Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Constributing to Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coding-standard.html">Coding standard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog for Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Abilian</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>abilian.web.nav</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for abilian.web.nav</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Navigation elements.</span>
+
+<span class="sd">Abilian define theses categories:</span>
+<span class="sd">  `section`:</span>
+<span class="sd">    Used for navigation elements relevant to site section</span>
+<span class="sd">  `user`:</span>
+<span class="sd">    User for element that should appear in user menu</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">g</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Template</span><span class="p">,</span> <span class="n">Markup</span>
+<span class="kn">from</span> <span class="nn">.action</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">Glyphicon</span><span class="p">,</span> <span class="n">ENABLED</span><span class="p">,</span> <span class="n">ACTIVE</span><span class="p">,</span> <span class="n">getset</span><span class="p">,</span> <span class="n">Endpoint</span>
+
+
+<div class="viewcode-block" id="NavItem"><a class="viewcode-back" href="../../../api.html#abilian.web.nav.NavItem">[docs]</a><span class="k">class</span> <span class="nc">NavItem</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A single navigation item.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">divider</span> <span class="o">=</span> <span class="bp">False</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">divider</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="s">&#39;navigation:&#39;</span> <span class="o">+</span> <span class="n">category</span>
+    <span class="n">Action</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">divider</span> <span class="o">=</span> <span class="n">divider</span>
+
+  <span class="nd">@getset</span>
+  <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">nav</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;active&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">current</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">ENABLED</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;navigation:&#39;</span><span class="p">):</span>
+      <span class="n">current</span> <span class="o">=</span> <span class="s">&#39;navigation:&#39;</span> <span class="o">+</span> <span class="n">current</span>
+
+    <span class="n">status</span> <span class="o">=</span> <span class="n">ACTIVE</span> <span class="k">if</span> <span class="n">current</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="k">else</span> <span class="n">ENABLED</span>
+    <span class="k">return</span> <span class="n">status</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">+</span> <span class="s">&#39;:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</div>
+<div class="viewcode-block" id="NavGroup"><a class="viewcode-back" href="../../../api.html#abilian.web.nav.NavGroup">[docs]</a><span class="k">class</span> <span class="nc">NavGroup</span><span class="p">(</span><span class="n">NavItem</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A navigation group renders a list of items.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">template_string</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">    &lt;ul class=&quot;nav navbar-nav {{ action.css_class }}&quot;&gt;</span>
+<span class="s">      &lt;li class=&quot;dropdown&quot;&gt;</span>
+<span class="s">        &lt;a class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;</span>
+<span class="s">          {</span><span class="si">%- i</span><span class="s">f action.icon %}{{ action.icon }}{</span><span class="si">% e</span><span class="s">ndif %}</span>
+<span class="s">          {{ action.title }} &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;</span>
+<span class="s">        &lt;/a&gt;</span>
+<span class="s">        &lt;ul class=&quot;dropdown-menu&quot;&gt;</span>
+<span class="s">          {</span><span class="si">%- f</span><span class="s">or item in action_items %}</span>
+<span class="s">          {</span><span class="si">%- i</span><span class="s">f item.divider %}&lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;{</span><span class="si">%- e</span><span class="s">ndif %}</span>
+<span class="s">          &lt;li class=&quot;{{ item.status|safe }}&quot;&gt;{{ item.render() }}&lt;/li&gt;</span>
+<span class="s">          {</span><span class="si">%- e</span><span class="s">ndfor %}</span>
+<span class="s">        &lt;/ul&gt;</span>
+<span class="s">      &lt;/li&gt;</span>
+<span class="s">    &lt;/ul&gt;</span>
+<span class="s">    &#39;&#39;&#39;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">(),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">NavItem</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_paths</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_paths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NavGroup.append"><a class="viewcode-back" href="../../../api.html#abilian.web.nav.NavGroup.append">[docs]</a>  <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_paths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="NavGroup.insert"><a class="viewcode-back" href="../../../api.html#abilian.web.nav.NavGroup.insert">[docs]</a>  <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_paths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="NavGroup.get_render_args"><a class="viewcode-back" href="../../../api.html#abilian.web.nav.NavGroup.get_render_args">[docs]</a>  <span class="k">def</span> <span class="nf">get_render_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">NavGroup</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_render_args</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s">&#39;action_items&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">available</span><span class="p">(</span><span class="n">params</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">params</span>
+</div>
+  <span class="nd">@getset</span>
+  <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">nav</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;active&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">current</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">ENABLED</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;navigation:&#39;</span><span class="p">):</span>
+      <span class="n">current</span> <span class="o">=</span> <span class="s">&#39;navigation:&#39;</span> <span class="o">+</span> <span class="n">current</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">ACTIVE</span> <span class="k">if</span> <span class="n">current</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paths</span> <span class="k">else</span> <span class="n">ENABLED</span>
+    <span class="k">return</span> <span class="n">status</span>
+
+</div>
+<div class="viewcode-block" id="BreadcrumbItem"><a class="viewcode-back" href="../../../api.html#abilian.web.nav.BreadcrumbItem">[docs]</a><span class="k">class</span> <span class="nc">BreadcrumbItem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A breadcrumb element has at least a label or an icon.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c">#: Label shown to user. May be an i18n string instance</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="c">#: Icon to use.</span>
+  <span class="n">icon</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="c">#: Additional text, can be used as tooltip for example</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="c">#: either an unicode string or an :class:`Endpoint` instance.</span>
+  <span class="n">_url</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="n">template_string</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="s">u&#39;{</span><span class="si">%- i</span><span class="s">f url %}&lt;a href=&quot;{{ url }}&quot;&gt;{</span><span class="si">%- e</span><span class="s">ndif %}&#39;</span>
+      <span class="s">u&#39;{</span><span class="si">%- i</span><span class="s">f item.icon %}{{ item.icon }} {</span><span class="si">%- e</span><span class="s">ndif %}&#39;</span>
+      <span class="s">u&#39;{{ item.label }}&#39;</span>
+      <span class="s">u&#39;{</span><span class="si">%- i</span><span class="s">f url %}&lt;/a&gt;{</span><span class="si">%- e</span><span class="s">ndif %}&#39;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">u&#39;&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s">u&#39;#&#39;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">label</span> <span class="ow">or</span> <span class="n">icon</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+      <span class="n">icon</span> <span class="o">=</span> <span class="n">Glyphicon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">icon</span> <span class="o">=</span> <span class="n">icon</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="n">url</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__template</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_string</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">unicode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BreadcrumbItem.render"><a class="viewcode-back" href="../../../api.html#abilian.web.nav.BreadcrumbItem.render">[docs]</a>  <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Markup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2015, Abilian SAS.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

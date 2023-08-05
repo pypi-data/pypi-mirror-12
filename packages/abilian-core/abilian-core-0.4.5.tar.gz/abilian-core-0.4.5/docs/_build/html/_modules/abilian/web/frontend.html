@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abilian.web.frontend &mdash; Abilian 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Abilian 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Abilian
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">About Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installing.html">Installing Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Constributing to Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coding-standard.html">Coding standard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog for Abilian Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Abilian</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>abilian.web.frontend</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for abilian.web.frontend</h1><div class="highlight"><pre>
+<span class="c"># coding=utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Front-end for a CRM app.</span>
+
+<span class="sd">This should eventually allow implementing very custom CRM-style application.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="kn">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">func</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.sql.expression</span> <span class="kn">import</span> <span class="n">asc</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span> <span class="n">nullsfirst</span><span class="p">,</span> <span class="n">nullslast</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">orm</span>
+<span class="kn">from</span> <span class="nn">werkzeug.exceptions</span> <span class="kn">import</span> <span class="n">BadRequest</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span>
+                   <span class="n">Blueprint</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span>
+                   <span class="n">current_app</span><span class="p">,</span> <span class="n">render_template</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">current_user</span>
+
+<span class="kn">from</span> <span class="nn">abilian.i18n</span> <span class="kn">import</span> <span class="n">_l</span>
+<span class="kn">from</span> <span class="nn">abilian.core.extensions</span> <span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">abilian.core.entities</span> <span class="kn">import</span> <span class="n">Entity</span>
+<span class="kn">from</span> <span class="nn">abilian.services</span> <span class="kn">import</span> <span class="n">audit_service</span>
+<span class="kn">from</span> <span class="nn">abilian.services.vocabularies.models</span> <span class="kn">import</span> <span class="n">BaseVocabulary</span>
+<span class="kn">from</span> <span class="nn">abilian.services.security</span> <span class="kn">import</span> <span class="n">READ</span><span class="p">,</span> <span class="n">WRITE</span>  <span class="c"># noqa</span>
+<span class="kn">from</span> <span class="nn">.action</span> <span class="kn">import</span> <span class="p">(</span>
+  <span class="n">actions</span><span class="p">,</span> <span class="n">Action</span><span class="p">,</span> <span class="n">FAIcon</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span>
+  <span class="n">ActionGroup</span><span class="p">,</span> <span class="n">ActionGroupItem</span><span class="p">,</span> <span class="n">ActionDropDown</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">search</span>
+<span class="kn">from</span> <span class="nn">.nav</span> <span class="kn">import</span> <span class="n">BreadcrumbItem</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">default_view</span><span class="p">,</span> <span class="n">ObjectView</span><span class="p">,</span> <span class="n">ObjectEdit</span><span class="p">,</span> <span class="n">ObjectCreate</span><span class="p">,</span>
+    <span class="n">ObjectDelete</span><span class="p">,</span> <span class="n">JSONView</span><span class="p">,</span> <span class="n">JSONWhooshSearch</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.forms.widgets</span> <span class="kn">import</span> <span class="p">(</span>
+  <span class="n">Panel</span><span class="p">,</span> <span class="n">Row</span><span class="p">,</span> <span class="n">SingleView</span><span class="p">,</span> <span class="n">RelatedTableView</span><span class="p">,</span> <span class="n">AjaxMainTableView</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ModuleAction"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleAction">[docs]</a><span class="k">class</span> <span class="nc">ModuleAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Base action class for :class:`Module` actions.</span>
+
+<span class="sd">  Basic condition is simple: :attr:`category` must match the string</span>
+<span class="sd">  `&#39;module:{module.endpoint}&#39;`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">group</span> <span class="o">=</span> <span class="n">group</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">ModuleAction</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">action_category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+                                       <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ModuleAction.pre_condition"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleAction.pre_condition">[docs]</a>  <span class="k">def</span> <span class="nf">pre_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;module&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">module</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">module</span><span class="o">.</span><span class="n">action_category</span>
+
+</div></div>
+<div class="viewcode-block" id="ModuleActionGroup"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleActionGroup">[docs]</a><span class="k">class</span> <span class="nc">ModuleActionGroup</span><span class="p">(</span><span class="n">ModuleAction</span><span class="p">,</span> <span class="n">ActionGroup</span><span class="p">):</span>
+  <span class="n">template_string</span> <span class="o">=</span> <span class="n">ActionGroup</span><span class="o">.</span><span class="n">template_string</span>
+
+</div>
+<div class="viewcode-block" id="ModuleActionDropDown"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleActionDropDown">[docs]</a><span class="k">class</span> <span class="nc">ModuleActionDropDown</span><span class="p">(</span><span class="n">ModuleAction</span><span class="p">,</span> <span class="n">ActionDropDown</span><span class="p">):</span>
+  <span class="n">template_string</span> <span class="o">=</span> <span class="n">ActionDropDown</span><span class="o">.</span><span class="n">template_string</span>
+
+</div>
+<div class="viewcode-block" id="ModuleActionGroupItem"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleActionGroupItem">[docs]</a><span class="k">class</span> <span class="nc">ModuleActionGroupItem</span><span class="p">(</span><span class="n">ModuleAction</span><span class="p">,</span> <span class="n">ActionGroupItem</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="add_to_recent_items"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.add_to_recent_items">[docs]</a><span class="k">def</span> <span class="nf">add_to_recent_items</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&#39;ignored&#39;</span><span class="p">):</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Entity</span><span class="p">):</span>
+    <span class="k">return</span>
+  <span class="n">object_type</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">object_type</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">default_view</span><span class="o">.</span><span class="n">url_for</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">&#39;recent_items&#39;</span><span class="p">):</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">recent_items</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">recent_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">object_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">entity</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">))</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">recent_items</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;url&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+      <span class="k">continue</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">&#39;url&#39;</span><span class="p">])</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="k">del</span> <span class="n">l</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
+  <span class="n">session</span><span class="p">[</span><span class="s">&#39;recent_items&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">recent_items</span> <span class="o">=</span> <span class="n">l</span>
+
+</div>
+<div class="viewcode-block" id="expose"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.expose">[docs]</a><span class="k">def</span> <span class="nf">expose</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;GET&#39;</span><span class="p">,)):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Use this decorator to expose views in your view classes.</span>
+
+<span class="sd">  `url`</span>
+<span class="sd">      Relative URL for the view</span>
+<span class="sd">  `methods`</span>
+<span class="sd">      Allowed HTTP methods. By default only GET is allowed.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s">&#39;_urls&#39;</span><span class="p">):</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">_urls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">_urls</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">url</span><span class="p">,</span> <span class="n">methods</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+  <span class="k">return</span> <span class="n">wrap</span>
+
+</div>
+<div class="viewcode-block" id="labelize"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.labelize">[docs]</a><span class="k">def</span> <span class="nf">labelize</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+  <span class="k">return</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="p">)])</span>
+
+</div>
+<div class="viewcode-block" id="make_single_view"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.make_single_view">[docs]</a><span class="k">def</span> <span class="nf">make_single_view</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+  <span class="n">panels</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">gr</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">_groups</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">panel</span> <span class="o">=</span> <span class="n">Panel</span><span class="p">(</span><span class="n">gr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="p">[</span><span class="n">Row</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gr</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">panels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">SingleView</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="o">*</span><span class="n">panels</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="ModuleView"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleView">[docs]</a><span class="k">class</span> <span class="nc">ModuleView</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Mixin for module base views.</span>
+
+<span class="sd">  Provide :attr:`module`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c">#: :class:`Module` instance</span>
+  <span class="n">module</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">module</span> <span class="o">=</span> <span class="n">module</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">ModuleView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="BaseEntityView"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.BaseEntityView">[docs]</a><span class="k">class</span> <span class="nc">BaseEntityView</span><span class="p">(</span><span class="n">ModuleView</span><span class="p">):</span>
+  <span class="n">pk</span> <span class="o">=</span> <span class="s">&#39;entity_id&#39;</span>
+
+<div class="viewcode-block" id="BaseEntityView.init_object"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.BaseEntityView.init_object">[docs]</a>  <span class="k">def</span> <span class="nf">init_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BaseEntityView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">init_object</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c"># security check</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_access</span><span class="p">():</span>
+      <span class="c"># FIXME: will lead base views to return 404. Ok when permission is</span>
+      <span class="c"># READ, but when it&#39;s WRITE would 403 be more appropriate?</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">return</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+</div>
+<div class="viewcode-block" id="BaseEntityView.breadcrumb"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.BaseEntityView.breadcrumb">[docs]</a>  <span class="k">def</span> <span class="nf">breadcrumb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">BreadcrumbItem</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                          <span class="n">url</span><span class="o">=</span><span class="n">Endpoint</span><span class="p">(</span><span class="s">&#39;.entity_view&#39;</span><span class="p">,</span> <span class="n">entity_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="BaseEntityView.prepare_args"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.BaseEntityView.prepare_args">[docs]</a>  <span class="k">def</span> <span class="nf">prepare_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BaseEntityView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">prepare_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">actions</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s">&#39;module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span>
+    <span class="n">add_to_recent_items</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+</div>
+<div class="viewcode-block" id="BaseEntityView.redirect_to_index"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.BaseEntityView.redirect_to_index">[docs]</a>  <span class="k">def</span> <span class="nf">redirect_to_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</div>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">single_view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">make_single_view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">,</span>
+                            <span class="n">view_template</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">view_template</span><span class="p">,</span>
+                            <span class="n">view</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                            <span class="n">module</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">,</span>
+                            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">view_options</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseEntityView.check_access"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.BaseEntityView.check_access">[docs]</a>  <span class="k">def</span> <span class="nf">check_access</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_view_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</div>
+  <span class="k">def</span> <span class="nf">_check_view_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param view: a :class:`ObjectView` class or instance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">security</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">services</span><span class="p">[</span><span class="s">&#39;security&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">security</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="n">current_user</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">permission</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">can_edit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_view_permission</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">edit_cls</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">can_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_view_permission</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">delete_cls</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">can_create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">create_cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">create_cls</span>
+    <span class="n">permission</span> <span class="o">=</span> <span class="n">create_cls</span><span class="o">.</span><span class="n">permission</span>
+    <span class="n">cls_permissions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">__default_permissions__</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">permission</span> <span class="ow">in</span> <span class="n">cls_permissions</span><span class="p">:</span>
+      <span class="n">security</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">services</span><span class="p">[</span><span class="s">&#39;security&#39;</span><span class="p">]</span>
+      <span class="k">return</span> <span class="n">security</span><span class="o">.</span><span class="n">has_permission</span><span class="p">(</span><span class="n">current_user</span><span class="p">,</span>
+                                     <span class="n">create_cls</span><span class="o">.</span><span class="n">permission</span><span class="p">,</span>
+                                     <span class="n">obj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span>
+                                     <span class="n">roles</span><span class="o">=</span><span class="n">cls_permissions</span><span class="p">[</span><span class="n">permission</span><span class="p">])</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+</div>
+<span class="n">EDIT_ACTION</span> <span class="o">=</span> <span class="n">Action</span><span class="p">(</span>
+  <span class="s">&#39;module&#39;</span><span class="p">,</span> <span class="s">&#39;object:view&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">_l</span><span class="p">(</span><span class="s">u&#39;Edit&#39;</span><span class="p">),</span>
+  <span class="n">button</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">ctx</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">can_edit</span><span class="p">,</span>
+  <span class="n">icon</span><span class="o">=</span><span class="n">FAIcon</span><span class="p">(</span><span class="s">&#39;edit&#39;</span><span class="p">),</span>
+  <span class="n">url</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.entity_edit&#39;</span><span class="p">,</span>
+                          <span class="o">**</span><span class="p">{</span><span class="n">ctx</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span> <span class="n">ctx</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">id</span><span class="p">}),</span>
+<span class="p">)</span>
+
+<span class="n">DELETE_ACTION</span> <span class="o">=</span> <span class="n">Action</span><span class="p">(</span>
+  <span class="s">&#39;module&#39;</span><span class="p">,</span> <span class="s">&#39;object:view&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">_l</span><span class="p">(</span><span class="s">u&#39;Delete&#39;</span><span class="p">),</span>
+  <span class="n">button</span><span class="o">=</span><span class="s">&#39;danger&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">ctx</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">can_delete</span><span class="p">,</span>
+  <span class="n">icon</span><span class="o">=</span><span class="n">FAIcon</span><span class="p">(</span><span class="s">&#39;trash fa-inverse&#39;</span><span class="p">),</span>
+  <span class="n">url</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.entity_delete&#39;</span><span class="p">,</span>
+                          <span class="o">**</span><span class="p">{</span><span class="n">ctx</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span> <span class="n">ctx</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">id</span><span class="p">}),</span>
+<span class="p">)</span>
+<span class="n">DELETE_ACTION</span><span class="o">.</span><span class="n">template</span> <span class="o">=</span> <span class="s">&#39;widgets/frontend_action_delete_confim.html&#39;</span>
+
+
+<div class="viewcode-block" id="EntityView"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.EntityView">[docs]</a><span class="k">class</span> <span class="nc">EntityView</span><span class="p">(</span><span class="n">BaseEntityView</span><span class="p">,</span> <span class="n">ObjectView</span><span class="p">):</span>
+  <span class="n">mode</span> <span class="o">=</span> <span class="s">&#39;view&#39;</span>
+  <span class="n">template</span> <span class="o">=</span> <span class="s">&#39;default/single_view.html&#39;</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">object_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">EDIT_ACTION</span><span class="p">,</span> <span class="n">DELETE_ACTION</span><span class="p">]</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">template_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span>
+    <span class="n">rendered_entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_view</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+    <span class="n">related_views</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">related_views</span><span class="p">]</span>
+    <span class="n">audit_entries</span> <span class="o">=</span> <span class="n">audit_service</span><span class="o">.</span><span class="n">entries_for</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rendered_entity</span><span class="o">=</span><span class="n">rendered_entity</span><span class="p">,</span>
+                <span class="n">related_views</span><span class="o">=</span><span class="n">related_views</span><span class="p">,</span>
+                <span class="n">audit_entries</span><span class="o">=</span><span class="n">audit_entries</span><span class="p">,</span>
+                <span class="n">show_new_comment_form</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="n">show_new_attachment_form</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="n">module</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="EntityEdit"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.EntityEdit">[docs]</a><span class="k">class</span> <span class="nc">EntityEdit</span><span class="p">(</span><span class="n">BaseEntityView</span><span class="p">,</span> <span class="n">ObjectEdit</span><span class="p">):</span>
+  <span class="n">template</span> <span class="o">=</span> <span class="s">&#39;default/single_view.html&#39;</span>
+  <span class="n">mode</span> <span class="o">=</span> <span class="s">&#39;edit&#39;</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">template_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">rendered_entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_view</span><span class="o">.</span><span class="n">render_form</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rendered_entity</span><span class="o">=</span><span class="n">rendered_entity</span><span class="p">,</span>
+                <span class="n">show_new_comment_form</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                <span class="n">show_new_attachment_form</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                <span class="n">module</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="EntityCreate"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.EntityCreate">[docs]</a><span class="k">class</span> <span class="nc">EntityCreate</span><span class="p">(</span><span class="n">BaseEntityView</span><span class="p">,</span> <span class="n">ObjectCreate</span><span class="p">):</span>
+  <span class="n">template</span> <span class="o">=</span> <span class="s">&#39;default/single_view.html&#39;</span>
+  <span class="n">mode</span> <span class="o">=</span> <span class="s">&#39;create&#39;</span>
+
+  <span class="n">prepare_args</span> <span class="o">=</span> <span class="n">ObjectCreate</span><span class="o">.</span><span class="n">prepare_args</span>
+  <span class="n">breadcrumb</span> <span class="o">=</span> <span class="n">ObjectCreate</span><span class="o">.</span><span class="n">breadcrumb</span>
+
+<div class="viewcode-block" id="EntityCreate.check_access"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.EntityCreate.check_access">[docs]</a>  <span class="k">def</span> <span class="nf">check_access</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_create</span>
+</div>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">template_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">rendered_entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_view</span><span class="o">.</span><span class="n">render_form</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rendered_entity</span><span class="o">=</span><span class="n">rendered_entity</span><span class="p">,</span>
+                <span class="n">for_new</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="n">module</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="EntityDelete"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.EntityDelete">[docs]</a><span class="k">class</span> <span class="nc">EntityDelete</span><span class="p">(</span><span class="n">BaseEntityView</span><span class="p">,</span> <span class="n">ObjectDelete</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="ListJson"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ListJson">[docs]</a><span class="k">class</span> <span class="nc">ListJson</span><span class="p">(</span><span class="n">ModuleView</span><span class="p">,</span> <span class="n">JSONView</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  JSON endpoint, for AJAX-backed table views.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ListJson.data"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ListJson.data">[docs]</a>  <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">echo</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;sEcho&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iDisplayLength&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iDisplayStart&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">length</span>
+
+    <span class="n">total_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">read_query</span>\
+                             <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">ordered_query</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+
+    <span class="n">entities</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">table_view</span> <span class="o">=</span> <span class="n">AjaxMainTableView</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">list_view_columns</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">managed_class</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+        <span class="n">ajax_source</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.list_json&#39;</span><span class="p">))</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">table_view</span><span class="o">.</span><span class="n">render_line</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;sEcho&quot;</span><span class="p">:</span> <span class="n">echo</span><span class="p">,</span>
+        <span class="s">&quot;iTotalRecords&quot;</span><span class="p">:</span> <span class="n">total_count</span><span class="p">,</span>
+        <span class="s">&quot;iTotalDisplayRecords&quot;</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span>
+        <span class="s">&quot;aaData&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+</div></div>
+<div class="viewcode-block" id="ModuleMeta"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleMeta">[docs]</a><span class="k">class</span> <span class="nc">ModuleMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Module metaclass.</span>
+
+<span class="sd">  Does some precalculations (like getting list of view methods from the</span>
+<span class="sd">  class) to avoid calculating them for each view class instance.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+    <span class="nb">type</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+
+    <span class="c"># Gather exposed views</span>
+    <span class="n">cls</span><span class="o">.</span><span class="n">_urls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cls</span><span class="o">.</span><span class="n">_default_view</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+      <span class="n">attr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="s">&#39;_urls&#39;</span><span class="p">):</span>
+        <span class="c"># Collect methods</span>
+        <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">_urls</span><span class="p">:</span>
+          <span class="n">cls</span><span class="o">.</span><span class="n">_urls</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">url</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">methods</span><span class="p">))</span>
+
+          <span class="k">if</span> <span class="n">url</span> <span class="o">==</span> <span class="s">&#39;/&#39;</span><span class="p">:</span>
+            <span class="n">cls</span><span class="o">.</span><span class="n">_default_view</span> <span class="o">=</span> <span class="n">p</span>
+
+            <span class="c"># Wrap views</span>
+            <span class="c"># setattr(cls, p, _wrap_view(attr))</span>
+</div>
+<div class="viewcode-block" id="ModuleComponent"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleComponent">[docs]</a><span class="k">class</span> <span class="nc">ModuleComponent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A component that provide new functions for a :class:`Module`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;A module component must have a name&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ModuleComponent.init_module"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleComponent.init_module">[docs]</a>  <span class="k">def</span> <span class="nf">init_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">module</span> <span class="o">=</span> <span class="n">module</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="ModuleComponent.init"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleComponent.init">[docs]</a>  <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements this in components</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="ModuleComponent.get_actions"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.ModuleComponent.get_actions">[docs]</a>  <span class="k">def</span> <span class="nf">get_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[]</span>
+
+</div></div>
+<div class="viewcode-block" id="Module"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module">[docs]</a><span class="k">class</span> <span class="nc">Module</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">ModuleMeta</span>
+
+  <span class="nb">id</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">endpoint</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">managed_class</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">list_view</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">list_view_columns</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">single_view</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">components</span> <span class="o">=</span> <span class="p">()</span>
+
+  <span class="c"># class based views. If not provided will be automaticaly created from</span>
+  <span class="c"># EntityView etc defined above</span>
+  <span class="n">base_template</span> <span class="o">=</span> <span class="s">&#39;base.html&#39;</span>
+  <span class="n">view_cls</span> <span class="o">=</span> <span class="n">EntityView</span>
+  <span class="n">edit_cls</span> <span class="o">=</span> <span class="n">EntityEdit</span>
+  <span class="n">create_cls</span> <span class="o">=</span> <span class="n">EntityCreate</span>
+  <span class="n">delete_cls</span> <span class="o">=</span> <span class="n">EntityDelete</span>
+  <span class="n">json_search_cls</span> <span class="o">=</span> <span class="n">JSONWhooshSearch</span>
+
+  <span class="c"># form_class. Used when view_cls/edit_cls are not provided</span>
+  <span class="n">edit_form_class</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">view_form_class</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c"># by default, same as edit_form_class</span>
+
+  <span class="n">url</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">view_new_save_and_add</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c"># show &#39;save and add new&#39; button in /new form</span>
+  <span class="n">static_folder</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">view_template</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">view_options</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">related_views</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">blueprint</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">search_criterions</span> <span class="o">=</span> <span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">TextSearchCriterion</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span>
+                                                  <span class="n">attributes</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;nom&#39;</span><span class="p">)),)</span>
+  <span class="n">tableview_options</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># used mostly to change datatable search_label</span>
+  <span class="n">_urls</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c"># If endpoint name is not provided, get it from the class name</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">class_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+      <span class="k">if</span> <span class="n">class_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;Module&#39;</span><span class="p">):</span>
+        <span class="n">class_name</span> <span class="o">=</span> <span class="n">class_name</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s">&#39;Module&#39;</span><span class="p">)]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">class_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">labelize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c"># If name is not provided, use capitalized endpoint name</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prettify_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_options</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">view_options</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c"># self.single_view = make_single_view(self.edit_form_class,</span>
+    <span class="c">#                                     view_template=self.view_template,</span>
+    <span class="c">#                                     **self.view_options)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_form_class</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">view_form_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edit_form_class</span>
+
+    <span class="c"># init class based views</span>
+    <span class="n">kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="p">,</span>
+              <span class="n">pk</span><span class="o">=</span><span class="s">&#39;entity_id&#39;</span><span class="p">,</span>
+              <span class="n">module</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+              <span class="n">base_template</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_template</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_setup_view</span><span class="p">(</span><span class="s">&quot;/&lt;int:entity_id&gt;&quot;</span><span class="p">,</span>
+                     <span class="s">&#39;entity_view&#39;</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">view_cls</span><span class="p">,</span>
+                     <span class="n">Form</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">view_form_class</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+    <span class="n">view_endpoint</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">+</span> <span class="s">&#39;.entity_view&#39;</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_setup_view</span><span class="p">(</span><span class="s">&quot;/&lt;int:entity_id&gt;/edit&quot;</span><span class="p">,</span>
+                     <span class="s">&#39;entity_edit&#39;</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">edit_cls</span><span class="p">,</span>
+                     <span class="n">Form</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_form_class</span><span class="p">,</span>
+                     <span class="n">view_endpoint</span><span class="o">=</span><span class="n">view_endpoint</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_setup_view</span><span class="p">(</span><span class="s">&quot;/new&quot;</span><span class="p">,</span>
+                     <span class="s">&#39;entity_new&#39;</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">create_cls</span><span class="p">,</span>
+                     <span class="n">Form</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_form_class</span><span class="p">,</span>
+                     <span class="n">chain_create_allowed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">view_new_save_and_add</span><span class="p">,</span>
+                     <span class="n">view_endpoint</span><span class="o">=</span><span class="n">view_endpoint</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_setup_view</span><span class="p">(</span><span class="s">&quot;/&lt;int:entity_id&gt;/delete&quot;</span><span class="p">,</span>
+                     <span class="s">&#39;entity_delete&#39;</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">delete_cls</span><span class="p">,</span>
+                     <span class="n">Form</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_form_class</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_setup_view</span><span class="p">(</span><span class="s">&quot;/json&quot;</span><span class="p">,</span> <span class="s">&#39;list_json&#39;</span><span class="p">,</span> <span class="n">ListJson</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_setup_view</span><span class="p">(</span><span class="s">&#39;/json_search&#39;</span><span class="p">,</span> <span class="s">&#39;json_search&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">json_search_cls</span><span class="p">,</span>
+                     <span class="n">Model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">init_related_views</span><span class="p">()</span>
+
+    <span class="c"># copy criterions instances; without that they may be shared by subclasses</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">search_criterions</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">((</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                                    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_criterions</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_criterions</span><span class="p">:</span>
+      <span class="n">sc</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">__components</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">:</span>
+      <span class="n">component</span><span class="o">.</span><span class="n">init_module</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__components</span><span class="p">[</span><span class="n">component</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">component</span>
+
+<div class="viewcode-block" id="Module.get_component"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.get_component">[docs]</a>  <span class="k">def</span> <span class="nf">get_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</div>
+  <span class="k">def</span> <span class="nf">_setup_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Register class based views</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">view</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_urls</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">url</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">methods</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Module.init_related_views"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.init_related_views">[docs]</a>  <span class="k">def</span> <span class="nf">init_related_views</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">related_views</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">view</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">related_views</span><span class="p">:</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">RelatedView</span><span class="p">):</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">DefaultRelatedView</span><span class="p">(</span><span class="o">*</span><span class="n">view</span><span class="p">)</span>
+      <span class="n">related_views</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">related_views</span> <span class="o">=</span> <span class="n">related_views</span>
+</div>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">action_category</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">u&#39;module:{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Module.get_grouped_actions"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.get_grouped_actions">[docs]</a>  <span class="k">def</span> <span class="nf">get_grouped_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">for_category</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_category</span><span class="p">)</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+      <span class="n">groups</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">group</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">groups</span>
+</div>
+<div class="viewcode-block" id="Module.register_actions"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.register_actions">[docs]</a>  <span class="k">def</span> <span class="nf">register_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">ACTIONS</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">ModuleAction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">u&#39;entity&#39;</span><span class="p">,</span> <span class="s">u&#39;create&#39;</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="n">_l</span><span class="p">(</span><span class="s">u&#39;Create New&#39;</span><span class="p">),</span> <span class="n">icon</span><span class="o">=</span><span class="n">FAIcon</span><span class="p">(</span><span class="s">&#39;plus&#39;</span><span class="p">),</span>
+                   <span class="n">endpoint</span><span class="o">=</span><span class="n">Endpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">+</span> <span class="s">&#39;.entity_new&#39;</span><span class="p">),</span>
+                   <span class="n">button</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,),</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">:</span>
+      <span class="n">ACTIONS</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">get_actions</span><span class="p">())</span>
+
+    <span class="n">actions</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="o">*</span><span class="n">ACTIONS</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Module.create_blueprint"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.create_blueprint">[docs]</a>  <span class="k">def</span> <span class="nf">create_blueprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crud_app</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a Flask blueprint for this module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Store admin instance</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">crud_app</span> <span class="o">=</span> <span class="n">crud_app</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">crud_app</span><span class="o">.</span><span class="n">app</span>
+
+    <span class="c"># If url is not provided, generate it from endpoint name</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crud_app</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crud_app</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c"># Create blueprint and register rules</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">__name__</span><span class="p">,</span>
+                               <span class="n">url_prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">methods</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_urls</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">url</span><span class="p">,</span>
+                                  <span class="n">name</span><span class="p">,</span>
+                                  <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span>
+                                  <span class="n">methods</span><span class="o">=</span><span class="n">methods</span><span class="p">)</span>
+
+    <span class="c"># run default_view decorator</span>
+    <span class="n">default_view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span><span class="p">,</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="p">,</span>
+                 <span class="n">id_attr</span><span class="o">=</span><span class="s">&#39;entity_id&#39;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">entity_view</span><span class="p">)</span>
+
+    <span class="c"># delay registration of our breadcrumbs to when registered on app; thus</span>
+    <span class="c"># &#39;parents&#39; blueprint can register theirs befores ours</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span><span class="o">.</span><span class="n">record_once</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_setup_breadcrumb_preprocessors</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span>
+</div>
+  <span class="k">def</span> <span class="nf">_setup_breadcrumb_preprocessors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">blueprint</span><span class="o">.</span><span class="n">url_value_preprocessor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_add_breadcrumb</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_add_breadcrumb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">breadcrumb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BreadcrumbItem</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                        <span class="n">url</span><span class="o">=</span><span class="n">Endpoint</span><span class="p">(</span><span class="s">&#39;.list_view&#39;</span><span class="p">)))</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">base_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a query instance for :attr:`managed_class`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="o">.</span><span class="n">query</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">read_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a query instance for :attr:`managed_class` filtering on `READ`</span>
+<span class="sd">    permission</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_query</span><span class="o">.</span><span class="n">with_permission</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Module.query"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.query">[docs]</a>  <span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return filtered query based on request args</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
+    <span class="n">search</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;sSearch&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;%&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_query</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">crit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_criterions</span><span class="p">:</span>
+      <span class="n">q</span> <span class="o">=</span> <span class="n">crit</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">search</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">q</span>
+</div>
+<div class="viewcode-block" id="Module.ordered_query"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.ordered_query">[docs]</a>  <span class="k">def</span> <span class="nf">ordered_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Order query according to request args.</span>
+
+<span class="sd">    If query is None, the query is generated according to request args with</span>
+<span class="sd">    self.query(request)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">query</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get_bind</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="o">.</span><span class="n">__mapper__</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
+    <span class="n">sort_col</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iSortCol_0&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">sort_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;sSortDir_0&quot;</span><span class="p">,</span> <span class="s">&quot;asc&quot;</span><span class="p">)</span>
+    <span class="n">sort_col_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_view_columns</span><span class="p">[</span><span class="n">sort_col</span><span class="p">]</span>
+    <span class="n">sort_col_name</span> <span class="o">=</span> <span class="n">sort_col_def</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">rel_sort_names</span> <span class="o">=</span> <span class="n">sort_col_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;sort_on&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">sort_col_name</span><span class="p">,))</span>
+    <span class="n">sort_cols</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">rel_col</span> <span class="ow">in</span> <span class="n">rel_sort_names</span><span class="p">:</span>
+      <span class="n">sort_col</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="p">,</span> <span class="n">rel_col</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sort_col</span><span class="o">.</span><span class="n">property</span><span class="p">,</span> <span class="n">orm</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">RelationshipProperty</span><span class="p">):</span>
+        <span class="c"># this is a related model: find attribute to filter on</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sort_col_name</span><span class="p">,</span> <span class="n">aliased</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="n">rel_model</span> <span class="o">=</span> <span class="n">sort_col</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">mapper</span><span class="o">.</span><span class="n">class_</span>
+        <span class="n">default_sort_name</span> <span class="o">=</span> <span class="s">&#39;name&#39;</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">rel_model</span><span class="p">,</span> <span class="n">BaseVocabulary</span><span class="p">):</span>
+          <span class="n">default_sort_name</span> <span class="o">=</span> <span class="s">&#39;label&#39;</span>
+
+        <span class="n">rel_sort_name</span> <span class="o">=</span> <span class="n">sort_col_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;sort_on&#39;</span><span class="p">,</span> <span class="n">default_sort_name</span><span class="p">)</span>
+        <span class="n">sort_col</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">rel_model</span><span class="p">,</span> <span class="n">rel_sort_name</span><span class="p">)</span>
+
+      <span class="c"># XXX: Big hack, date are sorted in reverse order by default</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sort_col</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">_DateAffinity</span><span class="p">):</span>
+        <span class="n">sort_dir</span> <span class="o">=</span> <span class="s">&#39;asc&#39;</span> <span class="k">if</span> <span class="n">sort_dir</span> <span class="o">==</span> <span class="s">&#39;desc&#39;</span> <span class="k">else</span> <span class="s">&#39;desc&#39;</span>
+      <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sort_col</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">String</span><span class="p">):</span>
+        <span class="n">sort_col</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">sort_col</span><span class="p">)</span>
+
+      <span class="n">direction</span> <span class="o">=</span> <span class="n">desc</span> <span class="k">if</span> <span class="n">sort_dir</span> <span class="o">==</span> <span class="s">&#39;desc&#39;</span> <span class="k">else</span> <span class="n">asc</span>
+      <span class="n">sort_col</span> <span class="o">=</span> <span class="n">direction</span><span class="p">(</span><span class="n">sort_col</span><span class="p">)</span>
+
+      <span class="c"># sqlite does not support &#39;NULLS FIRST|LAST&#39; in ORDER BY clauses</span>
+      <span class="k">if</span> <span class="n">engine</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s">&#39;sqlite&#39;</span><span class="p">:</span>
+        <span class="n">nullsorder</span> <span class="o">=</span> <span class="n">nullslast</span> <span class="k">if</span> <span class="n">sort_dir</span> <span class="o">==</span> <span class="s">&#39;desc&#39;</span> <span class="k">else</span> <span class="n">nullsfirst</span>
+        <span class="n">sort_col</span> <span class="o">=</span> <span class="n">nullsorder</span><span class="p">(</span><span class="n">sort_col</span><span class="p">)</span>
+
+      <span class="n">sort_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sort_col</span><span class="p">)</span>
+
+    <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="o">*</span><span class="n">sort_cols</span><span class="p">)</span>
+    <span class="n">query</span><span class="o">.</span><span class="n">reset_joinpoint</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">query</span>
+
+  <span class="c">#</span>
+  <span class="c"># Exposed views</span>
+  <span class="c">#</span></div>
+  <span class="nd">@expose</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Module.list_view"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.list_view">[docs]</a>  <span class="k">def</span> <span class="nf">list_view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">actions</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s">&#39;module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="n">table_view</span> <span class="o">=</span> <span class="n">AjaxMainTableView</span><span class="p">(</span>
+      <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+      <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">list_view_columns</span><span class="p">,</span>
+      <span class="n">ajax_source</span><span class="o">=</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.list_json&#39;</span><span class="p">),</span>
+      <span class="n">search_criterions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">search_criterions</span><span class="p">,</span>
+      <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tableview_options</span><span class="p">)</span>
+    <span class="n">rendered_table</span> <span class="o">=</span> <span class="n">table_view</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+    <span class="n">ctx</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rendered_table</span><span class="o">=</span><span class="n">rendered_table</span><span class="p">,</span>
+               <span class="n">module</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">base_template</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_template</span>
+               <span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&quot;default/list_view.html&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">ctx</span><span class="p">)</span>
+</div>
+  <span class="nd">@expose</span><span class="p">(</span><span class="s">&quot;/json2&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Module.list_json2"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.list_json2">[docs]</a>  <span class="k">def</span> <span class="nf">list_json2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Other JSON endpoint, this time used for filling select boxes dynamically.</span>
+
+<span class="sd">    NB: not used currently.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
+    <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">managed_class</span>
+
+    <span class="n">q</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;%&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">q</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="n">BadRequest</span><span class="p">()</span>
+
+    <span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ilike</span><span class="p">(</span><span class="s">&quot;%&quot;</span> <span class="o">+</span> <span class="n">q</span> <span class="o">+</span> <span class="s">&quot;%&quot;</span><span class="p">))</span>\
+                 <span class="o">.</span><span class="n">distinct</span><span class="p">()</span>\
+                 <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>\
+                 <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nb">all</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;results&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&#39;text&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">all</span> <span class="p">]</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+  <span class="c">#</span>
+  <span class="c"># Utils</span>
+  <span class="c">#</span></div>
+<div class="viewcode-block" id="Module.is_current"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.Module.is_current">[docs]</a>  <span class="k">def</span> <span class="nf">is_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</div>
+  <span class="nd">@staticmethod</span>
+  <span class="k">def</span> <span class="nf">_prettify_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prettify class name by splitting name by capital characters.</span>
+<span class="sd">    So, &#39;MySuperClass&#39; will look like &#39;My Super Class&#39;</span>
+
+<span class="sd">    `name`</span>
+<span class="sd">      String to prettify</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;(?&lt;=.)([A-Z])&#39;</span><span class="p">,</span> <span class="s">r&#39; \1&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="RelatedView"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.RelatedView">[docs]</a><span class="k">class</span> <span class="nc">RelatedView</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; A base class for related views</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="RelatedView.render"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.RelatedView.render">[docs]</a>  <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a dict with keys &#39;label&#39;, &#39;attr_name&#39;, &#39;rendered&#39;, &#39;size&#39;,</span>
+<span class="sd">    &#39;show_empty&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+</div></div>
+<div class="viewcode-block" id="DefaultRelatedView"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.DefaultRelatedView">[docs]</a><span class="k">class</span> <span class="nc">DefaultRelatedView</span><span class="p">(</span><span class="n">RelatedView</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Default view used by Module for items directly related to entity</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">column_names</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">show_empty</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">attr</span> <span class="o">=</span> <span class="n">attr</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">show_empty</span> <span class="o">=</span> <span class="n">show_empty</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span> <span class="o">=</span> <span class="n">column_names</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="n">options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DefaultRelatedView.render"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.DefaultRelatedView.render">[docs]</a>  <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
+    <span class="n">view</span> <span class="o">=</span> <span class="n">RelatedTableView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">related_entities</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                <span class="n">attr_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attr</span><span class="p">,</span>
+                <span class="n">rendered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">related_entities</span><span class="p">,</span> <span class="n">related_to</span><span class="o">=</span><span class="n">entity</span><span class="p">),</span>
+                <span class="n">show_empty</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">show_empty</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">related_entities</span><span class="p">))</span>
+
+
+<span class="c"># TODO: rename to CRMApp ?</span></div></div>
+<div class="viewcode-block" id="CRUDApp"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.CRUDApp">[docs]</a><span class="k">class</span> <span class="nc">CRUDApp</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+  <span class="n">modules</span> <span class="o">=</span> <span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__module__</span>
+      <span class="n">modules_signature</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#39;-&#39;</span> <span class="o">+</span> <span class="n">modules_signature</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">app</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+
+    <span class="k">if</span> <span class="n">modules</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="n">modules</span>
+
+    <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CRUDApp.get_module"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.CRUDApp.get_module">[docs]</a>  <span class="k">def</span> <span class="nf">get_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module_id</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">module_id</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">m</span>
+
+    <span class="k">return</span> <span class="bp">None</span>
+</div>
+<div class="viewcode-block" id="CRUDApp.add_module"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.CRUDApp.add_module">[docs]</a>  <span class="k">def</span> <span class="nf">add_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_blueprint</span><span class="p">(</span><span class="n">module</span><span class="p">))</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">register_actions</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="CRUDApp.create_blueprint"><a class="viewcode-back" href="../../../api.html#abilian.web.frontend.CRUDApp.create_blueprint">[docs]</a>  <span class="k">def</span> <span class="nf">create_blueprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">create_blueprint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2015, Abilian SAS.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
