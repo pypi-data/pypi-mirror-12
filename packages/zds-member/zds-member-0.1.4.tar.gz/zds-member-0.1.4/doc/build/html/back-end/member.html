@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Les membres &mdash; Zds Member 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Zds Member 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Le back-end" href="../back-end.html"/>
+        <link rel="next" title="Les messages privés" href="private-message.html"/>
+        <link rel="prev" title="Les galeries" href="gallery.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> Zds Member
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-linux-install.html">Installation du backend sous Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-et-configuration-de-virtualenv">Installation et configuration de <cite>virtualenv</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-os-x-install.html">Installation du backend sous OS X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-virtualenv">Installation de virtualenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#creation-de-votre-environnement">Création de votre environnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-la-librairie-lxml-pour-python-2-7-via-macports">Récupération de la librairie lxml pour python 2.7 via MacPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-cairo-svg">Récupération de cairo (svg)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#ajout-de-flags-pour-compiler-avec-gcc-plutot-que-clang-lors-de-l-installation-de-lxml">Ajout de flags pour compiler avec gcc plutôt que clang lors de l&#8217;installation de lxml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-toutes-les-dependances">Installation de toutes les dépendances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-windows-install.html">Installation du backend sous Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#prerequis">Prérequis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#suite-de-l-installation">Suite de l&#8217;installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/deploy-in-production.html">Configuration des serveurs de production</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#parametres">Paramètres</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-generaux">Paramètres généraux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-specifiques">Paramètres spécifiques</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#premier-deploiement">Premier déploiement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#utilisateur-local">Utilisateur local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-des-outils">Installation des outils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#clone-du-repo-et-configuration-de-prod">Clone du repo et configuration de prod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-de-l-application-de-base">Installation de l&#8217;application de base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#outils-specifiques-a-un-serveur-de-run">Outils spécifiques à un serveur de run</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#mise-a-jour-d-une-instance-existante">Mise à jour d&#8217;une instance existante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#personnalisation-d-une-instance">Personnalisation d&#8217;une instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/frontend-install.html">Installation du frontend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#installation-de-node-js-et-npm">Installation de Node.js et npm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#freebsd-openbsd">FreeBSD / OpenBSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mise-a-jour-de-node-js-et-npm">Mise à jour de Node.js et npm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#installation-des-dependances-npm">Installation des dépendances npm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#utilisation-des-outils">Utilisation des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#presentation-de-gulp">Présentation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#utilisation-de-gulp">Utilisation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#quelques-informations-supplementaires">Quelques informations supplémentaires</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#nettoyage-des-outils">Nettoyage des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances">Désinstaller les dépendances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances-inutilisees">Désinstaller les dépendances inutilisées</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/install-solr.html">Installation de Solr (pour la recherche)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-linux">Prérequis sur linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-windows">Prérequis sur windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#procedure-commune">Procédure commune</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../back-end.html">Le <em>back-end</em></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contents.html">Les tutoriels et articles v2.0 (ZEP 12)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#vocabulaire-et-definitions">Vocabulaire et définitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#de-la-structure-generale-d-un-contenu">De la structure générale d&#8217;un contenu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-extraits">Des extraits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-conteneurs">Des conteneurs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#un-contenu">Un contenu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-objets-en-general">Des objets en général</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#cycle-de-vie-des-contenus">Cycle de vie des contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-brouillon">Le brouillon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-beta">La bêta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-validation">La validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-publication">La publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#l-entraide">L&#8217;entraide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#import-de-contenus">Import de contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#import-d-image">Import d&#8217;image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#regles">Règles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#aspects-techniques-et-fonctionnels">Aspects techniques et fonctionnels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#les-metadonnees">Les métadonnées</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-stockage-en-base-de-donnees">Le stockage en base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-stockage-via-des-dossiers">Le stockage <em>via</em> des dossiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#les-permissions">Les permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#processus-de-publication">Processus de publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#consultation-d-un-contenu-publie">Consultation d&#8217;un contenu publié</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#qu-en-est-il-des-images">Qu&#8217;en est-il des images ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#passage-des-tutos-v1-aux-tutos-v2">Passage des tutos v1 aux tutos v2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#migrer-une-archive-v1-vers-une-archive-v2">Migrer une archive v1 vers une archive v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#migrer-la-base-de-donnees">Migrer la base de données</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contents_manifest.html">Les fichiers de manifeste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contents_manifest.html#les-versions-du-manifeste">Les versions du manifeste</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#nomenclature">Nomenclature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#version-1-0">Version 1.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents_manifest.html#version-2-0">Version 2.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forum.html">Les forums</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#le-decoupage-des-forums">Le découpage des forums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#la-moderation-des-forums">La modération des forums</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-sujets">La modération des sujets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-messages">La modération des messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#les-filtres-sur-les-sujets">Les filtres sur les sujets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#dans-un-forum">Dans un forum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#suivre-un-sujet">Suivre un sujet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#etre-notifie-sur-le-site-lui-meme">Être notifié sur le site lui même</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gallery.html">Les galeries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#generalites">Généralités</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#creation-et-remplissage">Création et remplissage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#les-utilisateurs-et-leurs-droits">Les utilisateurs et leurs droits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#la-suppression">La suppression</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#lien-galerie-tutoriel">Lien galerie &lt;-&gt; Tutoriel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#aspects-techniques">Aspects techniques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#outils-logiciels-utilises">Outils logiciels utilisés</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Les membres</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inscription">Inscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#desinscription">Désinscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-membres-dans-les-environnement-de-test-et-de-developpement">Les membres dans les environnement de test et de développement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#l-interface-de-promotion">L&#8217;interface de promotion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l-interface-de-karma">L&#8217;interface de karma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l-interface-de-reinitialisation-de-mot-de-passe">L&#8217;interface de réinitialisation de mot de passe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="private-message.html">Les messages privés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="private-message.html#envoi-et-participation">Envoi et participation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">La recherche</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search.html#l-indexation-des-donnees">L&#8217;indexation des données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#id1">La recherche</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#dans-le-code">Dans le code ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="search.html#pourquoi-avoir-utilise-haystack-ne-peut-t-on-pas-appeller-solr-directement">Pourquoi avoir utilisé Haystack, ne peut t-on pas appeller Solr directement ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#pourquoi-solr-et-pas-un-autre-moteur-de-recherche">Pourquoi Solr et pas un autre moteur de recherche ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-fonctionne-le-code-de-l-indexation">Comment fonctionne le code de l&#8217;indexation ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#le-cas-particulier-de-l-indexation-des-tutoriels-et-articles">Le cas particulier de l&#8217;indexation des tutoriels et articles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-lancer-l-indexation-et-ou-comment-verifier-les-donnees-indexees">Comment lancer l&#8217;indexation et/ou comment vérifier les données indexées ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-fonctionne-le-code-de-la-recherche">Comment fonctionne le code de la recherche ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#quels-sont-les-fichiers-de-configuration-importants">Quels sont les fichiers de configuration importants ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="search.html#utilisation-de-la-commande-index-content">Utilisation de la commande <code class="docutils literal"><span class="pre">index_content</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../back-end-code.html">Documentation technique du <em>back-end</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/arborescence-back.html">Arborescence du <em>back-end</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#arborescence-generale-de-zds">Arborescence générale de <code class="docutils literal"><span class="pre">zds/</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#contenu-d-un-module">Contenu d&#8217;un module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#fichiers-principaux">Fichiers principaux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#tests-unitaires">Tests unitaires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#gestion-de-la-base-de-donnees">Gestion de la base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#api">API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#autres">Autres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/article.html">Les articles (<code class="docutils literal"><span class="pre">article/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/forum.html">Les forums (<code class="docutils literal"><span class="pre">forum/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/gallery.html">Les galleries (<code class="docutils literal"><span class="pre">gallery/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/member.html">Les membres (<code class="docutils literal"><span class="pre">member/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/pages.html">Les pages (<code class="docutils literal"><span class="pre">pages/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/pages.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/private-message.html">Les messages privés (<code class="docutils literal"><span class="pre">mp/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/search.html">La recherche (<code class="docutils literal"><span class="pre">search/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorial.html">Les tutoriels (<code class="docutils literal"><span class="pre">tutorial/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorialv2.html">Les tutoriels v2 (ZEP12) (<code class="docutils literal"><span class="pre">tutorialv2/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-models">Modèles (<code class="docutils literal"><span class="pre">models/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-de-la-base-de-donnee-models-database-py">Modèles de la base de donnée (<code class="docutils literal"><span class="pre">models_database.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-versionnes-models-versioned-py">Modèles &#8220;versionnés&#8221; (<code class="docutils literal"><span class="pre">models_versioned.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#vues-views">Vues (<code class="docutils literal"><span class="pre">views/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-views-views-contents-py">Contenus (<code class="docutils literal"><span class="pre">views/views_contents.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#validations-views-views-validations-py">Validations (<code class="docutils literal"><span class="pre">views/views_validations.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-publies-views-views-published-py">Contenus publiés (<code class="docutils literal"><span class="pre">views/views_published.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#mixins-mixins-py">Mixins (<code class="docutils literal"><span class="pre">mixins.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-forumulaires-forms-py">Les forumulaires (<code class="docutils literal"><span class="pre">forms.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/utils.html">Les utilitaires (<code class="docutils literal"><span class="pre">utils/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#articles-articles-py">Articles (<code class="docutils literal"><span class="pre">articles.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#forums-forums-py">Forums (<code class="docutils literal"><span class="pre">forums.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#messages-prives-mps-py">Messages privés (<code class="docutils literal"><span class="pre">mps.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#tutoriels-tutorials-py">Tutoriels (<code class="docutils literal"><span class="pre">tutorials.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#les-processeurs-de-contexte-context-processor-py">Les processeurs de contexte (<code class="docutils literal"><span class="pre">context_processor.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#autres-misc-py">Autres (<code class="docutils literal"><span class="pre">misc.py</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#informations-generales">Informations générales</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#version-courante">Version courante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#schema">Schéma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-verbes-http">Les verbes HTTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-formats-d-entrees-sorties">Les formats d&#8217;entrées/sorties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#etag">ETag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#throttling">Throttling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#pagination">Pagination</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#authentification">Authentification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#bibliotheque-tierce-choisie">Bibliothèque tierce choisie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#utilisation">Utilisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#creer-un-client">Créer un client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#recuperer-les-tokens-d-authentification">Récupérer les tokens d&#8217;authentification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-access-token">Utiliser un access_token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-refresh-token">Utiliser un refresh_token</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#django-rest-swagger">Django REST Swagger</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Zds Member</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../back-end.html">Le <em>back-end</em></a> &raquo;</li>
+      
+    <li>Les membres</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/back-end/member.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="les-membres">
+<h1>Les membres<a class="headerlink" href="#les-membres" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="inscription">
+<h2>Inscription<a class="headerlink" href="#inscription" title="Permalink to this headline">¶</a></h2>
+<p>L&#8217;inscription d&#8217;un membre se déroule en deux phases :</p>
+<ul class="simple">
+<li>Le membre crée son compte et fournit un pseudo, un mot de passe et une adresse mail valide.</li>
+<li>Un mail de confirmation est envoyé avec un jeton qui permettra d&#8217;activer le compte.</li>
+</ul>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<ul class="last simple">
+<li>Les virgules ne sont pas autorisées dans le pseudonyme, qui ne peut également pas commencer ou finir par des espaces.</li>
+<li>Le mot de passe doit faire au moins 6 caractères.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="desinscription">
+<h2>Désinscription<a class="headerlink" href="#desinscription" title="Permalink to this headline">¶</a></h2>
+<p>L&#8217;inscription se fait via l&#8217;interface utilisateur.</p>
+<ul>
+<li><p class="first">Le lien de désinscription est accessible via paramètres (<code class="docutils literal"><span class="pre">/membres/parametres/profil/</span></code>) puis “Se désinscrire” dans la barre
+latérale (<code class="docutils literal"><span class="pre">/membres/desinscrire/avertissement/</span></code>) :</p>
+<div class="figure align-center" id="id1">
+<img alt="../_images/desinscription-1.png" src="../_images/desinscription-1.png" />
+<p class="caption"><span class="caption-text">Position du lien de désinscription dans les paramètres du membre (<code class="docutils literal"><span class="pre">/membres/parametres/profil/</span></code>)</span></p>
+</div>
+</li>
+<li><p class="first">Le lien mène alors vers une page expliquant les conséquences de sa  désinscription. Il peut alors poursuivre via un bouton en bas de celle-ci :</p>
+<div class="figure align-center" id="id2">
+<img alt="../_images/desinscription-2.png" src="../_images/desinscription-2.png" />
+<p class="caption"><span class="caption-text">Bouton de confirmation</span></p>
+</div>
+</li>
+<li><p class="first">Le clic sur le bouton rouge ouvre une boite modale qui constitue le dernier avertissement avant le déclenchement du processus de désinscription :</p>
+<div class="figure align-center" id="id3">
+<img alt="../_images/desinscription-3.png" src="../_images/desinscription-3.png" />
+<p class="caption"><span class="caption-text">La dernière étape</span></p>
+</div>
+</li>
+</ul>
+<p>Le clic sur &#8220;me désinscrire&#8221; entraîne alors une série d&#8217;action (qui sont <strong>irréversibles</strong>) :</p>
+<ul>
+<li><p class="first">Suppression du profil, libèrant le pseudo et l’adresse courriel pour les futures inscriptions ;</p>
+</li>
+<li><p class="first">Le membre est déconnecté ;</p>
+</li>
+<li><p class="first">Les données du membre sont anonymisées :</p>
+<ul>
+<li><dl class="first docutils">
+<dt>le pseudo <code class="docutils literal"><span class="pre">anonymous</span></code> est employé :</dt>
+<dd><ul class="first last simple">
+<li>pour les sujets du forum (qui, cependant, restent ouverts)</li>
+<li>pour les messages des MP (le membre quitte les discussions auxquelles il participait) ;</li>
+<li>pour les commentaires aux tutoriels et articles ;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">les <a class="reference external" href="../gallery/gallery.html">galeries</a> non liées à un tutoriel sont données à <code class="docutils literal"><span class="pre">external</span></code> (puisque l’image peut être considérée comme venant d’un “auteur”) avec droit de lecture et d’écriture ;</p>
+</li>
+<li><p class="first">les <a class="reference external" href="../article/article.html">articles</a> et <a class="reference external" href="../tutorial/tutorial.html">tutoriels</a> suivent ces règles :</p>
+<ul class="simple">
+<li>si le tutoriel/article a été écrit par plusieurs personnes : le membre est retiré de la liste des auteurs ;</li>
+<li>si le tutoriel/article est <em>publié</em>, il passe sur le compte “external”. Une demande expresse sera nécessaire au retrait complet de ces contenus ;</li>
+<li>si le tutoriel/article n’est pas publié (brouillon, bêta, validation) il est supprimé, ainsi que la galerie qui lui est associée.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="les-membres-dans-les-environnement-de-test-et-de-developpement">
+<h2>Les membres dans les environnement de test et de développement<a class="headerlink" href="#les-membres-dans-les-environnement-de-test-et-de-developpement" title="Permalink to this headline">¶</a></h2>
+<p>Afin de faciliter les procédures de tests en local, 6 utilisateurs ont été créés via la fixture <code class="docutils literal"><span class="pre">users.yaml</span></code> (utilisateur/mot de passe):</p>
+<ul class="simple">
+<li>user/user : Utilisateur normal</li>
+<li>staff/staff : Utilisateur avec les droits d&#8217;un staff</li>
+<li>admin/admin : Utilisateur avec les droits d&#8217;un staff et d&#8217;un admin</li>
+<li>anonymous/anonymous : Utilisateur qui permet l&#8217;anonymisation des messages sur les forums, dans les commentaires d&#8217;articles et de tutoriels ainsi que dans les MPs</li>
+<li>external/external : Utilisateur qui permet de récupérer les tutoriels d&#8217;anciens membres et/ou de publier des tutoriels externes.</li>
+<li>ïtrema/ïtrema : Utilisateur de test supplémentaire sans droit</li>
+</ul>
+<p>Pour que ces membres soient ajoutés à la base de données, il est donc nécéssaire d&#8217;exécuter la commande, suivante, à la racine du site</p>
+<div class="highlight-bash"><div class="highlight"><pre>python manage.py loaddata fixtures/users.yaml
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Les utilisateurs <code class="docutils literal"><span class="pre">anonymous</span></code> et <code class="docutils literal"><span class="pre">external</span></code> <strong>doivent</strong> être présents dans la base de données pour le bon fonctionnement du site.
+En effet, ils permettent le bon fonctionnement du processus d&#8217;anonymisation (voir <a class="reference external" href="#desinscription">plus haut</a>)</p>
+</div>
+<p>Les utilisateurs <code class="docutils literal"><span class="pre">anonymous</span></code> et <code class="docutils literal"><span class="pre">external</span></code> sont totalement paramétrables dans le fichier <code class="docutils literal"><span class="pre">zds/settings.py</span></code> :
+pour changer le nom d&#8217;utilisateur (<em>username</em>) de ces comptes, agissez sur les constantes suivantes (du dictionnaire ZDS_APP):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Constant for anonymisation</span>
+
+<span class="n">anonymous_account</span> <span class="o">=</span> <span class="s">&quot;anonymous&quot;</span>
+<span class="n">external_account</span> <span class="o">=</span> <span class="s">&quot;external&quot;</span>
+</pre></div>
+</div>
+<p>Bien entendu, les comptes correspondants doivent exister dans la base de donnée.</p>
+<div class="section" id="l-interface-de-promotion">
+<h3>L&#8217;interface de promotion<a class="headerlink" href="#l-interface-de-promotion" title="Permalink to this headline">¶</a></h3>
+<p>Afin de pouvoir gérer les membres directement depuis le site (c&#8217;est à dire sans avoir besoin de passer par l&#8217;interface d&#8217;administration de Django), une interface de promotion a été développée.
+Cette interface permet de :
+1. Ajouter/Supprimer un membre dans un/des groupe(s)
+2. Ajouter/Supprimer le statut super-utilisateur à un membre
+3. (Dés)activer un compte</p>
+<p>Le premier point permet notamment de passer un membre dans le groupe staff ou développeur. Si d&#8217;autres groupes voient le jour (valido ?) alors il sera possible ici aussi de le changer.
+Le second point permet de donner accès au membre à l&#8217;interface Django et à cette interface de promotion.
+Enfin, le dernier point concerne simplement l&#8217;activation du compte (normalement faite par le membre à l&#8217;inscription).</p>
+<p>Elle est géré par le formulaire <cite>PromoteMemberForm</cite> présent dans le fichier <cite>zds/member/forms.py</cite>.
+Elle est ensuite visible via le template <cite>member/settings/promote.html</cite> qui peut-être accédé en tant que super-utilisateur via le profil de n&#8217;importe quel membre.</p>
+</div>
+<div class="section" id="l-interface-de-karma">
+<h3>L&#8217;interface de karma<a class="headerlink" href="#l-interface-de-karma" title="Permalink to this headline">¶</a></h3>
+<p>Pour pouvoir communiquer entre modérateur, il est utile d&#8217;avoir un outil de suivi sur les membres. Ce dernier prend forme via la gestion du &#8220;karma&#8221; d&#8217;un membre. Le karma est une valeur numérique pouvant aller de -100 à +100. Cette valeur peut-être modifié via l&#8217;ajout de bonus/malus par les modérateurs. Chaque modification du karma doit s&#8217;accompagner d&#8217;un commentaire, mais un commentaire n&#8217;entraine pas forcément une modification du karma (0 point de bonus/malus).</p>
+<p>Cet outil à deux rôles. Permettre d&#8217;identifier les membres <em>perturbateurs</em> mais aussi les membres <em>moteurs</em> qui pourrait faire l&#8217;objet d&#8217;un article ou d&#8217;une mise en avant de leurs projets.</p>
+<p>Pour modifier le karma d&#8217;un membre, il faut donc être modérateur sur le site. Sur la fiche profil d&#8217;un membre apparait alors un formulaire pour ajouter un bonus/malus et une liste des modifications précédentes montrant l&#8217;impact (+/-), le message, l&#8217;auteur du bonus/malus et la date d&#8217;effet de ce dernier.</p>
+</div>
+<div class="section" id="l-interface-de-reinitialisation-de-mot-de-passe">
+<h3>L&#8217;interface de réinitialisation de mot de passe<a class="headerlink" href="#l-interface-de-reinitialisation-de-mot-de-passe" title="Permalink to this headline">¶</a></h3>
+<p>Quand le membre du site oublie son mot de passe, il peut le réinitialiser. L&#8217;ancien mot de passe est supprimé et l&#8217;utilisateur peut en choisir un nouveau.
+Pour cela, il se rend sur la page de réinitialisation de mot de passe (<code class="docutils literal"><span class="pre">membres/reinitialisation/</span></code>) à partir de la page de connexion.</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/reinitialisation-mot-de-passe-1.png" src="../_images/reinitialisation-mot-de-passe-1.png" />
+</div>
+</div></blockquote>
+<p>Sur cette page l&#8217;utilisateur, doit rentrer son nom d&#8217;utilisateur ou son adresse de courriel. Pour cela, il clique sur le lien pour que le formullaire apparaisse.
+Quand l&#8217;utilisateur clique sur le bouton de validation, un jeton est généré aléatoirement et est stocké dans une base de données.</p>
+<p>Un message est envoyé à l&#8217;adresse de courriel de l&#8217;utilisateur. Ce courriel contient un lien de réinitialisation. Ce lien contient un paramètre, le jeton de réinitialisation et dirige l&#8217;utilisateur vers l&#8217;adresse <code class="docutils literal"><span class="pre">membres/new_password/</span></code>.</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/reinitialisation-mot-de-passe-2.png" src="../_images/reinitialisation-mot-de-passe-2.png" />
+</div>
+</div></blockquote>
+<p>Cette page permet de changer le mot de passe de l&#8217;utilisateur. L&#8217;utilisateur remplit le formulaire et clique sur le bouton de validation.
+Si le mot de passe et le champ confirmation correspondent et que le mot de passe respecte les règles métiers, le mot de passe est changé.
+Le systéme affiche un message de confirmation du changement du mot de passe.</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<ul class="last">
+<li><p class="first">Il n&#8217;existe aucune restriction sur le nombre de demande de réinitialisation</p>
+</li>
+<li><p class="first">Un utilisateur peut avoir le même nom d&#8217;utilisateur que l&#8217;adresse email de quelqu&#8217;un d&#8217;autre. Exemple:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">username</th>
+<th class="head">email</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>firm1</td>
+<td><a class="reference external" href="mailto:firm1&#37;&#52;&#48;gmail&#46;com">firm1<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="mailto:firm1&#37;&#52;&#48;gmail&#46;com">firm1<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+<td><a class="reference external" href="mailto:firm1&#37;&#52;&#48;zestedesavoir&#46;com">firm1<span>&#64;</span>zestedesavoir<span>&#46;</span>com</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<ul class="last simple">
+<li>Le mot de passe doit faire au moins 6 caractères.</li>
+<li>Le lien est valable une heure. Si l&#8217;utilisateur ne clique pas sur le lien dans le temps imparti, un message d&#8217;erreur est affiché.</li>
+<li>Le jeton de réinitialisation de mot de passe n&#8217;est valide qu&#8217;une seule fois. Si l&#8217;utilisateur tente de changer son mot de passe avec le même jeton, une page 404 est affiché à l&#8217;utilisateur.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="private-message.html" class="btn btn-neutral float-right" title="Les messages privés" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gallery.html" class="btn btn-neutral" title="Les galeries" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, zds-member.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

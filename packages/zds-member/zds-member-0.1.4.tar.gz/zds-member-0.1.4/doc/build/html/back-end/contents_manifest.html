@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Les fichiers de manifeste &mdash; Zds Member 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Zds Member 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Le back-end" href="../back-end.html"/>
+        <link rel="next" title="Les forums" href="forum.html"/>
+        <link rel="prev" title="Les tutoriels et articles v2.0 (ZEP 12)" href="contents.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> Zds Member
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-linux-install.html">Installation du backend sous Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-et-configuration-de-virtualenv">Installation et configuration de <cite>virtualenv</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-linux-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-os-x-install.html">Installation du backend sous OS X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-virtualenv">Installation de virtualenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#creation-de-votre-environnement">Création de votre environnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-la-librairie-lxml-pour-python-2-7-via-macports">Récupération de la librairie lxml pour python 2.7 via MacPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#recuperation-de-cairo-svg">Récupération de cairo (svg)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#ajout-de-flags-pour-compiler-avec-gcc-plutot-que-clang-lors-de-l-installation-de-lxml">Ajout de flags pour compiler avec gcc plutôt que clang lors de l&#8217;installation de lxml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#installation-de-toutes-les-dependances">Installation de toutes les dépendances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#lancer-zds">Lancer ZdS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-os-x-install.html#aller-plus-loin">Aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/backend-windows-install.html">Installation du backend sous Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#prerequis">Prérequis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#installation-des-outils-front-end">Installation des outils front-end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/backend-windows-install.html#suite-de-l-installation">Suite de l&#8217;installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/deploy-in-production.html">Configuration des serveurs de production</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#parametres">Paramètres</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-generaux">Paramètres généraux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#parametres-specifiques">Paramètres spécifiques</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#premier-deploiement">Premier déploiement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#utilisateur-local">Utilisateur local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-des-outils">Installation des outils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#clone-du-repo-et-configuration-de-prod">Clone du repo et configuration de prod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#installation-de-l-application-de-base">Installation de l&#8217;application de base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/deploy-in-production.html#outils-specifiques-a-un-serveur-de-run">Outils spécifiques à un serveur de run</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#mise-a-jour-d-une-instance-existante">Mise à jour d&#8217;une instance existante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/deploy-in-production.html#personnalisation-d-une-instance">Personnalisation d&#8217;une instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/frontend-install.html">Installation du frontend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#installation-de-node-js-et-npm">Installation de Node.js et npm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#freebsd-openbsd">FreeBSD / OpenBSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#mise-a-jour-de-node-js-et-npm">Mise à jour de Node.js et npm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#installation-des-dependances-npm">Installation des dépendances npm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#utilisation-des-outils">Utilisation des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#presentation-de-gulp">Présentation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#utilisation-de-gulp">Utilisation de Gulp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#quelques-informations-supplementaires">Quelques informations supplémentaires</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../install/frontend-install.html#nettoyage-des-outils">Nettoyage des outils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances">Désinstaller les dépendances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/frontend-install.html#desinstaller-les-dependances-inutilisees">Désinstaller les dépendances inutilisées</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/install-solr.html">Installation de Solr (pour la recherche)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-linux">Prérequis sur linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#prerequis-sur-windows">Prérequis sur windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/install-solr.html#procedure-commune">Procédure commune</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../back-end.html">Le <em>back-end</em></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contents.html">Les tutoriels et articles v2.0 (ZEP 12)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#vocabulaire-et-definitions">Vocabulaire et définitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#de-la-structure-generale-d-un-contenu">De la structure générale d&#8217;un contenu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-extraits">Des extraits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-conteneurs">Des conteneurs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#un-contenu">Un contenu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#des-objets-en-general">Des objets en général</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#cycle-de-vie-des-contenus">Cycle de vie des contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-brouillon">Le brouillon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-beta">La bêta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-validation">La validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#la-publication">La publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#l-entraide">L&#8217;entraide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#import-de-contenus">Import de contenus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#import-d-image">Import d&#8217;image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#regles">Règles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#aspects-techniques-et-fonctionnels">Aspects techniques et fonctionnels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#les-metadonnees">Les métadonnées</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-stockage-en-base-de-donnees">Le stockage en base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#le-stockage-via-des-dossiers">Le stockage <em>via</em> des dossiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#les-permissions">Les permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#processus-de-publication">Processus de publication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#consultation-d-un-contenu-publie">Consultation d&#8217;un contenu publié</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#qu-en-est-il-des-images">Qu&#8217;en est-il des images ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contents.html#passage-des-tutos-v1-aux-tutos-v2">Passage des tutos v1 aux tutos v2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#migrer-une-archive-v1-vers-une-archive-v2">Migrer une archive v1 vers une archive v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html#migrer-la-base-de-donnees">Migrer la base de données</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Les fichiers de manifeste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#les-versions-du-manifeste">Les versions du manifeste</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nomenclature">Nomenclature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-1-0">Version 1.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-2-0">Version 2.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forum.html">Les forums</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#le-decoupage-des-forums">Le découpage des forums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#la-moderation-des-forums">La modération des forums</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-sujets">La modération des sujets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#la-moderation-des-messages">La modération des messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#les-filtres-sur-les-sujets">Les filtres sur les sujets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#dans-un-forum">Dans un forum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="forum.html#suivre-un-sujet">Suivre un sujet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="forum.html#etre-notifie-sur-le-site-lui-meme">Être notifié sur le site lui même</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gallery.html">Les galeries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#generalites">Généralités</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#creation-et-remplissage">Création et remplissage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#les-utilisateurs-et-leurs-droits">Les utilisateurs et leurs droits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery.html#la-suppression">La suppression</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#lien-galerie-tutoriel">Lien galerie &lt;-&gt; Tutoriel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#aspects-techniques">Aspects techniques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gallery.html#outils-logiciels-utilises">Outils logiciels utilisés</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="member.html">Les membres</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="member.html#inscription">Inscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member.html#desinscription">Désinscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member.html#les-membres-dans-les-environnement-de-test-et-de-developpement">Les membres dans les environnement de test et de développement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-promotion">L&#8217;interface de promotion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-karma">L&#8217;interface de karma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="member.html#l-interface-de-reinitialisation-de-mot-de-passe">L&#8217;interface de réinitialisation de mot de passe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="private-message.html">Les messages privés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="private-message.html#envoi-et-participation">Envoi et participation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">La recherche</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search.html#l-indexation-des-donnees">L&#8217;indexation des données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#id1">La recherche</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#dans-le-code">Dans le code ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="search.html#pourquoi-avoir-utilise-haystack-ne-peut-t-on-pas-appeller-solr-directement">Pourquoi avoir utilisé Haystack, ne peut t-on pas appeller Solr directement ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#pourquoi-solr-et-pas-un-autre-moteur-de-recherche">Pourquoi Solr et pas un autre moteur de recherche ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-fonctionne-le-code-de-l-indexation">Comment fonctionne le code de l&#8217;indexation ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#le-cas-particulier-de-l-indexation-des-tutoriels-et-articles">Le cas particulier de l&#8217;indexation des tutoriels et articles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-lancer-l-indexation-et-ou-comment-verifier-les-donnees-indexees">Comment lancer l&#8217;indexation et/ou comment vérifier les données indexées ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="search.html#comment-fonctionne-le-code-de-la-recherche">Comment fonctionne le code de la recherche ?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#quels-sont-les-fichiers-de-configuration-importants">Quels sont les fichiers de configuration importants ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="search.html#utilisation-de-la-commande-index-content">Utilisation de la commande <code class="docutils literal"><span class="pre">index_content</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../back-end-code.html">Documentation technique du <em>back-end</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/arborescence-back.html">Arborescence du <em>back-end</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#arborescence-generale-de-zds">Arborescence générale de <code class="docutils literal"><span class="pre">zds/</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/arborescence-back.html#contenu-d-un-module">Contenu d&#8217;un module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#fichiers-principaux">Fichiers principaux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#tests-unitaires">Tests unitaires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#gestion-de-la-base-de-donnees">Gestion de la base de données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#api">API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/arborescence-back.html#autres">Autres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/article.html">Les articles (<code class="docutils literal"><span class="pre">article/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/article.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/forum.html">Les forums (<code class="docutils literal"><span class="pre">forum/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/forum.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/gallery.html">Les galleries (<code class="docutils literal"><span class="pre">gallery/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/gallery.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/member.html">Les membres (<code class="docutils literal"><span class="pre">member/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/member.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/pages.html">Les pages (<code class="docutils literal"><span class="pre">pages/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/pages.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/private-message.html">Les messages privés (<code class="docutils literal"><span class="pre">mp/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/private-message.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/search.html">La recherche (<code class="docutils literal"><span class="pre">search/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/search.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorial.html">Les tutoriels (<code class="docutils literal"><span class="pre">tutorial/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorial.html#vues-views-py">Vues (<code class="docutils literal"><span class="pre">views.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/tutorialv2.html">Les tutoriels v2 (ZEP12) (<code class="docutils literal"><span class="pre">tutorialv2/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-models">Modèles (<code class="docutils literal"><span class="pre">models/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-de-la-base-de-donnee-models-database-py">Modèles de la base de donnée (<code class="docutils literal"><span class="pre">models_database.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#modeles-versionnes-models-versioned-py">Modèles &#8220;versionnés&#8221; (<code class="docutils literal"><span class="pre">models_versioned.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#vues-views">Vues (<code class="docutils literal"><span class="pre">views/</span></code>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-views-views-contents-py">Contenus (<code class="docutils literal"><span class="pre">views/views_contents.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#validations-views-views-validations-py">Validations (<code class="docutils literal"><span class="pre">views/views_validations.py</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../back-end-code/tutorialv2.html#contenus-publies-views-views-published-py">Contenus publiés (<code class="docutils literal"><span class="pre">views/views_published.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#mixins-mixins-py">Mixins (<code class="docutils literal"><span class="pre">mixins.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-forumulaires-forms-py">Les forumulaires (<code class="docutils literal"><span class="pre">forms.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/tutorialv2.html#les-utilitaires-utils-py">Les utilitaires (<code class="docutils literal"><span class="pre">utils.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../back-end-code/utils.html">Les utilitaires (<code class="docutils literal"><span class="pre">utils/</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#modeles-models-py">Modèles (<code class="docutils literal"><span class="pre">models.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#articles-articles-py">Articles (<code class="docutils literal"><span class="pre">articles.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#forums-forums-py">Forums (<code class="docutils literal"><span class="pre">forums.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#messages-prives-mps-py">Messages privés (<code class="docutils literal"><span class="pre">mps.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#tutoriels-tutorials-py">Tutoriels (<code class="docutils literal"><span class="pre">tutorials.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#les-processeurs-de-contexte-context-processor-py">Les processeurs de contexte (<code class="docutils literal"><span class="pre">context_processor.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../back-end-code/utils.html#autres-misc-py">Autres (<code class="docutils literal"><span class="pre">misc.py</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#informations-generales">Informations générales</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#version-courante">Version courante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#schema">Schéma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-verbes-http">Les verbes HTTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#les-formats-d-entrees-sorties">Les formats d&#8217;entrées/sorties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#etag">ETag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#throttling">Throttling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#pagination">Pagination</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#authentification">Authentification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#bibliotheque-tierce-choisie">Bibliothèque tierce choisie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#utilisation">Utilisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#creer-un-client">Créer un client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#recuperer-les-tokens-d-authentification">Récupérer les tokens d&#8217;authentification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-access-token">Utiliser un access_token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#utiliser-un-refresh-token">Utiliser un refresh_token</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#django-rest-swagger">Django REST Swagger</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Zds Member</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../back-end.html">Le <em>back-end</em></a> &raquo;</li>
+      
+    <li>Les fichiers de manifeste</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/back-end/contents_manifest.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="les-fichiers-de-manifeste">
+<h1>Les fichiers de manifeste<a class="headerlink" href="#les-fichiers-de-manifeste" title="Permalink to this headline">¶</a></h1>
+<p>Chaque contenu publiable (tutoriel et article) est décrit par un fichier de manifeste écrit au format JSON.</p>
+<p>Ce fichier de manifeste a pour but d&#8217;exprimer, versionner et instancier les informations et méta-informations du contenu tout au long du workflow de publication.</p>
+<p>Les informations en question sont l&#8217;architecture, les titres, les liens vers les sources, les informations de license ainsi que la version du fichier de manifeste lui-même.</p>
+<p>Le fichier de manifeste est intrinsèquement lié à un interpréteur qui est inclus dans le module de contenu associé.</p>
+<div class="section" id="les-versions-du-manifeste">
+<h2>Les versions du manifeste<a class="headerlink" href="#les-versions-du-manifeste" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nomenclature">
+<h3>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h3>
+<p>La version du manifeste (et de son interpréteur) suit une nomenclature du type &#8220;semantic version&#8221; (SemVer), c&#8217;est-à-dire que la version est séparée en trois parties selon le format v X.Y.Z</p>
+<ul class="simple">
+<li>X : numéro de version majeur</li>
+<li>Y : numéro de version à ajout fonctionnel mineur</li>
+<li>Z : numéro de version de correction de bug</li>
+</ul>
+<p>Plus précisément :</p>
+<ul class="simple">
+<li>L&#8217;incrémentation de X signifie que la nouvelle version est potentiellement incompatible avec la version X-1. Un outil de migration doit alors être créé.</li>
+<li>L&#8217;incrémentation de Y signifie que la nouvelle version possède une compatibilité descendante avec la version X.Y-1 mais que la compatibilité ascendante n&#8217;est pas assurée. C&#8217;est-à-dire que le nouvel interpréteur peut interpréter un manifeste de type X.Y-1
+mais l&#8217;ancien interpréteur ne peut pas interpréter un manifeste X.Y. Le cas typique d&#8217;incrémentation de Y est le passage d&#8217;obligatoire à optionnel d&#8217;un champ du manifeste.</li>
+<li>L&#8217;incrémentation de Z assure la compatibilité ascendante ET descendante, les cas typiques d&#8217;incrémentation de Z est l&#8217;ajout d&#8217;un champ optionnel au manifeste.</li>
+</ul>
+<p>Sauf cas exceptionnel, la numérotation de X commence à 1, la numérotation de Y commence à 0, la numérotation de Z commence à 0.</p>
+<p>La version du manifeste est donnée par le champ éponyme situé à la racine du manifeste ( <code class="docutils literal"><span class="pre">`{</span> <span class="pre">version=&quot;2.0.0&quot;}`</span></code>).
+L&#8217;absence du champ version est interprétée comme <code class="docutils literal"><span class="pre">̀{version=&quot;1.0.0&quot;}`</span></code>.
+Les 0 non significatifs sont optionnels ainsi <code class="docutils literal"><span class="pre">`{version=&quot;1&quot;}`</span></code> est strictement équivalent à <code class="docutils literal"><span class="pre">`{version:&quot;1.0&quot;}`</span></code> lui-même strictement équivalent à <code class="docutils literal"><span class="pre">`{version:&quot;1.0.0&quot;}`</span></code>.</p>
+</div>
+<div class="section" id="version-1-0">
+<h3>Version 1.0<a class="headerlink" href="#version-1-0" title="Permalink to this headline">¶</a></h3>
+<p>La version 1.0 définit trois types de manifeste selon que nous faisons face à un article,  un mini tutoriel ou un big tutoriel.</p>
+<div class="section" id="mini-tuto">
+<h4>MINI TUTO<a class="headerlink" href="#mini-tuto" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Mon Tutoriel No10&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description du Tutoriel No10&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;MINI&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;introduction&quot;</span><span class="p">:</span> <span class="s2">&quot;introduction.md&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;conclusion&quot;</span><span class="p">:</span> <span class="s2">&quot;conclusion.md&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="big-tuto">
+<h4>BIG TUTO<a class="headerlink" href="#big-tuto" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-json"><div class="highlight"><pre>{
+    &quot;title&quot;: &quot;3D temps réel avec Irrlicht&quot;,
+    &quot;description&quot;: &quot;3D temps réel avec Irrlicht&quot;,
+    &quot;type&quot;: &quot;BIG&quot;,
+    &quot;licence&quot;: &quot;Tous droits réservés&quot;,
+    &quot;introduction&quot;: &quot;introduction.md&quot;,
+    &quot;conclusion&quot;: &quot;conclusion.md&quot;,
+    &quot;parts&quot;: [
+        {
+            &quot;pk&quot;: 7,
+            &quot;title&quot;: &quot;Chapitres de base&quot;,
+            &quot;introduction&quot;: &quot;7_chapitres-de-base/introduction.md&quot;,
+            &quot;conclusion&quot;: &quot;7_chapitres-de-base/conclusion.md&quot;,
+            &quot;chapters&quot;: [
+                {
+                    &quot;pk&quot;: 25,
+                    &quot;title&quot;: &quot;Introduction&quot;,
+                    &quot;introduction&quot;: &quot;7_chapitres-de-base/25_introduction/introduction.md&quot;,
+                    &quot;conclusion&quot;: &quot;7_chapitres-de-base/25_introduction/conclusion.md&quot;,
+                    &quot;extracts&quot;: [
+                        {
+                            &quot;pk&quot;: 87,
+                            &quot;title&quot;: &quot;Ce qu&#39;est un moteur 3D&quot;,
+                            &quot;text&quot;: &quot;7_chapitres-de-base/25_introduction/87_ce-quest-un-moteur-3d.md&quot;
+                        },
+                        {
+                            &quot;pk&quot;: 88,
+                            &quot;title&quot;: &quot;Irrlicht&quot;,
+                            &quot;text&quot;: &quot;7_chapitres-de-base/25_introduction/88_irrlicht.md&quot;
+                        }
+                    ]
+                },(...)
+            ]
+        }, (...)
+    ]
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="article">
+<h4>Article<a class="headerlink" href="#article" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Mon Article No5&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description de l&#39;article No5&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;article&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;text.md&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="version-2-0">
+<h3>Version 2.0<a class="headerlink" href="#version-2-0" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre>{
+    &quot;object&quot;: &quot;container&quot;,
+    &quot;slug&quot;: &quot;un-tutoriel&quot;,
+    &quot;title&quot;: &quot;Un tutoriel&quot;,
+    &quot;introduction&quot;: &quot;introduction.md&quot;,
+    &quot;conclusion&quot;: &quot;conclusion.md&quot;,
+    &quot;version&quot;: 2,
+    &quot;description&quot;: &quot;Une description&quot;,
+    &quot;type&quot;: &quot;TUTORIAL&quot;,
+    &quot;licence&quot;: &quot;Beerware&quot;,
+    &quot;children&quot;: [
+        {
+            &quot;object&quot;: &quot;container&quot;,
+            &quot;slug&quot;: &quot;titre-de-mon-chapitre&quot;,
+            &quot;title&quot;: &quot;Titre de mon chapitre&quot;,
+            &quot;introduction&quot;: &quot;titre-de-mon-chapitre/introduction.md&quot;,
+            &quot;conclusion&quot;: &quot;titre-de-mon-chapitre/conclusion.md&quot;,
+            &quot;children&quot;: [
+                {
+                    &quot;object&quot;: &quot;extract&quot;,
+                    &quot;slug&quot;: &quot;titre-de-mon-extrait&quot;,
+                    &quot;title&quot;: &quot;Titre de mon extrait&quot;,
+                    &quot;text&quot;: &quot;titre-de-mon-chapitre/titre-de-mon-extrait.md&quot;
+                },
+                (...)
+            ]
+        },
+        (...)
+    ]
+}
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p class="first"><code class="docutils literal"><span class="pre">type</span></code> : Le type de contenu, vaut &#8220;TUTORIAL&#8221; ou &#8220;ARTICLE&#8221;. <strong>Obligatoire</strong></p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">description</span></code> : La description du contenu. Est affichée comme sous-titre dans la page finale. <strong>Obligatoire</strong></p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">title</span></code> : Le titre du contenu. <strong>Obligatoire</strong></p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">slug</span></code> : slug du contenu qui permet de faire une url SEO-friendly. <strong>Obligatoire</strong>. ATENTION : si ce slug existe déjà dans notre base de données, il est possible qu&#8217;un nombre lui soit ajouté</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">introduction</span></code> : le nom du fichier Mardown qui possède l&#8217;introduction. Il doit pointer vers le dossier courant. <em>Optionnel mais conseillé</em></p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">conclusion</span></code> : le nom du fichier Mardown qui possède la conclusion. Il doit pointer vers le dossier courant. <em>Optionnel mais conseillé</em></p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">licence</span></code> : nom complet de la license. <em>A priori</em> les licences &#8220;CC&#8221; et &#8220;Tous drois réservés&#8221; sont supportées. Le support de toute autre licence dépendra du site utilisant le code de ZdS (fork) que vous visez. <strong>Obligatoire</strong></p>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">children</span></code> <span class="classifier-delimiter">:</span> <span class="classifier">tableau contenant l&#8217;architecture du contenu. <strong>Obligatoire</strong></span></dt>
+<dd><ol class="first last arabic simple">
+<li><code class="docutils literal"><span class="pre">object</span></code> : type d&#8217;enfant (<em>container</em> ou <em>extract</em>, selon qu&#8217;il s&#8217;agisse d&#8217;une section ou d&#8217;un texte). <strong>Obligatoire</strong></li>
+<li><code class="docutils literal"><span class="pre">title</span></code> : le titre de l&#8217;enfant. <strong>Obligatoire</strong></li>
+<li><code class="docutils literal"><span class="pre">slug</span></code> : le slug de l&#8217;enfant pour créer une url SEO-friendly, doit être unique dans le contenu, le slug est utilisé pour trouver le chemin vers l&#8217;enfant dans le système de fichier si c&#8217;est une section. <strong>obligatoire</strong></li>
+<li><code class="docutils literal"><span class="pre">introduction</span></code> : nom du fichier contenant l&#8217;introduction quand l&#8217;enfant est de type <em>container</em>. <em>Optionnel mais conseillé</em></li>
+<li><code class="docutils literal"><span class="pre">conclusion</span></code> : nom du fichier contenant la conclusion quand l&#8217;enfant est de type <em>container</em>. <em>Optionnel mais conseillé</em></li>
+<li><code class="docutils literal"><span class="pre">children</span></code> : tableau vers les enfants de niveau inférieur si l&#8217;enfant est de type <em>container</em>. <strong>Obligatoire</strong></li>
+<li><code class="docutils literal"><span class="pre">text</span></code> : nom du fichier contenant le texte quand l&#8217;enfant est de type <em>extract</em>. Nous conseillons de garder la convention <code class="docutils literal"><span class="pre">nom</span> <span class="pre">de</span> <span class="pre">fichier</span> <span class="pre">=</span> <span class="pre">slug.md</span></code> mais rien n&#8217;est obligatoire à ce sujet. <strong>Obligatoire</strong></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="forum.html" class="btn btn-neutral float-right" title="Les forums" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="contents.html" class="btn btn-neutral" title="Les tutoriels et articles v2.0 (ZEP 12)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, zds-member.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
