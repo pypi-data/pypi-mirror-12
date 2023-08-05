@@ -1,0 +1,21 @@
+archlinux:
+    etc-issue: Arch Linux (\l)
+    name: Arch Linux
+    version: rollingrelease
+    py2-base-deps:
+        - gcc
+        - cmake
+    py3-base-deps:
+        - gcc
+        - cmake
+    dependencies:
+        - tk
+        - openjpeg
+        - zlib
+        - libtiff
+        - freetype2
+        - lcms
+        - libwebp
+        - sane
+    pkg-cmd:
+        interactive: pacman -S 
