@@ -1,0 +1,177 @@
+# pYPK0_{tpz}_{gene}_{tpe}
+
+This notebook describes the assembly of the [_Saccaromyces cerevisiae_](www.yeastgenome.org)
+single gene expression vector pYPK0_{tpz}_{gene}_{tpe}.
+
+It is made by _in-vivo_ homologous recombination between three PCR products and one linear vector fragment.
+The PCR products are a promoter generated from a pYPK_Z vector, a gene from a template and 
+a terminator from a pYPKa_E vector. The three PCR products are joined to
+a linearized [pYPKpw](https://github.com/BjornFJohansson/ypk-xylose-pathways/blob/master/pYPKpw.gb) 
+backbone vector that has the [URA3](http://www.yeastgenome.org/locus/S000000747/overview) 
+marker and a _S. crevisiae_ [2 micron](http://blog.addgene.org/plasmids-101-yeast-vectors) origin of replication. 
+
+The four linear DNA fragments are joined by homologous recombination in a 
+[_Saccharomyces cerevisiae_](http://wiki.yeastgenome.org/index.php/Commonly_used_strains) ura3 mutant.
+
+![pYPK0_promoter_gene_terminator](tp_g_tp.png "pYPK0_promoter_gene_terminator")
+
+The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below. 
+There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describing pydna as well as
+[documentation](http://pydna.readthedocs.org/en/latest/) available online. 
+Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
+
+	import pydna
+
+The YPK [standard primers](standard_primers.txt) are read into a dictionary in the code cell below.
+
+	p = {{ x.id: x for x in pydna.parse("standard_primers.txt") }}
+
+The backbone vector [pYPKpw](pYPKpw.gb) is read from a local file in the code cell below.
+
+	pYPKpw = pydna.read("pYPKpw.gb")
+
+The backbone vector is linearized by digestion with [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html).
+The restriction enzyme functionality is provided by [biopython](http://biopython.org).
+
+	from Bio.Restriction import EcoRV
+
+	pYPK_EcoRV = pYPKpw.linearize(EcoRV)
+
+The pYPKa derived _E. coli_ plasmids containing the [promoter](pYPKa_Z_{tpz}.gb) and [terminator](pYPKa_E_{tpe}.gb) 
+as well as the [gene template]({gene}.gb) sequence are read into three variables in the code cell below.
+
+	promoter_template   = pydna.read("pYPKa_Z_{tpz}.gb")
+	gene_template       = pydna.read("{gene}.gb")
+	terminator_template = pydna.read("pYPKa_E_{tpe}.gb")
+
+The construction of the two vector above are described in the [pYPKa_ZE_{tpz}](pYPKa_ZE_{tpz}.ipynb) notebooks.
+
+The promoter is amplified with from [pYPKa_Z_{tpz}](pYPKa_Z_{tpz}.gb). A suggested PCR program can be found at the end of this document.
+
+	prom = pydna.pcr( p['577'], p['567'], promoter_template)
+
+Primers with tails are needed for the recombination between the gene and the promoter/terminator PCR products.
+The tails are designed to provide 33 bp of terminal homology between the DNA fragments.
+               
+	fp_tail = "tgcccactttctcactagtgacctgcagccgacAA"
+	rp_tail = "AAatcctgatgcgtttgtctgcacagatggCAC"
+
+Primers with the tails above are designed for the gene template in the code cell below.
+
+	fp, rp = pydna.cloning_primers(gene_template, fp_tail=fp_tail, rp_tail=rp_tail, path="new_primers.txt")
+
+The primers are included in the [new_primers.txt](new_primers.txt) list and in the end of the [pathway notebook](pw.ipynb) file.
+
+	print(fp.format("fasta"))
+	print(rp.format("fasta"))
+
+The gene is amplifed using the newly designed primers. A suggested PCR program can be found at the end of this document.
+
+	gene = pydna.pcr( fp, rp, gene_template)
+
+The terminator is amplified from [pYPKa_E_{tpe}](pYPKa_E_{tpe}.gb). A suggested PCR program can be found at the end of this document.
+
+	term = pydna.pcr( p['568'], p['578'], terminator_template)
+
+The four linear DNA fragments are mixed and transformed
+to a _Saccharomyces cerevisiae_ ura3 mutant.
+
+The fragments will be assembled by _in-vivo_ [homologous recombination](http://www.ncbi.nlm.nih.gov/pubmed/2828185):
+
+	asm = pydna.Assembly( (pYPK_EcoRV, prom, gene, term), limit=31 )
+
+	asm
+
+The representation of the asm object above should normally indicate one circcular product only.  
+More than one circular products might indicate an incorrect assembly strategy or represent
+by-products that might arise in the assembly process.  
+The largest recombination product is chosen as candidate for the pYPK0_{tpz}_{gene}_{tpe} vector.
+
+	candidate = asm.circular_products[0]
+
+	candidate.figure()
+
+The candidate vector is synchronized to the backbone vector. This means that
+the plasmid origin is shifted so that it matches the pYPKpw backbone vector.
+
+	result = candidate.synced(pYPKpw)
+
+### Diagnostic PCR confirmation
+
+The structure of the final vector is confirmed by two
+separate PCR reactions, one for the promoter and gene and
+one for the gene and terminator.
+
+PCR using standard primers 577 and 467 to amplify promoter and gene.
+
+	product = pydna.pcr( p['577'], p['467'], result)
+
+A correct clone should give this size in base pairs:
+
+	print(len(product))
+
+If the promoter is missing from the assembly, the PCR product will have this size in base pairs:
+
+	print(len(product) - len(prom))
+
+If the gene is missing from the assembly, the PCR product will have this size in base pairs:
+
+	print(len(product) - len(gene))
+
+PCR using standard primers 468 and 578 to amplify gene and terminator.
+
+	product2 = pydna.pcr( p['468'], p['578'], result)
+
+A correct clone should give this size:
+
+	print(len(product2))
+
+If the gene is missing from the assembly, the PCR product will have this size in base pairs:
+
+	print(len(product2) - len(gene))
+
+If the terminator is missing from the assembly, the PCR product will have this size in base pairs:
+
+	print(len(product2) - len(term))
+
+The cseguid checksum for the resulting plasmid is calculated for future reference.
+The [cseguid checksum](http://pydna.readthedocs.org/en/latest/pydna.html#pydna.utils.cseguid) 
+uniquely identifies a circular double stranded sequence.
+
+	result.cseguid()
+
+The file is named based on the names of promoter, gene and terminator.
+
+	result.locus = "pYPK0_tp_g_tp"
+	result.definition = "pYPK0_{tpz}_{gene}_{tpe}"
+
+Sequence is stamped with cseguid checksum. This can be used to verify the 
+integrity of the sequence file.
+
+	result.stamp()
+
+Write sequence to a local file.
+
+	result.write("pYPK0_{tpz}_{gene}_{tpe}.gb")
+
+## PCR programs for the amplification of Promoter, Gene and Terminator
+
+Promoter
+
+	prom.program()
+
+Gene
+
+	gene.program()
+
+Terminator
+
+	term.program()
+
+## Download [pYPK0_{tpz}_{gene}_{tpe}](pYPK0_{tpz}_{gene}_{tpe}.gb)
+
+	import pydna
+	reloaded = pydna.read("pYPK0_{tpz}_{gene}_{tpe}.gb")
+	reloaded.verify_stamp()
+
+
