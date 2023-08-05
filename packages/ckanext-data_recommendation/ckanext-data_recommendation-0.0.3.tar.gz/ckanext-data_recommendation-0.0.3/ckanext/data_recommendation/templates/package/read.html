@@ -1,0 +1,42 @@
+{% ckan_extends %}
+{% block primary_content_inner %}
+  {{ super() }}
+  <div data-module="data_recommendation">
+
+
+
+
+<h3>您可能也會有興趣</h3>
+<p>這些名稱也在這裡出現</p>
+
+
+      <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <!--li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li-->
+      {% for tag, results in h.related_pkgs()['results'].items() %}
+          {% if results['result'] %}
+            <li><a href="#{{ tag }}" data-toggle="tab">{{ tag }}</a></li>
+          {% endif %}
+      {% endfor %}
+  </ul>
+  <div class="tab-content active">
+       {% for tag, results in h.related_pkgs()['results'].items() %}
+    <div class="tab-pane" id="{{ tag }}">
+
+                 <ul style="list-style-type:none;">
+                {% for result in results['result'] %}
+                    <li style="line-height: 25px;">
+                        <span class="label">{{ result.organization.title }}</span>
+                        <a href="/dataset/{{ result.name }}" style="padding: 5px;">{{ result.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% if results['rows'] > 20 %}
+        <a href="/dataset?q={{ tag }}" class="btn" style="display: block;">更多結果</a>
+        {% endif %}
+    </div>
+      {% endfor %}
+  </div>
+
+
+{% endblock %}
