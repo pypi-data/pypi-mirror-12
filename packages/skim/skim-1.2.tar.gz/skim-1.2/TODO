@@ -1,0 +1,65 @@
+Todo:
+
+Docs
+====
+- man page support (or just doc it)
+- more commenting
+
+Config, Settings, Persistence
+=============================
+- rc file that remembers the old searches for each file, plus the recent
+searches on any file
+ (so you can do the same search on a few files in a row), plus it keeps
+ its rc file size from getting too big by tossing the very old searches
+- list wordnet path, whether to use wordnet
+- default settings
+- remember window size/position, possibly per-file
+- bindings
+
+Searching
+=========
+- regexps too, allow escaping whitespace to include it in search, optional
+  automatic \bwholeword\b matching
+
+Colors
+======
+- a little syntax highlighting
+- hues should be spread around the spectrum for any number of terms
+    [partially done]
+- if one search term is a syn of another, notice that and do the right
+  thing with coloring (like make the syns the same color)
+- do syns with saturation, let the user disable syns or pick synsets
+  as needed
+- you should put most important words first, and have those show in
+  different hues
+
+Files
+=====
+- very short files reveal math errors
+- handle giant files like less does (lazy reading)
+- tail-style file watching
+- multiple files at a time (super grep)
+
+Birdseye
+========
+- leave "footprints" on the birdseye. if i sit at a position for many
+  seconds, leave a green mark there so i can remember where i was
+- similar to the last note, one should be able to manually add a bookmark
+  Maybe: name bookmarks and let people navigate by list-o-bookmarks
+- optional multiple columns in the canvas, optional threshold at which
+  that feature turns on
+- canvases with more than one line of text per pixel row need to draw nicely
+- find dates in the file, and annotate the birdseye view with them
+
+Window
+======
+- auto-width the new window to the max line length (up to some limit)
+- wrapping controls inside skim
+- errors/msgs (of which there should be few) appear in a growing, scrollable 
+  text box at the bottom
+
+Misc. Features
+==============
+- wordnet support
+- console mode. dynamically switch from console<->gui modes. console mode
+  will simulate the highlighting with ansi colors
