@@ -1,0 +1,824 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.objects.satellitelink &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.objects.satellitelink</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.objects.satellitelink</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     David Moreau Simard, dmsimard@iweb.com</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provides an abstraction layer for communications between Alignak daemons</span>
+<span class="sd">Used by the Arbiter</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">cPickle</span>
+
+<span class="kn">from</span> <span class="nn">alignak.util</span> <span class="kn">import</span> <span class="n">get_obj_name_two_args_and_void</span>
+<span class="kn">from</span> <span class="nn">alignak.objects.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Items</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">BoolProp</span><span class="p">,</span> <span class="n">IntegerProp</span><span class="p">,</span> <span class="n">StringProp</span><span class="p">,</span> <span class="n">ListProp</span><span class="p">,</span> <span class="n">DictProp</span><span class="p">,</span> <span class="n">AddrProp</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">alignak.http.client</span> <span class="kn">import</span> <span class="n">HTTPClient</span><span class="p">,</span> <span class="n">HTTPEXCEPTIONS</span>
+
+
+<div class="viewcode-block" id="SatelliteLink"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink">[docs]</a><span class="k">class</span> <span class="nc">SatelliteLink</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;SatelliteLink is a common Class for links between</span>
+<span class="sd">    Arbiter and other satellites. Used by the Dispatcher object.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># _id = 0 each Class will have it&#39;s own id</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;address&#39;</span><span class="p">:</span>         <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;timeout&#39;</span><span class="p">:</span>         <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;data_timeout&#39;</span><span class="p">:</span>    <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;check_interval&#39;</span><span class="p">:</span>  <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;max_check_attempts&#39;</span><span class="p">:</span> <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;spare&#39;</span><span class="p">:</span>              <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;manage_sub_realms&#39;</span><span class="p">:</span>  <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;manage_arbiters&#39;</span><span class="p">:</span>    <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">],</span> <span class="n">to_send</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s">&#39;modules&#39;</span><span class="p">:</span>            <span class="n">ListProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">],</span> <span class="n">to_send</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">split_on_coma</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s">&#39;polling_interval&#39;</span><span class="p">:</span>   <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">],</span> <span class="n">to_send</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s">&#39;use_timezone&#39;</span><span class="p">:</span>       <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;NOTSET&#39;</span><span class="p">,</span> <span class="n">to_send</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s">&#39;realm&#39;</span><span class="p">:</span>              <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">],</span>
+                                         <span class="n">brok_transformation</span><span class="o">=</span><span class="n">get_obj_name_two_args_and_void</span><span class="p">),</span>
+        <span class="s">&#39;satellitemap&#39;</span><span class="p">:</span>       <span class="n">DictProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">{},</span> <span class="n">elts_prop</span><span class="o">=</span><span class="n">AddrProp</span><span class="p">,</span> <span class="n">to_send</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">override</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s">&#39;use_ssl&#39;</span><span class="p">:</span>             <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;hard_ssl_name_check&#39;</span><span class="p">:</span> <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;passive&#39;</span><span class="p">:</span>             <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">],</span> <span class="n">to_send</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="n">running_properties</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">running_properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">running_properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;con&#39;</span><span class="p">:</span>                  <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+        <span class="s">&#39;alive&#39;</span><span class="p">:</span>                <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;broks&#39;</span><span class="p">:</span>                <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[]),</span>
+
+        <span class="c"># the number of failed attempt</span>
+        <span class="s">&#39;attempt&#39;</span><span class="p">:</span>              <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+
+        <span class="c"># can be network ask or not (dead or check in timeout or error)</span>
+        <span class="s">&#39;reachable&#39;</span><span class="p">:</span>            <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;last_check&#39;</span><span class="p">:</span>           <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;managed_confs&#39;</span><span class="p">:</span>        <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">{}),</span>
+    <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SatelliteLink</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">arb_satmap</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;address&#39;</span><span class="p">:</span> <span class="s">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="s">&#39;port&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;address&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">arb_satmap</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">address</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;port&#39;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arb_satmap</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+<div class="viewcode-block" id="SatelliteLink.get_name"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the name of the link based on its type</span>
+<span class="sd">        if *mytype*_name is an attribute then returns self.*mytype*_name.</span>
+<span class="sd">        otherwise returns &quot;Unnamed *mytype*&quot;</span>
+<span class="sd">        Example : self.poller_name or &quot;Unnamed poller&quot;</span>
+
+<span class="sd">        :return: String corresponding to the link name</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                       <span class="s">&quot;{0}_name&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_my_type</span><span class="p">()),</span>
+                       <span class="s">&quot;Unnamed {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_my_type</span><span class="p">()))</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.set_arbiter_satellitemap"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.set_arbiter_satellitemap">[docs]</a>    <span class="k">def</span> <span class="nf">set_arbiter_satellitemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">satellitemap</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            arb_satmap is the satellitemap in current context:</span>
+<span class="sd">                - A SatelliteLink is owned by an Arbiter</span>
+<span class="sd">                - satellitemap attribute of SatelliteLink is the map</span>
+<span class="sd">                  defined IN THE satellite configuration</span>
+<span class="sd">                  but for creating connections, we need the have the satellitemap of the Arbiter</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arb_satmap</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;address&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="s">&#39;port&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="s">&#39;use_ssl&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_ssl</span><span class="p">,</span>
+                           <span class="s">&#39;hard_ssl_name_check&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">hard_ssl_name_check</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arb_satmap</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">satellitemap</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.create_connection"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.create_connection">[docs]</a>    <span class="k">def</span> <span class="nf">create_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize HTTP connection with a satellite (con attribute) and</span>
+<span class="sd">        set uri attribute</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="n">HTTPClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">arb_satmap</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">arb_satmap</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">],</span>
+                              <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="n">data_timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_timeout</span><span class="p">,</span>
+                              <span class="n">use_ssl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_ssl</span><span class="p">,</span>
+                              <span class="n">strong_ssl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hard_ssl_name_check</span>
+                              <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">uri</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.put_conf"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.put_conf">[docs]</a>    <span class="k">def</span> <span class="nf">put_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send the conf (serialized) to the satellite</span>
+<span class="sd">        HTTP request to the satellite (POST / put_conf)</span>
+
+<span class="sd">        :param conf: The conf to send (data depend on the satellite)</span>
+<span class="sd">        :type conf:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+
+        <span class="c"># Maybe the connection was not ok, bail out</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ping&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">&#39;put_conf&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;conf&#39;</span><span class="p">:</span> <span class="n">conf</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="s">&#39;long&#39;</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&quot;PUT CONF SUCESS&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Failed sending configuration for </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+            <span class="k">return</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.get_all_broks"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.get_all_broks">[docs]</a>    <span class="k">def</span> <span class="nf">get_all_broks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get and clean all of our broks</span>
+
+<span class="sd">        :return: list of all broks in the satellite</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">res</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.set_alive"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.set_alive">[docs]</a>    <span class="k">def</span> <span class="nf">set_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set alive, reachable, and reset attempts.</span>
+<span class="sd">        If we change state, raise a status brok update</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">was_alive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alive</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alive</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attempt</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reachable</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="c"># We came from dead to alive</span>
+        <span class="c"># so we must add a brok update</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">was_alive</span><span class="p">:</span>
+            <span class="n">brok</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_update_status_brok</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">brok</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.set_dead"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.set_dead">[docs]</a>    <span class="k">def</span> <span class="nf">set_dead</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the satellite into dead state:</span>
+
+<span class="sd">        * Alive -&gt; False</span>
+<span class="sd">        * con -&gt; None</span>
+
+<span class="sd">        Create an update Brok</span>
+
+<span class="sd">        :return:None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">was_alive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alive</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alive</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c"># We are dead now. Must raise</span>
+        <span class="c"># a brok to say it</span>
+        <span class="k">if</span> <span class="n">was_alive</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Setting the satellite </span><span class="si">%s</span><span class="s"> to a dead state.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+            <span class="n">brok</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_update_status_brok</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">brok</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.add_failed_check_attempt"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.add_failed_check_attempt">[docs]</a>    <span class="k">def</span> <span class="nf">add_failed_check_attempt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Go in reachable=False and add a failed attempt</span>
+<span class="sd">        if we reach the max, go dead</span>
+
+<span class="sd">        :param reason: the reason of adding an attemps (stack trace sometimes)</span>
+<span class="sd">        :type reason: str</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reachable</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attempt</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attempt</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attempt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_check_attempts</span><span class="p">)</span>
+        <span class="c"># Don&#39;t need to warn again and again if the satellite is already dead</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alive</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Add failed attempt to </span><span class="si">%s</span><span class="s"> (</span><span class="si">%d</span><span class="s">/</span><span class="si">%d</span><span class="s">) </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">attempt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_check_attempts</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span>
+
+        <span class="c"># check when we just go HARD (dead)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attempt</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_check_attempts</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_dead</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.update_infos"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.update_infos">[docs]</a>    <span class="k">def</span> <span class="nf">update_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update satellite info each self.check_interval seconds</span>
+<span class="sd">        so we smooth arbiter actions for just useful actions.</span>
+<span class="sd">        Create update Brok</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># First look if it&#39;s not too early to ping</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">since_last_check</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_check</span>
+        <span class="k">if</span> <span class="n">since_last_check</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_interval</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_check</span> <span class="o">=</span> <span class="n">now</span>
+
+        <span class="c"># We ping and update the managed list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ping</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_managed_list</span><span class="p">()</span>
+
+        <span class="c"># Update the state of this element</span>
+        <span class="n">brok</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_update_status_brok</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">brok</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.known_conf_managed_push"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.known_conf_managed_push">[docs]</a>    <span class="k">def</span> <span class="nf">known_conf_managed_push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_id</span><span class="p">,</span> <span class="n">push_flavor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The elements just got a new conf_id, we put it in our list</span>
+<span class="sd">         because maybe the satellite is too busy to answer now</span>
+
+<span class="sd">        :param cfg_id: config id</span>
+<span class="sd">        :type cfg_id: int</span>
+<span class="sd">        :param push_flavor: push_flavor we pushed earlier to the satellite</span>
+<span class="sd">        :type push_flavor: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">managed_confs</span><span class="p">[</span><span class="n">cfg_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">push_flavor</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.ping"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.ping">[docs]</a>    <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the satellite (GET /ping)</span>
+<span class="sd">        Add failed attempt if an error occurs</span>
+<span class="sd">        Otherwise, set alive this satellite</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Pinging </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot; (</span><span class="si">%s</span><span class="s">)&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+
+            <span class="c"># If the connection failed to initialize, bail out</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_failed_check_attempt</span><span class="p">()</span>
+                <span class="k">return</span>
+
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ping&#39;</span><span class="p">)</span>
+
+            <span class="c"># Should return us pong string</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="s">&#39;pong&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_alive</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_failed_check_attempt</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_failed_check_attempt</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.wait_new_conf"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.wait_new_conf">[docs]</a>    <span class="k">def</span> <span class="nf">wait_new_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the satellite (GET /wait_new_conf)</span>
+
+<span class="sd">        :return: True if wait new conf, otherwise False</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;wait_new_conf&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.have_conf"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.have_conf">[docs]</a>    <span class="k">def</span> <span class="nf">have_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">magic_hash</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the satellite (GET /have_conf)</span>
+<span class="sd">        Used to know if the satellite has a conf</span>
+
+<span class="sd">        :param magic_hash: Config hash. Only used for HA arbiter communication</span>
+<span class="sd">        :type magic_hash: int</span>
+<span class="sd">        :return: Boolean indicating if the satellite has a (specific) configuration</span>
+<span class="sd">        :type: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+
+        <span class="c"># If the connection failed to initialize, bail out</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">magic_hash</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;have_conf&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;have_conf&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;magic_hash&#39;</span><span class="p">:</span> <span class="n">magic_hash</span><span class="p">})</span>
+            <span class="k">print</span> <span class="s">&quot;have_conf RAW CALL&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.remove_from_conf"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.remove_from_conf">[docs]</a>    <span class="k">def</span> <span class="nf">remove_from_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sched_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the satellite (GET /remove_from_conf)</span>
+<span class="sd">        Tell a satellite to remove a scheduler from conf</span>
+
+<span class="sd">        :param sched_id: scheduler id to remove</span>
+<span class="sd">        :type sched_id: int</span>
+<span class="sd">        :return: True on success, False on failure, None if can&#39;t connect</span>
+<span class="sd">        :rtype: bool | None</span>
+<span class="sd">        TODO: Return False instead of None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+
+        <span class="c"># If the connection failed to initialize, bail out</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;remove_from_conf&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;sched_id&#39;</span><span class="p">:</span> <span class="n">sched_id</span><span class="p">})</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.update_managed_list"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.update_managed_list">[docs]</a>    <span class="k">def</span> <span class="nf">update_managed_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the satellite (GET /what_i_managed)</span>
+<span class="sd">        and update managed_conf attribute with dict (cleaned)</span>
+<span class="sd">        Set to {} on failure</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+
+        <span class="c"># If the connection failed to initialize, bail out</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">managed_confs</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">tab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;what_i_managed&#39;</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&quot;[</span><span class="si">%s</span><span class="s">]What i managed raw value is </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">tab</span><span class="p">)</span>
+
+            <span class="c"># Protect against bad return</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">print</span> <span class="s">&quot;[</span><span class="si">%s</span><span class="s">]What i managed: Got exception: bad what_i_managed returns&quot;</span> <span class="o">%</span> \
+                      <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">tab</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">managed_confs</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">return</span>
+
+            <span class="c"># Ok protect against json that is chaning keys as string instead of int</span>
+            <span class="n">tab_cleaned</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">tab</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">tab_cleaned</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">print</span> <span class="s">&quot;[</span><span class="si">%s</span><span class="s">]What i managed: Got exception: bad what_i_managed returns&quot;</span> <span class="o">%</span> \
+                          <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">tab</span>
+            <span class="c"># We can update our list now</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">managed_confs</span> <span class="o">=</span> <span class="n">tab_cleaned</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&quot;EXCEPTION INwhat_i_managed&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+            <span class="c"># A timeout is not a crime, put this case aside</span>
+            <span class="c"># TODO : fix the timeout part?</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">print</span> <span class="s">&quot;[</span><span class="si">%s</span><span class="s">]What i managed: Got exception: </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> \
+                  <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">exp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">exp</span><span class="p">),</span> <span class="n">exp</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">managed_confs</span> <span class="o">=</span> <span class="p">{}</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.do_i_manage"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.do_i_manage">[docs]</a>    <span class="k">def</span> <span class="nf">do_i_manage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_id</span><span class="p">,</span> <span class="n">push_flavor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Tell if the satellite is managing cfg_id with push_flavor</span>
+
+<span class="sd">        :param cfg_id: config id</span>
+<span class="sd">        :type cfg_id: int</span>
+<span class="sd">        :param push_flavor: flavor id, random it generated at parsing</span>
+<span class="sd">        :type push_flavor: int</span>
+<span class="sd">        :return: True if the satellite has push_flavor in managed_confs[cfg_id]</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># If not even the cfg_id in the managed_conf, bail out</span>
+        <span class="k">if</span> <span class="n">cfg_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">managed_confs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="c"># maybe it&#39;s in but with a false push_flavor. check it :)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">managed_confs</span><span class="p">[</span><span class="n">cfg_id</span><span class="p">]</span> <span class="o">==</span> <span class="n">push_flavor</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.push_broks"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.push_broks">[docs]</a>    <span class="k">def</span> <span class="nf">push_broks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">broks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the satellite (GET /ping)</span>
+<span class="sd">        and THEN Send a HTTP request to the satellite (POST /push_broks)</span>
+<span class="sd">        Send broks to the satellite</span>
+<span class="sd">        The first ping ensure the satellite is there to avoid a big timeout</span>
+
+<span class="sd">        :param broks: Brok list to send</span>
+<span class="sd">        :type broks: list</span>
+<span class="sd">        :return: True on success, False on failure</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+
+        <span class="c"># If the connection failed to initialize, bail out</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c"># Always do a simple ping to avoid a LOOOONG lock</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ping&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">&#39;push_broks&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;broks&#39;</span><span class="p">:</span> <span class="n">broks</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="s">&#39;long&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.get_external_commands"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.get_external_commands">[docs]</a>    <span class="k">def</span> <span class="nf">get_external_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the satellite (GET /ping)</span>
+<span class="sd">        and THEN send a HTTP request to the satellite (GET /get_external_commands)</span>
+<span class="sd">        Get external commands from satellite.</span>
+<span class="sd">        Unpickle data received.</span>
+
+<span class="sd">        :return: External Command list on succes, [] on failure</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_connection</span><span class="p">()</span>
+
+        <span class="c"># If the connection failed to initialize, bail out</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ping&#39;</span><span class="p">)</span>
+            <span class="n">tab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;get_external_commands&#39;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="s">&#39;long&#39;</span><span class="p">)</span>
+            <span class="n">tab</span> <span class="o">=</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tab</span><span class="p">))</span>
+            <span class="c"># Protect against bad return</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">return</span> <span class="n">tab</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="p">[]</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.prepare_for_conf"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.prepare_for_conf">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_for_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Init cfg dict attribute with __class__.properties</span>
+<span class="sd">        and extra __class__ attribute</span>
+<span class="sd">        (like __init__ could do with an object)</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;global&#39;</span><span class="p">:</span> <span class="p">{},</span> <span class="s">&#39;schedulers&#39;</span><span class="p">:</span> <span class="p">{},</span> <span class="s">&#39;arbiters&#39;</span><span class="p">:</span> <span class="p">{}}</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">properties</span>
+        <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">properties</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">to_send</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="c"># Also add global values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;api_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">api_key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;secret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">secret</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;http_proxy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">http_proxy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_host&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">statsd_host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_port&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">statsd_port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_prefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">statsd_prefix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_enabled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">statsd_enabled</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.add_global_conf_parameters"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.add_global_conf_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">add_global_conf_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add some extra params in cfg dict attribute.</span>
+<span class="sd">        Some attributes are in the global configuration</span>
+
+<span class="sd">        :param params: dict to update cfg with</span>
+<span class="sd">        :type params: dict</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.get_my_type"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.get_my_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_my_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the satellite type. Accessor to __class__.mytype</span>
+<span class="sd">        ie : poller, scheduler, receiver, broker, arbiter or reactionner</span>
+
+<span class="sd">        :return: Satellite type</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">my_type</span>
+</div>
+<div class="viewcode-block" id="SatelliteLink.give_satellite_cfg"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLink.give_satellite_cfg">[docs]</a>    <span class="k">def</span> <span class="nf">give_satellite_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get a configuration for this satellite.</span>
+<span class="sd">        Not used by Scheduler and Arbiter (overridden)</span>
+
+<span class="sd">        :return: Configuration for satellite</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;port&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+                <span class="s">&#39;address&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+                <span class="s">&#39;use_ssl&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_ssl</span><span class="p">,</span>
+                <span class="s">&#39;hard_ssl_name_check&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">hard_ssl_name_check</span><span class="p">,</span>
+                <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                <span class="s">&#39;instance_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span>
+                <span class="s">&#39;active&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+                <span class="s">&#39;passive&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">passive</span><span class="p">,</span>
+                <span class="s">&#39;poller_tags&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;poller_tags&#39;</span><span class="p">,</span> <span class="p">[]),</span>
+                <span class="s">&#39;reactionner_tags&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;reactionner_tags&#39;</span><span class="p">,</span> <span class="p">[]),</span>
+                <span class="s">&#39;api_key&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span>
+                <span class="s">&#39;secret&#39;</span><span class="p">:</span>  <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">secret</span><span class="p">,</span>
+                <span class="p">}</span>
+</div>
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used by pickle to serialize</span>
+<span class="sd">        Only dump attribute in properties and running_properties</span>
+<span class="sd">        except realm and con. Also add id attribute</span>
+
+<span class="sd">        :return: Dict with object properties and running_properties</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="c"># id is not in *_properties</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prop</span> <span class="o">!=</span> <span class="s">&#39;realm&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+                    <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">running_properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prop</span> <span class="o">!=</span> <span class="s">&#39;con&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+                    <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used by pickle to unserialize</span>
+<span class="sd">        Opposite of __getstate__</span>
+<span class="sd">        Update object with state keys</span>
+<span class="sd">        Reset con attribute</span>
+
+<span class="sd">        :param state: new satellite state</span>
+<span class="sd">        :type state: dict</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s">&#39;_id&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">state</span><span class="p">[</span><span class="n">prop</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">running_properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">state</span><span class="p">[</span><span class="n">prop</span><span class="p">])</span>
+        <span class="c"># con needs to be explicitly set:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+
+</div>
+<div class="viewcode-block" id="SatelliteLinks"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLinks">[docs]</a><span class="k">class</span> <span class="nc">SatelliteLinks</span><span class="p">(</span><span class="n">Items</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class to handle serveral SatelliteLink&quot;&quot;&quot;</span>
+
+    <span class="c"># name_property = &quot;name&quot;</span>
+    <span class="c"># inner_class = SchedulerLink</span>
+
+<div class="viewcode-block" id="SatelliteLinks.linkify"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLinks.linkify">[docs]</a>    <span class="k">def</span> <span class="nf">linkify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">realms</span><span class="p">,</span> <span class="n">modules</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Link realms and modules in all SatelliteLink</span>
+<span class="sd">        (Link a real Realm / Module python object to the SatelliteLink attribute)</span>
+
+<span class="sd">        :param realms: Realm object list</span>
+<span class="sd">        :type realms: list</span>
+<span class="sd">        :param modules: Module object list</span>
+<span class="sd">        :type modules: list</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linkify_s_by_p</span><span class="p">(</span><span class="n">realms</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linkify_s_by_plug</span><span class="p">(</span><span class="n">modules</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="SatelliteLinks.linkify_s_by_p"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.satellitelink.SatelliteLinks.linkify_s_by_p">[docs]</a>    <span class="k">def</span> <span class="nf">linkify_s_by_p</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">realms</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Link realms in all SatelliteLink</span>
+
+<span class="sd">        :param realms: Realm object list</span>
+<span class="sd">        :type realms: list</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">satlink</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">r_name</span> <span class="o">=</span> <span class="n">satlink</span><span class="o">.</span><span class="n">realm</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="c"># If no realm name, take the default one</span>
+            <span class="k">if</span> <span class="n">r_name</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">realm</span> <span class="o">=</span> <span class="n">realms</span><span class="o">.</span><span class="n">get_default</span><span class="p">()</span>
+                <span class="n">satlink</span><span class="o">.</span><span class="n">realm</span> <span class="o">=</span> <span class="n">realm</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c"># find the realm one</span>
+                <span class="n">realm</span> <span class="o">=</span> <span class="n">realms</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">r_name</span><span class="p">)</span>
+                <span class="n">satlink</span><span class="o">.</span><span class="n">realm</span> <span class="o">=</span> <span class="n">realm</span>
+            <span class="c"># Check if what we get is OK or not</span>
+            <span class="k">if</span> <span class="n">realm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">satlink</span><span class="o">.</span><span class="n">register_to_my_realm</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="s">&quot;The </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> got a unknown realm &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> \
+                      <span class="p">(</span><span class="n">satlink</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">my_type</span><span class="p">,</span> <span class="n">satlink</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">r_name</span><span class="p">)</span>
+                <span class="n">satlink</span><span class="o">.</span><span class="n">configuration_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

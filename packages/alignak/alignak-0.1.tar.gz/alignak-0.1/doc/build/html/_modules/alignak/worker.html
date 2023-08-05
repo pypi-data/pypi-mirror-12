@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.worker &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.worker</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.worker</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Olivier Hanesse, olivier.hanesse@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Zoran Zaric, zz@zoranzaric.de</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provide Worker class. It is used to spawn new processes in Poller and Reactionner</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">Queue</span> <span class="kn">import</span> <span class="n">Empty</span>
+
+<span class="c"># In android, we should use threads, not process</span>
+<span class="kn">import</span> <span class="nn">imp</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">imp</span><span class="o">.</span><span class="n">find_module</span><span class="p">(</span><span class="s">&#39;android&#39;</span><span class="p">)</span>
+    <span class="n">IS_ANDROID</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">IS_ANDROID</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">IS_ANDROID</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Queue</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">Queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+    <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span> <span class="k">as</span> <span class="n">Process</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">cStringIO</span>
+
+
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">alignak.misc.common</span> <span class="kn">import</span> <span class="n">setproctitle</span>
+
+
+<div class="viewcode-block" id="Worker"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker">[docs]</a><span class="k">class</span> <span class="nc">Worker</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This class is used for poller and reactionner to work.</span>
+<span class="sd">    The worker is a process launch by theses process and read Message in a Queue</span>
+<span class="sd">    (self.s) (slave)</span>
+<span class="sd">    They launch the Check and then send the result in the Queue self.m (master)</span>
+<span class="sd">    they can die if they do not do anything (param timeout)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># None</span>
+    <span class="n">_process</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_mortal</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_idletime</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_timeout</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_control_q</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_id</span><span class="p">,</span> <span class="n">slave_q</span><span class="p">,</span> <span class="n">returns_queue</span><span class="p">,</span> <span class="n">processes_by_worker</span><span class="p">,</span> <span class="n">mortal</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+                 <span class="n">max_plugins_output_length</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">loaded_into</span><span class="o">=</span><span class="s">&#39;unknown&#39;</span><span class="p">,</span>
+                 <span class="n">http_daemon</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">_id</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mortal</span> <span class="o">=</span> <span class="n">mortal</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_idletime</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slave_q</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">processes_by_worker</span> <span class="o">=</span> <span class="n">processes_by_worker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_control_q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>  <span class="c"># Private Control queue for the Worker</span>
+        <span class="c"># By default, take our own code</span>
+        <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">work</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">slave_q</span><span class="p">,</span> <span class="n">returns_queue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_control_q</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">returns_queue</span> <span class="o">=</span> <span class="n">returns_queue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_plugins_output_length</span> <span class="o">=</span> <span class="n">max_plugins_output_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i_am_dying</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="c"># Keep a trace where the worker is launch from (poller or reactionner?)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loaded_into</span> <span class="o">=</span> <span class="n">loaded_into</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s">&#39;nt&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">http_daemon</span> <span class="o">=</span> <span class="n">http_daemon</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c"># windows forker do not like pickle http/lock</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">http_daemon</span> <span class="o">=</span> <span class="bp">None</span>
+
+<div class="viewcode-block" id="Worker.is_mortal"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.is_mortal">[docs]</a>    <span class="k">def</span> <span class="nf">is_mortal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Accessor to _mortal attribute</span>
+
+<span class="sd">        :return: A boolean indicating if the worker is mortal or not.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mortal</span>
+</div>
+<div class="viewcode-block" id="Worker.start"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Start the worker. Wrapper for calling start method of the process attribute</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Worker.terminate"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.terminate">[docs]</a>    <span class="k">def</span> <span class="nf">terminate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wrapper for calling terminate method of the process attribute</span>
+<span class="sd">        Also close queues (input and output) and terminate queues thread</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># We can just terminate process, not threads</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">IS_ANDROID</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+        <span class="c"># Is we are with a Manager() way</span>
+        <span class="c"># there should be not such functions</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_control_q</span><span class="p">,</span> <span class="s">&#39;close&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_control_q</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_control_q</span><span class="o">.</span><span class="n">join_thread</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slave_q</span><span class="p">,</span> <span class="s">&#39;close&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slave_q</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slave_q</span><span class="o">.</span><span class="n">join_thread</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Worker.join"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.join">[docs]</a>    <span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Wrapper for calling join method of the process attribute</span>
+
+<span class="sd">        :param timeout: time to wait for the process to terminate</span>
+<span class="sd">        :type timeout: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Worker.is_alive"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.is_alive">[docs]</a>    <span class="k">def</span> <span class="nf">is_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wrapper for calling is_alive method of the process attribute</span>
+
+<span class="sd">        :return: A boolean indicating if the process is alive</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="o">.</span><span class="n">is_alive</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Worker.is_killable"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.is_killable">[docs]</a>    <span class="k">def</span> <span class="nf">is_killable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determine whether a process is killable :</span>
+
+<span class="sd">        * process is mortal</span>
+<span class="sd">        * idletime &gt; timeout</span>
+
+<span class="sd">        :return: a boolean indicating if it is killable</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mortal</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idletime</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span>
+</div>
+<div class="viewcode-block" id="Worker.add_idletime"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.add_idletime">[docs]</a>    <span class="k">def</span> <span class="nf">add_idletime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Increment idletime</span>
+
+<span class="sd">        :param time: time to increment in seconds</span>
+<span class="sd">        :type time: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_idletime</span> <span class="o">+=</span> <span class="n">time</span>
+</div>
+<div class="viewcode-block" id="Worker.reset_idle"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.reset_idle">[docs]</a>    <span class="k">def</span> <span class="nf">reset_idle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reset idletime (set to 0)</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_idletime</span> <span class="o">=</span> <span class="mi">0</span>
+</div>
+<div class="viewcode-block" id="Worker.send_message"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.send_message">[docs]</a>    <span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wrapper for calling put method of the _control_q attribute</span>
+
+<span class="sd">        :param msg: the message to put in queue</span>
+<span class="sd">        :type msg: str</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_control_q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Worker.set_zombie"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.set_zombie">[docs]</a>    <span class="k">def</span> <span class="nf">set_zombie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the process as zombie (mortal to False)</span>
+
+<span class="sd">        :return:None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mortal</span> <span class="o">=</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="Worker.get_new_checks"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.get_new_checks">[docs]</a>    <span class="k">def</span> <span class="nf">get_new_checks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get new checks if less than nb_checks_max</span>
+<span class="sd">        If no new checks got and no check in queue, sleep for 1 sec</span>
+<span class="sd">        REF: doc/alignak-action-queues.png (3)</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checks</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">processes_by_worker</span><span class="p">:</span>
+                <span class="c"># print &quot;I&quot;, self._id, &quot;wait for a message&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slave_q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">msg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span>
+                <span class="c"># print &quot;I&quot;, self._id, &quot;I&#39;ve got a message!&quot;</span>
+        <span class="k">except</span> <span class="n">Empty</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_idletime</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c"># Maybe the Queue() is not available, if so, just return</span>
+        <span class="c"># get back to work :)</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="k">return</span>
+</div>
+<div class="viewcode-block" id="Worker.launch_new_checks"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.launch_new_checks">[docs]</a>    <span class="k">def</span> <span class="nf">launch_new_checks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Launch checks that are in status</span>
+<span class="sd">        REF: doc/alignak-action-queues.png (4)</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># queue</span>
+        <span class="k">for</span> <span class="n">chk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">checks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chk</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">&#39;queue&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_idletime</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">chk</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+                <span class="c"># Maybe we got a true big problem in the</span>
+                <span class="c"># action launching</span>
+                <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="s">&#39;toomanyopenfiles&#39;</span><span class="p">:</span>
+                    <span class="c"># We should die as soon as we return all checks</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%d</span><span class="s">] I am dying Too many open files </span><span class="si">%s</span><span class="s"> ... &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">chk</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">i_am_dying</span> <span class="o">=</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="Worker.manage_finished_checks"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.manage_finished_checks">[docs]</a>    <span class="k">def</span> <span class="nf">manage_finished_checks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check the status of checks</span>
+<span class="sd">        if done, return message finished :)</span>
+<span class="sd">        REF: doc/alignak-action-queues.png (5)</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">to_del</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">wait_time</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">checks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">&#39;launched&#39;</span> <span class="ow">and</span> <span class="n">action</span><span class="o">.</span><span class="n">last_poll</span> <span class="o">&lt;</span> <span class="n">now</span> <span class="o">-</span> <span class="n">action</span><span class="o">.</span><span class="n">wait_time</span><span class="p">:</span>
+                <span class="n">action</span><span class="o">.</span><span class="n">check_finished</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_plugins_output_length</span><span class="p">)</span>
+                <span class="n">wait_time</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">wait_time</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">wait_time</span><span class="p">)</span>
+                <span class="c"># If action done, we can launch a new one</span>
+            <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">status</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;done&#39;</span><span class="p">,</span> <span class="s">&#39;timeout&#39;</span><span class="p">):</span>
+                <span class="n">to_del</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+                <span class="c"># We answer to the master</span>
+                <span class="c"># msg = Message(_id=self._id, _type=&#39;Result&#39;, data=action)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">returns_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">IOError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%d</span><span class="s">] Exiting: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c"># Little sleep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_time</span> <span class="o">=</span> <span class="n">wait_time</span>
+
+        <span class="k">for</span> <span class="n">chk</span> <span class="ow">in</span> <span class="n">to_del</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">chk</span><span class="p">)</span>
+
+        <span class="c"># Little sleep</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">wait_time</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Worker.check_for_system_time_change"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.check_for_system_time_change">[docs]</a>    <span class="k">def</span> <span class="nf">check_for_system_time_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if our system time change. If so, change our</span>
+
+<span class="sd">        :return: 0 if the difference &lt; 900, difference else</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">difference</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_each_loop</span>
+
+        <span class="c"># Now set the new value for the tick loop</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_each_loop</span> <span class="o">=</span> <span class="n">now</span>
+
+        <span class="c"># return the diff if it need, of just 0</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">difference</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">900</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">difference</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+</div>
+<div class="viewcode-block" id="Worker.work"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.work">[docs]</a>    <span class="k">def</span> <span class="nf">work</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slave_q</span><span class="p">,</span> <span class="n">returns_queue</span><span class="p">,</span> <span class="n">control_q</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wrapper function for work in order to catch the exception</span>
+<span class="sd">        to see the real work, look at do_work</span>
+
+<span class="sd">        :param slave_q: Global Queue Master-&gt;Slave</span>
+<span class="sd">        :type slave_q: Queue.Queue</span>
+<span class="sd">        :param returns_queue: queue managed by manager</span>
+<span class="sd">        :type returns_queue: Queue.Queue</span>
+<span class="sd">        :param control_q: Control Queue for the worker</span>
+<span class="sd">        :type control_q: Queue.Queue</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_work</span><span class="p">(</span><span class="n">slave_q</span><span class="p">,</span> <span class="n">returns_queue</span><span class="p">,</span> <span class="n">control_q</span><span class="p">)</span>
+        <span class="c"># Catch any exception, try to print it and exit anyway</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">cStringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Worker &#39;</span><span class="si">%d</span><span class="s">&#39; exit with an unmanaged exception : </span><span class="si">%s</span><span class="s">lave_q&quot;</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="c"># Ok I die now</span>
+            <span class="k">raise</span>
+</div>
+<div class="viewcode-block" id="Worker.do_work"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.do_work">[docs]</a>    <span class="k">def</span> <span class="nf">do_work</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slave_q</span><span class="p">,</span> <span class="n">returns_queue</span><span class="p">,</span> <span class="n">control_q</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Main function of the worker.</span>
+<span class="sd">        * Get checks</span>
+<span class="sd">        * Launch new checks</span>
+<span class="sd">        * Manage finished checks</span>
+
+<span class="sd">        :param slave_q: Global Queue Master-&gt;Slave</span>
+<span class="sd">        :type slave_q: Queue.Queue</span>
+<span class="sd">        :param returns_queue: queue managed by manager</span>
+<span class="sd">        :type returns_queue: Queue.Queue</span>
+<span class="sd">        :param control_q: Control Queue for the worker</span>
+<span class="sd">        :type control_q: Queue.Queue</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># restore default signal handler for the workers:</span>
+        <span class="c"># but on android, we are a thread, so don&#39;t do it</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">IS_ANDROID</span><span class="p">:</span>
+            <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIG_DFL</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_proctitle</span><span class="p">()</span>
+
+        <span class="n">timeout</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">returns_queue</span> <span class="o">=</span> <span class="n">returns_queue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slave_q</span> <span class="o">=</span> <span class="n">slave_q</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_each_loop</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">begin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">cmsg</span> <span class="o">=</span> <span class="bp">None</span>
+
+            <span class="c"># If we are dying (big problem!) we do not</span>
+            <span class="c"># take new jobs, we just finished the current one</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_am_dying</span><span class="p">:</span>
+                <span class="c"># REF: doc/alignak-action-queues.png (3)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_new_checks</span><span class="p">()</span>
+                <span class="c"># REF: doc/alignak-action-queues.png (4)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">launch_new_checks</span><span class="p">()</span>
+            <span class="c"># REF: doc/alignak-action-queues.png (5)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">manage_finished_checks</span><span class="p">()</span>
+
+            <span class="c"># Now get order from master</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cmsg</span> <span class="o">=</span> <span class="n">control_q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cmsg</span><span class="o">.</span><span class="n">get_type</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;Die&#39;</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%d</span><span class="s">] Dad say we are dying...&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
+                    <span class="k">break</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+            <span class="c"># Look if we are dying, and if we finish all current checks</span>
+            <span class="c"># if so, we really die, our master poller will launch a new</span>
+            <span class="c"># worker because we were too weak to manage our job :(</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_am_dying</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%d</span><span class="s">] I DIE because I cannot do my job as I should&quot;</span>
+                               <span class="s">&quot;(too many open files?)... forgot me please.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="c"># Manage a possible time change (our avant will be change with the diff)</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_for_system_time_change</span><span class="p">()</span>
+            <span class="n">begin</span> <span class="o">+=</span> <span class="n">diff</span>
+
+            <span class="n">timeout</span> <span class="o">-=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">begin</span>
+            <span class="k">if</span> <span class="n">timeout</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">timeout</span> <span class="o">=</span> <span class="mf">1.0</span>
+</div>
+<div class="viewcode-block" id="Worker.set_proctitle"><a class="viewcode-back" href="../../reference/alignak.html#alignak.worker.Worker.set_proctitle">[docs]</a>    <span class="k">def</span> <span class="nf">set_proctitle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the proctitle of this worker for readability purpose</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">setproctitle</span><span class="p">(</span><span class="s">&quot;alignak-</span><span class="si">%s</span><span class="s"> worker&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaded_into</span><span class="p">)</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

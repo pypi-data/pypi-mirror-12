@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.daemons.receiverdaemon &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.daemons.receiverdaemon</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.daemons.receiverdaemon</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     xkilian, fmikus@acktomic.com</span>
+<span class="c">#     Peter Woodman, peter@shortbus.org</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     Alexandre Viau, alexandre@alexandreviau.net</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Romain Forlot, rforlot@yahoo.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provide Receiver class used to run a receiver daemon</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">active_children</span>
+
+<span class="kn">from</span> <span class="nn">alignak.satellite</span> <span class="kn">import</span> <span class="n">Satellite</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">PathProp</span><span class="p">,</span> <span class="n">IntegerProp</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">alignak.external_command</span> <span class="kn">import</span> <span class="n">ExternalCommand</span><span class="p">,</span> <span class="n">ExternalCommandManager</span>
+<span class="kn">from</span> <span class="nn">alignak.http.client</span> <span class="kn">import</span> <span class="n">HTTPEXCEPTIONS</span>
+<span class="kn">from</span> <span class="nn">alignak.stats</span> <span class="kn">import</span> <span class="n">statsmgr</span>
+<span class="kn">from</span> <span class="nn">alignak.http.receiver_interface</span> <span class="kn">import</span> <span class="n">ReceiverInterface</span>
+
+
+<div class="viewcode-block" id="Receiver"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver">[docs]</a><span class="k">class</span> <span class="nc">Receiver</span><span class="p">(</span><span class="n">Satellite</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Receiver class. Referenced as &quot;app&quot; in most Interface</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">my_type</span> <span class="o">=</span> <span class="s">&#39;receiver&#39;</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">Satellite</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;pidfile&#39;</span><span class="p">:</span>   <span class="n">PathProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;receiverd.pid&#39;</span><span class="p">),</span>
+        <span class="s">&#39;port&#39;</span><span class="p">:</span>      <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">7773</span><span class="p">),</span>
+        <span class="s">&#39;local_log&#39;</span><span class="p">:</span> <span class="n">PathProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;receiverd.log&#39;</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">is_daemon</span><span class="p">,</span> <span class="n">do_replace</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">debug_file</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Receiver</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="s">&#39;receiver&#39;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">is_daemon</span><span class="p">,</span> <span class="n">do_replace</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">debug_file</span><span class="p">)</span>
+
+        <span class="c"># Our arbiters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c"># Our pollers and reactionners</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c"># Modules are load one time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">have_modules</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># Can have a queue of external_commands give by modules</span>
+        <span class="c"># will be taken by arbiter to process</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c"># and the unprocessed one, a buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unprocessed_external_commands</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">host_assoc</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">direct_routing</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accept_passive_unknown_check_results</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_interface</span> <span class="o">=</span> <span class="n">ReceiverInterface</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c"># Now create the external commander. It&#39;s just here to dispatch</span>
+        <span class="c"># the commands to schedulers</span>
+        <span class="n">ecm</span> <span class="o">=</span> <span class="n">ExternalCommandManager</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;receiver&#39;</span><span class="p">)</span>
+        <span class="n">ecm</span><span class="o">.</span><span class="n">load_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">external_command</span> <span class="o">=</span> <span class="n">ecm</span>
+
+<div class="viewcode-block" id="Receiver.add"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add an object to the receiver one</span>
+<span class="sd">        Handles brok and externalcommand</span>
+
+<span class="sd">        :param elt: object to add</span>
+<span class="sd">        :type elt: object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls_type</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">my_type</span>
+        <span class="k">if</span> <span class="n">cls_type</span> <span class="o">==</span> <span class="s">&#39;brok&#39;</span><span class="p">:</span>
+            <span class="c"># For brok, we TAG brok with our instance_id</span>
+            <span class="n">elt</span><span class="o">.</span><span class="n">instance_id</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">elt</span>
+            <span class="k">return</span>
+        <span class="k">elif</span> <span class="n">cls_type</span> <span class="o">==</span> <span class="s">&#39;externalcommand&#39;</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Enqueuing an external command: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ExternalCommand</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unprocessed_external_commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Receiver.push_host_names"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.push_host_names">[docs]</a>    <span class="k">def</span> <span class="nf">push_host_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sched_id</span><span class="p">,</span> <span class="n">hnames</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Link hostnames to scheduler id.</span>
+<span class="sd">        Called by alignak.satellite.IForArbiter.push_host_names</span>
+
+<span class="sd">        :param sched_id: scheduler id to link to</span>
+<span class="sd">        :type sched_id: int</span>
+<span class="sd">        :param hnames: host names list</span>
+<span class="sd">        :type hnames: list</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">h_name</span> <span class="ow">in</span> <span class="n">hnames</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">host_assoc</span><span class="p">[</span><span class="n">h_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched_id</span>
+</div>
+<div class="viewcode-block" id="Receiver.get_sched_from_hname"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.get_sched_from_hname">[docs]</a>    <span class="k">def</span> <span class="nf">get_sched_from_hname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hname</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get scheduler linked to the given host_name</span>
+
+<span class="sd">        :param hname: host_name we want the scheduler from</span>
+<span class="sd">        :type hname: str</span>
+<span class="sd">        :return: scheduler with id corresponding to the mapping table</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_assoc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hname</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">sched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sched</span>
+</div>
+<div class="viewcode-block" id="Receiver.manage_brok"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.manage_brok">[docs]</a>    <span class="k">def</span> <span class="nf">manage_brok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brok</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send brok to modules. Modules have to implement their own manage_brok function.</span>
+<span class="sd">        They usually do if they inherits from basemodule</span>
+<span class="sd">        REF: doc/receiver-modules.png (4-5)</span>
+
+<span class="sd">        :param brok: brok to manage</span>
+<span class="sd">        :type brok: alignak.brok.Brok</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">to_del</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c"># Call all modules if they catch the call</span>
+        <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">get_internal_instances</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">mod</span><span class="o">.</span><span class="n">manage_brok</span><span class="p">(</span><span class="n">brok</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;The mod </span><span class="si">%s</span><span class="s"> raise an exception: </span><span class="si">%s</span><span class="s">, I kill it&quot;</span><span class="p">,</span>
+                               <span class="n">mod</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Exception type: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Back trace of this kill: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+                <span class="n">to_del</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+        <span class="c"># Now remove mod that raise an exception</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">clear_instances</span><span class="p">(</span><span class="n">to_del</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Receiver.do_stop"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.do_stop">[docs]</a>    <span class="k">def</span> <span class="nf">do_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stop the Receiver</span>
+<span class="sd">        Wait for children to stop and call super(Receiver, self).do_stop()</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">act</span> <span class="o">=</span> <span class="n">active_children</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">act</span><span class="p">:</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Receiver</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">do_stop</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Receiver.setup_new_conf"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.setup_new_conf">[docs]</a>    <span class="k">def</span> <span class="nf">setup_new_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Receiver custom setup_new_conf method</span>
+<span class="sd">        Implements specific setup for receiver</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_lock</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cur_conf</span> <span class="o">=</span> <span class="n">conf</span>
+            <span class="c"># Got our name from the globals</span>
+            <span class="k">if</span> <span class="s">&#39;receiver_name&#39;</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">]:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;receiver_name&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;Unnamed receiver&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;api_key&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">secret</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;secret&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">http_proxy</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;http_proxy&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_host</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_host&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_port</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_port&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_prefix</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_prefix&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_enabled</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;statsd_enabled&#39;</span><span class="p">]</span>
+
+            <span class="n">statsmgr</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;receiver&#39;</span><span class="p">,</span>
+                              <span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">secret</span><span class="p">,</span> <span class="n">http_proxy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">http_proxy</span><span class="p">,</span>
+                              <span class="n">statsd_host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_host</span><span class="p">,</span> <span class="n">statsd_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_port</span><span class="p">,</span>
+                              <span class="n">statsd_prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_prefix</span><span class="p">,</span> <span class="n">statsd_enabled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_enabled</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">load_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">direct_routing</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;direct_routing&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">accept_passive_unknown_check_results</span> <span class="o">=</span> \
+                <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;accept_passive_unknown_check_results&#39;</span><span class="p">]</span>
+
+            <span class="n">g_conf</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">]</span>
+
+            <span class="c"># If we&#39;ve got something in the schedulers, we do not want it anymore</span>
+            <span class="k">for</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">]:</span>
+
+                <span class="n">already_got</span> <span class="o">=</span> <span class="bp">False</span>
+
+                <span class="c"># We can already got this conf id, but with another address</span>
+                <span class="k">if</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">:</span>
+                    <span class="n">new_addr</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">][</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;address&#39;</span><span class="p">]</span>
+                    <span class="n">old_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;address&#39;</span><span class="p">]</span>
+                    <span class="n">new_port</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">][</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;port&#39;</span><span class="p">]</span>
+                    <span class="n">old_port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;port&#39;</span><span class="p">]</span>
+                    <span class="c"># Should got all the same to be ok :)</span>
+                    <span class="k">if</span> <span class="n">new_addr</span> <span class="o">==</span> <span class="n">old_addr</span> <span class="ow">and</span> <span class="n">new_port</span> <span class="o">==</span> <span class="n">old_port</span><span class="p">:</span>
+                        <span class="n">already_got</span> <span class="o">=</span> <span class="bp">True</span>
+
+                <span class="k">if</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] We already got the conf </span><span class="si">%d</span><span class="s"> (</span><span class="si">%s</span><span class="s">)&quot;</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">sched_id</span><span class="p">,</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">][</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+                    <span class="n">wait_homerun</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;wait_homerun&#39;</span><span class="p">]</span>
+                    <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;actions&#39;</span><span class="p">]</span>
+                    <span class="n">external_commands</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;external_commands&#39;</span><span class="p">]</span>
+                    <span class="n">con</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span>
+
+                <span class="n">sched</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">][</span><span class="n">sched_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span>
+
+                <span class="k">if</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">sched</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">sched</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+                <span class="k">if</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;wait_homerun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wait_homerun</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;actions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">actions</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;external_commands&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">external_commands</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">con</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;wait_homerun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;actions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;external_commands&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;active&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;timeout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;timeout&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;data_timeout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;data_timeout&#39;</span><span class="p">]</span>
+
+                <span class="c"># Do not connect if we are a passive satellite</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">direct_routing</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="c"># And then we connect to it :)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">sched_id</span><span class="p">)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] Sending us configuration </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">have_modules</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="n">mods</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;modules&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">have_modules</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We received modules </span><span class="si">%s</span><span class="s"> &quot;</span><span class="p">,</span> <span class="n">mods</span><span class="p">)</span>
+
+            <span class="c"># Set our giving timezone from arbiter</span>
+            <span class="n">use_timezone</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;use_timezone&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">use_timezone</span> <span class="o">!=</span> <span class="s">&#39;NOTSET&#39;</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Setting our timezone to </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">use_timezone</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">use_timezone</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Receiver.push_external_commands_to_schedulers"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.push_external_commands_to_schedulers">[docs]</a>    <span class="k">def</span> <span class="nf">push_external_commands_to_schedulers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a HTTP request to the schedulers (POST /run_external_commands)</span>
+<span class="sd">        with external command list if the receiver is in direct routing.</span>
+<span class="sd">        If not in direct_routing just clear the unprocessed_external_command list and return</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># If we are not in a direct routing mode, just bailout after</span>
+        <span class="c"># faking resolving the commands</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">direct_routing</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unprocessed_external_commands</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unprocessed_external_commands</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">return</span>
+
+        <span class="n">commands_to_process</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unprocessed_external_commands</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unprocessed_external_commands</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c"># Now get all external commands and put them into the</span>
+        <span class="c"># good schedulers</span>
+        <span class="k">for</span> <span class="n">ext_cmd</span> <span class="ow">in</span> <span class="n">commands_to_process</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">external_command</span><span class="o">.</span><span class="n">resolve_command</span><span class="p">(</span><span class="n">ext_cmd</span><span class="p">)</span>
+
+        <span class="c"># Now for all alive schedulers, send the commands</span>
+        <span class="k">for</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">:</span>
+            <span class="n">sched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">]</span>
+            <span class="n">extcmds</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;external_commands&#39;</span><span class="p">]</span>
+            <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="n">extcmd</span><span class="o">.</span><span class="n">cmd_line</span> <span class="k">for</span> <span class="n">extcmd</span> <span class="ow">in</span> <span class="n">extcmds</span><span class="p">]</span>
+            <span class="n">con</span> <span class="o">=</span> <span class="n">sched</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;con&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+            <span class="n">sent</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">con</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;The scheduler is not connected </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">sched</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">sched_id</span><span class="p">)</span>
+                <span class="n">con</span> <span class="o">=</span> <span class="n">sched</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;con&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+            <span class="c"># If there are commands and the scheduler is alive</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">con</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Sending </span><span class="si">%d</span><span class="s"> commands to scheduler </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmds</span><span class="p">),</span> <span class="n">sched</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c"># con.run_external_commands(cmds)</span>
+                    <span class="n">con</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">&#39;run_external_commands&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;cmds&#39;</span><span class="p">:</span> <span class="n">cmds</span><span class="p">})</span>
+                    <span class="n">sent</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="c"># Not connected or sched is gone</span>
+                <span class="k">except</span> <span class="p">(</span><span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">),</span> <span class="n">exp</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;manage_returns exception:: </span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s"> &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">exp</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">sched_id</span><span class="p">)</span>
+                    <span class="k">return</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>  <span class="c"># the scheduler must  not be initialized</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;manage_returns exception:: </span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s"> &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">exp</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;A satellite raised an unknown exception: </span><span class="si">%s</span><span class="s"> (</span><span class="si">%s</span><span class="s">)&quot;</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                    <span class="k">raise</span>
+
+            <span class="c"># Wether we sent the commands or not, clean the scheduler list</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;external_commands&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c"># If we didn&#39;t send them, add the commands to the arbiter list</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">sent</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">extcmd</span> <span class="ow">in</span> <span class="n">extcmds</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extcmd</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Receiver.do_loop_turn"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.do_loop_turn">[docs]</a>    <span class="k">def</span> <span class="nf">do_loop_turn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Receiver daemon main loop</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Begin to clean modules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_and_del_zombie_modules</span><span class="p">()</span>
+
+        <span class="c"># Now we check if arbiter speak to us.</span>
+        <span class="c"># If so, we listen for it</span>
+        <span class="c"># When it push us conf, we reinit connections</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watch_for_new_conf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_new_conf</span><span class="p">()</span>
+
+        <span class="c"># Maybe external modules raised &#39;objects&#39;</span>
+        <span class="c"># we should get them</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_objects_from_from_queues</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_external_commands_to_schedulers</span><span class="p">()</span>
+
+        <span class="c"># Maybe we do not have something to do, so we wait a little</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c"># print &quot;watch new conf 1: begin&quot;, len(self.broks)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">watch_for_new_conf</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+            <span class="c"># print &quot;get enw broks watch new conf 1: end&quot;, len(self.broks)</span>
+</div>
+<div class="viewcode-block" id="Receiver.main"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.main">[docs]</a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Main receiver function</span>
+<span class="sd">        Init daemon and loop forever</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_config_file</span><span class="p">()</span>
+
+            <span class="c"># Setting log level</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_level</span><span class="p">)</span>
+            <span class="c"># Force the debug level if the daemon is said to start with such level</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s">&#39;DEBUG&#39;</span><span class="p">)</span>
+
+            <span class="c"># Look if we are enabled or not. If ok, start the daemon mode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">look_for_early_exit</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_header</span><span class="p">():</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[Receiver] Using working directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_daemon_init_and_start</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_modules_manager</span><span class="p">()</span>
+
+            <span class="c">#  We wait for initial conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_initial_conf</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span><span class="p">:</span>
+                <span class="k">return</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_new_conf</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">set_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_load_modules</span><span class="p">()</span>
+            <span class="c"># and start external modules too</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">start_external_instances</span><span class="p">()</span>
+
+            <span class="c"># Do the modules part, we have our modules in self.modules</span>
+            <span class="c"># REF: doc/receiver-modules.png (1)</span>
+
+            <span class="c"># Now the main loop</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_mainloop</span><span class="p">()</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_unrecoverable</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+            <span class="k">raise</span>
+</div>
+<div class="viewcode-block" id="Receiver.get_stats_struct"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.receiverdaemon.Receiver.get_stats_struct">[docs]</a>    <span class="k">def</span> <span class="nf">get_stats_struct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get state of modules and create a scheme for stats data of daemon</span>
+<span class="sd">        This may be overridden in subclasses</span>
+
+<span class="sd">        :return: A dict with the following structure</span>
+<span class="sd">        ::</span>
+
+<span class="sd">           { &#39;metrics&#39;: [&#39;%s.%s.external-commands.queue %d %d&#39;],</span>
+<span class="sd">             &#39;version&#39;: __version__,</span>
+<span class="sd">             &#39;name&#39;: self.name,</span>
+<span class="sd">             &#39;direct_routing&#39;: self.direct_routing,</span>
+<span class="sd">             &#39;type&#39;: _type,</span>
+<span class="sd">             &#39;passive&#39;: self.passive,</span>
+<span class="sd">             &#39;modules&#39;:</span>
+<span class="sd">                         {&#39;internal&#39;: {&#39;name&#39;: &quot;MYMODULE1&quot;, &#39;state&#39;: &#39;ok&#39;},</span>
+<span class="sd">                         {&#39;external&#39;: {&#39;name&#39;: &quot;MYMODULE2&quot;, &#39;state&#39;: &#39;stopped&#39;},</span>
+<span class="sd">                        ]</span>
+<span class="sd">           }</span>
+
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+        <span class="c"># call the daemon one</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Receiver</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_stats_struct</span><span class="p">()</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;receiver&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;direct_routing&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">direct_routing</span><span class="p">})</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s">&#39;metrics&#39;</span><span class="p">]</span>
+        <span class="c"># metrics specific</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;receiver.</span><span class="si">%s</span><span class="s">.external-commands.queue </span><span class="si">%d</span><span class="s"> </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span><span class="p">),</span> <span class="n">now</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">res</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

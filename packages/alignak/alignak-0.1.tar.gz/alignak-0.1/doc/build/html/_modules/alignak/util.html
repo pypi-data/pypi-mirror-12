@@ -1,0 +1,1492 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.util &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.util</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.util</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     xkilian, fmikus@acktomic.com</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Squiz, squiz@squiz.confais.org</span>
+<span class="c">#     Christophe Simon, geektophe@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Zoran Zaric, zz@zoranzaric.de</span>
+<span class="c">#     Gerhard Lausser, gerhard.lausser@consol.de</span>
+<span class="c">#     Christophe SIMON, christophe.simon@dailymotion.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;This module provide a lot of utility functions.</span>
+<span class="sd">You can find functions for time management, type management (pythonization),</span>
+<span class="sd">macros solving, sorting, parsing, file handling, filters.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">alignak.macroresolver</span> <span class="kn">import</span> <span class="n">MacroResolver</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">SAFE_STDOUT</span> <span class="o">=</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span> <span class="o">==</span> <span class="s">&#39;UTF-8&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Encoding detection error= </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span>
+    <span class="n">SAFE_STDOUT</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="c"># ########## Strings #############</span>
+<div class="viewcode-block" id="safe_print"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.safe_print">[docs]</a><span class="k">def</span> <span class="nf">safe_print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Try to print strings, but if there is an utf8 error, go in simple ascii mode</span>
+<span class="sd">    (Like if the terminal do not have en_US.UTF8 as LANG for example)</span>
+
+<span class="sd">    :param args: args to print</span>
+<span class="sd">    :type args:</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="c"># If we got an str, go in unicode, and if we cannot print</span>
+        <span class="c"># utf8, go in ascii mode</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">SAFE_STDOUT</span><span class="p">:</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="s">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="s">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span>\
+                    <span class="n">decode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="s">&#39;replace&#39;</span><span class="p">)</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="c"># Same for unicode, but skip the unicode pass</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">SAFE_STDOUT</span><span class="p">:</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="n">arg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="s">&#39;replace&#39;</span><span class="p">)</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="c"># Other types can be directly convert in unicode</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">unicode</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+    <span class="c"># Ok, now print it :)</span>
+    <span class="k">print</span> <span class="s">u&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="split_semicolon"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.split_semicolon">[docs]</a><span class="k">def</span> <span class="nf">split_semicolon</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Split a line on semicolons characters but not on the escaped semicolons</span>
+
+<span class="sd">    :param line: line to split</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :param maxsplit: maximum of split to dot</span>
+<span class="sd">    :type maxsplitL int</span>
+<span class="sd">    :return: splitted line</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    &gt;&gt;&gt; split_semicolon(&#39;a,b;c;;g&#39;)</span>
+<span class="sd">    [&#39;a,b&#39;, &#39;c&#39;, &#39;&#39;, &#39;g&#39;]</span>
+
+<span class="sd">    &gt;&gt;&gt; split_semicolon(&#39;a,b;c;;g&#39;, 2)</span>
+<span class="sd">    [&#39;a,b&#39;, &#39;c&#39;, &#39;;g&#39;]</span>
+
+<span class="sd">    &gt;&gt;&gt; split_semicolon(r&#39;a,b;c\;;g&#39;, 2)</span>
+<span class="sd">    [&#39;a,b&#39;, &#39;c;&#39;, &#39;g&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Split on &#39;;&#39; character</span>
+    <span class="n">splitted_line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;;&#39;</span><span class="p">)</span>
+
+    <span class="n">splitted_line_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">splitted_line</span><span class="p">)</span>
+
+    <span class="c"># if maxsplit is not specified, we set it to the number of part</span>
+    <span class="k">if</span> <span class="n">maxsplit</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="mi">0</span> <span class="o">&gt;</span> <span class="n">maxsplit</span><span class="p">:</span>
+        <span class="n">maxsplit</span> <span class="o">=</span> <span class="n">splitted_line_size</span>
+
+    <span class="c"># Join parts  to the next one, if ends with a &#39;\&#39;</span>
+    <span class="c"># because we mustn&#39;t split if the semicolon is escaped</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">splitted_line_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+
+        <span class="c"># for each part, check if its ends with a &#39;\&#39;</span>
+        <span class="n">ends</span> <span class="o">=</span> <span class="n">splitted_line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ends</span><span class="p">:</span>
+            <span class="c"># remove the last character &#39;\&#39;</span>
+            <span class="n">splitted_line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">splitted_line</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c"># append the next part to the current if it is not the last and the current</span>
+        <span class="c"># ends with &#39;\&#39; or if there is more than maxsplit parts</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ends</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">maxsplit</span><span class="p">)</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">splitted_line_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="n">splitted_line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">splitted_line</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">splitted_line</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]])</span>
+
+            <span class="c"># delete the next part</span>
+            <span class="k">del</span> <span class="n">splitted_line</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">splitted_line_size</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="c"># increase i only if we don&#39;t have append because after append the new</span>
+        <span class="c"># string can end with &#39;\&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">splitted_line</span>
+
+</div>
+<div class="viewcode-block" id="jsonify_r"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.jsonify_r">[docs]</a><span class="k">def</span> <span class="nf">jsonify_r</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert an object into json (recursively on attribute)</span>
+
+<span class="sd">    :param obj: obj to jsonify</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :return: json representation of obj</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">cls</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">__class__</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s">&#39;properties&#39;</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">obj</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s">&#39;running_properties&#39;</span><span class="p">):</span>
+        <span class="n">properties</span> <span class="o">+=</span> <span class="n">cls</span><span class="o">.</span><span class="n">running_properties</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+        <span class="c"># Maybe the property is not jsonable</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">set</span><span class="p">):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">subval</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
+                    <span class="n">o_type</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subval</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="s">&#39;my_type&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">o_type</span> <span class="o">==</span> <span class="s">&#39;CommandCall&#39;</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subval</span><span class="o">.</span><span class="n">call</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                            <span class="k">pass</span>
+                        <span class="k">continue</span>
+                    <span class="k">if</span> <span class="n">o_type</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">subval</span><span class="p">,</span> <span class="n">o_type</span> <span class="o">+</span> <span class="s">&#39;_name&#39;</span><span class="p">):</span>
+                        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">subval</span><span class="p">,</span> <span class="n">o_type</span> <span class="o">+</span> <span class="s">&#39;_name&#39;</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">pass</span>
+                        <span class="c"># print &quot;CANNOT MANAGE OBJECT&quot;, _t, type(_t), t</span>
+                <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">o_type</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="s">&#39;my_type&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">o_type</span> <span class="o">==</span> <span class="s">&#39;CommandCall&#39;</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">call</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="k">pass</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">o_type</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">o_type</span> <span class="o">+</span> <span class="s">&#39;_name&#39;</span><span class="p">):</span>
+                    <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">o_type</span> <span class="o">+</span> <span class="s">&#39;_name&#39;</span><span class="p">)</span>
+                <span class="c"># else:</span>
+                <span class="c">#    print &quot;CANNOT MANAGE OBJECT&quot;, v, type(v), t</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c"># ################################## TIME ##################################</span>
+
+</div>
+<div class="viewcode-block" id="get_end_of_day"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_end_of_day">[docs]</a><span class="k">def</span> <span class="nf">get_end_of_day</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month_id</span><span class="p">,</span> <span class="n">day</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the timestamp of the end (local) of a specific day</span>
+
+<span class="sd">    :param year: date year</span>
+<span class="sd">    :type year: int</span>
+<span class="sd">    :param month_id: date month (int)</span>
+<span class="sd">    :type month_id: int</span>
+<span class="sd">    :param day: date day</span>
+<span class="sd">    :type day: int</span>
+<span class="sd">    :return: timestamp</span>
+<span class="sd">    :rtype: int</span>
+
+<span class="sd">    TODO: Missing timezone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month_id</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">end_time_epoch</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">end_time</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">end_time_epoch</span>
+
+</div>
+<div class="viewcode-block" id="print_date"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.print_date">[docs]</a><span class="k">def</span> <span class="nf">print_date</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get date (local) in asc format from timestamp</span>
+
+<span class="sd">    example : &#39;Thu Jan  1 01:00:00 1970&#39; (for timestamp=0 in a EUW server)</span>
+
+<span class="sd">    :param timestamp: timestamp</span>
+<span class="sd">    :type timestamp; int</span>
+<span class="sd">    :return: formatted time</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    TODO: Missing timezone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">timestamp</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="get_day"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_day">[docs]</a><span class="k">def</span> <span class="nf">get_day</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get timestamp of the beginning of the day (local) given by timestamp</span>
+
+<span class="sd">    :param timestamp: time to get day from</span>
+<span class="sd">    :type timestamp: int</span>
+<span class="sd">    :return: timestamp</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    TODO: Missing timezone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">timestamp</span> <span class="o">-</span> <span class="n">get_sec_from_morning</span><span class="p">(</span><span class="n">timestamp</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="get_wday"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_wday">[docs]</a><span class="k">def</span> <span class="nf">get_wday</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get week day from date</span>
+
+<span class="sd">    :param timestamp: timestamp date</span>
+<span class="sd">    :type timestamp: int</span>
+<span class="sd">    :return: weekday (0-6)</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    TODO: Missing timezone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t_lt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t_lt</span><span class="o">.</span><span class="n">tm_wday</span>
+
+</div>
+<div class="viewcode-block" id="get_sec_from_morning"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_sec_from_morning">[docs]</a><span class="k">def</span> <span class="nf">get_sec_from_morning</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the numbers of seconds elapsed since the beginning of the day (local) given by timestamp</span>
+
+<span class="sd">    :param timestamp: time to get amount of second from</span>
+<span class="sd">    :type timestamp: int</span>
+<span class="sd">    :return: timestamp</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    TODO: Missing timezone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t_lt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t_lt</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="n">t_lt</span><span class="o">.</span><span class="n">tm_min</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">t_lt</span><span class="o">.</span><span class="n">tm_sec</span>
+
+</div>
+<div class="viewcode-block" id="get_start_of_day"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_start_of_day">[docs]</a><span class="k">def</span> <span class="nf">get_start_of_day</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month_id</span><span class="p">,</span> <span class="n">day</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the timestamp of the beginning (local) of a specific day</span>
+
+<span class="sd">    :param year: date year</span>
+<span class="sd">    :type year: int</span>
+<span class="sd">    :param month_id: date month (int)</span>
+<span class="sd">    :type month_id: int</span>
+<span class="sd">    :param day: date day</span>
+<span class="sd">    :type day: int</span>
+<span class="sd">    :return: timestamp</span>
+<span class="sd">    :rtype: float</span>
+
+<span class="sd">    TODO: Missing timezone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month_id</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="mo">00</span><span class="p">,</span> <span class="mo">00</span><span class="p">,</span> <span class="mo">00</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">start_time_epoch</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">start_time</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">:</span>
+        <span class="c"># Windows mktime sometimes crashes on (1970, 1, 1, ...)</span>
+        <span class="n">start_time_epoch</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">return</span> <span class="n">start_time_epoch</span>
+
+</div>
+<div class="viewcode-block" id="format_t_into_dhms_format"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.format_t_into_dhms_format">[docs]</a><span class="k">def</span> <span class="nf">format_t_into_dhms_format</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert an amount of second into day, hour, min and sec</span>
+
+<span class="sd">    :param timestamp: seconds</span>
+<span class="sd">    :type timestamp: int</span>
+<span class="sd">    :return: &#39;Ad Bh Cm Ds&#39;</span>
+<span class="sd">    :rtype: str</span>
+
+<span class="sd">    &gt;&gt;&gt; format_t_into_dhms_format(456189)</span>
+<span class="sd">    &#39;5d 6h 43m 9s&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; format_t_into_dhms_format(3600)</span>
+<span class="sd">    &#39;0d 1h 0m 0s&#39;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mins</span><span class="p">,</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">hour</span><span class="p">,</span> <span class="n">mins</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">mins</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">day</span><span class="p">,</span> <span class="n">hour</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">d </span><span class="si">%s</span><span class="s">h </span><span class="si">%s</span><span class="s">m </span><span class="si">%s</span><span class="s">s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">mins</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span>
+
+
+<span class="c"># ################################ Pythonization ###########################</span></div>
+<div class="viewcode-block" id="to_int"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_int">[docs]</a><span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert val to int (or raise Exception)</span>
+
+<span class="sd">    :param val: value to convert</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :return: int(float(val))</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="to_float"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_float">[docs]</a><span class="k">def</span> <span class="nf">to_float</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert val to float (or raise Exception)</span>
+
+<span class="sd">    :param val: value to convert</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :return: float(val)</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="to_char"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_char">[docs]</a><span class="k">def</span> <span class="nf">to_char</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get first character of val (or raise Exception)</span>
+
+<span class="sd">    :param val: value we get head</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :return: val[0]</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="to_split"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_split">[docs]</a><span class="k">def</span> <span class="nf">to_split</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">split_on_coma</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Try to split a string with comma separator.</span>
+<span class="sd">    If val is already a list return it</span>
+<span class="sd">    If we don&#39;t have to split just return [val]</span>
+<span class="sd">    If split gives only [&#39;&#39;] empty it</span>
+
+<span class="sd">    :param val: value to split</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :param split_on_coma:</span>
+<span class="sd">    :type split_on_coma: bool</span>
+<span class="sd">    :return: splitted value on comma</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    &gt;&gt;&gt; to_split(&#39;a,b,c&#39;)</span>
+<span class="sd">    [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+
+<span class="sd">    &gt;&gt;&gt; to_split(&#39;a,b,c&#39;, False)</span>
+<span class="sd">    [&#39;a,b,c&#39;]</span>
+
+<span class="sd">    &gt;&gt;&gt; to_split([&#39;a,b,c&#39;])</span>
+<span class="sd">    [&#39;a,b,c&#39;]</span>
+
+<span class="sd">    &gt;&gt;&gt; to_split(&#39;&#39;)</span>
+<span class="sd">    []</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">val</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">split_on_coma</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">val</span><span class="p">]</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">val</span>
+
+</div>
+<div class="viewcode-block" id="list_split"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.list_split">[docs]</a><span class="k">def</span> <span class="nf">list_split</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">split_on_coma</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Try to split a each member of a list with comma separator.</span>
+<span class="sd">    If we don&#39;t have to split just return val</span>
+
+<span class="sd">    :param val: value to split</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :param split_on_coma:</span>
+<span class="sd">    :type split_on_coma: bool</span>
+<span class="sd">    :return: list with splitted member on comma</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    &gt;&gt;&gt; list_split([&#39;a,b,c&#39;], False)</span>
+<span class="sd">    [&#39;a,b,c&#39;]</span>
+
+<span class="sd">    &gt;&gt;&gt; list_split([&#39;a,b,c&#39;])</span>
+<span class="sd">    [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+
+<span class="sd">    &gt;&gt;&gt; list_split(&#39;&#39;)</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">split_on_coma</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">val</span>
+    <span class="n">new_val</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">subval</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
+        <span class="n">new_val</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">subval</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">new_val</span>
+
+</div>
+<div class="viewcode-block" id="to_best_int_float"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_best_int_float">[docs]</a><span class="k">def</span> <span class="nf">to_best_int_float</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get best type for value between int and float</span>
+
+<span class="sd">    :param val: value</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :return: int(float(val)) if int(float(val)) == float(val), else float(val)</span>
+<span class="sd">    :rtype: int | float</span>
+
+<span class="sd">    &gt;&gt;&gt; to_best_int_float(&quot;20.1&quot;)</span>
+<span class="sd">    20.1</span>
+
+<span class="sd">    &gt;&gt;&gt; to_best_int_float(&quot;20.0&quot;)</span>
+<span class="sd">    20</span>
+
+<span class="sd">    &gt;&gt;&gt; to_best_int_float(&quot;20&quot;)</span>
+<span class="sd">    20</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">integer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+    <span class="n">flt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="c"># If the f is a .0 value,</span>
+    <span class="c"># best match is int</span>
+    <span class="k">if</span> <span class="n">integer</span> <span class="o">==</span> <span class="n">flt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">integer</span>
+    <span class="k">return</span> <span class="n">flt</span>
+
+
+<span class="c"># bool(&#39;0&#39;) = true, so...</span></div>
+<div class="viewcode-block" id="to_bool"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_bool">[docs]</a><span class="k">def</span> <span class="nf">to_bool</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert value to bool</span>
+
+<span class="sd">    :param val: value to convert</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :return: True if val == &#39;1&#39; or val == &#39;on&#39; or val == &#39;true&#39; or val == &#39;True&#39;, else False</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s">&#39;1&#39;</span> <span class="ow">or</span> <span class="n">val</span> <span class="o">==</span> <span class="s">&#39;on&#39;</span> <span class="ow">or</span> <span class="n">val</span> <span class="o">==</span> <span class="s">&#39;true&#39;</span> <span class="ow">or</span> <span class="n">val</span> <span class="o">==</span> <span class="s">&#39;True&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+</div>
+<div class="viewcode-block" id="from_bool_to_string"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.from_bool_to_string">[docs]</a><span class="k">def</span> <span class="nf">from_bool_to_string</span><span class="p">(</span><span class="n">boolean</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a bool to a string representation</span>
+
+<span class="sd">    :param boolean: bool to convert</span>
+<span class="sd">    :type boolean: bool</span>
+<span class="sd">    :return: if boolean &#39;1&#39; ,else &#39;0&#39;</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">boolean</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;1&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;0&#39;</span>
+
+</div>
+<div class="viewcode-block" id="from_bool_to_int"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.from_bool_to_int">[docs]</a><span class="k">def</span> <span class="nf">from_bool_to_int</span><span class="p">(</span><span class="n">boolean</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a bool to a int representation</span>
+
+<span class="sd">    :param boolean: bool to convert</span>
+<span class="sd">    :type boolean: bool</span>
+<span class="sd">    :return: if boolean 1 ,else 0</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">boolean</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+</div>
+<div class="viewcode-block" id="from_list_to_split"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.from_list_to_split">[docs]</a><span class="k">def</span> <span class="nf">from_list_to_split</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert list into a comma separated string</span>
+
+<span class="sd">    :param val: value to convert</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :return: comma separated string</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">val</span>
+
+</div>
+<div class="viewcode-block" id="from_float_to_int"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.from_float_to_int">[docs]</a><span class="k">def</span> <span class="nf">from_float_to_int</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert float to int</span>
+
+<span class="sd">    :param val: value to convert</span>
+<span class="sd">    :type val: float</span>
+<span class="sd">    :return: int(val)</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">val</span>
+
+
+<span class="c"># Functions for brok_transformations</span>
+<span class="c"># They take 2 parameters: ref, and a value</span>
+<span class="c"># ref is the item like a service, and value</span>
+<span class="c"># if the value to preprocess</span>
+</div>
+<div class="viewcode-block" id="to_list_string_of_names"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_list_string_of_names">[docs]</a><span class="k">def</span> <span class="nf">to_list_string_of_names</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">tab</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert list into a comma separated list of element name</span>
+
+<span class="sd">    :param ref: Not used</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :param tab: list to parse</span>
+<span class="sd">    :type tab: list</span>
+<span class="sd">    :return: comma separated string of names</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">tab</span><span class="p">])</span>
+
+</div>
+<div class="viewcode-block" id="to_list_of_names"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_list_of_names">[docs]</a><span class="k">def</span> <span class="nf">to_list_of_names</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">tab</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert list into a list of element name</span>
+
+<span class="sd">    :param ref: Not used</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :param tab: list to parse</span>
+<span class="sd">    :type tab: list</span>
+<span class="sd">    :return: list of names</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">tab</span><span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="to_name_if_possible"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_name_if_possible">[docs]</a><span class="k">def</span> <span class="nf">to_name_if_possible</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Try to get value name (call get_name method)</span>
+
+<span class="sd">    :param ref: Not used</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :param value: value to name</span>
+<span class="sd">    :type value: str</span>
+<span class="sd">    :return: name or &#39;&#39;</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+</div>
+<div class="viewcode-block" id="to_hostnames_list"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_hostnames_list">[docs]</a><span class="k">def</span> <span class="nf">to_hostnames_list</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">tab</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert Host list into a list of  host_name</span>
+
+<span class="sd">    :param ref: Not used</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :param tab: Host list</span>
+<span class="sd">    :type tab: list[alignak.objects.host.Host]</span>
+<span class="sd">    :return: host_name list</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="n">tab</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s">&#39;host_name&#39;</span><span class="p">):</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">host</span><span class="o">.</span><span class="n">host_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+</div>
+<div class="viewcode-block" id="to_svc_hst_distinct_lists"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.to_svc_hst_distinct_lists">[docs]</a><span class="k">def</span> <span class="nf">to_svc_hst_distinct_lists</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">tab</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;create a dict with 2 lists::</span>
+
+<span class="sd">    * services: all services of the tab</span>
+<span class="sd">    * hosts: all hosts of the tab</span>
+
+<span class="sd">    :param ref: Not used</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :param tab: list of Host and Service</span>
+<span class="sd">    :type tab: list</span>
+<span class="sd">    :return: dict with hosts and services names</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;hosts&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;services&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">tab</span><span class="p">:</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="k">if</span> <span class="n">cls</span><span class="o">.</span><span class="n">my_type</span> <span class="o">==</span> <span class="s">&#39;service&#39;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">get_dbg_name</span><span class="p">()</span>
+            <span class="n">res</span><span class="p">[</span><span class="s">&#39;services&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">get_dbg_name</span><span class="p">()</span>
+            <span class="n">res</span><span class="p">[</span><span class="s">&#39;hosts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+</div>
+<div class="viewcode-block" id="expand_with_macros"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.expand_with_macros">[docs]</a><span class="k">def</span> <span class="nf">expand_with_macros</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expand the value with macros from the</span>
+<span class="sd">       host/service ref before brok it</span>
+
+<span class="sd">    :param ref: host or service</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :param value: value to expand macro</span>
+<span class="sd">    :type value:</span>
+<span class="sd">    :return: value with macro replaced</span>
+<span class="sd">    :rtype:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">MacroResolver</span><span class="p">()</span><span class="o">.</span><span class="n">resolve_simple_macros_in_string</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ref</span><span class="o">.</span><span class="n">get_data_for_checks</span><span class="p">())</span>
+
+</div>
+<div class="viewcode-block" id="get_obj_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_obj_name">[docs]</a><span class="k">def</span> <span class="nf">get_obj_name</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get object name (call get_name) if not a string</span>
+
+<span class="sd">    :param obj: obj we wan the name</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :return: object name</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Maybe we do not have a real object but already a string. If so</span>
+    <span class="c"># return the string</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+
+</div>
+<div class="viewcode-block" id="get_obj_name_two_args_and_void"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_obj_name_two_args_and_void">[docs]</a><span class="k">def</span> <span class="nf">get_obj_name_two_args_and_void</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get value name (call get_name) if not a string</span>
+
+<span class="sd">    :param obj: Not used</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :param value: value to name</span>
+<span class="sd">    :type value:</span>
+<span class="sd">    :return: value name</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+</div>
+<div class="viewcode-block" id="get_obj_full_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_obj_full_name">[docs]</a><span class="k">def</span> <span class="nf">get_obj_full_name</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrapepr to call obj.get_full_name or obj.get_name</span>
+
+<span class="sd">    :param obj: object name</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :return: object name</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_full_name</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+
+</div>
+<div class="viewcode-block" id="get_customs_keys"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_customs_keys">[docs]</a><span class="k">def</span> <span class="nf">get_customs_keys</span><span class="p">(</span><span class="n">dic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get a list of keys of the custom dict</span>
+<span class="sd">    without the first char</span>
+
+<span class="sd">    Used for macros (_name key)</span>
+
+<span class="sd">    :param dic: dict to parse</span>
+<span class="sd">    :type dic: dict</span>
+<span class="sd">    :return: list of keys</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+
+</div>
+<div class="viewcode-block" id="get_customs_values"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.get_customs_values">[docs]</a><span class="k">def</span> <span class="nf">get_customs_values</span><span class="p">(</span><span class="n">dic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrapper for values() method</span>
+
+<span class="sd">    :param dic: dict</span>
+<span class="sd">    :type dic: dict</span>
+<span class="sd">    :return: dic.values</span>
+<span class="sd">    :rtype:</span>
+<span class="sd">    TODO: Remove it?</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dic</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+</div>
+<div class="viewcode-block" id="unique_value"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.unique_value">[docs]</a><span class="k">def</span> <span class="nf">unique_value</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get last elem of val if it is a list</span>
+<span class="sd">    Else return val</span>
+<span class="sd">    Used in parsing, if we set several time a parameter we only take the last one</span>
+
+<span class="sd">    :param val: val to edit</span>
+<span class="sd">    :type val:</span>
+<span class="sd">    :return: single value</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    TODO: Raise erro/warning instead of silently removing something</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">val</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">val</span>
+
+
+<span class="c"># ##################### Sorting ################</span></div>
+<div class="viewcode-block" id="scheduler_no_spare_first"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.scheduler_no_spare_first">[docs]</a><span class="k">def</span> <span class="nf">scheduler_no_spare_first</span><span class="p">(</span><span class="n">x00</span><span class="p">,</span> <span class="n">y00</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compare two satellite link based on spare attribute(scheduler usually)</span>
+
+<span class="sd">    :param x00: first link to compare</span>
+<span class="sd">    :type x00:</span>
+<span class="sd">    :param y00: second link to compare</span>
+<span class="sd">    :type y00:</span>
+<span class="sd">    :return: x00 &gt; y00 (1) if x00.spare and not y00.spare,</span>
+<span class="sd">             x00 == y00 (0) if both spare,</span>
+<span class="sd">             x00 &lt; y00 (-1) else</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x00</span><span class="o">.</span><span class="n">spare</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">y00</span><span class="o">.</span><span class="n">spare</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">x00</span><span class="o">.</span><span class="n">spare</span> <span class="ow">and</span> <span class="n">y00</span><span class="o">.</span><span class="n">spare</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+</div>
+<div class="viewcode-block" id="alive_then_spare_then_deads"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.alive_then_spare_then_deads">[docs]</a><span class="k">def</span> <span class="nf">alive_then_spare_then_deads</span><span class="p">(</span><span class="n">x00</span><span class="p">,</span> <span class="n">y00</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compare two satellite link</span>
+<span class="sd">    based on alive attribute then spare attribute</span>
+
+<span class="sd">    :param x00: first link to compare</span>
+<span class="sd">    :type x00:</span>
+<span class="sd">    :param y00: second link to compare</span>
+<span class="sd">    :type y00:</span>
+<span class="sd">    :return: x00 &gt; y00 (1) if x00 alive and not y00 or both alive but x00 not spare</span>
+<span class="sd">             x00 == y00 (0) if both alive and spare</span>
+<span class="sd">             x00 &lt; y00 (-1) else</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    TODO: Rework it</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># First are alive</span>
+    <span class="k">if</span> <span class="n">x00</span><span class="o">.</span><span class="n">alive</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">y00</span><span class="o">.</span><span class="n">alive</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">y00</span><span class="o">.</span><span class="n">alive</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">x00</span><span class="o">.</span><span class="n">alive</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="c"># if not alive both, I really don&#39;t care...</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">x00</span><span class="o">.</span><span class="n">alive</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">y00</span><span class="o">.</span><span class="n">alive</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="c"># Ok, both are alive... now spare after no spare</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">x00</span><span class="o">.</span><span class="n">spare</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="c"># x00 is a spare, so y00 must be before, even if</span>
+    <span class="c"># y00 is a spare</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">y00</span><span class="o">.</span><span class="n">spare</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+</div>
+<div class="viewcode-block" id="sort_by_ids"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.sort_by_ids">[docs]</a><span class="k">def</span> <span class="nf">sort_by_ids</span><span class="p">(</span><span class="n">x00</span><span class="p">,</span> <span class="n">y00</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compare x00, y00 base on their id</span>
+
+<span class="sd">    :param x00: first elem to compare</span>
+<span class="sd">    :type x00: int</span>
+<span class="sd">    :param y00: second elem to compare</span>
+<span class="sd">    :type y00: int</span>
+<span class="sd">    :return: x00 &gt; y00 (1) if x00._id &gt; y00._id, x00 == y00 (0) if id equals, x00 &lt; y00 (-1) else</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x00</span><span class="o">.</span><span class="n">_id</span> <span class="o">&lt;</span> <span class="n">y00</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">x00</span><span class="o">.</span><span class="n">_id</span> <span class="o">&gt;</span> <span class="n">y00</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="c"># So is equal</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+</div>
+<div class="viewcode-block" id="nighty_five_percent"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.nighty_five_percent">[docs]</a><span class="k">def</span> <span class="nf">nighty_five_percent</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    From a tab, get the avg, min, max</span>
+<span class="sd">    for the tab values, but not the lower ones</span>
+<span class="sd">    and higher ones that are too distinct</span>
+<span class="sd">    than major ones</span>
+
+<span class="sd">    :param table: list of value to compute</span>
+<span class="sd">    :type table:</span>
+<span class="sd">    :return: tuple containing average, min and max value</span>
+<span class="sd">    :rtype: tuple</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t02</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">t02</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+    <span class="c"># If void tab, wtf??</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+    <span class="n">t_reduce</span> <span class="o">=</span> <span class="n">t02</span>
+    <span class="c"># only take a part if we got more</span>
+    <span class="c"># than 100 elements, or it&#39;s a non sense</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">)</span>
+        <span class="n">t_reduce</span> <span class="o">=</span> <span class="n">t_reduce</span><span class="p">[</span><span class="n">offset</span><span class="p">:</span><span class="o">-</span><span class="n">offset</span><span class="p">]</span>
+
+    <span class="n">reduce_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_reduce</span><span class="p">)</span>
+    <span class="n">reduce_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t_reduce</span><span class="p">)</span>
+
+    <span class="n">reduce_avg</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">reduce_sum</span><span class="p">)</span> <span class="o">/</span> <span class="n">reduce_len</span>
+    <span class="n">reduce_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_reduce</span><span class="p">)</span>
+    <span class="n">reduce_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">t_reduce</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">reduce_avg</span><span class="p">,</span> <span class="n">reduce_min</span><span class="p">,</span> <span class="n">reduce_max</span><span class="p">)</span>
+
+
+<span class="c"># #################### Cleaning ##############</span></div>
+<div class="viewcode-block" id="strip_and_uniq"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.strip_and_uniq">[docs]</a><span class="k">def</span> <span class="nf">strip_and_uniq</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Strip every element of a list and keep unique values</span>
+
+<span class="sd">    :param tab: list to strip</span>
+<span class="sd">    :type tab: list</span>
+<span class="sd">    :return: stripped list with unique values</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">new_tab</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">tab</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">new_tab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">new_tab</span><span class="p">)</span>
+
+
+<span class="c"># ################### Pattern change application (mainly for host) #######</span>
+</div>
+<div class="viewcode-block" id="KeyValueSyntaxError"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.KeyValueSyntaxError">[docs]</a><span class="k">class</span> <span class="nc">KeyValueSyntaxError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Syntax error on a duplicate_foreach value&quot;&quot;&quot;</span>
+</div>
+<span class="n">KEY_VALUES_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="s">&#39;^&#39;</span>
+    <span class="c"># should not be necessary, cause what we get is already stripped:</span>
+    <span class="c"># r&quot;\s*&quot;</span>
+    <span class="s">r&#39;(?P&lt;key&gt;[^$]+?)&#39;</span>   <span class="c"># key, composed of anything but a $, optionally followed by some spaces</span>
+    <span class="s">r&#39;\s*&#39;</span>
+    <span class="s">r&#39;(?P&lt;values&gt;&#39;</span>       <span class="c"># optional values, composed of a bare &#39;$(something)$&#39; zero or more times</span>
+    <span class="o">+</span> <span class="p">(</span>
+        <span class="s">r&#39;(?:\$\([^)]+?\)\$\s*)*&#39;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="s">r&#39;)\s*&#39;</span>   <span class="c"># followed by optional values, which are composed of ..</span>
+    <span class="s">&#39;$&#39;</span>
+<span class="p">)</span>
+
+<span class="n">VALUE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="s">r&#39;\$\(([^)]+)\)\$&#39;</span>
+<span class="p">)</span>
+
+<span class="n">RANGE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="s">r&#39;^&#39;</span>
+    <span class="s">r&#39;(?P&lt;before&gt;[^\[]*)&#39;</span>
+    <span class="s">r&#39;(?:\[&#39;</span>
+    <span class="s">r&#39;(?P&lt;from&gt;\d+)&#39;</span>
+    <span class="s">r&#39;-&#39;</span>
+    <span class="s">r&#39;(?P&lt;to&gt;\d+)&#39;</span>
+    <span class="s">r&#39;(?:/(?P&lt;step&gt;\d+))?&#39;</span>
+    <span class="s">r&#39;\])?&#39;</span>
+    <span class="s">r&#39;(?P&lt;after&gt;.*)&#39;</span>
+    <span class="s">r&#39;$&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="expand_ranges"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.expand_ranges">[docs]</a><span class="k">def</span> <span class="nf">expand_ranges</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param str value: The value to be &quot;expanded&quot;.</span>
+<span class="sd">    :return: A generator to yield the different resulting values from expanding</span>
+<span class="sd">             the eventual ranges present in the input value.</span>
+
+<span class="sd">    &gt;&gt;&gt; tuple(expand_ranges(&quot;Item [1-3] - Bla&quot;))</span>
+<span class="sd">    (&#39;Item 1 - Bla&#39;, &#39;Item 2 - Bla&#39;, &#39;Item 3 - Bla&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; tuple(expand_ranges(&quot;X[1-10/2]Y&quot;))</span>
+<span class="sd">    (&#39;X1Y&#39;, &#39;X3Y&#39;, &#39;X5Y&#39;, &#39;X7Y&#39;, &#39;X9Y&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; tuple(expand_ranges(&quot;[1-6/2] [1-3]&quot;))</span>
+<span class="sd">    (&#39;1 1&#39;, &#39;1 2&#39;, &#39;1 3&#39;, &#39;3 1&#39;, &#39;3 2&#39;, &#39;3 3&#39;, &#39;5 1&#39;, &#39;5 2&#39;, &#39;5 3&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">match_dict</span> <span class="o">=</span> <span class="n">RANGE_REGEX</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>  <span class="c"># the regex is supposed to always match..</span>
+    <span class="n">before</span> <span class="o">=</span> <span class="n">match_dict</span><span class="p">[</span><span class="s">&#39;before&#39;</span><span class="p">]</span>
+    <span class="n">after</span> <span class="o">=</span> <span class="n">match_dict</span><span class="p">[</span><span class="s">&#39;after&#39;</span><span class="p">]</span>
+    <span class="n">from_value</span> <span class="o">=</span> <span class="n">match_dict</span><span class="p">[</span><span class="s">&#39;from&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">from_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">value</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># we have a [x-y] range</span>
+        <span class="n">from_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">from_value</span><span class="p">)</span>
+        <span class="n">to_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match_dict</span><span class="p">[</span><span class="s">&#39;to&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c"># y is inclusive</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match_dict</span><span class="p">[</span><span class="s">&#39;step&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">from_value</span><span class="p">,</span> <span class="n">to_value</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+            <span class="c"># yield &quot;%s%s%s&quot; % (before, idx, after)</span>
+            <span class="k">for</span> <span class="n">sub_val</span> <span class="ow">in</span> <span class="n">expand_ranges</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s%s%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">after</span><span class="p">)):</span>
+                <span class="k">yield</span> <span class="n">sub_val</span>
+
+</div>
+<div class="viewcode-block" id="generate_key_value_sequences"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.generate_key_value_sequences">[docs]</a><span class="k">def</span> <span class="nf">generate_key_value_sequences</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">default_value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse a key value config entry (used in duplicate foreach)</span>
+
+<span class="sd">    If we have a key that look like [X-Y] we will expand it into Y-X+1 keys</span>
+
+<span class="sd">    :param str entry: The config line to be parsed.</span>
+<span class="sd">    :param str default_value: The default value to be used when none is available.</span>
+<span class="sd">    :return: a generator yielding dicts with &#39;KEY&#39; &amp; &#39;VALUE&#39; &amp; &#39;VALUE1&#39; keys,</span>
+<span class="sd">             with eventual others &#39;VALUEx&#39; (x 1 -&gt; N) keys.</span>
+
+<span class="sd">    &gt;&gt;&gt; rsp = list(generate_key_value_sequences(&quot;var$(/var)$,root $(/)$&quot;))</span>
+<span class="sd">    &gt;&gt;&gt; import pprint</span>
+<span class="sd">    &gt;&gt;&gt; pprint.pprint(rsp)</span>
+<span class="sd">    [{&#39;KEY&#39;: &#39;var&#39;, &#39;VALUE&#39;: &#39;/var&#39;, &#39;VALUE1&#39;: &#39;/var&#39;},</span>
+<span class="sd">     {&#39;KEY&#39;: &#39;root&#39;, &#39;VALUE&#39;: &#39;/&#39;, &#39;VALUE1&#39;: &#39;/&#39;}]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">no_one_yielded</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">entry</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">full_match</span> <span class="o">=</span> <span class="n">KEY_VALUES_REGEX</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">full_match</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">KeyValueSyntaxError</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%r</span><span class="s"> is an invalid key(-values) pattern&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">full_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;KEY&#39;</span><span class="p">:</span> <span class="n">key</span><span class="p">}</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">full_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">values</span><span class="p">:</span>  <span class="c"># there is, at least, one value provided</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value_match</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">VALUE_REGEX</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="s">&#39;VALUE</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">value_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c"># no value provided for this key, use the default provided:</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s">&#39;VALUE1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_value</span>
+        <span class="n">tmp</span><span class="p">[</span><span class="s">&#39;VALUE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="s">&#39;VALUE1&#39;</span><span class="p">]</span>  <span class="c"># alias from VALUE -&gt; VALUE1</span>
+        <span class="k">for</span> <span class="n">subkey</span> <span class="ow">in</span> <span class="n">expand_ranges</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">current</span><span class="p">[</span><span class="s">&#39;KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subkey</span>
+            <span class="k">yield</span> <span class="n">current</span>
+            <span class="n">no_one_yielded</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="n">no_one_yielded</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">KeyValueSyntaxError</span><span class="p">(</span><span class="s">&#39;At least one key must be present&#39;</span><span class="p">)</span>
+
+
+<span class="c"># ############################## Files management #######################</span>
+</div>
+<div class="viewcode-block" id="expect_file_dirs"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.expect_file_dirs">[docs]</a><span class="k">def</span> <span class="nf">expect_file_dirs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;We got a file like /tmp/toto/toto2/bob.png And we want to be sure the dir</span>
+<span class="sd">    /tmp/toto/toto2/ will really exists so we can copy it. Try to make if  needed</span>
+
+<span class="sd">    :param root: root directory</span>
+<span class="sd">    :type root: str</span>
+<span class="sd">    :param path: path to verify</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: True on success, False otherwise</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dirs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">dirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dirs</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">]</span>
+    <span class="c"># We will create all directory until the last one</span>
+    <span class="c"># so we are doing a mkdir -p .....</span>
+    <span class="c"># TODO: and windows????</span>
+    <span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">root</span>
+    <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;Verify the existence of file </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">path</span>
+    <span class="k">return</span> <span class="bp">True</span>
+
+
+<span class="c"># ####################### Services/hosts search filters  #######################</span>
+<span class="c"># Filters used in services or hosts find_by_filter method</span>
+<span class="c"># Return callback functions which are passed host or service instances, and</span>
+<span class="c"># should return a boolean value that indicates if the inscance mached the</span>
+<span class="c"># filter</span></div>
+<div class="viewcode-block" id="filter_any"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_any">[docs]</a><span class="k">def</span> <span class="nf">filter_any</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for host</span>
+<span class="sd">    Filter nothing</span>
+
+<span class="sd">    :param name: name to filter</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for host. Accept all&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_none"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_none">[docs]</a><span class="k">def</span> <span class="nf">filter_none</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for host</span>
+<span class="sd">    Filter all</span>
+
+<span class="sd">    :param name: name to filter</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for host. Accept nothing&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_host_by_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_host_by_name">[docs]</a><span class="k">def</span> <span class="nf">filter_host_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for host</span>
+<span class="sd">    Filter on name</span>
+
+<span class="sd">    :param name: name to filter</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for host. Accept if host_name == name&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">host</span><span class="o">.</span><span class="n">host_name</span> <span class="o">==</span> <span class="n">name</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_host_by_regex"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_host_by_regex">[docs]</a><span class="k">def</span> <span class="nf">filter_host_by_regex</span><span class="p">(</span><span class="n">regex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for host</span>
+<span class="sd">    Filter on regex</span>
+
+<span class="sd">    :param regex: regex to filter</span>
+<span class="sd">    :type regex: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">host_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for host. Accept if regex match host_name&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">host_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">host</span><span class="o">.</span><span class="n">host_name</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_host_by_group"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_host_by_group">[docs]</a><span class="k">def</span> <span class="nf">filter_host_by_group</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for host</span>
+<span class="sd">    Filter on group</span>
+
+<span class="sd">    :param group: group name to filter</span>
+<span class="sd">    :type group: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for host. Accept if group in host.hostgroups&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="n">g</span><span class="o">.</span><span class="n">hostgroup_name</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">host</span><span class="o">.</span><span class="n">hostgroups</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_host_by_tag"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_host_by_tag">[docs]</a><span class="k">def</span> <span class="nf">filter_host_by_tag</span><span class="p">(</span><span class="n">tpl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for host</span>
+<span class="sd">    Filter on tag</span>
+
+<span class="sd">    :param tpl: tag to filter</span>
+<span class="sd">    :type tpl: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for host. Accept if tag in host.tags&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">tpl</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">host</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_name">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on name</span>
+
+<span class="sd">    :param name: name to filter</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if service_description == name&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">service</span><span class="o">.</span><span class="n">service_description</span> <span class="o">==</span> <span class="n">name</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_regex_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_regex_name">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_regex_name</span><span class="p">(</span><span class="n">regex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on regex</span>
+
+<span class="sd">    :param regex: regex to filter</span>
+<span class="sd">    :type regex: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">host_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if regex match service_description&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">host_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">service</span><span class="o">.</span><span class="n">service_description</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_host_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_host_name">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_host_name</span><span class="p">(</span><span class="n">host_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on host_name</span>
+
+<span class="sd">    :param host_name: host_name to filter</span>
+<span class="sd">    :type host_name: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if service.host.host_name == host_name&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">host_name</span> <span class="o">==</span> <span class="n">host_name</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_regex_host_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_regex_host_name">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_regex_host_name</span><span class="p">(</span><span class="n">regex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on regex host_name</span>
+
+<span class="sd">    :param regex: regex to filter</span>
+<span class="sd">    :type regex: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">host_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if regex match service.host.host_name&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">host_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">service</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">host_name</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_hostgroup_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_hostgroup_name">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_hostgroup_name</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on hostgroup</span>
+
+<span class="sd">    :param group: hostgroup to filter</span>
+<span class="sd">    :type group: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if hostgroup in service.host.hostgroups&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="n">g</span><span class="o">.</span><span class="n">hostgroup_name</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">hostgroups</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_host_tag_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_host_tag_name">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_host_tag_name</span><span class="p">(</span><span class="n">tpl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on tag</span>
+
+<span class="sd">    :param tpl: tag to filter</span>
+<span class="sd">    :type tpl: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if tpl in service.host.tags&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">tpl</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_servicegroup_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_servicegroup_name">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_servicegroup_name</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on group</span>
+
+<span class="sd">    :param group: group to filter</span>
+<span class="sd">    :type group: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if group in service.servicegroups&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="n">g</span><span class="o">.</span><span class="n">servicegroup_name</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">service</span><span class="o">.</span><span class="n">servicegroups</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_host_by_bp_rule_label"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_host_by_bp_rule_label">[docs]</a><span class="k">def</span> <span class="nf">filter_host_by_bp_rule_label</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for host</span>
+<span class="sd">    Filter on label</span>
+
+<span class="sd">    :param label: label to filter</span>
+<span class="sd">    :type label: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for host. Accept if label in host.labels&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">host</span><span class="o">.</span><span class="n">labels</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_host_bp_rule_label"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_host_bp_rule_label">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_host_bp_rule_label</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on label</span>
+
+<span class="sd">    :param label: label to filter</span>
+<span class="sd">    :type label: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if label in service.host.labels&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">service</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">labels</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="filter_service_by_bp_rule_label"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.filter_service_by_bp_rule_label">[docs]</a><span class="k">def</span> <span class="nf">filter_service_by_bp_rule_label</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter for service</span>
+<span class="sd">    Filter on label</span>
+
+<span class="sd">    :param label: label to filter</span>
+<span class="sd">    :type label: str</span>
+<span class="sd">    :return: Filter</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">inner_filter</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inner filter for service. Accept if label in service.labels&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">service</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">service</span><span class="o">.</span><span class="n">labels</span>
+
+    <span class="k">return</span> <span class="n">inner_filter</span>
+
+</div>
+<div class="viewcode-block" id="is_complex_expr"><a class="viewcode-back" href="../../reference/alignak.html#alignak.util.is_complex_expr">[docs]</a><span class="k">def</span> <span class="nf">is_complex_expr</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if expression in complex</span>
+
+<span class="sd">    :param expr: expression to parse</span>
+<span class="sd">    :type expr: str</span>
+<span class="sd">    :return: True if &#39;(&#39;, &#39;)&#39;, &#39;&amp;&#39;, &#39;|&#39;, &#39;!&#39; or &#39;*&#39; are in expr</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s">&#39;()&amp;|!*&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

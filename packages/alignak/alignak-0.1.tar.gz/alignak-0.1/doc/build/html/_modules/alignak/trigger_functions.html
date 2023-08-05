@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.trigger_functions &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.trigger_functions</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.trigger_functions</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     xkilian, fmikus@acktomic.com</span>
+<span class="c">#     Pradeep Jindal, praddyjindal@gmail.com</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Andrus Viik, andrus@a7k.pri.ee</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Thibault Cohen, titilambert@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;This module provide a set of function for triggers</span>
+<span class="sd">Basically used to handle perfdata, exit status and output</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">alignak.misc.perfdata</span> <span class="kn">import</span> <span class="n">PerfDatas</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+
+<span class="n">OBJS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;hosts&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;services&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="n">TRIGGER_FUNCTIONS</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<div class="viewcode-block" id="declared"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.declared">[docs]</a><span class="k">def</span> <span class="nf">declared</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Decorator to add function in trigger environment</span>
+
+<span class="sd">    :param function: function to add to trigger environment</span>
+<span class="sd">    :type function: types.FunctionType</span>
+<span class="sd">    :return : the function itself only update TRIGGER_FUNCTIONS variable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">func_name</span>
+    <span class="n">TRIGGER_FUNCTIONS</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">function</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Added </span><span class="si">%s</span><span class="s"> to trigger functions list &quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">function</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="up"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.up">[docs]</a><span class="k">def</span> <span class="nf">up</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>  <span class="c"># pylint: disable=C0103</span>
+    <span class="sd">&quot;&quot;&quot; Set a host in UP state</span>
+
+<span class="sd">    :param obj: object</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :param output:</span>
+<span class="sd">    :type output:</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="down"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.down">[docs]</a><span class="k">def</span> <span class="nf">down</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Set a host in DOWN state</span>
+
+<span class="sd">    :param obj: object</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :param output:</span>
+<span class="sd">    :type output:</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="ok"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.ok">[docs]</a><span class="k">def</span> <span class="nf">ok</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>  <span class="c"># pylint: disable=C0103</span>
+    <span class="sd">&quot;&quot;&quot; Set a service in OK state</span>
+
+<span class="sd">    :param obj: object</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :param output:</span>
+<span class="sd">    :type output:</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="warning"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.warning">[docs]</a><span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Set a service in WARNING state</span>
+
+<span class="sd">    :param obj: object</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :param output:</span>
+<span class="sd">    :type output:</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="critical"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.critical">[docs]</a><span class="k">def</span> <span class="nf">critical</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Set a service in CRITICAL state</span>
+
+<span class="sd">    :param obj: object</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :param output:</span>
+<span class="sd">    :type output:</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="unknown"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.unknown">[docs]</a><span class="k">def</span> <span class="nf">unknown</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Set a service in UNKNOWN state</span>
+
+<span class="sd">    :param obj: object</span>
+<span class="sd">    :type obj: object</span>
+<span class="sd">    :param output:</span>
+<span class="sd">    :type output:</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="set_value"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.set_value">[docs]</a><span class="k">def</span> <span class="nf">set_value</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">perfdata</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">return_code</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Set output, state and perfdata to a service or host</span>
+
+<span class="sd">    :param obj_ref:</span>
+<span class="sd">    :type obj_ref: object</span>
+<span class="sd">    :param output:</span>
+<span class="sd">    :type output: None | str</span>
+<span class="sd">    :param perfdata:</span>
+<span class="sd">    :type perfdata: None | str</span>
+<span class="sd">    :param return_code:</span>
+<span class="sd">    :type return_code: None | int</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">get_object</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">obj</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">output</span> <span class="ow">or</span> <span class="n">obj</span><span class="o">.</span><span class="n">output</span>
+    <span class="n">perfdata</span> <span class="o">=</span> <span class="n">perfdata</span> <span class="ow">or</span> <span class="n">obj</span><span class="o">.</span><span class="n">perf_data</span>
+    <span class="k">if</span> <span class="n">return_code</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">return_code</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">state_id</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] Setting </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> for object </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                 <span class="n">output</span><span class="p">,</span>
+                 <span class="n">perfdata</span><span class="p">,</span>
+                 <span class="n">return_code</span><span class="p">,</span>
+                 <span class="n">obj</span><span class="o">.</span><span class="n">get_full_name</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="n">perfdata</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">output</span> <span class="o">+</span> <span class="s">&#39; | &#39;</span> <span class="o">+</span> <span class="n">perfdata</span>
+
+    <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="n">chk</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">launch_check</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">chk</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] </span><span class="si">%s</span><span class="s"> &gt; none check launched&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_full_name</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] </span><span class="si">%s</span><span class="s"> &gt; I found the check I want to change&quot;</span><span class="p">,</span>
+                     <span class="n">obj</span><span class="o">.</span><span class="n">get_full_name</span><span class="p">())</span>
+        <span class="c"># Now we &#39;transform the check into a result&#39;</span>
+        <span class="c"># So exit_status, output and status is eaten by the host</span>
+        <span class="n">chk</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="n">return_code</span>
+        <span class="n">chk</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">max_plugins_output_length</span><span class="p">)</span>
+        <span class="n">chk</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;waitconsume&#39;</span>
+        <span class="n">chk</span><span class="o">.</span><span class="n">check_time</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="c"># IMPORTANT: tag this check as from a trigger, so we will not</span>
+        <span class="c"># loop in an infinite way for triggers checks!</span>
+        <span class="n">chk</span><span class="o">.</span><span class="n">from_trigger</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="c"># Ok now this result will be read by scheduler the next loop</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="perf"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.perf">[docs]</a><span class="k">def</span> <span class="nf">perf</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">,</span> <span class="n">metric_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get perf data from a service</span>
+
+<span class="sd">    :param obj_ref:</span>
+<span class="sd">    :type obj_ref: object</span>
+<span class="sd">    :param metric_name:</span>
+<span class="sd">    :type metric_name: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">get_object</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">)</span>
+    <span class="n">perfdata</span> <span class="o">=</span> <span class="n">PerfDatas</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">perf_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">metric_name</span> <span class="ow">in</span> <span class="n">perfdata</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] I found the perfdata&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">perfdata</span><span class="p">[</span><span class="n">metric_name</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] I am in perf command&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="get_custom"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.get_custom">[docs]</a><span class="k">def</span> <span class="nf">get_custom</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">,</span> <span class="n">cname</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get custom variable from a service or a host</span>
+
+<span class="sd">    :param obj_ref:</span>
+<span class="sd">    :type obj_ref: object</span>
+<span class="sd">    :param cname:</span>
+<span class="sd">    :type cname: str</span>
+<span class="sd">    :param default:</span>
+<span class="sd">    :type default:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    :rtype:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">objs</span> <span class="o">=</span> <span class="n">get_objects</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">default</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">objs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">obj</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">default</span>
+    <span class="n">cname</span> <span class="o">=</span> <span class="n">cname</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">):</span>
+        <span class="n">cname</span> <span class="o">=</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">cname</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">customs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cname</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="perfs"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.perfs">[docs]</a><span class="k">def</span> <span class="nf">perfs</span><span class="p">(</span><span class="n">objs_ref</span><span class="p">,</span> <span class="n">metric_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; TODO: check this description</span>
+<span class="sd">        Get perfdatas from multiple services/hosts</span>
+
+<span class="sd">    :param objs_ref:</span>
+<span class="sd">    :type objs_ref: object</span>
+<span class="sd">    :param metric_name:</span>
+<span class="sd">    :type metric_name: str</span>
+<span class="sd">    :return: list of metrics</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">objs</span> <span class="o">=</span> <span class="n">get_objects</span><span class="p">(</span><span class="n">objs_ref</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objs</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">perf</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">metric_name</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="allperfs"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.allperfs">[docs]</a><span class="k">def</span> <span class="nf">allperfs</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get all perfdatas from a service or a host</span>
+
+<span class="sd">    :param obj_ref:</span>
+<span class="sd">    :type obj_ref: object</span>
+<span class="sd">    :return: dictionary with perfdatas</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">get_object</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">)</span>
+    <span class="n">perfdata</span> <span class="o">=</span> <span class="n">PerfDatas</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">perf_data</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] I get all perfdatas&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">metric</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">perfdata</span><span class="p">[</span><span class="n">metric</span><span class="o">.</span><span class="n">name</span><span class="p">])</span> <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">perfdata</span><span class="p">])</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="get_object"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.get_object">[docs]</a><span class="k">def</span> <span class="nf">get_object</span><span class="p">(</span><span class="n">ref</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Retrive object (service/host) from name</span>
+
+<span class="sd">    :param ref:</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    :rtype:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Maybe it&#39;s already a real object, if so, return it :)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ref</span>
+
+    <span class="c"># Ok it&#39;s a string</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">ref</span>
+    <span class="k">if</span> <span class="s">&#39;/&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">OBJS</span><span class="p">[</span><span class="s">&#39;hosts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">elts</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">OBJS</span><span class="p">[</span><span class="s">&#39;services&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find_srv_by_name_and_hostname</span><span class="p">(</span><span class="n">elts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">elts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+</div>
+<span class="nd">@declared</span>
+<div class="viewcode-block" id="get_objects"><a class="viewcode-back" href="../../reference/alignak.html#alignak.trigger_functions.get_objects">[docs]</a><span class="k">def</span> <span class="nf">get_objects</span><span class="p">(</span><span class="n">ref</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; TODO: check this description</span>
+<span class="sd">        Retrive objects (service/host) from names</span>
+
+<span class="sd">    :param ref:</span>
+<span class="sd">    :type ref:</span>
+<span class="sd">    :return: list of object (service/host)</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Maybe it&#39;s already a real object, if so, return it :)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">ref</span><span class="p">]</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">ref</span>
+    <span class="c"># Maybe there is no &#39;*&#39;? if so, it&#39;s one element</span>
+    <span class="k">if</span> <span class="s">&#39;*&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">get_object</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span>
+
+    <span class="c"># Ok we look for spliting the host or service thing</span>
+    <span class="n">hname</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">sdesc</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="k">if</span> <span class="s">&#39;/&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="n">hname</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">elts</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">hname</span> <span class="o">=</span> <span class="n">elts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">sdesc</span> <span class="o">=</span> <span class="n">elts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger get_objects] Look for </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">hname</span><span class="p">,</span> <span class="n">sdesc</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">hosts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">services</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># Look for host, and if need, look for service</span>
+    <span class="k">if</span> <span class="s">&#39;*&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hname</span><span class="p">:</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">OBJS</span><span class="p">[</span><span class="s">&#39;hosts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">hname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">host</span><span class="p">:</span>
+            <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hname</span> <span class="o">=</span> <span class="n">hname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="s">&#39;.*&#39;</span><span class="p">)</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">hname</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="n">OBJS</span><span class="p">[</span><span class="s">&#39;hosts&#39;</span><span class="p">]:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] Compare </span><span class="si">%s</span><span class="s"> with </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">hname</span><span class="p">,</span> <span class="n">host</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">regex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">host</span><span class="o">.</span><span class="n">get_name</span><span class="p">()):</span>
+                <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+
+    <span class="c"># Maybe the user ask for justs hosts :)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sdesc</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">hosts</span>
+
+    <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s">&#39;*&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sdesc</span><span class="p">:</span>
+            <span class="n">serv</span> <span class="o">=</span> <span class="n">host</span><span class="o">.</span><span class="n">find_service_by_name</span><span class="p">(</span><span class="n">sdesc</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">serv</span><span class="p">:</span>
+                <span class="n">services</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">serv</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sdesc</span> <span class="o">=</span> <span class="n">sdesc</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="s">&#39;.*&#39;</span><span class="p">)</span>
+            <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">sdesc</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">serv</span> <span class="ow">in</span> <span class="n">host</span><span class="o">.</span><span class="n">services</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[trigger] Compare </span><span class="si">%s</span><span class="s"> with </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">serv</span><span class="o">.</span><span class="n">service_description</span><span class="p">,</span> <span class="n">sdesc</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">regex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">serv</span><span class="o">.</span><span class="n">service_description</span><span class="p">):</span>
+                    <span class="n">services</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">serv</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Found the following services: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">services</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">services</span></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

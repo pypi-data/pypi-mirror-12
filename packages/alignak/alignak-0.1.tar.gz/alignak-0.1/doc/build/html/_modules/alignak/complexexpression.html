@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.complexexpression &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.complexexpression</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.complexexpression</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provides ComplexExpressionNode and ComplexExpressionFactory used for parsing</span>
+<span class="sd">expression (business rules)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">alignak.util</span> <span class="kn">import</span> <span class="n">strip_and_uniq</span>
+<span class="kn">from</span> <span class="nn">alignak.dependencynode</span> <span class="kn">import</span> <span class="n">DependencyNode</span>
+
+
+<div class="viewcode-block" id="ComplexExpressionNode"><a class="viewcode-back" href="../../reference/alignak.html#alignak.complexexpression.ComplexExpressionNode">[docs]</a><span class="k">class</span> <span class="nc">ComplexExpressionNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ComplexExpressionNode is a node class for complex_expression(s)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">operand</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sons</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configuration_errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">not_value</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="c"># If leaf, the content will be the hostgroup or hosts</span>
+        <span class="c"># that are selected with this node</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">leaf</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;Op:&#39;</span><span class="si">%s</span><span class="s">&#39; Leaf:</span><span class="si">%s</span><span class="s"> Sons:&#39;[</span><span class="si">%s</span><span class="s">] IsNot:</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> \
+                   <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operand</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaf</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sons</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">not_value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;IS LEAF </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
+
+<div class="viewcode-block" id="ComplexExpressionNode.resolve_elements"><a class="viewcode-back" href="../../reference/alignak.html#alignak.complexexpression.ComplexExpressionNode.resolve_elements">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get element of this node recursively</span>
+<span class="sd">        Compute rules with OR or AND rule then NOT rules.</span>
+
+<span class="sd">        :return: set of element</span>
+<span class="sd">        :rtype: set</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># If it&#39;s a leaf, we just need to dump a set with the content of the node</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaf</span><span class="p">:</span>
+            <span class="c"># print &quot;Is a leaf&quot;, self.content</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+        <span class="c"># first got the not ones in a list, and the other in the other list</span>
+        <span class="n">not_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sons</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">not_value</span><span class="p">]</span>
+        <span class="n">positiv_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sons</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">not_value</span><span class="p">]</span>  <span class="c"># ok a not not is hard to read..</span>
+
+        <span class="c"># print &quot;Not nodes&quot;, not_nodes</span>
+        <span class="c"># print &quot;Positiv nodes&quot;, positiv_nodes</span>
+
+        <span class="c"># By default we are using a OR rule</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">operand</span> <span class="o">=</span> <span class="s">&#39;|&#39;</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="c"># print &quot;Will now merge all of this&quot;, self.operand</span>
+
+        <span class="c"># The operand will change the positiv loop only</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">positiv_nodes</span><span class="p">:</span>
+            <span class="n">node_members</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">resolve_elements</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span> <span class="o">==</span> <span class="s">&#39;|&#39;</span><span class="p">:</span>
+                <span class="c"># print &quot;OR rule&quot;, node_members</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">node_members</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span> <span class="o">==</span> <span class="s">&#39;&amp;&#39;</span><span class="p">:</span>
+                <span class="c"># print &quot;AND RULE&quot;, node_members</span>
+                <span class="c"># The first elements of an AND rule should be used</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="n">node_members</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">node_members</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c"># And we finally remove all NOT elements from the result</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">not_nodes</span><span class="p">:</span>
+            <span class="n">node_members</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">resolve_elements</span><span class="p">()</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">node_members</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+</div>
+<div class="viewcode-block" id="ComplexExpressionNode.is_valid"><a class="viewcode-back" href="../../reference/alignak.html#alignak.complexexpression.ComplexExpressionNode.is_valid">[docs]</a>    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if all leaves are correct (no error)</span>
+
+<span class="sd">        :return: True if correct, else False</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        TODO: Fix this function and use it.</span>
+<span class="sd">        DependencyNode should be ComplexExpressionNode</span>
+<span class="sd">        Should return true on a leaf</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">valid</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sons</span><span class="p">:</span>
+            <span class="n">valid</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">son</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sons</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">son</span><span class="p">,</span> <span class="n">DependencyNode</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">son</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">configuration_errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">son</span><span class="o">.</span><span class="n">configuration_errors</span><span class="p">)</span>
+                    <span class="n">valid</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">valid</span>
+
+</div></div>
+<div class="viewcode-block" id="ComplexExpressionFactory"><a class="viewcode-back" href="../../reference/alignak.html#alignak.complexexpression.ComplexExpressionFactory">[docs]</a><span class="k">class</span> <span class="nc">ComplexExpressionFactory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ComplexExpressionFactory provides complex expression parsing functions</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="s">&#39;hostgroups&#39;</span><span class="p">,</span> <span class="n">grps</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">all_elements</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span> <span class="o">=</span> <span class="n">ctx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grps</span> <span class="o">=</span> <span class="n">grps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_elements</span> <span class="o">=</span> <span class="n">all_elements</span>
+
+<div class="viewcode-block" id="ComplexExpressionFactory.eval_cor_pattern"><a class="viewcode-back" href="../../reference/alignak.html#alignak.complexexpression.ComplexExpressionFactory.eval_cor_pattern">[docs]</a>    <span class="k">def</span> <span class="nf">eval_cor_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse and build recursively a tree of ComplexExpressionNode from pattern</span>
+
+<span class="sd">        :param pattern: pattern to parse</span>
+<span class="sd">        :type pattern: str</span>
+<span class="sd">        :return: root node of parsed tree</span>
+<span class="sd">        :type: alignak.complexexpression.ComplexExpressionNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="c"># print &quot;eval_cor_pattern::&quot;, pattern</span>
+        <span class="n">complex_node</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># Look if it&#39;s a complex pattern (with rule) or</span>
+        <span class="c"># if it&#39;s a leaf ofit, like a host/service</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s">&#39;()+&amp;|,&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">pattern</span><span class="p">:</span>
+                <span class="n">complex_node</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="n">node</span> <span class="o">=</span> <span class="n">ComplexExpressionNode</span><span class="p">()</span>
+        <span class="c"># print &quot;Is so complex?&quot;, complex_node, pattern, node</span>
+
+        <span class="c"># if it&#39;s a single expression like !linux or production</span>
+        <span class="c"># (where &quot;linux&quot; and &quot;production&quot; are hostgroup names)</span>
+        <span class="c"># we will get the objects from it and return a leaf node</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">complex_node</span><span class="p">:</span>
+            <span class="c"># If it&#39;s a not value, tag the node and find</span>
+            <span class="c"># the name without this ! operator</span>
+            <span class="k">if</span> <span class="n">pattern</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;!&#39;</span><span class="p">):</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">not_value</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+            <span class="n">node</span><span class="o">.</span><span class="n">operand</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">leaf</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">obj</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_object</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">obj</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">configuration_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">node</span>
+
+        <span class="n">in_par</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="n">stacked_par</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">pattern</span><span class="p">:</span>
+            <span class="c"># print &quot;MATCHING&quot;, c</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;,&#39;</span> <span class="ow">or</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;|&#39;</span><span class="p">:</span>
+                <span class="c"># Maybe we are in a par, if so, just stack it</span>
+                <span class="k">if</span> <span class="n">in_par</span><span class="p">:</span>
+                    <span class="c"># print &quot;, in a par, just staking it&quot;</span>
+                    <span class="n">tmp</span> <span class="o">+=</span> <span class="n">char</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c"># Oh we got a real cut in an expression, if so, cut it</span>
+                    <span class="c"># print &quot;REAL , for cutting&quot;</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">operand</span> <span class="o">=</span> <span class="s">&#39;|&#39;</span>
+                    <span class="k">if</span> <span class="n">tmp</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                        <span class="c"># print &quot;Will analyse the current str&quot;, tmp</span>
+                        <span class="n">son</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_cor_pattern</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+                        <span class="n">node</span><span class="o">.</span><span class="n">sons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">son</span><span class="p">)</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+            <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;&amp;&#39;</span> <span class="ow">or</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;+&#39;</span><span class="p">:</span>
+                <span class="c"># Maybe we are in a par, if so, just stack it</span>
+                <span class="k">if</span> <span class="n">in_par</span><span class="p">:</span>
+                    <span class="c"># print &quot; &amp; in a par, just staking it&quot;</span>
+                    <span class="n">tmp</span> <span class="o">+=</span> <span class="n">char</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c"># Oh we got a real cut in an expression, if so, cut it</span>
+                    <span class="c"># print &quot;REAL &amp; for cutting&quot;</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">operand</span> <span class="o">=</span> <span class="s">&#39;&amp;&#39;</span>
+                    <span class="k">if</span> <span class="n">tmp</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                        <span class="c"># print &quot;Will analyse the current str&quot;, tmp</span>
+                        <span class="n">son</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_cor_pattern</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+                        <span class="n">node</span><span class="o">.</span><span class="n">sons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">son</span><span class="p">)</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+            <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;(&#39;</span><span class="p">:</span>
+                <span class="n">stacked_par</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="c"># print &quot;INCREASING STACK TO&quot;, stacked_par</span>
+
+                <span class="n">in_par</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="c"># Maybe we just start a par, but we got some things in tmp</span>
+                <span class="c"># that should not be good in fact !</span>
+                <span class="k">if</span> <span class="n">stacked_par</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tmp</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                    <span class="c"># TODO : real error</span>
+                    <span class="k">print</span> <span class="s">&quot;ERROR : bad expression near&quot;</span><span class="p">,</span> <span class="n">tmp</span>
+                    <span class="k">continue</span>
+
+                <span class="c"># If we are already in a par, add this (</span>
+                <span class="c"># but not if it&#39;s the first one so</span>
+                <span class="k">if</span> <span class="n">stacked_par</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">tmp</span> <span class="o">+=</span> <span class="n">char</span>
+                    <span class="c"># o = self.eval_cor_pattern(tmp)</span>
+                    <span class="c"># print &quot;1( I&#39;ve %s got new sons&quot; % pattern , o</span>
+                    <span class="c"># node.sons.append(o)</span>
+
+            <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;)&#39;</span><span class="p">:</span>
+                <span class="c"># print &quot;Need closeing a sub expression?&quot;, tmp</span>
+                <span class="n">stacked_par</span> <span class="o">-=</span> <span class="mi">1</span>
+
+                <span class="k">if</span> <span class="n">stacked_par</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c"># TODO : real error</span>
+                    <span class="k">print</span> <span class="s">&quot;Error : bad expression near&quot;</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="s">&quot;too much &#39;)&#39;&quot;</span>
+                    <span class="k">continue</span>
+
+                <span class="k">if</span> <span class="n">stacked_par</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c"># print &quot;THIS is closing a sub compress expression&quot;, tmp</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">son</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_cor_pattern</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">sons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">son</span><span class="p">)</span>
+                    <span class="n">in_par</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="c"># OK now clean the tmp so we start clean</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+                    <span class="k">continue</span>
+
+                <span class="c"># ok here we are still in a huge par, we just close one sub one</span>
+                <span class="n">tmp</span> <span class="o">+=</span> <span class="n">char</span>
+            <span class="c"># Maybe it&#39;s a classic character, if so, continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">+=</span> <span class="n">char</span>
+
+        <span class="c"># Be sure to manage the trainling part when the line is done</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tmp</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="c"># print &quot;Managing trainling part&quot;, tmp</span>
+            <span class="n">son</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_cor_pattern</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="c"># print &quot;4end I&#39;ve %s got new sons&quot; % pattern , o</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">sons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">son</span><span class="p">)</span>
+
+        <span class="c"># print &quot;End, tmp&quot;, tmp</span>
+        <span class="c"># print &quot;R %s:&quot; % pattern, node</span>
+        <span class="k">return</span> <span class="n">node</span>
+</div>
+<div class="viewcode-block" id="ComplexExpressionFactory.find_object"><a class="viewcode-back" href="../../reference/alignak.html#alignak.complexexpression.ComplexExpressionFactory.find_object">[docs]</a>    <span class="k">def</span> <span class="nf">find_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get a list of host corresponding to the pattern regarding the context</span>
+
+<span class="sd">        :param pattern: pattern to find</span>
+<span class="sd">        :type pattern: str</span>
+<span class="sd">        :return: Host list matching pattern (hostgroup name, template, all)</span>
+<span class="sd">        :rtype: list[alignak.objects.host.Host]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">pattern</span> <span class="o">==</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="o">.</span><span class="n">host_name</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_elements</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                   <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s">&#39;host_name&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">h</span><span class="o">.</span><span class="n">is_tpl</span><span class="p">()]</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">error</span>
+
+        <span class="c"># Ok a more classic way</span>
+
+        <span class="c"># print &quot;GRPS&quot;, self.grps</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span> <span class="o">==</span> <span class="s">&#39;hostgroups&#39;</span><span class="p">:</span>
+            <span class="c"># Ok try to find this hostgroup</span>
+            <span class="n">hgr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grps</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+            <span class="c"># Maybe it&#39;s an known one?</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">hgr</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="s">&quot;Error : cannot find the </span><span class="si">%s</span><span class="s"> of the expression &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">hgr</span><span class="p">,</span> <span class="n">error</span>
+            <span class="c"># Ok the group is found, get the elements!</span>
+            <span class="n">elts</span> <span class="o">=</span> <span class="n">hgr</span><span class="o">.</span><span class="n">get_hosts</span><span class="p">()</span>
+            <span class="n">elts</span> <span class="o">=</span> <span class="n">strip_and_uniq</span><span class="p">(</span><span class="n">elts</span><span class="p">)</span>
+
+            <span class="c"># Maybe the hostgroup memebrs is &#39;*&#39;, if so expand with all hosts</span>
+            <span class="k">if</span> <span class="s">&#39;*&#39;</span> <span class="ow">in</span> <span class="n">elts</span><span class="p">:</span>
+                <span class="n">elts</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">h</span><span class="o">.</span><span class="n">host_name</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_elements</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                             <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s">&#39;host_name&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">h</span><span class="o">.</span><span class="n">is_tpl</span><span class="p">()])</span>
+                <span class="c"># And remove this strange hostname too :)</span>
+                <span class="n">elts</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">elts</span><span class="p">,</span> <span class="n">error</span>
+
+        <span class="k">else</span><span class="p">:</span>  <span class="c"># templates</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grps</span><span class="o">.</span><span class="n">find_hosts_that_use_template</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">error</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

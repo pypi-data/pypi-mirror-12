@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.daemons.schedulerdaemon &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.daemons.schedulerdaemon</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.daemons.schedulerdaemon</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     xkilian, fmikus@acktomic.com</span>
+<span class="c">#     David Moreau Simard, dmsimard@iweb.com</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Olivier Hanesse, olivier.hanesse@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Romain Forlot, rforlot@yahoo.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provide Alignak which is the main scheduling daemon class</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">cPickle</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">process</span>
+
+
+<span class="kn">from</span> <span class="nn">alignak.scheduler</span> <span class="kn">import</span> <span class="n">Scheduler</span>
+<span class="kn">from</span> <span class="nn">alignak.macroresolver</span> <span class="kn">import</span> <span class="n">MacroResolver</span>
+<span class="kn">from</span> <span class="nn">alignak.external_command</span> <span class="kn">import</span> <span class="n">ExternalCommandManager</span>
+<span class="kn">from</span> <span class="nn">alignak.daemon</span> <span class="kn">import</span> <span class="n">Daemon</span>
+<span class="kn">from</span> <span class="nn">alignak.http.scheduler_interface</span> <span class="kn">import</span> <span class="n">SchedulerInterface</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">PathProp</span><span class="p">,</span> <span class="n">IntegerProp</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">alignak.satellite</span> <span class="kn">import</span> <span class="n">BaseSatellite</span>
+<span class="kn">from</span> <span class="nn">alignak.stats</span> <span class="kn">import</span> <span class="n">statsmgr</span>
+
+
+<div class="viewcode-block" id="Alignak"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.schedulerdaemon.Alignak">[docs]</a><span class="k">class</span> <span class="nc">Alignak</span><span class="p">(</span><span class="n">BaseSatellite</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Scheduler class. Referenced as &quot;app&quot; in most Interface</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">BaseSatellite</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;pidfile&#39;</span><span class="p">:</span>   <span class="n">PathProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;schedulerd.pid&#39;</span><span class="p">),</span>
+        <span class="s">&#39;port&#39;</span><span class="p">:</span>      <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">7768</span><span class="p">),</span>
+        <span class="s">&#39;local_log&#39;</span><span class="p">:</span> <span class="n">PathProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;schedulerd.log&#39;</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">is_daemon</span><span class="p">,</span> <span class="n">do_replace</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">debug_file</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+
+        <span class="n">BaseSatellite</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;scheduler&#39;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">is_daemon</span><span class="p">,</span> <span class="n">do_replace</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span>
+                               <span class="n">debug_file</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_interface</span> <span class="o">=</span> <span class="n">SchedulerInterface</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sched</span> <span class="o">=</span> <span class="n">Scheduler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">must_run</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="c"># Now the interface</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uri2</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c"># And possible links for satellites</span>
+        <span class="c"># from now only pollers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">brokers</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="Alignak.compensate_system_time_change"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.schedulerdaemon.Alignak.compensate_system_time_change">[docs]</a>    <span class="k">def</span> <span class="nf">compensate_system_time_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">difference</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compensate a system time change of difference for all hosts/services/checks/notifs</span>
+
+<span class="sd">        :param difference: difference in seconds</span>
+<span class="sd">        :type difference: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;A system time change of </span><span class="si">%d</span><span class="s"> has been detected. Compensating...&quot;</span><span class="p">,</span> <span class="n">difference</span><span class="p">)</span>
+        <span class="c"># We only need to change some value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_start</span> <span class="o">+</span> <span class="n">difference</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="p">,</span> <span class="s">&quot;conf&quot;</span><span class="p">):</span>
+            <span class="c"># Race condition where time change before getting conf</span>
+            <span class="k">return</span>
+
+        <span class="c"># Then we compensate all host/services</span>
+        <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">hosts</span><span class="p">:</span>
+            <span class="n">host</span><span class="o">.</span><span class="n">compensate_system_time_change</span><span class="p">(</span><span class="n">difference</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">serv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">services</span><span class="p">:</span>
+            <span class="n">serv</span><span class="o">.</span><span class="n">compensate_system_time_change</span><span class="p">(</span><span class="n">difference</span><span class="p">)</span>
+
+        <span class="c"># Now all checks and actions</span>
+        <span class="k">for</span> <span class="n">chk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">checks</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="c"># Already launch checks should not be touch</span>
+            <span class="k">if</span> <span class="n">chk</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">&#39;scheduled&#39;</span> <span class="ow">and</span> <span class="n">chk</span><span class="o">.</span><span class="n">t_to_go</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">t_to_go</span> <span class="o">=</span> <span class="n">chk</span><span class="o">.</span><span class="n">t_to_go</span>
+                <span class="n">ref</span> <span class="o">=</span> <span class="n">chk</span><span class="o">.</span><span class="n">ref</span>
+                <span class="n">new_t</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_to_go</span> <span class="o">+</span> <span class="n">difference</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">ref</span><span class="o">.</span><span class="n">check_period</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="c"># But it&#39;s no so simple, we must match the timeperiod</span>
+                    <span class="n">new_t</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">check_period</span><span class="o">.</span><span class="n">get_next_valid_time_from_t</span><span class="p">(</span><span class="n">new_t</span><span class="p">)</span>
+                <span class="c"># But maybe no there is no more new value! Not good :(</span>
+                <span class="c"># Say as error, with error output</span>
+                <span class="k">if</span> <span class="n">new_t</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">chk</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="s">&#39;waitconsume&#39;</span>
+                    <span class="n">chk</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">2</span>
+                    <span class="n">chk</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s">&#39;(Error: there is no available check time after time change!)&#39;</span>
+                    <span class="n">chk</span><span class="o">.</span><span class="n">check_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                    <span class="n">chk</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">chk</span><span class="o">.</span><span class="n">t_to_go</span> <span class="o">=</span> <span class="n">new_t</span>
+                    <span class="n">ref</span><span class="o">.</span><span class="n">next_chk</span> <span class="o">=</span> <span class="n">new_t</span>
+
+        <span class="c"># Now all checks and actions</span>
+        <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="c"># Already launch checks should not be touch</span>
+            <span class="k">if</span> <span class="n">act</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">&#39;scheduled&#39;</span><span class="p">:</span>
+                <span class="n">t_to_go</span> <span class="o">=</span> <span class="n">act</span><span class="o">.</span><span class="n">t_to_go</span>
+
+                <span class="c">#  Event handler do not have ref</span>
+                <span class="n">ref</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">act</span><span class="p">,</span> <span class="s">&#39;ref&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+                <span class="n">new_t</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_to_go</span> <span class="o">+</span> <span class="n">difference</span><span class="p">)</span>
+
+                <span class="c"># Notification should be check with notification_period</span>
+                <span class="k">if</span> <span class="n">act</span><span class="o">.</span><span class="n">is_a</span> <span class="o">==</span> <span class="s">&#39;notification&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">ref</span><span class="o">.</span><span class="n">notification_period</span><span class="p">:</span>
+                        <span class="c"># But it&#39;s no so simple, we must match the timeperiod</span>
+                        <span class="n">new_t</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">notification_period</span><span class="o">.</span><span class="n">get_next_valid_time_from_t</span><span class="p">(</span><span class="n">new_t</span><span class="p">)</span>
+                    <span class="c"># And got a creation_time variable too</span>
+                    <span class="n">act</span><span class="o">.</span><span class="n">creation_time</span> <span class="o">+=</span> <span class="n">difference</span>
+
+                <span class="c"># But maybe no there is no more new value! Not good :(</span>
+                <span class="c"># Say as error, with error output</span>
+                <span class="k">if</span> <span class="n">new_t</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">act</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="s">&#39;waitconsume&#39;</span>
+                    <span class="n">act</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">2</span>
+                    <span class="n">act</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s">&#39;(Error: there is no available check time after time change!)&#39;</span>
+                    <span class="n">act</span><span class="o">.</span><span class="n">check_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                    <span class="n">act</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">act</span><span class="o">.</span><span class="n">t_to_go</span> <span class="o">=</span> <span class="n">new_t</span>
+</div>
+<div class="viewcode-block" id="Alignak.manage_signal"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.schedulerdaemon.Alignak.manage_signal">[docs]</a>    <span class="k">def</span> <span class="nf">manage_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Manage signals caught by the daemon</span>
+<span class="sd">        signal.SIGUSR1 : dump_memory</span>
+<span class="sd">        signal.SIGUSR2 : dump_object (nothing)</span>
+<span class="sd">        signal.SIGTERM, signal.SIGINT : terminate process</span>
+
+<span class="sd">        :param sig: signal caught by daemon</span>
+<span class="sd">        :type sig: str</span>
+<span class="sd">        :param frame: current stack frame</span>
+<span class="sd">        :type frame:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        TODO: Refactor with Daemon one</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> &gt; Received a SIGNAL </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">current_process</span><span class="p">(),</span> <span class="n">sig</span><span class="p">)</span>
+        <span class="c"># If we got USR1, just dump memory</span>
+        <span class="k">if</span> <span class="n">sig</span> <span class="o">==</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGUSR1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">need_dump_memory</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">elif</span> <span class="n">sig</span> <span class="o">==</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGUSR2</span><span class="p">:</span>  <span class="c"># usr2, dump objects</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">need_objects_dump</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c"># if not, die :)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">die</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">must_run</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">Daemon</span><span class="o">.</span><span class="n">manage_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Alignak.do_loop_turn"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.schedulerdaemon.Alignak.do_loop_turn">[docs]</a>    <span class="k">def</span> <span class="nf">do_loop_turn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Scheduler loop turn</span>
+<span class="sd">        Basically wait initial conf and run</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Ok, now the conf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_initial_conf</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;New configuration received&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_new_conf</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;New configuration loaded&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Alignak.setup_new_conf"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.schedulerdaemon.Alignak.setup_new_conf">[docs]</a>    <span class="k">def</span> <span class="nf">setup_new_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setup new conf received for scheduler</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_lock</span><span class="p">:</span>
+            <span class="n">new_c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span>
+            <span class="n">conf_raw</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;conf&#39;</span><span class="p">]</span>
+            <span class="n">override_conf</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;override_conf&#39;</span><span class="p">]</span>
+            <span class="n">modules</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;modules&#39;</span><span class="p">]</span>
+            <span class="n">satellites</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;satellites&#39;</span><span class="p">]</span>
+            <span class="n">instance_name</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;instance_name&#39;</span><span class="p">]</span>
+            <span class="n">push_flavor</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;push_flavor&#39;</span><span class="p">]</span>
+            <span class="n">skip_initial_broks</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;skip_initial_broks&#39;</span><span class="p">]</span>
+            <span class="n">accept_passive_unknown_chk_res</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;accept_passive_unknown_check_results&#39;</span><span class="p">]</span>
+            <span class="n">api_key</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;api_key&#39;</span><span class="p">]</span>
+            <span class="n">secret</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;secret&#39;</span><span class="p">]</span>
+            <span class="n">http_proxy</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;http_proxy&#39;</span><span class="p">]</span>
+            <span class="n">statsd_host</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;statsd_host&#39;</span><span class="p">]</span>
+            <span class="n">statsd_port</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;statsd_port&#39;</span><span class="p">]</span>
+            <span class="n">statsd_prefix</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;statsd_prefix&#39;</span><span class="p">]</span>
+            <span class="n">statsd_enabled</span> <span class="o">=</span> <span class="n">new_c</span><span class="p">[</span><span class="s">&#39;statsd_enabled&#39;</span><span class="p">]</span>
+
+            <span class="c"># horay, we got a name, we can set it in our stats objects</span>
+            <span class="n">statsmgr</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="p">,</span> <span class="n">instance_name</span><span class="p">,</span> <span class="s">&#39;scheduler&#39;</span><span class="p">,</span>
+                              <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="n">secret</span><span class="p">,</span> <span class="n">http_proxy</span><span class="o">=</span><span class="n">http_proxy</span><span class="p">,</span>
+                              <span class="n">statsd_host</span><span class="o">=</span><span class="n">statsd_host</span><span class="p">,</span> <span class="n">statsd_port</span><span class="o">=</span><span class="n">statsd_port</span><span class="p">,</span>
+                              <span class="n">statsd_prefix</span><span class="o">=</span><span class="n">statsd_prefix</span><span class="p">,</span> <span class="n">statsd_enabled</span><span class="o">=</span><span class="n">statsd_enabled</span><span class="p">)</span>
+
+            <span class="n">t00</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">conf_raw</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Conf received at </span><span class="si">%d</span><span class="s">. Unserialized in </span><span class="si">%d</span><span class="s"> secs&quot;</span><span class="p">,</span> <span class="n">t00</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t00</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span> <span class="o">=</span> <span class="bp">None</span>
+
+            <span class="c"># Tag the conf with our data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conf</span> <span class="o">=</span> <span class="n">conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">push_flavor</span> <span class="o">=</span> <span class="n">push_flavor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">instance_name</span> <span class="o">=</span> <span class="n">instance_name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">skip_initial_broks</span> <span class="o">=</span> <span class="n">skip_initial_broks</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">accept_passive_unknown_check_results</span> <span class="o">=</span> <span class="n">accept_passive_unknown_chk_res</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">cur_conf</span> <span class="o">=</span> <span class="n">conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">override_conf</span> <span class="o">=</span> <span class="n">override_conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="n">modules</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">satellites</span> <span class="o">=</span> <span class="n">satellites</span>
+            <span class="c"># self.pollers = self.app.pollers</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">human_timestamp_log</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">set_human_format</span><span class="p">()</span>
+
+            <span class="c"># Now We create our pollers</span>
+            <span class="k">for</span> <span class="n">pol_id</span> <span class="ow">in</span> <span class="n">satellites</span><span class="p">[</span><span class="s">&#39;pollers&#39;</span><span class="p">]:</span>
+                <span class="c"># Must look if we already have it</span>
+                <span class="n">already_got</span> <span class="o">=</span> <span class="n">pol_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span>
+                <span class="n">poll</span> <span class="o">=</span> <span class="n">satellites</span><span class="p">[</span><span class="s">&#39;pollers&#39;</span><span class="p">][</span><span class="n">pol_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">poll</span>
+
+                <span class="k">if</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">override_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">poll</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">poll</span><span class="p">)</span>  <span class="c"># make a copy</span>
+                    <span class="n">poll</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">override_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">poll</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c"># Now We create our reactionners</span>
+            <span class="k">for</span> <span class="n">reac_id</span> <span class="ow">in</span> <span class="n">satellites</span><span class="p">[</span><span class="s">&#39;reactionners&#39;</span><span class="p">]:</span>
+                <span class="c"># Must look if we already have it</span>
+                <span class="n">already_got</span> <span class="o">=</span> <span class="n">reac_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span>
+                <span class="n">reac</span> <span class="o">=</span> <span class="n">satellites</span><span class="p">[</span><span class="s">&#39;reactionners&#39;</span><span class="p">][</span><span class="n">reac_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">reac_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">reac</span>
+
+                <span class="k">if</span> <span class="n">reac</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">override_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">reac</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">reac</span><span class="p">)</span>  <span class="c"># make a copy</span>
+                    <span class="n">reac</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">override_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">reac</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">reac</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">reac</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">reac_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">reac_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c"># First mix conf and override_conf to have our definitive conf</span>
+            <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">override_conf</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">override_conf</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">use_timezone</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Setting our timezone to </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">use_timezone</span><span class="p">))</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">use_timezone</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;I&#39;ve got </span><span class="si">%s</span><span class="s"> modules&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">))</span>
+
+            <span class="c"># TODO: if scheduler had previous modules instanciated it must clean them!</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">set_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_load_modules</span><span class="p">()</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Loading configuration.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">explode_global_conf</span><span class="p">()</span>
+
+            <span class="c"># we give sched it&#39;s conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">load_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">load_satellites</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">)</span>
+
+            <span class="c"># We must update our Config dict macro with good value</span>
+            <span class="c"># from the config parameters</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">fill_resource_macros_names_macros</span><span class="p">()</span>
+            <span class="c"># print &quot;DBG: got macros&quot;, self.sched.conf.macros</span>
+
+            <span class="c"># Creating the Macroresolver Class &amp; unique instance</span>
+            <span class="n">m_solver</span> <span class="o">=</span> <span class="n">MacroResolver</span><span class="p">()</span>
+            <span class="n">m_solver</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span>
+
+            <span class="c"># self.conf.dump()</span>
+            <span class="c"># self.conf.quick_debug()</span>
+
+            <span class="c"># Now create the external commander</span>
+            <span class="c"># it&#39;s a applyer: it role is not to dispatch commands,</span>
+            <span class="c"># but to apply them</span>
+            <span class="n">ecm</span> <span class="o">=</span> <span class="n">ExternalCommandManager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="p">,</span> <span class="s">&#39;applyer&#39;</span><span class="p">)</span>
+
+            <span class="c"># Scheduler need to know about external command to</span>
+            <span class="c"># activate it if necessary</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="o">.</span><span class="n">load_external_command</span><span class="p">(</span><span class="n">ecm</span><span class="p">)</span>
+
+            <span class="c"># External command need the sched because he can raise checks</span>
+            <span class="n">ecm</span><span class="o">.</span><span class="n">load_scheduler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="p">)</span>
+
+            <span class="c"># We clear our schedulers managed (it&#39;s us :) )</span>
+            <span class="c"># and set ourself in it</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">instance_id</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sched</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="Alignak.what_i_managed"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.schedulerdaemon.Alignak.what_i_managed">[docs]</a>    <span class="k">def</span> <span class="nf">what_i_managed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get my managed dict (instance id and push_flavor)</span>
+
+<span class="sd">        :return: dict containing instance_id key and push flavor value</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;conf&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">instance_id</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">push_flavor</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+</div>
+<div class="viewcode-block" id="Alignak.main"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.schedulerdaemon.Alignak.main">[docs]</a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Main function for Scheduler, launch after the init::</span>
+
+<span class="sd">        * Init daemon</span>
+<span class="sd">        * Load module manager</span>
+<span class="sd">        * Launch main loop</span>
+<span class="sd">        * Catch any Exception that occurs</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_config_file</span><span class="p">()</span>
+            <span class="c"># Setting log level</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_level</span><span class="p">)</span>
+            <span class="c"># Force the debug level if the daemon is said to start with such level</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s">&#39;DEBUG&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">look_for_early_exit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_daemon_init_and_start</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_modules_manager</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_daemon</span><span class="o">.</span><span class="n">uri</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[scheduler] General interface is at: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_mainloop</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_unrecoverable</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+            <span class="k">raise</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.objects.serviceextinfo &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.objects.serviceextinfo</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.objects.serviceextinfo</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Romain Forlot, rforlot@yahoo.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">&quot;&quot;&quot; This is the main class for the Service ext info. In fact it&#39;s mainly</span>
+<span class="sd">about the configuration part. Parameters are merged in Service so it&#39;s</span>
+<span class="sd">no use in running part</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">alignak.objects.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Items</span>
+
+<span class="kn">from</span> <span class="nn">alignak.autoslots</span> <span class="kn">import</span> <span class="n">AutoSlots</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">StringProp</span>
+
+
+<div class="viewcode-block" id="ServiceExtInfo"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServiceExtInfo">[docs]</a><span class="k">class</span> <span class="nc">ServiceExtInfo</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ServiceExtInfo class is made to handle some parameters of SchedulingItem::</span>
+
+<span class="sd">    * notes</span>
+<span class="sd">    * notes_url</span>
+<span class="sd">    * icon_image</span>
+<span class="sd">    * icon_image_alt</span>
+
+<span class="sd">    TODO: Is this class really necessary?</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># AutoSlots create the __slots__ with properties and</span>
+    <span class="c"># running_properties names</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">AutoSlots</span>
+
+    <span class="n">_id</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c"># zero is reserved for host (primary node for parents)</span>
+    <span class="n">my_type</span> <span class="o">=</span> <span class="s">&#39;serviceextinfo&#39;</span>
+
+    <span class="c"># properties defined by configuration</span>
+    <span class="c"># *required: is required in conf</span>
+    <span class="c"># *default: default value if no set in conf</span>
+    <span class="c"># *pythonize: function to call when transforming string to python object</span>
+    <span class="c"># *fill_brok: if set, send to broker. there are two categories:</span>
+    <span class="c">#   full_status for initial and update status, check_result for check results</span>
+    <span class="c"># *no_slots: do not take this property for __slots__</span>
+    <span class="c">#  Only for the initial call</span>
+    <span class="c"># conf_send_preparation: if set, will pass the property to this function. It&#39;s used to &quot;flatten&quot;</span>
+    <span class="c">#  some dangerous properties like realms that are too &#39;linked&#39; to be send like that.</span>
+    <span class="c"># brok_transformation: if set, will call the function with the value of the property</span>
+    <span class="c">#  the major times it will be to flatten the data (like realm_name instead of the realm object).</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;host_name&#39;</span><span class="p">:</span>            <span class="n">StringProp</span><span class="p">(),</span>
+        <span class="s">&#39;service_description&#39;</span><span class="p">:</span>  <span class="n">StringProp</span><span class="p">(),</span>
+        <span class="s">&#39;notes&#39;</span><span class="p">:</span>                <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;notes_url&#39;</span><span class="p">:</span>            <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;icon_image&#39;</span><span class="p">:</span>           <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;icon_image_alt&#39;</span><span class="p">:</span>       <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="c"># Hosts macros and prop that give the information</span>
+    <span class="c"># the prop can be callable or not</span>
+    <span class="n">macros</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;SERVICEDESC&#39;</span><span class="p">:</span>            <span class="s">&#39;service_description&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICEACTIONURL&#39;</span><span class="p">:</span>       <span class="s">&#39;action_url&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICENOTESURL&#39;</span><span class="p">:</span>        <span class="s">&#39;notes_url&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICENOTES&#39;</span><span class="p">:</span>           <span class="s">&#39;notes&#39;</span>
+    <span class="p">}</span>
+
+<span class="c">#######</span>
+<span class="c">#                   __ _                       _   _</span>
+<span class="c">#                  / _(_)                     | | (_)</span>
+<span class="c">#   ___ ___  _ __ | |_ _  __ _ _   _ _ __ __ _| |_ _  ___  _ __</span>
+<span class="c">#  / __/ _ \| &#39;_ \|  _| |/ _` | | | | &#39;__/ _` | __| |/ _ \| &#39;_ \</span>
+<span class="c"># | (_| (_) | | | | | | | (_| | |_| | | | (_| | |_| | (_) | | | |</span>
+<span class="c">#  \___\___/|_| |_|_| |_|\__, |\__,_|_|  \__,_|\__|_|\___/|_| |_|</span>
+<span class="c">#                         __/ |</span>
+<span class="c">#                        |___/</span>
+<span class="c">######</span>
+
+<div class="viewcode-block" id="ServiceExtInfo.is_correct"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServiceExtInfo.is_correct">[docs]</a>    <span class="k">def</span> <span class="nf">is_correct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if this object is correct</span>
+
+<span class="sd">        :return: True, always.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        TODO: Clean this function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+
+        <span class="k">return</span> <span class="n">state</span>
+</div>
+<div class="viewcode-block" id="ServiceExtInfo.get_name"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServiceExtInfo.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Accessor to host_name attribute or name if first not defined</span>
+
+<span class="sd">        :return: host name (no sense)</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Clean this function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_tpl</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_name</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c"># outch, no hostname</span>
+                <span class="k">return</span> <span class="s">&#39;UNNAMEDHOST&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c"># outch, no name for this template</span>
+                <span class="k">return</span> <span class="s">&#39;UNNAMEDHOSTTEMPLATE&#39;</span>
+</div>
+<div class="viewcode-block" id="ServiceExtInfo.get_dbg_name"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServiceExtInfo.get_dbg_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_dbg_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the host name for debugging (host_name)</span>
+
+<span class="sd">        :return: service extinfo  host name</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Remove this function, get_name is doing it</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_name</span>
+</div>
+<div class="viewcode-block" id="ServiceExtInfo.get_full_name"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServiceExtInfo.get_full_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the full name for debugging (host_name)</span>
+
+<span class="sd">        :return: service extinfo  host name</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Remove this function, get_name is doing it</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_name</span>
+
+</div></div>
+<div class="viewcode-block" id="ServicesExtInfo"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServicesExtInfo">[docs]</a><span class="k">class</span> <span class="nc">ServicesExtInfo</span><span class="p">(</span><span class="n">Items</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ServicesExtInfo manage ServiceExtInfo and propagate properties (listed before)</span>
+<span class="sd">    into Services if necessary</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name_property</span> <span class="o">=</span> <span class="s">&quot;host_name&quot;</span>  <span class="c"># use for the search by name</span>
+    <span class="n">inner_class</span> <span class="o">=</span> <span class="n">ServiceExtInfo</span>  <span class="c"># use for know what is in items</span>
+
+<div class="viewcode-block" id="ServicesExtInfo.merge"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServicesExtInfo.merge">[docs]</a>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">services</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Merge extended host information into services</span>
+
+<span class="sd">        :param services: services list, to look for a specific one</span>
+<span class="sd">        :type services: alignak.objects.service.Services</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">extinfo</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">extinfo</span><span class="p">,</span> <span class="s">&#39;register&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">extinfo</span><span class="p">,</span> <span class="s">&#39;register&#39;</span><span class="p">):</span>
+                <span class="c"># We don&#39;t have to merge template</span>
+                <span class="k">continue</span>
+            <span class="n">hosts_names</span> <span class="o">=</span> <span class="n">extinfo</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">host_name</span> <span class="ow">in</span> <span class="n">hosts_names</span><span class="p">:</span>
+                <span class="n">serv</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">find_srv_by_name_and_hostname</span><span class="p">(</span><span class="n">host_name</span><span class="p">,</span>
+                                                              <span class="n">extinfo</span><span class="o">.</span><span class="n">service_description</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">serv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="c"># FUUUUUUUUUUsion</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">merge_extinfo</span><span class="p">(</span><span class="n">serv</span><span class="p">,</span> <span class="n">extinfo</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ServicesExtInfo.merge_extinfo"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.serviceextinfo.ServicesExtInfo.merge_extinfo">[docs]</a>    <span class="k">def</span> <span class="nf">merge_extinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">extinfo</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Merge extended host information into a service</span>
+
+<span class="sd">        :param service: the service to edit</span>
+<span class="sd">        :type service: alignak.objects.service.Service</span>
+<span class="sd">        :param extinfo: the external info we get data from</span>
+<span class="sd">        :type extinfo: alignak.objects.serviceextinfo.ServiceExtInfo</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;notes&#39;</span><span class="p">,</span> <span class="s">&#39;notes_url&#39;</span><span class="p">,</span> <span class="s">&#39;icon_image&#39;</span><span class="p">,</span> <span class="s">&#39;icon_image_alt&#39;</span><span class="p">]</span>
+        <span class="c"># service properties have precedence over serviceextinfo properties</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">extinfo</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">extinfo</span><span class="p">,</span> <span class="n">prop</span><span class="p">))</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

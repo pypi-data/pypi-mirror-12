@@ -1,0 +1,1913 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.misc package &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="alignak package" href="alignak.html"/>
+        <link rel="next" title="alignak.modules package" href="alignak.modules.html"/>
+        <link rel="prev" title="alignak.http package" href="alignak.http.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="alignak.html">alignak package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.misc package</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="../_sources/reference/alignak.misc.txt" rel="nofollow"> View page source</a>
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <div class="section" id="alignak-misc-package">
+<h1>alignak.misc package<a class="headerlink" href="#alignak-misc-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-alignak.misc.common">
+<span id="alignak-misc-common-module"></span><h2>alignak.misc.common module<a class="headerlink" href="#module-alignak.misc.common" title="Permalink to this headline">¶</a></h2>
+<p>This module is used for common variables in Alignak.
+Previously some of those variables were linked to a specific class which made no sense.</p>
+<dl class="class">
+<dt id="alignak.misc.common.ModAttr">
+<em class="property">class </em><tt class="descclassname">alignak.misc.common.</tt><tt class="descname">ModAttr</tt><a class="headerlink" href="#alignak.misc.common.ModAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">tuple</span></tt></p>
+<p>ModAttr(modattr, attribute, value)</p>
+<dl class="attribute">
+<dt id="alignak.misc.common.ModAttr.attribute">
+<tt class="descname">attribute</tt><a class="headerlink" href="#alignak.misc.common.ModAttr.attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.misc.common.ModAttr.modattr">
+<tt class="descname">modattr</tt><a class="headerlink" href="#alignak.misc.common.ModAttr.modattr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.misc.common.ModAttr.value">
+<tt class="descname">value</tt><a class="headerlink" href="#alignak.misc.common.ModAttr.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc.custom_module">
+<span id="alignak-misc-custom-module-module"></span><h2>alignak.misc.custom_module module<a class="headerlink" href="#module-alignak.misc.custom_module" title="Permalink to this headline">¶</a></h2>
+<p>This module provides CustomModule class. Used to customize a module namespace</p>
+<dl class="class">
+<dt id="alignak.misc.custom_module.CustomModule">
+<em class="property">class </em><tt class="descclassname">alignak.misc.custom_module.</tt><tt class="descname">CustomModule</tt><big>(</big><em>name</em>, <em>orig_mod_globals</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/custom_module.html#CustomModule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.custom_module.CustomModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">module</span></tt></p>
+<p>Custom module that can be used to customize a module namespace,</p>
+<p>example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;custom_module&#39;</span>  <span class="c"># required for the import after</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyCustomModule</span><span class="p">(</span><span class="n">CustomModule</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="nd">@property</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">an_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s">&quot;hey ! I&#39;m a module attribute but also a property !&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">MyCustomModule</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span> <span class="nb">globals</span><span class="p">())</span>
+</pre></div>
+</div>
+<p># then, in another module:
+&gt;&gt;&gt; import custom_module
+&gt;&gt;&gt; assert custom_module.count == 0
+&gt;&gt;&gt; custom_module.an_attribute
+&#8220;hey ! I&#8217;m a module attribute but also a property !&#8221;
+&gt;&gt;&gt; assert custom_module.count == 1</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc.datamanager">
+<span id="alignak-misc-datamanager-module"></span><h2>alignak.misc.datamanager module<a class="headerlink" href="#module-alignak.misc.datamanager" title="Permalink to this headline">¶</a></h2>
+<p>datamanager module provide DataManager class :
+a simple class providing accessor to various Alignak object&#8221;
+Used by module such as Livestatus and Webui</p>
+<dl class="class">
+<dt id="alignak.misc.datamanager.DataManager">
+<em class="property">class </em><tt class="descclassname">alignak.misc.datamanager.</tt><tt class="descname">DataManager</tt><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>DataManager provide a set of accessor to Alignak objects
+(host, services) through a regenerator object.</p>
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_all_hosts_and_services">
+<tt class="descname">get_all_hosts_and_services</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_all_hosts_and_services"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_all_hosts_and_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all host and all service in a single list</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list containing all host and service</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_all_impacts">
+<tt class="descname">get_all_impacts</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_all_impacts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_all_impacts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all non managed impacts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of host and service</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_all_problems">
+<tt class="descname">get_all_problems</tt><big>(</big><em>to_sort=True</em>, <em>get_acknowledged=False</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_all_problems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_all_problems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get hosts and services with:</p>
+<ul class="simple">
+<li>not OK state</li>
+<li>is_impact flag false</li>
+<li>Do not include acknowledged items by default</li>
+<li>Sort items by default</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>to_sort</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; if false, won&#8217;t sort results</li>
+<li><strong>get_acknowledged</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; if true will include acknowledged items</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of host and service</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_brokers">
+<tt class="descname">get_brokers</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_brokers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_brokers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all brokers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all brokers</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_business_parents">
+<tt class="descname">get_business_parents</tt><big>(</big><em>obj</em>, <em>levels=3</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_business_parents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_business_parents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the dependencies tree of a specific host or service up to a specific dept
+Tree only include non OK state_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; host or service to start the recursion</li>
+<li><strong>levels</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; maximum dept to process</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict with the following structure</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span> <span class="s">&#39;node&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="p">,</span>
+  <span class="s">&#39;fathers&#39;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span><span class="s">&#39;node&#39;</span><span class="p">:</span> <span class="n">Host_Object1</span><span class="p">,</span> <span class="n">fathers</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]},</span>
+              <span class="p">{</span><span class="s">&#39;node&#39;</span><span class="p">:</span> <span class="n">Host_Object2</span><span class="p">,</span> <span class="n">fathers</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]},</span>
+             <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_contact">
+<tt class="descname">get_contact</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_contact"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_contact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific contact</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A contact name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the Contact object with contact_name=name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">alignak.objects.contact.Contact</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_contactgroup">
+<tt class="descname">get_contactgroup</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_contactgroup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_contactgroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific contact group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A contactgroup name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the Contact object with contactgroup_name=name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">alignak.objects.contactgroup.Contactgroup</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_contacts">
+<tt class="descname">get_contacts</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_contacts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_contacts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all contacts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all contacts</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_host">
+<tt class="descname">get_host</tt><big>(</big><em>hname</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_host"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific host from Alignak</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hname</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A host name (a casual string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the Host object with host_name=hname</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">alignak.objects.host.Host</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_host_tags_sorted">
+<tt class="descname">get_host_tags_sorted</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_host_tags_sorted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_host_tags_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get hosts tags sorted by names, and zero size in the end</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of hosts tags</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_hostgroup">
+<tt class="descname">get_hostgroup</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_hostgroup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_hostgroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific host group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A hostgroup name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the Contact object with hostgroup_name=name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">alignak.objects.hostgroup.Hostgroup</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_hostgroups">
+<tt class="descname">get_hostgroups</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_hostgroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_hostgroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all hostgroups</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all hostgroups</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_hostgroups_sorted">
+<tt class="descname">get_hostgroups_sorted</tt><big>(</big><em>selected=''</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_hostgroups_sorted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_hostgroups_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get hostgroups sorted by names, and zero size in the end
+if selected one, put it in the first place</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>selected</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A hostgroup name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A sorted hostgroup list</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_hosts">
+<tt class="descname">get_hosts</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_hosts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_hosts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all hosts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all hosts</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_hosts_tagged_with">
+<tt class="descname">get_hosts_tagged_with</tt><big>(</big><em>tag</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_hosts_tagged_with"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_hosts_tagged_with" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get hosts tagged with a specific tag</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A tag name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Hosts list with tag in host tags</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">alignak.objects.host.Host</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_important_elements">
+<tt class="descname">get_important_elements</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_important_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_important_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get hosts and services with :
+* business impact &gt; 2
+* 0 &lt;= my_own_business_impact &lt;= 2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of host and services</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_important_impacts">
+<tt class="descname">get_important_impacts</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_important_impacts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_important_impacts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get hosts and services with :
+* not OK state
+* business impact &gt; 2
+* is_impact flag true</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of host and services</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_len_overall_state">
+<tt class="descname">get_len_overall_state</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_len_overall_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_len_overall_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of hosts and services with:
+* business impact &gt; 2
+* is_impact flag true
+* state_id equals 1 or 2 (warning or critical state)
+Used for aggregation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the number of hosts and services
+fulfilling the above condition
+:rtype: int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_nb_all_problems">
+<tt class="descname">get_nb_all_problems</tt><big>(</big><em>user</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_nb_all_problems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_nb_all_problems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of problems (host or service) including acknowledged ones for a specific user</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A contact (Ui user maybe)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of host and service with acknowledged problem for contact=user</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_nb_elements">
+<tt class="descname">get_nb_elements</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_nb_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_nb_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of hosts and services (sum)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the number of items</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_nb_impacts">
+<tt class="descname">get_nb_impacts</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_nb_impacts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_nb_impacts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of impacts (host or service)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the number of impact items</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_nb_problems">
+<tt class="descname">get_nb_problems</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_nb_problems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_nb_problems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of problems (host or service)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the number of non acknowledged problems</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_overall_it_state">
+<tt class="descname">get_overall_it_state</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_overall_it_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_overall_it_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the worst state of all hosts and services with:
+* is_impact flag true
+* state_id equals 1 or 2 (warning or critical state)
+Used for aggregation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer between 0 and 2</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_overall_state">
+<tt class="descname">get_overall_state</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_overall_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_overall_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the worst state of all hosts and service with:
+* business impact &gt; 2
+* is_impact flag true
+* state_id equals 1 or 2 (warning or critical state)
+Used for aggregation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer between 0 and 2</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_per_hosts_state">
+<tt class="descname">get_per_hosts_state</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_per_hosts_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_per_hosts_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the percentage of hosts with :
+* is_impact flag false
+* not OK state</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the percentage of hosts fulfilling the above condition</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_per_service_state">
+<tt class="descname">get_per_service_state</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_per_service_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_per_service_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the percentage of services with :
+* is_impact flag false
+* not OK state</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer representing the percentage of services fulfilling the above condition</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_pollers">
+<tt class="descname">get_pollers</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_pollers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_pollers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all pollers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all pollers</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_problems_time_sorted">
+<tt class="descname">get_problems_time_sorted</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_problems_time_sorted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_problems_time_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all problems with the most recent before</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of host and service</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_program_start">
+<tt class="descname">get_program_start</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_program_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_program_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get program start time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Timestamp representing start time</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int | None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_reactionners">
+<tt class="descname">get_reactionners</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_reactionners"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_reactionners" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all reactionners</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all reactionners</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_realm">
+<tt class="descname">get_realm</tt><big>(</big><em>realm</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_realm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_realm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific realm, but this will return None always</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A realm name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the Realm object with realm_name=name (that&#8217;s not true)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">alignak.objects.realm.Realm | None</td>
+</tr>
+</tbody>
+</table>
+<p>TODO: Remove this</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_realms">
+<tt class="descname">get_realms</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_realms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_realms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all realms</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all realms</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_receivers">
+<tt class="descname">get_receivers</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_receivers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_receivers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all receivers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all receivers</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_schedulers">
+<tt class="descname">get_schedulers</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_schedulers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_schedulers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all schedulers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all schedulers</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_service">
+<tt class="descname">get_service</tt><big>(</big><em>hname</em>, <em>sdesc</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_service"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_service" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hname</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A host name</li>
+<li><strong>sdesc</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A service description</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the Service object with host_name=hname and service_description=sdec</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">alignak.objects.service.Service</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_service_tags_sorted">
+<tt class="descname">get_service_tags_sorted</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_service_tags_sorted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_service_tags_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get services tags sorted by names, and zero size in the end</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of services tags</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_servicegroup">
+<tt class="descname">get_servicegroup</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_servicegroup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_servicegroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific service group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A servicegroup name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the Contact object with servicegroup_name=name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">alignak.objects.servicegroup.Servicegroup</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_servicegroups">
+<tt class="descname">get_servicegroups</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_servicegroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_servicegroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all servicegroups</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all servicegroups</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.get_services">
+<tt class="descname">get_services</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.get_services"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.get_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of all services</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.guess_root_problems">
+<tt class="descname">guess_root_problems</tt><big>(</big><em>obj</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.guess_root_problems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.guess_root_problems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of services with :
+* a state_id != 0 (not OK state)
+* linked to the same host
+for a given service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>obj</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; service we want to get non OK services linked to its host</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A service list with state_id != 0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.datamanager.DataManager.load">
+<tt class="descname">load</tt><big>(</big><em>regenerator</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the regenerator attribute</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>regenerator</strong> (<a class="reference internal" href="#alignak.misc.regenerator.Regenerator" title="alignak.misc.regenerator.Regenerator"><em>alignak.misc.regenerator.Regenerator</em></a>) &#8211; regenerator object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.misc.datamanager.DataManager.rg">
+<tt class="descname">rg</tt><a class="reference internal" href="../_modules/alignak/misc/datamanager.html#DataManager.rg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.datamanager.DataManager.rg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter for rg, raise deprecation warning</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.reg</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc.filter">
+<span id="alignak-misc-filter-module"></span><h2>alignak.misc.filter module<a class="headerlink" href="#module-alignak.misc.filter" title="Permalink to this headline">¶</a></h2>
+<p>Helper functions for some filtering, like for user based</p>
+<dl class="function">
+<dt id="alignak.misc.filter.only_related_to">
+<tt class="descclassname">alignak.misc.filter.</tt><tt class="descname">only_related_to</tt><big>(</big><em>lst</em>, <em>user</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/filter.html#only_related_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.filter.only_related_to" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Get only user relevant items. The item needs the following attributes :</dt>
+<dd>contacts
+source_problems
+impacts</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lst</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of items</li>
+<li><strong>user</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A contact defined in Alignak</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of items (unique values)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc.logevent">
+<span id="alignak-misc-logevent-module"></span><h2>alignak.misc.logevent module<a class="headerlink" href="#module-alignak.misc.logevent" title="Permalink to this headline">¶</a></h2>
+<p>This module lists provide facilities to parse log type Broks.
+The supported event are listed in the event_type variable</p>
+<dl class="class">
+<dt id="alignak.misc.logevent.LogEvent">
+<em class="property">class </em><tt class="descclassname">alignak.misc.logevent.</tt><tt class="descname">LogEvent</tt><big>(</big><em>log</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/logevent.html#LogEvent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.logevent.LogEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for parsing event logs
+Populates self.data with the log type&#8217;s properties</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc.perfdata">
+<span id="alignak-misc-perfdata-module"></span><h2>alignak.misc.perfdata module<a class="headerlink" href="#module-alignak.misc.perfdata" title="Permalink to this headline">¶</a></h2>
+<p>This module provide classes to handle performance data from monitoring plugin output</p>
+<dl class="class">
+<dt id="alignak.misc.perfdata.Metric">
+<em class="property">class </em><tt class="descclassname">alignak.misc.perfdata.</tt><tt class="descname">Metric</tt><big>(</big><em>string</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/perfdata.html#Metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.perfdata.Metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class providing a small abstraction for one metric of a Perfdatas class</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="alignak.misc.perfdata.PerfDatas">
+<em class="property">class </em><tt class="descclassname">alignak.misc.perfdata.</tt><tt class="descname">PerfDatas</tt><big>(</big><em>string</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/perfdata.html#PerfDatas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.perfdata.PerfDatas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class providing performance data extracted from a check output</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="alignak.misc.perfdata.guess_int_or_float">
+<tt class="descclassname">alignak.misc.perfdata.</tt><tt class="descname">guess_int_or_float</tt><big>(</big><em>val</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/perfdata.html#guess_int_or_float"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.perfdata.guess_int_or_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for Util.to_best_int_float
+Basically cast into float or int and compare value
+If they are equal then there is no coma so return integer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>val</strong> &#8211; value to cast</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">value casted into int, float or None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int | float | NoneType</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc.regenerator">
+<span id="alignak-misc-regenerator-module"></span><h2>alignak.misc.regenerator module<a class="headerlink" href="#module-alignak.misc.regenerator" title="Permalink to this headline">¶</a></h2>
+<p>This module provide Regenerator class used in
+several Alignak modules to manage and regenerate objects</p>
+<dl class="class">
+<dt id="alignak.misc.regenerator.Regenerator">
+<em class="property">class </em><tt class="descclassname">alignak.misc.regenerator.</tt><tt class="descname">Regenerator</tt><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>Class for a Regenerator.
+It gets broks, and &#8220;regenerate&#8221; real objects from them</p>
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.all_done_linking">
+<tt class="descname">all_done_linking</tt><big>(</big><em>inst_id</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.all_done_linking"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.all_done_linking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link all data (objects) in a specific instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inst_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Instance id from a config object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.before_after_hook">
+<tt class="descname">before_after_hook</tt><big>(</big><em>brok</em>, <em>obj</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.before_after_hook"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.before_after_hook" title="Permalink to this definition">¶</a></dt>
+<dd><p>This can be used by derived classes to compare the data in the brok
+with the object which will be updated by these data. For example,
+it is possible to find out in this method whether the state of a
+host or service has changed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.linkify_a_command">
+<tt class="descname">linkify_a_command</tt><big>(</big><em>obj</em>, <em>prop</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.linkify_a_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.linkify_a_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the command_name by the command object in obj.prop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; A host or a service</li>
+<li><strong>prop</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; an attribute to replace (&#8220;check_command&#8221; or &#8220;event_handler&#8221;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.linkify_a_timeperiod">
+<tt class="descname">linkify_a_timeperiod</tt><big>(</big><em>obj</em>, <em>prop</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.linkify_a_timeperiod"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.linkify_a_timeperiod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the timeperiod_name by the timeperiod object in obj.prop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.notificationway.NotificationWay" title="alignak.objects.notificationway.NotificationWay"><em>alignak.objects.notificationway.NotificationWay</em></a>) &#8211; A notification way object</li>
+<li><strong>prop</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; an attribute to replace
+(&#8216;host_notification_period&#8217; or &#8216;service_notification_period&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.linkify_a_timeperiod_by_name">
+<tt class="descname">linkify_a_timeperiod_by_name</tt><big>(</big><em>obj</em>, <em>prop</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.linkify_a_timeperiod_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.linkify_a_timeperiod_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the timeperiod_name by the timeperiod object in obj.prop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<em>alignak.objects.SchedulingItem</em>) &#8211; A host or a service</li>
+<li><strong>prop</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; an attribute to replace
+(&#8216;notification_period&#8217; or &#8216;check_period&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.linkify_commands">
+<tt class="descname">linkify_commands</tt><big>(</big><em>obj</em>, <em>prop</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.linkify_commands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.linkify_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the command_name by the command object in obj.prop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.notificationway.NotificationWay" title="alignak.objects.notificationway.NotificationWay"><em>alignak.objects.notificationway.NotificationWay</em></a>) &#8211; A notification way object</li>
+<li><strong>prop</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; an attribute to replace
+(&#8216;host_notification_commands&#8217; or &#8216;service_notification_commands&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.linkify_contacts">
+<tt class="descname">linkify_contacts</tt><big>(</big><em>obj</em>, <em>prop</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.linkify_contacts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.linkify_contacts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the contact_name by the contact object in obj.prop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<em>alignak.objects.SchedulingItem</em>) &#8211; A host or a service</li>
+<li><strong>prop</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; an attribute to replace (&#8216;contacts&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.linkify_dict_srv_and_hosts">
+<tt class="descname">linkify_dict_srv_and_hosts</tt><big>(</big><em>obj</em>, <em>prop</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.linkify_dict_srv_and_hosts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.linkify_dict_srv_and_hosts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the dict with host and service name by the host or service object in obj.prop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<em>alignak.objects.SchedulingItem</em>) &#8211; A host or a service</li>
+<li><strong>prop</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; an attribute to replace
+(&#8216;impacts&#8217;, &#8216;source_problems&#8217;, &#8216;parent_dependencies&#8217; or &#8216;child_dependencies&#8217;))</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.linkify_host_and_hosts">
+<tt class="descname">linkify_host_and_hosts</tt><big>(</big><em>obj</em>, <em>prop</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.linkify_host_and_hosts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.linkify_host_and_hosts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the host_name by the host object in obj.prop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obj</strong> (<em>alignak.objects.SchedulingItem</em>) &#8211; A host or a service</li>
+<li><strong>prop</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; an attribute to replace
+(&#8216;&#8217;parents&#8217; &#8216;childs&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.load_external_queue">
+<tt class="descname">load_external_queue</tt><big>(</big><em>from_q</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.load_external_queue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.load_external_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an external queue for sending messages
+Basically a from_q setter method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>from_q</strong> (<em>multiprocessing.Queue or Queue.Queue</em>) &#8211; queue to set</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.load_from_scheduler">
+<tt class="descname">load_from_scheduler</tt><big>(</big><em>sched</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.load_from_scheduler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.load_from_scheduler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from a scheduler</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sched</strong> (<a class="reference internal" href="alignak.html#alignak.scheduler.Scheduler" title="alignak.scheduler.Scheduler"><em>alignak.scheduler.Scheduler</em></a>) &#8211; the scheduler obj</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_brok">
+<tt class="descname">manage_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Look for a manager function for a brok, and call it</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_host_check_result_brok">
+<tt class="descname">manage_host_check_result_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_host_check_result_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_host_check_result_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage host_check_result brok : Update host object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_host_next_schedule_brok">
+<tt class="descname">manage_host_next_schedule_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_host_next_schedule_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_host_next_schedule_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_timeperiod_status brok : Same as manage_host_check_result_brok</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_broker_status_brok">
+<tt class="descname">manage_initial_broker_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_broker_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_broker_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_broker_status brok : Update broker object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_broks_done_brok">
+<tt class="descname">manage_initial_broks_done_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_broks_done_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_broks_done_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_broks_done brok : Call all_done_linking with the instance_id in the brok</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_command_status_brok">
+<tt class="descname">manage_initial_command_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_command_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_command_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_command_status brok : Update command object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_contact_status_brok">
+<tt class="descname">manage_initial_contact_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_contact_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_contact_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_contact_status brok : Update contact object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_contactgroup_status_brok">
+<tt class="descname">manage_initial_contactgroup_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_contactgroup_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_contactgroup_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_contactgroup_status brok : Update contactgroup object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_host_status_brok">
+<tt class="descname">manage_initial_host_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_host_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_host_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_host_status brok : Update host object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_hostgroup_status_brok">
+<tt class="descname">manage_initial_hostgroup_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_hostgroup_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_hostgroup_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_hostgroup_status brok : Update hostgroup object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_poller_status_brok">
+<tt class="descname">manage_initial_poller_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_poller_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_poller_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_poller_status brok : Update poller object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_reactionner_status_brok">
+<tt class="descname">manage_initial_reactionner_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_reactionner_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_reactionner_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_reactionner_status brok : Update reactionner object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_receiver_status_brok">
+<tt class="descname">manage_initial_receiver_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_receiver_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_receiver_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_receiver_status brok : Update receiver object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_scheduler_status_brok">
+<tt class="descname">manage_initial_scheduler_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_scheduler_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_scheduler_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_scheduler_status brok : Update scheduler object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_service_status_brok">
+<tt class="descname">manage_initial_service_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_service_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_service_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_service_status brok : Update service object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_servicegroup_status_brok">
+<tt class="descname">manage_initial_servicegroup_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_servicegroup_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_servicegroup_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_servicegroup_status brok : Update servicegroup object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_initial_timeperiod_status_brok">
+<tt class="descname">manage_initial_timeperiod_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_initial_timeperiod_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_initial_timeperiod_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage initial_timeperiod_status brok : Update timeperiod object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_program_status_brok">
+<tt class="descname">manage_program_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_program_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_program_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage program_status brok : Reset objects for the given config id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new config</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_service_check_result_brok">
+<tt class="descname">manage_service_check_result_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_service_check_result_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_service_check_result_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage service_check_result brok : Update service object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_service_next_schedule_brok">
+<tt class="descname">manage_service_next_schedule_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_service_next_schedule_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_service_next_schedule_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage service_next_schedule brok : Same as manage_service_check_result_brok
+A service check update have just arrived, we UPDATE data info with this</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_broker_status_brok">
+<tt class="descname">manage_update_broker_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_broker_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_broker_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_broker_status brok : Update broker object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_host_status_brok">
+<tt class="descname">manage_update_host_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_host_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_host_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_host_status brok : Update host object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_poller_status_brok">
+<tt class="descname">manage_update_poller_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_poller_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_poller_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_poller_status brok : Update poller object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_program_status_brok">
+<tt class="descname">manage_update_program_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_program_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_program_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_program_status brok : Update config object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_reactionner_status_brok">
+<tt class="descname">manage_update_reactionner_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_reactionner_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_reactionner_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_reactionner_status brok : Update reactionner object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_receiver_status_brok">
+<tt class="descname">manage_update_receiver_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_receiver_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_receiver_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_receiver_status brok : Update receiver object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_scheduler_status_brok">
+<tt class="descname">manage_update_scheduler_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_scheduler_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_scheduler_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_scheduler_status brok : Update scheduler object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.manage_update_service_status_brok">
+<tt class="descname">manage_update_service_status_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.manage_update_service_status_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.manage_update_service_status_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage update_service_status brok : Update service object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; Brok containing new data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.update_element">
+<tt class="descname">update_element</tt><big>(</big><em>item</em>, <em>data</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.update_element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.update_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update object attibute with value contained in data keys</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>item</strong> (<em>alignak.object.Item</em>) &#8211; A alignak object</li>
+<li><strong>data</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; the dict containing attribute to update</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.misc.regenerator.Regenerator.want_brok">
+<tt class="descname">want_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/regenerator.html#Regenerator.want_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.regenerator.Regenerator.want_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to tell whether we need a specific type of brok or not.
+Return always true if not in scheduler mode</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<em>alignak.objects.brok.Brok</em>) &#8211; The brok to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A boolean meaning that we this brok</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc.sorter">
+<span id="alignak-misc-sorter-module"></span><h2>alignak.misc.sorter module<a class="headerlink" href="#module-alignak.misc.sorter" title="Permalink to this headline">¶</a></h2>
+<p>Helper functions for some sorting</p>
+<dl class="function">
+<dt id="alignak.misc.sorter.hst_srv_sort">
+<tt class="descclassname">alignak.misc.sorter.</tt><tt class="descname">hst_srv_sort</tt><big>(</big><em>s01</em>, <em>s02</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/sorter.html#hst_srv_sort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.sorter.hst_srv_sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort host and service by impact then state then name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s01</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; A host or service to compare</li>
+<li><strong>s02</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; Another host or service to compare</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul class="simple">
+<li>-1 if s01 &gt; s02</li>
+<li>0 if s01 == s02 (not true)</li>
+<li>1 if s01 &lt; s02</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="alignak.misc.sorter.last_state_change_earlier">
+<tt class="descclassname">alignak.misc.sorter.</tt><tt class="descname">last_state_change_earlier</tt><big>(</big><em>s01</em>, <em>s02</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/sorter.html#last_state_change_earlier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.sorter.last_state_change_earlier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort host and service by last_state_change</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s01</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; A host or service to compare</li>
+<li><strong>s02</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; Another host or service to compare</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul class="simple">
+<li>-1 if s01 &gt; s02</li>
+<li>0 if s01 == s02 (not true)</li>
+<li>1 if s01 &lt; s02</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="alignak.misc.sorter.worse_first">
+<tt class="descclassname">alignak.misc.sorter.</tt><tt class="descname">worse_first</tt><big>(</big><em>s01</em>, <em>s02</em><big>)</big><a class="reference internal" href="../_modules/alignak/misc/sorter.html#worse_first"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.misc.sorter.worse_first" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort host and service by state then impact then name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s01</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; A host or service to compare</li>
+<li><strong>s02</strong> (<a class="reference internal" href="alignak.objects.html#alignak.objects.schedulingitem.SchedulingItem" title="alignak.objects.schedulingitem.SchedulingItem"><em>alignak.objects.schedulingitem.SchedulingItem</em></a>) &#8211; Another host or service to compare</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul class="simple">
+<li>-1 if s01 &gt; s02</li>
+<li>0 if s01 == s02 (not true)</li>
+<li>1 if s01 &lt; s02</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.misc">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-alignak.misc" title="Permalink to this headline">¶</a></h2>
+<p>Init of alignak.misc, nothing to do here.</p>
+</div>
+</div>
+
+
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="alignak.modules.html" class="btn btn-neutral float-right" title="alignak.modules package"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="alignak.http.html" class="btn btn-neutral" title="alignak.http package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

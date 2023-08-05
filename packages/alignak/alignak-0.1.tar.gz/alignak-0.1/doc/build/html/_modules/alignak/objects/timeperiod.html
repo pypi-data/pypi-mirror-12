@@ -1,0 +1,1199 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.objects.timeperiod &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.objects.timeperiod</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.objects.timeperiod</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     Dessai.Imrane, dessai.imrane@gmail.com</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Gerhard Lausser, gerhard.lausser@consol.de</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Christophe Simon, geektophe@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Olivier Hanesse, olivier.hanesse@gmail.com</span>
+<span class="c">#     Romain Forlot, rforlot@yahoo.com</span>
+<span class="c">#     Christophe SIMON, christophe.simon@dailymotion.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="c"># Calendar date</span>
+<span class="c"># -------------</span>
+<span class="c">#  &#39;(\d{4})-(\d{2})-(\d{2}) - (\d{4})-(\d{2})-(\d{2}) / (\d+) ([0-9:, -]+)&#39;</span>
+<span class="c">#   =&gt; len = 8  =&gt; CALENDAR_DATE</span>
+<span class="c">#</span>
+<span class="c">#  &#39;(\d{4})-(\d{2})-(\d{2}) / (\d+) ([0-9:, -]+)&#39;</span>
+<span class="c">#   =&gt; len = 5 =&gt; CALENDAR_DATE</span>
+<span class="c">#</span>
+<span class="c">#  &#39;(\d{4})-(\d{2})-(\d{2}) - (\d{4})-(\d{2})-(\d{2}) ([0-9:, -]+)&#39;</span>
+<span class="c">#   =&gt; len = 7 =&gt; CALENDAR_DATE</span>
+<span class="c">#</span>
+<span class="c">#  &#39;(\d{4})-(\d{2})-(\d{2}) ([0-9:, -]+)&#39;</span>
+<span class="c">#   =&gt; len = 4 =&gt; CALENDAR_DATE</span>
+<span class="c">#</span>
+<span class="c"># Month week day</span>
+<span class="c"># --------------</span>
+<span class="c">#  &#39;([a-z]*) (\d+) ([a-z]*) - ([a-z]*) (\d+) ([a-z]*) / (\d+) ([0-9:, -]+)&#39;</span>
+<span class="c">#  =&gt; len = 8 =&gt; MONTH WEEK DAY</span>
+<span class="c">#  e.g.: wednesday 1 january - thursday 2 july / 3</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) (\d+) - ([a-z]*) (\d+) / (\d+) ([0-9:, -]+)&#39; =&gt; len = 6</span>
+<span class="c">#  e.g.: february 1 - march 15 / 3 =&gt; MONTH DATE</span>
+<span class="c">#  e.g.: monday 2 - thusday 3 / 2 =&gt; WEEK DAY</span>
+<span class="c">#  e.g.: day 2 - day 6 / 3 =&gt; MONTH DAY</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) (\d+) - (\d+) / (\d+) ([0-9:, -]+)&#39; =&gt; len = 6</span>
+<span class="c">#  e.g.: february 1 - 15 / 3 =&gt; MONTH DATE</span>
+<span class="c">#  e.g.: thursday 2 - 4 =&gt; WEEK DAY</span>
+<span class="c">#  e.g.: day 1 - 4 =&gt; MONTH DAY</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) (\d+) ([a-z]*) - ([a-z]*) (\d+) ([a-z]*) ([0-9:, -]+)&#39; =&gt; len = 7</span>
+<span class="c">#  e.g.: wednesday 1 january - thursday 2 july =&gt; MONTH WEEK DAY</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) (\d+) - (\d+) ([0-9:, -]+)&#39; =&gt; len = 7</span>
+<span class="c">#  e.g.: thursday 2 - 4 =&gt; WEEK DAY</span>
+<span class="c">#  e.g.: february 1 - 15 / 3 =&gt; MONTH DATE</span>
+<span class="c">#  e.g.: day 1 - 4 =&gt; MONTH DAY</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) (\d+) - ([a-z]*) (\d+) ([0-9:, -]+)&#39; =&gt; len = 5</span>
+<span class="c">#  e.g.: february 1 - march 15  =&gt; MONTH DATE</span>
+<span class="c">#  e.g.: monday 2 - thusday 3  =&gt; WEEK DAY</span>
+<span class="c">#  e.g.: day 2 - day 6  =&gt; MONTH DAY</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) (\d+) ([0-9:, -]+)&#39; =&gt; len = 3</span>
+<span class="c">#  e.g.: february 3 =&gt; MONTH DATE</span>
+<span class="c">#  e.g.: thursday 2 =&gt; WEEK DAY</span>
+<span class="c">#  e.g.: day 3 =&gt; MONTH DAY</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) (\d+) ([a-z]*) ([0-9:, -]+)&#39; =&gt; len = 4</span>
+<span class="c">#  e.g.: thusday 3 february =&gt; MONTH WEEK DAY</span>
+<span class="c">#</span>
+<span class="c">#  &#39;([a-z]*) ([0-9:, -]+)&#39; =&gt; len = 6</span>
+<span class="c">#  e.g.: thusday =&gt; normal values</span>
+<span class="c">#</span>
+<span class="c"># Types: CALENDAR_DATE</span>
+<span class="c">#        MONTH WEEK DAY</span>
+<span class="c">#        WEEK DAY</span>
+<span class="c">#        MONTH DATE</span>
+<span class="c">#        MONTH DAY</span>
+<span class="c">#</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provide Timeperiod class used to define time periods to do</span>
+<span class="sd">action or not if we are in right period</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">alignak.objects.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Items</span>
+
+<span class="kn">from</span> <span class="nn">alignak.daterange</span> <span class="kn">import</span> <span class="n">Daterange</span><span class="p">,</span> <span class="n">CalendarDaterange</span>
+<span class="kn">from</span> <span class="nn">alignak.daterange</span> <span class="kn">import</span> <span class="n">StandardDaterange</span><span class="p">,</span> <span class="n">MonthWeekDayDaterange</span>
+<span class="kn">from</span> <span class="nn">alignak.daterange</span> <span class="kn">import</span> <span class="n">MonthDateDaterange</span><span class="p">,</span> <span class="n">WeekDayDaterange</span>
+<span class="kn">from</span> <span class="nn">alignak.daterange</span> <span class="kn">import</span> <span class="n">MonthDayDaterange</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">IntegerProp</span><span class="p">,</span> <span class="n">StringProp</span><span class="p">,</span> <span class="n">ListProp</span><span class="p">,</span> <span class="n">BoolProp</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">naglog_result</span>
+
+
+<div class="viewcode-block" id="Timeperiod"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod">[docs]</a><span class="k">class</span> <span class="nc">Timeperiod</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to manage a timeperiod</span>
+<span class="sd">    A timeperiod is defined with range time (hours) of week to do action</span>
+<span class="sd">    and add day exceptions (like non working days)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">my_type</span> <span class="o">=</span> <span class="s">&#39;timeperiod&#39;</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;timeperiod_name&#39;</span><span class="p">:</span>  <span class="n">StringProp</span><span class="p">(</span><span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;alias&#39;</span><span class="p">:</span>            <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;use&#39;</span><span class="p">:</span>              <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+        <span class="s">&#39;register&#39;</span><span class="p">:</span>         <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+
+        <span class="c"># These are needed if a broker module calls methods on timeperiod objects</span>
+        <span class="s">&#39;dateranges&#39;</span><span class="p">:</span>       <span class="n">ListProp</span><span class="p">(</span><span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="p">[]),</span>
+        <span class="s">&#39;exclude&#39;</span><span class="p">:</span>          <span class="n">ListProp</span><span class="p">(</span><span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="p">[]),</span>
+        <span class="s">&#39;is_active&#39;</span><span class="p">:</span>        <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="n">running_properties</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">running_properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">Timeperiod</span><span class="o">.</span><span class="n">_id</span>
+        <span class="n">Timeperiod</span><span class="o">.</span><span class="n">_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unresolved</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">invalid_entries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># For tunning purpose only</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">invalid_cache</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># same but for invalid search</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="c"># Get standard params</span>
+        <span class="n">standard_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                               <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">properties</span><span class="p">])</span>
+        <span class="c"># Get timeperiod params (monday, tuesday, ...)</span>
+        <span class="n">timeperiod_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                                  <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">properties</span><span class="p">])</span>
+        <span class="c"># Handle standard params</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Timeperiod</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">standard_params</span><span class="p">)</span>
+        <span class="c"># Handle timeperiod params</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">timeperiod_params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unresolved</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Timeperiod.get_name"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the name of the timeperiod</span>
+
+<span class="sd">        :return: the timeperiod name string</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;timeperiod_name&#39;</span><span class="p">,</span> <span class="s">&#39;unknown_timeperiod&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.get_unresolved_properties_by_inheritance"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.get_unresolved_properties_by_inheritance">[docs]</a>    <span class="k">def</span> <span class="nf">get_unresolved_properties_by_inheritance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fill full properties with template if needed for the</span>
+<span class="sd">        unresolved values (example: sunday ETCETC)</span>
+
+<span class="sd">        :param items: The Timeperiods object.</span>
+<span class="sd">        :type items: object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Ok, I do not have prop, Maybe my templates do?</span>
+        <span class="c"># Same story for plus</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">templates</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unresolved</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">unresolved</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.get_raw_import_values"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.get_raw_import_values">[docs]</a>    <span class="k">def</span> <span class="nf">get_raw_import_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get some properties of timeperiod (timeperiod is a bit different</span>
+<span class="sd">        from classic item)</span>
+
+<span class="sd">        :return: a dictionnary of some properties</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;timeperiod_name&#39;</span><span class="p">,</span> <span class="s">&#39;alias&#39;</span><span class="p">,</span> <span class="s">&#39;use&#39;</span><span class="p">,</span> <span class="s">&#39;register&#39;</span><span class="p">]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+                <span class="k">print</span> <span class="n">prop</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="n">val</span>
+                <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="c"># Now the unresolved one. The only way to get ride of same key things is to put</span>
+        <span class="c"># directly the full value as the key</span>
+        <span class="k">for</span> <span class="n">other</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unresolved</span><span class="p">:</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">other</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">res</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.is_time_valid"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.is_time_valid">[docs]</a>    <span class="k">def</span> <span class="nf">is_time_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if a time is valid or not</span>
+
+<span class="sd">        :return: time is valid or not</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;exclude&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">daterange</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">daterange</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">daterange</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">daterange</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="c"># will give the first time &gt; t which is valid</span></div>
+<div class="viewcode-block" id="Timeperiod.get_min_from_t"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.get_min_from_t">[docs]</a>    <span class="k">def</span> <span class="nf">get_min_from_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the first time &gt; timestamp which is valid</span>
+
+<span class="sd">        :param timestamp: number of seconds</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :return: number of seconds</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: not used, so delete it</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mins_incl</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">daterange</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span><span class="p">:</span>
+            <span class="n">mins_incl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">daterange</span><span class="o">.</span><span class="n">get_min_from_t</span><span class="p">(</span><span class="n">timestamp</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">mins_incl</span><span class="p">)</span>
+
+    <span class="c"># will give the first time &gt; t which is not valid</span></div>
+<div class="viewcode-block" id="Timeperiod.get_not_in_min_from_t"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.get_not_in_min_from_t">[docs]</a>    <span class="k">def</span> <span class="nf">get_not_in_min_from_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        TODO: not used, so delete it</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.find_next_valid_time_from_cache"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.find_next_valid_time_from_cache">[docs]</a>    <span class="k">def</span> <span class="nf">find_next_valid_time_from_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the next valid time from cache</span>
+
+<span class="sd">        :param timestamp: number of seconds</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :return: Nothing or time in seconds</span>
+<span class="sd">        :rtype: None or int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">timestamp</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.find_next_invalid_time_from_cache"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.find_next_invalid_time_from_cache">[docs]</a>    <span class="k">def</span> <span class="nf">find_next_invalid_time_from_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the next invalid time from cache</span>
+
+<span class="sd">        :param timestamp: number of seconds</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :return: Nothing or time in seconds</span>
+<span class="sd">        :rtype: None or int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalid_cache</span><span class="p">[</span><span class="n">timestamp</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.check_and_log_activation_change"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.check_and_log_activation_change">[docs]</a>    <span class="k">def</span> <span class="nf">check_and_log_activation_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Will look for active/un-active change of timeperiod.</span>
+<span class="sd">        In case it change, we log it like:</span>
+<span class="sd">        [1327392000] TIMEPERIOD TRANSITION: &lt;name&gt;;&lt;from&gt;;&lt;to&gt;</span>
+
+<span class="sd">        States of is_active:</span>
+<span class="sd">        -1: default value when start</span>
+<span class="sd">        0: when timeperiod end</span>
+<span class="sd">        1: when timeperiod start</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+        <span class="n">was_active</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_active</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+
+        <span class="c"># If we got a change, log it!</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_active</span> <span class="o">!=</span> <span class="n">was_active</span><span class="p">:</span>
+            <span class="n">_from</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">_to</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c"># If it&#39;s the start, get a special value for was</span>
+            <span class="k">if</span> <span class="n">was_active</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">_from</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">if</span> <span class="n">was_active</span><span class="p">:</span>
+                <span class="n">_from</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+                <span class="n">_to</span> <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="c"># Now raise the log</span>
+            <span class="n">naglog_result</span><span class="p">(</span>
+                <span class="s">&#39;info&#39;</span><span class="p">,</span> <span class="s">&#39;TIMEPERIOD TRANSITION: </span><span class="si">%s</span><span class="s">;</span><span class="si">%d</span><span class="s">;</span><span class="si">%d</span><span class="s">&#39;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">_from</span><span class="p">,</span> <span class="n">_to</span><span class="p">)</span>
+            <span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.clean_cache"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.clean_cache">[docs]</a>    <span class="k">def</span> <span class="nf">clean_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clean cache with entries older than now because not used in future ;)</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+        <span class="n">t_to_del</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">timestamp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">timestamp</span> <span class="o">&lt;</span> <span class="n">now</span><span class="p">:</span>
+                <span class="n">t_to_del</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">timestamp</span> <span class="ow">in</span> <span class="n">t_to_del</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">timestamp</span><span class="p">]</span>
+
+        <span class="c"># same for the invalid cache</span>
+        <span class="n">t_to_del</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">timestamp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalid_cache</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">timestamp</span> <span class="o">&lt;</span> <span class="n">now</span><span class="p">:</span>
+                <span class="n">t_to_del</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">timestamp</span> <span class="ow">in</span> <span class="n">t_to_del</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalid_cache</span><span class="p">[</span><span class="n">timestamp</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.get_next_valid_time_from_t"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.get_next_valid_time_from_t">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_valid_time_from_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get next valid time from the cache</span>
+
+<span class="sd">        :param timestamp: number of seconds</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :return: Nothing or time in seconds</span>
+<span class="sd">        :rtype: None or int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="n">original_t</span> <span class="o">=</span> <span class="n">timestamp</span>
+
+        <span class="c"># logger.debug(&quot;[%s] Check valid time for %s&quot; %</span>
+        <span class="c">#  ( self.get_name(), time.asctime(time.localtime(timestamp)))</span>
+
+        <span class="n">res_from_cache</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_next_valid_time_from_cache</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res_from_cache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">res_from_cache</span>
+
+        <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="c"># Loop for all minutes...</span>
+        <span class="k">while</span> <span class="n">still_loop</span><span class="p">:</span>
+            <span class="n">local_min</span> <span class="o">=</span> <span class="bp">None</span>
+
+            <span class="c"># Ok, not in cache...</span>
+            <span class="n">dr_mins</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">s_dr_mins</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">datarange</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span><span class="p">:</span>
+                <span class="n">dr_mins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datarange</span><span class="o">.</span><span class="n">get_next_valid_time_from_t</span><span class="p">(</span><span class="n">timestamp</span><span class="p">))</span>
+
+            <span class="n">s_dr_mins</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dr_mins</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">])</span>
+
+            <span class="k">for</span> <span class="n">t01</span> <span class="ow">in</span> <span class="n">s_dr_mins</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span> <span class="ow">and</span> <span class="n">still_loop</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                    <span class="c"># No Exclude so we are good</span>
+                    <span class="n">local_min</span> <span class="o">=</span> <span class="n">t01</span>
+                    <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">timeperiod</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">t01</span><span class="p">)</span> <span class="ow">and</span> <span class="n">still_loop</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                            <span class="c"># OK we found a date that is not valid in any exclude timeperiod</span>
+                            <span class="n">local_min</span> <span class="o">=</span> <span class="n">t01</span>
+                            <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">False</span>
+
+            <span class="k">if</span> <span class="n">local_min</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c"># print &quot;Looking for next valid date&quot;</span>
+                <span class="n">exc_mins</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">if</span> <span class="n">s_dr_mins</span> <span class="o">!=</span> <span class="p">[]:</span>
+                    <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">:</span>
+                        <span class="n">exc_mins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timeperiod</span><span class="o">.</span><span class="n">get_next_invalid_time_from_t</span><span class="p">(</span><span class="n">s_dr_mins</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+                <span class="n">s_exc_mins</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">exc_mins</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">s_exc_mins</span> <span class="o">!=</span> <span class="p">[]:</span>
+                    <span class="n">local_min</span> <span class="o">=</span> <span class="n">s_exc_mins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">local_min</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">timestamp</span> <span class="o">=</span> <span class="n">local_min</span>
+                <span class="c"># No loop more than one year</span>
+                <span class="k">if</span> <span class="n">timestamp</span> <span class="o">&gt;</span> <span class="n">original_t</span> <span class="o">+</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">366</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="n">local_min</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c"># Ok, we update the cache...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">original_t</span><span class="p">]</span> <span class="o">=</span> <span class="n">local_min</span>
+        <span class="k">return</span> <span class="n">local_min</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.get_next_invalid_time_from_t"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.get_next_invalid_time_from_t">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_invalid_time_from_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get next invalid time from the cache</span>
+
+<span class="sd">        :param timestamp: number of seconds</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :return: Nothing or time in seconds</span>
+<span class="sd">        :rtype: None or int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># time.asctime(time.localtime(timestamp)), timestamp</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="n">original_t</span> <span class="o">=</span> <span class="n">timestamp</span>
+        <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="c"># First try to find in cache</span>
+        <span class="n">res_from_cache</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_next_invalid_time_from_cache</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res_from_cache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">res_from_cache</span>
+
+        <span class="c"># Then look, maybe timestamp is already invalid</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">timestamp</span>
+
+        <span class="n">local_min</span> <span class="o">=</span> <span class="n">timestamp</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c"># Loop for all minutes...</span>
+        <span class="k">while</span> <span class="n">still_loop</span><span class="p">:</span>
+            <span class="c"># print &quot;Invalid loop with&quot;, time.asctime(time.localtime(local_min))</span>
+
+            <span class="n">dr_mins</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c"># val_valids = []</span>
+            <span class="c"># val_inval = []</span>
+            <span class="c"># But maybe we can find a better solution with next invalid of standard dateranges</span>
+            <span class="c"># print self.get_name(),</span>
+            <span class="c"># &quot;After valid of exclude, local_min =&quot;, time.asctime(time.localtime(local_min))</span>
+            <span class="k">for</span> <span class="n">daterange</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span><span class="p">:</span>
+                <span class="c"># print self.get_name(),</span>
+                <span class="c"># &quot;Search a next invalid from DR&quot;, time.asctime(time.localtime(local_min))</span>
+                <span class="c"># print dr.__dict__</span>
+                <span class="n">next_t</span> <span class="o">=</span> <span class="n">daterange</span><span class="o">.</span><span class="n">get_next_invalid_time_from_t</span><span class="p">(</span><span class="n">local_min</span><span class="p">)</span>
+
+                <span class="c"># print self.get_name(), &quot;Dr&quot;, dr.__dict__,</span>
+                <span class="c"># &quot;give me next invalid&quot;, time.asctime(time.localtime(m))</span>
+                <span class="k">if</span> <span class="n">next_t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="c"># But maybe it&#39;s invalid for this dr, but valid for other ones.</span>
+                    <span class="c"># if not self.is_time_valid(m):</span>
+                    <span class="c">#     print &quot;Final: Got a next invalid at&quot;, time.asctime(time.localtime(m))</span>
+                    <span class="n">dr_mins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_t</span><span class="p">)</span>
+                    <span class="c"># if not self.is_time_valid(m):</span>
+                    <span class="c">#    val_inval.append(m)</span>
+                    <span class="c"># else:</span>
+                    <span class="c">#    val_valids.append(m)</span>
+                    <span class="c">#    print &quot;Add a m&quot;, time.asctime(time.localtime(m))</span>
+                    <span class="c"># else:</span>
+                    <span class="c">#     print dr.__dict__</span>
+                    <span class="c">#     print &quot;FUCK bad result\n\n\n&quot;</span>
+            <span class="c"># print &quot;Inval&quot;</span>
+            <span class="c"># for v in val_inval:</span>
+            <span class="c">#    print &quot;\timestamp&quot;, time.asctime(time.localtime(v))</span>
+            <span class="c"># print &quot;Valid&quot;</span>
+            <span class="c"># for v in val_valids:</span>
+            <span class="c">#    print &quot;\timestamp&quot;, time.asctime(time.localtime(v))</span>
+
+            <span class="k">if</span> <span class="n">dr_mins</span> <span class="o">!=</span> <span class="p">[]:</span>
+                <span class="n">local_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dr_mins</span><span class="p">)</span>
+                <span class="c"># Take the minimum valid as lower for next search</span>
+                <span class="c"># local_min_valid = 0</span>
+                <span class="c"># if val_valids != []:</span>
+                <span class="c">#    local_min_valid = min(val_valids)</span>
+                <span class="c"># if local_min_valid != 0:</span>
+                <span class="c">#    local_min = local_min_valid</span>
+                <span class="c"># else:</span>
+                <span class="c">#    local_min = min(dr_mins)</span>
+                <span class="c"># print &quot;UPDATE After dr: found invalid local min:&quot;,</span>
+                <span class="c">#  time.asctime(time.localtime(local_min)),</span>
+                <span class="c">#  &quot;is valid&quot;, self.is_time_valid(local_min)</span>
+
+            <span class="c"># print self.get_name(),</span>
+            <span class="c"># &#39;Invalid: local min&#39;, local_min #time.asctime(time.localtime(local_min))</span>
+            <span class="c"># We do not loop unless the local_min is not valid</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">local_min</span><span class="p">):</span>
+                <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c"># continue until we reach too far..., in one minute</span>
+                <span class="c"># After one month, go quicker...</span>
+                <span class="k">if</span> <span class="n">local_min</span> <span class="o">&gt;</span> <span class="n">original_t</span> <span class="o">+</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">30</span><span class="p">:</span>
+                    <span class="n">local_min</span> <span class="o">+=</span> <span class="mi">3600</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c"># else search for 1min precision</span>
+                    <span class="n">local_min</span> <span class="o">+=</span> <span class="mi">60</span>
+                <span class="c"># after one year, stop.</span>
+                <span class="k">if</span> <span class="n">local_min</span> <span class="o">&gt;</span> <span class="n">original_t</span> <span class="o">+</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">366</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>  <span class="c"># 60*24*366 + 1:</span>
+                    <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="c"># print &quot;Loop?&quot;, still_loop</span>
+            <span class="c"># if we&#39;ve got a real value, we check it with the exclude</span>
+            <span class="k">if</span> <span class="n">local_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c"># Now check if local_min is not valid</span>
+                <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">:</span>
+                    <span class="c"># print self.get_name(),</span>
+                    <span class="c"># &quot;we check for invalid&quot;,</span>
+                    <span class="c"># time.asctime(time.localtime(local_min)), &#39;with tp&#39;, tp.name</span>
+                    <span class="k">if</span> <span class="n">timeperiod</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">local_min</span><span class="p">):</span>
+                        <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">True</span>
+                        <span class="c"># local_min + 60</span>
+                        <span class="n">local_min</span> <span class="o">=</span> <span class="n">timeperiod</span><span class="o">.</span><span class="n">get_next_invalid_time_from_t</span><span class="p">(</span><span class="n">local_min</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span>
+                        <span class="c"># No loop more than one year</span>
+                        <span class="k">if</span> <span class="n">local_min</span> <span class="o">&gt;</span> <span class="n">original_t</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">366</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="n">still_loop</span> <span class="o">=</span> <span class="bp">False</span>
+                            <span class="n">res</span> <span class="o">=</span> <span class="bp">None</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">still_loop</span><span class="p">:</span>  <span class="c"># We find a possible value</span>
+                <span class="c"># We take the result the minimal possible</span>
+                <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">local_min</span> <span class="o">&lt;</span> <span class="n">res</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="n">local_min</span>
+
+        <span class="c"># print &quot;Finished Return the next invalid&quot;, time.asctime(time.localtime(local_min))</span>
+        <span class="c"># Ok, we update the cache...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">invalid_cache</span><span class="p">[</span><span class="n">original_t</span><span class="p">]</span> <span class="o">=</span> <span class="n">local_min</span>
+        <span class="k">return</span> <span class="n">local_min</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.has"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.has">[docs]</a>    <span class="k">def</span> <span class="nf">has</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if self have prop attribute</span>
+
+<span class="sd">        :param prop: property name</span>
+<span class="sd">        :type prop: string</span>
+<span class="sd">        :return: true if self has this attribute</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s">&quot;{s.__class__.__name__} is deprecated, please use &quot;</span>
+            <span class="s">&quot;`hasattr(your_object, attr)` instead. This has() method will &quot;</span>
+            <span class="s">&quot;be removed in a later version.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="bp">self</span><span class="p">),</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.is_correct"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.is_correct">[docs]</a>    <span class="k">def</span> <span class="nf">is_correct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if dateranges of timeperiod are valid</span>
+
+<span class="sd">        :return: false if at least one datarange is invalid</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">daterange</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span><span class="p">:</span>
+            <span class="n">good</span> <span class="o">=</span> <span class="n">daterange</span><span class="o">.</span><span class="n">is_correct</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">good</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;[timeperiod::</span><span class="si">%s</span><span class="s">] invalid daterange &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+            <span class="n">valid</span> <span class="o">&amp;=</span> <span class="n">good</span>
+
+        <span class="c"># Warn about non correct entries</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">invalid_entries</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;[timeperiod::</span><span class="si">%s</span><span class="s">] invalid entry &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">valid</span>
+</div>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get readable object</span>
+
+<span class="sd">        :return: this object in readable format</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="n">string</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">get_start_and_end_time</span><span class="p">()</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">end</span><span class="p">))</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Start and end:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">))</span>
+        <span class="n">string</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">Exclude&#39;</span>
+        <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">string</span>
+
+<div class="viewcode-block" id="Timeperiod.resolve_daterange"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.resolve_daterange">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_daterange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dateranges</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Try to solve dateranges (special cases)</span>
+
+<span class="sd">        :param dateranges: dateranges</span>
+<span class="sd">        :type dateranges: list</span>
+<span class="sd">        :param entry: property of timeperiod</span>
+<span class="sd">        :type entry: string</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="s">r&#39;(\d{4})-(\d{2})-(\d{2}) - (\d{4})-(\d{2})-(\d{2}) / (\d+)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 1&quot;</span>
+            <span class="p">(</span><span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">eyear</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">CalendarDaterange</span><span class="p">(</span>
+                    <span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eyear</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span>
+                    <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;(\d{4})-(\d{2})-(\d{2}) / (\d+)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 2&quot;</span>
+            <span class="p">(</span><span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="n">eyear</span> <span class="o">=</span> <span class="n">syear</span>
+            <span class="n">emon</span> <span class="o">=</span> <span class="n">smon</span>
+            <span class="n">emday</span> <span class="o">=</span> <span class="n">smday</span>
+            <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">CalendarDaterange</span><span class="p">(</span><span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eyear</span><span class="p">,</span>
+                                  <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="s">r&#39;(\d{4})-(\d{2})-(\d{2}) - (\d{4})-(\d{2})-(\d{2})[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 3&quot;</span>
+            <span class="p">(</span><span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">eyear</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">CalendarDaterange</span><span class="p">(</span><span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eyear</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;(\d{4})-(\d{2})-(\d{2})[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 4&quot;</span>
+            <span class="p">(</span><span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="n">eyear</span> <span class="o">=</span> <span class="n">syear</span>
+            <span class="n">emon</span> <span class="o">=</span> <span class="n">smon</span>
+            <span class="n">emday</span> <span class="o">=</span> <span class="n">smday</span>
+            <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">CalendarDaterange</span><span class="p">(</span><span class="n">syear</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eyear</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="s">r&#39;([a-z]*) ([\d-]+) ([a-z]*) - ([a-z]*) ([\d-]+) ([a-z]*) / (\d+)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span>
+            <span class="n">entry</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 5&quot;</span>
+            <span class="p">(</span><span class="n">swday</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">ewday</span><span class="p">,</span>
+             <span class="n">ewday_offset</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="n">smon_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">smon</span><span class="p">)</span>
+            <span class="n">emon_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">emon</span><span class="p">)</span>
+            <span class="n">swday_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">swday</span><span class="p">)</span>
+            <span class="n">ewday_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">ewday</span><span class="p">)</span>
+            <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">MonthWeekDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">smon_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday_id</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                      <span class="n">emon_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ewday_id</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;([a-z]*) ([\d-]+) - ([a-z]*) ([\d-]+) / (\d+)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 6&quot;</span>
+            <span class="p">(</span><span class="n">t00</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">t01</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span> <span class="ow">and</span> <span class="n">t01</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span><span class="p">:</span>
+                <span class="n">swday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">ewday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t01</span><span class="p">)</span>
+                <span class="n">swday_offset</span> <span class="o">=</span> <span class="n">smday</span>
+                <span class="n">ewday_offset</span> <span class="o">=</span> <span class="n">emday</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">WeekDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span>
+                                     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ewday</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span> <span class="ow">and</span> <span class="n">t01</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+                <span class="n">smon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">emon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t01</span><span class="p">)</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDateDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                       <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="o">==</span> <span class="s">&#39;day&#39;</span> <span class="ow">and</span> <span class="n">t01</span> <span class="o">==</span> <span class="s">&#39;day&#39;</span><span class="p">:</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                      <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;([a-z]*) ([\d-]+) - ([\d-]+) / (\d+)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 7&quot;</span>
+            <span class="p">(</span><span class="n">t00</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span><span class="p">:</span>
+                <span class="n">swday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">swday_offset</span> <span class="o">=</span> <span class="n">smday</span>
+                <span class="n">ewday</span> <span class="o">=</span> <span class="n">swday</span>
+                <span class="n">ewday_offset</span> <span class="o">=</span> <span class="n">emday</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">WeekDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span>
+                                     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ewday</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+                <span class="n">smon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">emon</span> <span class="o">=</span> <span class="n">smon</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDateDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span>
+                                       <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="o">==</span> <span class="s">&#39;day&#39;</span><span class="p">:</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                      <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">skip_interval</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="s">r&#39;([a-z]*) ([\d-]+) ([a-z]*) - ([a-z]*) ([\d-]+) ([a-z]*) [\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 8&quot;</span>
+            <span class="p">(</span><span class="n">swday</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">ewday</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="n">smon_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">smon</span><span class="p">)</span>
+            <span class="n">emon_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">emon</span><span class="p">)</span>
+            <span class="n">swday_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">swday</span><span class="p">)</span>
+            <span class="n">ewday_id</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">ewday</span><span class="p">)</span>
+            <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">MonthWeekDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">smon_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday_id</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span>
+                                      <span class="mi">0</span><span class="p">,</span> <span class="n">emon_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ewday_id</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;([a-z]*) ([\d-]+) - ([\d-]+)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 9&quot;</span>
+            <span class="p">(</span><span class="n">t00</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span><span class="p">:</span>
+                <span class="n">swday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">swday_offset</span> <span class="o">=</span> <span class="n">smday</span>
+                <span class="n">ewday</span> <span class="o">=</span> <span class="n">swday</span>
+                <span class="n">ewday_offset</span> <span class="o">=</span> <span class="n">emday</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">WeekDayDaterange</span><span class="p">(</span>
+                        <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="n">ewday</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+                <span class="n">smon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">emon</span> <span class="o">=</span> <span class="n">smon</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDateDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                       <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="o">==</span> <span class="s">&#39;day&#39;</span><span class="p">:</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                      <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;([a-z]*) ([\d-]+) - ([a-z]*) ([\d-]+)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 10&quot;</span>
+            <span class="p">(</span><span class="n">t00</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="n">t01</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span> <span class="ow">and</span> <span class="n">t01</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span><span class="p">:</span>
+                <span class="n">swday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">ewday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t01</span><span class="p">)</span>
+                <span class="n">swday_offset</span> <span class="o">=</span> <span class="n">smday</span>
+                <span class="n">ewday_offset</span> <span class="o">=</span> <span class="n">emday</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">WeekDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ewday</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span> <span class="ow">and</span> <span class="n">t01</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+                <span class="n">smon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">emon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t01</span><span class="p">)</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDateDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                       <span class="mi">0</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">t00</span> <span class="o">==</span> <span class="s">&#39;day&#39;</span> <span class="ow">and</span> <span class="n">t01</span> <span class="o">==</span> <span class="s">&#39;day&#39;</span><span class="p">:</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">smday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                      <span class="mi">0</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;([a-z]*) ([\d-]+) ([a-z]*)[\s\t]*([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 11&quot;</span>
+            <span class="p">(</span><span class="n">t00</span><span class="p">,</span> <span class="n">t02</span><span class="p">,</span> <span class="n">t01</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span> <span class="ow">and</span> <span class="n">t01</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+                <span class="n">swday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                <span class="n">smon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t01</span><span class="p">)</span>
+                <span class="n">emon</span> <span class="o">=</span> <span class="n">smon</span>
+                <span class="n">ewday</span> <span class="o">=</span> <span class="n">swday</span>
+                <span class="n">ewday_offset</span> <span class="o">=</span> <span class="n">t02</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">MonthWeekDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday</span><span class="p">,</span> <span class="n">t02</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span>
+                                          <span class="mi">0</span><span class="p">,</span> <span class="n">ewday</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">t01</span><span class="p">:</span>
+                <span class="c"># print &quot;Good catch 12&quot;</span>
+                <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span><span class="p">:</span>
+                    <span class="n">swday</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_weekday_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                    <span class="n">swday_offset</span> <span class="o">=</span> <span class="n">t02</span>
+                    <span class="n">ewday</span> <span class="o">=</span> <span class="n">swday</span>
+                    <span class="n">ewday_offset</span> <span class="o">=</span> <span class="n">swday_offset</span>
+                    <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">WeekDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swday</span><span class="p">,</span> <span class="n">swday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                         <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ewday</span><span class="p">,</span> <span class="n">ewday_offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="k">return</span>
+                <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+                    <span class="n">smon</span> <span class="o">=</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">get_month_id</span><span class="p">(</span><span class="n">t00</span><span class="p">)</span>
+                    <span class="n">emon</span> <span class="o">=</span> <span class="n">smon</span>
+                    <span class="n">emday</span> <span class="o">=</span> <span class="n">t02</span>
+                    <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">MonthDateDaterange</span><span class="p">(</span>
+                            <span class="mi">0</span><span class="p">,</span> <span class="n">smon</span><span class="p">,</span> <span class="n">t02</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">emon</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="k">return</span>
+                <span class="k">if</span> <span class="n">t00</span> <span class="o">==</span> <span class="s">&#39;day&#39;</span><span class="p">:</span>
+                    <span class="n">emday</span> <span class="o">=</span> <span class="n">t02</span>
+                    <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">MonthDayDaterange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t02</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                          <span class="mi">0</span><span class="p">,</span> <span class="n">emday</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="k">return</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;([a-z]*)[\s\t]+([0-9:, -]+)&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># print &quot;Good catch 13&quot;</span>
+            <span class="p">(</span><span class="n">t00</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">t00</span> <span class="ow">in</span> <span class="n">Daterange</span><span class="o">.</span><span class="n">weekdays</span><span class="p">:</span>
+                <span class="n">day</span> <span class="o">=</span> <span class="n">t00</span>
+                <span class="n">dateranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">StandardDaterange</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span>
+                <span class="k">return</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[timeentry::</span><span class="si">%s</span><span class="s">] no match for </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">invalid_entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.apply_inheritance"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.apply_inheritance">[docs]</a>    <span class="k">def</span> <span class="nf">apply_inheritance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inherite no properties and no custom variables for timeperiod</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.explode"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.explode">[docs]</a>    <span class="k">def</span> <span class="nf">explode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Try to resolv all unresolved elements</span>
+
+<span class="sd">        :param timeperiods: Timeperiods object</span>
+<span class="sd">        :type timeperiods:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unresolved</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resolve_daterange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dateranges</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unresolved</span> <span class="o">=</span> <span class="p">[]</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.linkify"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.linkify">[docs]</a>    <span class="k">def</span> <span class="nf">linkify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeperiods</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Will make timeperiod in exclude with id of the timeperiods</span>
+
+<span class="sd">        :param timeperiods: Timeperiods object</span>
+<span class="sd">        :type timeperiods:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_exclude</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;exclude&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span> <span class="o">!=</span> <span class="p">[]:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[timeentry::</span><span class="si">%s</span><span class="s">] have excluded </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">)</span>
+            <span class="n">excluded_tps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span>
+            <span class="c"># print &quot;I will exclude from:&quot;, excluded_tps</span>
+            <span class="k">for</span> <span class="n">tp_name</span> <span class="ow">in</span> <span class="n">excluded_tps</span><span class="p">:</span>
+                <span class="n">timepriod</span> <span class="o">=</span> <span class="n">timeperiods</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">tp_name</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">timepriod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">new_exclude</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timepriod</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;[timeentry::</span><span class="si">%s</span><span class="s">] unknown </span><span class="si">%s</span><span class="s"> timeperiod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">tp_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span> <span class="o">=</span> <span class="n">new_exclude</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.check_exclude_rec"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.check_exclude_rec">[docs]</a>    <span class="k">def</span> <span class="nf">check_exclude_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if this timeperiod is tagged</span>
+
+<span class="sd">        :return: if tagged return false, if not true</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rec_tag</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;[timeentry::</span><span class="si">%s</span><span class="s">] is in a loop in exclude parameter&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rec_tag</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude</span><span class="p">:</span>
+            <span class="n">timeperiod</span><span class="o">.</span><span class="n">check_exclude_rec</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="Timeperiod.fill_data_brok_from"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiod.fill_data_brok_from">[docs]</a>    <span class="k">def</span> <span class="nf">fill_data_brok_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">brok_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add timeperiods from brok</span>
+
+<span class="sd">        :param data: timeperiod dictionnary</span>
+<span class="sd">        :type data: dict</span>
+<span class="sd">        :param brok_type: brok type</span>
+<span class="sd">        :type brok_type: string</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="c"># Now config properties</span>
+        <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c"># Is this property intended for broking?</span>
+            <span class="c"># if &#39;fill_brok&#39; in entry:</span>
+            <span class="k">if</span> <span class="n">brok_type</span> <span class="ow">in</span> <span class="n">entry</span><span class="o">.</span><span class="n">fill_brok</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">entry</span><span class="o">.</span><span class="n">has_default</span><span class="p">:</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">default</span>
+
+</div></div>
+<div class="viewcode-block" id="Timeperiods"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiods">[docs]</a><span class="k">class</span> <span class="nc">Timeperiods</span><span class="p">(</span><span class="n">Items</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to manage all timeperiods</span>
+<span class="sd">    A timeperiod is defined with range time (hours) of week to do action</span>
+<span class="sd">    and add day exceptions (like non working days)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name_property</span> <span class="o">=</span> <span class="s">&quot;timeperiod_name&quot;</span>
+    <span class="n">inner_class</span> <span class="o">=</span> <span class="n">Timeperiod</span>
+
+<div class="viewcode-block" id="Timeperiods.explode"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiods.explode">[docs]</a>    <span class="k">def</span> <span class="nf">explode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Try to resolv each timeperiod</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">t_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="n">timeperiod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">t_id</span><span class="p">]</span>
+            <span class="n">timeperiod</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Timeperiods.linkify"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiods.linkify">[docs]</a>    <span class="k">def</span> <span class="nf">linkify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check exclusion for each timeperiod</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">t_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="n">timeperiod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">t_id</span><span class="p">]</span>
+            <span class="n">timeperiod</span><span class="o">.</span><span class="n">linkify</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Timeperiods.apply_inheritance"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiods.apply_inheritance">[docs]</a>    <span class="k">def</span> <span class="nf">apply_inheritance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The only interesting property to inherit is exclude</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_partial_inheritance</span><span class="p">(</span><span class="s">&#39;exclude&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">i</span><span class="o">.</span><span class="n">get_customs_properties_by_inheritance</span><span class="p">()</span>
+
+        <span class="c"># And now apply inheritance for unresolved properties</span>
+        <span class="c"># like the dateranges in fact</span>
+        <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">timeperiod</span><span class="o">.</span><span class="n">get_unresolved_properties_by_inheritance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Timeperiods.is_correct"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.timeperiod.Timeperiods.is_correct">[docs]</a>    <span class="k">def</span> <span class="nf">is_correct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        check if each properties of timeperiods are valid</span>
+
+<span class="sd">        :return: True if is correct, otherwise False</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="c"># We do not want a same hg to be explode again and again</span>
+        <span class="c"># so we tag it</span>
+        <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">timeperiod</span><span class="o">.</span><span class="n">rec_tag</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">tmp_tp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">tmp_tp</span><span class="o">.</span><span class="n">rec_tag</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">valid</span> <span class="o">&amp;=</span> <span class="n">timeperiod</span><span class="o">.</span><span class="n">check_exclude_rec</span><span class="p">()</span>
+
+        <span class="c"># We clean the tags</span>
+        <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">del</span> <span class="n">timeperiod</span><span class="o">.</span><span class="n">rec_tag</span>
+
+        <span class="c"># And check all timeperiods for correct (sunday is false)</span>
+        <span class="k">for</span> <span class="n">timeperiod</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">valid</span> <span class="o">&amp;=</span> <span class="n">timeperiod</span><span class="o">.</span><span class="n">is_correct</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">valid</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

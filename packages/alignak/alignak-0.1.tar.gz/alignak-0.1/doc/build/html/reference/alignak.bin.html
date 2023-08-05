@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.bin package &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="alignak package" href="alignak.html"/>
+        <link rel="next" title="alignak.daemons package" href="alignak.daemons.html"/>
+        <link rel="prev" title="alignak package" href="alignak.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="alignak.html">alignak package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.bin package</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="../_sources/reference/alignak.bin.txt" rel="nofollow"> View page source</a>
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <div class="section" id="alignak-bin-package">
+<h1>alignak.bin package<a class="headerlink" href="#alignak-bin-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-alignak.bin.alignak_arbiter">
+<span id="alignak-bin-alignak-arbiter-module"></span><h2>alignak.bin.alignak_arbiter module<a class="headerlink" href="#module-alignak.bin.alignak_arbiter" title="Permalink to this headline">¶</a></h2>
+<p>This is the class of the Arbiter. Its role is to read configuration,
+cut it, and send it to other elements like schedulers, reactionners
+or pollers. It is also responsible for the high avaibility feature.
+For example, if a scheduler dies, it sends the late scheduler&#8217;s conf
+to another scheduler available.
+It also reads orders form users (nagios.cmd) and sends them to schedulers.</p>
+<dl class="function">
+<dt id="alignak.bin.alignak_arbiter.main">
+<tt class="descclassname">alignak.bin.alignak_arbiter.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/bin/alignak_arbiter.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.bin.alignak_arbiter.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse args and run main daemon function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.bin.alignak_broker">
+<span id="alignak-bin-alignak-broker-module"></span><h2>alignak.bin.alignak_broker module<a class="headerlink" href="#module-alignak.bin.alignak_broker" title="Permalink to this headline">¶</a></h2>
+<p>This class is an interface for the Broker
+The broker listens to the Arbiter for the configuration sent through
+the given port as first argument.
+The configuration sent by the arbiter specifies from which schedulers
+the broker will take broks.
+When the broker is already launched and has its own conf, it keeps on
+listening the arbiter (one a timeout)
+In case the arbiter has a new conf to send, the broker forget its old
+schedulers (and their associated broks) and take the new ones instead.</p>
+<dl class="function">
+<dt id="alignak.bin.alignak_broker.main">
+<tt class="descclassname">alignak.bin.alignak_broker.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/bin/alignak_broker.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.bin.alignak_broker.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse args and run main daemon function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.bin.alignak_poller">
+<span id="alignak-bin-alignak-poller-module"></span><h2>alignak.bin.alignak_poller module<a class="headerlink" href="#module-alignak.bin.alignak_poller" title="Permalink to this headline">¶</a></h2>
+<p>This class is the application that launches checks
+The poller listens to the Arbiter for the configuration sent through
+the given port as first argument.
+The configuration sent by the arbiter specifies from which schedulers the
+poller will take its checks.
+When the poller is already launched and has its own conf, it keeps on
+listening the arbiter (one a timeout)
+In case the arbiter has a new conf to send, the poller forget its old
+schedulers (and the associated checks) and take the new ones instead.</p>
+<dl class="function">
+<dt id="alignak.bin.alignak_poller.main">
+<tt class="descclassname">alignak.bin.alignak_poller.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/bin/alignak_poller.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.bin.alignak_poller.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse args and run main daemon function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.bin.alignak_reactionner">
+<span id="alignak-bin-alignak-reactionner-module"></span><h2>alignak.bin.alignak_reactionner module<a class="headerlink" href="#module-alignak.bin.alignak_reactionner" title="Permalink to this headline">¶</a></h2>
+<p>This class is an application that launches actions like
+notifications or event handlers
+The reactionner listens to the Arbiter for the configuration sent through
+the given port as first argument.
+The configuration sent by the arbiter specifies from which schedulers the
+will take actions.
+When the reactionner is already launched and has its own conf, it keeps
+on listening the arbiter (one a timeout)
+In case the arbiter has a new conf to send, the reactionner forget its old
+schedulers (and the associated actions) and take the new ones instead.</p>
+<dl class="function">
+<dt id="alignak.bin.alignak_reactionner.main">
+<tt class="descclassname">alignak.bin.alignak_reactionner.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/bin/alignak_reactionner.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.bin.alignak_reactionner.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse args and run main daemon function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.bin.alignak_receiver">
+<span id="alignak-bin-alignak-receiver-module"></span><h2>alignak.bin.alignak_receiver module<a class="headerlink" href="#module-alignak.bin.alignak_receiver" title="Permalink to this headline">¶</a></h2>
+<p>This class is an interface for the Receiver
+The receiver listens to the Arbiter for the configuration sent through
+the given port as first argument.
+The configuration sent by the arbiter specifies from which schedulers
+the receiver will take broks.
+When the receiver is already launched and has its own conf, it keeps on
+listening the arbiter (one a timeout)
+In case the arbiter has a new conf to send, the receiver forget its old
+schedulers (and their associated broks) and take the new ones instead.</p>
+<dl class="function">
+<dt id="alignak.bin.alignak_receiver.main">
+<tt class="descclassname">alignak.bin.alignak_receiver.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/bin/alignak_receiver.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.bin.alignak_receiver.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse args and run main daemon function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.bin.alignak_scheduler">
+<span id="alignak-bin-alignak-scheduler-module"></span><h2>alignak.bin.alignak_scheduler module<a class="headerlink" href="#module-alignak.bin.alignak_scheduler" title="Permalink to this headline">¶</a></h2>
+<p>This class is the application in charge of scheduling
+The scheduler listens to the Arbiter for the configuration sent through
+the given port as first argument.
+The configuration sent by the arbiter specifies which checks and actions
+the scheduler must schedule, and a list of reactionners and pollers
+to execute them
+When the scheduler is already launched and has its own conf, it keeps on
+listening the arbiter (one a timeout)
+In case the arbiter has a new conf to send, the scheduler is stopped
+and a new one is created.</p>
+<dl class="function">
+<dt id="alignak.bin.alignak_scheduler.main">
+<tt class="descclassname">alignak.bin.alignak_scheduler.</tt><tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/bin/alignak_scheduler.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.bin.alignak_scheduler.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse args and run main daemon function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.bin">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-alignak.bin" title="Permalink to this headline">¶</a></h2>
+<p>This file is to be imported by every Alignak service component:
+Arbiter, Scheduler, etc. It just checks for the main requirement of
+Alignak.</p>
+</div>
+</div>
+
+
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="alignak.daemons.html" class="btn btn-neutral float-right" title="alignak.daemons package"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="alignak.html" class="btn btn-neutral" title="alignak package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

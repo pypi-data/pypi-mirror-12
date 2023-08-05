@@ -1,0 +1,1080 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.daemons.brokerdaemon &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.daemons.brokerdaemon</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.daemons.brokerdaemon</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     xkilian, fmikus@acktomic.com</span>
+<span class="c">#     David Moreau Simard, dmsimard@iweb.com</span>
+<span class="c">#     Peter Woodman, peter@shortbus.org</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     foomip, nelsondcp@gmail.com</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Arthur Gautier, superbaloo@superbaloo.net</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Olivier Hanesse, olivier.hanesse@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     ning.xie, ning.xie@qunar.com</span>
+<span class="c">#     Romain Forlot, rforlot@yahoo.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provide Broker class used to run a broker daemon</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">cPickle</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">zlib</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">active_children</span>
+
+<span class="kn">from</span> <span class="nn">alignak.satellite</span> <span class="kn">import</span> <span class="n">BaseSatellite</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">PathProp</span><span class="p">,</span> <span class="n">IntegerProp</span>
+<span class="kn">from</span> <span class="nn">alignak.util</span> <span class="kn">import</span> <span class="n">sort_by_ids</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">alignak.stats</span> <span class="kn">import</span> <span class="n">statsmgr</span>
+<span class="kn">from</span> <span class="nn">alignak.external_command</span> <span class="kn">import</span> <span class="n">ExternalCommand</span>
+<span class="kn">from</span> <span class="nn">alignak.http.client</span> <span class="kn">import</span> <span class="n">HTTPClient</span><span class="p">,</span> <span class="n">HTTPEXCEPTIONS</span>
+<span class="kn">from</span> <span class="nn">alignak.http.broker_interface</span> <span class="kn">import</span> <span class="n">BrokerInterface</span>
+
+
+<div class="viewcode-block" id="Broker"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker">[docs]</a><span class="k">class</span> <span class="nc">Broker</span><span class="p">(</span><span class="n">BaseSatellite</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to manage a Broker daemon</span>
+<span class="sd">    A Broker is used to get data from Scheduler and send them to modules. These modules in most</span>
+<span class="sd">    cases export to other softwares, databases...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">BaseSatellite</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;pidfile&#39;</span><span class="p">:</span>   <span class="n">PathProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;brokerd.pid&#39;</span><span class="p">),</span>
+        <span class="s">&#39;port&#39;</span><span class="p">:</span>      <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">7772</span><span class="p">),</span>
+        <span class="s">&#39;local_log&#39;</span><span class="p">:</span> <span class="n">PathProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;brokerd.log&#39;</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">is_daemon</span><span class="p">,</span> <span class="n">do_replace</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">debug_file</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Broker</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&#39;broker&#39;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">is_daemon</span><span class="p">,</span> <span class="n">do_replace</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span>
+                                     <span class="n">debug_file</span><span class="p">)</span>
+
+        <span class="c"># Our arbiters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c"># Our pollers, reactionners and receivers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c"># Modules are load one time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">have_modules</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># Can have a queue of external_commands given by modules</span>
+        <span class="c"># will be processed by arbiter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c"># All broks to manage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c"># broks to manage</span>
+        <span class="c"># broks raised this turn and that needs to be put in self.broks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks_internal_raised</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c"># broks raised by the arbiters, we need a lock so the push can be in parallel</span>
+        <span class="c"># to our current activities and won&#39;t lock the arbiter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_interface</span> <span class="o">=</span> <span class="n">BrokerInterface</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Broker.add"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add elt to this broker</span>
+
+<span class="sd">        Original comment : Schedulers have some queues. We can simplify the call by adding</span>
+<span class="sd">          elements into the proper queue just by looking at their type  Brok -&gt; self.broks</span>
+<span class="sd">          TODO: better tag ID?</span>
+<span class="sd">          External commands -&gt; self.external_commands</span>
+
+<span class="sd">        :param elt: object to add</span>
+<span class="sd">        :type elt: object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls_type</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">my_type</span>
+        <span class="k">if</span> <span class="n">cls_type</span> <span class="o">==</span> <span class="s">&#39;brok&#39;</span><span class="p">:</span>
+            <span class="c"># For brok, we TAG brok with our instance_id</span>
+            <span class="n">elt</span><span class="o">.</span><span class="n">instance_id</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">broks_internal_raised</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">elif</span> <span class="n">cls_type</span> <span class="o">==</span> <span class="s">&#39;externalcommand&#39;</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Enqueuing an external command &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ExternalCommand</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+        <span class="c"># Maybe we got a Message from the modules, it&#39;s way to ask something</span>
+        <span class="c"># like from now a full data from a scheduler for example.</span>
+        <span class="k">elif</span> <span class="n">cls_type</span> <span class="o">==</span> <span class="s">&#39;message&#39;</span><span class="p">:</span>
+            <span class="c"># We got a message, great!</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">elt</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">elt</span><span class="o">.</span><span class="n">get_type</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;NeedData&#39;</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+                <span class="c"># Full instance id means: I got no data for this scheduler</span>
+                <span class="c"># so give me all dumbass!</span>
+                <span class="k">if</span> <span class="s">&#39;full_instance_id&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="n">c_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;full_instance_id&#39;</span><span class="p">]</span>
+                    <span class="n">source</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">source</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;The module </span><span class="si">%s</span><span class="s"> is asking me to get all initial data &#39;</span>
+                                <span class="s">&#39;from the scheduler </span><span class="si">%d</span><span class="s">&#39;</span><span class="p">,</span>
+                                <span class="n">source</span><span class="p">,</span> <span class="n">c_id</span><span class="p">)</span>
+                    <span class="c"># so we just reset the connection and the running_id,</span>
+                    <span class="c"># it will just get all new things</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">c_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">c_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>  <span class="c"># maybe this instance was not known, forget it</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;the module </span><span class="si">%s</span><span class="s"> ask me a full_instance_id &quot;</span>
+                                       <span class="s">&quot;for an unknown ID (</span><span class="si">%d</span><span class="s">)!&quot;</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">c_id</span><span class="p">)</span>
+            <span class="c"># Maybe a module tells me that it&#39;s dead, I must log it&#39;s last words...</span>
+            <span class="k">if</span> <span class="n">elt</span><span class="o">.</span><span class="n">get_type</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;ICrash&#39;</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;the module </span><span class="si">%s</span><span class="s"> just crash! Please look at the traceback:&#39;</span><span class="p">,</span>
+                             <span class="n">data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;trace&#39;</span><span class="p">])</span>
+
+                <span class="c"># The module death will be looked for elsewhere and restarted.</span>
+</div>
+<div class="viewcode-block" id="Broker.get_links_from_type"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.get_links_from_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_links_from_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If d_type parameter is in list, return this object linked, else None</span>
+
+<span class="sd">        :param d_type: name of object</span>
+<span class="sd">        :type d_type: str</span>
+<span class="sd">        :return: return the object linked</span>
+<span class="sd">        :rtype: object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s_type</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;scheduler&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">,</span>
+                  <span class="s">&#39;arbiter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">,</span>
+                  <span class="s">&#39;poller&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">,</span>
+                  <span class="s">&#39;reactionner&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">,</span>
+                  <span class="s">&#39;receiver&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span>
+                  <span class="p">}</span>
+        <span class="k">if</span> <span class="n">d_type</span> <span class="ow">in</span> <span class="n">s_type</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">s_type</span><span class="p">[</span><span class="n">d_type</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">None</span>
+</div>
+<div class="viewcode-block" id="Broker.is_connection_try_too_close"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.is_connection_try_too_close">[docs]</a>    <span class="k">def</span> <span class="nf">is_connection_try_too_close</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if last_connection has been made very recently</span>
+
+<span class="sd">        :param elt: list with last_connection property</span>
+<span class="sd">        :type elt: list</span>
+<span class="sd">        :return: True if last connection has been made less than 5 seconds</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">last_connection</span> <span class="o">=</span> <span class="n">elt</span><span class="p">[</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">now</span> <span class="o">-</span> <span class="n">last_connection</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="Broker.pynag_con_init"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.pynag_con_init">[docs]</a>    <span class="k">def</span> <span class="nf">pynag_con_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_id</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="s">&#39;scheduler&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrapper function for the real function do_</span>
+<span class="sd">        just for timing the connection</span>
+
+<span class="sd">        :param _id: id</span>
+<span class="sd">        :type _id: int</span>
+<span class="sd">        :param i_type: type of item</span>
+<span class="sd">        :type i_type: str</span>
+<span class="sd">        :return: do_pynag_con_init return always True, so we return always True</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_pynag_con_init</span><span class="p">(</span><span class="n">_id</span><span class="p">,</span> <span class="n">i_type</span><span class="p">)</span>
+        <span class="n">statsmgr</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s">&#39;con-init.</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">i_type</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">_t0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+</div>
+<div class="viewcode-block" id="Broker.do_pynag_con_init"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.do_pynag_con_init">[docs]</a>    <span class="k">def</span> <span class="nf">do_pynag_con_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s_id</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="s">&#39;scheduler&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize or re-initialize connection with scheduler or arbiter if type == arbiter</span>
+
+<span class="sd">        :param s_id: s_id</span>
+<span class="sd">        :type s_id: int</span>
+<span class="sd">        :param i_type: type of item</span>
+<span class="sd">        :type i_type: str</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Get the good links tab for looping..</span>
+        <span class="n">links</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_links_from_type</span><span class="p">(</span><span class="n">i_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">links</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Type unknown for connection! </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">i_type</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c"># default timeout for daemons like pollers/reactionners/...</span>
+        <span class="n">timeout</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">data_timeout</span> <span class="o">=</span> <span class="mi">120</span>
+
+        <span class="k">if</span> <span class="n">i_type</span> <span class="o">==</span> <span class="s">&#39;scheduler&#39;</span><span class="p">:</span>
+            <span class="c"># If sched is not active, I do not try to init</span>
+            <span class="c"># it is just useless</span>
+            <span class="n">is_active</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;active&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_active</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="c"># schedulers also got real timeout to respect</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;timeout&#39;</span><span class="p">]</span>
+            <span class="n">data_timeout</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;data_timeout&#39;</span><span class="p">]</span>
+
+        <span class="c"># If we try to connect too much, we slow down our tests</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connection_try_too_close</span><span class="p">(</span><span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">]):</span>
+            <span class="k">return</span>
+
+        <span class="c"># Ok, we can now update it</span>
+        <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c"># DBG: print &quot;Init connection with&quot;, links[s_id][&#39;uri&#39;]</span>
+        <span class="n">running_id</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span>
+        <span class="c"># DBG: print &quot;Running id before connection&quot;, running_id</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">con</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">HTTPClient</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span>
+                                                  <span class="n">strong_ssl</span><span class="o">=</span><span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;hard_ssl_name_check&#39;</span><span class="p">],</span>
+                                                  <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">data_timeout</span><span class="o">=</span><span class="n">data_timeout</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="c"># But the multiprocessing module is not compatible with it!</span>
+            <span class="c"># so we must disable it immediately after</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Connection problem to the </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                        <span class="n">i_type</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+            <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c"># initial ping must be quick</span>
+            <span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ping&#39;</span><span class="p">)</span>
+            <span class="n">new_run_id</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;get_running_id&#39;</span><span class="p">)</span>
+            <span class="n">new_run_id</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">new_run_id</span><span class="p">)</span>
+            <span class="c"># data transfer can be longer</span>
+
+            <span class="c"># The schedulers have been restarted: it has a new run_id.</span>
+            <span class="c"># So we clear all verifs, they are obsolete now.</span>
+            <span class="k">if</span> <span class="n">new_run_id</span> <span class="o">!=</span> <span class="n">running_id</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] New running s_id for the </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s"> (was </span><span class="si">%s</span><span class="s">)&quot;</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">i_type</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="n">new_run_id</span><span class="p">,</span> <span class="n">running_id</span><span class="p">)</span>
+                <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                <span class="c"># we must ask for a new full broks if</span>
+                <span class="c"># it&#39;s a scheduler</span>
+                <span class="k">if</span> <span class="n">i_type</span> <span class="o">==</span> <span class="s">&#39;scheduler&#39;</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] I ask for a broks generation to the scheduler </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+                    <span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;fill_initial_broks&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;bname&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="s">&#39;long&#39;</span><span class="p">)</span>
+            <span class="c"># Ok all is done, we can save this new running s_id</span>
+            <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_run_id</span>
+        <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Connection problem to the </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                        <span class="n">i_type</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+            <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;the </span><span class="si">%s</span><span class="s"> &#39;</span><span class="si">%s</span><span class="s">&#39; is not initialized: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i_type</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+            <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_stack</span><span class="p">()</span>
+            <span class="k">return</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Connection OK to the </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i_type</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">s_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+</div>
+<div class="viewcode-block" id="Broker.manage_brok"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.manage_brok">[docs]</a>    <span class="k">def</span> <span class="nf">manage_brok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brok</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get a brok.</span>
+<span class="sd">        We put brok data to the modules</span>
+
+<span class="sd">        :param brok: object with data</span>
+<span class="sd">        :type brok: object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Call all modules if they catch the call</span>
+        <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">get_internal_instances</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">mod</span><span class="o">.</span><span class="n">manage_brok</span><span class="p">(</span><span class="n">brok</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;The mod </span><span class="si">%s</span><span class="s"> raise an exception: </span><span class="si">%s</span><span class="s">, I&#39;m tagging it to restart later&quot;</span><span class="p">,</span>
+                               <span class="n">mod</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Exception type: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Back trace of this kill: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">set_to_restart</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Broker.add_broks_to_queue"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.add_broks_to_queue">[docs]</a>    <span class="k">def</span> <span class="nf">add_broks_to_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">broks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Add broks to global queue</span>
+
+<span class="sd">        :param broks: some items</span>
+<span class="sd">        :type broks: object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Ok now put in queue broks to be managed by</span>
+        <span class="c"># internal modules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">broks</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Broker.interger_internal_broks"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.interger_internal_broks">[docs]</a>    <span class="k">def</span> <span class="nf">interger_internal_broks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get all broks from self.broks_internal_raised and we put them in self.broks</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_broks_to_queue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks_internal_raised</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks_internal_raised</span> <span class="o">=</span> <span class="p">[]</span>
+</div>
+<div class="viewcode-block" id="Broker.interger_arbiter_broks"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.interger_arbiter_broks">[docs]</a>    <span class="k">def</span> <span class="nf">interger_arbiter_broks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;We will get in the broks list the broks from the arbiters,</span>
+<span class="sd">        but as the arbiter_broks list can be push by arbiter without Global lock,</span>
+<span class="sd">        we must protect this with he list lock</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_broks_to_queue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks</span> <span class="o">=</span> <span class="p">[]</span>
+</div>
+<div class="viewcode-block" id="Broker.get_new_broks"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.get_new_broks">[docs]</a>    <span class="k">def</span> <span class="nf">get_new_broks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="s">&#39;scheduler&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get new broks from daemon defined in type parameter</span>
+
+<span class="sd">        :param i_type: type of object</span>
+<span class="sd">        :type i_type: str</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Get the good links tab for looping..</span>
+        <span class="n">links</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_links_from_type</span><span class="p">(</span><span class="n">i_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">links</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Type unknown for connection! </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">i_type</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c"># We check for new check in each schedulers and put</span>
+        <span class="c"># the result in new_checks</span>
+        <span class="k">for</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">con</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">con</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># None = not initialized</span>
+                    <span class="n">t00</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                    <span class="c"># Before ask a call that can be long, do a simple ping to be sure it is alive</span>
+                    <span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ping&#39;</span><span class="p">)</span>
+                    <span class="n">tmp_broks</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;get_broks&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;bname&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="s">&#39;long&#39;</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">tmp_broks</span> <span class="o">=</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">tmp_broks</span><span class="p">)))</span>
+                    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">zlib</span><span class="o">.</span><span class="n">error</span><span class="p">,</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">PickleError</span><span class="p">),</span> <span class="n">exp</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Cannot load broks data from </span><span class="si">%s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span>
+                                     <span class="n">links</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="n">exp</span><span class="p">)</span>
+                        <span class="n">links</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+                        <span class="k">continue</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> Broks get in </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp_broks</span><span class="p">),</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t00</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">brok</span> <span class="ow">in</span> <span class="n">tmp_broks</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                        <span class="n">brok</span><span class="o">.</span><span class="n">instance_id</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;instance_id&#39;</span><span class="p">]</span>
+                    <span class="c"># Ok, we can add theses broks to our queues</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">add_broks_to_queue</span><span class="p">(</span><span class="n">tmp_broks</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+                <span class="k">else</span><span class="p">:</span>  <span class="c"># no con? make the connection</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">sched_id</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="n">i_type</span><span class="p">)</span>
+            <span class="c"># Ok, con is not known, so we create it</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Key error for get_broks : </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">sched_id</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="n">i_type</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">HTTPEXCEPTIONS</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Connection problem to the </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                               <span class="n">i_type</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="n">links</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;con&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="c"># scheduler must not #be initialized</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;The </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> should not be initialized: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                               <span class="n">i_type</span><span class="p">,</span> <span class="n">links</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+            <span class="c"># scheduler must not have checks</span>
+            <span class="c">#  What the F**k? We do not know what happened,</span>
+            <span class="c"># so.. bye bye :)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Broker.get_retention_data"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.get_retention_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_retention_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get all broks</span>
+
+<span class="sd">        :return: broks container</span>
+<span class="sd">        :rtype: object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">broks</span>
+</div>
+<div class="viewcode-block" id="Broker.restore_retention_data"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.restore_retention_data">[docs]</a>    <span class="k">def</span> <span class="nf">restore_retention_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add data to broks container</span>
+
+<span class="sd">        :param data: broks to add</span>
+<span class="sd">        :type data: list</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Broker.do_stop"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.do_stop">[docs]</a>    <span class="k">def</span> <span class="nf">do_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stop all children of this process</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">act</span> <span class="o">=</span> <span class="n">active_children</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">act</span><span class="p">:</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Broker</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">do_stop</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Broker.setup_new_conf"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.setup_new_conf">[docs]</a>    <span class="k">def</span> <span class="nf">setup_new_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse new configuration and initialize all required</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_lock</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cur_conf</span> <span class="o">=</span> <span class="n">conf</span>
+            <span class="c"># Got our name from the globals</span>
+            <span class="n">g_conf</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s">&#39;broker_name&#39;</span> <span class="ow">in</span> <span class="n">g_conf</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;broker_name&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;Unnamed broker&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;api_key&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">secret</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;secret&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">http_proxy</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;http_proxy&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_host</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;statsd_host&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_port</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;statsd_port&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_prefix</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;statsd_prefix&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statsd_enabled</span> <span class="o">=</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;statsd_enabled&#39;</span><span class="p">]</span>
+
+            <span class="c"># We got a name so we can update the logger and the stats global objects</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">load_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="n">statsmgr</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">&#39;broker&#39;</span><span class="p">,</span>
+                              <span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">secret</span><span class="p">,</span> <span class="n">http_proxy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">http_proxy</span><span class="p">,</span>
+                              <span class="n">statsd_host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_host</span><span class="p">,</span> <span class="n">statsd_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_port</span><span class="p">,</span>
+                              <span class="n">statsd_prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_prefix</span><span class="p">,</span> <span class="n">statsd_enabled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">statsd_enabled</span><span class="p">)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] Sending us configuration </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+            <span class="c"># If we&#39;ve got something in the schedulers, we do not</span>
+            <span class="c"># want it anymore</span>
+            <span class="c"># self.schedulers.clear()</span>
+            <span class="k">for</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">]:</span>
+                <span class="c"># Must look if we already have it to do not overdie our broks</span>
+                <span class="n">already_got</span> <span class="o">=</span> <span class="bp">False</span>
+
+                <span class="c"># We can already got this conf id, but with another address</span>
+                <span class="k">if</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">:</span>
+                    <span class="n">new_addr</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">][</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;address&#39;</span><span class="p">]</span>
+                    <span class="n">old_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;address&#39;</span><span class="p">]</span>
+                    <span class="n">new_port</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">][</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;port&#39;</span><span class="p">]</span>
+                    <span class="n">old_port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;port&#39;</span><span class="p">]</span>
+                    <span class="c"># Should got all the same to be ok :)</span>
+                    <span class="k">if</span> <span class="n">new_addr</span> <span class="o">==</span> <span class="n">old_addr</span> <span class="ow">and</span> <span class="n">new_port</span> <span class="o">==</span> <span class="n">old_port</span><span class="p">:</span>
+                        <span class="n">already_got</span> <span class="o">=</span> <span class="bp">True</span>
+
+                <span class="k">if</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">sched</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;schedulers&#39;</span><span class="p">][</span><span class="n">sched_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span>
+
+                <span class="c"># replacing scheduler address and port by those defined in satellitemap</span>
+                <span class="k">if</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">sched</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">sched</span><span class="p">)</span>  <span class="c"># make a copy</span>
+                    <span class="n">sched</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">sched</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">broks</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;instance_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;instance_id&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">running_id</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;active&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;timeout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;timeout&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;data_timeout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;data_timeout&#39;</span><span class="p">]</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We have our schedulers: </span><span class="si">%s</span><span class="s"> &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">)</span>
+
+            <span class="c"># Now get arbiter</span>
+            <span class="k">for</span> <span class="n">arb_id</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;arbiters&#39;</span><span class="p">]:</span>
+                <span class="c"># Must look if we already have it</span>
+                <span class="n">already_got</span> <span class="o">=</span> <span class="n">arb_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span>
+                <span class="k">if</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">[</span><span class="n">arb_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">arb</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;arbiters&#39;</span><span class="p">][</span><span class="n">arb_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">[</span><span class="n">arb_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">arb</span>
+
+                <span class="c"># replacing arbiter address and port by those defined in satellitemap</span>
+                <span class="k">if</span> <span class="n">arb</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">arb</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">arb</span><span class="p">)</span>  <span class="c"># make a copy</span>
+                    <span class="n">arb</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">arb</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">arb</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">arb</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">arb</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">[</span><span class="n">arb_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">[</span><span class="n">arb_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">broks</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">[</span><span class="n">arb_id</span><span class="p">][</span><span class="s">&#39;instance_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># No use so all to 0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">[</span><span class="n">arb_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">[</span><span class="n">arb_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+                <span class="c"># We do not connect to the arbiter. Connection hangs</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We have our arbiters: </span><span class="si">%s</span><span class="s"> &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbiters</span><span class="p">)</span>
+
+            <span class="c"># Now for pollers</span>
+            <span class="k">for</span> <span class="n">pol_id</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;pollers&#39;</span><span class="p">]:</span>
+                <span class="c"># Must look if we already have it</span>
+                <span class="n">already_got</span> <span class="o">=</span> <span class="n">pol_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span>
+                <span class="k">if</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">poll</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;pollers&#39;</span><span class="p">][</span><span class="n">pol_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">poll</span>
+
+                <span class="c"># replacing poller address and port by those defined in satellitemap</span>
+                <span class="k">if</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">poll</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">poll</span><span class="p">)</span>  <span class="c"># make a copy</span>
+                    <span class="n">poll</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">poll</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">poll</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">broks</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;instance_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># No use so all to 0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">running_id</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">[</span><span class="n">pol_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c">#                    #And we connect to it</span>
+    <span class="c">#                    self.app.pynag_con_init(pol_id, &#39;poller&#39;)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We have our pollers: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">)</span>
+
+            <span class="c"># Now reactionners</span>
+            <span class="k">for</span> <span class="n">rea_id</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;reactionners&#39;</span><span class="p">]:</span>
+                <span class="c"># Must look if we already have it</span>
+                <span class="n">already_got</span> <span class="o">=</span> <span class="n">rea_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span>
+                <span class="k">if</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">rea_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="mi">0</span>
+
+                <span class="n">reac</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;reactionners&#39;</span><span class="p">][</span><span class="n">rea_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">rea_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">reac</span>
+
+                <span class="c"># replacing reactionner address and port by those defined in satellitemap</span>
+                <span class="k">if</span> <span class="n">reac</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">reac</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">reac</span><span class="p">)</span>  <span class="c"># make a copy</span>
+                    <span class="n">reac</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">reac</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">reac</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">reac</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">reac</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">rea_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">rea_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">broks</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">rea_id</span><span class="p">][</span><span class="s">&#39;instance_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># No use so all to 0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">rea_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">running_id</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">[</span><span class="n">rea_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c">#                    #And we connect to it</span>
+    <span class="c">#                    self.app.pynag_con_init(rea_id, &#39;reactionner&#39;)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We have our reactionners: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">)</span>
+
+            <span class="c"># Now receivers</span>
+            <span class="k">for</span> <span class="n">rec_id</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;receivers&#39;</span><span class="p">]:</span>
+                <span class="c"># Must look if we already have it</span>
+                <span class="n">already_got</span> <span class="o">=</span> <span class="n">rec_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span>
+                <span class="k">if</span> <span class="n">already_got</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span><span class="p">[</span><span class="n">rec_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">broks</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="n">running_id</span> <span class="o">=</span> <span class="mi">0</span>
+
+                <span class="n">rec</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;receivers&#39;</span><span class="p">][</span><span class="n">rec_id</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span><span class="p">[</span><span class="n">rec_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span>
+
+                <span class="c"># replacing reactionner address and port by those defined in satellitemap</span>
+                <span class="k">if</span> <span class="n">rec</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">]:</span>
+                    <span class="n">rec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>  <span class="c"># make a copy</span>
+                    <span class="n">rec</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">g_conf</span><span class="p">[</span><span class="s">&#39;satellitemap&#39;</span><span class="p">][</span><span class="n">rec</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]])</span>
+
+                <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+                <span class="k">if</span> <span class="n">rec</span><span class="p">[</span><span class="s">&#39;use_ssl&#39;</span><span class="p">]:</span>
+                    <span class="n">proto</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+                <span class="n">uri</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">/&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">rec</span><span class="p">[</span><span class="s">&#39;address&#39;</span><span class="p">],</span> <span class="n">rec</span><span class="p">[</span><span class="s">&#39;port&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span><span class="p">[</span><span class="n">rec_id</span><span class="p">][</span><span class="s">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uri</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span><span class="p">[</span><span class="n">rec_id</span><span class="p">][</span><span class="s">&#39;broks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">broks</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span><span class="p">[</span><span class="n">rec_id</span><span class="p">][</span><span class="s">&#39;instance_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># No use so all to 0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span><span class="p">[</span><span class="n">rec_id</span><span class="p">][</span><span class="s">&#39;running_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">running_id</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">receivers</span><span class="p">[</span><span class="n">rec_id</span><span class="p">][</span><span class="s">&#39;last_connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">have_modules</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="n">mods</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;modules&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">have_modules</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We received modules </span><span class="si">%s</span><span class="s"> &quot;</span><span class="p">,</span> <span class="n">mods</span><span class="p">)</span>
+
+                <span class="c"># Ok now start, or restart them!</span>
+                <span class="c"># Set modules, init them and start external ones</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">set_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">do_load_modules</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">start_external_instances</span><span class="p">()</span>
+
+            <span class="c"># Set our giving timezone from arbiter</span>
+            <span class="n">use_timezone</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[</span><span class="s">&#39;global&#39;</span><span class="p">][</span><span class="s">&#39;use_timezone&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">use_timezone</span> <span class="o">!=</span> <span class="s">&#39;NOTSET&#39;</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Setting our timezone to </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">use_timezone</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;TZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">use_timezone</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">tzset</span><span class="p">()</span>
+
+            <span class="c"># Connection init with Schedulers</span>
+            <span class="k">for</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">sched_id</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="s">&#39;scheduler&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">pol_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">pol_id</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="s">&#39;poller&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">rea_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pynag_con_init</span><span class="p">(</span><span class="n">rea_id</span><span class="p">,</span> <span class="n">i_type</span><span class="o">=</span><span class="s">&#39;reactionner&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Broker.clean_previous_run"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.clean_previous_run">[docs]</a>    <span class="k">def</span> <span class="nf">clean_previous_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clean all (when we received new conf)</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Clean all lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedulers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pollers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactionners</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">[:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks_internal_raised</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broks_internal_raised</span><span class="p">[:]</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbiter_broks</span><span class="p">[:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span><span class="p">[:]</span>
+
+        <span class="c"># And now modules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">have_modules</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">clear_instances</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Broker.get_stats_struct"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.get_stats_struct">[docs]</a>    <span class="k">def</span> <span class="nf">get_stats_struct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get information of modules (internal and external) and add metrics of them</span>
+
+<span class="sd">        :return: dictionary with state of all modules (internal and external)</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+        <span class="c"># call the daemon one</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Broker</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_stats_struct</span><span class="p">()</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;broker&#39;</span><span class="p">})</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s">&#39;metrics&#39;</span><span class="p">]</span>
+        <span class="c"># metrics specific</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;broker.</span><span class="si">%s</span><span class="s">.external-commands.queue </span><span class="si">%d</span><span class="s"> </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">external_commands</span><span class="p">),</span> <span class="n">now</span><span class="p">))</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;broker.</span><span class="si">%s</span><span class="s">.broks.queue </span><span class="si">%d</span><span class="s"> </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">),</span> <span class="n">now</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">res</span>
+</div>
+<div class="viewcode-block" id="Broker.do_loop_turn"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.do_loop_turn">[docs]</a>    <span class="k">def</span> <span class="nf">do_loop_turn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loop use to:</span>
+<span class="sd">         * check if modules are alive, if not restart them</span>
+<span class="sd">         * add broks to queue of each modules</span>
+
+<span class="sd">         :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Begin Loop: managing old broks (</span><span class="si">%d</span><span class="s">)&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">))</span>
+
+        <span class="c"># Dump modules Queues size</span>
+        <span class="n">insts</span> <span class="o">=</span> <span class="p">[</span><span class="n">inst</span> <span class="k">for</span> <span class="n">inst</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">inst</span><span class="o">.</span><span class="n">is_external</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">inst</span> <span class="ow">in</span> <span class="n">insts</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;External Queue len (</span><span class="si">%s</span><span class="s">): </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">inst</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">inst</span><span class="o">.</span><span class="n">to_q</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;External Queue len (</span><span class="si">%s</span><span class="s">): Exception! </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">inst</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">exp</span><span class="p">)</span>
+
+        <span class="c"># Begin to clean modules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_and_del_zombie_modules</span><span class="p">()</span>
+
+        <span class="c"># Maybe the arbiter ask us to wait for a new conf</span>
+        <span class="c"># If true, we must restart all...</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_conf</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># Clean previous run from useless objects</span>
+            <span class="c"># and close modules</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clean_previous_run</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_initial_conf</span><span class="p">()</span>
+            <span class="c"># we may have been interrupted or so; then</span>
+            <span class="c"># just return from this loop turn</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_new_conf</span><span class="p">()</span>
+
+        <span class="c"># Now we check if arbiter speak to us.</span>
+        <span class="c"># If so, we listen for it</span>
+        <span class="c"># When it pushes conf to us, we reinit connections</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watch_for_new_conf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_new_conf</span><span class="p">()</span>
+
+        <span class="c"># Maybe the last loop we raised some broks internally</span>
+        <span class="c"># we should integrate them in broks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interger_internal_broks</span><span class="p">()</span>
+        <span class="c"># Also reap broks sent from the arbiters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interger_arbiter_broks</span><span class="p">()</span>
+
+        <span class="c"># Main job, go get broks in our distants daemons</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;scheduler&#39;</span><span class="p">,</span> <span class="s">&#39;poller&#39;</span><span class="p">,</span> <span class="s">&#39;reactionner&#39;</span><span class="p">,</span> <span class="s">&#39;receiver&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">_type</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+            <span class="n">_t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="c"># And from schedulers</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_new_broks</span><span class="p">(</span><span class="n">i_type</span><span class="o">=</span><span class="n">_type</span><span class="p">)</span>
+            <span class="n">statsmgr</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s">&#39;get-new-broks.</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">_type</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">_t0</span><span class="p">)</span>
+
+        <span class="c"># Sort the brok list by id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">sort_by_ids</span><span class="p">)</span>
+
+        <span class="c"># and for external queues</span>
+        <span class="c"># REF: doc/broker-modules.png (3)</span>
+        <span class="c"># We put to external queues broks that was not already send</span>
+        <span class="n">t00</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="c"># We are sending broks as a big list, more efficient than one by one</span>
+        <span class="n">ext_modules</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">get_external_instances</span><span class="p">()</span>
+        <span class="n">to_send</span> <span class="o">=</span> <span class="p">[</span><span class="n">brok</span> <span class="k">for</span> <span class="n">brok</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">broks</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">brok</span><span class="p">,</span> <span class="s">&#39;need_send_to_ext&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)]</span>
+
+        <span class="c"># Send our pack to all external modules to_q queue so they can get the wole packet</span>
+        <span class="c"># beware, the sub-process/queue can be die/close, so we put to restart the whole module</span>
+        <span class="c"># instead of killing ourself :)</span>
+        <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">ext_modules</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">mod</span><span class="o">.</span><span class="n">to_q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">to_send</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="c"># first we must find the modules</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">__dict__</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;The mod </span><span class="si">%s</span><span class="s"> queue raise an exception: </span><span class="si">%s</span><span class="s">, &quot;</span>
+                               <span class="s">&quot;I&#39;m tagging it to restart later&quot;</span><span class="p">,</span>
+                               <span class="n">mod</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Exception type: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Back trace of this kill: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules_manager</span><span class="o">.</span><span class="n">set_to_restart</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+
+        <span class="c"># No more need to send them</span>
+        <span class="k">for</span> <span class="n">brok</span> <span class="ow">in</span> <span class="n">to_send</span><span class="p">:</span>
+            <span class="n">brok</span><span class="o">.</span><span class="n">need_send_to_ext</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">statsmgr</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s">&#39;core.put-to-external-queue&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t00</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Time to send </span><span class="si">%s</span><span class="s"> broks (</span><span class="si">%d</span><span class="s"> secs)&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">to_send</span><span class="p">),</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t00</span><span class="p">)</span>
+
+        <span class="c"># We must had new broks at the end of the list, so we reverse the list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="c"># Do not &#39;manage&#39; more than 1s, we must get new broks</span>
+            <span class="c"># every 1s</span>
+            <span class="k">if</span> <span class="n">now</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">brok</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="c"># Ok, we can get the brok, and doing something with it</span>
+            <span class="c"># REF: doc/broker-modules.png (4-5)</span>
+            <span class="c"># We un serialize the brok before consume it</span>
+            <span class="n">brok</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+            <span class="n">_t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">manage_brok</span><span class="p">(</span><span class="n">brok</span><span class="p">)</span>
+            <span class="n">statsmgr</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s">&#39;core.manage-brok&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">_t0</span><span class="p">)</span>
+
+            <span class="n">nb_broks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">)</span>
+
+            <span class="c"># Ok we manage brok, but we still want to listen to arbiter</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">watch_for_new_conf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+            <span class="c"># if we got new broks here from arbiter, we should break the loop</span>
+            <span class="c"># because such broks will not be managed by the</span>
+            <span class="c"># external modules before this loop (we pop them!)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">)</span> <span class="o">!=</span> <span class="n">nb_broks</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="c"># Maybe external modules raised &#39;objects&#39;</span>
+        <span class="c"># we should get them</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_objects_from_from_queues</span><span class="p">()</span>
+
+        <span class="c"># Maybe we do not have something to do, so we wait a little</span>
+        <span class="c"># TODO: redone the diff management....</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">begin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">watch_for_new_conf</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">-</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+            <span class="c"># print &quot;get new broks watch new conf 1: end&quot;, len(self.broks)</span>
+
+        <span class="c"># Say to modules it&#39;s a new tick :)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hook_point</span><span class="p">(</span><span class="s">&#39;tick&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Broker.main"><a class="viewcode-back" href="../../../reference/alignak.daemons.html#alignak.daemons.brokerdaemon.Broker.main">[docs]</a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Main function, will loop forever</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_config_file</span><span class="p">()</span>
+
+            <span class="c"># Setting log level</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_level</span><span class="p">)</span>
+            <span class="c"># Force the debug level if the daemon is said to start with such level</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s">&#39;DEBUG&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_header</span><span class="p">():</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[Broker] Using working directory: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">))</span>
+
+            <span class="c"># Look if we are enabled or not. If ok, start the daemon mode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">look_for_early_exit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_daemon_init_and_start</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_modules_manager</span><span class="p">()</span>
+
+            <span class="c">#  We wait for initial conf</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wait_for_initial_conf</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_conf</span><span class="p">:</span>
+                <span class="k">return</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_new_conf</span><span class="p">()</span>
+
+            <span class="c"># Do the modules part, we have our modules in self.modules</span>
+            <span class="c"># REF: doc/broker-modules.png (1)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hook_point</span><span class="p">(</span><span class="s">&#39;load_retention&#39;</span><span class="p">)</span>
+
+            <span class="c"># Now the main loop</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">do_mainloop</span><span class="p">()</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_unrecoverable</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+            <span class="k">raise</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

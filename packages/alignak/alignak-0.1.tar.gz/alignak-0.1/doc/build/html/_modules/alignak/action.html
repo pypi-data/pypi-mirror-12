@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.action &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.action</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.action</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     Frédéric Vachon, fredvac@gmail.com</span>
+<span class="c">#     Frédéric MOHIER, frederic.mohier@ipmfrance.com</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Zoran Zaric, zz@zoranzaric.de</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Thibault Cohen, titilambert@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     aurelien, aurelien.baudet@swid.fr</span>
+<span class="c">#     Gerhard Lausser, gerhard.lausser@consol.de</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">&quot;&quot;&quot;This module provides a system-independent Action class. Action class is used</span>
+<span class="sd">for handling check and notification execution (handle output, execute process, kill process..)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">shlex</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="c"># Try to read in non-blocking mode, from now this only from now on</span>
+<span class="c"># Unix systems</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">fcntl</span>  <span class="c"># pylint: disable=C0103</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">fcntl</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c"># pylint: disable=C0103</span>
+
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">BoolProp</span><span class="p">,</span> <span class="n">IntegerProp</span><span class="p">,</span> <span class="n">FloatProp</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">StringProp</span><span class="p">,</span> <span class="n">DictProp</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;Action&#39;</span><span class="p">,</span> <span class="p">)</span>
+
+<span class="n">VALID_EXIT_STATUS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ONLY_COPY_PROP</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;_id&#39;</span><span class="p">,</span> <span class="s">&#39;status&#39;</span><span class="p">,</span> <span class="s">&#39;command&#39;</span><span class="p">,</span> <span class="s">&#39;t_to_go&#39;</span><span class="p">,</span> <span class="s">&#39;timeout&#39;</span><span class="p">,</span>
+                  <span class="s">&#39;env&#39;</span><span class="p">,</span> <span class="s">&#39;module_type&#39;</span><span class="p">,</span> <span class="s">&#39;execution_time&#39;</span><span class="p">,</span> <span class="s">&#39;u_time&#39;</span><span class="p">,</span> <span class="s">&#39;s_time&#39;</span><span class="p">)</span>
+
+<span class="n">SHELLCHARS</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;!&#39;</span><span class="p">,</span> <span class="s">&#39;$&#39;</span><span class="p">,</span> <span class="s">&#39;^&#39;</span><span class="p">,</span> <span class="s">&#39;&amp;&#39;</span><span class="p">,</span> <span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="s">&#39;(&#39;</span><span class="p">,</span> <span class="s">&#39;)&#39;</span><span class="p">,</span> <span class="s">&#39;~&#39;</span><span class="p">,</span> <span class="s">&#39;[&#39;</span><span class="p">,</span> <span class="s">&#39;]&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;|&#39;</span><span class="p">,</span> <span class="s">&#39;{&#39;</span><span class="p">,</span> <span class="s">&#39;}&#39;</span><span class="p">,</span> <span class="s">&#39;;&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;&#39;</span><span class="p">,</span> <span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="s">&#39;`&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">no_block_read</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Try to read a file descriptor in a non blocking mode</span>
+
+<span class="sd">    :param output: file or socket to read from</span>
+<span class="sd">    :type output: file</span>
+<span class="sd">    :return: data read from fd</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">o_fd</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
+    <span class="n">o_fl</span> <span class="o">=</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">fcntl</span><span class="p">(</span><span class="n">o_fd</span><span class="p">,</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">F_GETFL</span><span class="p">)</span>
+    <span class="n">fcntl</span><span class="o">.</span><span class="n">fcntl</span><span class="p">(</span><span class="n">o_fd</span><span class="p">,</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">F_SETFL</span><span class="p">,</span> <span class="n">o_fl</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">O_NONBLOCK</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">ActionBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This abstract class is used just for having a common id for both</span>
+<span class="sd">    actions and checks.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;is_a&#39;</span><span class="p">:</span>             <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;type&#39;</span><span class="p">:</span>             <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;_in_timeout&#39;</span><span class="p">:</span>      <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+        <span class="s">&#39;status&#39;</span><span class="p">:</span>           <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;exit_status&#39;</span><span class="p">:</span>      <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+        <span class="s">&#39;output&#39;</span><span class="p">:</span>           <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;t_to_go&#39;</span><span class="p">:</span>          <span class="n">FloatProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s">&#39;check_time&#39;</span><span class="p">:</span>       <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s">&#39;execution_time&#39;</span><span class="p">:</span>   <span class="n">FloatProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+        <span class="s">&#39;u_time&#39;</span><span class="p">:</span>           <span class="n">FloatProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+        <span class="s">&#39;s_time&#39;</span><span class="p">:</span>           <span class="n">FloatProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+        <span class="s">&#39;reactionner_tag&#39;</span><span class="p">:</span>  <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;None&#39;</span><span class="p">),</span>
+        <span class="s">&#39;env&#39;</span><span class="p">:</span>              <span class="n">DictProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">{}),</span>
+        <span class="s">&#39;module_type&#39;</span><span class="p">:</span>      <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;fork&#39;</span><span class="p">),</span>
+        <span class="s">&#39;worker&#39;</span><span class="p">:</span>           <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">assume_at_least_id</span><span class="p">(</span><span class="n">_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set Action._id to the maximum of itself and _id</span>
+
+<span class="sd">        :param _id: action id to compare (from a previous run usually)</span>
+<span class="sd">        :type _id: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Action</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Action</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">_id</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_type_active</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dummy function, only useful for checks&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">set_type_passive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dummy function, only useful for checks&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">get_local_environnement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mix the environment and the environment variables into a new local</span>
+<span class="sd">        environment dictionary</span>
+
+<span class="sd">        Note: We cannot just update the global os.environ because this</span>
+<span class="sd">        would effect all other checks.</span>
+
+<span class="sd">        :return: local environment variables</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Do not use copy.copy() here, as the resulting copy still</span>
+        <span class="c"># changes the real environment (it is still a os._Environment</span>
+        <span class="c"># instance).</span>
+        <span class="n">local_env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">local_var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">:</span>
+            <span class="n">local_env</span><span class="p">[</span><span class="n">local_var</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="n">local_var</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">local_env</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start this action command. The command will be executed in a</span>
+<span class="sd">        subprocess.</span>
+
+<span class="sd">        :return: None or str &#39;toomanyopenfiles&#39;</span>
+<span class="sd">        :rtype: None | str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;launched&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_time</span> <span class="o">=</span> <span class="mf">0.0001</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_poll</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span>
+        <span class="c"># Get a local env variables with our additional values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_environnement</span><span class="p">()</span>
+
+        <span class="c"># Initialize stdout and stderr. we will read them in small parts</span>
+        <span class="c"># if the fcntl is available</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute__</span><span class="p">()</span>  <span class="c"># OS specific part</span>
+
+    <span class="k">def</span> <span class="nf">get_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">max_plugins_output_length</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get outputs from single output (split perfdata etc).</span>
+<span class="sd">        Edit output, perf_data and long_output attributes.</span>
+
+<span class="sd">        :param out: output data of a check</span>
+<span class="sd">        :type out: str</span>
+<span class="sd">        :param max_plugins_output_length: max plugin data length</span>
+<span class="sd">        :type max_plugins_output_length: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Squeeze all output after max_plugins_output_length</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="p">[:</span><span class="n">max_plugins_output_length</span><span class="p">]</span>
+        <span class="c"># manage escaped pipes</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r&#39;\|&#39;</span><span class="p">,</span> <span class="s">&#39;___PROTECT_PIPE___&#39;</span><span class="p">)</span>
+        <span class="c"># Then cuts by lines</span>
+        <span class="n">elts</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="c"># For perf data</span>
+        <span class="n">elts_line1</span> <span class="o">=</span> <span class="n">elts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+        <span class="c"># First line before | is output, and strip it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">elts_line1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;___PROTECT_PIPE___&#39;</span><span class="p">,</span> <span class="s">&#39;|&#39;</span><span class="p">)</span>
+        <span class="c"># Init perfdata as void</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perf_data</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="c"># After | is perfdata, and strip it</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elts_line1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">perf_data</span> <span class="o">=</span> <span class="n">elts_line1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;___PROTECT_PIPE___&#39;</span><span class="p">,</span> <span class="s">&#39;|&#39;</span><span class="p">)</span>
+        <span class="c"># Now manage others lines. Before the | it&#39;s long_output</span>
+        <span class="c"># And after it&#39;s all perf_data, \n join</span>
+        <span class="n">long_output</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">in_perfdata</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">elts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="c"># if already in perfdata, direct append</span>
+            <span class="k">if</span> <span class="n">in_perfdata</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">perf_data</span> <span class="o">+=</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;___PROTECT_PIPE___&#39;</span><span class="p">,</span> <span class="s">&#39;|&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c"># not already in? search for the | part :)</span>
+                <span class="n">elts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="c"># The first part will always be long_output</span>
+                <span class="n">long_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;___PROTECT_PIPE___&#39;</span><span class="p">,</span> <span class="s">&#39;|&#39;</span><span class="p">))</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">in_perfdata</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">perf_data</span> <span class="o">+=</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">elts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;___PROTECT_PIPE___&#39;</span><span class="p">,</span> <span class="s">&#39;|&#39;</span><span class="p">)</span>
+        <span class="c"># long_output is all non output and perfline, join with \n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">long_output</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">long_output</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">check_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_plugins_output_length</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Handle action if it is finished (get stdout, stderr, exit code...)</span>
+
+<span class="sd">        :param max_plugins_output_length: max plugin data length</span>
+<span class="sd">        :type max_plugins_output_length: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># We must wait, but checks are variable in time</span>
+        <span class="c"># so we do not wait the same for an little check</span>
+        <span class="c"># than a long ping. So we do like TCP: slow start with *2</span>
+        <span class="c"># but do not wait more than 0.1s.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_poll</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">child_utime</span><span class="p">,</span> <span class="n">child_stime</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">times</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wait_time</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wait_time</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+            <span class="c"># If the fcntl is available (unix) we try to read in a</span>
+            <span class="c"># asynchronous mode, so we won&#39;t block the PIPE at 64K buffer</span>
+            <span class="c"># (deadlock...)</span>
+            <span class="k">if</span> <span class="n">fcntl</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span> <span class="o">+=</span> <span class="n">no_block_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span> <span class="o">+=</span> <span class="n">no_block_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">kill__</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;timeout&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">3</span>
+                <span class="c"># Do not keep a pointer to the process</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span>
+                <span class="c"># Get the user and system time</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">n_child_utime</span><span class="p">,</span> <span class="n">n_child_stime</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">times</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">u_time</span> <span class="o">=</span> <span class="n">n_child_utime</span> <span class="o">-</span> <span class="n">child_utime</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">s_time</span> <span class="o">=</span> <span class="n">n_child_stime</span> <span class="o">-</span> <span class="n">child_stime</span>
+                <span class="k">return</span>
+            <span class="k">return</span>
+
+        <span class="c"># Get standards outputs from the communicate function if we do</span>
+        <span class="c"># not have the fcntl module (Windows, and maybe some special</span>
+        <span class="c"># unix like AIX)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">fcntl</span><span class="p">:</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># The command was to quick and finished even before we can</span>
+            <span class="c"># polled it first. So finish the read.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span> <span class="o">+=</span> <span class="n">no_block_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span> <span class="o">+=</span> <span class="n">no_block_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">returncode</span>
+
+        <span class="c"># we should not keep the process now</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span>
+
+        <span class="k">if</span> <span class="p">(</span>  <span class="c"># check for bad syntax in command line:</span>
+            <span class="s">&#39;sh: -c: line 0: unexpected EOF while looking for matching&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span>
+            <span class="ow">or</span> <span class="p">(</span><span class="s">&#39;sh: -c:&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span> <span class="ow">and</span> <span class="s">&#39;: Syntax&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="s">&#39;Syntax error: Unterminated quoted string&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span>
+        <span class="p">):</span>
+            <span class="c"># Very, very ugly. But subprocess._handle_exitstatus does</span>
+            <span class="c"># not see a difference between a regular &quot;exit 1&quot; and a</span>
+            <span class="c"># bailing out shell. Strange, because strace clearly shows</span>
+            <span class="c"># a difference. (exit_group(1) vs. exit_group(257))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">3</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VALID_EXIT_STATUS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">3</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span>
+
+        <span class="c"># Now grep what we want in the output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span><span class="p">,</span> <span class="n">max_plugins_output_length</span><span class="p">)</span>
+
+        <span class="c"># We can clean the useless properties now</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdoutdata</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderrdata</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;done&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span>
+        <span class="c"># Also get the system and user times</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">n_child_utime</span><span class="p">,</span> <span class="n">n_child_stime</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">times</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_time</span> <span class="o">=</span> <span class="n">n_child_utime</span> <span class="o">-</span> <span class="n">child_utime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s_time</span> <span class="o">=</span> <span class="n">n_child_stime</span> <span class="o">-</span> <span class="n">child_stime</span>
+
+    <span class="k">def</span> <span class="nf">copy_shell__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_i</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Copy all attributes listed in &#39;only_copy_prop&#39; from `self` to</span>
+<span class="sd">        `new_i`.</span>
+
+<span class="sd">        :param new_i: object to</span>
+<span class="sd">        :type new_i: object</span>
+<span class="sd">        :return: object with new properties added</span>
+<span class="sd">        :rtype: object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">ONLY_COPY_PROP</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">new_i</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">new_i</span>
+
+    <span class="k">def</span> <span class="nf">got_shell_characters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if the command_attribute has shell characters</span>
+<span class="sd">        Shell characters are : &#39;!&#39;, &#39;$&#39;, &#39;^&#39;, &#39;&amp;&#39;, &#39;*&#39;, &#39;(&#39;, &#39;)&#39;, &#39;~&#39;, &#39;[&#39;, &#39;]&#39;,</span>
+<span class="sd">                               &#39;|&#39;, &#39;{&#39;, &#39;}&#39;, &#39;;&#39;, &#39;&lt;&#39;, &#39;&gt;&#39;, &#39;?&#39;, &#39;`&#39;</span>
+
+<span class="sd">        :return: True if one shell character is found, False otherwise</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">SHELLCHARS</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="c">#</span>
+<span class="c"># OS specific &quot;execute__&quot; &amp; &quot;kill__&quot; are defined by &quot;Action&quot; class</span>
+<span class="c"># definition:</span>
+<span class="c">#</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s">&#39;nt&#39;</span><span class="p">:</span>
+
+    <span class="k">class</span> <span class="nc">Action</span><span class="p">(</span><span class="n">ActionBase</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Action class for *NIX systems</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">ActionBase</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">execute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force_shell</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)):</span>
+            <span class="sd">&quot;&quot;&quot;Execute action in a subprocess</span>
+
+<span class="sd">            :param force_shell: if True, force execution in a shell</span>
+<span class="sd">            :type force_shell: bool</span>
+<span class="sd">            :return: None or str &#39;toomanyopenfiles&#39;</span>
+<span class="sd">            TODO: Clean this</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c"># We allow direct launch only for 2.7 and higher version</span>
+            <span class="c"># because if a direct launch crash, under this the file handles</span>
+            <span class="c"># are not releases, it&#39;s not good.</span>
+
+            <span class="c"># If the command line got shell characters, we should go</span>
+            <span class="c"># in a shell mode. So look at theses parameters</span>
+            <span class="n">force_shell</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">got_shell_characters</span><span class="p">()</span>
+
+            <span class="c"># 2.7 and higher Python version need a list of args for cmd</span>
+            <span class="c"># and if not force shell (if, it&#39;s useless, even dangerous)</span>
+            <span class="c"># 2.4-&gt;2.6 accept just the string command</span>
+            <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="ow">or</span> <span class="n">force_shell</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s">&#39;Not a valid shell command: &#39;</span> <span class="o">+</span> <span class="n">exp</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">3</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;done&#39;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span>
+                    <span class="k">return</span>
+
+            <span class="c"># Now: GO for launch!</span>
+            <span class="c"># logger.debug(&quot;Launching: %s&quot; % (self.command.encode(&#39;utf8&#39;, &#39;ignore&#39;)))</span>
+
+            <span class="c"># The preexec_fn=os.setsid is set to give sons a same</span>
+            <span class="c"># process group. See</span>
+            <span class="c"># http://www.doughellmann.com/PyMOTW/subprocess/ for</span>
+            <span class="c"># detail about this.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+                    <span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                    <span class="n">close_fds</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">force_shell</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_env</span><span class="p">,</span>
+                    <span class="n">preexec_fn</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">setsid</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">OSError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Fail launching command: </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">force_shell</span><span class="p">)</span>
+                <span class="c"># Maybe it&#39;s just a shell we try to exec. So we must retry</span>
+                <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">force_shell</span> <span class="ow">and</span> <span class="n">exp</span><span class="o">.</span><span class="n">errno</span> <span class="o">==</span> <span class="mi">8</span>
+                   <span class="ow">and</span> <span class="n">exp</span><span class="o">.</span><span class="n">strerror</span> <span class="o">==</span> <span class="s">&#39;Exec format error&#39;</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute__</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;done&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span>
+
+                <span class="c"># Maybe we run out of file descriptor. It&#39;s not good at all!</span>
+                <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">errno</span> <span class="o">==</span> <span class="mi">24</span> <span class="ow">and</span> <span class="n">exp</span><span class="o">.</span><span class="n">strerror</span> <span class="o">==</span> <span class="s">&#39;Too many open files&#39;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s">&#39;toomanyopenfiles&#39;</span>
+
+        <span class="k">def</span> <span class="nf">kill__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Kill the action and close fds</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c"># We kill a process group because we launched them with</span>
+            <span class="c"># preexec_fn=os.setsid and so we can launch a whole kill</span>
+            <span class="c"># tree instead of just the first one</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">killpg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGKILL</span><span class="p">)</span>
+            <span class="c"># Try to force close the descriptors, because python seems to have problems with them</span>
+            <span class="k">for</span> <span class="n">file_d</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stderr</span><span class="p">]:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">file_d</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+
+<span class="k">else</span><span class="p">:</span>
+
+    <span class="kn">import</span> <span class="nn">ctypes</span>
+
+<div class="viewcode-block" id="Action"><a class="viewcode-back" href="../../reference/alignak.html#alignak.action.Action">[docs]</a>    <span class="k">class</span> <span class="nc">Action</span><span class="p">(</span><span class="n">ActionBase</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Action class for Windows systems</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">ActionBase</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Action.execute__"><a class="viewcode-back" href="../../reference/alignak.html#alignak.action.Action.execute__">[docs]</a>        <span class="k">def</span> <span class="nf">execute__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Execute action in a subprocess</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c"># 2.7 and higher Python version need a list of args for cmd</span>
+            <span class="c"># 2.4-&gt;2.6 accept just the string command</span>
+            <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s">&#39;Not a valid shell command: &#39;</span> <span class="o">+</span> <span class="n">exp</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">3</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;done&#39;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span>
+                    <span class="k">return</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+                    <span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                    <span class="n">env</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_env</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">WindowsError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;We kill the process: </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s">&#39;timeout&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_time</span>
+</div>
+<div class="viewcode-block" id="Action.kill__"><a class="viewcode-back" href="../../reference/alignak.html#alignak.action.Action.kill__">[docs]</a>        <span class="k">def</span> <span class="nf">kill__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Wrapped to call TerminateProcess</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            TODO: This look like python2.5 style. Maybe we change that.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">TerminateProcess</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">_handle</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

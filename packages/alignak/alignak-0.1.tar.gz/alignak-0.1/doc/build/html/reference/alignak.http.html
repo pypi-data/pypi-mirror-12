@@ -1,0 +1,1205 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.http package &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="alignak package" href="alignak.html"/>
+        <link rel="next" title="alignak.misc package" href="alignak.misc.html"/>
+        <link rel="prev" title="alignak.daemons package" href="alignak.daemons.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="alignak.html">alignak package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.http package</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="../_sources/reference/alignak.http.txt" rel="nofollow"> View page source</a>
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <div class="section" id="alignak-http-package">
+<h1>alignak.http package<a class="headerlink" href="#alignak-http-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-alignak.http.arbiter_interface">
+<span id="alignak-http-arbiter-interface-module"></span><h2>alignak.http.arbiter_interface module<a class="headerlink" href="#module-alignak.http.arbiter_interface" title="Permalink to this headline">¶</a></h2>
+<p>This module provide a specific HTTP interface for a Arbiter.</p>
+<dl class="class">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface">
+<em class="property">class </em><tt class="descclassname">alignak.http.arbiter_interface.</tt><tt class="descname">ArbiterInterface</tt><big>(</big><em>app</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#alignak.http.generic_interface.GenericInterface" title="alignak.http.generic_interface.GenericInterface"><tt class="xref py py-class docutils literal"><span class="pre">alignak.http.generic_interface.GenericInterface</span></tt></a></p>
+<p>Interface for HA Arbiter. The Slave/Master arbiter can get /push conf</p>
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.do_not_run">
+<tt class="descname">do_not_run</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.do_not_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.do_not_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Master tells to slave to not run (HTTP GET)
+Master will ignore this call</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.get_all_states">
+<tt class="descname">get_all_states</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.get_all_states"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.get_all_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all the data of satellites</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict containing satellites data</td>
+</tr>
+</tbody>
+</table>
+<p>Output looks like this</p>
+<div class="highlight-python"><div class="highlight"><pre>{&#39;arbiter&#39; : [{&#39;schedproperty1&#39;:&#39;value1&#39; ..}, {&#39;pollerproperty1&#39;, &#39;value11&#39; ..}, ..],
+</pre></div>
+</div>
+<p>&#8216;scheduler&#8217;: [..],
+&#8216;poller&#8217;: [..],
+&#8216;reactionner&#8217;: [..],
+&#8216;receiver&#8217;: [..],</p>
+<blockquote>
+<div>&#8216;broker: [..]&#8217;</div></blockquote>
+<p>}</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.get_config">
+<tt class="descname">get_config</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the managed configuration (internal) (HTTP GET)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Currently managed configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.get_objects_properties">
+<tt class="descname">get_objects_properties</tt><big>(</big><em>table</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.get_objects_properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.get_objects_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8216;Dump all objects of the type in
+[hosts, services, contacts, commands, hostgroups, servicegroups]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; table name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list all properties of all objects</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.get_satellite_list">
+<tt class="descname">get_satellite_list</tt><big>(</big><em>daemon_type=''</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.get_satellite_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.get_satellite_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the satellite names sorted by type (HTTP GET)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>daemon_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; daemon type to filter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict with key <em>daemon_type</em> and value list of daemon name</td>
+</tr>
+</tbody>
+</table>
+<p>Example</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;poller&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;Poller1&#39;</span><span class="p">,</span> <span class="s">&#39;Poller2&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.have_conf">
+<tt class="descname">have_conf</tt><big>(</big><em>magic_hash</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.have_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.have_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the daemon got a configuration (internal) (HTTP GET)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>magic_hash</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; magic hash of configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the arbiter has the specified conf, False otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.put_conf">
+<tt class="descname">put_conf</tt><big>(</big><em>conf</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.put_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.put_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>HTTP POST to the arbiter with the new conf (master send to slave)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>conf</strong> &#8211; pickled the new configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.wait_new_conf">
+<tt class="descname">wait_new_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.wait_new_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.wait_new_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask the daemon to wait a new conf.
+Reset cur_conf to wait new one</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.arbiter_interface.ArbiterInterface.what_i_managed">
+<tt class="descname">what_i_managed</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/arbiter_interface.html#ArbiterInterface.what_i_managed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.arbiter_interface.ArbiterInterface.what_i_managed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dummy call for the arbiter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{}, always</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http.broker_interface">
+<span id="alignak-http-broker-interface-module"></span><h2>alignak.http.broker_interface module<a class="headerlink" href="#module-alignak.http.broker_interface" title="Permalink to this headline">¶</a></h2>
+<p>This module provide a specific HTTP interface for a Broker.</p>
+<dl class="class">
+<dt id="alignak.http.broker_interface.BrokerInterface">
+<em class="property">class </em><tt class="descclassname">alignak.http.broker_interface.</tt><tt class="descname">BrokerInterface</tt><big>(</big><em>app</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/broker_interface.html#BrokerInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.broker_interface.BrokerInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#alignak.http.generic_interface.GenericInterface" title="alignak.http.generic_interface.GenericInterface"><tt class="xref py py-class docutils literal"><span class="pre">alignak.http.generic_interface.GenericInterface</span></tt></a></p>
+<p>This class provides specific HTTP functions for Broker.</p>
+<dl class="method">
+<dt id="alignak.http.broker_interface.BrokerInterface.get_raw_stats">
+<tt class="descname">get_raw_stats</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/broker_interface.html#BrokerInterface.get_raw_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.broker_interface.BrokerInterface.get_raw_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get stats (queue size) for each modules</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of modules with queue_size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.broker_interface.BrokerInterface.push_broks">
+<tt class="descname">push_broks</tt><big>(</big><em>broks</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/broker_interface.html#BrokerInterface.push_broks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.broker_interface.BrokerInterface.push_broks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push broks objects to the daemon (internal)
+Only used on a Broker daemon by the Arbiter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>broks</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Brok list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http.cherrypy_extend">
+<span id="alignak-http-cherrypy-extend-module"></span><h2>alignak.http.cherrypy_extend module<a class="headerlink" href="#module-alignak.http.cherrypy_extend" title="Permalink to this headline">¶</a></h2>
+<p>This module provide extension functions for Cherrypy
+in order to parse specific HTTP content type
+See <a class="reference external" href="http://cherrypy.readthedocs.org/en/latest/pkg/cherrypy.html#module-cherrypy._cpreqbody">http://cherrypy.readthedocs.org/en/latest/pkg/cherrypy.html#module-cherrypy._cpreqbody</a>
+for details about custom processors in Cherrypy</p>
+<dl class="function">
+<dt id="alignak.http.cherrypy_extend.zlib_processor">
+<tt class="descclassname">alignak.http.cherrypy_extend.</tt><tt class="descname">zlib_processor</tt><big>(</big><em>entity</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/cherrypy_extend.html#zlib_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.cherrypy_extend.zlib_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read application/zlib data and put content into entity.params for later use.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entity</strong> (<em>cherrypy._cpreqbody.Entity</em>) &#8211; cherrypy entity</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http.client">
+<span id="alignak-http-client-module"></span><h2>alignak.http.client module<a class="headerlink" href="#module-alignak.http.client" title="Permalink to this headline">¶</a></h2>
+<p>This module provides HTTPClient class. Used by daemon to connect to HTTP servers (other daemons)</p>
+<dl class="class">
+<dt id="alignak.http.client.HTTPClient">
+<em class="property">class </em><tt class="descclassname">alignak.http.client.</tt><tt class="descname">HTTPClient</tt><big>(</big><em>address=''</em>, <em>port=0</em>, <em>use_ssl=False</em>, <em>timeout=3</em>, <em>data_timeout=120</em>, <em>uri=''</em>, <em>strong_ssl=False</em>, <em>proxy=''</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>HTTPClient class use python request to communicate over HTTP
+Basically used to get / post to other daemons</p>
+<dl class="attribute">
+<dt id="alignak.http.client.HTTPClient.con">
+<tt class="descname">con</tt><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.con" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated properrty of HTTPClient</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">connection</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.http.client.HTTPClient.connection">
+<tt class="descname">connection</tt><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get connection attribute</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.client.HTTPClient.get">
+<tt class="descname">get</tt><big>(</big><em>path</em>, <em>args={}</em>, <em>wait='short'</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a GET HTTP request</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; path to do the request</li>
+<li><strong>args</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; args to add in the request</li>
+<li><strong>wait</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; timeout policy (short / long)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.client.HTTPClient.make_timeout">
+<tt class="descname">make_timeout</tt><big>(</big><em>wait</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.make_timeout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.make_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get timeout depending on wait time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wait</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; wait is short or long (else)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">self.timeout if wait is short, self.data_timeout otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.client.HTTPClient.make_uri">
+<tt class="descname">make_uri</tt><big>(</big><em>path</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.make_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.make_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create uri from path</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; path to make uri</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">self.uri + path</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.client.HTTPClient.post">
+<tt class="descname">post</tt><big>(</big><em>path</em>, <em>args</em>, <em>wait='short'</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a POST HTTP request</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; path to do the request</li>
+<li><strong>args</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; args to add in the request</li>
+<li><strong>wait</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; timeout policy (short / long)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Content of the HTTP response if server returned 200</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.client.HTTPClient.put">
+<tt class="descname">put</tt><big>(</big><em>path</em>, <em>data</em>, <em>wait='short'</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.put"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a PUT HTTP request</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; path to do the request</li>
+<li><strong>data</strong> &#8211; data to send in the request</li>
+<li><strong>args</strong> &#8211; args to add in the request</li>
+<li><strong>wait</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; timeout policy (short / long)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Content of the HTTP response if server returned 200</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.client.HTTPClient.set_proxy">
+<tt class="descname">set_proxy</tt><big>(</big><em>proxy</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPClient.set_proxy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPClient.set_proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set HTTP proxy</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>proxy</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; proxy url</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="alignak.http.client.HTTPException">
+<em class="property">exception </em><tt class="descclassname">alignak.http.client.</tt><tt class="descname">HTTPException</tt><a class="reference internal" href="../_modules/alignak/http/client.html#HTTPException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.client.HTTPException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></a></p>
+<p>Simple HTTP Exception</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http.daemon">
+<span id="alignak-http-daemon-module"></span><h2>alignak.http.daemon module<a class="headerlink" href="#module-alignak.http.daemon" title="Permalink to this headline">¶</a></h2>
+<p>This module provide the HTTP daemon for Alignak inter daemon communication.
+It is mostly based on Cherrypy</p>
+<dl class="class">
+<dt id="alignak.http.daemon.HTTPDaemon">
+<em class="property">class </em><tt class="descclassname">alignak.http.daemon.</tt><tt class="descname">HTTPDaemon</tt><big>(</big><em>host</em>, <em>port</em>, <em>http_interface</em>, <em>use_ssl</em>, <em>ca_cert</em>, <em>ssl_key</em>, <em>ssl_cert</em>, <em>daemon_thread_pool_size</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/daemon.html#HTTPDaemon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.daemon.HTTPDaemon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>HTTP Server class. Mostly based on Cherrypy
+It uses CherryPyWSGIServer and daemon http_interface as Application</p>
+<dl class="method">
+<dt id="alignak.http.daemon.HTTPDaemon.request_stop">
+<tt class="descname">request_stop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/daemon.html#HTTPDaemon.request_stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.daemon.HTTPDaemon.request_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to stop http daemon server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.daemon.HTTPDaemon.run">
+<tt class="descname">run</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/daemon.html#HTTPDaemon.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.daemon.HTTPDaemon.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to start http daemon server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="alignak.http.daemon.InvalidWorkDir">
+<em class="property">exception </em><tt class="descclassname">alignak.http.daemon.</tt><tt class="descname">InvalidWorkDir</tt><a class="reference internal" href="../_modules/alignak/http/daemon.html#InvalidWorkDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.daemon.InvalidWorkDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></a></p>
+<p>Exception raised when daemon workdir is invalid</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="alignak.http.daemon.PortNotFree">
+<em class="property">exception </em><tt class="descclassname">alignak.http.daemon.</tt><tt class="descname">PortNotFree</tt><a class="reference internal" href="../_modules/alignak/http/daemon.html#PortNotFree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.daemon.PortNotFree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></a></p>
+<p>Exception raised when port is already used by another application</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http.generic_interface">
+<span id="alignak-http-generic-interface-module"></span><h2>alignak.http.generic_interface module<a class="headerlink" href="#module-alignak.http.generic_interface" title="Permalink to this headline">¶</a></h2>
+<p>This module provide a generic HTTP interface for all satellites.
+Any Alignak satellite have at least those functions exposed over network
+See : <a class="reference external" href="http://cherrypy.readthedocs.org/en/latest/tutorials.html">http://cherrypy.readthedocs.org/en/latest/tutorials.html</a> for Cherrypy basic HTPP apps.</p>
+<dl class="class">
+<dt id="alignak.http.generic_interface.GenericInterface">
+<em class="property">class </em><tt class="descclassname">alignak.http.generic_interface.</tt><tt class="descname">GenericInterface</tt><big>(</big><em>app</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>Interface for inter satellites communications</p>
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.api">
+<tt class="descname">api</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.api"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.api" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the methods available on the daemon</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of methods available</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.api_full">
+<tt class="descname">api_full</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.api_full"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.api_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the api methods and their parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of methods and parameters</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.get_broks">
+<tt class="descname">get_broks</tt><big>(</big><em>bname</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.get_broks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.get_broks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get broks from the daemon</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Brok list serialized and b64encoded</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.get_external_commands">
+<tt class="descname">get_external_commands</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.get_external_commands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.get_external_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the external commands from the daemon (internal)
+Use a lock for this call (not a global one, just for this method)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Pickled external command list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.get_log_level">
+<tt class="descname">get_log_level</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.get_log_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.get_log_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current log level in [NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL, UNKNOWN]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">current log level</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.get_raw_stats">
+<tt class="descname">get_raw_stats</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.get_raw_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.get_raw_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get raw stats from the daemon</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">daemon stats</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.get_returns">
+<tt class="descname">get_returns</tt><big>(</big><em>sched_id</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.get_returns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.get_returns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get actions returns (serialized)
+for the scheduler with _id = sched_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sched_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; id of the scheduler</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">serialized list</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.get_running_id">
+<tt class="descname">get_running_id</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.get_running_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.get_running_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8216;Get the current running id of the daemon (scheduler)&#8217;</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">running_ig</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.get_start_time">
+<tt class="descname">get_start_time</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.get_start_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.get_start_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the start time of the daemon</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">start time</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.have_conf">
+<tt class="descname">have_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.have_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.have_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the daemon cur_conf state</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">boolean indicating if the daemon has a conf</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.index">
+<tt class="descname">index</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to call api from /</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">function list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.ping">
+<tt class="descname">ping</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.ping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.ping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test the connection to the daemon. Returns: pong</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string &#8216;pong&#8217;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.push_actions">
+<tt class="descname">push_actions</tt><big>(</big><em>actions</em>, <em>sched_id</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.push_actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.push_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get new actions from scheduler(internal)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>actions</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; list of action to add</li>
+<li><strong>sched_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; id of the scheduler sending actions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:return:None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.put_conf">
+<tt class="descname">put_conf</tt><big>(</big><em>conf</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.put_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.put_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a new configuration to the daemon (internal)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>conf</strong> &#8211; new conf to send</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.remove_from_conf">
+<tt class="descname">remove_from_conf</tt><big>(</big><em>sched_id</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.remove_from_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.remove_from_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a scheduler connection (internal)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sched_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; scheduler id to remove</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.set_log_level">
+<tt class="descname">set_log_level</tt><big>(</big><em>loglevel</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.set_log_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.set_log_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the current log level in [NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL, UNKNOWN]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loglevel</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; a value in one of the above</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.wait_new_conf">
+<tt class="descname">wait_new_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.wait_new_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.wait_new_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask the daemon to drop its configuration and wait for a new one</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.generic_interface.GenericInterface.what_i_managed">
+<tt class="descname">what_i_managed</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/generic_interface.html#GenericInterface.what_i_managed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.generic_interface.GenericInterface.what_i_managed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arbiter ask me which scheduler id I manage</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">managed configuration ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http.receiver_interface">
+<span id="alignak-http-receiver-interface-module"></span><h2>alignak.http.receiver_interface module<a class="headerlink" href="#module-alignak.http.receiver_interface" title="Permalink to this headline">¶</a></h2>
+<p>This module provide a specific HTTP interface for a Receiver.</p>
+<dl class="class">
+<dt id="alignak.http.receiver_interface.ReceiverInterface">
+<em class="property">class </em><tt class="descclassname">alignak.http.receiver_interface.</tt><tt class="descname">ReceiverInterface</tt><big>(</big><em>app</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/receiver_interface.html#ReceiverInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.receiver_interface.ReceiverInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#alignak.http.generic_interface.GenericInterface" title="alignak.http.generic_interface.GenericInterface"><tt class="xref py py-class docutils literal"><span class="pre">alignak.http.generic_interface.GenericInterface</span></tt></a></p>
+<p>This class provides specific HTTP functions for Receiver.</p>
+<dl class="method">
+<dt id="alignak.http.receiver_interface.ReceiverInterface.get_raw_stats">
+<tt class="descname">get_raw_stats</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/receiver_interface.html#ReceiverInterface.get_raw_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.receiver_interface.ReceiverInterface.get_raw_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get raw stats from the daemon:</p>
+<div class="highlight-python"><div class="highlight"><pre>* command_buffer_size: external command buffer size
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">external command length</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.receiver_interface.ReceiverInterface.push_host_names">
+<tt class="descname">push_host_names</tt><big>(</big><em>sched_id</em>, <em>hnames</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/receiver_interface.html#ReceiverInterface.push_host_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.receiver_interface.ReceiverInterface.push_host_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push hostname/scheduler links
+Use by the receivers to got the host names managed by the schedulers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sched_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; scheduler_id that manages hnames</li>
+<li><strong>hnames</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; host names list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http.scheduler_interface">
+<span id="alignak-http-scheduler-interface-module"></span><h2>alignak.http.scheduler_interface module<a class="headerlink" href="#module-alignak.http.scheduler_interface" title="Permalink to this headline">¶</a></h2>
+<p>This module provide a specific HTTP interface for a SCheduler.</p>
+<dl class="class">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface">
+<em class="property">class </em><tt class="descclassname">alignak.http.scheduler_interface.</tt><tt class="descname">SchedulerInterface</tt><big>(</big><em>app</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#alignak.http.generic_interface.GenericInterface" title="alignak.http.generic_interface.GenericInterface"><tt class="xref py py-class docutils literal"><span class="pre">alignak.http.generic_interface.GenericInterface</span></tt></a></p>
+<p>This module provide a specific HTTP interface for a Scheduler.</p>
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.fill_initial_broks">
+<tt class="descname">fill_initial_broks</tt><big>(</big><em>bname</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.fill_initial_broks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.fill_initial_broks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get initial_broks type broks from scheduler, used by brokers
+Do not send broks, only make scheduler internal processing</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bname</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; broker name, used to filter broks</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>TODO: Maybe we should check_last time we did it to prevent DDoS</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.get_broks">
+<tt class="descname">get_broks</tt><big>(</big><em>bname</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.get_broks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.get_broks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get checks from scheduler, used by brokers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bname</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; broker name, used to filter broks</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">64 zlib compress pickled brok list</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.get_checks">
+<tt class="descname">get_checks</tt><big>(</big><em>do_checks=False, do_actions=False, poller_tags=['None'], reactionner_tags=['None'], worker_name='none', module_types=['fork']</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.get_checks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.get_checks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get checks from scheduler, used by poller or reactionner (active ones)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>do_checks</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; used for poller to get checks</li>
+<li><strong>do_actions</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; used for reactionner to get actions</li>
+<li><strong>poller_tags</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; pollers tags to filter on this poller</li>
+<li><strong>reactionner_tags</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; reactionner tags to filter on this reactionner</li>
+<li><strong>worker_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Worker name asking (so that the scheduler add it to actions objects)</li>
+<li><strong>module_types</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Module type to filter actions/checks</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">base64 zlib compress pickled check/action list</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.get_raw_stats">
+<tt class="descname">get_raw_stats</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.get_raw_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.get_raw_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get raw stats from the daemon:</p>
+<div class="highlight-python"><div class="highlight"><pre>* nb_scheduled: number of scheduled checks (to launch in the future)
+* nb_inpoller: number of check take by the pollers
+* nb_zombies: number of zombie checks (should be close to zero)
+* nb_notifications: number of notifications+event handlers
+* latency: avg,min,max latency for the services (should be &lt;10s)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">stats for scheduler</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.put_conf">
+<tt class="descname">put_conf</tt><big>(</big><em>conf</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.put_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.put_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post conf to scheduler (from arbiter)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>conf</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; new configuration to load</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.put_results">
+<tt class="descname">put_results</tt><big>(</big><em>results</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.put_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.put_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Put results to scheduler, used by poller and reactionners</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>results</strong> &#8211; results to handle</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True or ?? (if lock acquire fails)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.run_external_commands">
+<tt class="descname">run_external_commands</tt><big>(</big><em>cmds</em><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.run_external_commands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.run_external_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post external_commands to scheduler (from arbiter)
+Wrapper to to app.sched.run_external_commands method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cmds</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; external commands list ro run</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.http.scheduler_interface.SchedulerInterface.wait_new_conf">
+<tt class="descname">wait_new_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/http/scheduler_interface.html#SchedulerInterface.wait_new_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.http.scheduler_interface.SchedulerInterface.wait_new_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask to scheduler to wait for new conf (HTTP GET from arbiter)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.http">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-alignak.http" title="Permalink to this headline">¶</a></h2>
+<p>This module provide all class for Alignak HTTP communation.
+Most of files are for server side HTTP. Only client.py is for client side http</p>
+</div>
+</div>
+
+
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="alignak.misc.html" class="btn btn-neutral float-right" title="alignak.misc package"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="alignak.daemons.html" class="btn btn-neutral" title="alignak.daemons package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

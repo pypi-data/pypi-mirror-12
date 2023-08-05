@@ -1,0 +1,1310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.daemons package &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="alignak package" href="alignak.html"/>
+        <link rel="next" title="alignak.http package" href="alignak.http.html"/>
+        <link rel="prev" title="alignak.bin package" href="alignak.bin.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="alignak.html">alignak package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.daemons package</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="../_sources/reference/alignak.daemons.txt" rel="nofollow"> View page source</a>
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <div class="section" id="alignak-daemons-package">
+<h1>alignak.daemons package<a class="headerlink" href="#alignak-daemons-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-alignak.daemons.arbiterdaemon">
+<span id="alignak-daemons-arbiterdaemon-module"></span><h2>alignak.daemons.arbiterdaemon module<a class="headerlink" href="#module-alignak.daemons.arbiterdaemon" title="Permalink to this headline">¶</a></h2>
+<p>This module provie Arbiter class used to run a arbiter daemon</p>
+<dl class="class">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter">
+<em class="property">class </em><tt class="descclassname">alignak.daemons.arbiterdaemon.</tt><tt class="descname">Arbiter</tt><big>(</big><em>config_files</em>, <em>is_daemon</em>, <em>do_replace</em>, <em>verify_only</em>, <em>debug</em>, <em>debug_file</em>, <em>profile=None</em>, <em>analyse=None</em>, <em>migrate=None</em>, <em>arb_name=''</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="alignak.html#alignak.daemon.Daemon" title="alignak.daemon.Daemon"><tt class="xref py py-class docutils literal"><span class="pre">alignak.daemon.Daemon</span></tt></a></p>
+<p>Arbiter class. Referenced as &#8220;app&#8221; in most Interface</p>
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.add">
+<tt class="descname">add</tt><big>(</big><em>b</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic function to add objects to queues.
+Only manage Broks and ExternalCommand</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>b</strong> (<em>alignak.brok.Brok | alignak.external_command.ExternalCommand</em>) &#8211; objects to add</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.check_and_log_tp_activation_change">
+<tt class="descname">check_and_log_tp_activation_change</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.check_and_log_tp_activation_change"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.check_and_log_tp_activation_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise log for timeperiod change (useful for debug)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.do_loop_turn">
+<tt class="descname">do_loop_turn</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.do_loop_turn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.do_loop_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loop turn for Arbiter
+If master, run, else wait for master death</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.get_broks_from_satellitelinks">
+<tt class="descname">get_broks_from_satellitelinks</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.get_broks_from_satellitelinks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.get_broks_from_satellitelinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get broks from my internal satellitelinks (satellite status)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>TODO: Why satellitelink obj have broks and not the app itself?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.get_daemon_links">
+<tt class="descname">get_daemon_links</tt><big>(</big><em>daemon_type</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.get_daemon_links"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.get_daemon_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of arbiter link (here arbiters)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>daemon_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; daemon type</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">named used to stroke this deamon type links</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.get_daemons">
+<tt class="descname">get_daemons</tt><big>(</big><em>daemon_type</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.get_daemons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.get_daemons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the daemons list defined in our conf for the given type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>daemon_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; deamon type needed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">attribute value if exist</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str | None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.get_external_commands_from_satellites">
+<tt class="descname">get_external_commands_from_satellites</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.get_external_commands_from_satellites"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.get_external_commands_from_satellites" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get external commands from all other satellites</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.get_initial_broks_from_satellitelinks">
+<tt class="descname">get_initial_broks_from_satellitelinks</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.get_initial_broks_from_satellitelinks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.get_initial_broks_from_satellitelinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get initial broks from my internal satellitelinks (satellite status)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.get_retention_data">
+<tt class="descname">get_retention_data</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.get_retention_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.get_retention_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data for retention</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">broks and external commands in a dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.get_stats_struct">
+<tt class="descname">get_stats_struct</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.get_stats_struct"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.get_stats_struct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get state of modules and create a scheme for stats data of daemon</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dict with the following structure</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>{ &#39;metrics&#39;: [&#39;arbiter.%s.external-commands.queue %d %d&#39;],
+  &#39;version&#39;: __version__,
+  &#39;name&#39;: self.name,
+  &#39;type&#39;: &#39;arbiter&#39;,
+  &#39;hosts&#39;: len(self.conf.hosts)
+  &#39;services&#39;: len(self.conf.services)
+  &#39;modules&#39;:
+              {&#39;internal&#39;: {&#39;name&#39;: &quot;MYMODULE1&quot;, &#39;state&#39;: &#39;ok&#39;},
+              {&#39;external&#39;: {&#39;name&#39;: &quot;MYMODULE2&quot;, &#39;state&#39;: &#39;stopped&#39;},
+             ]
+}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.go_migrate">
+<tt class="descname">go_migrate</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.go_migrate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.go_migrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Migrate configuration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>TODO: Remove it</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.launch_analyse">
+<tt class="descname">launch_analyse</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.launch_analyse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.launch_analyse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the number of objects we have for each type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.load_config_file">
+<tt class="descname">load_config_file</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.load_config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.load_config_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load main configuration file (alignak.cfg):</p>
+<div class="highlight-python"><div class="highlight"><pre>* Read all files given in the -c parameters
+* Read all .cfg files in  cfg_dir
+* Read all files in cfg_file
+* Create objects (Arbiter, Module)
+* Set HTTP links info (ssl etc)
+* Load its own modules
+* Execute read_configuration hook (for arbiter modules)
+* Create all objects (Service, Host, Realms ...)
+* &quot;Compile&quot; configuration (Linkify, explode, apply inheritance, fill default values ...)
+* Cut conf into parts and prepare it for sending
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.load_external_command">
+<tt class="descname">load_external_command</tt><big>(</big><em>ecm</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.load_external_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.load_external_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set external_command attribute to the external command manager
+and fifo attribute to a new fifo fd</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ecm</strong> (<a class="reference internal" href="alignak.html#alignak.external_command.ExternalCommandManager" title="alignak.external_command.ExternalCommandManager"><em>alignak.external_command.ExternalCommandManager</em></a>) &#8211; External command manager to set</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>TODO: Is fifo useful?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.load_modules_configuration_objects">
+<tt class="descname">load_modules_configuration_objects</tt><big>(</big><em>raw_objects</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.load_modules_configuration_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.load_modules_configuration_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load configuration objects from arbiter modules
+If module implements get_objects arbiter will call it and add create
+objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>raw_objects</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; raw objects we got from reading config files</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.main">
+<tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main arbiter function:</p>
+<div class="highlight-python"><div class="highlight"><pre>* Set logger
+* Log Alignak headers
+* Init daemon
+* Launch modules
+* Load retention
+* Do mainloop
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.push_broks_to_broker">
+<tt class="descname">push_broks_to_broker</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.push_broks_to_broker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.push_broks_to_broker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send all broks from arbiter internal list to broker</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.push_external_commands_to_schedulers">
+<tt class="descname">push_external_commands_to_schedulers</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.push_external_commands_to_schedulers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.push_external_commands_to_schedulers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send external commands to schedulers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.restore_retention_data">
+<tt class="descname">restore_retention_data</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.restore_retention_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.restore_retention_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore data from retention (broks, and external commands)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; data to restore</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.run">
+<tt class="descname">run</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run Arbiter daemon</p>
+<div class="highlight-python"><div class="highlight"><pre>* Dispatch conf
+* Get initial brok from links
+* Load external command manager
+* Principal loop (send broks, external command, re dispatch etc.)
+</pre></div>
+</div>
+<p>:return:None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.setup_new_conf">
+<tt class="descname">setup_new_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.setup_new_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.setup_new_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup a new conf received from a Master arbiter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.arbiterdaemon.Arbiter.wait_for_master_death">
+<tt class="descname">wait_for_master_death</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/arbiterdaemon.html#Arbiter.wait_for_master_death"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.arbiterdaemon.Arbiter.wait_for_master_death" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for a master timeout and take the lead if necessary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.daemons.brokerdaemon">
+<span id="alignak-daemons-brokerdaemon-module"></span><h2>alignak.daemons.brokerdaemon module<a class="headerlink" href="#module-alignak.daemons.brokerdaemon" title="Permalink to this headline">¶</a></h2>
+<p>This module provide Broker class used to run a broker daemon</p>
+<dl class="class">
+<dt id="alignak.daemons.brokerdaemon.Broker">
+<em class="property">class </em><tt class="descclassname">alignak.daemons.brokerdaemon.</tt><tt class="descname">Broker</tt><big>(</big><em>config_file</em>, <em>is_daemon</em>, <em>do_replace</em>, <em>debug</em>, <em>debug_file</em>, <em>profile=''</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="alignak.html#alignak.satellite.BaseSatellite" title="alignak.satellite.BaseSatellite"><tt class="xref py py-class docutils literal"><span class="pre">alignak.satellite.BaseSatellite</span></tt></a></p>
+<p>Class to manage a Broker daemon
+A Broker is used to get data from Scheduler and send them to modules. These modules in most
+cases export to other softwares, databases...</p>
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.add">
+<tt class="descname">add</tt><big>(</big><em>elt</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add elt to this broker</p>
+<dl class="docutils">
+<dt>Original comment <span class="classifier-delimiter">:</span> <span class="classifier">Schedulers have some queues. We can simplify the call by adding</span></dt>
+<dd>elements into the proper queue just by looking at their type  Brok -&gt; self.broks
+TODO: better tag ID?
+External commands -&gt; self.external_commands</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>elt</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) &#8211; object to add</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.add_broks_to_queue">
+<tt class="descname">add_broks_to_queue</tt><big>(</big><em>broks</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.add_broks_to_queue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.add_broks_to_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add broks to global queue</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>broks</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) &#8211; some items</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.clean_previous_run">
+<tt class="descname">clean_previous_run</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.clean_previous_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.clean_previous_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean all (when we received new conf)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.do_loop_turn">
+<tt class="descname">do_loop_turn</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.do_loop_turn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.do_loop_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loop use to:
+* check if modules are alive, if not restart them
+* add broks to queue of each modules</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.do_pynag_con_init">
+<tt class="descname">do_pynag_con_init</tt><big>(</big><em>s_id</em>, <em>i_type='scheduler'</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.do_pynag_con_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.do_pynag_con_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize or re-initialize connection with scheduler or arbiter if type == arbiter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; s_id</li>
+<li><strong>i_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; type of item</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.do_stop">
+<tt class="descname">do_stop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.do_stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.do_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop all children of this process</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.get_links_from_type">
+<tt class="descname">get_links_from_type</tt><big>(</big><em>d_type</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.get_links_from_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.get_links_from_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>If d_type parameter is in list, return this object linked, else None</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; name of object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">return the object linked</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.get_new_broks">
+<tt class="descname">get_new_broks</tt><big>(</big><em>i_type='scheduler'</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.get_new_broks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.get_new_broks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get new broks from daemon defined in type parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>i_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; type of object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.get_retention_data">
+<tt class="descname">get_retention_data</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.get_retention_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.get_retention_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all broks</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">broks container</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.get_stats_struct">
+<tt class="descname">get_stats_struct</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.get_stats_struct"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.get_stats_struct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information of modules (internal and external) and add metrics of them</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dictionary with state of all modules (internal and external)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.interger_arbiter_broks">
+<tt class="descname">interger_arbiter_broks</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.interger_arbiter_broks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.interger_arbiter_broks" title="Permalink to this definition">¶</a></dt>
+<dd><p>We will get in the broks list the broks from the arbiters,
+but as the arbiter_broks list can be push by arbiter without Global lock,
+we must protect this with he list lock</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.interger_internal_broks">
+<tt class="descname">interger_internal_broks</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.interger_internal_broks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.interger_internal_broks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all broks from self.broks_internal_raised and we put them in self.broks</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.is_connection_try_too_close">
+<tt class="descname">is_connection_try_too_close</tt><big>(</big><em>elt</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.is_connection_try_too_close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.is_connection_try_too_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if last_connection has been made very recently</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>elt</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; list with last_connection property</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if last connection has been made less than 5 seconds</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.main">
+<tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function, will loop forever</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.manage_brok">
+<tt class="descname">manage_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.manage_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.manage_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a brok.
+We put brok data to the modules</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) &#8211; object with data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.brokerdaemon.Broker.properties">
+<tt class="descname">properties</tt><em class="property"> = {'modules_dir': &lt;alignak.property.PathProp object at 0x7fd17aa3ccd0&gt;, 'server_cert': &lt;alignak.property.StringProp object at 0x7fd17aa674d0&gt;, 'workdir': &lt;alignak.property.PathProp object at 0x7fd17aa3cc90&gt;, 'ca_cert': &lt;alignak.property.StringProp object at 0x7fd17aa67490&gt;, 'hard_ssl_name_check': &lt;alignak.property.BoolProp object at 0x7fd17aa67590&gt;, 'host': &lt;alignak.property.StringProp object at 0x7fd17aa3ce90&gt;, 'local_log': &lt;alignak.property.PathProp object at 0x7fd17a5ff4d0&gt;, 'spare': &lt;alignak.property.BoolProp object at 0x7fd17aa67650&gt;, 'user': &lt;alignak.property.StringProp object at 0x7fd17aa3cfd0&gt;, 'use_ssl': &lt;alignak.property.BoolProp object at 0x7fd17aa4a190&gt;, 'log_level': &lt;alignak.property.LogLevelProp object at 0x7fd17aa67550&gt;, 'use_local_log': &lt;alignak.property.BoolProp object at 0x7fd17aa67510&gt;, 'port': &lt;alignak.property.IntegerProp object at 0x7fd17a5ff490&gt;, 'idontcareaboutsecurity': &lt;alignak.property.BoolProp object at 0x7fd17aa675d0&gt;, 'server_key': &lt;alignak.property.StringProp object at 0x7fd17aa4a250&gt;, 'group': &lt;alignak.property.StringProp object at 0x7fd17aa4a050&gt;, 'max_queue_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa67690&gt;, 'daemon_enabled': &lt;alignak.property.BoolProp object at 0x7fd17aa67610&gt;, 'pidfile': &lt;alignak.property.PathProp object at 0x7fd17a5ff450&gt;, 'daemon_thread_pool_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa676d0&gt;}</em><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.pynag_con_init">
+<tt class="descname">pynag_con_init</tt><big>(</big><em>_id</em>, <em>i_type='scheduler'</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.pynag_con_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.pynag_con_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper function for the real function <a href="#id1"><span class="problematic" id="id2">do_</span></a>
+just for timing the connection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; id</li>
+<li><strong>i_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; type of item</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">do_pynag_con_init return always True, so we return always True</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.restore_retention_data">
+<tt class="descname">restore_retention_data</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.restore_retention_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.restore_retention_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add data to broks container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; broks to add</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.brokerdaemon.Broker.setup_new_conf">
+<tt class="descname">setup_new_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/brokerdaemon.html#Broker.setup_new_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.brokerdaemon.Broker.setup_new_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse new configuration and initialize all required</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.daemons.pollerdaemon">
+<span id="alignak-daemons-pollerdaemon-module"></span><h2>alignak.daemons.pollerdaemon module<a class="headerlink" href="#module-alignak.daemons.pollerdaemon" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides class for the Poller daemon</p>
+<dl class="class">
+<dt id="alignak.daemons.pollerdaemon.Poller">
+<em class="property">class </em><tt class="descclassname">alignak.daemons.pollerdaemon.</tt><tt class="descname">Poller</tt><big>(</big><em>config_file</em>, <em>is_daemon</em>, <em>do_replace</em>, <em>debug</em>, <em>debug_file</em>, <em>profile</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/pollerdaemon.html#Poller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.pollerdaemon.Poller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="alignak.html#alignak.satellite.Satellite" title="alignak.satellite.Satellite"><tt class="xref py py-class docutils literal"><span class="pre">alignak.satellite.Satellite</span></tt></a></p>
+<p>Poller class. Referenced as &#8220;app&#8221; in most Interface</p>
+<dl class="attribute">
+<dt id="alignak.daemons.pollerdaemon.Poller.do_actions">
+<tt class="descname">do_actions</tt><em class="property"> = False</em><a class="headerlink" href="#alignak.daemons.pollerdaemon.Poller.do_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.pollerdaemon.Poller.do_checks">
+<tt class="descname">do_checks</tt><em class="property"> = True</em><a class="headerlink" href="#alignak.daemons.pollerdaemon.Poller.do_checks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.pollerdaemon.Poller.my_type">
+<tt class="descname">my_type</tt><em class="property"> = 'poller'</em><a class="headerlink" href="#alignak.daemons.pollerdaemon.Poller.my_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.pollerdaemon.Poller.properties">
+<tt class="descname">properties</tt><em class="property"> = {'modules_dir': &lt;alignak.property.PathProp object at 0x7fd17aa3ccd0&gt;, 'server_cert': &lt;alignak.property.StringProp object at 0x7fd17aa674d0&gt;, 'workdir': &lt;alignak.property.PathProp object at 0x7fd17aa3cc90&gt;, 'ca_cert': &lt;alignak.property.StringProp object at 0x7fd17aa67490&gt;, 'hard_ssl_name_check': &lt;alignak.property.BoolProp object at 0x7fd17aa67590&gt;, 'host': &lt;alignak.property.StringProp object at 0x7fd17aa3ce90&gt;, 'local_log': &lt;alignak.property.PathProp object at 0x7fd17a60add0&gt;, 'spare': &lt;alignak.property.BoolProp object at 0x7fd17aa67650&gt;, 'user': &lt;alignak.property.StringProp object at 0x7fd17aa3cfd0&gt;, 'use_ssl': &lt;alignak.property.BoolProp object at 0x7fd17aa4a190&gt;, 'log_level': &lt;alignak.property.LogLevelProp object at 0x7fd17aa67550&gt;, 'use_local_log': &lt;alignak.property.BoolProp object at 0x7fd17aa67510&gt;, 'port': &lt;alignak.property.IntegerProp object at 0x7fd17a60ad90&gt;, 'idontcareaboutsecurity': &lt;alignak.property.BoolProp object at 0x7fd17aa675d0&gt;, 'server_key': &lt;alignak.property.StringProp object at 0x7fd17aa4a250&gt;, 'group': &lt;alignak.property.StringProp object at 0x7fd17aa4a050&gt;, 'max_queue_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa67690&gt;, 'daemon_enabled': &lt;alignak.property.BoolProp object at 0x7fd17aa67610&gt;, 'pidfile': &lt;alignak.property.PathProp object at 0x7fd17a60ad50&gt;, 'daemon_thread_pool_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa676d0&gt;}</em><a class="headerlink" href="#alignak.daemons.pollerdaemon.Poller.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.daemons.reactionnerdaemon">
+<span id="alignak-daemons-reactionnerdaemon-module"></span><h2>alignak.daemons.reactionnerdaemon module<a class="headerlink" href="#module-alignak.daemons.reactionnerdaemon" title="Permalink to this headline">¶</a></h2>
+<p>This module provide Reactionner class used to launch notifications or event handlers</p>
+<dl class="class">
+<dt id="alignak.daemons.reactionnerdaemon.Reactionner">
+<em class="property">class </em><tt class="descclassname">alignak.daemons.reactionnerdaemon.</tt><tt class="descname">Reactionner</tt><big>(</big><em>config_file</em>, <em>is_daemon</em>, <em>do_replace</em>, <em>debug</em>, <em>debug_file</em>, <em>profile=''</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/reactionnerdaemon.html#Reactionner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.reactionnerdaemon.Reactionner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="alignak.html#alignak.satellite.Satellite" title="alignak.satellite.Satellite"><tt class="xref py py-class docutils literal"><span class="pre">alignak.satellite.Satellite</span></tt></a></p>
+<p>This class is an application that launches actions for the schedulers
+Actions can be:</p>
+<blockquote>
+<div>Notifications
+Event handlers</div></blockquote>
+<dl class="docutils">
+<dt>When running the Reactionner will :</dt>
+<dd>Respond to pings from Arbiter
+Listen for new configurations from Arbiter</dd>
+</dl>
+<p>The configuration consists of a list of Schedulers for which
+the Reactionner will launch actions for.</p>
+<dl class="attribute">
+<dt id="alignak.daemons.reactionnerdaemon.Reactionner.do_actions">
+<tt class="descname">do_actions</tt><em class="property"> = True</em><a class="headerlink" href="#alignak.daemons.reactionnerdaemon.Reactionner.do_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.reactionnerdaemon.Reactionner.do_checks">
+<tt class="descname">do_checks</tt><em class="property"> = False</em><a class="headerlink" href="#alignak.daemons.reactionnerdaemon.Reactionner.do_checks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.reactionnerdaemon.Reactionner.my_type">
+<tt class="descname">my_type</tt><em class="property"> = 'reactionner'</em><a class="headerlink" href="#alignak.daemons.reactionnerdaemon.Reactionner.my_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.reactionnerdaemon.Reactionner.properties">
+<tt class="descname">properties</tt><em class="property"> = {'modules_dir': &lt;alignak.property.PathProp object at 0x7fd17aa3ccd0&gt;, 'server_cert': &lt;alignak.property.StringProp object at 0x7fd17aa674d0&gt;, 'workdir': &lt;alignak.property.PathProp object at 0x7fd17aa3cc90&gt;, 'ca_cert': &lt;alignak.property.StringProp object at 0x7fd17aa67490&gt;, 'hard_ssl_name_check': &lt;alignak.property.BoolProp object at 0x7fd17aa67590&gt;, 'host': &lt;alignak.property.StringProp object at 0x7fd17aa3ce90&gt;, 'local_log': &lt;alignak.property.PathProp object at 0x7fd17a62a150&gt;, 'spare': &lt;alignak.property.BoolProp object at 0x7fd17aa67650&gt;, 'user': &lt;alignak.property.StringProp object at 0x7fd17aa3cfd0&gt;, 'use_ssl': &lt;alignak.property.BoolProp object at 0x7fd17aa4a190&gt;, 'log_level': &lt;alignak.property.LogLevelProp object at 0x7fd17aa67550&gt;, 'use_local_log': &lt;alignak.property.BoolProp object at 0x7fd17aa67510&gt;, 'port': &lt;alignak.property.IntegerProp object at 0x7fd17a62a110&gt;, 'idontcareaboutsecurity': &lt;alignak.property.BoolProp object at 0x7fd17aa675d0&gt;, 'server_key': &lt;alignak.property.StringProp object at 0x7fd17aa4a250&gt;, 'group': &lt;alignak.property.StringProp object at 0x7fd17aa4a050&gt;, 'max_queue_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa67690&gt;, 'daemon_enabled': &lt;alignak.property.BoolProp object at 0x7fd17aa67610&gt;, 'pidfile': &lt;alignak.property.PathProp object at 0x7fd17a62a0d0&gt;, 'daemon_thread_pool_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa676d0&gt;}</em><a class="headerlink" href="#alignak.daemons.reactionnerdaemon.Reactionner.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.daemons.receiverdaemon">
+<span id="alignak-daemons-receiverdaemon-module"></span><h2>alignak.daemons.receiverdaemon module<a class="headerlink" href="#module-alignak.daemons.receiverdaemon" title="Permalink to this headline">¶</a></h2>
+<p>This module provide Receiver class used to run a receiver daemon</p>
+<dl class="class">
+<dt id="alignak.daemons.receiverdaemon.Receiver">
+<em class="property">class </em><tt class="descclassname">alignak.daemons.receiverdaemon.</tt><tt class="descname">Receiver</tt><big>(</big><em>config_file</em>, <em>is_daemon</em>, <em>do_replace</em>, <em>debug</em>, <em>debug_file</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="alignak.html#alignak.satellite.Satellite" title="alignak.satellite.Satellite"><tt class="xref py py-class docutils literal"><span class="pre">alignak.satellite.Satellite</span></tt></a></p>
+<p>Receiver class. Referenced as &#8220;app&#8221; in most Interface</p>
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.add">
+<tt class="descname">add</tt><big>(</big><em>elt</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an object to the receiver one
+Handles brok and externalcommand</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>elt</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) &#8211; object to add</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.do_loop_turn">
+<tt class="descname">do_loop_turn</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.do_loop_turn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.do_loop_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receiver daemon main loop</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.do_stop">
+<tt class="descname">do_stop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.do_stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.do_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the Receiver
+Wait for children to stop and call super(Receiver, self).do_stop()</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.get_sched_from_hname">
+<tt class="descname">get_sched_from_hname</tt><big>(</big><em>hname</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.get_sched_from_hname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.get_sched_from_hname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get scheduler linked to the given host_name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hname</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; host_name we want the scheduler from</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">scheduler with id corresponding to the mapping table</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.get_stats_struct">
+<tt class="descname">get_stats_struct</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.get_stats_struct"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.get_stats_struct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get state of modules and create a scheme for stats data of daemon
+This may be overridden in subclasses</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dict with the following structure</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>{ &#39;metrics&#39;: [&#39;%s.%s.external-commands.queue %d %d&#39;],
+  &#39;version&#39;: __version__,
+  &#39;name&#39;: self.name,
+  &#39;direct_routing&#39;: self.direct_routing,
+  &#39;type&#39;: _type,
+  &#39;passive&#39;: self.passive,
+  &#39;modules&#39;:
+              {&#39;internal&#39;: {&#39;name&#39;: &quot;MYMODULE1&quot;, &#39;state&#39;: &#39;ok&#39;},
+              {&#39;external&#39;: {&#39;name&#39;: &quot;MYMODULE2&quot;, &#39;state&#39;: &#39;stopped&#39;},
+             ]
+}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.main">
+<tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main receiver function
+Init daemon and loop forever</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.manage_brok">
+<tt class="descname">manage_brok</tt><big>(</big><em>brok</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.manage_brok"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.manage_brok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send brok to modules. Modules have to implement their own manage_brok function.
+They usually do if they inherits from basemodule
+REF: doc/receiver-modules.png (4-5)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brok</strong> (<a class="reference internal" href="alignak.html#alignak.brok.Brok" title="alignak.brok.Brok"><em>alignak.brok.Brok</em></a>) &#8211; brok to manage</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.receiverdaemon.Receiver.my_type">
+<tt class="descname">my_type</tt><em class="property"> = 'receiver'</em><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.my_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.receiverdaemon.Receiver.properties">
+<tt class="descname">properties</tt><em class="property"> = {'modules_dir': &lt;alignak.property.PathProp object at 0x7fd17aa3ccd0&gt;, 'server_cert': &lt;alignak.property.StringProp object at 0x7fd17aa674d0&gt;, 'workdir': &lt;alignak.property.PathProp object at 0x7fd17aa3cc90&gt;, 'ca_cert': &lt;alignak.property.StringProp object at 0x7fd17aa67490&gt;, 'hard_ssl_name_check': &lt;alignak.property.BoolProp object at 0x7fd17aa67590&gt;, 'host': &lt;alignak.property.StringProp object at 0x7fd17aa3ce90&gt;, 'local_log': &lt;alignak.property.PathProp object at 0x7fd17a62a050&gt;, 'spare': &lt;alignak.property.BoolProp object at 0x7fd17aa67650&gt;, 'user': &lt;alignak.property.StringProp object at 0x7fd17aa3cfd0&gt;, 'use_ssl': &lt;alignak.property.BoolProp object at 0x7fd17aa4a190&gt;, 'log_level': &lt;alignak.property.LogLevelProp object at 0x7fd17aa67550&gt;, 'use_local_log': &lt;alignak.property.BoolProp object at 0x7fd17aa67510&gt;, 'port': &lt;alignak.property.IntegerProp object at 0x7fd17a60afd0&gt;, 'idontcareaboutsecurity': &lt;alignak.property.BoolProp object at 0x7fd17aa675d0&gt;, 'server_key': &lt;alignak.property.StringProp object at 0x7fd17aa4a250&gt;, 'group': &lt;alignak.property.StringProp object at 0x7fd17aa4a050&gt;, 'max_queue_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa67690&gt;, 'daemon_enabled': &lt;alignak.property.BoolProp object at 0x7fd17aa67610&gt;, 'pidfile': &lt;alignak.property.PathProp object at 0x7fd17a60af90&gt;, 'daemon_thread_pool_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa676d0&gt;}</em><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.push_external_commands_to_schedulers">
+<tt class="descname">push_external_commands_to_schedulers</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.push_external_commands_to_schedulers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.push_external_commands_to_schedulers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a HTTP request to the schedulers (POST /run_external_commands)
+with external command list if the receiver is in direct routing.
+If not in direct_routing just clear the unprocessed_external_command list and return</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.push_host_names">
+<tt class="descname">push_host_names</tt><big>(</big><em>sched_id</em>, <em>hnames</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.push_host_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.push_host_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link hostnames to scheduler id.
+Called by alignak.satellite.IForArbiter.push_host_names</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sched_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; scheduler id to link to</li>
+<li><strong>hnames</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; host names list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.receiverdaemon.Receiver.setup_new_conf">
+<tt class="descname">setup_new_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/receiverdaemon.html#Receiver.setup_new_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.receiverdaemon.Receiver.setup_new_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receiver custom setup_new_conf method
+Implements specific setup for receiver</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.daemons.schedulerdaemon">
+<span id="alignak-daemons-schedulerdaemon-module"></span><h2>alignak.daemons.schedulerdaemon module<a class="headerlink" href="#module-alignak.daemons.schedulerdaemon" title="Permalink to this headline">¶</a></h2>
+<p>This module provide Alignak which is the main scheduling daemon class</p>
+<dl class="class">
+<dt id="alignak.daemons.schedulerdaemon.Alignak">
+<em class="property">class </em><tt class="descclassname">alignak.daemons.schedulerdaemon.</tt><tt class="descname">Alignak</tt><big>(</big><em>config_file</em>, <em>is_daemon</em>, <em>do_replace</em>, <em>debug</em>, <em>debug_file</em>, <em>profile=''</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/schedulerdaemon.html#Alignak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="alignak.html#alignak.satellite.BaseSatellite" title="alignak.satellite.BaseSatellite"><tt class="xref py py-class docutils literal"><span class="pre">alignak.satellite.BaseSatellite</span></tt></a></p>
+<p>Scheduler class. Referenced as &#8220;app&#8221; in most Interface</p>
+<dl class="method">
+<dt id="alignak.daemons.schedulerdaemon.Alignak.compensate_system_time_change">
+<tt class="descname">compensate_system_time_change</tt><big>(</big><em>difference</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/schedulerdaemon.html#Alignak.compensate_system_time_change"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak.compensate_system_time_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compensate a system time change of difference for all hosts/services/checks/notifs</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>difference</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; difference in seconds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.schedulerdaemon.Alignak.do_loop_turn">
+<tt class="descname">do_loop_turn</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/schedulerdaemon.html#Alignak.do_loop_turn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak.do_loop_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scheduler loop turn
+Basically wait initial conf and run</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.schedulerdaemon.Alignak.main">
+<tt class="descname">main</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/schedulerdaemon.html#Alignak.main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function for Scheduler, launch after the init:</p>
+<div class="highlight-python"><div class="highlight"><pre>* Init daemon
+* Load module manager
+* Launch main loop
+* Catch any Exception that occurs
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.schedulerdaemon.Alignak.manage_signal">
+<tt class="descname">manage_signal</tt><big>(</big><em>sig</em>, <em>frame</em><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/schedulerdaemon.html#Alignak.manage_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak.manage_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage signals caught by the daemon
+signal.SIGUSR1 : dump_memory
+signal.SIGUSR2 : dump_object (nothing)
+signal.SIGTERM, signal.SIGINT : terminate process</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sig</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; signal caught by daemon</li>
+<li><strong>frame</strong> &#8211; current stack frame</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>TODO: Refactor with Daemon one</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alignak.daemons.schedulerdaemon.Alignak.properties">
+<tt class="descname">properties</tt><em class="property"> = {'modules_dir': &lt;alignak.property.PathProp object at 0x7fd17aa3ccd0&gt;, 'server_cert': &lt;alignak.property.StringProp object at 0x7fd17aa674d0&gt;, 'workdir': &lt;alignak.property.PathProp object at 0x7fd17aa3cc90&gt;, 'ca_cert': &lt;alignak.property.StringProp object at 0x7fd17aa67490&gt;, 'hard_ssl_name_check': &lt;alignak.property.BoolProp object at 0x7fd17aa67590&gt;, 'host': &lt;alignak.property.StringProp object at 0x7fd17aa3ce90&gt;, 'local_log': &lt;alignak.property.PathProp object at 0x7fd17a60acd0&gt;, 'spare': &lt;alignak.property.BoolProp object at 0x7fd17aa67650&gt;, 'user': &lt;alignak.property.StringProp object at 0x7fd17aa3cfd0&gt;, 'use_ssl': &lt;alignak.property.BoolProp object at 0x7fd17aa4a190&gt;, 'log_level': &lt;alignak.property.LogLevelProp object at 0x7fd17aa67550&gt;, 'use_local_log': &lt;alignak.property.BoolProp object at 0x7fd17aa67510&gt;, 'port': &lt;alignak.property.IntegerProp object at 0x7fd17a60ac90&gt;, 'idontcareaboutsecurity': &lt;alignak.property.BoolProp object at 0x7fd17aa675d0&gt;, 'server_key': &lt;alignak.property.StringProp object at 0x7fd17aa4a250&gt;, 'group': &lt;alignak.property.StringProp object at 0x7fd17aa4a050&gt;, 'max_queue_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa67690&gt;, 'daemon_enabled': &lt;alignak.property.BoolProp object at 0x7fd17aa67610&gt;, 'pidfile': &lt;alignak.property.PathProp object at 0x7fd17a60ac50&gt;, 'daemon_thread_pool_size': &lt;alignak.property.IntegerProp object at 0x7fd17aa676d0&gt;}</em><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.schedulerdaemon.Alignak.setup_new_conf">
+<tt class="descname">setup_new_conf</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/schedulerdaemon.html#Alignak.setup_new_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak.setup_new_conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup new conf received for scheduler</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alignak.daemons.schedulerdaemon.Alignak.what_i_managed">
+<tt class="descname">what_i_managed</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/alignak/daemons/schedulerdaemon.html#Alignak.what_i_managed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#alignak.daemons.schedulerdaemon.Alignak.what_i_managed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get my managed dict (instance id and push_flavor)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict containing instance_id key and push flavor value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-alignak.daemons">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-alignak.daemons" title="Permalink to this headline">¶</a></h2>
+<p>Daemon package init, nothing necessary to do here</p>
+</div>
+</div>
+
+
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="alignak.http.html" class="btn btn-neutral float-right" title="alignak.http package"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="alignak.bin.html" class="btn btn-neutral" title="alignak.bin package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

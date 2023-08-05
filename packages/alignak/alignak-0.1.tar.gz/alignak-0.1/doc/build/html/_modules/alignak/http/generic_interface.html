@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.http.generic_interface &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.http.generic_interface</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.http.generic_interface</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;This module provide a generic HTTP interface for all satellites.</span>
+<span class="sd">Any Alignak satellite have at least those functions exposed over network</span>
+<span class="sd">See : http://cherrypy.readthedocs.org/en/latest/tutorials.html for Cherrypy basic HTPP apps.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">cherrypy</span>
+<span class="kn">import</span> <span class="nn">cPickle</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">zlib</span>
+
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+
+
+<div class="viewcode-block" id="GenericInterface"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface">[docs]</a><span class="k">class</span> <span class="nc">GenericInterface</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Interface for inter satellites communications&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">running_id</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s">.</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100000000</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.index"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrapper to call api from /</span>
+
+<span class="sd">        :return: function list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="p">()</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.ping"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.ping">[docs]</a>    <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test the connection to the daemon. Returns: pong</span>
+
+<span class="sd">        :return: string &#39;pong&#39;</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s">&quot;pong&quot;</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.get_start_time"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.get_start_time">[docs]</a>    <span class="k">def</span> <span class="nf">get_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the start time of the daemon</span>
+
+<span class="sd">        :return: start time</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.get_running_id"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.get_running_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_running_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&#39;Get the current running id of the daemon (scheduler)&#39;</span>
+
+<span class="sd">        :return: running_ig</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_id</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+<div class="viewcode-block" id="GenericInterface.put_conf"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.put_conf">[docs]</a>    <span class="k">def</span> <span class="nf">put_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a new configuration to the daemon (internal)</span>
+
+<span class="sd">        :param conf: new conf to send</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">conf_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">new_conf</span> <span class="o">=</span> <span class="n">conf</span>  <span class="c"># Safer to lock this one also</span></div>
+    <span class="n">put_conf</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#39;post&#39;</span>
+
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.have_conf"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.have_conf">[docs]</a>    <span class="k">def</span> <span class="nf">have_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the daemon cur_conf state</span>
+
+<span class="sd">        :return: boolean indicating if the daemon has a conf</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">cur_conf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.set_log_level"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.set_log_level">[docs]</a>    <span class="k">def</span> <span class="nf">set_log_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loglevel</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the current log level in [NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL, UNKNOWN]</span>
+
+<span class="sd">        :param loglevel: a value in one of the above</span>
+<span class="sd">        :type loglevel: str</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">loglevel</span><span class="p">)</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.get_log_level"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.get_log_level">[docs]</a>    <span class="k">def</span> <span class="nf">get_log_level</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the current log level in [NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL, UNKNOWN]</span>
+
+<span class="sd">        :return: current log level</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">logging</span><span class="o">.</span><span class="n">NOTSET</span><span class="p">:</span> <span class="s">&#39;NOTSET&#39;</span><span class="p">,</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="s">&#39;DEBUG&#39;</span><span class="p">,</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span> <span class="s">&#39;INFO&#39;</span><span class="p">,</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span> <span class="s">&#39;WARNING&#39;</span><span class="p">,</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="s">&#39;ERROR&#39;</span><span class="p">,</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">:</span> <span class="s">&#39;CRITICAL&#39;</span><span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">_level</span><span class="p">,</span> <span class="s">&#39;UNKNOWN&#39;</span><span class="p">)</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.api"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.api">[docs]</a>    <span class="k">def</span> <span class="nf">api</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List the methods available on the daemon</span>
+
+<span class="sd">        :return: a list of methods available</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;__&#39;</span><span class="p">)]</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.api_full"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.api_full">[docs]</a>    <span class="k">def</span> <span class="nf">api_full</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List the api methods and their parameters</span>
+
+<span class="sd">        :return: a list of methods and parameters</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">full_api</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">fun</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="p">():</span>
+            <span class="n">full_api</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">full_api</span><span class="p">[</span><span class="n">fun</span><span class="p">][</span><span class="s">u&quot;doc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="p">)</span><span class="o">.</span><span class="n">__doc__</span>
+            <span class="n">full_api</span><span class="p">[</span><span class="n">fun</span><span class="p">][</span><span class="s">u&quot;args&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="n">spec</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="p">))</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">args</span> <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="s">&#39;self&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">defaults</span><span class="p">:</span>
+                <span class="n">a_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">defaults</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">(</span><span class="s">u&quot;No default value&quot;</span><span class="p">,)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)))</span>
+
+            <span class="n">full_api</span><span class="p">[</span><span class="n">fun</span><span class="p">][</span><span class="s">u&quot;args&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_dict</span>
+
+        <span class="n">full_api</span><span class="p">[</span><span class="s">u&quot;side_note&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&quot;When posting data you have to zlib the whole content&quot;</span> \
+                                 <span class="s">u&quot;and cPickle value. Example : &quot;</span> \
+                                 <span class="s">u&quot;POST /set_log_level &quot;</span> \
+                                 <span class="s">u&quot;zlib.compress({&#39;loglevel&#39; : cPickle.dumps(&#39;INFO&#39;)})&quot;</span>
+
+        <span class="k">return</span> <span class="n">full_api</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.remove_from_conf"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.remove_from_conf">[docs]</a>    <span class="k">def</span> <span class="nf">remove_from_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sched_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove a scheduler connection (internal)</span>
+
+<span class="sd">        :param sched_id: scheduler id to remove</span>
+<span class="sd">        :type sched_id: int</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">conf_lock</span><span class="p">:</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.what_i_managed"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.what_i_managed">[docs]</a>    <span class="k">def</span> <span class="nf">what_i_managed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Arbiter ask me which scheduler id I manage</span>
+
+<span class="sd">        :return: managed configuration ids</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;The arbiter asked me what I manage. It&#39;s </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">what_i_managed</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;The arbiter asked me what I manage. It&#39;s </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">what_i_managed</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">what_i_managed</span><span class="p">()</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.wait_new_conf"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.wait_new_conf">[docs]</a>    <span class="k">def</span> <span class="nf">wait_new_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ask the daemon to drop its configuration and wait for a new one</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">conf_lock</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Arbiter wants me to wait for a new configuration&quot;</span><span class="p">)</span>
+            <span class="c"># Clear can occur while setting up a new conf and lead to error.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">schedulers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">cur_conf</span> <span class="o">=</span> <span class="bp">None</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.get_external_commands"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.get_external_commands">[docs]</a>    <span class="k">def</span> <span class="nf">get_external_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the external commands from the daemon (internal)</span>
+<span class="sd">        Use a lock for this call (not a global one, just for this method)</span>
+
+<span class="sd">        :return: Pickled external command list</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">external_commands_lock</span><span class="p">:</span>
+            <span class="n">cmds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get_external_commands</span><span class="p">()</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cmds</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">raw</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+<div class="viewcode-block" id="GenericInterface.push_actions"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.push_actions">[docs]</a>    <span class="k">def</span> <span class="nf">push_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">sched_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get new actions from scheduler(internal)</span>
+
+<span class="sd">        :param actions: list of action to add</span>
+<span class="sd">        :type actions: list</span>
+<span class="sd">        :param sched_id: id of the scheduler sending actions</span>
+<span class="sd">        :type sched_id: int</span>
+<span class="sd">        :return:None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_actions</span><span class="p">(</span><span class="n">actions</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sched_id</span><span class="p">))</span></div>
+    <span class="n">push_actions</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#39;post&#39;</span>
+
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.get_returns"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.get_returns">[docs]</a>    <span class="k">def</span> <span class="nf">get_returns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sched_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get actions returns (serialized)</span>
+<span class="sd">        for the scheduler with _id = sched_id</span>
+
+<span class="sd">        :param sched_id: id of the scheduler</span>
+<span class="sd">        :type sched_id: int</span>
+<span class="sd">        :return: serialized list</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">lock</span><span class="p">:</span>
+            <span class="c"># print &quot;A scheduler ask me the returns&quot;, sched_id</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get_return_for_passive</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sched_id</span><span class="p">))</span>
+            <span class="c"># print &quot;Send mack&quot;, len(ret), &quot;returns&quot;</span>
+            <span class="k">return</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.get_broks"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.get_broks">[docs]</a>    <span class="k">def</span> <span class="nf">get_broks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bname</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get broks from the daemon</span>
+
+<span class="sd">        :return: Brok list serialized and b64encoded</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">lock</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">get_broks</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">zlib</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">cPickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+</div>
+    <span class="nd">@cherrypy.expose</span>
+    <span class="nd">@cherrypy.tools.json_out</span><span class="p">()</span>
+<div class="viewcode-block" id="GenericInterface.get_raw_stats"><a class="viewcode-back" href="../../../reference/alignak.http.html#alignak.http.generic_interface.GenericInterface.get_raw_stats">[docs]</a>    <span class="k">def</span> <span class="nf">get_raw_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get raw stats from the daemon</span>
+
+<span class="sd">        :return: daemon stats</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">sched_id</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">schedulers</span><span class="p">:</span>
+            <span class="n">sched</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">schedulers</span><span class="p">[</span><span class="n">sched_id</span><span class="p">]</span>
+            <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">sched_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span>
+            <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">q_by_mod</span><span class="p">:</span>
+                <span class="c"># In workers we&#39;ve got actions send to queue - queue size</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">q_id</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">q_by_mod</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s">&#39;scheduler_name&#39;</span><span class="p">:</span> <span class="n">sched</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">],</span>
+                        <span class="s">&#39;module&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
+                        <span class="s">&#39;queue_number&#39;</span><span class="p">:</span> <span class="n">q_id</span><span class="p">,</span>
+                        <span class="s">&#39;queue_size&#39;</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">(),</span>
+                        <span class="s">&#39;return_queue_len&#39;</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">get_returns_queue_len</span><span class="p">()})</span>
+        <span class="k">return</span> <span class="n">res</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

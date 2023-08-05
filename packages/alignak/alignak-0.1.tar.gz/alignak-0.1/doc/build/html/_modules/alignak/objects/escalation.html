@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.objects.escalation &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.objects.escalation</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.objects.escalation</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     aviau, alexandre.viau@savoirfairelinux.com</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Gerhard Lausser, gerhard.lausser@consol.de</span>
+<span class="c">#     Andrew McGilvray, amcgilvray@kixeye.com</span>
+<span class="c">#     Christophe Simon, geektophe@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Romain Forlot, rforlot@yahoo.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;This module provides Escalation and Escalations classes that</span>
+<span class="sd">implements escalation for notification. Basically used for parsing.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">alignak.objects.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Items</span>
+
+<span class="kn">from</span> <span class="nn">alignak.util</span> <span class="kn">import</span> <span class="n">strip_and_uniq</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">BoolProp</span><span class="p">,</span> <span class="n">IntegerProp</span><span class="p">,</span> <span class="n">StringProp</span><span class="p">,</span> <span class="n">ListProp</span>
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+
+
+<div class="viewcode-block" id="Escalation"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalation">[docs]</a><span class="k">class</span> <span class="nc">Escalation</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Escalation class is used to implement notification escalation</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c"># zero is always special in database, so we do not take risk here</span>
+    <span class="n">my_type</span> <span class="o">=</span> <span class="s">&#39;escalation&#39;</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;escalation_name&#39;</span><span class="p">:</span>      <span class="n">StringProp</span><span class="p">(),</span>
+        <span class="s">&#39;first_notification&#39;</span><span class="p">:</span>   <span class="n">IntegerProp</span><span class="p">(),</span>
+        <span class="s">&#39;last_notification&#39;</span><span class="p">:</span>    <span class="n">IntegerProp</span><span class="p">(),</span>
+        <span class="s">&#39;first_notification_time&#39;</span><span class="p">:</span> <span class="n">IntegerProp</span><span class="p">(),</span>
+        <span class="s">&#39;last_notification_time&#39;</span><span class="p">:</span> <span class="n">IntegerProp</span><span class="p">(),</span>
+        <span class="c"># by default don&#39;t use the notification_interval defined in</span>
+        <span class="c"># the escalation, but the one defined by the object</span>
+        <span class="s">&#39;notification_interval&#39;</span><span class="p">:</span> <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s">&#39;escalation_period&#39;</span><span class="p">:</span>    <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;escalation_options&#39;</span><span class="p">:</span>   <span class="n">ListProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">],</span> <span class="n">split_on_coma</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s">&#39;contacts&#39;</span><span class="p">:</span>             <span class="n">ListProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[],</span> <span class="n">split_on_coma</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="s">&#39;contact_groups&#39;</span><span class="p">:</span>       <span class="n">ListProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[],</span> <span class="n">split_on_coma</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="n">running_properties</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">running_properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">running_properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;time_based&#39;</span><span class="p">:</span> <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+    <span class="p">})</span>
+
+    <span class="n">special_properties</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;contacts&#39;</span><span class="p">,</span> <span class="s">&#39;contact_groups&#39;</span><span class="p">,</span>
+                          <span class="s">&#39;first_notification_time&#39;</span><span class="p">,</span> <span class="s">&#39;last_notification_time&#39;</span><span class="p">)</span>
+    <span class="n">special_properties_time_based</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;contacts&#39;</span><span class="p">,</span> <span class="s">&#39;contact_groups&#39;</span><span class="p">,</span>
+                                     <span class="s">&#39;first_notification&#39;</span><span class="p">,</span> <span class="s">&#39;last_notification&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Escalation.get_name"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalation.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Accessor to escalation_name attribute</span>
+
+<span class="sd">        :return: escalation name</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">escalation_name</span>
+</div>
+<div class="viewcode-block" id="Escalation.is_eligible"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalation.is_eligible">[docs]</a>    <span class="k">def</span> <span class="nf">is_eligible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">notif_number</span><span class="p">,</span> <span class="n">in_notif_time</span><span class="p">,</span> <span class="n">interval</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if the escalation is eligible (notification is escalated or not)</span>
+
+<span class="sd">        Escalation is NOT eligible in ONE of the following condition is fulfilled::</span>
+
+<span class="sd">        * escalation is not time based and notification number not in range</span>
+<span class="sd">          [first_notification;last_notification] (if last_notif == 0, it&#39;s infinity)</span>
+<span class="sd">        * escalation is time based and notification time not in range</span>
+<span class="sd">          [first_notification_time;last_notification_time] (if last_notif_time == 0, it&#39;s infinity)</span>
+<span class="sd">        * status does not matches escalation_options (&#39;WARNING&#39; &lt;=&gt; &#39;w&#39; ...)</span>
+<span class="sd">        * escalation_period is not legit for this time (now usually)</span>
+
+<span class="sd">        :param timestamp: timestamp to check if timeperiod is valid</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :param status: item status (one of the small_states key)</span>
+<span class="sd">        :type status: str</span>
+<span class="sd">        :param notif_number: current notification number</span>
+<span class="sd">        :type notif_number: int</span>
+<span class="sd">        :param in_notif_time: current notification time</span>
+<span class="sd">        :type in_notif_time: int</span>
+<span class="sd">        :param interval: time interval length</span>
+<span class="sd">        :type interval: int</span>
+<span class="sd">        :return: True if no condition has been fulfilled, otherwise False</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">small_states</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;WARNING&#39;</span><span class="p">:</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="s">&#39;UNKNOWN&#39;</span><span class="p">:</span> <span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;CRITICAL&#39;</span><span class="p">:</span> <span class="s">&#39;c&#39;</span><span class="p">,</span>
+            <span class="s">&#39;RECOVERY&#39;</span><span class="p">:</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;FLAPPING&#39;</span><span class="p">:</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;DOWNTIME&#39;</span><span class="p">:</span> <span class="s">&#39;s&#39;</span><span class="p">,</span>
+            <span class="s">&#39;DOWN&#39;</span><span class="p">:</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;UNREACHABLE&#39;</span><span class="p">:</span> <span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;OK&#39;</span><span class="p">:</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="s">&#39;UP&#39;</span><span class="p">:</span> <span class="s">&#39;o&#39;</span>
+        <span class="p">}</span>
+
+        <span class="c"># If we are not time based, we check notification numbers:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_based</span><span class="p">:</span>
+            <span class="c"># Begin with the easy cases</span>
+            <span class="k">if</span> <span class="n">notif_number</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_notification</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+            <span class="c"># self.last_notification = 0 mean no end</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_notification</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">notif_number</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_notification</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+        <span class="c"># Else we are time based, we must check for the good value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Begin with the easy cases</span>
+            <span class="k">if</span> <span class="n">in_notif_time</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_notification_time</span> <span class="o">*</span> <span class="n">interval</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+            <span class="c"># self.last_notification = 0 mean no end</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_notification_time</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> \
+                    <span class="n">in_notif_time</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_notification_time</span> <span class="o">*</span> <span class="n">interval</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># If our status is not good, we bail out too</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">small_states</span> <span class="ow">and</span> <span class="n">small_states</span><span class="p">[</span><span class="n">status</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">escalation_options</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># Maybe the time is not in our escalation_period</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">escalation_period</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> \
+                <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">escalation_period</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># Ok, I do not see why not escalade. So it&#39;s True :)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="Escalation.get_next_notif_time"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalation.get_next_notif_time">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_notif_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_wished</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">creation_time</span><span class="p">,</span> <span class="n">interval</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the next notification time for the escalation</span>
+<span class="sd">        Only legit for time based escalation</span>
+
+<span class="sd">        :param t_wished: time we would like to send a new notification (usually now)</span>
+<span class="sd">        :type t_wished:</span>
+<span class="sd">        :param status: status of the host or service</span>
+<span class="sd">        :type status:</span>
+<span class="sd">        :param creation_time: time the notification was created</span>
+<span class="sd">        :type creation_time:</span>
+<span class="sd">        :param interval: time interval length</span>
+<span class="sd">        :type interval: int</span>
+<span class="sd">        :return: timestamp for next notification or None</span>
+<span class="sd">        :rtype: int | None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">small_states</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;WARNING&#39;</span><span class="p">:</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="s">&#39;UNKNOWN&#39;</span><span class="p">:</span> <span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;CRITICAL&#39;</span><span class="p">:</span> <span class="s">&#39;c&#39;</span><span class="p">,</span>
+                        <span class="s">&#39;RECOVERY&#39;</span><span class="p">:</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;FLAPPING&#39;</span><span class="p">:</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;DOWNTIME&#39;</span><span class="p">:</span> <span class="s">&#39;s&#39;</span><span class="p">,</span>
+                        <span class="s">&#39;DOWN&#39;</span><span class="p">:</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;UNREACHABLE&#39;</span><span class="p">:</span> <span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;OK&#39;</span><span class="p">:</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="s">&#39;UP&#39;</span><span class="p">:</span> <span class="s">&#39;o&#39;</span><span class="p">}</span>
+
+        <span class="c"># If we are not time based, we bail out!</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_based</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+
+        <span class="c"># Check if we are valid</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">small_states</span> <span class="ow">and</span> <span class="n">small_states</span><span class="p">[</span><span class="n">status</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">escalation_options</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+
+        <span class="c"># Look for the min of our future validity</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_notification_time</span> <span class="o">*</span> <span class="n">interval</span> <span class="o">+</span> <span class="n">creation_time</span>
+
+        <span class="c"># If we are after the classic next time, we are not asking for a smaller interval</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">t_wished</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+
+        <span class="c"># Maybe the time we found is not a valid one....</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">escalation_period</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">escalation_period</span><span class="o">.</span><span class="n">is_time_valid</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">None</span>
+
+        <span class="c"># Ok so I ask for my start as a possibility for the next notification time</span>
+        <span class="k">return</span> <span class="n">start</span>
+</div>
+<div class="viewcode-block" id="Escalation.is_correct"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalation.is_correct">[docs]</a>    <span class="k">def</span> <span class="nf">is_correct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if all elements got a good configuration</span>
+
+<span class="sd">        :return: True if the configuration is correct, otherwise False</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+
+        <span class="c"># If we got the _time parameters, we are time based. Unless, we are not :)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;first_notification_time&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;last_notification_time&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">time_based</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">special_properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">special_properties_time_based</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c"># classic ones</span>
+            <span class="n">special_properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">special_properties</span>
+
+        <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">prop</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">special_properties</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span> <span class="ow">and</span> <span class="n">entry</span><span class="o">.</span><span class="n">required</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">: I do not have </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">prop</span><span class="p">)</span>
+                    <span class="n">state</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c"># Bad boy...</span>
+
+        <span class="c"># Raised all previously saw errors like unknown contacts and co</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration_errors</span> <span class="o">!=</span> <span class="p">[]:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">for</span> <span class="n">err</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration_errors</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+        <span class="c"># Ok now we manage special cases...</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;contacts&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;contact_groups&#39;</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">: I do not have contacts nor contact_groups&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># If time_based or not, we do not check all properties</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_based</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;first_notification_time&#39;</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">: I do not have first_notification_time&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;last_notification_time&#39;</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">: I do not have last_notification_time&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c"># we check classical properties</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;first_notification&#39;</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">: I do not have first_notification&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;last_notification&#39;</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">: I do not have last_notification&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="k">return</span> <span class="n">state</span>
+
+</div></div>
+<div class="viewcode-block" id="Escalations"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalations">[docs]</a><span class="k">class</span> <span class="nc">Escalations</span><span class="p">(</span><span class="n">Items</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Escalations manage a list of Escalation objects, used for parsing configuration</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name_property</span> <span class="o">=</span> <span class="s">&quot;escalation_name&quot;</span>
+    <span class="n">inner_class</span> <span class="o">=</span> <span class="n">Escalation</span>
+
+<div class="viewcode-block" id="Escalations.linkify"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalations.linkify">[docs]</a>    <span class="k">def</span> <span class="nf">linkify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeperiods</span><span class="p">,</span> <span class="n">contacts</span><span class="p">,</span> <span class="n">services</span><span class="p">,</span> <span class="n">hosts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create link between objects::</span>
+
+<span class="sd">         * escalation -&gt; host</span>
+<span class="sd">         * escalation -&gt; service</span>
+<span class="sd">         * escalation -&gt; timeperiods</span>
+<span class="sd">         * escalation -&gt; contact</span>
+
+<span class="sd">        :param timeperiods: timeperiods to link</span>
+<span class="sd">        :type timeperiods: alignak.objects.timeperiod.Timeperiods</span>
+<span class="sd">        :param contacts: contacts to link</span>
+<span class="sd">        :type contacts: alignak.objects.contact.Contacts</span>
+<span class="sd">        :param services: services to link</span>
+<span class="sd">        :type services: alignak.objects.service.Services</span>
+<span class="sd">        :param hosts: hosts to link</span>
+<span class="sd">        :type hosts: alignak.objects.host.Hosts</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linkify_with_timeperiods</span><span class="p">(</span><span class="n">timeperiods</span><span class="p">,</span> <span class="s">&#39;escalation_period&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linkify_with_contacts</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linkify_es_by_s</span><span class="p">(</span><span class="n">services</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linkify_es_by_h</span><span class="p">(</span><span class="n">hosts</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Escalations.add_escalation"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalations.add_escalation">[docs]</a>    <span class="k">def</span> <span class="nf">add_escalation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">escalation</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrapper for add_item method</span>
+
+<span class="sd">        :param escalation: escalation to add to item dict</span>
+<span class="sd">        :type escalation: alignak.objects.escalation.Escalation</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">escalation</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Escalations.linkify_es_by_s"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalations.linkify_es_by_s">[docs]</a>    <span class="k">def</span> <span class="nf">linkify_es_by_s</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">services</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add each escalation object into service.escalation attribute</span>
+
+<span class="sd">        :param services: service list, used to look for a specific service</span>
+<span class="sd">        :type services: alignak.objects.service.Services</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">escal</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="c"># If no host, no hope of having a service</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">escal</span><span class="p">,</span> <span class="s">&#39;host_name&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">escal</span><span class="p">,</span> <span class="s">&#39;service_description&#39;</span><span class="p">)):</span>
+                <span class="k">continue</span>
+            <span class="n">es_hname</span><span class="p">,</span> <span class="n">sdesc</span> <span class="o">=</span> <span class="n">escal</span><span class="o">.</span><span class="n">host_name</span><span class="p">,</span> <span class="n">escal</span><span class="o">.</span><span class="n">service_description</span>
+            <span class="k">if</span> <span class="s">&#39;&#39;</span> <span class="ow">in</span> <span class="p">(</span><span class="n">es_hname</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">sdesc</span><span class="o">.</span><span class="n">strip</span><span class="p">()):</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">hname</span> <span class="ow">in</span> <span class="n">strip_and_uniq</span><span class="p">(</span><span class="n">es_hname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">sdesc</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+                    <span class="n">slist</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">find_srvs_by_hostname</span><span class="p">(</span><span class="n">hname</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">slist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">serv</span> <span class="ow">in</span> <span class="n">slist</span><span class="p">:</span>
+                            <span class="n">serv</span><span class="o">.</span><span class="n">escalations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">escal</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">sname</span> <span class="ow">in</span> <span class="n">strip_and_uniq</span><span class="p">(</span><span class="n">sdesc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)):</span>
+                        <span class="n">serv</span> <span class="o">=</span> <span class="n">services</span><span class="o">.</span><span class="n">find_srv_by_name_and_hostname</span><span class="p">(</span><span class="n">hname</span><span class="p">,</span> <span class="n">sname</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">serv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                            <span class="c"># print &quot;Linking service&quot;, s.get_name(), &#39;with me&#39;, es.get_name()</span>
+                            <span class="n">serv</span><span class="o">.</span><span class="n">escalations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">escal</span><span class="p">)</span>
+                            <span class="c"># print &quot;Now service&quot;, s.get_name(), &#39;have&#39;, s.escalations</span>
+</div>
+<div class="viewcode-block" id="Escalations.linkify_es_by_h"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalations.linkify_es_by_h">[docs]</a>    <span class="k">def</span> <span class="nf">linkify_es_by_h</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hosts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add each escalation object into host.escalation attribute</span>
+
+<span class="sd">        :param hosts: host list, used to look for a specific host</span>
+<span class="sd">        :type hosts: alignak.objects.host.Hosts</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">escal</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="c"># If no host, no hope of having a service</span>
+            <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">escal</span><span class="p">,</span> <span class="s">&#39;host_name&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">escal</span><span class="o">.</span><span class="n">host_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span>
+                    <span class="ow">or</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">escal</span><span class="p">,</span> <span class="s">&#39;service_description&#39;</span><span class="p">)</span>
+                        <span class="ow">and</span> <span class="n">escal</span><span class="o">.</span><span class="n">service_description</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">)):</span>
+                <span class="k">continue</span>
+            <span class="c"># I must be NOT a escalation on for service</span>
+            <span class="k">for</span> <span class="n">hname</span> <span class="ow">in</span> <span class="n">strip_and_uniq</span><span class="p">(</span><span class="n">escal</span><span class="o">.</span><span class="n">host_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)):</span>
+                <span class="n">host</span> <span class="o">=</span> <span class="n">hosts</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">hname</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="c"># print &quot;Linking host&quot;, h.get_name(), &#39;with me&#39;, es.get_name()</span>
+                    <span class="n">host</span><span class="o">.</span><span class="n">escalations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">escal</span><span class="p">)</span>
+                    <span class="c"># print &quot;Now host&quot;, h.get_name(), &#39;have&#39;, h.escalations</span>
+</div>
+<div class="viewcode-block" id="Escalations.explode"><a class="viewcode-back" href="../../../reference/alignak.objects.html#alignak.objects.escalation.Escalations.explode">[docs]</a>    <span class="k">def</span> <span class="nf">explode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hosts</span><span class="p">,</span> <span class="n">hostgroups</span><span class="p">,</span> <span class="n">contactgroups</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loop over all escalation and explode hostsgroups in host</span>
+<span class="sd">        and contactgroups in contacts</span>
+
+<span class="sd">        Call Item.explode_host_groups_into_hosts and Item.explode_contact_groups_into_contacts</span>
+
+<span class="sd">        :param hosts: host list to explode</span>
+<span class="sd">        :type hosts: alignak.objects.host.Hosts</span>
+<span class="sd">        :param hostgroups: hostgroup list to explode</span>
+<span class="sd">        :type hostgroups: alignak.objects.hostgroup.Hostgroups</span>
+<span class="sd">        :param contactgroups: contactgroup list to explode</span>
+<span class="sd">        :type contactgroups: alignak.objects.contactgroup.Contactgroups</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="c"># items::explode_host_groups_into_hosts</span>
+            <span class="c"># take all hosts from our hostgroup_name into our host_name property</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">explode_host_groups_into_hosts</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">hosts</span><span class="p">,</span> <span class="n">hostgroups</span><span class="p">)</span>
+
+            <span class="c"># items::explode_contact_groups_into_contacts</span>
+            <span class="c"># take all contacts from our contact_groups into our contact property</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">explode_contact_groups_into_contacts</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">contactgroups</span><span class="p">)</span></div></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

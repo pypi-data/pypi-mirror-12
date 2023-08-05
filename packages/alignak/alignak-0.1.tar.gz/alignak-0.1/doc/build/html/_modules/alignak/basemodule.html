@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.basemodule &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.basemodule</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.basemodule</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     xkilian, fmikus@acktomic.com</span>
+<span class="c">#     Guillaume Bour, guillaume@bour.cc</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Thibault Cohen, titilambert@gmail.com</span>
+<span class="c">#     David Durieux, d.durieux@siprossii.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Romain Forlot, rforlot@yahoo.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">&quot;&quot;&quot; This python module contains the class BaseModule</span>
+<span class="sd">that alignak modules will subclass</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Queue</span><span class="p">,</span> <span class="n">Process</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">alignak.log</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">alignak.misc.common</span> <span class="kn">import</span> <span class="n">setproctitle</span>
+
+
+<span class="c"># The `properties dict defines what the module can do and</span>
+<span class="c"># if it&#39;s an external module or not.</span>
+<span class="c"># pylint: disable=C0103</span>
+<span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c"># name of the module type ; to distinguish between them:</span>
+    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+
+    <span class="c"># is the module &quot;external&quot; (external means here a daemon module)?</span>
+    <span class="s">&#39;external&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+
+    <span class="c"># Possible configuration phases where the module is involved:</span>
+    <span class="s">&#39;phases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;configuration&#39;</span><span class="p">,</span> <span class="s">&#39;late_configuration&#39;</span><span class="p">,</span> <span class="s">&#39;running&#39;</span><span class="p">,</span> <span class="s">&#39;retention&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="BaseModule"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule">[docs]</a><span class="k">class</span> <span class="nc">BaseModule</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is the base class for the Alignak modules.</span>
+<span class="sd">    Modules can be used by the different Alignak daemons/services</span>
+<span class="sd">    for different tasks.</span>
+<span class="sd">    Example of task that a Alignak module can do:</span>
+
+<span class="sd">    - load additional configuration objects.</span>
+<span class="sd">    - recurrently save hosts/services status/perfdata</span>
+<span class="sd">       information in different format.</span>
+<span class="sd">    - ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod_conf</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate a new module.</span>
+<span class="sd">        There can be many instance of the same type.</span>
+<span class="sd">        &#39;mod_conf&#39; is module configuration object</span>
+<span class="sd">        for this new module instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">myconf</span> <span class="o">=</span> <span class="n">mod_conf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">mod_conf</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="c"># We can have sub modules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod_conf</span><span class="p">,</span> <span class="s">&#39;modules&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">mod_conf</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c"># TODO: choose between &#39;props&#39; or &#39;properties&#39;..</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interrupted</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_external</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;external&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+        <span class="c"># though a module defined with no phase is quite useless .</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;phases&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+        <span class="c"># the queue the module will receive data to manage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_q</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c"># the queue the module will put its result data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">from_q</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">illegal_char</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;[^\w-]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_try</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c"># We want to know where we are load from? (broker, scheduler, etc)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loaded_into</span> <span class="o">=</span> <span class="s">&#39;unknown&#39;</span>
+
+<div class="viewcode-block" id="BaseModule.init"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Handle this module &quot;post&quot; init ; just before it&#39;ll be started.</span>
+<span class="sd">        Like just open necessaries file(s), database(s),</span>
+<span class="sd">        or whatever the module will need.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="BaseModule.set_loaded_into"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.set_loaded_into">[docs]</a>    <span class="k">def</span> <span class="nf">set_loaded_into</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemon_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter for loaded_into attribute</span>
+<span class="sd">        Used to know what daemon has loaded this module</span>
+
+<span class="sd">        :param daemon_name: value to set</span>
+<span class="sd">        :type daemon_name: str</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loaded_into</span> <span class="o">=</span> <span class="n">daemon_name</span>
+</div>
+<div class="viewcode-block" id="BaseModule.create_queues"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.create_queues">[docs]</a>    <span class="k">def</span> <span class="nf">create_queues</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The manager is None on android, but a true Manager() elsewhere</span>
+<span class="sd">        Create the shared queues that will be used by alignak daemon</span>
+<span class="sd">        process and this module process.</span>
+<span class="sd">        But clear queues if they were already set before recreating new one.</span>
+
+<span class="sd">        :param manager: None on android, otherwise Manager() object</span>
+<span class="sd">        :type manager: None | object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_queues</span><span class="p">(</span><span class="n">manager</span><span class="p">)</span>
+        <span class="c"># If no Manager() object, go with classic Queue()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">manager</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">from_q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">to_q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">from_q</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">to_q</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="BaseModule.clear_queues"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.clear_queues">[docs]</a>    <span class="k">def</span> <span class="nf">clear_queues</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Release the resources associated to the queues of this instance</span>
+
+<span class="sd">        :param manager: None on android, otherwise Manager() object</span>
+<span class="sd">        :type manager: None | object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">queue</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_q</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_q</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">queue</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c"># If we got no manager, we direct call the clean</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">manager</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">join_thread</span><span class="p">()</span>
+            <span class="c"># else:</span>
+            <span class="c">#    q._callmethod(&#39;close&#39;)</span>
+            <span class="c">#    q._callmethod(&#39;join_thread&#39;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_q</span> <span class="o">=</span> <span class="bp">None</span>
+</div>
+<div class="viewcode-block" id="BaseModule.start_module"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.start_module">[docs]</a>    <span class="k">def</span> <span class="nf">start_module</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrapper for _main function.</span>
+<span class="sd">        Catch and raise any exception occurring in the main function</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_main</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;[</span><span class="si">%s</span><span class="s">] </span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+            <span class="k">raise</span> <span class="n">exp</span>
+</div>
+<div class="viewcode-block" id="BaseModule.start"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">http_daemon</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Actually restart the process if the module is external</span>
+<span class="sd">        Try first to stop the process and create a new Process instance</span>
+<span class="sd">        with target start_module.</span>
+<span class="sd">        Finally start process.</span>
+
+<span class="sd">        :param http_daemon: Not used here but can be used in other modules</span>
+<span class="sd">        :type http_daemon: None | object</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_external</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop_process</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;Starting external process for instance </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_module</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">())</span>
+
+        <span class="c"># Under windows we should not call start() on an object that got</span>
+        <span class="c"># its process as object, so we remove it and we set it in a earlier</span>
+        <span class="c"># start</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s">&#39;process&#39;</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="n">proc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="c"># We save the process data AFTER the fork()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="n">proc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s">&#39;process&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">proc</span>  <span class="c"># TODO: temporary</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> is now started ; pid=</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">proc</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>
+</div>
+    <span class="k">def</span> <span class="nf">__kill</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sometime terminate() is not enough, we must &quot;help&quot;</span>
+<span class="sd">        external modules to die...</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&#39;nt&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Ok, let him 1 second before really KILL IT</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c"># You do not let me another choice guy...</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGKILL</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseModule.stop_process"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.stop_process">[docs]</a>    <span class="k">def</span> <span class="nf">stop_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Request the module process to stop and release it</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;I&#39;m stopping module </span><span class="si">%r</span><span class="s"> (pid=</span><span class="si">%s</span><span class="s">)&quot;</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%r</span><span class="s"> is still alive normal kill, I help it to die&quot;</span><span class="p">,</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__kill</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%r</span><span class="s"> still alive after brutal kill, I leave it.&quot;</span><span class="p">,</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="bp">None</span>
+</div>
+<div class="viewcode-block" id="BaseModule.get_name"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrapper to access name attribute</span>
+
+<span class="sd">        :return: module name</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+</div>
+<div class="viewcode-block" id="BaseModule.has"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.has">[docs]</a>    <span class="k">def</span> <span class="nf">has</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The classic has: do we have a prop or not?</span>
+
+<span class="sd">        :param prop: property name</span>
+<span class="sd">        :type prop: str</span>
+<span class="sd">        :return: True if has a property, otherwise False</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s">&quot;{s.__class__.__name__} is deprecated, please use &quot;</span>
+            <span class="s">&quot;`hasattr(your_object, attr)` instead. This has() method will &quot;</span>
+            <span class="s">&quot;be removed in a later version.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="bp">self</span><span class="p">),</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="BaseModule.want_brok"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.want_brok">[docs]</a>    <span class="k">def</span> <span class="nf">want_brok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generic function to check if the module need a specific brok</span>
+<span class="sd">        In this case it is always True</span>
+
+<span class="sd">        :param b: brok to check</span>
+<span class="sd">        :type b: alignak.brok.Brok</span>
+<span class="sd">        :return: True if the module wants the brok, False otherwise</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="BaseModule.manage_brok"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.manage_brok">[docs]</a>    <span class="k">def</span> <span class="nf">manage_brok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brok</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Request the module to manage the given brok.</span>
+<span class="sd">        There a lot of different possible broks to manage.</span>
+
+<span class="sd">        :param brok:</span>
+<span class="sd">        :type brok:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">manage</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;manage_&#39;</span> <span class="o">+</span> <span class="n">brok</span><span class="o">.</span><span class="n">type</span> <span class="o">+</span> <span class="s">&#39;_brok&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">manage</span><span class="p">:</span>
+            <span class="c"># Be sure the brok is prepared before call it</span>
+            <span class="n">brok</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">manage</span><span class="p">(</span><span class="n">brok</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="BaseModule.manage_signal"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.manage_signal">[docs]</a>    <span class="k">def</span> <span class="nf">manage_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generic function to handle signals</span>
+<span class="sd">        Set interrupted attribute to True and return</span>
+
+<span class="sd">        :param sig: signal sent</span>
+<span class="sd">        :type sig:</span>
+<span class="sd">        :param frame: frame before catching signal</span>
+<span class="sd">        :type frame:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interrupted</span> <span class="o">=</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="BaseModule.set_signal_handler"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.set_signal_handler">[docs]</a>    <span class="k">def</span> <span class="nf">set_signal_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the signal handler function (manage_signal)</span>
+<span class="sd">        for sigs signals or signal.SIGINT and signal.SIGTERM if sigs is None</span>
+
+<span class="sd">        :param sigs: signals to handle</span>
+<span class="sd">        :type sigs:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">sigs</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">sigs</span> <span class="o">=</span> <span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">sigs</span><span class="p">:</span>
+            <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">manage_signal</span><span class="p">)</span>
+</div>
+    <span class="n">set_exit_handler</span> <span class="o">=</span> <span class="n">set_signal_handler</span>
+
+<div class="viewcode-block" id="BaseModule.do_stop"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.do_stop">[docs]</a>    <span class="k">def</span> <span class="nf">do_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called just before the module will exit</span>
+<span class="sd">        Put in this method all you need to cleanly</span>
+<span class="sd">        release all open resources used by your module</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="BaseModule.do_loop_turn"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.do_loop_turn">[docs]</a>    <span class="k">def</span> <span class="nf">do_loop_turn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;For external modules only:</span>
+<span class="sd">        implement in this method the body of you main loop</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="BaseModule.set_proctitle"><a class="viewcode-back" href="../../reference/alignak.html#alignak.basemodule.BaseModule.set_proctitle">[docs]</a>    <span class="k">def</span> <span class="nf">set_proctitle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrapper for setproctitle method</span>
+
+<span class="sd">        :param name: module name</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">setproctitle</span><span class="p">(</span><span class="s">&quot;alignak-</span><span class="si">%s</span><span class="s"> module: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loaded_into</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+</div>
+    <span class="k">def</span> <span class="nf">_main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;module &quot;main&quot; method. Only used by external modules.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_proctitle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_signal_handler</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">[</span><span class="si">%d</span><span class="s">]]: Now running..&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+        <span class="c"># Will block here!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_stop</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">]: exiting now..&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="c"># TODO: apparently some modules would uses &quot;work&quot; as the main method??</span>
+    <span class="n">work</span> <span class="o">=</span> <span class="n">_main</span></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

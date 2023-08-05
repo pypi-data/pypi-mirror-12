@@ -1,0 +1,834 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.macroresolver &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.macroresolver</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.macroresolver</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Gerhard Lausser, gerhard.lausser@consol.de</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Frédéric Pégé, frederic.pege@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Olivier Hanesse, olivier.hanesse@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Zoran Zaric, zz@zoranzaric.de</span>
+<span class="c">#     David Gil, david.gil.marcos@gmail.com</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This class resolve Macro in commands by looking at the macros list</span>
+<span class="sd">in Class of elements. It give a property that call be callable or not.</span>
+<span class="sd">It not callable, it&#39;s a simple property and replace the macro with the value</span>
+<span class="sd">If callable, it&#39;s a method that is called to get the value. for example, to</span>
+<span class="sd">get the number of service in a host, you call a method to get the</span>
+<span class="sd">len(host.services)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">alignak.borg</span> <span class="kn">import</span> <span class="n">Borg</span>
+
+
+<div class="viewcode-block" id="MacroResolver"><a class="viewcode-back" href="../../reference/alignak.html#alignak.macroresolver.MacroResolver">[docs]</a><span class="k">class</span> <span class="nc">MacroResolver</span><span class="p">(</span><span class="n">Borg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;MacroResolver class is used to resolve macros (in command call). See above for details&quot;&quot;&quot;</span>
+
+    <span class="n">my_type</span> <span class="o">=</span> <span class="s">&#39;macroresolver&#39;</span>
+    <span class="c"># Global macros</span>
+    <span class="n">macros</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;TOTALHOSTSUP&#39;</span><span class="p">:</span>         <span class="s">&#39;_get_total_hosts_up&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALHOSTSDOWN&#39;</span><span class="p">:</span>       <span class="s">&#39;_get_total_hosts_down&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALHOSTSUNREACHABLE&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_hosts_unreachable&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALHOSTSDOWNUNHANDLED&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_hosts_unhandled&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALHOSTSUNREACHABLEUNHANDLED&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_hosts_unreachable_unhandled&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALHOSTPROBLEMS&#39;</span><span class="p">:</span>    <span class="s">&#39;_get_total_host_problems&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALHOSTPROBLEMSUNHANDLED&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_host_problems_unhandled&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICESOK&#39;</span><span class="p">:</span>      <span class="s">&#39;_get_total_service_ok&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICESWARNING&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_services_warning&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICESCRITICAL&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_services_critical&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICESUNKNOWN&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_services_unknown&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICESWARNINGUNHANDLED&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_services_warning_unhandled&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICESCRITICALUNHANDLED&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_services_critical_unhandled&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICESUNKNOWNUNHANDLED&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_services_unknown_unhandled&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICEPROBLEMS&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_service_problems&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TOTALSERVICEPROBLEMSUNHANDLED&#39;</span><span class="p">:</span> <span class="s">&#39;_get_total_service_problems_unhandled&#39;</span><span class="p">,</span>
+        <span class="s">&#39;LONGDATETIME&#39;</span><span class="p">:</span>         <span class="s">&#39;_get_long_date_time&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SHORTDATETIME&#39;</span><span class="p">:</span>        <span class="s">&#39;_get_short_date_time&#39;</span><span class="p">,</span>
+        <span class="s">&#39;DATE&#39;</span><span class="p">:</span>                 <span class="s">&#39;_get_date&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TIME&#39;</span><span class="p">:</span>                 <span class="s">&#39;_get_time&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TIMET&#39;</span><span class="p">:</span>                <span class="s">&#39;_get_timet&#39;</span><span class="p">,</span>
+        <span class="s">&#39;PROCESSSTARTTIME&#39;</span><span class="p">:</span>     <span class="s">&#39;_get_process_start_time&#39;</span><span class="p">,</span>
+        <span class="s">&#39;EVENTSTARTTIME&#39;</span><span class="p">:</span>       <span class="s">&#39;_get_events_start_time&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">output_macros</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">&#39;HOSTOUTPUT&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOSTPERFDATA&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOSTACKAUTHOR&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOSTACKCOMMENT&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICEOUTPUT&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICEPERFDATA&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICEACKAUTHOR&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICEACKCOMMENT&#39;</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="MacroResolver.init"><a class="viewcode-back" href="../../reference/alignak.html#alignak.macroresolver.MacroResolver.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Init macroresolver instance with conf.</span>
+<span class="sd">        Must be called once.</span>
+
+<span class="sd">        :param conf: conf to load</span>
+<span class="sd">        :type conf:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># For searching class and elements for ondemand</span>
+        <span class="c"># we need link to types</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conf</span> <span class="o">=</span> <span class="n">conf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lists_on_demand</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hosts</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">hosts</span>
+        <span class="c"># For special void host_name handling...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hosts</span><span class="o">.</span><span class="n">inner_class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lists_on_demand</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hosts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">services</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">services</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contacts</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">contacts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lists_on_demand</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contacts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hostgroups</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">hostgroups</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lists_on_demand</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hostgroups</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">commands</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">commands</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servicegroups</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">servicegroups</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lists_on_demand</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">servicegroups</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contactgroups</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">contactgroups</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lists_on_demand</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contactgroups</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">illegal_macro_output_chars</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">illegal_macro_output_chars</span>
+
+        <span class="c"># Try cache :)</span>
+        <span class="c"># self.cache = {}</span>
+</div>
+    <span class="k">def</span> <span class="nf">_get_macros</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chain</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get all macros of a chain</span>
+<span class="sd">        Cut &#39;$&#39; char and create a dict with the following structure::</span>
+
+<span class="sd">        { &#39;MacroSTR1&#39; : {&#39;val&#39;: &#39;&#39;, &#39;type&#39;: &#39;unknown&#39;}</span>
+<span class="sd">          &#39;MacroSTR2&#39; : {&#39;val&#39;: &#39;&#39;, &#39;type&#39;: &#39;unknown&#39;}</span>
+<span class="sd">        }</span>
+
+<span class="sd">        :param chain: chain to parse</span>
+<span class="sd">        :type chain: str</span>
+<span class="sd">        :return: dict with macro parsed as key</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># if chain in self.cache:</span>
+        <span class="c">#    return self.cache[chain]</span>
+
+        <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;(\$)&#39;</span><span class="p">)</span>
+        <span class="n">elts</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">chain</span><span class="p">)</span>
+        <span class="n">macros</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">in_macro</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">elts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">elt</span> <span class="o">==</span> <span class="s">&#39;$&#39;</span><span class="p">:</span>
+                <span class="n">in_macro</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">in_macro</span>
+            <span class="k">elif</span> <span class="n">in_macro</span><span class="p">:</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">elt</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;val&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;unknown&#39;</span><span class="p">}</span>
+
+        <span class="c"># self.cache[chain] = macros</span>
+        <span class="k">if</span> <span class="s">&#39;&#39;</span> <span class="ow">in</span> <span class="n">macros</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">macros</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">macros</span>
+
+    <span class="k">def</span> <span class="nf">_get_value_from_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elt</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get value from a element&#39;s property</span>
+<span class="sd">        the property may be a function to call.</span>
+
+<span class="sd">        :param elt: element</span>
+<span class="sd">        :type elt: object</span>
+<span class="sd">        :param prop: element property</span>
+<span class="sd">        :type prop: str</span>
+<span class="sd">        :return: getattr(elt, prop) or getattr(elt, prop)() (call)</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elt</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">value</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="c"># Return no value</span>
+            <span class="k">return</span> <span class="s">&#39;&#39;</span>
+        <span class="k">except</span> <span class="ne">UnicodeError</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_delete_unwanted_caracters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chain</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove not wanted char from chain</span>
+<span class="sd">        unwanted char are illegal_macro_output_chars attribute</span>
+
+<span class="sd">        :param chain: chain to remove char from</span>
+<span class="sd">        :type chain: str</span>
+<span class="sd">        :return: chain cleaned</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">illegal_macro_output_chars</span><span class="p">:</span>
+            <span class="n">chain</span> <span class="o">=</span> <span class="n">chain</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">chain</span>
+
+<div class="viewcode-block" id="MacroResolver.get_env_macros"><a class="viewcode-back" href="../../reference/alignak.html#alignak.macroresolver.MacroResolver.get_env_macros">[docs]</a>    <span class="k">def</span> <span class="nf">get_env_macros</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get all environment macros from data</span>
+<span class="sd">        For each object in data ::</span>
+
+<span class="sd">        * Fetch all macros in object.__class__.macros</span>
+<span class="sd">        * Fetch all customs macros in o.custom</span>
+
+<span class="sd">        :param data: data to get macro</span>
+<span class="sd">        :type data:</span>
+<span class="sd">        :return: dict with macro name as key and macro value as value</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">cls</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">__class__</span>
+            <span class="n">macros</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">macros</span>
+            <span class="k">for</span> <span class="n">macro</span> <span class="ow">in</span> <span class="n">macros</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">macro</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;USER&quot;</span><span class="p">):</span>
+                    <span class="k">break</span>
+
+                <span class="n">prop</span> <span class="o">=</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">]</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_value_from_element</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+                <span class="n">env</span><span class="p">[</span><span class="s">&#39;NAGIOS_</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">macro</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&#39;customs&#39;</span><span class="p">):</span>
+                <span class="c"># make NAGIOS__HOSTMACADDR from _MACADDR</span>
+                <span class="k">for</span> <span class="n">cmacro</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">customs</span><span class="p">:</span>
+                    <span class="n">new_env_name</span> <span class="o">=</span> <span class="s">&#39;NAGIOS__&#39;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="n">cmacro</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                    <span class="n">env</span><span class="p">[</span><span class="n">new_env_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">customs</span><span class="p">[</span><span class="n">cmacro</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">env</span>
+</div>
+<div class="viewcode-block" id="MacroResolver.resolve_simple_macros_in_string"><a class="viewcode-back" href="../../reference/alignak.html#alignak.macroresolver.MacroResolver.resolve_simple_macros_in_string">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_simple_macros_in_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c_line</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Replace macro in the command line with the real value</span>
+
+<span class="sd">        :param c_line: command line to modify</span>
+<span class="sd">        :type c_line: str</span>
+<span class="sd">        :param data: objects list, use to look for a specific macro</span>
+<span class="sd">        :type data:</span>
+<span class="sd">        :param args: args given to the command line, used to get &quot;ARGN&quot; macros.</span>
+<span class="sd">        :type args:</span>
+<span class="sd">        :return: command line with &#39;$MACRO$&#39; replaced with values</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Now we prepare the classes for looking at the class.macros</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c"># For getting global MACROS</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;conf&#39;</span><span class="p">):</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span>  <span class="c"># For USERN macros</span>
+        <span class="n">clss</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">__class__</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+
+        <span class="c"># we should do some loops for nested macros</span>
+        <span class="c"># like $USER1$ hiding like a ninja in a $ARG2$ Macro. And if</span>
+        <span class="c"># $USER1$ is pointing to $USER34$ etc etc, we should loop</span>
+        <span class="c"># until we reach the bottom. So the last loop is when we do</span>
+        <span class="c"># not still have macros :)</span>
+        <span class="n">still_got_macros</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">nb_loop</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">still_got_macros</span><span class="p">:</span>
+            <span class="n">nb_loop</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="c"># Ok, we want the macros in the command line</span>
+            <span class="n">macros</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_macros</span><span class="p">(</span><span class="n">c_line</span><span class="p">)</span>
+
+            <span class="c"># We can get out if we do not have macros this loop</span>
+            <span class="n">still_got_macros</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">macros</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="c"># print &quot;Still go macros:&quot;, still_got_macros</span>
+
+            <span class="c"># Put in the macros the type of macro for all macros</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_of_macro</span><span class="p">(</span><span class="n">macros</span><span class="p">,</span> <span class="n">clss</span><span class="p">)</span>
+            <span class="c"># Now we get values from elements</span>
+            <span class="k">for</span> <span class="n">macro</span> <span class="ow">in</span> <span class="n">macros</span><span class="p">:</span>
+                <span class="c"># If type ARGN, look at ARGN cutting</span>
+                <span class="k">if</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ARGN&#39;</span> <span class="ow">and</span> <span class="n">args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_argn</span><span class="p">(</span><span class="n">macro</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+                    <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;resolved&#39;</span>
+                <span class="c"># If class, get value from properties</span>
+                <span class="k">if</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;class&#39;</span><span class="p">:</span>
+                    <span class="n">cls</span> <span class="o">=</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;class&#39;</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">elt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">elt</span><span class="o">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">cls</span><span class="p">:</span>
+                            <span class="n">prop</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">]</span>
+                            <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_value_from_element</span><span class="p">(</span><span class="n">elt</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+                            <span class="c"># Now check if we do not have a &#39;output&#39; macro. If so, we must</span>
+                            <span class="c"># delete all special characters that can be dangerous</span>
+                            <span class="k">if</span> <span class="n">macro</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_macros</span><span class="p">:</span>
+                                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_delete_unwanted_caracters</span><span class="p">(</span><span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;CUSTOM&#39;</span><span class="p">:</span>
+                    <span class="n">cls_type</span> <span class="o">=</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;class&#39;</span><span class="p">]</span>
+                    <span class="c"># Beware : only cut the first _HOST value, so the macro name can have it on it..</span>
+                    <span class="n">macro_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">cls_type</span><span class="p">,</span> <span class="n">macro</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                    <span class="c"># Ok, we&#39;ve got the macro like MAC_ADDRESS for _HOSTMAC_ADDRESS</span>
+                    <span class="c"># Now we get the element in data that have the type HOST</span>
+                    <span class="c"># and we check if it got the custom value</span>
+                    <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">elt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">elt</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">my_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="n">cls_type</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">macro_name</span> <span class="ow">in</span> <span class="n">elt</span><span class="o">.</span><span class="n">customs</span><span class="p">:</span>
+                                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">customs</span><span class="p">[</span><span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">macro_name</span><span class="p">]</span>
+                            <span class="c"># Then look on the macromodulations, in reserver order, so</span>
+                            <span class="c"># the last to set, will be the firt to have. (yes, don&#39;t want to play</span>
+                            <span class="c"># with break and such things sorry...)</span>
+                            <span class="n">mms</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elt</span><span class="p">,</span> <span class="s">&#39;macromodulations&#39;</span><span class="p">,</span> <span class="p">[])</span>
+                            <span class="k">for</span> <span class="n">macromod</span> <span class="ow">in</span> <span class="n">mms</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                                <span class="c"># Look if the modulation got the value,</span>
+                                <span class="c"># but also if it&#39;s currently active</span>
+                                <span class="k">if</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">macro_name</span> <span class="ow">in</span> <span class="n">macromod</span><span class="o">.</span><span class="n">customs</span> <span class="ow">and</span> <span class="n">macromod</span><span class="o">.</span><span class="n">is_active</span><span class="p">():</span>
+                                    <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">macromod</span><span class="o">.</span><span class="n">customs</span><span class="p">[</span><span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">macro_name</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ONDEMAND&#39;</span><span class="p">:</span>
+                    <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_ondemand</span><span class="p">(</span><span class="n">macro</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+            <span class="c"># We resolved all we can, now replace the macro in the command call</span>
+            <span class="k">for</span> <span class="n">macro</span> <span class="ow">in</span> <span class="n">macros</span><span class="p">:</span>
+                <span class="n">c_line</span> <span class="o">=</span> <span class="n">c_line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;$&#39;</span> <span class="o">+</span> <span class="n">macro</span> <span class="o">+</span> <span class="s">&#39;$&#39;</span><span class="p">,</span> <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;val&#39;</span><span class="p">])</span>
+
+            <span class="c"># A $$ means we want a $, it&#39;s not a macro!</span>
+            <span class="c"># We replace $$ by a big dirty thing to be sure to not misinterpret it</span>
+            <span class="n">c_line</span> <span class="o">=</span> <span class="n">c_line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;$$&quot;</span><span class="p">,</span> <span class="s">&quot;DOUBLEDOLLAR&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">nb_loop</span> <span class="o">&gt;</span> <span class="mi">32</span><span class="p">:</span>  <span class="c"># too much loop, we exit</span>
+                <span class="n">still_got_macros</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># We now replace the big dirty token we made by only a simple $</span>
+        <span class="n">c_line</span> <span class="o">=</span> <span class="n">c_line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;DOUBLEDOLLAR&quot;</span><span class="p">,</span> <span class="s">&quot;$&quot;</span><span class="p">)</span>
+
+        <span class="c"># print &quot;Retuning c_line&quot;, c_line.strip()</span>
+        <span class="k">return</span> <span class="n">c_line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="MacroResolver.resolve_command"><a class="viewcode-back" href="../../reference/alignak.html#alignak.macroresolver.MacroResolver.resolve_command">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">com</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Resolve command macros with data</span>
+
+<span class="sd">        :param com: check / event handler or command call object</span>
+<span class="sd">        :type com: object</span>
+<span class="sd">        :param data: objects list, use to look for a specific macro</span>
+<span class="sd">        :type data:</span>
+<span class="sd">        :return: command line with &#39;$MACRO$&#39; replaced with values</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">c_line</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">command_line</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_simple_macros_in_string</span><span class="p">(</span><span class="n">c_line</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+</div>
+    <span class="k">def</span> <span class="nf">_get_type_of_macro</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">macros</span><span class="p">,</span> <span class="n">clss</span><span class="p">):</span>
+        <span class="sd">r&quot;&quot;&quot;Set macros types</span>
+
+<span class="sd">        Example::</span>
+
+<span class="sd">        ARG\d -&gt; ARGN,</span>
+<span class="sd">        HOSTBLABLA -&gt; class one and set Host in class)</span>
+<span class="sd">        _HOSTTOTO -&gt; HOST CUSTOM MACRO TOTO</span>
+<span class="sd">        SERVICESTATEID:srv-1:Load$ -&gt; MACRO SERVICESTATEID of the service Load of host srv-1</span>
+
+<span class="sd">        :param macros: macros list</span>
+<span class="sd">        :type macros: list[str]</span>
+<span class="sd">        :param clss: classes list, used to tag class macros</span>
+<span class="sd">        :type clss:</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">macro</span> <span class="ow">in</span> <span class="n">macros</span><span class="p">:</span>
+            <span class="c"># ARGN Macros</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;ARG\d&#39;</span><span class="p">,</span> <span class="n">macro</span><span class="p">):</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;ARGN&#39;</span>
+                <span class="k">continue</span>
+            <span class="c"># USERN macros</span>
+            <span class="c"># are managed in the Config class, so no</span>
+            <span class="c"># need to look that here</span>
+            <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;_HOST\w&#39;</span><span class="p">,</span> <span class="n">macro</span><span class="p">):</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;CUSTOM&#39;</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;HOST&#39;</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;_SERVICE\w&#39;</span><span class="p">,</span> <span class="n">macro</span><span class="p">):</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;CUSTOM&#39;</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;SERVICE&#39;</span>
+                <span class="c"># value of macro: re.split(&#39;_HOST&#39;, &#39;_HOSTMAC_ADDRESS&#39;)[1]</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;_CONTACT\w&#39;</span><span class="p">,</span> <span class="n">macro</span><span class="p">):</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;CUSTOM&#39;</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;CONTACT&#39;</span>
+                <span class="k">continue</span>
+            <span class="c"># On demand macro</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">macro</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;ONDEMAND&#39;</span>
+                <span class="k">continue</span>
+            <span class="c"># OK, classical macro...</span>
+            <span class="k">for</span> <span class="n">cls</span> <span class="ow">in</span> <span class="n">clss</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">macro</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">macros</span><span class="p">:</span>
+                    <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;class&#39;</span>
+                    <span class="n">macros</span><span class="p">[</span><span class="n">macro</span><span class="p">][</span><span class="s">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cls</span>
+                    <span class="k">continue</span>
+
+    <span class="k">def</span> <span class="nf">_resolve_argn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">macro</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get argument from macro name</span>
+<span class="sd">        ie : $ARG3$ -&gt; args[2]</span>
+
+<span class="sd">        :param macro: macro to parse</span>
+<span class="sd">        :type macro:</span>
+<span class="sd">        :param args: args given to command line</span>
+<span class="sd">        :type args:</span>
+<span class="sd">        :return: argument at position N-1 in args table (where N is the int parsed)</span>
+<span class="sd">        :rtype: None | str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># first, get the number of args</span>
+        <span class="n">_id</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;ARG(?P&lt;id&gt;\d+)&#39;</span><span class="p">,</span> <span class="n">macro</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">matches</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">matches</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">args</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_resolve_ondemand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">macro</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get on demand macro value</span>
+
+<span class="sd">        :param macro: macro to parse</span>
+<span class="sd">        :type macro:</span>
+<span class="sd">        :param data: data to get value from</span>
+<span class="sd">        :type data:</span>
+<span class="sd">        :return: macro value</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># print &quot;\nResolving macro&quot;, macro</span>
+        <span class="n">elts</span> <span class="o">=</span> <span class="n">macro</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
+        <span class="n">nb_parts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">elts</span><span class="p">)</span>
+        <span class="n">macro_name</span> <span class="o">=</span> <span class="n">elts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c"># Len 3 == service, 2 = all others types...</span>
+        <span class="k">if</span> <span class="n">nb_parts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="c"># print &quot;Got a Service on demand asking...&quot;, elts</span>
+            <span class="p">(</span><span class="n">host_name</span><span class="p">,</span> <span class="n">service_description</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">elts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">elts</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="c"># host_name can be void, so it&#39;s the host in data</span>
+            <span class="c"># that is important. We use our self.host_class to</span>
+            <span class="c"># find the host in the data :)</span>
+            <span class="k">if</span> <span class="n">host_name</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">elt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">elt</span><span class="o">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_class</span><span class="p">:</span>
+                        <span class="n">host_name</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">host_name</span>
+            <span class="c"># Ok now we get service</span>
+            <span class="n">serv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">services</span><span class="o">.</span><span class="n">find_srv_by_name_and_hostname</span><span class="p">(</span><span class="n">host_name</span><span class="p">,</span> <span class="n">service_description</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">serv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">cls</span> <span class="o">=</span> <span class="n">serv</span><span class="o">.</span><span class="n">__class__</span>
+                <span class="n">prop</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">macros</span><span class="p">[</span><span class="n">macro_name</span><span class="p">]</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_value_from_element</span><span class="p">(</span><span class="n">serv</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+                <span class="c"># print &quot;Got val:&quot;, val</span>
+                <span class="k">return</span> <span class="n">val</span>
+        <span class="c"># Ok, service was easy, now hard part</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="n">elt_name</span> <span class="o">=</span> <span class="n">elts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c"># Special case: elt_name can be void</span>
+            <span class="c"># so it&#39;s the host where it apply</span>
+            <span class="k">if</span> <span class="n">elt_name</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">elt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">elt</span><span class="o">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_class</span><span class="p">:</span>
+                        <span class="n">elt_name</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">host_name</span>
+            <span class="k">for</span> <span class="n">od_list</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lists_on_demand</span><span class="p">:</span>
+                <span class="n">cls</span> <span class="o">=</span> <span class="n">od_list</span><span class="o">.</span><span class="n">inner_class</span>
+                <span class="c"># We search our type by looking at the macro</span>
+                <span class="k">if</span> <span class="n">macro_name</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">macros</span><span class="p">:</span>
+                    <span class="n">prop</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">macros</span><span class="p">[</span><span class="n">macro_name</span><span class="p">]</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">od_list</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">elt_name</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_value_from_element</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+                        <span class="c"># Ok we got our value :)</span>
+                        <span class="k">break</span>
+            <span class="k">return</span> <span class="n">val</span>
+        <span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_get_long_date_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get long date time</span>
+
+<span class="sd">        Example : Fri 15 May 11:42:39 CEST 2009</span>
+
+<span class="sd">        :return: long date local time</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Should be moved to util</span>
+<span class="sd">        TODO: Should consider timezone</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%a </span><span class="si">%d</span><span class="s"> %b %H:%M:%S %Z %Y&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_short_date_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get short date time</span>
+
+<span class="sd">        Example : 10-13-2000 00:30:28</span>
+
+<span class="sd">        :return: short date local time</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Should be moved to util</span>
+<span class="sd">        TODO: Should consider timezone</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">-%m-%Y %H:%M:%S&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get date</span>
+
+<span class="sd">        Example : 10-13-2000</span>
+
+<span class="sd">        :return: local date</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Should be moved to util</span>
+<span class="sd">        TODO: Should consider timezone</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">-%m-%Y&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get date time</span>
+
+<span class="sd">        Example : 00:30:28</span>
+
+<span class="sd">        :return: date local time</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Should be moved to util</span>
+<span class="sd">        TODO: Should consider timezone</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%H:%M:%S&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_timet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get epoch time</span>
+
+<span class="sd">        Example : 1437143291</span>
+
+<span class="sd">        :return: timestamp</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        TODO: Should be moved to util</span>
+<span class="sd">        TODO: Should consider timezone</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+
+    <span class="k">def</span> <span class="nf">_tot_hosts_by_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generic function to get the number of host in the specified state</span>
+
+<span class="sd">        :param state: state to filter on</span>
+<span class="sd">        :type state:</span>
+<span class="sd">        :return: number of host in state *state*</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Should be moved</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hosts</span> <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">state</span><span class="p">)</span>
+
+    <span class="n">_get_total_hosts_up</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">_tot_hosts_by_state</span><span class="p">(</span><span class="s">&#39;UP&#39;</span><span class="p">)</span>
+    <span class="n">_get_total_hosts_down</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">_tot_hosts_by_state</span><span class="p">(</span><span class="s">&#39;DOWN&#39;</span><span class="p">)</span>
+    <span class="n">_get_total_hosts_unreachable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">_tot_hosts_by_state</span><span class="p">(</span><span class="s">&#39;UNREACHABLE&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_hosts_unreachable_unhandled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING( Should get the number of unreachable hosts not handled)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_hosts_problems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the number of hosts that are a problem</span>
+
+<span class="sd">        :return: number of hosts with is_problem attribute True</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hosts</span> <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">is_problem</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_hosts_problems_unhandled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING( Should get the number of host problems not handled)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_tot_services_by_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generic function to get the number of service in the specified state</span>
+
+<span class="sd">        :param state: state to filter on</span>
+<span class="sd">        :type state:</span>
+<span class="sd">        :return: number of service in state *state*</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Should be moved</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">services</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">state</span><span class="p">)</span>
+
+    <span class="n">_get_total_service_ok</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">_tot_services_by_state</span><span class="p">(</span><span class="s">&#39;OK&#39;</span><span class="p">)</span>
+
+    <span class="n">_get_total_service_warning</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">_tot_services_by_state</span><span class="p">(</span><span class="s">&#39;WARNING&#39;</span><span class="p">)</span>
+
+    <span class="n">_get_total_service_critical</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">_tot_services_by_state</span><span class="p">(</span><span class="s">&#39;CRITICAL&#39;</span><span class="p">)</span>
+
+    <span class="n">_get_total_service_unknown</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">_tot_services_by_state</span><span class="p">(</span><span class="s">&#39;UNKNOWN&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_services_warning_unhandled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING (Should get the number of warning services not handled)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_services_critical_unhandled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING (Should get the number of critical services not handled)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_services_unknown_unhandled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING (Should get the number of unknown services not handled)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_service_problems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the number of services that are a problem</span>
+
+<span class="sd">        :return: number of services with is_problem attribute True</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">services</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">is_problem</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_total_service_problems_unhandled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING (Should get the number of service problems not handled)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_get_process_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING ( Should get process start time)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_get_events_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DOES NOTHING ( Should get events start time)</span>
+
+<span class="sd">        :return: 0 always</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        TODO: Implement this</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

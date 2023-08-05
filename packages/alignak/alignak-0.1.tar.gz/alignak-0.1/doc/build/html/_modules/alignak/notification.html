@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>alignak.notification &mdash; Alignak 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../../',
+        VERSION:'0.0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="top" title="Alignak 0.0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> Alignak</a>
+        <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/alignak.html">alignak package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.acknowledge">alignak.acknowledge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.action">alignak.action module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.arbiterlink">alignak.arbiterlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.autoslots">alignak.autoslots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.basemodule">alignak.basemodule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.borg">alignak.borg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brok">alignak.brok module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.brokerlink">alignak.brokerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.check">alignak.check module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.commandcall">alignak.commandcall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.comment">alignak.comment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.complexexpression">alignak.complexexpression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.contactdowntime">alignak.contactdowntime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daemon">alignak.daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.daterange">alignak.daterange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db">alignak.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-mysql-module">alignak.db_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#alignak-db-oracle-module">alignak.db_oracle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.db_sqlite">alignak.db_sqlite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dependencynode">alignak.dependencynode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.dispatcher">alignak.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.downtime">alignak.downtime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.eventhandler">alignak.eventhandler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.external_command">alignak.external_command module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.graph">alignak.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.load">alignak.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.log">alignak.log module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.macroresolver">alignak.macroresolver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.message">alignak.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesctx">alignak.modulesctx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.modulesmanager">alignak.modulesmanager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.notification">alignak.notification module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.old_daemon_link">alignak.old_daemon_link module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.pollerlink">alignak.pollerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.property">alignak.property module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.reactionnerlink">alignak.reactionnerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.receiverlink">alignak.receiverlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellite">alignak.satellite module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.satellitelink">alignak.satellitelink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.scheduler">alignak.scheduler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.schedulerlink">alignak.schedulerlink module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.shinken_import_hook">alignak.shinken_import_hook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.stats">alignak.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.trigger_functions">alignak.trigger_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.util">alignak.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.version">alignak.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak.worker">alignak.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/alignak.html#module-alignak">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="../../index.html">Alignak</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+  <li><a href="">alignak.notification</a></li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+</ul>
+<hr/>
+
+          
+  <h1>Source code for alignak.notification</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2015-2015: Alignak team, see AUTHORS.txt file for contributors</span>
+<span class="c">#</span>
+<span class="c"># This file is part of Alignak.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># Alignak is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c"># along with Alignak.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#</span>
+<span class="c">#</span>
+<span class="c"># This file incorporates work covered by the following copyright and</span>
+<span class="c"># permission notice:</span>
+<span class="c">#</span>
+<span class="c">#  Copyright (C) 2009-2014:</span>
+<span class="c">#     Hartmut Goebel, h.goebel@goebel-consult.de</span>
+<span class="c">#     Frédéric Vachon, fredvac@gmail.com</span>
+<span class="c">#     Nicolas Dupeux, nicolas@dupeux.net</span>
+<span class="c">#     Jan Ulferts, jan.ulferts@xing.com</span>
+<span class="c">#     Grégory Starck, g.starck@gmail.com</span>
+<span class="c">#     Sebastien Coavoux, s.coavoux@free.fr</span>
+<span class="c">#     Olivier Hanesse, olivier.hanesse@gmail.com</span>
+<span class="c">#     Jean Gabes, naparuba@gmail.com</span>
+<span class="c">#     Zoran Zaric, zz@zoranzaric.de</span>
+<span class="c">#     Gerhard Lausser, gerhard.lausser@consol.de</span>
+
+<span class="c">#  This file is part of Shinken.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is free software: you can redistribute it and/or modify</span>
+<span class="c">#  it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c">#  the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#  (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#  Shinken is distributed in the hope that it will be useful,</span>
+<span class="c">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#  GNU Affero General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#  You should have received a copy of the GNU Affero General Public License</span>
+<span class="c">#  along with Shinken.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">&quot;&quot;&quot;This module provides Notification class.</span>
+<span class="sd">Used to define monitoring notifications (email, contacts..)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">alignak.action</span> <span class="kn">import</span> <span class="n">Action</span>
+<span class="kn">from</span> <span class="nn">alignak.brok</span> <span class="kn">import</span> <span class="n">Brok</span>
+<span class="kn">from</span> <span class="nn">alignak.property</span> <span class="kn">import</span> <span class="n">BoolProp</span><span class="p">,</span> <span class="n">IntegerProp</span><span class="p">,</span> <span class="n">StringProp</span><span class="p">,</span> <span class="n">FloatProp</span>
+<span class="kn">from</span> <span class="nn">alignak.autoslots</span> <span class="kn">import</span> <span class="n">AutoSlots</span>
+
+
+<div class="viewcode-block" id="Notification"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification">[docs]</a><span class="k">class</span> <span class="nc">Notification</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Notification class, inherits from action class. Used to notify contacts</span>
+<span class="sd">     and execute notification command defined in configuration</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c"># AutoSlots create the __slots__ with properties and</span>
+    <span class="c"># running_properties names</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">AutoSlots</span>
+
+    <span class="n">my_type</span> <span class="o">=</span> <span class="s">&#39;notification&#39;</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">Action</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s">&#39;is_a&#39;</span><span class="p">:</span>                <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;notification&#39;</span><span class="p">),</span>
+        <span class="s">&#39;notification_type&#39;</span><span class="p">:</span>   <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;start_time&#39;</span><span class="p">:</span>          <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;end_time&#39;</span><span class="p">:</span>            <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;contact_name&#39;</span><span class="p">:</span>        <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;host_name&#39;</span><span class="p">:</span>           <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;service_description&#39;</span><span class="p">:</span> <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;reason_type&#39;</span><span class="p">:</span>         <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;state&#39;</span><span class="p">:</span>               <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;output&#39;</span><span class="p">:</span>              <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;ack_author&#39;</span><span class="p">:</span>          <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;ack_data&#39;</span><span class="p">:</span>            <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;escalated&#39;</span><span class="p">:</span>           <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;contacts_notified&#39;</span><span class="p">:</span>   <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;command_call&#39;</span><span class="p">:</span>        <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+        <span class="s">&#39;contact&#39;</span><span class="p">:</span>             <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+        <span class="s">&#39;notif_nb&#39;</span><span class="p">:</span>            <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s">&#39;status&#39;</span><span class="p">:</span>              <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;scheduled&#39;</span><span class="p">),</span>
+        <span class="s">&#39;command&#39;</span><span class="p">:</span>             <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+        <span class="s">&#39;sched_id&#39;</span><span class="p">:</span>            <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s">&#39;timeout&#39;</span><span class="p">:</span>             <span class="n">IntegerProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+        <span class="s">&#39;module_type&#39;</span><span class="p">:</span>         <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;fork&#39;</span><span class="p">,</span> <span class="n">fill_brok</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;full_status&#39;</span><span class="p">]),</span>
+        <span class="s">&#39;creation_time&#39;</span><span class="p">:</span>       <span class="n">FloatProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s">&#39;enable_environment_macros&#39;</span><span class="p">:</span> <span class="n">BoolProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+        <span class="c"># Keep a list of currently active escalations</span>
+        <span class="s">&#39;already_start_escalations&#39;</span><span class="p">:</span>  <span class="n">StringProp</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="nb">set</span><span class="p">()),</span>
+    <span class="p">})</span>
+
+    <span class="n">macros</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;NOTIFICATIONTYPE&#39;</span><span class="p">:</span>         <span class="s">&#39;type&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NOTIFICATIONRECIPIENTS&#39;</span><span class="p">:</span>   <span class="s">&#39;recipients&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NOTIFICATIONISESCALATED&#39;</span><span class="p">:</span>  <span class="s">&#39;escalated&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NOTIFICATIONAUTHOR&#39;</span><span class="p">:</span>       <span class="s">&#39;author&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NOTIFICATIONAUTHORNAME&#39;</span><span class="p">:</span>   <span class="s">&#39;author_name&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NOTIFICATIONAUTHORALIAS&#39;</span><span class="p">:</span>  <span class="s">&#39;author_alias&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NOTIFICATIONCOMMENT&#39;</span><span class="p">:</span>      <span class="s">&#39;comment&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOSTNOTIFICATIONNUMBER&#39;</span><span class="p">:</span>   <span class="s">&#39;notif_nb&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOSTNOTIFICATIONID&#39;</span><span class="p">:</span>       <span class="s">&#39;_id&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICENOTIFICATIONNUMBER&#39;</span><span class="p">:</span> <span class="s">&#39;notif_nb&#39;</span><span class="p">,</span>
+        <span class="s">&#39;SERVICENOTIFICATIONID&#39;</span><span class="p">:</span>    <span class="s">&#39;_id&#39;</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_type</span><span class="o">=</span><span class="s">&#39;PROBLEM&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s">&#39;scheduled&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="s">&#39;UNSET&#39;</span><span class="p">,</span>
+                 <span class="n">command_call</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">contact</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">t_to_go</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">contact_name</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">host_name</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">service_description</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">reason_type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ack_author</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">ack_data</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">escalated</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">contacts_notified</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">start_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">notification_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">_id</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">notif_nb</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="p">{},</span> <span class="n">module_type</span><span class="o">=</span><span class="s">&#39;fork&#39;</span><span class="p">,</span>
+                 <span class="n">reactionner_tag</span><span class="o">=</span><span class="s">&#39;None&#39;</span><span class="p">,</span> <span class="n">enable_environment_macros</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_a</span> <span class="o">=</span> <span class="s">&#39;notification&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">_type</span>
+        <span class="k">if</span> <span class="n">_id</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># _id != None is for copy call only</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">Action</span><span class="o">.</span><span class="n">_id</span>
+            <span class="n">Action</span><span class="o">.</span><span class="n">_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_in_timeout</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command_call</span> <span class="o">=</span> <span class="n">command_call</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_time</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c"># user executon time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s_time</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c"># system execution time</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="n">ref</span>
+
+        <span class="c"># Set host_name and description from the ref</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">host_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">host_name</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">host_name</span> <span class="o">=</span> <span class="n">host_name</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">service_description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">service_description</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">service_description</span> <span class="o">=</span> <span class="n">service_description</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_type</span> <span class="o">=</span> <span class="n">module_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_to_go</span> <span class="o">=</span> <span class="n">t_to_go</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notif_nb</span> <span class="o">=</span> <span class="n">notif_nb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contact</span> <span class="o">=</span> <span class="n">contact</span>
+
+        <span class="c"># For brok part</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contact_name</span> <span class="o">=</span> <span class="n">contact_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reason_type</span> <span class="o">=</span> <span class="n">reason_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ack_author</span> <span class="o">=</span> <span class="n">ack_author</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ack_data</span> <span class="o">=</span> <span class="n">ack_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">escalated</span> <span class="o">=</span> <span class="n">escalated</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contacts_notified</span> <span class="o">=</span> <span class="n">contacts_notified</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="n">end_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">=</span> <span class="n">notification_type</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">creation_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worker</span> <span class="o">=</span> <span class="s">&#39;none&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactionner_tag</span> <span class="o">=</span> <span class="n">reactionner_tag</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">already_start_escalations</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_environment_macros</span> <span class="o">=</span> <span class="n">enable_environment_macros</span>
+
+<div class="viewcode-block" id="Notification.copy_shell"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification.copy_shell">[docs]</a>    <span class="k">def</span> <span class="nf">copy_shell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get a copy o this notification with minimal values (default + id)</span>
+
+<span class="sd">        :return: new notification</span>
+<span class="sd">        :rtype: alignak.notification.Notification</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># We create a dummy check with nothing in it, just defaults values</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy_shell__</span><span class="p">(</span><span class="n">Notification</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="Notification.is_launchable"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification.is_launchable">[docs]</a>    <span class="k">def</span> <span class="nf">is_launchable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if this notification can be launched base on time</span>
+
+<span class="sd">        :param timestamp: time to compare</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :return: True if timestamp &gt;= self.t_to_go, False otherwise</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">timestamp</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_to_go</span>
+</div>
+<div class="viewcode-block" id="Notification.is_administrative"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification.is_administrative">[docs]</a>    <span class="k">def</span> <span class="nf">is_administrative</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if this notification is &quot;administrative&quot;</span>
+
+<span class="sd">        :return: True in type not in (&#39;PROBLEM&#39;, &#39;RECOVERY&#39;), False otherwise</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;PROBLEM&#39;</span><span class="p">,</span> <span class="s">&#39;RECOVERY&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+</div>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Notification </span><span class="si">%d</span><span class="s"> status:</span><span class="si">%s</span><span class="s"> command:</span><span class="si">%s</span><span class="s"> ref:</span><span class="si">%s</span><span class="s"> t_to_go:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> \
+               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;ref&#39;</span><span class="p">,</span> <span class="s">&#39;unknown&#39;</span><span class="p">),</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t_to_go</span><span class="p">)))</span>
+
+<div class="viewcode-block" id="Notification.get_id"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification.get_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Getter to id attribute</span>
+
+<span class="sd">        :return: notification id</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+</div>
+<div class="viewcode-block" id="Notification.get_return_from"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification.get_return_from">[docs]</a>    <span class="k">def</span> <span class="nf">get_return_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notif</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter of exit_status and execution_time attributes</span>
+
+<span class="sd">        :param notif: notification to get data from</span>
+<span class="sd">        :type notif: alignak.notification.Notification</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exit_status</span> <span class="o">=</span> <span class="n">notif</span><span class="o">.</span><span class="n">exit_status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="n">notif</span><span class="o">.</span><span class="n">execution_time</span>
+</div>
+<div class="viewcode-block" id="Notification.fill_data_brok_from"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification.fill_data_brok_from">[docs]</a>    <span class="k">def</span> <span class="nf">fill_data_brok_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">brok_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fill data with info of item by looking at brok_type</span>
+<span class="sd">        in props of properties or running_properties</span>
+
+<span class="sd">        :param data: data to fill</span>
+<span class="sd">        :type data:</span>
+<span class="sd">        :param brok_type: type of brok</span>
+<span class="sd">        :type brok_type:</span>
+<span class="sd">        :return: brok with wanted data</span>
+<span class="sd">        :rtype: alignak.brok.Brok</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="c"># Now config properties</span>
+        <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">brok_type</span> <span class="ow">in</span> <span class="n">entry</span><span class="o">.</span><span class="n">fill_brok</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Notification.get_initial_status_brok"><a class="viewcode-back" href="../../reference/alignak.html#alignak.notification.Notification.get_initial_status_brok">[docs]</a>    <span class="k">def</span> <span class="nf">get_initial_status_brok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get a initial status brok</span>
+
+<span class="sd">        :return: brok with wanted data</span>
+<span class="sd">        :rtype: alignak.brok.Brok</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fill_data_brok_from</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">&#39;full_status&#39;</span><span class="p">)</span>
+        <span class="n">brok</span> <span class="o">=</span> <span class="n">Brok</span><span class="p">(</span><span class="s">&#39;notification_raise&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">brok</span>
+</div>
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call by pickle for dataify the comment</span>
+<span class="sd">        because we DO NOT WANT REF in this pickleisation!</span>
+
+<span class="sd">        :return: dict containing notification data</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="c"># id is not in *_properties</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+                <span class="n">res</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inverted function of getstate</span>
+
+<span class="sd">        :param state: state to restore</span>
+<span class="sd">        :type state: dict</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s">&#39;_id&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">state</span><span class="p">[</span><span class="n">prop</span><span class="p">])</span>
+        <span class="c"># Hook for load of 0.4 notification: there were no</span>
+        <span class="c"># creation time, must put one</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;creation_time&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">creation_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;reactionner_tag&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reactionner_tag</span> <span class="o">=</span> <span class="s">&#39;None&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;worker&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">worker</span> <span class="o">=</span> <span class="s">&#39;none&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;module_type&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">module_type</span> <span class="o">=</span> <span class="s">&#39;fork&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;already_start_escalations&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">already_start_escalations</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;execution_time&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execution_time</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c"># s_time and u_time are added between 1.2 and 1.4</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;u_time&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">u_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">s_time</span> <span class="o">=</span> <span class="mf">0.0</span></div>
+</pre></div>
+
+          <footer>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2015, Alignak team.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="http://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>
