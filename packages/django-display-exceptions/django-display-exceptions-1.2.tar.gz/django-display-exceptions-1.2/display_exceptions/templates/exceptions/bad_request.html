@@ -1,0 +1,17 @@
+
+{% extends EXCEPTION_BASE_TEMPLATE %}
+
+
+{% block icon %}
+	<span class="glyphicon glyphicon-flash"></span>
+{% endblock icon %}
+
+{% block title %}
+	{% firstof caption 'Not understood' %}
+{% endblock title %}
+
+{% block caption %}
+	{% firstof caption 'Cannot understand your request' %}
+{% endblock caption %}
+
+
