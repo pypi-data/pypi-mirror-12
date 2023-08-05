@@ -1,0 +1,21 @@
+language: python
+python:
+  - '2.7'
+
+addons:
+  apt:
+    packages:
+    - libimage-exiftool-perl
+
+install:
+  - pip install tox
+
+script: tox -r
+deploy:
+  provider: pypi
+  user: JoProvost
+  password:
+    secure: ICbdYsBI0xBsgeX2rRtFdCi2uR804fjevI7mL9Ua8th8KyEDXU+RRUxfMc1DZouLwjMzB3P6X/k614cHby2XtDyOG0V2mZ45bhqRmMv/FBvTAemBdyJ8vuDSbYxlJ4sghQm2VvQhDT9KgiT7fsFQvgdagajX4kkg68SMKnyqKCMPDPGyd+s66/rhnRFyPHFIyklLzDyklhiyBt6PusJzPUTCE1YfbR0km5QEaR2zSxHpliXgiPSp0tnvW7aolpq6aRIvCnGLeDV3xMsyuile0bwtcLXmdBaj1S8OhizzUsSRKE8QtplzbZRYsRY+izLIq2/vLTsY2jpZso+xQ6dhyPTeD+BrtqeQxN175JCy5QuMGHJsaPsZzGeC/nS1p5GVrCCBETnas6UJcueeaTUr7jdCAi62WtXRXAm4SE1vYAjA5GY3LXNvJ7CXnXh1VKAQMsp027BBzXIfqFF0SYoQMYYQHoGreoPBf+rxg+lzngZXEChdrr0nmCujF9YozCbQdZ0PVEBpXp6j4BccROm+Ff/EJL/fjunnhrXC49cPACf4vhhn/bPHwrj9DlLnJLrVrXR5BWYUKHlPTYYsYHTANDhA5NGb6YZYBFH26qBEKlrSLj/2M2rP2ZqYjm/vV7/8jwC7Sufri/zXeVuQtho9AT8MIjOwq5m2tmaE40TNHnA=
+  on:
+    tags: true
+    repo: JoProvost/calbum
