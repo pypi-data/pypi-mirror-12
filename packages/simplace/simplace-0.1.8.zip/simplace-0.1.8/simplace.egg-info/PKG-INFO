@@ -1,0 +1,36 @@
+Metadata-Version: 1.1
+Name: simplace
+Version: 0.1.8
+Summary: Interact with the simulation framework Simplace
+Home-page: http://www.simplace.net/
+Author: Gunther Krauss
+Author-email: guntherkrauss@ui-bonn.de
+License: GPL3
+Description: 
+        Run and control simulations in the simulation framework Simplace.
+        
+        You need Java >= 8.0 and the Simplace simulation framework http://www.simplace.net
+        
+        To use it do::
+        
+            >>> import simplace
+            >>> jd = 'd:/java/simplace/'
+            >>> wd = 'd:/java/simplace/simplacerun/simulation/'
+            >>> od = 'd:/java/simplace/simplacerun/output/'
+        
+            >>> sol = wd+'gk/solution/gecros/Gecros.sol.xml'
+            >>> proj = wd+'gk/project/gecros/GecrosSensitivityTestNPL.proj.xml'
+            
+            >>> sh = simplace.initSimplace(jd,wd,od)
+            >>> simplace.setProjectLines(sh, [1,3,8,9,17])
+            >>> simplace.openProject(sh, sol, proj)
+            >>> simplace.runProject(sh)
+            >>> simplace.closeProject(sh)
+              
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Java
