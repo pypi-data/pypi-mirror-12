@@ -1,0 +1,43 @@
+Metadata-Version: 1.1
+Name: intset
+Version: 1.0.0
+Summary: A library for property based testing
+Home-page: https://github.com/DRMacIver/intset
+Author: David R. MacIver
+Author-email: david@drmaciver.com
+License: MPL v2
+Description: IntSet
+        ======
+        
+        IntSets are an efficient immutable representation of sets of unsigned 64-bit
+        integers with fast boolean operations and fast indexing of the set in sorted
+        order. They are designed to be particularly efficient for representing sets
+        with large contiguous ranges, so for example representing the set of all 64-bit
+        integers takes only a handful of bytes.
+        
+        Their behaviour and API are somehwere in between that of frozenset and that of
+        a sorted list of deduplicated integers.
+        
+        The implementation is heavily based on `Fast Mergeable Integer Maps <ittc.ku.edu/~andygill/papers/IntMap98.pdf>`_
+        by Okasaki and Gill, but it has been adapted to support a somewhat different feature
+        set and a more compact representation for certain usage patterns.
+        
+        For usage, see the `API documentation <http://intset.readthedocs.org/en/latest/>`_.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Testing
