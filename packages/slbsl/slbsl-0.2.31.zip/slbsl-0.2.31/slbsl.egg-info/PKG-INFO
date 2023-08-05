@@ -1,0 +1,55 @@
+Metadata-Version: 1.0
+Name: slbsl
+Version: 0.2.31
+Summary: Convert paths from Windows to UNIX and vice versa.
+Home-page: https://github.com/cb109/slbsl.git
+Author: Christoph Buelter
+Author-email: info@cbuelter.de
+License: UNKNOWN
+Description: slbsl
+        =====
+        
+        Convert paths from Windows to UNIX and vice versa.
+        
+        Written to slightly ease the pain of working in environments that use both like a bash on Windows. Do not pass arbitrary text to the tool, only a path (though it may be wrapped in quotation marks).
+        
+        
+        Installation
+        ------------
+        
+            pip install slbsl
+        
+        
+        Dependencies
+        ------------
+        
+        `pyperclip <http://pypi.python.org/pypi/pyperclip>`_ for clipboard functionality.
+        
+        
+        Tests
+        -----
+        
+        You need `pytest <http://pypi.python.org/pypi/pytest>`_ installed.
+        
+            py.test test_slbsl -v
+        
+        
+        Usage
+        -----
+        
+        The package installs a few shell scripts that you can call::
+        
+             sl [path] : Converts <path> or clipboard content to UNIX convention.
+            bsl [path] : Converts <path> or clipboard content to Windows convention.
+            fsl [path] : Flips slashes in <path> or clipboard content to their opposite individually.
+            esl [path] : Equalizes slashes in <path> or clipboard content depending on the majority. In case of a draw, favors backslashes on Windows and slashes on UNIX.
+        
+        The result is returned to the commandline and stored additionally in the clipboard.
+        
+        
+        Why the stupid name?
+        --------------------
+        
+        **sl** ash **b** ack **sl** ash
+Keywords: slash,backslash,linux,unix,windows,conversion
+Platform: UNKNOWN
