@@ -1,0 +1,21 @@
+six >= 1.9.0
+arrow >= 0.7.0
+backports.shutil_get_terminal_size>=1.0.0
+ushlex
+
+[ical]
+icalendar
+
+[prompt-toolkit]
+prompt-toolkit >= 0.53
+
+[test]
+coverage
+freezegun
+green
+
+[test:python_version!="3.2"]
+pylint
+
+[test:python_version=="2.7"]
+mock
