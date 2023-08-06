@@ -1,0 +1,52 @@
+Metadata-Version: 1.1
+Name: controlspeed
+Version: 1.0
+Summary: Control function call speed ,support network mode by redis
+Home-page: https://github.com/rfyiamcool
+Author: ruifengyun
+Author-email: rfyiamcool@163.com
+License: MIT
+Description: # ControlSpeed  
+        这项目是用来控制函数调用的频率
+        
+        #Usage:
+        
+        装饰器使用方法
+        ```
+        from controlspeed import ControlSpeed
+        @ControlSpeed(max_calls=10, period=1.0)
+        def do_something():
+            pass
+        ```
+        
+        with关键词控制上下文
+        ```
+        from controlspeed import ControlSpeed
+        rate = ControlSpeed(max_calls=10, period=1.0)
+        for i in range(100):
+            with rate:
+                do_something()
+        ```
+        
+        支持回调函数的控速
+        ```
+        from controlspeed import ControlSpeed
+        import time
+        def limited(until):
+            duration = int(round(until - time.time()))
+            print 'Speed limited, sleeping for %d seconds' % duration
+        
+        rate = ControlSpeed(max_calls=2, period=3, callback=limited)
+        for i in range(3):
+            with rate:
+                print i
+        ```
+        
+Keywords: controlspeed,fengyun
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
