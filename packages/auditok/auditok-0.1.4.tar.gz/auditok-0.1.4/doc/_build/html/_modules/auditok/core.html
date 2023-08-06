@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>auditok.core &mdash; auditok 0.1.4 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="auditok 0.1.4 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> auditok
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cmdline.html">   Command-line Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apitutorial.html">   API Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">   auditok.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">   auditok.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../io.html">   auditok.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dataset.html">   auditok.dataset</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">auditok</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>auditok.core</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for auditok.core</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module gathers processing (i.e. tokenization) classes.</span>
+
+<span class="sd">Class summary</span>
+<span class="sd">=============</span>
+
+<span class="sd">.. autosummary::</span>
+
+<span class="sd">        StreamTokenizer</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">auditok.util</span> <span class="kn">import</span> <span class="n">DataValidator</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;StreamTokenizer&quot;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="StreamTokenizer"><a class="viewcode-back" href="../../core.html#auditok.core.StreamTokenizer">[docs]</a><span class="k">class</span> <span class="nc">StreamTokenizer</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for stream tokenizers. It implements a 4-state automaton scheme</span>
+<span class="sd">    to extract sub-sequences of interest on the fly.</span>
+<span class="sd">    </span>
+<span class="sd">    :Parameters:</span>
+<span class="sd">    </span>
+<span class="sd">        `validator` :</span>
+<span class="sd">            instance of `DataValidator` that implements `is_valid` method.</span>
+<span class="sd">        </span>
+<span class="sd">        `min_length` : *(int)*</span>
+<span class="sd">            Minimum number of frames of a valid token. This includes all \</span>
+<span class="sd">            tolerated non valid frames within the token.</span>
+<span class="sd">            </span>
+<span class="sd">        `max_length` : *(int)*</span>
+<span class="sd">            Maximum number of frames of a valid token. This includes all \</span>
+<span class="sd">            tolerated non valid frames within the token.</span>
+<span class="sd">        </span>
+<span class="sd">        `max_continuous_silence` : *(int)*</span>
+<span class="sd">            Maximum number of consecutive non-valid frames within a token.</span>
+<span class="sd">            Note that, within a valid token, there may be many tolerated \</span>
+<span class="sd">            *silent* regions that contain each a number of non valid frames up to \</span>
+<span class="sd">            `max_continuous_silence`</span>
+<span class="sd">        </span>
+<span class="sd">        `init_min` : *(int, default=0)*</span>
+<span class="sd">            Minimum number of consecutive valid frames that must be **initially** \</span>
+<span class="sd">            gathered before any sequence of non valid frames can be tolerated. This</span>
+<span class="sd">            option is not always needed, it can be used to drop non-valid tokens as</span>
+<span class="sd">            early as possible. **Default = 0** means that the option is by default </span>
+<span class="sd">            ineffective. </span>
+<span class="sd">                </span>
+<span class="sd">        `init_max_silence` : *(int, default=0)*</span>
+<span class="sd">            Maximum number of tolerated consecutive non-valid frames if the \</span>
+<span class="sd">            number already gathered valid frames has not yet reached &#39;init_min&#39;.</span>
+<span class="sd">            This argument is normally used if `init_min` is used. **Default = 0**,</span>
+<span class="sd">            by default this argument is not taken into consideration.</span>
+<span class="sd">            </span>
+<span class="sd">        `mode` : *(int, default=0)*</span>
+<span class="sd">            `mode` can be:</span>
+<span class="sd">        </span>
+<span class="sd">        1. `StreamTokenizer.STRICT_MIN_LENGTH`: </span>
+<span class="sd">        if token *i* is delivered because `max_length`</span>
+<span class="sd">        is reached, and token *i+1* is immediately adjacent to</span>
+<span class="sd">        token *i* (i.e. token *i* ends at frame *k* and token *i+1* starts</span>
+<span class="sd">        at frame *k+1*) then accept token *i+1* only of it has a size of at</span>
+<span class="sd">        least `min_length`. The default behavior is to accept token *i+1*</span>
+<span class="sd">        event if it is shorter than `min_length` (given that the above conditions</span>
+<span class="sd">        are fulfilled of course).</span>
+<span class="sd">           </span>
+<span class="sd">        :Examples:</span>
+<span class="sd">               </span>
+<span class="sd">        In the following code, without `STRICT_MIN_LENGTH`, the &#39;BB&#39; token is</span>
+<span class="sd">        accepted although it is shorter than `min_length` (3), because it immediately</span>
+<span class="sd">        follows the latest delivered token:</span>
+<span class="sd">            </span>
+<span class="sd">        .. code:: python</span>
+<span class="sd">        </span>
+<span class="sd">            from auditok import StreamTokenizer, StringDataSource, DataValidator</span>
+<span class="sd">    </span>
+<span class="sd">            class UpperCaseChecker(DataValidator):</span>
+<span class="sd">                def is_valid(self, frame):</span>
+<span class="sd">                    return frame.isupper()</span>
+<span class="sd">                   </span>
+<span class="sd">    </span>
+<span class="sd">            dsource = StringDataSource(&quot;aaaAAAABBbbb&quot;)</span>
+<span class="sd">            tokenizer = StreamTokenizer(validator=UpperCaseChecker(),</span>
+<span class="sd">                                        min_length=3,</span>
+<span class="sd">                                        max_length=4,</span>
+<span class="sd">                                        max_continuous_silence=0)</span>
+<span class="sd">         </span>
+<span class="sd">            tokenizer.tokenize(dsource)</span>
+<span class="sd">                    </span>
+<span class="sd">                    </span>
+<span class="sd">        :output:</span>
+<span class="sd">    </span>
+<span class="sd">         .. code:: python</span>
+<span class="sd">         </span>
+<span class="sd">            [([&#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;], 3, 6), ([&#39;B&#39;, &#39;B&#39;], 7, 8)]</span>
+
+
+<span class="sd">        The following tokenizer will however reject the &#39;BB&#39; token:</span>
+<span class="sd">     </span>
+<span class="sd">        .. code:: python</span>
+<span class="sd">                </span>
+<span class="sd">            dsource = StringDataSource(&quot;aaaAAAABBbbb&quot;)</span>
+<span class="sd">            tokenizer = StreamTokenizer(validator=UpperCaseChecker(), </span>
+<span class="sd">                                        min_length=3, max_length=4,</span>
+<span class="sd">                                        max_continuous_silence=0,</span>
+<span class="sd">                                        mode=StreamTokenizer.STRICT_MIN_LENGTH)</span>
+<span class="sd">            tokenizer.tokenize(dsource)</span>
+<span class="sd">        </span>
+<span class="sd">        :output:</span>
+<span class="sd">            </span>
+<span class="sd">        .. code:: python</span>
+<span class="sd">            </span>
+<span class="sd">            [([&#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;], 3, 6)]</span>
+<span class="sd">            </span>
+<span class="sd">           </span>
+<span class="sd">        2. `StreamTokenizer.DROP_TRAILING_SILENCE`: drop all tailing non-valid frames</span>
+<span class="sd">        from a token to be delivered if and only if it is not **truncated**.</span>
+<span class="sd">        This can be a bit tricky. A token is actually delivered if:</span>
+<span class="sd">           </span>
+<span class="sd">        - a. `max_continuous_silence` is reached</span>
+<span class="sd">           </span>
+<span class="sd">        :or:</span>
+<span class="sd">           </span>
+<span class="sd">        - b. Its length reaches `max_length`. This is called a **truncated** token</span>
+<span class="sd">           </span>
+<span class="sd">        In the current implementation, a `StreamTokenizer`&#39;s decision is only based on already seen</span>
+<span class="sd">        data and on incoming data. Thus, if a token is truncated at a non-valid but tolerated</span>
+<span class="sd">        frame (`max_length` is reached but `max_continuous_silence` not yet) any tailing</span>
+<span class="sd">        silence will be kept because it can potentially be part of valid token (if `max_length`</span>
+<span class="sd">        was bigger). But if `max_continuous_silence` is reached before `max_length`, the delivered</span>
+<span class="sd">        token will not be considered as truncated but a result of *normal* end of detection</span>
+<span class="sd">        (i.e. no more valid data). In that case the tailing silence can be removed if you use</span>
+<span class="sd">        the `StreamTokenizer.DROP_TRAILING_SILENCE` mode.</span>
+<span class="sd">    </span>
+<span class="sd">        :Example:</span>
+<span class="sd">    </span>
+<span class="sd">        .. code:: python</span>
+<span class="sd">                       </span>
+<span class="sd">             tokenizer = StreamTokenizer(validator=UpperCaseChecker(), min_length=3,</span>
+<span class="sd">                                         max_length=6, max_continuous_silence=3,</span>
+<span class="sd">                                         mode=StreamTokenizer.DROP_TRAILING_SILENCE)</span>
+<span class="sd">            </span>
+<span class="sd">             dsource = StringDataSource(&quot;aaaAAAaaaBBbbbb&quot;)</span>
+<span class="sd">             tokenizer.tokenize(dsource)</span>
+<span class="sd">        </span>
+<span class="sd">        :output:</span>
+<span class="sd">            </span>
+<span class="sd">        .. code:: python</span>
+<span class="sd">                </span>
+<span class="sd">            [([&#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;a&#39;, &#39;a&#39;, &#39;a&#39;], 3, 8), ([&#39;B&#39;, &#39;B&#39;], 9, 10)]</span>
+<span class="sd">                    </span>
+<span class="sd">        The first token is delivered with its tailing silence because it is truncated</span>
+<span class="sd">        while the second one has its tailing frames removed.</span>
+<span class="sd">                    </span>
+<span class="sd">        Without `StreamTokenizer.DROP_TRAILING_SILENCE` the output would be:</span>
+<span class="sd">                        </span>
+<span class="sd">        .. code:: python</span>
+<span class="sd">         </span>
+<span class="sd">            [([&#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;a&#39;, &#39;a&#39;, &#39;a&#39;], 3, 8), ([&#39;B&#39;, &#39;B&#39;, &#39;b&#39;, &#39;b&#39;, &#39;b&#39;], 9, 13)]</span>
+<span class="sd">    </span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        3. `StreamTokenizer.STRICT_MIN_LENGTH | StreamTokenizer.DROP_TRAILING_SILENCE`:</span>
+<span class="sd">        use both options. That means: first remove tailing silence, then ckeck if the</span>
+<span class="sd">        token still has at least a length of `min_length`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    
+    <span class="n">SILENCE</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">POSSIBLE_SILENCE</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">POSSIBLE_NOISE</span> <span class="o">=</span> <span class="mi">2</span> 
+    <span class="n">NOISE</span> <span class="o">=</span> <span class="mi">3</span>
+    
+    <span class="n">STRICT_MIN_LENGTH</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">DROP_TRAILING_SILENCE</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="c"># alias</span>
+    <span class="n">DROP_TAILING_SILENCE</span> <span class="o">=</span> <span class="mi">4</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validator</span><span class="p">,</span> 
+                 <span class="n">min_length</span><span class="p">,</span> <span class="n">max_length</span><span class="p">,</span> <span class="n">max_continuous_silence</span><span class="p">,</span>
+                 <span class="n">init_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">init_max_silence</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">mode</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">validator</span><span class="p">,</span> <span class="n">DataValidator</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;&#39;validator&#39; must be an instance of &#39;DataValidator&#39;&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">max_length</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;&#39;max_length&#39; must be &gt; 0 (value={0})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_length</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">min_length</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">min_length</span> <span class="o">&gt;</span> <span class="n">max_length</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;&#39;min_length&#39; must be &gt; 0 and &lt;= &#39;max_length&#39; (value={0})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">min_length</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">max_continuous_silence</span> <span class="o">&gt;=</span> <span class="n">max_length</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;&#39;max_continuous_silence&#39; must be &lt; &#39;max_length&#39; (value={0})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_continuous_silence</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">init_min</span> <span class="o">&gt;=</span> <span class="n">max_length</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;&#39;init_min&#39; must be &lt; &#39;max_length&#39; (value={0})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_continuous_silence</span><span class="p">))</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">validator</span> <span class="o">=</span> <span class="n">validator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_length</span> <span class="o">=</span> <span class="n">min_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_continuous_silence</span> <span class="o">=</span> <span class="n">max_continuous_silence</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_min</span> <span class="o">=</span> <span class="n">init_min</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_max_silent</span> <span class="o">=</span> <span class="n">init_max_silence</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_strict_min_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">STRICT_MIN_LENGTH</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_drop_tailing_silence</span>  <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">DROP_TRAILING_SILENCE</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deliver</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contiguous_token</span> <span class="o">=</span> <span class="bp">False</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_frame</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_frame</span> <span class="o">=</span> <span class="mi">0</span>
+    
+<div class="viewcode-block" id="StreamTokenizer.set_mode"><a class="viewcode-back" href="../../core.html#auditok.core.StreamTokenizer.set_mode">[docs]</a>    <span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">            `mode` : *(int)*</span>
+<span class="sd">                New mode, must be one of:</span>
+<span class="sd">                    </span>
+<span class="sd">                </span>
+<span class="sd">            - `StreamTokenizer.STRICT_MIN_LENGTH`</span>
+<span class="sd">            </span>
+<span class="sd">            - `StreamTokenizer.DROP_TRAILING_SILENCE`</span>
+<span class="sd">            </span>
+<span class="sd">            - `StreamTokenizer.STRICT_MIN_LENGTH | StreamTokenizer.DROP_TRAILING_SILENCE`</span>
+<span class="sd">                   </span>
+<span class="sd">            - `0`</span>
+<span class="sd">                       </span>
+<span class="sd">        See `StreamTokenizer.__init__` for more information about the mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">STRICT_MIN_LENGTH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DROP_TRAILING_SILENCE</span><span class="p">,</span>
+           <span class="bp">self</span><span class="o">.</span><span class="n">STRICT_MIN_LENGTH</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">DROP_TRAILING_SILENCE</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
+            
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Wrong value for mode&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_strict_min_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">STRICT_MIN_LENGTH</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_drop_tailing_silence</span>  <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">DROP_TRAILING_SILENCE</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+        
+    </div>
+<div class="viewcode-block" id="StreamTokenizer.get_mode"><a class="viewcode-back" href="../../core.html#auditok.core.StreamTokenizer.get_mode">[docs]</a>    <span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the current mode. To check whether a specific mode is activated use</span>
+<span class="sd">        the bitwise &#39;and&#39; operator `&amp;`. Example:</span>
+<span class="sd">           </span>
+<span class="sd">        .. code:: python </span>
+<span class="sd">                </span>
+<span class="sd">            if mode &amp; self.STRICT_MIN_LENGTH != 0:</span>
+<span class="sd">               do_something()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+        </div>
+    <span class="k">def</span> <span class="nf">_reinitialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contiguous_token</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SILENCE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_frame</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deliver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_append_token</span>
+    
+    
+<div class="viewcode-block" id="StreamTokenizer.tokenize"><a class="viewcode-back" href="../../core.html#auditok.core.StreamTokenizer.tokenize">[docs]</a>    <span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_source</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read data from `data_source`, one frame a time, and process the read frames in</span>
+<span class="sd">        order to detect sequences of frames that make up valid tokens.</span>
+<span class="sd">        </span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">           `data_source` : instance of the `DataSource` class that implements a &#39;read&#39; method.</span>
+<span class="sd">               &#39;read&#39; should return a slice of signal, i.e. frame (of whatever \</span>
+<span class="sd">               type as long as it can be processed by validator) and None if \</span>
+<span class="sd">               there is no more signal.</span>
+<span class="sd">        </span>
+<span class="sd">           `callback` : an optional 3-argument function.</span>
+<span class="sd">               If a `callback` function is given, it will be called each time a valid token</span>
+<span class="sd">               is found.</span>
+<span class="sd">           </span>
+<span class="sd">           </span>
+<span class="sd">        :Returns:</span>
+<span class="sd">           A list of tokens if `callback` is None. Each token is tuple with the following elements:</span>
+<span class="sd">        </span>
+<span class="sd">            .. code python</span>
+<span class="sd">            </span>
+<span class="sd">                (data, start, end)</span>
+<span class="sd">            </span>
+<span class="sd">           where `data` is a list of read frames, `start`: index of the first frame in the</span>
+<span class="sd">           original data and `end` : index of the last frame. </span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reinitialize</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">callback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deliver</span> <span class="o">=</span> <span class="n">callback</span>
+        
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">frame</span> <span class="o">=</span>  <span class="n">data_source</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">frame</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_frame</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">_post_process</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">callback</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">_ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">_ret</span>
+        
+        </div>
+    <span class="k">def</span> <span class="nf">_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+        
+        <span class="n">frame_is_valid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validator</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">SILENCE</span><span class="p">:</span>
+            
+            <span class="k">if</span> <span class="n">frame_is_valid</span><span class="p">:</span>
+                <span class="c"># seems we got a valid frame after a silence</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_init_count</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_start_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_frame</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_count</span>  <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_min</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NOISE</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">POSSIBLE_NOISE</span>
+        
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">POSSIBLE_NOISE</span><span class="p">:</span>
+            
+            <span class="k">if</span> <span class="n">frame_is_valid</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_init_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_count</span>  <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_min</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NOISE</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+            
+            <span class="k">else</span><span class="p">:</span>                
+                <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_max_silent</span> <span class="ow">or</span> \
+                <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+                    <span class="c"># either init_max_silent or max_length is reached</span>
+                    <span class="c"># before _init_count, back to silence</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SILENCE</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                    
+                
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">NOISE</span><span class="p">:</span>
+            
+            <span class="k">if</span> <span class="n">frame_is_valid</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+            
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_continuous_silence</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">:</span>
+                <span class="c"># max token reached at this frame will _deliver if _contiguous_token</span>
+                <span class="c"># and not _strict_min_length</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SILENCE</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># this is the first silent frame following a valid one</span>
+                <span class="c"># and it is tolerated</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">POSSIBLE_SILENCE</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+                    <span class="c"># don&#39;t reset _silence_length because we still </span>
+                    <span class="c"># need to know the total number of silent frames</span>
+                                   
+                                
+    
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">POSSIBLE_SILENCE</span><span class="p">:</span>
+            
+            <span class="k">if</span> <span class="n">frame_is_valid</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NOISE</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_continuous_silence</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">):</span>
+                        <span class="c"># _deliver only gathered frames aren&#39;t all silent                    </span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">()</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SILENCE</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+                        <span class="c"># don&#39;t reset _silence_length because we still </span>
+                        <span class="c"># need to know the total number of silent frames</span>
+                        
+    
+    <span class="k">def</span> <span class="nf">_post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">NOISE</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">POSSIBLE_SILENCE</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_process_end_of_detection</span><span class="p">()</span>
+    
+    
+    <span class="k">def</span> <span class="nf">_process_end_of_detection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">truncated</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">truncated</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drop_tailing_silence</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c"># happens if max_continuous_silence is reached</span>
+            <span class="c"># or max_length is reached at a silent frame</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silence_length</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_length</span><span class="p">)</span> <span class="ow">or</span> \
+           <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> \
+            <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_strict_min_length</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contiguous_token</span><span class="p">):</span>
+            
+            
+            
+            <span class="n">_end_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_frame</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deliver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_frame</span><span class="p">,</span> <span class="n">_end_frame</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">truncated</span><span class="p">:</span>
+                <span class="c"># next token (if any) will start at _current_frame + 1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_start_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_frame</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="c"># remember that it is contiguous with the just delivered one</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_contiguous_token</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_contiguous_token</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contiguous_token</span> <span class="o">=</span> <span class="bp">False</span>       
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="p">[]</span>
+            
+    
+    
+    <span class="k">def</span> <span class="nf">_append_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Amine Sehili.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

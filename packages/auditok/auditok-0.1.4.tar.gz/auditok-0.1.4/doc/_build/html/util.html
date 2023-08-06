@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>auditok.util &mdash; auditok 0.1.4 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="auditok 0.1.4 documentation" href="index.html"/>
+        <link rel="next" title="auditok.io" href="io.html"/>
+        <link rel="prev" title="auditok.core" href="core.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> auditok
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">   Command-line Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apitutorial.html">   API Tutorial</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">   auditok.core</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">   auditok.util</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-summary">Class summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">   auditok.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">   auditok.dataset</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">auditok</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>auditok.util</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/util.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-auditok.util">
+<span id="auditok-util"></span><h1>auditok.util<a class="headerlink" href="#module-auditok.util" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="class-summary">
+<h2>Class summary<a class="headerlink" href="#class-summary" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#auditok.util.DataSource" title="auditok.util.DataSource"><tt class="xref py py-obj docutils literal"><span class="pre">DataSource</span></tt></a></td>
+<td>Base class for objects passed to <a class="reference internal" href="core.html#auditok.core.StreamTokenizer.tokenize" title="auditok.core.StreamTokenizer.tokenize"><tt class="xref py py-func docutils literal"><span class="pre">auditok.core.StreamTokenizer.tokenize()</span></tt></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#auditok.util.StringDataSource" title="auditok.util.StringDataSource"><tt class="xref py py-obj docutils literal"><span class="pre">StringDataSource</span></tt></a>(data)</td>
+<td>A class that represent a <a class="reference internal" href="#auditok.util.DataSource" title="auditok.util.DataSource"><tt class="xref py py-class docutils literal"><span class="pre">DataSource</span></tt></a> as a string buffer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#auditok.util.ADSFactory" title="auditok.util.ADSFactory"><tt class="xref py py-obj docutils literal"><span class="pre">ADSFactory</span></tt></a></td>
+<td>Factory class that makes it easy to create an <a class="reference internal" href="#auditok.util.ADSFactory.AudioDataSource" title="auditok.util.ADSFactory.AudioDataSource"><tt class="xref py py-class docutils literal"><span class="pre">ADSFactory.AudioDataSource</span></tt></a> object that implements <a class="reference internal" href="#auditok.util.DataSource" title="auditok.util.DataSource"><tt class="xref py py-class docutils literal"><span class="pre">DataSource</span></tt></a> and can therefore be passed to <a class="reference internal" href="core.html#auditok.core.StreamTokenizer.tokenize" title="auditok.core.StreamTokenizer.tokenize"><tt class="xref py py-func docutils literal"><span class="pre">auditok.core.StreamTokenizer.tokenize()</span></tt></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#auditok.util.ADSFactory.AudioDataSource" title="auditok.util.ADSFactory.AudioDataSource"><tt class="xref py py-obj docutils literal"><span class="pre">ADSFactory.AudioDataSource</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#auditok.util.ADSFactory.ADSDecorator" title="auditok.util.ADSFactory.ADSDecorator"><tt class="xref py py-obj docutils literal"><span class="pre">ADSFactory.ADSDecorator</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#auditok.util.ADSFactory.OverlapADS" title="auditok.util.ADSFactory.OverlapADS"><tt class="xref py py-obj docutils literal"><span class="pre">ADSFactory.OverlapADS</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#auditok.util.ADSFactory.LimiterADS" title="auditok.util.ADSFactory.LimiterADS"><tt class="xref py py-obj docutils literal"><span class="pre">ADSFactory.LimiterADS</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#auditok.util.ADSFactory.RecorderADS" title="auditok.util.ADSFactory.RecorderADS"><tt class="xref py py-obj docutils literal"><span class="pre">ADSFactory.RecorderADS</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#auditok.util.DataValidator" title="auditok.util.DataValidator"><tt class="xref py py-obj docutils literal"><span class="pre">DataValidator</span></tt></a></td>
+<td>Base class for a validator object used by <a class="reference internal" href="core.html#auditok.core.StreamTokenizer" title="auditok.core.StreamTokenizer"><tt class="xref py py-class docutils literal"><span class="pre">core.StreamTokenizer</span></tt></a> to check if read data is valid.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#auditok.util.AudioEnergyValidator" title="auditok.util.AudioEnergyValidator"><tt class="xref py py-obj docutils literal"><span class="pre">AudioEnergyValidator</span></tt></a>(sample_width[,&nbsp;...])</td>
+<td>The most basic auditok audio frame validator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="auditok.util.DataSource">
+<em class="property">class </em><tt class="descclassname">auditok.util.</tt><tt class="descname">DataSource</tt><a class="reference internal" href="_modules/auditok/util.html#DataSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.DataSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for objects passed to <a class="reference internal" href="core.html#auditok.core.StreamTokenizer.tokenize" title="auditok.core.StreamTokenizer.tokenize"><tt class="xref py py-func docutils literal"><span class="pre">auditok.core.StreamTokenizer.tokenize()</span></tt></a>.
+Subclasses should implement a <a class="reference internal" href="#auditok.util.DataSource.read" title="auditok.util.DataSource.read"><tt class="xref py py-func docutils literal"><span class="pre">DataSource.read()</span></tt></a> method.</p>
+<dl class="method">
+<dt id="auditok.util.DataSource.read">
+<tt class="descname">read</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/auditok/util.html#DataSource.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.DataSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a piece of data read from this source.
+If no more data is available, return None.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.DataValidator">
+<em class="property">class </em><tt class="descclassname">auditok.util.</tt><tt class="descname">DataValidator</tt><a class="reference internal" href="_modules/auditok/util.html#DataValidator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.DataValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for a validator object used by <a class="reference internal" href="core.html#auditok.core.StreamTokenizer" title="auditok.core.StreamTokenizer"><tt class="xref py py-class docutils literal"><span class="pre">core.StreamTokenizer</span></tt></a> to check
+if read data is valid.
+Subclasses should implement <a class="reference internal" href="#auditok.util.DataValidator.is_valid" title="auditok.util.DataValidator.is_valid"><tt class="xref py py-func docutils literal"><span class="pre">is_valid()</span></tt></a> method.</p>
+<dl class="method">
+<dt id="auditok.util.DataValidator.is_valid">
+<tt class="descname">is_valid</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#DataValidator.is_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.DataValidator.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether <cite>data</cite> is valid</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.StringDataSource">
+<em class="property">class </em><tt class="descclassname">auditok.util.</tt><tt class="descname">StringDataSource</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#StringDataSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.StringDataSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that represent a <a class="reference internal" href="#auditok.util.DataSource" title="auditok.util.DataSource"><tt class="xref py py-class docutils literal"><span class="pre">DataSource</span></tt></a> as a string buffer.
+Each call to <a class="reference internal" href="#auditok.util.DataSource.read" title="auditok.util.DataSource.read"><tt class="xref py py-func docutils literal"><span class="pre">DataSource.read()</span></tt></a> returns on character and moves one step forward.
+If the end of the buffer is reached, <a class="reference internal" href="#auditok.util.StringDataSource.read" title="auditok.util.StringDataSource.read"><tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt></a> returns None.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><cite>data</cite> <span class="classifier-delimiter">:</span> <span class="classifier"></span></dt>
+<dd><p class="first last">a basestring object.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="auditok.util.StringDataSource.read">
+<tt class="descname">read</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/auditok/util.html#StringDataSource.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.StringDataSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read one character from buffer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current character or None if end of buffer is reached</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="auditok.util.StringDataSource.set_data">
+<tt class="descname">set_data</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#StringDataSource.set_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.StringDataSource.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a new data buffer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><cite>data</cite> <span class="classifier-delimiter">:</span> <span class="classifier">a basestring object </span></dt>
+<dd><p class="first last">New data buffer.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.ADSFactory">
+<em class="property">class </em><tt class="descclassname">auditok.util.</tt><tt class="descname">ADSFactory</tt><a class="reference internal" href="_modules/auditok/util.html#ADSFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.ADSFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factory class that makes it easy to create an <a class="reference internal" href="#auditok.util.ADSFactory.AudioDataSource" title="auditok.util.ADSFactory.AudioDataSource"><tt class="xref py py-class docutils literal"><span class="pre">ADSFactory.AudioDataSource</span></tt></a> object that implements
+<a class="reference internal" href="#auditok.util.DataSource" title="auditok.util.DataSource"><tt class="xref py py-class docutils literal"><span class="pre">DataSource</span></tt></a> and can therefore be passed to <a class="reference internal" href="core.html#auditok.core.StreamTokenizer.tokenize" title="auditok.core.StreamTokenizer.tokenize"><tt class="xref py py-func docutils literal"><span class="pre">auditok.core.StreamTokenizer.tokenize()</span></tt></a>.</p>
+<p>Whether you read audio data from a file, the microphone or a memory buffer, this factory
+instantiates and returns the right <a class="reference internal" href="#auditok.util.ADSFactory.AudioDataSource" title="auditok.util.ADSFactory.AudioDataSource"><tt class="xref py py-class docutils literal"><span class="pre">ADSFactory.AudioDataSource</span></tt></a> object.</p>
+<p>There are many other features you want your <a class="reference internal" href="#auditok.util.ADSFactory.AudioDataSource" title="auditok.util.ADSFactory.AudioDataSource"><tt class="xref py py-class docutils literal"><span class="pre">ADSFactory.AudioDataSource</span></tt></a> object to have, such as: 
+memorize all read audio data so that you can rewind and reuse it (especially useful when 
+reading data from the microphone), read a fixed amount of data (also useful when reading 
+from the microphone), read overlapping audio frames (often needed when dosing a spectral
+analysis of data).</p>
+<p><a class="reference internal" href="#auditok.util.ADSFactory.ads" title="auditok.util.ADSFactory.ads"><tt class="xref py py-func docutils literal"><span class="pre">ADSFactory.ads()</span></tt></a> automatically creates and return object with the desired behavior according
+to the supplied keyword arguments.</p>
+<dl class="class">
+<dt id="auditok.util.ADSFactory.ADSDecorator">
+<em class="property">class </em><tt class="descname">ADSDecorator</tt><big>(</big><em>ads</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#ADSFactory.ADSDecorator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.ADSFactory.ADSDecorator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base decorator class for AudioDataSource objects.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.ADSFactory.AudioDataSource">
+<em class="property">class </em><tt class="descclassname">ADSFactory.</tt><tt class="descname">AudioDataSource</tt><big>(</big><em>audio_source</em>, <em>block_size</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#ADSFactory.AudioDataSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.ADSFactory.AudioDataSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for AudioDataSource objects.
+It inherits from DataSource and encapsulates an AudioSource object.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.ADSFactory.LimiterADS">
+<em class="property">class </em><tt class="descclassname">ADSFactory.</tt><tt class="descname">LimiterADS</tt><big>(</big><em>ads</em>, <em>max_time</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#ADSFactory.LimiterADS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.ADSFactory.LimiterADS" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for AudioDataSource objects that can read a fixed amount of data.
+This can be useful when reading data from the microphone or from large audio files.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.ADSFactory.OverlapADS">
+<em class="property">class </em><tt class="descclassname">ADSFactory.</tt><tt class="descname">OverlapADS</tt><big>(</big><em>ads</em>, <em>hop_size</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#ADSFactory.OverlapADS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.ADSFactory.OverlapADS" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for AudioDataSource objects that can read and return overlapping audio frames</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.ADSFactory.RecorderADS">
+<em class="property">class </em><tt class="descclassname">ADSFactory.</tt><tt class="descname">RecorderADS</tt><big>(</big><em>ads</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#ADSFactory.RecorderADS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.ADSFactory.RecorderADS" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for AudioDataSource objects that can record all audio data they read,
+with a rewind facility.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="auditok.util.ADSFactory.ads">
+<em class="property">static </em><tt class="descclassname">ADSFactory.</tt><tt class="descname">ads</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#ADSFactory.ads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.ADSFactory.ads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an return an <a class="reference internal" href="#auditok.util.ADSFactory.AudioDataSource" title="auditok.util.ADSFactory.AudioDataSource"><tt class="xref py py-class docutils literal"><span class="pre">ADSFactory.AudioDataSource</span></tt></a>. The type and behavior of the object is the result
+of the supplied parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><em>No parameters</em> <span class="classifier-delimiter">:</span> <span class="classifier"></span></dt>
+<dd>read audio data from the available built-in microphone with the default parameters.
+The returned <a class="reference internal" href="#auditok.util.ADSFactory.AudioDataSource" title="auditok.util.ADSFactory.AudioDataSource"><tt class="xref py py-class docutils literal"><span class="pre">ADSFactory.AudioDataSource</span></tt></a> encapsulate an <tt class="xref py py-class docutils literal"><span class="pre">io.PyAudioSource</span></tt> object and hence 
+it accepts the next four parameters are passed to use instead of their default values.</dd>
+<dt><cite>sampling_rate</cite>, <cite>sr</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd>number of samples per second. Default = 16000.</dd>
+<dt><cite>sample_width</cite>, <cite>sw</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd>number of bytes per sample (must be in (1, 2, 4)). Default = 2</dd>
+<dt><cite>channels</cite>, <cite>ch</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd>number of audio channels. Default = 1 (only this value is currently accepted)</dd>
+<dt><cite>frames_per_buffer</cite>, <cite>fpb</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd>number of samples of PyAudio buffer. Default = 1024.</dd>
+<dt><cite>audio_source</cite>, <cite>asrc</cite> <span class="classifier-delimiter">:</span> <span class="classifier">an <cite>AudioSource</cite> object</span></dt>
+<dd>read data from this audio source</dd>
+<dt><cite>filename</cite>, <cite>fn</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(string)</em></span></dt>
+<dd>build an <cite>io.AudioSource</cite> object using this file (currently only wave format is supported)</dd>
+<dt><cite>data_buffer</cite>, <cite>db</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(string)</em></span></dt>
+<dd>build an <cite>io.BufferAudioSource</cite> using data in <cite>data_buffer</cite>. If this keyword is used,
+<cite>sampling_rate</cite>, <cite>sample_width</cite> and <cite>channels</cite> are passed to <cite>io.BufferAudioSource</cite>
+constructor and used instead of default values.</dd>
+<dt><cite>max_time</cite>, <cite>mt</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(float)</em></span></dt>
+<dd>maximum time (in seconds) to read. Default behavior: read until there is no more data
+available.</dd>
+<dt><cite>record</cite>, <cite>rec</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(bool)</em></span></dt>
+<dd>save all read data in cache. Provide a navigable object which boasts a <cite>rewind</cite> method.
+Default = False.</dd>
+<dt><cite>block_dur</cite>, <cite>bd</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(float)</em></span></dt>
+<dd>processing block duration in seconds. This represents the quantity of audio data to return 
+each time the <tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt> method is invoked. If <cite>block_dur</cite> is 0.025 (i.e. 25 ms) and the sampling
+rate is 8000 and the sample width is 2 bytes, <tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt> returns a buffer of 0.025 * 8000 * 2 = 400
+bytes at most. This parameter will be looked for (and used if available) before <cite>block_size</cite>.
+If neither parameter is given, <cite>block_dur</cite> will be set to 0.01 second (i.e. 10 ms)</dd>
+<dt><cite>hop_dur</cite>, <cite>hd</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(float)</em></span></dt>
+<dd>quantity of data to skip from current processing window. if <cite>hop_dur</cite> is supplied then there
+will be an overlap of <cite>block_dur</cite> - <cite>hop_dur</cite> between two adjacent blocks. This
+parameter will be looked for (and used if available) before <cite>hop_size</cite>. If neither parameter
+is given, <cite>hop_dur</cite> will be set to <cite>block_dur</cite> which means that there will be no overlap
+between two consecutively read blocks.</dd>
+<dt><cite>block_size</cite>, <cite>bs</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd>number of samples to read each time the <cite>read</cite> method is called. Default: a block size
+that represents a window of 10ms, so for a sampling rate of 16000, the default <cite>block_size</cite>
+is 160 samples, for a rate of 44100, <cite>block_size</cite> = 441 samples, etc.</dd>
+<dt><cite>hop_size</cite>, <cite>hs</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd>determines the number of overlapping samples between two adjacent read windows. For a
+<cite>hop_size</cite> of value <em>N</em>, the overlap is <cite>block_size</cite> - <em>N</em>. Default : <cite>hop_size</cite> = <cite>block_size</cite>,
+means that there is no overlap.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>An AudioDataSource object that has the desired features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Exampels:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><strong>Create an AudioDataSource that reads data from the microphone (requires Pyaudio) with default audio parameters:</strong></li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">auditok</span> <span class="kn">import</span> <span class="n">ADSFactory</span>
+<span class="n">ads</span> <span class="o">=</span> <span class="n">ADSFactory</span><span class="o">.</span><span class="n">ads</span><span class="p">()</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_sampling_rate</span><span class="p">()</span>
+<span class="mi">16000</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_sample_width</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_channels</span><span class="p">()</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><strong>Create an AudioDataSource that reads data from the microphone with a sampling rate of 48KHz:</strong></li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">auditok</span> <span class="kn">import</span> <span class="n">ADSFactory</span>
+<span class="n">ads</span> <span class="o">=</span> <span class="n">ADSFactory</span><span class="o">.</span><span class="n">ads</span><span class="p">(</span><span class="n">sr</span><span class="o">=</span><span class="mi">48000</span><span class="p">)</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_sampling_rate</span><span class="p">()</span>
+<span class="mi">48000</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><strong>Create an AudioDataSource that reads data from a wave file:</strong></li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">auditok</span>
+<span class="kn">from</span> <span class="nn">auditok</span> <span class="kn">import</span> <span class="n">ADSFactory</span>
+<span class="n">ads</span> <span class="o">=</span> <span class="n">ADSFactory</span><span class="o">.</span><span class="n">ads</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">auditok</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">was_der_mensch_saet_mono_44100_lead_trail_silence</span><span class="p">)</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_sampling_rate</span><span class="p">()</span>
+<span class="mi">44100</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_sample_width</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_channels</span><span class="p">()</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><strong>Define size of read blocks as 20 ms</strong></li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">auditok</span>
+<span class="kn">from</span> <span class="nn">auditok</span> <span class="kn">import</span> <span class="n">ADSFactory</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">we know samling rate for previous file is 44100 samples/second</span>
+<span class="sd">so 10 ms are equivalent to 441 samples and 20 ms to 882</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">block_size</span> <span class="o">=</span> <span class="mi">882</span>
+<span class="n">ads</span> <span class="o">=</span> <span class="n">ADSFactory</span><span class="o">.</span><span class="n">ads</span><span class="p">(</span><span class="n">bs</span> <span class="o">=</span> <span class="mi">882</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="n">auditok</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">was_der_mensch_saet_mono_44100_lead_trail_silence</span><span class="p">)</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="c"># read one block</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="mi">1764</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span>  <span class="n">ads</span><span class="o">.</span><span class="n">get_sample_width</span><span class="p">()</span> <span class="o">*</span> <span class="n">block_size</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><strong>Define block size as a duration (use block_dur or bd):</strong></li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">auditok</span>
+<span class="kn">from</span> <span class="nn">auditok</span> <span class="kn">import</span> <span class="n">ADSFactory</span>
+<span class="n">dur</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c"># second</span>
+<span class="n">ads</span> <span class="o">=</span> <span class="n">ADSFactory</span><span class="o">.</span><span class="n">ads</span><span class="p">(</span><span class="n">bd</span> <span class="o">=</span> <span class="n">dur</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="n">auditok</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">was_der_mensch_saet_mono_44100_lead_trail_silence</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">we know samling rate for previous file is 44100 samples/second</span>
+<span class="sd">for a block duration of 250 ms, block size should be 0.25 * 44100 = 11025</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">get_block_size</span><span class="p">()</span>
+<span class="mi">11025</span>
+<span class="k">assert</span> <span class="n">ads</span><span class="o">.</span><span class="n">get_block_size</span><span class="p">()</span> <span class="o">==</span>  <span class="nb">int</span><span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="mi">44100</span><span class="p">)</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="c"># read one block</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="mi">22050</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span>  <span class="n">ads</span><span class="o">.</span><span class="n">get_sample_width</span><span class="p">()</span> <span class="o">*</span> <span class="n">ads</span><span class="o">.</span><span class="n">get_block_size</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><strong>Read overlapping blocks (one of hope_size, hs, hop_dur or hd &gt; 0):</strong></li>
+</ol>
+<p>For better readability we&#8217;d better use <a class="reference internal" href="io.html#auditok.io.BufferAudioSource" title="auditok.io.BufferAudioSource"><tt class="xref py py-class docutils literal"><span class="pre">auditok.io.BufferAudioSource</span></tt></a> with a string buffer:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">auditok</span>
+<span class="kn">from</span> <span class="nn">auditok</span> <span class="kn">import</span> <span class="n">ADSFactory</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">we supply a data beffer instead of a file (keyword &#39;bata_buffer&#39; or &#39;db&#39;)</span>
+<span class="sd">sr : sampling rate = 16 samples/sec</span>
+<span class="sd">sw : sample width = 1 byte</span>
+<span class="sd">ch : channels = 1</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">buffer</span> <span class="o">=</span> <span class="s">&quot;abcdefghijklmnop&quot;</span> <span class="c"># 16 bytes = 1 second of data</span>
+<span class="n">bd</span> <span class="o">=</span> <span class="mf">0.250</span> <span class="c"># block duration = 250 ms = 4 bytes</span>
+<span class="n">hd</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="c"># hop duration = 125 ms = 2 bytes </span>
+<span class="n">ads</span> <span class="o">=</span> <span class="n">ADSFactory</span><span class="o">.</span><span class="n">ads</span><span class="p">(</span><span class="n">db</span> <span class="o">=</span> <span class="s">&quot;abcdefghijklmnop&quot;</span><span class="p">,</span> <span class="n">bd</span> <span class="o">=</span> <span class="n">bd</span><span class="p">,</span> <span class="n">hd</span> <span class="o">=</span> <span class="n">hd</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">sw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ch</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="s">&#39;abcd&#39;</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="s">&#39;cdef&#39;</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="s">&#39;efgh&#39;</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="s">&#39;ghij&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">data</span> <span class="o">==</span> <span class="s">&#39;ijkl&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><strong>Limit amount of read data (use max_time or mt):</strong></li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">We know audio file is larger than 2.25 seconds</span>
+<span class="sd">We want to read up to 2.25 seconds of audio data</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">ads</span> <span class="o">=</span> <span class="n">ADSFactory</span><span class="o">.</span><span class="n">ads</span><span class="p">(</span><span class="n">mt</span> <span class="o">=</span> <span class="mf">2.25</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="n">auditok</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">was_der_mensch_saet_mono_44100_lead_trail_silence</span><span class="p">)</span>
+<span class="n">ads</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">ads</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    
+<span class="n">ads</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">b</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">ads</span><span class="o">.</span><span class="n">get_sampling_rate</span><span class="p">()</span> <span class="o">*</span> <span class="mf">2.25</span> <span class="o">*</span> <span class="n">ads</span><span class="o">.</span><span class="n">get_sample_width</span><span class="p">()</span> <span class="o">*</span> <span class="n">ads</span><span class="o">.</span><span class="n">get_channels</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="auditok.util.AudioEnergyValidator">
+<em class="property">class </em><tt class="descclassname">auditok.util.</tt><tt class="descname">AudioEnergyValidator</tt><big>(</big><em>sample_width</em>, <em>energy_threshold=45</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#AudioEnergyValidator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.AudioEnergyValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>The most basic auditok audio frame validator.
+This validator computes the log energy of an input audio frame
+and return True if the result is &gt;= a given threshold, False 
+otherwise.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><cite>sample_width</cite> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Number of bytes of one audio sample. This is used to convert data from <cite>basestring</cite> or <cite>Bytes</cite> to
+an array of floats.</dd>
+<dt><cite>energy_threshold</cite> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>A threshold used to check whether an input data buffer is valid.</dd>
+</dl>
+<dl class="method">
+<dt id="auditok.util.AudioEnergyValidator.is_valid">
+<tt class="descname">is_valid</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/auditok/util.html#AudioEnergyValidator.is_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.util.AudioEnergyValidator.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if data is valid. Audio data will be converted into an array (of
+signed values) of which the log energy is computed. Log energy is computed
+as follows:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">arr</span> <span class="o">=</span> <span class="n">AudioEnergyValidator</span><span class="o">.</span><span class="n">_convert</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sample_width</span><span class="p">)</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">log_energy</span> <span class="o">=</span> <span class="mf">10.</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><cite>data</cite> <span class="classifier-delimiter">:</span> <span class="classifier">either a string or a Bytes buffer</span></dt>
+<dd><p class="first last"><cite>data</cite> is converted into a numerical arra using the <cite>sample_width</cite>
+given in the constructor.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retruns:</th><td class="field-body"><p class="first last">True if <cite>log_energy</cite> &gt; <cite>energy_threshold</cite>, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="io.html" class="btn btn-neutral float-right" title="auditok.io" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="core.html" class="btn btn-neutral" title="auditok.core" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Amine Sehili.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>auditok.core &mdash; auditok 0.1.4 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="auditok 0.1.4 documentation" href="index.html"/>
+        <link rel="next" title="auditok.util" href="util.html"/>
+        <link rel="prev" title="auditok API Tutorial" href="apitutorial.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> auditok
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">   Command-line Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apitutorial.html">   API Tutorial</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">   auditok.core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-summary">Class summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">   auditok.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">   auditok.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">   auditok.dataset</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">auditok</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>auditok.core</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/core.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-auditok.core">
+<span id="auditok-core"></span><h1>auditok.core<a class="headerlink" href="#module-auditok.core" title="Permalink to this headline">¶</a></h1>
+<p>This module gathers processing (i.e. tokenization) classes.</p>
+<div class="section" id="class-summary">
+<h2>Class summary<a class="headerlink" href="#class-summary" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#auditok.core.StreamTokenizer" title="auditok.core.StreamTokenizer"><tt class="xref py py-obj docutils literal"><span class="pre">StreamTokenizer</span></tt></a>(validator,&nbsp;min_length,&nbsp;...)</td>
+<td>Class for stream tokenizers.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="auditok.core.StreamTokenizer">
+<em class="property">class </em><tt class="descclassname">auditok.core.</tt><tt class="descname">StreamTokenizer</tt><big>(</big><em>validator</em>, <em>min_length</em>, <em>max_length</em>, <em>max_continuous_silence</em>, <em>init_min=0</em>, <em>init_max_silence=0</em>, <em>mode=0</em><big>)</big><a class="reference internal" href="_modules/auditok/core.html#StreamTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.core.StreamTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for stream tokenizers. It implements a 4-state automaton scheme
+to extract sub-sequences of interest on the fly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><cite>validator</cite> :</dt>
+<dd><p class="first last">instance of <cite>DataValidator</cite> that implements <cite>is_valid</cite> method.</p>
+</dd>
+<dt><cite>min_length</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd><p class="first last">Minimum number of frames of a valid token. This includes all             tolerated non valid frames within the token.</p>
+</dd>
+<dt><cite>max_length</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd><p class="first last">Maximum number of frames of a valid token. This includes all             tolerated non valid frames within the token.</p>
+</dd>
+<dt><cite>max_continuous_silence</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd><p class="first last">Maximum number of consecutive non-valid frames within a token.
+Note that, within a valid token, there may be many tolerated             <em>silent</em> regions that contain each a number of non valid frames up to             <cite>max_continuous_silence</cite></p>
+</dd>
+<dt><cite>init_min</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int, default=0)</em></span></dt>
+<dd><p class="first last">Minimum number of consecutive valid frames that must be <strong>initially</strong>             gathered before any sequence of non valid frames can be tolerated. This
+option is not always needed, it can be used to drop non-valid tokens as
+early as possible. <strong>Default = 0</strong> means that the option is by default 
+ineffective.</p>
+</dd>
+<dt><cite>init_max_silence</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int, default=0)</em></span></dt>
+<dd><p class="first last">Maximum number of tolerated consecutive non-valid frames if the             number already gathered valid frames has not yet reached &#8216;init_min&#8217;.
+This argument is normally used if <cite>init_min</cite> is used. <strong>Default = 0</strong>,
+by default this argument is not taken into consideration.</p>
+</dd>
+<dt><cite>mode</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int, default=0)</em></span></dt>
+<dd><p class="first last"><cite>mode</cite> can be:</p>
+</dd>
+</dl>
+<p>1. <cite>StreamTokenizer.STRICT_MIN_LENGTH</cite>: 
+if token <em>i</em> is delivered because <cite>max_length</cite>
+is reached, and token <em>i+1</em> is immediately adjacent to
+token <em>i</em> (i.e. token <em>i</em> ends at frame <em>k</em> and token <em>i+1</em> starts
+at frame <em>k+1</em>) then accept token <em>i+1</em> only of it has a size of at
+least <cite>min_length</cite>. The default behavior is to accept token <em>i+1</em>
+event if it is shorter than <cite>min_length</cite> (given that the above conditions
+are fulfilled of course).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>In the following code, without <cite>STRICT_MIN_LENGTH</cite>, the &#8216;BB&#8217; token is
+accepted although it is shorter than <cite>min_length</cite> (3), because it immediately
+follows the latest delivered token:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">auditok</span> <span class="kn">import</span> <span class="n">StreamTokenizer</span><span class="p">,</span> <span class="n">StringDataSource</span><span class="p">,</span> <span class="n">DataValidator</span>
+
+<span class="k">class</span> <span class="nc">UpperCaseChecker</span><span class="p">(</span><span class="n">DataValidator</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">frame</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+       
+
+<span class="n">dsource</span> <span class="o">=</span> <span class="n">StringDataSource</span><span class="p">(</span><span class="s">&quot;aaaAAAABBbbb&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">StreamTokenizer</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">UpperCaseChecker</span><span class="p">(),</span>
+                            <span class="n">min_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                            <span class="n">max_length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                            <span class="n">max_continuous_silence</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">dsource</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">output:</th><td class="field-body"><div class="code python first last highlight-python"><div class="highlight"><pre><span class="p">[([</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">([</span><span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">],</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The following tokenizer will however reject the &#8216;BB&#8217; token:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">dsource</span> <span class="o">=</span> <span class="n">StringDataSource</span><span class="p">(</span><span class="s">&quot;aaaAAAABBbbb&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">StreamTokenizer</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">UpperCaseChecker</span><span class="p">(),</span> 
+                            <span class="n">min_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                            <span class="n">max_continuous_silence</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                            <span class="n">mode</span><span class="o">=</span><span class="n">StreamTokenizer</span><span class="o">.</span><span class="n">STRICT_MIN_LENGTH</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">dsource</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">output:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="p">[([</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>2. <cite>StreamTokenizer.DROP_TRAILING_SILENCE</cite>: drop all tailing non-valid frames
+from a token to be delivered if and only if it is not <strong>truncated</strong>.
+This can be a bit tricky. A token is actually delivered if:</p>
+<ul class="simple">
+<li><ol class="first loweralpha">
+<li><cite>max_continuous_silence</cite> is reached</li>
+</ol>
+</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">or:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><ol class="first loweralpha" start="2">
+<li>Its length reaches <cite>max_length</cite>. This is called a <strong>truncated</strong> token</li>
+</ol>
+</li>
+</ul>
+<p>In the current implementation, a <cite>StreamTokenizer</cite>&#8216;s decision is only based on already seen
+data and on incoming data. Thus, if a token is truncated at a non-valid but tolerated
+frame (<cite>max_length</cite> is reached but <cite>max_continuous_silence</cite> not yet) any tailing
+silence will be kept because it can potentially be part of valid token (if <cite>max_length</cite>
+was bigger). But if <cite>max_continuous_silence</cite> is reached before <cite>max_length</cite>, the delivered
+token will not be considered as truncated but a result of <em>normal</em> end of detection
+(i.e. no more valid data). In that case the tailing silence can be removed if you use
+the <cite>StreamTokenizer.DROP_TRAILING_SILENCE</cite> mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">StreamTokenizer</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">UpperCaseChecker</span><span class="p">(),</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                            <span class="n">max_length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">max_continuous_silence</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                            <span class="n">mode</span><span class="o">=</span><span class="n">StreamTokenizer</span><span class="o">.</span><span class="n">DROP_TRAILING_SILENCE</span><span class="p">)</span>
+
+<span class="n">dsource</span> <span class="o">=</span> <span class="n">StringDataSource</span><span class="p">(</span><span class="s">&quot;aaaAAAaaaBBbbbb&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">dsource</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">output:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="p">[([</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">([</span><span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">],</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>The first token is delivered with its tailing silence because it is truncated
+while the second one has its tailing frames removed.</p>
+<p>Without <cite>StreamTokenizer.DROP_TRAILING_SILENCE</cite> the output would be:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="p">[([</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">([</span><span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">],</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p class="last">3. <cite>StreamTokenizer.STRICT_MIN_LENGTH | StreamTokenizer.DROP_TRAILING_SILENCE</cite>:
+use both options. That means: first remove tailing silence, then ckeck if the
+token still has at least a length of <cite>min_length</cite>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="auditok.core.StreamTokenizer.get_mode">
+<tt class="descname">get_mode</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/auditok/core.html#StreamTokenizer.get_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.core.StreamTokenizer.get_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current mode. To check whether a specific mode is activated use
+the bitwise &#8216;and&#8217; operator <cite>&amp;</cite>. Example:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">mode</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">STRICT_MIN_LENGTH</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+   <span class="n">do_something</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="auditok.core.StreamTokenizer.set_mode">
+<tt class="descname">set_mode</tt><big>(</big><em>mode</em><big>)</big><a class="reference internal" href="_modules/auditok/core.html#StreamTokenizer.set_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.core.StreamTokenizer.set_mode" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><cite>mode</cite> <span class="classifier-delimiter">:</span> <span class="classifier"><em>(int)</em></span></dt>
+<dd><p class="first last">New mode, must be one of:</p>
+</dd>
+</dl>
+<ul class="last simple">
+<li><cite>StreamTokenizer.STRICT_MIN_LENGTH</cite></li>
+<li><cite>StreamTokenizer.DROP_TRAILING_SILENCE</cite></li>
+<li><cite>StreamTokenizer.STRICT_MIN_LENGTH | StreamTokenizer.DROP_TRAILING_SILENCE</cite></li>
+<li><cite>0</cite></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>See <cite>StreamTokenizer.__init__</cite> for more information about the mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="auditok.core.StreamTokenizer.tokenize">
+<tt class="descname">tokenize</tt><big>(</big><em>data_source</em>, <em>callback=None</em><big>)</big><a class="reference internal" href="_modules/auditok/core.html#StreamTokenizer.tokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#auditok.core.StreamTokenizer.tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from <cite>data_source</cite>, one frame a time, and process the read frames in
+order to detect sequences of frames that make up valid tokens.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><cite>data_source</cite> <span class="classifier-delimiter">:</span> <span class="classifier">instance of the <cite>DataSource</cite> class that implements a &#8216;read&#8217; method.</span></dt>
+<dd><p class="first last">&#8216;read&#8217; should return a slice of signal, i.e. frame (of whatever                type as long as it can be processed by validator) and None if                there is no more signal.</p>
+</dd>
+<dt><cite>callback</cite> <span class="classifier-delimiter">:</span> <span class="classifier">an optional 3-argument function.</span></dt>
+<dd><p class="first last">If a <cite>callback</cite> function is given, it will be called each time a valid token
+is found.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of tokens if <cite>callback</cite> is None. Each token is tuple with the following elements:</p>
+<blockquote>
+<div></div></blockquote>
+<p class="last">where <cite>data</cite> is a list of read frames, <cite>start</cite>: index of the first frame in the
+original data and <cite>end</cite> : index of the last frame.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="util.html" class="btn btn-neutral float-right" title="auditok.util" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="apitutorial.html" class="btn btn-neutral" title="auditok API Tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Amine Sehili.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

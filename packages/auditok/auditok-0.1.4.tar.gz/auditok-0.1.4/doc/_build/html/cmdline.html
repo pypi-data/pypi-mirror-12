@@ -1,0 +1,628 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>auditok Command-line Usage Guide &mdash; auditok 0.1.4 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="auditok 0.1.4 documentation" href="index.html"/>
+        <link rel="next" title="auditok API Tutorial" href="apitutorial.html"/>
+        <link rel="prev" title="auditok, an AUDIo TOKenization tool" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> auditok
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">   Command-line Usage Guide</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apitutorial.html">   API Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core.html">   auditok.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">   auditok.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">   auditok.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">   auditok.dataset</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">auditok</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li><cite>auditok</cite> Command-line Usage Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/cmdline.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="auditok-command-line-usage-guide">
+<h1><a class="toc-backref" href="#id1"><cite>auditok</cite> Command-line Usage Guide</a><a class="headerlink" href="#auditok-command-line-usage-guide" title="Permalink to this headline">¶</a></h1>
+<p>This user guide will go through a few of the most useful operations you can use <strong>auditok</strong> for and present two practical use cases.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first"><cite>Contents</cite></p>
+<ul class="simple">
+<li><a class="reference internal" href="#auditok-command-line-usage-guide" id="id1"><cite>auditok</cite> Command-line Usage Guide</a><ul>
+<li><a class="reference internal" href="#two-figure-explanation" id="id2">Two-figure explanation</a></li>
+<li><a class="reference internal" href="#command-line-usage" id="id3">Command line usage</a><ul>
+<li><a class="reference internal" href="#try-the-detector-with-your-voice" id="id4">Try the detector with your voice</a></li>
+<li><a class="reference internal" href="#play-back-detections" id="id5">Play back detections</a></li>
+<li><a class="reference internal" href="#set-detection-threshold" id="id6">Set detection threshold</a></li>
+<li><a class="reference internal" href="#set-format-for-printed-detections-information" id="id7">Set format for printed detections information</a></li>
+<li><a class="reference internal" href="#st-practical-use-case-example-generate-a-subtitles-template" id="id8">1st Practical use case example: generate a subtitles template</a></li>
+<li><a class="reference internal" href="#nd-practical-use-case-example-build-a-very-basic-voice-control-application" id="id9">2nd Practical use case example: build a (very) basic voice control application</a></li>
+<li><a class="reference internal" href="#plot-signal-and-detections" id="id10">Plot signal and detections</a></li>
+<li><a class="reference internal" href="#save-plot-as-image-or-pdf" id="id11">Save plot as image or PDF</a></li>
+<li><a class="reference internal" href="#read-data-from-file" id="id12">Read data from file</a></li>
+<li><a class="reference internal" href="#limit-the-length-of-acquired-data" id="id13">Limit the length of acquired data</a></li>
+<li><a class="reference internal" href="#save-the-whole-acquired-audio-signal" id="id14">Save the whole acquired audio signal</a></li>
+<li><a class="reference internal" href="#save-each-detection-into-a-separate-audio-file" id="id15">Save each detection into a separate audio file</a></li>
+<li><a class="reference internal" href="#setting-detection-parameters" id="id16">Setting detection parameters</a></li>
+<li><a class="reference internal" href="#debugging" id="id17">Debugging</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#license" id="id18">License</a></li>
+<li><a class="reference internal" href="#author" id="id19">Author</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="two-figure-explanation">
+<h2><a class="toc-backref" href="#id2">Two-figure explanation</a><a class="headerlink" href="#two-figure-explanation" title="Permalink to this headline">¶</a></h2>
+<p>The following two figures illustrate an audio signal (blue) and regions detected as valid audio activities (green rectangles) according to
+a given threshold (red dashed line). They respectively depict the detection result when:</p>
+<ol class="arabic simple">
+<li>the detector tolerates phases of silence of up to 0.3 second (300 ms) within an audio activity (also referred to as acoustic event):</li>
+</ol>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/figure_1.png"><img alt="Output from a detector that tolerates silence periods up to 300 ms" src="_images/figure_1.png" style="width: 960.0px; height: 486.4px;" /></a>
+</div>
+<ol class="arabic simple" start="2">
+<li>the detector splits an audio activity event into many activities if the within activity silence is over 0.2 second:</li>
+</ol>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/figure_2.png"><img alt="Output from a detector that tolerates silence periods up to 200 ms" src="_images/figure_2.png" style="width: 960.0px; height: 486.4px;" /></a>
+</div>
+<p>Beyond plotting signal and detections, you can play back audio activities as they are detected, save them or run a user command each time there is an activity,
+using, optionally, the file name of audio activity as an argument for the command.</p>
+</div>
+<div class="section" id="command-line-usage">
+<h2><a class="toc-backref" href="#id3">Command line usage</a><a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="try-the-detector-with-your-voice">
+<h3><a class="toc-backref" href="#id4">Try the detector with your voice</a><a class="headerlink" href="#try-the-detector-with-your-voice" title="Permalink to this headline">¶</a></h3>
+<p>The first thing you want to check is perhaps how <strong>auditok</strong> detects your voice. If you have installed <cite>PyAudio</cite> just run (<cite>Ctrl-C</cite> to stop):</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span class="n">auditok</span>
+</pre></div>
+</div>
+<p>This will print <strong>id</strong> <strong>start-time</strong> and <strong>end-time</strong> for each detected activity. If you don&#8217;t have <cite>PyAudio</cite>, you can use <cite>sox</cite> for data acquisition (<cite>sudo apt-get install sox</cite>) and tell <strong>auditok</strong> to read data from standard input:</p>
+<blockquote>
+<div>rec -q -t raw -r 16000 -c 1 -b 16 -e signed - | auditok -i - -r 16000 -w 2 -c 1</div></blockquote>
+<p>Note that when data is read from standard input the same audio parameters must be used for both <cite>sox</cite> (or any other data generation/acquisition tool) and <strong>auditok</strong>. The following table summarizes audio parameters.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="17%" />
+<col width="26%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Audio parameter</th>
+<th class="head">sox option</th>
+<th class="head"><cite>auditok</cite> option</th>
+<th class="head"><cite>auditok</cite> default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Sampling rate</td>
+<td>-r</td>
+<td>-r</td>
+<td>16000</td>
+</tr>
+<tr class="row-odd"><td>Sample width</td>
+<td>-b (bits)</td>
+<td>-w (bytes)</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>Channels</td>
+<td>-c</td>
+<td>-c</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>Encoding</td>
+<td>-e</td>
+<td>None</td>
+<td>always signed integer</td>
+</tr>
+</tbody>
+</table>
+<p>According to this table, the previous command can be run as:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>rec -q -t raw -r 16000 -c 1 -b 16 -e signed - | auditok -i -
+</pre></div>
+</div>
+</div>
+<div class="section" id="play-back-detections">
+<h3><a class="toc-backref" href="#id5">Play back detections</a><a class="headerlink" href="#play-back-detections" title="Permalink to this headline">¶</a></h3>
+<div class="code bash highlight-python"><div class="highlight"><pre><span class="n">auditok</span> <span class="o">-</span><span class="n">E</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">or:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code bash highlight-python"><div class="highlight"><pre>rec -q -t raw -r 16000 -c 1 -b 16 -e signed - | auditok -i - -E
+</pre></div>
+</div>
+<p>Option <cite>-E</cite> stands for echo, so <strong>auditok</strong> will play back whatever it detects. Using <cite>-E</cite> requires <cite>PyAudio</cite>, if you don&#8217;t have <cite>PyAudio</cite> and want to play detections with sox, use the <cite>-C</cite> option:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>rec -q -t raw -r 16000 -c 1 -b 16 -e signed - | auditok -i - -C &quot;play -q -t raw -r 16000 -c 1 -b 16 -e signed $&quot;
+</pre></div>
+</div>
+<p>The <cite>-C</cite> option tells <strong>auditok</strong> to interpret its content as a command that should be run whenever <strong>auditok</strong> detects an audio activity, replacing the <cite>$</cite> by a name of a temporary file into which the activity is saved as raw audio. Here we use <cite>play</cite> to play the activity, giving the necessary <cite>play</cite> arguments for raw data.</p>
+<p><cite>rec</cite> and <cite>play</cite> are just an alias for <cite>sox</cite>.</p>
+<p>The <cite>-C</cite> option can be useful in many cases. Imagine a command that sends audio data over a network only if there is an audio activity and saves bandwidth during silence.</p>
+</div>
+<div class="section" id="set-detection-threshold">
+<h3><a class="toc-backref" href="#id6">Set detection threshold</a><a class="headerlink" href="#set-detection-threshold" title="Permalink to this headline">¶</a></h3>
+<p>If you notice that there are too many detections, use a higher value for energy threshold (the current version only implements a <cite>validator</cite> based on energy threshold. The use of spectral information is also desirable and might be part of future releases). To change the energy threshold (default: 50), use option <cite>-e</cite>:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -E -e 55
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">or:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code bash highlight-python"><div class="highlight"><pre>rec -q -t raw -r 16000 -c 1 -b 16 -e signed - | auditok -i - -e 55 -C &quot;play -q -t raw -r 16000 -c 1 -b 16 -e signed $&quot;
+</pre></div>
+</div>
+<p>If however you figure out that the detector is missing some of or all your audio activities, use a lower value for <cite>-e</cite>.</p>
+</div>
+<div class="section" id="set-format-for-printed-detections-information">
+<h3><a class="toc-backref" href="#id7">Set format for printed detections information</a><a class="headerlink" href="#set-format-for-printed-detections-information" title="Permalink to this headline">¶</a></h3>
+<p>By default, <strong>auditok</strong> prints the <strong>id</strong>, <strong>start-time</strong> and <strong>end-time</strong> of each detected activity:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>1 1.87 2.67
+2 3.05 3.73
+3 3.97 4.49
+...
+</pre></div>
+</div>
+<p>If you want to customize the output format, use <cite>&#8211;printf</cite> option:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -e 55 --printf &quot;[{id}]: {start} to {end}&quot;
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">output:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code bash highlight-python"><div class="highlight"><pre>[1]: 0.22 to 0.67
+[2]: 2.81 to 4.18
+[3]: 5.53 to 6.44
+[4]: 7.32 to 7.82
+...
+</pre></div>
+</div>
+<p>Keywords <cite>{id}</cite>, <cite>{start}</cite> and <cite>{end}</cite> can be placed and repeated anywhere in the text. Time is shown in seconds, if you want a more detailed time information, use <cite>&#8211;time-format</cite>:</p>
+<blockquote>
+<div>auditok -e 55 &#8211;printf &#8220;[{id}]: {start} to {end}&#8221; &#8211;time-format &#8220;%h:%m:%s.%i&#8221;</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">output:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code bash highlight-python"><div class="highlight"><pre>[1]: 00:00:01.080 to 00:00:01.760
+[2]: 00:00:02.420 to 00:00:03.440
+[3]: 00:00:04.930 to 00:00:05.570
+[4]: 00:00:05.690 to 00:00:06.020
+[5]: 00:00:07.470 to 00:00:07.980
+...
+</pre></div>
+</div>
+<p>Valid time directives are: <cite>%h</cite> (hours) <cite>%m</cite> (minutes) <cite>%s</cite> (seconds) <cite>%i</cite> (milliseconds). Two other directives, <cite>%S</cite> (default) and <cite>%I</cite> can be used for absolute time in seconds and milliseconds respectively.</p>
+</div>
+<div class="section" id="st-practical-use-case-example-generate-a-subtitles-template">
+<h3><a class="toc-backref" href="#id8">1st Practical use case example: generate a subtitles template</a><a class="headerlink" href="#st-practical-use-case-example-generate-a-subtitles-template" title="Permalink to this headline">¶</a></h3>
+<p>Using <cite>&#8211;printf ` and `&#8211;time-format</cite>, the following command, used with an input audio or video file, will generate and an <strong>srt</strong> file template that can be later edited with a subtitles editor in a way that reduces the time needed to define when each utterance starts and where it ends:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -e 55 -i input.wav -m 10 --printf &quot;{id}\n{start} --&gt; {end}\nPut some text here...\n&quot; --time-format &quot;%h:%m:%s.%i&quot;
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">output:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="code bash highlight-python"><div class="highlight"><pre>1
+00:00:00.730 --&gt; 00:00:01.460
+Put some text here...
+
+2
+00:00:02.440 --&gt; 00:00:03.900
+Put some text here...
+
+3
+00:00:06.410 --&gt; 00:00:06.970
+Put some text here...
+
+4
+00:00:07.260 --&gt; 00:00:08.340
+Put some text here...
+
+5
+00:00:09.510 --&gt; 00:00:09.820
+Put some text here...
+</pre></div>
+</div>
+</div>
+<div class="section" id="nd-practical-use-case-example-build-a-very-basic-voice-control-application">
+<h3><a class="toc-backref" href="#id9">2nd Practical use case example: build a (very) basic voice control application</a><a class="headerlink" href="#nd-practical-use-case-example-build-a-very-basic-voice-control-application" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/amsehili/gspeech-rec">This repository</a> supplies a bash script the can send audio data to Google&#8217;s
+Speech Recognition service and get its transcription. In the following we will use <strong>auditok</strong> as a lower layer component
+of a voice control application. The basic idea is to tell <strong>auditok</strong> to run, for each detected audio activity, a certain
+number of commands that make up the rest of our voice control application.</p>
+<p>Assume you have installed <strong>sox</strong> and downloaded the Speech Recognition script. The sequence of commands to run is:</p>
+<p>1- Convert raw audio data to flac using <strong>sox</strong>:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>sox -t raw -r 16000 -c 1 -b 16 -e signed raw_input output.flac
+</pre></div>
+</div>
+<p>2- Send flac audio data to Google and get its filtered transcription using <a class="reference external" href="https://github.com/amsehili/gspeech-rec/blob/master/speech-rec.sh">speech-rec.sh</a> :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>speech-rec.sh -i output.flac -r 16000
+</pre></div>
+</div>
+<p>3- Use <strong>grep</strong> to select lines that contain <em>transcript</em>:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>grep transcript
+</pre></div>
+</div>
+<p>4- Launch the following script, giving it the transcription as input:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>#!/bin/bash
+
+read line
+
+RES=`echo &quot;$line&quot; | grep -i &quot;open firefox&quot;`
+
+if [[ $RES ]]
+   then
+     echo &quot;Launch command: &#39;firefox &amp;&#39; ... &quot;
+     firefox &amp;
+     exit 0
+fi
+
+exit 0
+</pre></div>
+</div>
+<p>As you can see, the script can handle one single voice command. It runs firefox if the text it receives contains <strong>open firefox</strong>.
+Save a script into a file named voice-control.sh (don&#8217;t forget to run a <strong>chmod u+x voice-control.sh</strong>).</p>
+<p>Now, thanks to option <cite>-C</cite>, we will use the four instructions with a pipe and tell <strong>auditok</strong> to run them each time it detects
+an audio activity. Try the following command and say <em>open firefox</em>:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>rec -q -t raw -r 16000 -c 1 -b 16 -e signed - | auditok -M 5 -m 3 -n 1 --debug-file file.log -e 60 -C &quot;sox -t raw -r 16000 -c 1 -b 16 -e signed $ audio.flac ; speech-rec.sh -i audio.flac -r 16000 | grep transcript | ./voice-control.sh&quot;
+</pre></div>
+</div>
+<p>Here we used option <cite>-M 5</cite> to limit the amount of read audio data to 5 seconds (<strong>auditok</strong> stops if there are no more data) and
+option <cite>-n 1</cite> to tell <strong>auditok</strong> to only accept tokens of 1 second or more and throw any token shorter than 1 second.</p>
+<p>With <cite>&#8211;debug-file file.log</cite>, all processing steps are written into file.log with their timestamps, including any run command and the file name the command was given.</p>
+</div>
+<div class="section" id="plot-signal-and-detections">
+<h3><a class="toc-backref" href="#id10">Plot signal and detections</a><a class="headerlink" href="#plot-signal-and-detections" title="Permalink to this headline">¶</a></h3>
+<p>use option <cite>-p</cite>. Requires <cite>matplotlib</cite> and <cite>numpy</cite>.</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok ...  -p
+</pre></div>
+</div>
+</div>
+<div class="section" id="save-plot-as-image-or-pdf">
+<h3><a class="toc-backref" href="#id11">Save plot as image or PDF</a><a class="headerlink" href="#save-plot-as-image-or-pdf" title="Permalink to this headline">¶</a></h3>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok ...  --save-image output.png
+</pre></div>
+</div>
+<p>Requires <cite>matplotlib</cite> and <cite>numpy</cite>. Accepted formats: eps, jpeg, jpg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff.</p>
+</div>
+<div class="section" id="read-data-from-file">
+<h3><a class="toc-backref" href="#id12">Read data from file</a><a class="headerlink" href="#read-data-from-file" title="Permalink to this headline">¶</a></h3>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -i input.wav ...
+</pre></div>
+</div>
+<p>Install <cite>pydub</cite> for other audio formats.</p>
+</div>
+<div class="section" id="limit-the-length-of-acquired-data">
+<h3><a class="toc-backref" href="#id13">Limit the length of acquired data</a><a class="headerlink" href="#limit-the-length-of-acquired-data" title="Permalink to this headline">¶</a></h3>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -M 12 ...
+</pre></div>
+</div>
+<p>Time is in seconds. This is valid for data read from an audio device, stdin or an audio file.</p>
+</div>
+<div class="section" id="save-the-whole-acquired-audio-signal">
+<h3><a class="toc-backref" href="#id14">Save the whole acquired audio signal</a><a class="headerlink" href="#save-the-whole-acquired-audio-signal" title="Permalink to this headline">¶</a></h3>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -O output.wav ...
+</pre></div>
+</div>
+<p>Install <cite>pydub</cite> for other audio formats.</p>
+</div>
+<div class="section" id="save-each-detection-into-a-separate-audio-file">
+<h3><a class="toc-backref" href="#id15">Save each detection into a separate audio file</a><a class="headerlink" href="#save-each-detection-into-a-separate-audio-file" title="Permalink to this headline">¶</a></h3>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -o det_{N}_{start}_{end}.wav ...
+</pre></div>
+</div>
+<p>You can use a free text and place <cite>{N}</cite>, <cite>{start}</cite> and <cite>{end}</cite> wherever you want, they will be replaced by detection number, start time and end time respectively. Another example:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok -o {start}-{end}.wav ...
+</pre></div>
+</div>
+<p>Install <cite>pydub</cite> for more audio formats.</p>
+</div>
+<div class="section" id="setting-detection-parameters">
+<h3><a class="toc-backref" href="#id16">Setting detection parameters</a><a class="headerlink" href="#setting-detection-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Alongside the threshold option <cite>-e</cite> seen so far, a couple of other options can have a great impact on the detector behavior. These options are summarized in the following table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="61%" />
+<col width="10%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+<th class="head">Unit</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>-n</cite></td>
+<td>Minimum length an accepted audio activity should have</td>
+<td>second</td>
+<td>0.2 (200 ms)</td>
+</tr>
+<tr class="row-odd"><td><cite>-m</cite></td>
+<td>Maximum length an accepted audio activity should reach</td>
+<td>second</td>
+<td><ol class="first last arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><cite>-s</cite></td>
+<td>Maximum length of a continuous silence period within
+an accepted audio activity</td>
+<td>second</td>
+<td>0.3 (300 ms)</td>
+</tr>
+<tr class="row-odd"><td><cite>-d</cite></td>
+<td>Drop trailing silence from an accepted audio activity</td>
+<td>boolean</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td><cite>-a</cite></td>
+<td>Analysis window length (default value should be good)</td>
+<td>second</td>
+<td>0.01 (10 ms)</td>
+</tr>
+</tbody>
+</table>
+<p>Normally, <cite>auditok</cite> does keeps trailing silence of a detected activity. Trailing silence is at most as long as maximum length of a continuous silence (option <cite>-m</cite>) and can be important for some applications such as speech recognition. If you want to drop trailing silence anyway use option <cite>-d</cite>. The following two figures show the output of the detector when it keeps the trailing silence and when it drops it respectively:</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/figure_3_keep_trailing_silence.png"><img alt="Output from a detector that keeps trailing silence" src="_images/figure_3_keep_trailing_silence.png" style="width: 682.8px; height: 330.4px;" /></a>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok ...  -d
+</pre></div>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/figure_4_drop_trailing_silence.png"><img alt="Output from a detector that drop trailing silence" src="_images/figure_4_drop_trailing_silence.png" style="width: 682.8px; height: 330.4px;" /></a>
+</div>
+<p>You might want to only consider audio activities if they are above a certain duration. The next figure is the result of a detector that only accepts detections of 0.8 second and longer:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok ...  -n 0.8
+</pre></div>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/figure_5_min_800ms.png"><img alt="Output from a detector that detect activities of 800 ms or over" src="_images/figure_5_min_800ms.png" style="width: 682.8px; height: 330.4px;" /></a>
+</div>
+<p>Finally it is almost always interesting to limit the length of detected audio activities. In any case, one does not want a too long audio event such as an alarm or a drill to hog the detector. For illustration purposes, we set the maximum duration to 0.4 second for this detector, so an audio activity is delivered as soon as it reaches 0.4 second:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok ...  -m 0.4
+</pre></div>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/figure_6_max_400ms.png"><img alt="Output from a detector that delivers audio activities that reach 400 ms" src="_images/figure_6_max_400ms.png" style="width: 682.8px; height: 330.4px;" /></a>
+</div>
+</div>
+<div class="section" id="debugging">
+<h3><a class="toc-backref" href="#id17">Debugging</a><a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
+<p>If you want to print what happens when something is detected, use option <cite>-D</cite>.</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok ...  -D
+</pre></div>
+</div>
+<p>If you want to save everything into a log file, use <cite>&#8211;debug-file file.log</cite>.</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>auditok ...  --debug-file file.log
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="license">
+<h2><a class="toc-backref" href="#id18">License</a><a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p><strong>auditok</strong> is published under the GNU General Public License Version 3.</p>
+</div>
+<div class="section" id="author">
+<h2><a class="toc-backref" href="#id19">Author</a><a class="headerlink" href="#author" title="Permalink to this headline">¶</a></h2>
+<p>Amine Sehili (&lt;<a class="reference external" href="mailto:amine&#46;sehili&#37;&#52;&#48;gmail&#46;com">amine<span>&#46;</span>sehili<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;)</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="apitutorial.html" class="btn btn-neutral float-right" title="auditok API Tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="auditok, an AUDIo TOKenization tool" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Amine Sehili.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

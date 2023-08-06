@@ -1,0 +1,704 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>auditok.io &mdash; auditok 0.1.4 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="auditok 0.1.4 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> auditok
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cmdline.html">   Command-line Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apitutorial.html">   API Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">   auditok.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">   auditok.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../io.html">   auditok.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dataset.html">   auditok.dataset</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">auditok</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>auditok.io</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for auditok.io</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module for low-level audio input-output operations.</span>
+
+<span class="sd">Class summary</span>
+<span class="sd">=============</span>
+
+<span class="sd">.. autosummary::</span>
+
+<span class="sd">        AudioSource</span>
+<span class="sd">        Rewindable</span>
+<span class="sd">        BufferAudioSource</span>
+<span class="sd">        WaveAudioSource</span>
+<span class="sd">        PyAudioSource</span>
+<span class="sd">        StdinAudioSource</span>
+<span class="sd">        PyAudioPlayer</span>
+<span class="sd">        </span>
+
+<span class="sd">Function summary</span>
+<span class="sd">================</span>
+
+<span class="sd">.. autosummary::</span>
+
+<span class="sd">        from_file</span>
+<span class="sd">        player_for</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">import</span> <span class="nn">wave</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;AudioSource&quot;</span><span class="p">,</span> <span class="s">&quot;Rewindable&quot;</span><span class="p">,</span> <span class="s">&quot;BufferAudioSource&quot;</span><span class="p">,</span> <span class="s">&quot;WaveAudioSource&quot;</span><span class="p">,</span>
+           <span class="s">&quot;PyAudioSource&quot;</span><span class="p">,</span> <span class="s">&quot;StdinAudioSource&quot;</span><span class="p">,</span> <span class="s">&quot;PyAudioPlayer&quot;</span><span class="p">,</span> <span class="s">&quot;from_file&quot;</span><span class="p">,</span> <span class="s">&quot;player_for&quot;</span><span class="p">]</span>
+
+<span class="n">DEFAULT_SAMPLE_RATE</span> <span class="o">=</span> <span class="mi">16000</span>
+<span class="n">DEFAULT_SAMPLE_WIDTH</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">DEFAULT_NB_CHANNELS</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<div class="viewcode-block" id="AudioSource"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource">[docs]</a><span class="k">class</span> <span class="nc">AudioSource</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Base class for audio source objects.</span>
+<span class="sd">        </span>
+<span class="sd">    Subclasses should implement methods to open/close and audio stream </span>
+<span class="sd">    and read the desired amount of audio samples.</span>
+<span class="sd">    </span>
+<span class="sd">    :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">        `sampling_rate` : int</span>
+<span class="sd">            Number of samples per second of audio stream. Default = 16000.</span>
+<span class="sd">        </span>
+<span class="sd">        `sample_width` : int</span>
+<span class="sd">            Size in bytes of one audio sample. Possible values : 1, 2, 4.</span>
+<span class="sd">            Default = 2.</span>
+<span class="sd">            </span>
+<span class="sd">        `channels` : int</span>
+<span class="sd">            Number of channels of audio stream. The current version supports</span>
+<span class="sd">            only mono audio streams (i.e. one channel).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">,</span>
+                 <span class="n">sample_width</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_WIDTH</span><span class="p">,</span>
+                 <span class="n">channels</span> <span class="o">=</span> <span class="n">DEFAULT_NB_CHANNELS</span><span class="p">):</span>
+  
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sample_width</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Sample width must be one of: 1, 2 or 4 (bytes)&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">channels</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Only mono audio is currently handled&quot;</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">sampling_rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">=</span> <span class="n">sample_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="n">channels</span>
+      
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="AudioSource.is_open"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource.is_open">[docs]</a>    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return True if audio source is open, False otherwise &quot;&quot;&quot;</span>
+    </div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="AudioSource.open"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Open audio source &quot;&quot;&quot;</span>
+    </div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="AudioSource.close"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Close audio source &quot;&quot;&quot;</span>
+    </div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="AudioSource.read"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read and return `size` audio samples at most.</span>
+<span class="sd">        </span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">            `size` : int</span>
+<span class="sd">                the number of samples to read.</span>
+<span class="sd">            </span>
+<span class="sd">        :Returns:</span>
+<span class="sd">            </span>
+<span class="sd">            Audio data as a string of length &#39;N&#39; * &#39;smaple_width&#39; * &#39;channels&#39;, where &#39;N&#39; is:</span>
+<span class="sd">            </span>
+<span class="sd">            - `size` if `size` &lt; &#39;left_samples&#39;</span>
+<span class="sd">            </span>
+<span class="sd">            - &#39;left_samples&#39; if `size` &gt; &#39;left_samples&#39; </span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span> 
+    </div>
+<div class="viewcode-block" id="AudioSource.get_sampling_rate"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource.get_sampling_rate">[docs]</a>    <span class="k">def</span> <span class="nf">get_sampling_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return the number of samples per second of audio stream &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span>
+    </div>
+<div class="viewcode-block" id="AudioSource.get_sample_width"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource.get_sample_width">[docs]</a>    <span class="k">def</span> <span class="nf">get_sample_width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return the number of bytes used to represent one audio sample &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span>
+    </div>
+<div class="viewcode-block" id="AudioSource.get_channels"><a class="viewcode-back" href="../../io.html#auditok.io.AudioSource.get_channels">[docs]</a>    <span class="k">def</span> <span class="nf">get_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return the number of channels of this audio source &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span>
+    
+
+</div></div>
+<div class="viewcode-block" id="Rewindable"><a class="viewcode-back" href="../../io.html#auditok.io.Rewindable">[docs]</a><span class="k">class</span> <span class="nc">Rewindable</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for rewindable audio streams.</span>
+<span class="sd">    Subclasses should implement methods to return to the beginning of an</span>
+<span class="sd">    audio stream as well as method to move to an absolute audio position</span>
+<span class="sd">    expressed in time or in number of samples. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
+    
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Rewindable.rewind"><a class="viewcode-back" href="../../io.html#auditok.io.Rewindable.rewind">[docs]</a>    <span class="k">def</span> <span class="nf">rewind</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Go back to the beginning of audio stream &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+    </div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Rewindable.get_position"><a class="viewcode-back" href="../../io.html#auditok.io.Rewindable.get_position">[docs]</a>    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return the total number of already read samples &quot;&quot;&quot;</span>
+    </div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Rewindable.get_time_position"><a class="viewcode-back" href="../../io.html#auditok.io.Rewindable.get_time_position">[docs]</a>    <span class="k">def</span> <span class="nf">get_time_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return the total duration in seconds of already read data &quot;&quot;&quot;</span>
+    </div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Rewindable.set_position"><a class="viewcode-back" href="../../io.html#auditok.io.Rewindable.set_position">[docs]</a>    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Move to an absolute position </span>
+<span class="sd">        </span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">            `position` : int</span>
+<span class="sd">                number of samples to skip from the start of the stream</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    </div>
+    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Rewindable.set_time_position"><a class="viewcode-back" href="../../io.html#auditok.io.Rewindable.set_time_position">[docs]</a>    <span class="k">def</span> <span class="nf">set_time_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Move to an absolute position expressed in seconds</span>
+<span class="sd">        </span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">            `time_position` : float</span>
+<span class="sd">                seconds to skip from the start of the stream</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+    
+    
+</div></div>
+<div class="viewcode-block" id="BufferAudioSource"><a class="viewcode-back" href="../../io.html#auditok.io.BufferAudioSource">[docs]</a><span class="k">class</span> <span class="nc">BufferAudioSource</span><span class="p">(</span><span class="n">AudioSource</span><span class="p">,</span> <span class="n">Rewindable</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An :class:`AudioSource` that encapsulates and reads data from a memory buffer.</span>
+<span class="sd">    It implements methods from :class:`Rewindable` and is therefore a navigable :class:`AudioSource`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_buffer</span><span class="p">,</span>
+                 <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">,</span>
+                 <span class="n">sample_width</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_WIDTH</span><span class="p">,</span>
+                 <span class="n">channels</span> <span class="o">=</span> <span class="n">DEFAULT_NB_CHANNELS</span><span class="p">):</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_buffer</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">sample_width</span> <span class="o">*</span> <span class="n">channels</span><span class="p">)</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;length of data_buffer must be a multiple of (sample_width * channels)&quot;</span><span class="p">)</span>
+        
+        <span class="n">AudioSource</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">sample_width</span><span class="p">,</span> <span class="n">channels</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="n">data_buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="bp">False</span>
+    
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span>
+        
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="bp">True</span>
+    
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rewind</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&quot;Stream is not open&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            
+            <span class="n">to_read</span> <span class="o">=</span> <span class="n">size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span>       
+            <span class="k">if</span> <span class="n">to_read</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_left</span><span class="p">:</span>
+                <span class="n">to_read</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> 
+                            
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">+</span> <span class="n">to_read</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">+=</span> <span class="n">to_read</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">-=</span> <span class="n">to_read</span>
+            
+            <span class="k">return</span> <span class="n">data</span>
+        
+        <span class="k">return</span> <span class="bp">None</span>
+    
+<div class="viewcode-block" id="BufferAudioSource.get_data_buffer"><a class="viewcode-back" href="../../io.html#auditok.io.BufferAudioSource.get_data_buffer">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return all audio data as one string buffer. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span>
+    </div>
+<div class="viewcode-block" id="BufferAudioSource.set_data"><a class="viewcode-back" href="../../io.html#auditok.io.BufferAudioSource.set_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_buffer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Set new data for this audio stream. </span>
+<span class="sd">        </span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">            `data_buffer` : str, basestring, Bytes</span>
+<span class="sd">                a string buffer with a length multiple of (sample_width * channels)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_buffer</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;length of data_buffer must be a multiple of (sample_width * channels)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="n">data_buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
+    </div>
+<div class="viewcode-block" id="BufferAudioSource.append_data"><a class="viewcode-back" href="../../io.html#auditok.io.BufferAudioSource.append_data">[docs]</a>    <span class="k">def</span> <span class="nf">append_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_buffer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Append data to this audio stream</span>
+<span class="sd">        </span>
+<span class="sd">        :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">            `data_buffer` : str, basestring, Bytes</span>
+<span class="sd">                a buffer with a length multiple of (sample_width * channels)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_buffer</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;length of data_buffer must be a multiple of (sample_width * channels)&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">+=</span> <span class="n">data_buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_buffer</span><span class="p">)</span>
+
+    </div>
+    <span class="k">def</span> <span class="nf">rewind</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span>
+    
+    <span class="k">def</span> <span class="nf">get_time_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_index</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span><span class="p">)</span> 
+    
+    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">position</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;position must be &gt;= 0&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">return</span>
+         
+        <span class="n">position</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="n">position</span> <span class="k">if</span> <span class="n">position</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index</span>
+
+
+    <span class="k">def</span> <span class="nf">set_time_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_position</span><span class="p">):</span> <span class="c"># time in seconds</span>
+        
+        <span class="n">position</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">*</span> <span class="n">time_position</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        
+
+        
+</div>
+<div class="viewcode-block" id="WaveAudioSource"><a class="viewcode-back" href="../../io.html#auditok.io.WaveAudioSource">[docs]</a><span class="k">class</span> <span class="nc">WaveAudioSource</span><span class="p">(</span><span class="n">AudioSource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for an `AudioSource` that reads data from a wave file.</span>
+<span class="sd">    </span>
+<span class="sd">    :Parameters:</span>
+<span class="sd">        </span>
+<span class="sd">        `filename` :</span>
+<span class="sd">            path to a valid wave file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="o">=</span> <span class="bp">None</span>
+        
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+        <span class="n">AudioSource</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">getframerate</span><span class="p">(),</span>
+                                   <span class="n">stream</span><span class="o">.</span><span class="n">getsampwidth</span><span class="p">(),</span>
+                                   <span class="n">stream</span><span class="o">.</span><span class="n">getnchannels</span><span class="p">())</span>
+        <span class="n">stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+    
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+ 
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="o">=</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+      
+        
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="o">=</span> <span class="bp">None</span>
+        
+    
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&quot;Stream is not open&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span><span class="o">.</span><span class="n">readframes</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">data</span>
+
+</div>
+<div class="viewcode-block" id="PyAudioSource"><a class="viewcode-back" href="../../io.html#auditok.io.PyAudioSource">[docs]</a><span class="k">class</span> <span class="nc">PyAudioSource</span><span class="p">(</span><span class="n">AudioSource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for an `AudioSource` that reads data the built-in microphone using PyAudio. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">,</span>
+                 <span class="n">sample_width</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_WIDTH</span><span class="p">,</span>
+                 <span class="n">channels</span> <span class="o">=</span> <span class="n">DEFAULT_NB_CHANNELS</span><span class="p">,</span>
+                 <span class="n">frames_per_buffer</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">):</span>
+        
+        
+        <span class="n">AudioSource</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">sample_width</span><span class="p">,</span> <span class="n">channels</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chunk_size</span> <span class="o">=</span> <span class="n">frames_per_buffer</span>
+        
+        <span class="kn">import</span> <span class="nn">pyaudio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pyaudio_object</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">PyAudio</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pyaudio_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pyaudio_object</span><span class="o">.</span><span class="n">get_format_from_width</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="o">=</span> <span class="bp">None</span>
+
+    
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+    
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pyaudio_object</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pyaudio_format</span><span class="p">,</span>
+                                                   <span class="n">channels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">,</span>
+                                                   <span class="n">rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span><span class="p">,</span>
+                                                   <span class="nb">input</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+                                                   <span class="n">output</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+                                                   <span class="n">frames_per_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chunk_size</span><span class="p">)</span>
+        
+        
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span><span class="o">.</span><span class="n">stop_stream</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="o">=</span> <span class="bp">None</span>
+            
+    
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&quot;Stream is not open&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span><span class="o">.</span><span class="n">is_active</span><span class="p">():</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_audio_stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">data</span>
+        
+        <span class="k">return</span> <span class="bp">None</span>
+    
+</div>
+<div class="viewcode-block" id="StdinAudioSource"><a class="viewcode-back" href="../../io.html#auditok.io.StdinAudioSource">[docs]</a><span class="k">class</span> <span class="nc">StdinAudioSource</span><span class="p">(</span><span class="n">AudioSource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for an :class:`AudioSource` that reads data from standard input.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">,</span>
+                 <span class="n">sample_width</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_WIDTH</span><span class="p">,</span>
+                 <span class="n">channels</span> <span class="o">=</span> <span class="n">DEFAULT_NB_CHANNELS</span><span class="p">):</span>
+    
+        <span class="n">AudioSource</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">,</span> <span class="n">sample_width</span><span class="p">,</span> <span class="n">channels</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="bp">False</span>
+    
+    
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span>
+        
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="bp">True</span>
+    
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="bp">False</span>
+        
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&quot;Stream is not open&quot;</span><span class="p">)</span>
+        
+        <span class="n">to_read</span> <span class="o">=</span> <span class="n">size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">to_read</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        
+        <span class="k">return</span> <span class="n">data</span>
+       
+           </div>
+<div class="viewcode-block" id="PyAudioPlayer"><a class="viewcode-back" href="../../io.html#auditok.io.PyAudioPlayer">[docs]</a><span class="k">class</span> <span class="nc">PyAudioPlayer</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for audio playback using Pyaudio</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">,</span>
+                 <span class="n">sample_width</span> <span class="o">=</span> <span class="n">DEFAULT_SAMPLE_WIDTH</span><span class="p">,</span>
+                 <span class="n">channels</span> <span class="o">=</span> <span class="n">DEFAULT_NB_CHANNELS</span><span class="p">):</span>
+        
+    
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sample_width</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Sample width must be one of: 1, 2 or 4 (bytes)&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">sampling_rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">=</span> <span class="n">sample_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="n">channels</span>
+        
+        <span class="kn">import</span> <span class="nn">pyaudio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_p</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">PyAudio</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_p</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_p</span><span class="o">.</span><span class="n">get_format_from_width</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span><span class="p">),</span>
+         <span class="n">channels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">,</span> <span class="n">rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span><span class="p">,</span>
+         <span class="nb">input</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">is_stopped</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">start_stream</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chunk_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">stop_stream</span><span class="p">()</span>
+    
+        
+    <span class="k">def</span>  <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">is_stopped</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">stop_stream</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_p</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">_chunk_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c"># make audio chunks of 100 ms to allow interruption (like ctrl+c)</span>
+        <span class="n">chunk_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">data</span><span class="p">[</span><span class="n">start</span> <span class="p">:</span> <span class="n">start</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">]</span>
+            <span class="n">start</span> <span class="o">+=</span> <span class="n">chunk_size</span>
+        
+</div>
+<div class="viewcode-block" id="from_file"><a class="viewcode-back" href="../../io.html#auditok.io.from_file">[docs]</a><span class="k">def</span> <span class="nf">from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create an `AudioSource` object using the audio file specified by `filename`.</span>
+<span class="sd">    The appropriate `AudioSource` class is guessed from file&#39;s extension.</span>
+<span class="sd">    </span>
+<span class="sd">    :Parameters:</span>
+<span class="sd">    </span>
+<span class="sd">        `filename` :</span>
+<span class="sd">            path to an audio file.</span>
+<span class="sd">        </span>
+<span class="sd">    :Returns:</span>
+<span class="sd">    </span>
+<span class="sd">        an `AudioSource` object that reads data from the given file.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;.wav&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">WaveAudioSource</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;Can not create an AudioSource object from &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="player_for"><a class="viewcode-back" href="../../io.html#auditok.io.player_for">[docs]</a><span class="k">def</span> <span class="nf">player_for</span><span class="p">(</span><span class="n">audio_source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a :class:`PyAudioPlayer` that can play data from `audio_source`.</span>
+<span class="sd">    </span>
+<span class="sd">    :Parameters:</span>
+<span class="sd">    </span>
+<span class="sd">        `audio_source` : </span>
+<span class="sd">            an `AudioSource` object.</span>
+<span class="sd">    </span>
+<span class="sd">    :Returns:</span>
+<span class="sd">    </span>
+<span class="sd">        `PyAudioPlayer` that has the same sampling rate, sample width and number of channels</span>
+<span class="sd">        as `audio_source`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">PyAudioPlayer</span><span class="p">(</span><span class="n">audio_source</span><span class="o">.</span><span class="n">get_sampling_rate</span><span class="p">(),</span>
+            <span class="n">audio_source</span><span class="o">.</span><span class="n">get_sample_width</span><span class="p">(),</span>
+            <span class="n">audio_source</span><span class="o">.</span><span class="n">get_channels</span><span class="p">())</span>
+    
+    
+</pre></div></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Amine Sehili.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
