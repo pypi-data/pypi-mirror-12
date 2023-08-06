@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: redpackets
+Version: 1.0.5
+Summary: Red Packets Split Algorithm
+Home-page: https://github.com/Brightcells/redpackets
+Author: Hackathon
+Author-email: kimi.huang@brightcells.com
+License: UNKNOWN
+Description: ==========
+        redpackets
+        ==========
+        
+        RedPackets Split & Return split_list if succeed & Raise Exception if failed
+        
+        Installation
+        ============
+        
+        ::
+        
+            pip install redpackets
+        
+        
+        Usage
+        =====
+        
+        ::
+        
+            import redpackets
+        
+            redpackets.split_dollor(total, num, min=0.01):
+        
+            redpackets.split_cent(total, num, min=0.01):
+        
+            # cent=False equals split_dollor
+            # cent=True equals split_cent
+            redpackets.split(total, num, min=None, cent=False)
+        
+            redpackets.cent(dollar, rate=100)
+        
+            redpackets.dollor(cent, rate=100)
+        
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.5
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
