@@ -1,0 +1,46 @@
+Metadata-Version: 2.0
+Name: pyfzf
+Version: 0.1.5
+Summary: Python wrapper for junegunn's fuzzyfinder (fzf)
+Home-page: https://github.com/nk412/pyfzf
+Author: Nagarjuna Kumarappan
+Author-email: nagarjuna.412@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Terminals
+Requires-Dist: plumbum
+
+# pyfzf
+
+##### A python wrapper for *junegunn*'s [fzf](https://github.com/junegunn/fzf).
+
+## Requirements
+* Python 2.6+
+* [fzf](https://github.com/junegunn/fzf)
+
+## Installation
+	pip install git+git://github.com/nk412/pyfzf.git
+
+## Usage
+    >>> from pyfzf import FzfPrompt
+    >>> fp = FzfPrompt()
+    >>> fp.prompt(range(0,10))
+    ['1','2']
+
+
+
+
+
+
+CHANGES
+=======
+
+2015.11.16: Initial release
+
+
