@@ -1,0 +1,64 @@
+Metadata-Version: 2.0
+Name: pluginmanager
+Version: 0.0.9
+Summary: Python Plugin Management, simplified
+Home-page: https://github.com/benhoff/pluginmanager
+Author: Ben Hoff
+Author-email: beohoff@gmail.com
+License: GPL3
+Keywords: plugin manager
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: Operating System :: OS Independent
+Provides-Extra: dev
+Requires-Dist: flake8; extra == 'dev'
+
+pluginmanager
+=============
+
+|Build Status| |Coverage Status| |Code Climate|
+
+python plugin management, simplified.
+
+::
+
+    from pluginmanager import PluginInterface
+
+    plugin_interface = PluginInterface()
+    plugin_interface.set_plugin_directories('my/fancy/plugin/path')
+    plugin_interface.collect_plugins()
+
+    plugins = plugin_interface.get_instances()
+
+Library currently under heavy development and may not be ready for use
+
+Installation
+------------
+
+::
+
+    pip install pluginmanager
+
+-or-
+
+::
+
+    pip install git+https://github.com/benhoff/pluginmanager.git
+
+.. |Build Status| image:: https://travis-ci.org/benhoff/pluginmanager.svg?branch=master
+    :target: https://travis-ci.org/benhoff/pluginmanager
+.. |Coverage Status| image:: https://coveralls.io/repos/benhoff/pluginmanager/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/github/benhoff/pluginmanager?branch=master
+.. |Code Climate| image:: https://codeclimate.com/github/benhoff/pluginmanager/badges/gpa.svg
+    :target: https://codeclimate.com/github/benhoff/pluginmanager
+
+
