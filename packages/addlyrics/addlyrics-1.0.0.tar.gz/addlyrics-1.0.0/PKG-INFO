@@ -1,0 +1,54 @@
+Metadata-Version: 1.1
+Name: addlyrics
+Version: 1.0.0
+Summary: Adds lyrics (via getlyrics) to mp3 file
+Home-page: https://github.com/blha303/addlyrics/
+Author: Steven Smith
+Author-email: stevensmith.ome@gmail.com
+License: MIT
+Description: addlyrics
+        =========
+        
+        Adds lyrics (via getlyrics) to mp3 file
+        
+        Usage
+        -----
+        
+        ::
+        
+            usage: addlyrics [-h] [-i INDEX] [--lang LANG] [--desc DESC] filename term
+        
+            positional arguments:
+              filename              Filename of mp3 file to add lyrics
+              term                  Search term, passed to getlyrics
+        
+            optional arguments:
+              -h, --help            show this help message and exit
+              -i INDEX, --index INDEX
+                        Song index, passed to getlyrics
+              --lang LANG           Three letter code from ISO 639-2. Defaults to 'eng'
+              --desc DESC           Description of lyrics. Defaults to 'Lyrics from
+                        azlyrics.com'
+        
+        Installation
+        ------------
+        
+        Via ``pip``:
+        
+        ::
+        
+            pip3 install addlyrics
+        
+        Alternatively:
+        
+        -  Clone the repository, ``cd addlyrics``
+        -  Run ``python3 setup.py install`` or ``pip3 install -e``
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Multimedia :: Sound/Audio
