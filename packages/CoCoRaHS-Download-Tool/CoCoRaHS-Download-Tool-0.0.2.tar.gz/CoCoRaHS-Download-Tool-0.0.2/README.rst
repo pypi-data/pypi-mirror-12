@@ -1,0 +1,93 @@
+======================
+CoCoRaHS-Download-Tool
+======================
+
+Tool to download CoCoRaHS data.
+
+
+Requirements
+============
+
+- Python >= 2.6
+
+
+Installation
+============
+
+To get started using **CoCoRaHS-Download-Tool** simply install it with **pip**::
+
+    $ pip install CoCoRaHS-Download-Tool
+
+Or, use *pip* locally with the .tar.gz distribution file::
+
+    $ pip install CoCoRaHS-Download-Tool-0.0.2.tar.gz
+
+
+Usage
+=====
+
+The **CoCoRaHS-Download-Tool** tool has two modes of operation, listing of 
+CoCoRaHS station metadata, and listing of CoCoRaHS station data.
+
+Stations Metadata
+-----------------
+
+To list CoCoRaHS stations metadata for the default state (NM) the following 
+command is issued::
+
+    $ python -m cocorahs_dlt stations
+
+To save the output of this operation, run::
+
+    $ python -m cocorahs_dlt stations > stations.csv
+
+To download and save CoCoRaHS stations metadata for a different state 
+(specified by the two-character state code), the following command is 
+issued::
+
+    $ python -m cocorahs_dlt --state CO stations > stations.csv
+
+
+Stations Data
+-------------
+
+To list CoCoRaHS stations data for the default state (NM), the default
+date range (last three days), and the default output (CSV) the following 
+command is issued::
+
+    $ python -m cocorahs_dlt data
+
+To save the output of this operation, run::
+
+    $ python -m cocorahs_dlt data > data.csv
+
+To download and save CoCoRaHS stations data for a different state 
+(specified by the two-character state code), the following command is 
+issued::
+
+    $ python -m cocorahs_dlt --state CO data > data.csv
+
+To download and save CoCoRaHS stations data for a different state 
+(specified by the two-character state code) and in a different output format, 
+the following command is issued::
+
+    $ python -m cocorahs_dlt --state CO data --format XML > data.xml
+
+To download and save CoCoRaHS stations data for a different state 
+(specified by the two-character state code) in a different output format, and 
+with volunteer comments, the following command is issued::
+
+    $ python -m cocorahs_dlt --state CO data --format XML --comments > data.xml
+
+To download and save CoCoRaHS stations data for a different state 
+(specified by the two-character state code) in a different output format, 
+with volunteer comments, and for a different date range, the following command 
+is issued::
+
+    $ python -m cocorahs_dlt --state CO data --format XML --comments --start_date 2014-09-13 --end_date 2014-09-21 > data.xml
+
+To only list the data from the previous command, the *> data.xml* text is dropped::
+
+    $ python -m cocorahs_dlt --state CO data --format XML --comments --start_date 2014-09-13 --end_date 2014-09-21
+
+
