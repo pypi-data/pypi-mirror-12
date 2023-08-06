@@ -1,0 +1,132 @@
+.. -*- mode: rst; compile-command: "rst2html README.txt README.html" -*-
+
+================================================
+Mercurial All Paths extension
+================================================
+
+Push or pull to many (or all) paths at once. 
+
+.. contents::
+   :local:
+   :depth: 2
+
+.. sectnum::
+
+Usage
+================================================
+
+Simple::
+
+    hg pushall
+
+pushes to all paths defined for the repository (all paths
+returned by ``hg paths`` - usually defined in ``.hg/hgrc``,
+but `Path Pattern`_ paths are also handled).
+
+There is also corresponding::
+
+    hg pullall
+
+Instead of using standard paths, you can define and use *groups*::
+
+    hg pushall -g publish
+
+pushes to all paths specified in the ``[publish]`` config
+section, which should look like this::
+
+    [publish]
+    bitbucket = ssh://hg@bitbucket.org/ludovicchabant/piecrust
+    github = git+ssh://git@github.com:ludovicchabant/PieCrust.git
+    other = ssh://my@own/server
+    local = /some/other/place
+
+All standard ``push`` and ``pull`` options can be used::
+
+    hg pushall -b branch
+
+or::
+
+    hg pullall --force
+
+etc.
+
+Finally, there are::
+
+    hg incomingall
+
+and
+
+    hg outgoingall
+
+which simply iterate over all paths.
+
+Installation
+=======================================================
+
+From PyPi
+--------------------
+
+If you have working ``pip`` or ``easy_install``::
+
+    pip install --user mercurial_all_paths
+
+or maybe::
+
+    sudo pip install mercurial_all_paths
+
+Then activate by::
+
+    [extensions]
+    mercurial_all_paths =
+
+To upgrade, repeat the same command with ``--upgrade`` option, for
+example::
+
+    pip install --user --upgrade mercurial_all_paths
+
+From source
+-------------------------------------------------------
+
+Clone this repository::
+
+    cd ~/sources
+    hg clone https://bitbucket.org/Mekk/mercurial-all_paths/
+
+either::
+
+    pip install --user -e mercurial-all_paths
+
+and activate as above, or just activate by full path::
+
+    [extensions]
+    mercurial_path_pattern = ~/sources/mercurial-path_pattern/mercurial_path_pattern.py
+
+To upgrade, pull and update.
+
+History
+=======================================================
+
+See `HISTORY.txt`_
+
+Development, bug reports, enhancement suggestions
+=======================================================
+
+At the moment this extension is forked. Version by
+Marcin Kasperski is maintained at
+
+    http://bitbucket.org/Mekk/mercurial-all_paths/
+
+while original version by Ludovic Chabant is available at
+
+    https://bitbucket.org/ludovicchabant/allpaths
+
+Additional notes
+=======================================================
+
+Information about this extension is also available
+on Mercurial Wiki: http://mercurial.selenic.com/wiki/AllPathsExtension
+
+
+
+.. _Path Pattern: https://bitbucket.org/Mekk/mercurial-path_pattern/
+.. _HISTORY.txt: http://bitbucket.org/Mekk/mercurial-all_paths/src/tip/HISTORY.txt
