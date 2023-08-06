@@ -1,0 +1,26 @@
+# pyROSE
+A Python Package for Rank Ordering of Super-Enhancers
+
+## Introduction
+pyROSE is an easy to install and run python library of ROSE (Rank Ordering of Super-Enhancers) 
+http://younglab.wi.mit.edu/super_enhancer_code.html
+
+If you use this library for your analysis please cite the follwoing papers: 
+
+* Warren A. Whyte, David A. Orlando, Denes Hnisz, Brian J. Abraham, Charles Y. Lin, Michael H. Kagey, Peter B. Rahl, Tong Ihn Lee and Richard A. Young, Master Transcription Factors and Mediator Establish Super-Enhancers at Key Cell Identity Genes, Cell 153, 307-319, April 11, 2013
+
+
+* Jakob Lovén, Heather A. Hoke, Charles Y. Lin, Ashley Lau, David A. Orlando, Christopher R. Vakoc, James E. Bradner, Tong Ihn Lee, and Richard A. Young, Selective Inhibition of Tumor Oncogenes by Disruption of Super-enhancers, Cell 153, 320-334, April 11, 2013
+
+## How to install
+
+Instal from PyPi
+
+	 pip install pyrose
+
+Install from the source
+
+	 python setup.py install
+
+## How to run
+	pyrose --help
