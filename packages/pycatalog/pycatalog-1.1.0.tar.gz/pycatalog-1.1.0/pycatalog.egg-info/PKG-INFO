@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: pycatalog
+Version: 1.1.0
+Summary: Data structure for complexe enumeration.
+Home-page: https://github.com/jsatt/python-catalog
+Author: Jeremy Satterfield
+Author-email: jsatt@jsatt.com
+License: MIT License
+Description: # Python Catalog
+        
+        Data structure for storing complex enumeration
+        
+        ```python
+        class Color(Catalog):
+            _attrs = 'value', 'label', 'other'
+            red = 1, 'Red', 'stuff'
+            blue = 2, 'Blue', 'things'
+        ```
+        
+        Access values as Attributes
+        
+        ```python
+        >> Color.red.value
+        << 1
+        >> Color.red.label
+        << 'Red'
+        ```
+        
+        Call to look up members by attribute value
+        
+        ```python
+        >> Color('Blue', 'label')
+        << Color.blue
+        ```
+        
+        Calling without attribute specified assumes first attribute defined in `_attrs`
+        
+        ```python
+        >> Color(1)
+        << Color.red
+        ```
+        
+        `_attrs` defaults to `['value']`.
+        
+        Member class can be replaced by extending `CatalogMember` and defining on Catalog with
+        the `_member_class` attribute
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development
