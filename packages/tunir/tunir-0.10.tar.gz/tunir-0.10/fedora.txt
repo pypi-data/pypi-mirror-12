@@ -1,0 +1,13 @@
+curl -O https://kushal.fedorapeople.org/tunirtests.tar.gz
+tar -xzvf tunirtests.tar.gz
+sudo python3 -m unittest tunirtests.atomictests.TestAtomicUpgradeRun -v
+@@ sudo reboot
+SLEEP 60
+sudo python3 -m unittest tunirtests.atomictests.TestAtomicUpgradePostReboot
+## sudo python3 -m unittest tunirtests.atomictests.TestAtomicRollbackRun
+SLEEP 30
+@@ sudo reboot
+SLEEP 60
+## sudo python3 -m unittest tunirtests.atomictests.TestAtomicRollbackPostReboot
+## sudo python3 -m unittest tunirtests.atomictests.TestAtomicDockerImage
+## sudo python3 -m unittest tunirtests.atomictests.TestAtomicCommand
