@@ -1,0 +1,47 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Semantic Tags") }}{% endblock %}
+
+{% block breadcrumb_content %}
+	{% snippet "semantictags/snippets/breadcrumb.html" %}
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block primary_content_inner %}
+
+	{% block static_styles %}
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+	{% endblock %}
+
+	<h1 class="hide-heading">{{ _('SemanticTags') }}</h1>
+	<p><b><em> {{ _('Welcome to the CKAN SemanticTags Plugin.') }}</em></b> <br><br>  	  
+
+
+	{% if h.semantictags_list_semantictags() %}
+		{% block assoc_semantic_tag %}
+			{% snippet "semantictags/snippets/associate_form.html" %}
+	 	{% endblock %}
+
+
+		{% if h.semantictags_list_tag_semantictags() %}
+
+			{% block list_tag_semantictags %}
+				{% snippet "semantictags/snippets/list_tag_semantictags.html" %}
+			{% endblock %}
+		{% else %}
+				<p>You still don't have any relations between tags and semantic tags. Add some!</p>
+		{% endif %}
+
+	{% else %}	
+		<h3>You don't have any Semantic Tag. Start by {% link_for _('adding some'), controller='ckanext.semantictags.controller:SemantictagsController', action='show_semantictags' %}.</h3>
+	{% endif %}
+
+
+	
+{% endblock %} <!--primary content -->
+
+{% block secondary_content %}
+  {% snippet "semantictags/snippets/menu.html" %}
+{% endblock %}
+
