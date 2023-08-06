@@ -1,0 +1,14 @@
+<!--StacksImageList 1-up Grid-->
+
+<div class="stacks-module full-width stacks-image stacks-image-list-1up grid {{ addl_classes }}">
+    {% if self.title %}<h2 class="module-title">{{ self.title }}</h2>{% endif %}
+    {% for item in self.list %}
+    <div class="media-row grid-row">
+        <div class="grid-1up grid-block">
+            <div class="grid-block-inner">
+                {{ item }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
