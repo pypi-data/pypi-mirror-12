@@ -1,0 +1,85 @@
+{
+    // sets namespace  for this service.
+    // unused currently but should eventually
+    // be used in tagging, etc
+    "org_name": "OrgName",
+    "app_name": "AppName",
+    "env_name": "EnvName",
+    "service_name": "ServiceName",
+
+    // sets the name for this service.
+    // this will be used in AWS tags: choose wisely
+    // for readability and any logging you add later
+    // Suggested format: "org_name-app_name-env_name"
+    "name" : "{org_name}-{app_name}-{env_name}",
+    "service_description": "Service description goes here",
+
+    // sets the ami for this service.
+    // the default is ubuntu 14.04 amd64 ebs us-east-1
+    // default is PV! (only suitable for t1.micro)
+    "ami" : "ami-3cf8b154",
+
+    // if you do not want t1.micro, you need HVM (below)
+    // "ami" : "ami-9aaa1cf2",
+
+    // sets the username for this service.
+    // this is used for ssh, so make sure this
+    // matches the AMI you have chosen
+    "username" : "ubuntu",
+
+    // sets the AWS instance type for this service make sure
+    // AMI above matches the instance type you are asking for
+    "instance_type"   : "t1.micro",
+
+    // Sets the supervisor credentials for this service.
+    // NB: these variables will be added to "facts" used by puppet
+    "supervisor_user" : "admin",
+    "supervisor_pass" : "testing",
+    "supervisor_port" : "9001",
+
+    // location of the pem file for this service.
+    // this will be used for ssh connections with the service,
+    // and if it is not correct then no remote can be executed.
+    "pem" : "~/.ssh/{app_name}.pem",
+
+    // Sets up the AWS key_name for this service.
+    // By default, the value for the "app_name" field
+    // in this file will be used.  You can find the
+    // keys for your AWS account at the console here**
+    // **: https://console.aws.amazon.com/iam/home#encryptionKeys
+    "key_name" : "{app_name}",
+
+    // path specifying the file which is the main entry point for puppet code
+    // this file will be used only after the dependencies mentioned in
+    // metadata.json have been installed.
+    "setup_list" : [
+        // install suite of devops packages suggested by ymir
+        // this just includes nmap, tree, ruby and python core, etc
+        "puppet/modules/ymir/packages.pp",
+        // creates /opt/ymir/logs which is used by supervisor, etc
+        "puppet/modules/ymir/log_dirs.pp"
+        ],
+
+    // a list of names for the AWS security groups this service will belong
+    // to. the existence of these security groups will be confirmed when
+    // `ymir validate` is run from the command line.
+    "security_groups" : ['your_sg_name'],
+
+    // a list of extra, service-specific puppet files to execute during
+    // provisioning.  by the time provisioning happens, any puppet
+    // dependencies mentioned in puppet/metadata.json are guaranteed
+    // to be installed, and setup_list is guaranteed to have run
+    // at least once.
+    "provision_list" : ["puppet/demo_service.pp"],
+
+    // health checks to execute against this service
+    "health_checks": {
+        "supervisor" :
+        ['http_200',
+         'http://{supervisor_user}:{supervisor_pass}@{host}:{supervisor_port}'],
+    },
+
+    // data that will be passed on to the puppet FACTer
+    'service_defaults' : {
+    }
+}
