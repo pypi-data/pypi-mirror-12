@@ -1,0 +1,182 @@
+/* @group facility */
+.portaltype-seantis-dir-facility-directory,
+.portaltype-seantis-dir-facility-item {
+
+  .facilityContent {
+    @include boxsizing(border-box);
+    float: left;
+    width: 60%;
+  }
+
+  .facilityOverview {
+    @include boxsizing(border-box);
+    float: right;
+    width: 35%;
+  }
+
+  @media screen and (max-width: $screen-tablet-landscape) {
+    .facilityContent,
+    .facilityOverview {
+      float: none;
+      width: 100%;
+    }
+  }
+}
+
+/* @group facility viewlets */
+.facilityOverview {
+  margin-top: 1em;
+
+  #seantis-overview-calendar {
+    margin-bottom: 1em;
+  }
+
+  #directoryResultMap {
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+}
+/* @end */
+
+
+
+/* @group facility results */
+.portaltype-seantis-dir-facility-directory,
+.portaltype-seantis-dir-facility-item {
+
+  #landingPageIntro {
+    h2,
+    div {
+      padding-left: 0;
+    }
+  }
+
+  .directoryResult,
+  .directoryChildren .resourceItem {
+    border-top: 1px solid $lightgray2;
+    padding: 1em .7em;
+  }
+
+  .directoryChildren,
+  #directoryResultList .directoryResult {
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  #directoryResultList,
+  .directoryChildren {
+    width: 100%;
+
+    a:hover {
+      text-decoration: none;
+
+      * {
+        background-color: $lightgray;
+      }
+    }
+  }
+
+  .directoryMarker {
+    right: 1em;
+    top: 1em;
+  }
+
+  .directoryImage {
+    float: left;
+    margin: 0 25px 5px 0;
+    padding: 0;
+  }
+
+  .directoryDescription {
+    float: left;
+    width: 70%;
+  }
+
+  @media screen and (max-width: $screen-mobile-landscape) {
+    .directoryImage,
+    .directoryDescription {
+      float: none;
+      width: 100%;
+    }
+  }
+
+  .resourceDescription {
+    color: $text-color;
+  }
+
+  .directoryChildren p {
+    margin-bottom: 1.2em;
+  }
+
+  .directoryChildren .resourceDescription {
+    display: inline-block;
+  }
+
+  /* not nice, but seantis.reservation currently needs this */
+  .directoryResult.groupSelection,
+  .resourceItem.groupSelection {
+    @include boxshadow(none !important);
+    background-color: $lightgray !important;
+  }
+}
+/* @end */
+
+/* @group facility info viewlet */
+.multicalendar .directoryResult {
+  display: none;
+}
+
+.singlecalendar,
+.reservation-search {
+  .directoryResult {
+    @include boxsizing(border-box);
+
+    float: left;
+    width: 66%;
+
+    .directoryInfo {
+      clear: both;
+    }
+
+    .directoryImage,
+    .directoryInfo > div {
+      float: left;
+      margin: 0 2em 1em 0;
+      max-width: 33%;
+    }
+
+  }
+
+  .contact {
+    @include boxsizing(border-box);
+    background-color: $lightgray;
+    float: right;
+    margin-bottom: 1em;
+    padding: 1em;
+    width: 30%;
+  }
+
+  @media screen and (max-width: $screen-tablet-landscape) {
+    .directoryResult,
+    .contact,
+    .directoryResult .directoryInfo > div {
+      float: none !important;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  .formTabs {
+    margin-bottom: 1em;
+  }
+
+  .legend {
+    background-color: white;
+  }
+
+}
+/* @group */
+
+/* @end */
