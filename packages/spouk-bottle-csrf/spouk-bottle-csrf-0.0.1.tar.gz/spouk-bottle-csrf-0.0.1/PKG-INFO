@@ -1,0 +1,72 @@
+Metadata-Version: 1.1
+Name: spouk-bottle-csrf
+Version: 0.0.1
+Summary: csrf  plugin for bottle
+Home-page: http://spouk.ru
+Author: Spouk
+Author-email: spouk@spouk.ru
+License: MIT
+Description: csrf support for bottle
+                server.py
+                ---------
+                     #!/usr/bin/env python
+                     #coding: utf-8
+                     __author__ = 'spouk'
+        
+                     from bottle import Bottle, template, TEMPLATE_PATH
+                     from  spouk_bottle_csrf import CSRF
+        
+                     CSRF_SALT = 'somesalforcsrf'
+                     csrf = CSRF(CSRF_SALT=CSRF_SALT)
+        
+                     app=Bottle()
+                     TEMPLATE_PATH.append('template/')
+                     app.install(csrf)
+        
+        
+                     # пример декоратора
+                     @app.csrf.csrf_decorator
+                     def mainrender(page, *argc,**kwargs):
+                         kwargs.update(dict(app=app))
+                         result = template(page, *argc, **kwargs)
+                         # app.csrf.csrf_check_after_request(result)
+                         return template(page, *argc, **kwargs)
+        
+                     @app.get('/')
+                     def root():
+                         print app.csrf.csrf_token, app.csrf.csrf_meta_geting
+                         return mainrender('index.html')
+        
+                     app.run(host='localhost',port=3500, debug=True,reloader=True)
+        
+        
+        
+                index.html
+                ----------
+                    <html>
+                      <head>
+                        <meta charset="utf-8" />
+                        <meta content="{{app.csrf.csrf_token}}" name="csrf-token">
+                      </head>
+                    <body>
+        
+                      Csrf_token: {{ app.csrf.csrf_token }} <br />
+                      example visible `hidden` input form:  {{ app.csrf.csrf_token_html }} <br />
+                      example `hidden` form:  {{ !app.csrf.csrf_token_html }}  <br />
+                    </body>
+                    </html>
+        
+        
+                ---
+                Copyleft [x] 2015, Spouk
+            
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires: bottle (>=0.9)
+Requires: bs4 (>=4.0.1)

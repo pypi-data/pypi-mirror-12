@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="{{app.csrf.csrf_token}}" name="csrf-token">
+  </head>
+<body>
+  
+  Пример токена обычного вида: {{ app.csrf.csrf_token }} <br />
+  Пример html формы:  {{ app.csrf.csrf_token_html }} <br />
+  Пример html формы:  {{ !app.csrf.csrf_token_html }}  <br />
+</body>
+</html>
+
