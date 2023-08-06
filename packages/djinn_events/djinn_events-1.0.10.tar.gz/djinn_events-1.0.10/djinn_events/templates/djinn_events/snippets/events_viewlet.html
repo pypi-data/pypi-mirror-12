@@ -1,0 +1,49 @@
+{% load i18n humanize auth_tags %}
+
+<section id="events">
+  
+  <header>
+    <h1>{% trans "Events" %}
+
+      {% ifpermission "" request.user 'djinn_events.add_event' %}
+      <span class="controls">
+        <a href="{% url 'djinn_events_add_event' %}"
+           data-toggle="tooltip"
+           title="{% trans 'Add event' %}"
+           class="add-inline"
+           >
+          <i class="icon-plus"></i>
+        </a>
+        <div class="help">
+            <div class="help-tooltip">
+                {% trans "tooltip-add-event" %}
+            </div>
+        </div>
+      </span>
+      {% endifpermission %}
+    </h1>
+  </header>
+
+  {% if view.events|length > 0 %}
+
+  <ul id="eventlist" class="simple-list">
+    {% for event in view.events %}
+    {% include "djinn_events/snippets/event.html" with object=event %}
+    {% endfor %}
+  </ul>
+
+  {% if view.show_more %}
+  <a href="{% url 'haystack_search' %}?meta_type=event">
+    {% trans "All events" %}
+  </a>
+  {% endif %}
+
+  {% else %}
+  
+  <div class="alert alert-info" id="events-alert">
+    {% trans "No events" %}
+  </div>
+  
+  {% endif %}
+  
+</section>
