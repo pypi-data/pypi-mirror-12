@@ -1,0 +1,2 @@
+- Encolpe DEGOUTE, encolpe.degoute@free.fr
+- Gérard VIDAL, Gerard.Vidal@ens-lyon.fr

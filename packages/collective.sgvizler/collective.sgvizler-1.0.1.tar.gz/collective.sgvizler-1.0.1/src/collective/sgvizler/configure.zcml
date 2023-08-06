@@ -1,0 +1,63 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.sgvizler">
+
+  <includeDependencies package="." />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".browser" />
+
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.sgvizler"
+      directory="profiles/default"
+      description="Installs the collective.sgvizler add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="collective.sgvizler-postInstall"
+      title="collective.sgvizler post_install import step"
+      description="Post install import step from collective.sgvizler"
+      handler=".setuphandlers.post_install">
+  </genericsetup:importStep>
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.sgvizler"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.sgvizler add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="collective.sgvizler-uninstall"
+      title="collective.sgvizler uninstall import step"
+      description="Import step run during ininstalling collective.sgvizler"
+      handler=".setuphandlers.uninstall">
+  </genericsetup:importStep>
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.sgvizler-hiddenprofiles" />
+
+
+    <class class=".sparql_viz.SPARQLViz">
+        <implements interface=".sparql_viz.ISPARQLViz" />
+    </class>
+
+    <browser:page
+        for=".sparql_viz.ISPARQLViz"
+        name="sampleview"
+        class=".sparql_viz.SampleView"
+        template="sparql_viz_templates/sampleview.pt"
+        permission="zope2.View"
+        />
+
+</configure>
