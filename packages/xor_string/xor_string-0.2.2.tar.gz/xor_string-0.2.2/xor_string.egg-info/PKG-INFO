@@ -1,0 +1,53 @@
+Metadata-Version: 1.1
+Name: xor-string
+Version: 0.2.2
+Summary: Elegant xor encryption in Python
+Home-page: https://github.com/Akagi201/xor_string
+Author: Akagi201
+Author-email: akagi201@gmail.com
+License: MIT
+Download-URL: https://github.com/Akagi201/xor_string/tarball/0.2.2
+Description: # xor_string
+        
+        ![PyPI downloads](https://img.shields.io/pypi/dm/xor_string.svg) ![PyPI version](https://img.shields.io/pypi/v/xor_string.svg) ![PyPI python version](https://img.shields.io/pypi/pyversions/xor_string.svg)
+        
+        Python doesn't support (natively) XOR on everything else than int, and this is annoying.
+        
+        ```
+        >>> 'hello' ^ 'world'
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+        TypeError: unsupported operand type(s) for ^: 'str' and 'str'
+        ```
+        
+        Fortunately, Python has the (amazing) itertools module.
+        
+        ## unit tests
+        * `nosetests -v`
+        
+        ## Explanations
+        
+        For those who are not familiar with python:
+        
+        * cycle(key) returns an iterator that produces an infinite concatenation of key's content
+        * izip(a, b) returns an iterator that aggregates elements from each of the iterables. It stops on the shortest input sequence (here, our message, since cycle(key) is infinite
+        * ord(a) and chr(57) return (respectively) the integer representing the given char and the char represented by the given integer.
+        * ''.join() (roughly) concatenate every items of the list passed in argument in a string
+        
+Keywords: xor,string,itertools,python
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Environment :: Console :: Curses
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Security
+Classifier: Topic :: System :: Networking
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Utilities
