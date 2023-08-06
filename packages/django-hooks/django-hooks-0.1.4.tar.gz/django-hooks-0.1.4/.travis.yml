@@ -1,0 +1,16 @@
+language: python
+sudo: false
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+install:
+  - pip install -q --upgrade pip
+  - pip install -q Django==1.8.7
+  - pip install -q django-discover-runner
+  - pip install -q mock
+  - pip install coveralls
+script:
+  - coverage run --source=. run_tests.py
+after_success:
+  - coveralls
