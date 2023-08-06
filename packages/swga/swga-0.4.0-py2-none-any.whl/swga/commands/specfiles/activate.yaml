@@ -1,0 +1,15 @@
+_meta:
+  help: >
+    activate a list of primers, updating melting temp and fg binding 
+    locations as needed
+  _exclude: True
+input:
+  default: null
+  help: "a file containing a list of primers to score, one per line"
+  type: File-r
+  argtype: arg
+  _exclude: True
+reset:
+  help: reset what primers are marked as active
+  argtype: flag
+  _exclude: True

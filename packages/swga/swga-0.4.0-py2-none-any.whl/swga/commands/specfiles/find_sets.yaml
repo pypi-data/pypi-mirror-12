@@ -1,0 +1,44 @@
+_meta:
+  help: Find sets of compatible primers in a primer compatibility graph
+min_size:
+  default: 2
+  help: minimum size of primer sets
+max_size:
+  default: 7
+  help: max size of primer sets
+max_dimer_bp:
+  default: 3
+  help: max number of consecutive complimentary bases between two primers
+  type: int
+min_bg_bind_dist:
+  default: 30000
+  help: min avg distance between primers in the bg genome
+max_fg_bind_dist:
+  default: 36000
+  help: Max distance between primers on the foreground genome
+  type: int
+max_sets:
+  default: 500
+  help: Max number of sets to check
+  type: int
+reset:
+  _exclude: True
+  help: remove all previously-found sets
+  argtype: flag
+workers:
+  default: 1
+  help: >
+    number of workers to spawn. 1 worker searches graph using weighted vertex 
+    coloring; > 1 workers randomizes vertex coloring to explore more area 
+    simultaneously.
+  type: int
+force:
+  argtype: flag
+  help: clear any previous sets without prompting
+  _exclude: True
+score_expression:
+  default: "(fg_dist_mean * fg_dist_gini) / (bg_dist_mean)"
+  help: >
+    Specify an expression to calculate the set score. Code must only use the
+    following variables: set_size, fg_dist_mean, fg_dist_std, fg_dist_gini,
+    fg_dist_max, bg_dist_mean. Expression must have valid Python syntax.
