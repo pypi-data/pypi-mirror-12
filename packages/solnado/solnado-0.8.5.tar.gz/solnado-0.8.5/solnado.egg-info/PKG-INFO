@@ -1,0 +1,40 @@
+Metadata-Version: 1.1
+Name: solnado
+Version: 0.8.5
+Summary: Tornado HTTP client for Solr
+Home-page: https://github.com/hodgesds/solnado
+Author: Daniel Hodges
+Author-email: hodges.daniel.scott@gmail.com
+License: Apache License, Version 2.0
+Description: ## Solnado
+        
+        Tornado HTTP Client for Solr.
+        
+        
+        ### Example
+        Example usage with Solr cloud:
+        
+            from solnado import SolrClient
+            import tornado.ioloop
+            iol = tornado.ioloop.IOLoop.current()
+        
+            client = SolrClient() # default to localhost:8983
+            res = yield gen.Task(client.create_collection, 'foo')
+            print res.body
+        
+            iol.start()
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
