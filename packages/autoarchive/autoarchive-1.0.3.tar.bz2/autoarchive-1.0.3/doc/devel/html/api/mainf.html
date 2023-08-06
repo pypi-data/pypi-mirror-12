@@ -1,0 +1,507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._mainf &mdash; AutoArchive Developer Manual (ver. 1.0.3)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.0.3)" href="../index.html" />
+    <link rel="up" title="AutoArchive" href="autoarchive.html" />
+    <link rel="next" title="AutoArchive._mainf._core" href="mainf.core.html" />
+    <link rel="prev" title="AutoArchive" href="autoarchive.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mainf.core.html" title="AutoArchive._mainf._core"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="autoarchive.html" title="AutoArchive"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" accesskey="U">AutoArchive</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._mainf">
+<span id="autoarchive-mainf"></span><h1>AutoArchive._mainf<a class="headerlink" href="#module-AutoArchive._mainf" title="Permalink to this headline">¶</a></h1>
+<p>Main framework for <a class="reference internal" href="../glossary.html#term-autoarchive"><em class="xref std std-term">AutoArchive</em></a>.</p>
+<p><a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> helps to implement architecture where an application consists of several components (which can map the
+logical structure).  In particular, it provides a way to prevents to see eachothers package internal implementation
+objects and allows them to expose only public interfaces.</p>
+<p>Each <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a> class has to derive from <a class="reference internal" href="#AutoArchive._mainf.icomponent.IComponent" title="AutoArchive._mainf.icomponent.IComponent"><tt class="xref py py-class docutils literal"><span class="pre">IComponent</span></tt></a> interface.  All <a class="reference internal" href="#AutoArchive._mainf.icomponent.IComponent" title="AutoArchive._mainf.icomponent.IComponent"><tt class="xref py py-class docutils literal"><span class="pre">IComponent</span></tt></a> classes has
+to be passed to <a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine" title="AutoArchive._mainf._core.mainf_engine.MainfEngine"><tt class="xref py py-class docutils literal"><span class="pre">MainfEngine</span></tt></a> during its initialization using the <a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine.addComponent" title="AutoArchive._mainf._core.mainf_engine.MainfEngine.addComponent"><tt class="xref py py-meth docutils literal"><span class="pre">MainfEngine.addComponent()</span></tt></a> method.
+Components have possibility to register instances of their public interfaces implementations using the
+<a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor"><tt class="xref py py-class docutils literal"><span class="pre">IInterfaceAccessor</span></tt></a> which is passed to them during their construction.  Doing so, they make them available to
+other components (which can access them via the same interface).</p>
+<p>Components should expose their interface definitions to others while classes that implements them should be hidden in
+private packages/modules.</p>
+<p>Additionally, <a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> defines interface <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi" title="AutoArchive._mainf.icomponent_ui.IComponentUi"><tt class="xref py py-class docutils literal"><span class="pre">IComponentUi</span></tt></a> for a user interface that components should use to
+access a UI (which has to implement it).</p>
+<p><a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> framework is initialized by creating the <a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine" title="AutoArchive._mainf._core.mainf_engine.MainfEngine"><tt class="xref py py-class docutils literal"><span class="pre">MainfEngine</span></tt></a> by <a class="reference internal" href="#AutoArchive._mainf.main.createMainfEngine" title="AutoArchive._mainf.main.createMainfEngine"><tt class="xref py py-func docutils literal"><span class="pre">createMainfEngine()</span></tt></a> factory
+method following by populating it by component classes.  Finally, calling <a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine.start" title="AutoArchive._mainf._core.mainf_engine.MainfEngine.start"><tt class="xref py py-meth docutils literal"><span class="pre">MainfEngine.start()</span></tt></a> method, starts
+the application passing the <tt class="docutils literal"><span class="pre">appEnvironment</span></tt> which is an arbitrary object that will be available to components via
+<a class="reference internal" href="#AutoArchive._mainf.imainf_context.IMainfContext" title="AutoArchive._mainf.imainf_context.IMainfContext"><tt class="xref py py-class docutils literal"><span class="pre">IMainfContext</span></tt></a> component interface.  <a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> in turn, instantiates all components and executes them by
+calling the <a class="reference internal" href="#AutoArchive._mainf.icomponent.IComponent.run" title="AutoArchive._mainf.icomponent.IComponent.run"><tt class="xref py py-meth docutils literal"><span class="pre">IComponent.run()</span></tt></a> method for each.</p>
+<div class="section" id="sub-packages">
+<h2>Sub-Packages<a class="headerlink" href="#sub-packages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mainf.core.html">AutoArchive._mainf._core</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._mainf.icomponent">
+<span id="icomponent"></span><h3>icomponent<a class="headerlink" href="#module-AutoArchive._mainf.icomponent" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._mainf.icomponent.IComponent" title="AutoArchive._mainf.icomponent.IComponent"><tt class="xref py py-class docutils literal"><span class="pre">IComponent</span></tt></a> interface.</p>
+<dl class="class">
+<dt id="AutoArchive._mainf.icomponent.IComponent">
+<em class="property">class </em><tt class="descclassname">AutoArchive._mainf.icomponent.</tt><tt class="descname">IComponent</tt><big>(</big><em>interfaceAccessor</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent.html#IComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent.IComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Interface for components of <a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> framework.</p>
+<p>Each <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a> of <a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> framework has to implement this interface.  Components are managed by
+<a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine" title="AutoArchive._mainf._core.mainf_engine.MainfEngine"><tt class="xref py py-class docutils literal"><span class="pre">MainfEngine</span></tt></a> and can expose their interfaces via <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor"><tt class="xref py py-class docutils literal"><span class="pre">IInterfaceAccessor</span></tt></a>.</p>
+<p>During construction the <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a> can get and access other&#8217;s components interfaces via
+<tt class="docutils literal"><span class="pre">interfaceAccessor</span></tt>.  Using the same object it can register its own public interfaces as well.</p>
+<p>See also the description of _mainf package (<a class="reference internal" href="#module-AutoArchive._mainf" title="AutoArchive._mainf"><tt class="xref py py-mod docutils literal"><span class="pre">_mainf</span></tt></a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>interfaceAccessor</strong> (<a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor"><tt class="xref py py-class docutils literal"><span class="pre">IInterfaceAccessor</span></tt></a>) &#8211; Can be used to get/register public interfaces.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._mainf.icomponent.IComponent.run">
+<tt class="descname">run</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent.html#IComponent.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent.IComponent.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a>.</p>
+<p>Executes the work that the component is meant to do.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">True</span></tt>, if execution was successful.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._mainf.icomponent_ui">
+<span id="icomponent-ui"></span><h3>icomponent-ui<a class="headerlink" href="#module-AutoArchive._mainf.icomponent_ui" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi" title="AutoArchive._mainf.icomponent_ui.IComponentUi"><tt class="xref py py-class docutils literal"><span class="pre">IComponentUi</span></tt></a> interface, <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.UiMessageKinds" title="AutoArchive._mainf.icomponent_ui.UiMessageKinds"><tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds</span></tt></a> and <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.VerbosityLevels" title="AutoArchive._mainf.icomponent_ui.VerbosityLevels"><tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels</span></tt></a> enums.</p>
+<dl class="class">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi">
+<em class="property">class </em><tt class="descclassname">AutoArchive._mainf.icomponent_ui.</tt><tt class="descname">IComponentUi</tt><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._mainf.iinterface_accessor.IComponentInterface</span></tt></a></p>
+<p>Basic interface for an <a class="reference internal" href="../glossary.html#term-ui"><em class="xref std std-term">UI</em></a> implementation.</p>
+<p>Defines basic methods for showing messages of various importance to a user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There should be at least one <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a> that implements this interface in order to provide an        <a class="reference internal" href="../glossary.html#term-ui"><em class="xref std std-term">UI</em></a> access to other components.</p>
+</div>
+<p>See also the description of _mainf package (<a class="reference internal" href="#module-AutoArchive._mainf" title="AutoArchive._mainf"><tt class="xref py py-mod docutils literal"><span class="pre">_mainf</span></tt></a>).</p>
+<dl class="method">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.presentLine">
+<tt class="descname">presentLine</tt><big>(</big><em>line</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.presentLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.presentLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Present a line of text to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The verbosity level has no effect on presenting the line.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The text that shall be presented to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.showError">
+<tt class="descname">showError</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.showError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.showError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show an error message to (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Error</span></tt>) the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity" title="AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.showInfo">
+<tt class="descname">showInfo</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.showInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.showInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show an information message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Info</span></tt>) to the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity" title="AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.showNotification">
+<tt class="descname">showNotification</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.showNotification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.showNotification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show an unintrusive notification message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Notification</span></tt>) to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If user interface implementation does not have means to support notifications then it should be
+presented to the user similarly as <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.showInfo" title="AutoArchive._mainf.icomponent_ui.IComponentUi.showInfo"><tt class="xref py py-meth docutils literal"><span class="pre">showInfo()</span></tt></a>.</p>
+</div>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity" title="AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.showVerbose">
+<tt class="descname">showVerbose</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.showVerbose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.showVerbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a verbose-type message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Verbose</span></tt>) to the user.</p>
+<p>Verbose messages should be shown only if user enables it.  Although this method can be called regardless of
+current verbosity level, the concrete implementation can decide whether it will be shown or not if verbosity
+level is 0.  It is not recommended to call this method if verbosity level is 0 due to performance reasons.
+Current verbosity level can be obtained via <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity" title="AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a> property.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity" title="AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.showWarning">
+<tt class="descname">showWarning</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.showWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.showWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a warning message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Warning</span></tt>) to the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity" title="AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.messageShown">
+<tt class="descname">messageShown</tt><em class="property"> = &lt;AutoArchive._py_additions.event object at 0x7f690b5fce80&gt;</em><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.messageShown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.messageShown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity">
+<tt class="descname">verbosity</tt><a class="reference internal" href="../_modules/AutoArchive/_mainf/icomponent_ui.html#IComponentUi.verbosity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.IComponentUi.verbosity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the verbosity level.</p>
+<p>If verbosity level is <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Quiet</span></tt> only messages of kind <tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Error</span></tt> are
+shown.  For level <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Normal</span></tt> all messages kinds except <tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Verbose</span></tt>
+are shown.  For level <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Verbose</span></tt> all message kinds are shown.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._mainf.icomponent_ui.VerbosityLevels" title="AutoArchive._mainf.icomponent_ui.VerbosityLevels"><tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._mainf.icomponent_ui.UiMessageKinds">
+<tt class="descclassname">AutoArchive._mainf.icomponent_ui.</tt><tt class="descname">UiMessageKinds</tt><em class="property"> = Verbose, Notification, Info, Warning, Error</em><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.UiMessageKinds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kinds of user messages.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._mainf.icomponent_ui.VerbosityLevels">
+<tt class="descclassname">AutoArchive._mainf.icomponent_ui.</tt><tt class="descname">VerbosityLevels</tt><em class="property"> = Quiet, Normal, Verbose</em><a class="headerlink" href="#AutoArchive._mainf.icomponent_ui.VerbosityLevels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verbosity levels.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._mainf.iinterface_accessor">
+<span id="iinterface-accessor"></span><h3>iinterface_accessor<a class="headerlink" href="#module-AutoArchive._mainf.iinterface_accessor" title="Permalink to this headline">¶</a></h3>
+<p><tt class="xref py py-class docutils literal"><span class="pre">IInterfaceAccessor</span> <span class="pre">and</span> <span class="pre">:class:`IComponentInterface</span></tt> interfaces.</p>
+<dl class="class">
+<dt id="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor">
+<em class="property">class </em><tt class="descclassname">AutoArchive._mainf.iinterface_accessor.</tt><tt class="descname">IInterfaceAccessor</tt><a class="reference internal" href="../_modules/AutoArchive/_mainf/iinterface_accessor.html#IInterfaceAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Provides access to components public interfaces.</p>
+<p>A <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a> can make available its provided interfaces to other components by registering them via this
+interface.  Registered classes has to implement <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">IComponentInterface</span></tt></a>.</p>
+<p>See also the description of _mainf package (<a class="reference internal" href="#module-AutoArchive._mainf" title="AutoArchive._mainf"><tt class="xref py py-mod docutils literal"><span class="pre">_mainf</span></tt></a>).</p>
+<dl class="method">
+<dt id="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.getComponentInterface">
+<tt class="descname">getComponentInterface</tt><big>(</big><em>interfaceType</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/iinterface_accessor.html#IInterfaceAccessor.getComponentInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.getComponentInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides access to registered <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a> interfaces.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.registerComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.registerComponentInterface"><tt class="xref py py-meth docutils literal"><span class="pre">registerComponentInterface()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>interfaceType</strong> (<tt class="docutils literal"><span class="pre">type{</span></tt><a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">IComponentInterface</span></tt></a><tt class="docutils literal"><span class="pre">}</span></tt>) &#8211; Type of the desired interface.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Instance of <tt class="docutils literal"><span class="pre">interfaceType</span></tt>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">interfaceType</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">interfaceType</span></tt> does not implement <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">IComponentInterface</span></tt></a>.</li>
+<li><strong>KeyError</strong> &#8211; If <tt class="docutils literal"><span class="pre">interfaceType</span></tt> is not registered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.registerComponentInterface">
+<tt class="descname">registerComponentInterface</tt><big>(</big><em>interfaceType</em>, <em>instance</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/iinterface_accessor.html#IInterfaceAccessor.registerComponentInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.registerComponentInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a component public interface.</p>
+<p>Makes an interface available to other components by registering it.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.unregisterComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.unregisterComponentInterface"><tt class="xref py py-meth docutils literal"><span class="pre">unregisterComponentInterface()</span></tt></a>,
+<a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.getComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.getComponentInterface"><tt class="xref py py-meth docutils literal"><span class="pre">getComponentInterface()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>interfaceType</strong> (<tt class="docutils literal"><span class="pre">type{</span></tt><a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">IComponentInterface</span></tt></a><tt class="docutils literal"><span class="pre">}</span></tt>) &#8211; Type of registering instance.</li>
+<li><strong>instance</strong> (:class:<tt class="docutils literal"><span class="pre">.IComponentInterface</span></tt>) &#8211; An instance of a class implementing the <tt class="docutils literal"><span class="pre">interfaceType</span></tt>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">interfaceType</span></tt> or <tt class="docutils literal"><span class="pre">instance</span></tt> does not implement <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">IComponentInterface</span></tt></a>.</li>
+<li><strong>KeyError</strong> &#8211; If <tt class="docutils literal"><span class="pre">interfaceType</span></tt> is already registered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.unregisterComponentInterface">
+<tt class="descname">unregisterComponentInterface</tt><big>(</big><em>interfaceType</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/iinterface_accessor.html#IInterfaceAccessor.unregisterComponentInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.unregisterComponentInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregister a component interface.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.registerComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.registerComponentInterface"><tt class="xref py py-meth docutils literal"><span class="pre">registerComponentInterface()</span></tt></a>,
+<a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.getComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor.getComponentInterface"><tt class="xref py py-meth docutils literal"><span class="pre">getComponentInterface()</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>interfaceType</strong> (<tt class="docutils literal"><span class="pre">type{</span></tt><a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">IComponentInterface</span></tt></a><tt class="docutils literal"><span class="pre">}</span></tt>) &#8211; Type of the instance that should be unregistered.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">interfaceType</span></tt> does not implement <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">IComponentInterface</span></tt></a>.</li>
+<li><strong>KeyError</strong> &#8211; If <tt class="docutils literal"><span class="pre">interfaceType</span></tt> is not registered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._mainf.iinterface_accessor.IComponentInterface">
+<em class="property">class </em><tt class="descclassname">AutoArchive._mainf.iinterface_accessor.</tt><tt class="descname">IComponentInterface</tt><a class="reference internal" href="../_modules/AutoArchive/_mainf/iinterface_accessor.html#IComponentInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Tagging interface for components provided interfaces.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor" title="AutoArchive._mainf.iinterface_accessor.IInterfaceAccessor"><tt class="xref py py-class docutils literal"><span class="pre">IInterfaceAccessor</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._mainf.imainf_context">
+<span id="imainf-context"></span><h3>imainf_context<a class="headerlink" href="#module-AutoArchive._mainf.imainf_context" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._mainf.imainf_context.IMainfContext" title="AutoArchive._mainf.imainf_context.IMainfContext"><tt class="xref py py-class docutils literal"><span class="pre">IMainfContext</span></tt></a> interface.</p>
+<dl class="class">
+<dt id="AutoArchive._mainf.imainf_context.IMainfContext">
+<em class="property">class </em><tt class="descclassname">AutoArchive._mainf.imainf_context.</tt><tt class="descname">IMainfContext</tt><a class="reference internal" href="../_modules/AutoArchive/_mainf/imainf_context.html#IMainfContext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.imainf_context.IMainfContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._mainf.iinterface_accessor.IComponentInterface</span></tt></a></p>
+<p>Provides access to a various program-related objects.</p>
+<dl class="attribute">
+<dt id="AutoArchive._mainf.imainf_context.IMainfContext.appEnvironment">
+<tt class="descname">appEnvironment</tt><a class="reference internal" href="../_modules/AutoArchive/_mainf/imainf_context.html#IMainfContext.appEnvironment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.imainf_context.IMainfContext.appEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets an <tt class="docutils literal"><span class="pre">appEnvironment</span></tt> object.</p>
+<p>This is the object that was passed to the <a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> during its initialization.  It is an arbitrary object
+of which structure <a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> has no knowledge.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">As passing the <tt class="docutils literal"><span class="pre">appEnvironment</span></tt> object to <a class="reference internal" href="../glossary.html#term-mainf"><em class="xref std std-term">Mainf</em></a> is optional this property can be
+<tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">object</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._mainf.main">
+<span id="main"></span><h3>main<a class="headerlink" href="#module-AutoArchive._mainf.main" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._mainf.main.createMainfEngine" title="AutoArchive._mainf.main.createMainfEngine"><tt class="xref py py-func docutils literal"><span class="pre">createMainfEngine()</span></tt></a> function.</p>
+<dl class="function">
+<dt id="AutoArchive._mainf.main.createMainfEngine">
+<tt class="descclassname">AutoArchive._mainf.main.</tt><tt class="descname">createMainfEngine</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_mainf/main.html#createMainfEngine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._mainf.main.createMainfEngine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance of <a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine" title="AutoArchive._mainf._core.mainf_engine.MainfEngine"><tt class="xref py py-class docutils literal"><span class="pre">MainfEngine</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A <a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine" title="AutoArchive._mainf._core.mainf_engine.MainfEngine"><tt class="xref py py-class docutils literal"><span class="pre">MainfEngine</span></tt></a> instance.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="mainf.core.html#AutoArchive._mainf._core.mainf_engine.MainfEngine" title="AutoArchive._mainf._core.mainf_engine.MainfEngine"><tt class="xref py py-class docutils literal"><span class="pre">MainfEngine</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._mainf</a><ul>
+<li><a class="reference internal" href="#sub-packages">Sub-Packages</a></li>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._mainf.icomponent">icomponent</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._mainf.icomponent_ui">icomponent-ui</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._mainf.iinterface_accessor">iinterface_accessor</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._mainf.imainf_context">imainf_context</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._mainf.main">main</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="autoarchive.html"
+                        title="previous chapter">AutoArchive</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mainf.core.html"
+                        title="next chapter">AutoArchive._mainf._core</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mainf.core.html" title="AutoArchive._mainf._core"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="autoarchive.html" title="AutoArchive"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

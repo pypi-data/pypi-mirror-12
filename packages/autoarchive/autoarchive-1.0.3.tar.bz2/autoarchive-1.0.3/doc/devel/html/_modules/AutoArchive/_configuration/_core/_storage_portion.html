@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._configuration._core._storage_portion &mdash; AutoArchive Developer Manual (ver. 1.0.3)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '1.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.0.3)" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for AutoArchive._configuration._core._storage_portion</h1><div class="highlight"><pre>
+<span class="c"># _storage_portion.py</span>
+<span class="c">#</span>
+<span class="c"># Project: AutoArchive</span>
+<span class="c"># License: GNU GPLv3</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2003 - 2011 Róbert Čerňanský</span>
+
+
+
+<span class="sd">&quot;&quot;&quot;:class:`_StoragePortion` class.&quot;&quot;&quot;</span>
+
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;_StoragePortion&quot;</span><span class="p">]</span>
+
+
+
+<span class="c"># {{{ INCLUDES</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># }}} INCLUDES</span>
+
+
+
+<span class="c"># {{{ CLASSES</span>
+
+<div class="viewcode-block" id="_StoragePortion"><a class="viewcode-back" href="../../../../api/configuration.core.html#AutoArchive._configuration._core._storage_portion._StoragePortion">[docs]</a><span class="k">class</span> <span class="nc">_StoragePortion</span><span class="p">(</span><span class="n">IStoragePortion</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Portion of the application&#39;s persistent storage.</span>
+
+<span class="sd">    See also: :class:`.FileStorage`.</span>
+
+<span class="sd">    :param storage: :class:`.IStorage` which portion shall this instance provide access to.</span>
+<span class="sd">    :type storage: :class:`.IStorage`</span>
+<span class="sd">    :param section: Section that shall be accessed by default.</span>
+<span class="sd">    :type section: ``str``</span>
+<span class="sd">    :param realm: Realm that this portion shall provide access to.</span>
+<span class="sd">    :type realm: ``str``&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">realm</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__storage</span> <span class="o">=</span> <span class="n">storage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__section</span> <span class="o">=</span> <span class="n">section</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__realm</span> <span class="o">=</span> <span class="n">realm</span>
+
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="_StoragePortion.realm"><a class="viewcode-back" href="../../../../api/configuration.core.html#AutoArchive._configuration._core._storage_portion._StoragePortion.realm">[docs]</a>    <span class="k">def</span> <span class="nf">realm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">&quot;See: :attr:`.IStoragePortion.realm`.&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__realm</span>
+
+
+</div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">&quot;See: :attr:`.IStoragePortion.section`.&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__section</span>
+
+    <span class="nd">@section.setter</span>
+<div class="viewcode-block" id="_StoragePortion.section"><a class="viewcode-back" href="../../../../api/configuration.core.html#AutoArchive._configuration._core._storage_portion._StoragePortion.section">[docs]</a>    <span class="k">def</span> <span class="nf">section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="s">&quot;See: :attr:`.IStoragePortion.section`.&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__section</span> <span class="o">=</span> <span class="n">value</span>
+
+
+</div>
+<div class="viewcode-block" id="_StoragePortion.getValue"><a class="viewcode-back" href="../../../../api/configuration.core.html#AutoArchive._configuration._core._storage_portion._StoragePortion.getValue">[docs]</a>    <span class="k">def</span> <span class="nf">getValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">section</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="s">&quot;See: :meth:`.IStoragePortion.getValue()`.&quot;</span>
+
+        <span class="n">section</span> <span class="o">=</span> <span class="n">section</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">realm</span><span class="p">)</span>
+
+
+</div>
+<div class="viewcode-block" id="_StoragePortion.saveValue"><a class="viewcode-back" href="../../../../api/configuration.core.html#AutoArchive._configuration._core._storage_portion._StoragePortion.saveValue">[docs]</a>    <span class="k">def</span> <span class="nf">saveValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">section</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="s">&quot;See: :meth:`.IStoragePortion.saveValue()`.&quot;</span>
+
+        <span class="n">section</span> <span class="o">=</span> <span class="n">section</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__storage</span><span class="o">.</span><span class="n">saveValue</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">realm</span><span class="p">)</span>
+
+
+</div>
+<div class="viewcode-block" id="_StoragePortion.hasVariable"><a class="viewcode-back" href="../../../../api/configuration.core.html#AutoArchive._configuration._core._storage_portion._StoragePortion.hasVariable">[docs]</a>    <span class="k">def</span> <span class="nf">hasVariable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">section</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="s">&quot;See: :meth:`.IStoragePortion.hasVariable()`.&quot;</span>
+
+        <span class="n">section</span> <span class="o">=</span> <span class="n">section</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage</span><span class="o">.</span><span class="n">hasVariable</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">realm</span><span class="p">)</span>
+
+
+</div>
+<div class="viewcode-block" id="_StoragePortion.tryRemoveVariable"><a class="viewcode-back" href="../../../../api/configuration.core.html#AutoArchive._configuration._core._storage_portion._StoragePortion.tryRemoveVariable">[docs]</a>    <span class="k">def</span> <span class="nf">tryRemoveVariable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">section</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="s">&quot;See: :meth:`.IStoragePortion.tryRemoveVariable()`.&quot;</span>
+
+        <span class="n">section</span> <span class="o">=</span> <span class="n">section</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage</span><span class="o">.</span><span class="n">tryRemoveVariable</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">realm</span><span class="p">)</span>
+
+<span class="c"># }}} CLASSES</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

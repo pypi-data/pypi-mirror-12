@@ -1,0 +1,994 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._archiving &mdash; AutoArchive Developer Manual (ver. 1.0.3)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.0.3)" href="../index.html" />
+    <link rel="up" title="AutoArchive" href="autoarchive.html" />
+    <link rel="next" title="AutoArchive._archiving._core" href="archiving.core.html" />
+    <link rel="prev" title="AutoArchive._mainf._core" href="mainf.core.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="archiving.core.html" title="AutoArchive._archiving._core"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mainf.core.html" title="AutoArchive._mainf._core"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" accesskey="U">AutoArchive</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._archiving">
+<span id="autoarchive-archiving"></span><h1>AutoArchive._archiving<a class="headerlink" href="#module-AutoArchive._archiving" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../glossary.html#term-archiving"><em class="xref std std-term">Archiving</em></a> <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a>.</p>
+<p>Provides the core functionality of the application.  Executes an <a class="reference internal" href="../glossary.html#term-archiver"><em class="xref std std-term">archiver</em></a> and creates a <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> based
+on provided <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a> and configuration (<a class="reference internal" href="configuration.html#AutoArchive._configuration.iapp_config.IAppConfig" title="AutoArchive._configuration.iapp_config.IAppConfig"><tt class="xref py py-class docutils literal"><span class="pre">IAppConfig</span></tt></a>).  It also allows to read
+various information about <a class="reference internal" href="../glossary.html#term-configured-archive"><em class="xref std std-term">configured</em></a> and <a class="reference internal" href="../glossary.html#term-stored-archive"><em class="xref std std-term">stored</em></a> archives.</p>
+<p>It requires archiver service (<a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver" title="AutoArchive._archiving.iarchiver.IArchiver"><tt class="xref py py-class docutils literal"><span class="pre">IArchiver</span></tt></a> implementation) for the backup creation.</p>
+<div class="section" id="sub-packages">
+<h2>Sub-Packages<a class="headerlink" href="#sub-packages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="archiving.core.html">AutoArchive._archiving._core</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._archiving.iarchiving">
+<span id="iarchiving"></span><h3>iarchiving<a class="headerlink" href="#module-AutoArchive._archiving.iarchiving" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiverTypes" title="AutoArchive._archiving.iarchiving.ArchiverTypes"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverTypes</span></tt></a> and <a class="reference internal" href="#AutoArchive._archiving.iarchiving.BackupLevelRestartReasons" title="AutoArchive._archiving.iarchiving.BackupLevelRestartReasons"><tt class="xref py py-attr docutils literal"><span class="pre">BackupLevelRestartReasons</span></tt></a> enums, <a class="reference internal" href="#AutoArchive._archiving.iarchiving.IArchiving" title="AutoArchive._archiving.iarchiving.IArchiving"><tt class="xref py py-class docutils literal"><span class="pre">IArchiving</span></tt></a> interface and
+<a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo" title="AutoArchive._archiving.iarchiving.ArchiveInfo"><tt class="xref py py-class docutils literal"><span class="pre">ArchiveInfo</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._archiving.iarchiving.IArchiving">
+<em class="property">class </em><tt class="descclassname">AutoArchive._archiving.iarchiving.</tt><tt class="descname">IArchiving</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#IArchiving"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.IArchiving" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mainf.html#AutoArchive._mainf.iinterface_accessor.IComponentInterface" title="AutoArchive._mainf.iinterface_accessor.IComponentInterface"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._mainf.iinterface_accessor.IComponentInterface</span></tt></a></p>
+<p>Provides access to the <a class="reference internal" href="../glossary.html#term-archiving"><em class="xref std std-term">Archiving</em></a> component.</p>
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiving.IArchiving.filterValidSpecFiles">
+<tt class="descname">filterValidSpecFiles</tt><big>(</big><em>specFiles</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#IArchiving.filterValidSpecFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.IArchiving.filterValidSpecFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns names of <a class="reference internal" href="../glossary.html#term-configured-archive"><em class="xref std std-term">configured archives</em></a> from valid only
+<a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a> passed in <tt class="docutils literal"><span class="pre">specFiles</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>specFiles</strong> (<tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt>) &#8211; Paths to archive specification files that shall be validated and from which the names
+shall be retrieved.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Iterable of names of validly configured archives.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiving.IArchiving.getArchiveInfo">
+<tt class="descname">getArchiveInfo</tt><big>(</big><em>specFile</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#IArchiving.getArchiveInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.IArchiving.getArchiveInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information about archive represented by the <tt class="docutils literal"><span class="pre">specFile</span></tt> parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>specFile</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Information about an archive or <tt class="docutils literal"><span class="pre">None</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo" title="AutoArchive._archiving.iarchiving.ArchiveInfo"><tt class="xref py py-class docutils literal"><span class="pre">ArchiveInfo</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo">
+<tt class="descname">getStoredArchiveInfo</tt><big>(</big><em>archiveName</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#IArchiving.getStoredArchiveInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information about an archive from stored data.</p>
+<p>Unlike in the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.IArchiving.getArchiveInfo" title="AutoArchive._archiving.iarchiving.IArchiving.getArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">getArchiveInfo()</span></tt></a> method the information is not read from the
+<a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a> but from other stored data about the archive created by the component in
+previous runs.  Such data can be fetched for example from application storage (<a class="reference internal" href="configuration.html#AutoArchive._configuration.istorage.IStorage" title="AutoArchive._configuration.istorage.IStorage"><tt class="xref py py-class docutils literal"><span class="pre">IStorage</span></tt></a>) or other
+sources specific to the archiver.  It is expected that the large portion of data will be missing in the
+returned information.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveNames" title="AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveNames"><tt class="xref py py-meth docutils literal"><span class="pre">getStoredArchiveNames()</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>archiveName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the archive which information shall be returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Information about an archive or <tt class="docutils literal"><span class="pre">None</span></tt> if no data for the archive was found.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo" title="AutoArchive._archiving.iarchiving.ArchiveInfo"><tt class="xref py py-class docutils literal"><span class="pre">ArchiveInfo</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveNames">
+<tt class="descname">getStoredArchiveNames</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#IArchiving.getStoredArchiveNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns iterable of archive names which has some data stored in a persistent storage.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo" title="AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">getStoredArchiveInfo()</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Iterable of archive names.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiving.IArchiving.makeBackup">
+<tt class="descname">makeBackup</tt><big>(</big><em>specFile</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#IArchiving.makeBackup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.IArchiving.makeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> based on <tt class="docutils literal"><span class="pre">specFile</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>specFile</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If the desired archiver type is not supported.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiving.IArchiving.purgeStoredArchiveData">
+<tt class="descname">purgeStoredArchiveData</tt><big>(</big><em>archiveName</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#IArchiving.purgeStoredArchiveData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.IArchiving.purgeStoredArchiveData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all data stored for the archive named <tt class="docutils literal"><span class="pre">archiveName</span></tt>.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo" title="AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">getStoredArchiveInfo()</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>archiveName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the archive which data shall be purged.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>KeyError</strong> &#8211; If <tt class="docutils literal"><span class="pre">archiveName</span></tt> does not have any stored data to purge.</li>
+<li><strong>OSError</strong> &#8211; If an error occurred during the operation of removing data from a physical storage.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo">
+<em class="property">class </em><tt class="descclassname">AutoArchive._archiving.iarchiving.</tt><tt class="descname">ArchiveInfo</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Information about an archive.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Class should be instantiated by calling the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.IArchiving.getArchiveInfo" title="AutoArchive._archiving.iarchiving.IArchiving.getArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiving.getArchiveInfo()</span></tt></a> or        <a class="reference internal" href="#AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo" title="AutoArchive._archiving.iarchiving.IArchiving.getStoredArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiving.getStoredArchiveInfo()</span></tt></a> factory methods.</p>
+</div>
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType">
+<tt class="descname">archiverType</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.archiverType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the archiver type for this archive.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Value is guaranteed to be non-<tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiverTypes" title="AutoArchive._archiving.iarchiving.ArchiverTypes"><tt class="xref py py-attr docutils literal"><span class="pre">ArchiverTypes</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.backupLevel">
+<tt class="descname">backupLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.backupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.backupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the current <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the archive is not incremental or used <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support
+incremental archiving.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For archiver types that supports incremental archiving, whether the return value will be <tt class="docutils literal"><span class="pre">None</span></tt> or            not does not depend on the <em>current</em> <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.incremental" title="AutoArchive._archiving.iarchiving.ArchiveInfo.incremental"><tt class="xref py py-attr docutils literal"><span class="pre">incremental</span></tt></a> value.  If the archive was configured and created            as incremental previously then the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> will be defined even if the current            <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.incremental" title="AutoArchive._archiving.iarchiving.ArchiveInfo.incremental"><tt class="xref py py-attr docutils literal"><span class="pre">incremental</span></tt></a> value would be <tt class="docutils literal"><span class="pre">False</span></tt> and vice versa.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.destDir">
+<tt class="descname">destDir</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.destDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.destDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the archive&#8217;s destination directory.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Value is guaranteed to be non-<tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.fullRestartAfterAge">
+<tt class="descname">fullRestartAfterAge</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.fullRestartAfterAge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.fullRestartAfterAge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of days after which the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> should be restarted to level 0.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if no value is
+defined for <a class="reference internal" href="configuration.html#AutoArchive._configuration.options.Options.FULL_RESTART_AFTER_AGE" title="AutoArchive._configuration.options.Options.FULL_RESTART_AFTER_AGE"><tt class="xref py py-attr docutils literal"><span class="pre">Options.FULL_RESTART_AFTER_AGE</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.fullRestartAfterCount">
+<tt class="descname">fullRestartAfterCount</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.fullRestartAfterCount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.fullRestartAfterCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of restarts after which the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> will be restarted to 0.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if no value            is defined for <a class="reference internal" href="configuration.html#AutoArchive._configuration.options.Options.FULL_RESTART_AFTER_COUNT" title="AutoArchive._configuration.options.Options.FULL_RESTART_AFTER_COUNT"><tt class="xref py py-attr docutils literal"><span class="pre">Options.FULL_RESTART_AFTER_COUNT</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.incremental">
+<tt class="descname">incremental</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.incremental"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.incremental" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the status of incremental archiving activation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.lastFullRestart">
+<tt class="descname">lastFullRestart</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.lastFullRestart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.lastFullRestart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the date when the last <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restart to level 0 occurred.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if            <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restarting" title="AutoArchive._archiving.iarchiving.ArchiveInfo.restarting"><tt class="xref py py-attr docutils literal"><span class="pre">restarting</span></tt></a> was not enabled for the archive in the past.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">datetime.date</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.lastRestart">
+<tt class="descname">lastRestart</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.lastRestart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.lastRestart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the date when the last <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restart occurred.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if            <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restarting" title="AutoArchive._archiving.iarchiving.ArchiveInfo.restarting"><tt class="xref py py-attr docutils literal"><span class="pre">restarting</span></tt></a> was not enabled for the archive in the past.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">datetime.date</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.name">
+<tt class="descname">name</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the name of the archive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.nextBackupLevel">
+<tt class="descname">nextBackupLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.nextBackupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.nextBackupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the next <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a>.</p>
+<p>See also <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.backupLevel" title="AutoArchive._archiving.iarchiving.ArchiveInfo.backupLevel"><tt class="xref py py-attr docutils literal"><span class="pre">backupLevel</span></tt></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the archive is not incremental or used <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support
+incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.path">
+<tt class="descname">path</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the path to the archive&#8217;s root.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the archive&#8217;s root can not be retrieved.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.restartAfterAge">
+<tt class="descname">restartAfterAge</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.restartAfterAge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restartAfterAge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of days after which the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> should be restarted.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if no value is
+defined for <a class="reference internal" href="configuration.html#AutoArchive._configuration.options.Options.RESTART_AFTER_AGE" title="AutoArchive._configuration.options.Options.RESTART_AFTER_AGE"><tt class="xref py py-attr docutils literal"><span class="pre">Options.RESTART_AFTER_AGE</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.restartAfterLevel">
+<tt class="descname">restartAfterLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.restartAfterLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restartAfterLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the maximal <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a>; after it is reached it will be restarted to a lower value.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.restartCount">
+<tt class="descname">restartCount</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.restartCount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restartCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restarts already performed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if            <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restarting" title="AutoArchive._archiving.iarchiving.ArchiveInfo.restarting"><tt class="xref py py-attr docutils literal"><span class="pre">restarting</span></tt></a> was not enabled for the archive in the past.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.restartLevel">
+<tt class="descname">restartLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.restartLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restartLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> to which a next restart would be done.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.restartReason">
+<tt class="descname">restartReason</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.restartReason"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restartReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reason for the upcoming <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restart.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or the restart
+reason can not be determined.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._archiving.iarchiving.BackupLevelRestartReasons" title="AutoArchive._archiving.iarchiving.BackupLevelRestartReasons"><tt class="xref py py-attr docutils literal"><span class="pre">BackupLevelRestartReasons</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiving.ArchiveInfo.restarting">
+<tt class="descname">restarting</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiving.html#ArchiveInfo.restarting"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.restarting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the status of <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restarting activation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType" title="AutoArchive._archiving.iarchiving.ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiving.ArchiverTypes">
+<tt class="descclassname">AutoArchive._archiving.iarchiving.</tt><tt class="descname">ArchiverTypes</tt><em class="property"> = Tar, TarGz, TarBz2, TarXz, TarInternal, TarGzInternal, TarBz2Internal</em><a class="headerlink" href="#AutoArchive._archiving.iarchiving.ArchiverTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Archiver types.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiving.BackupLevelRestartReasons">
+<tt class="descclassname">AutoArchive._archiving.iarchiving.</tt><tt class="descname">BackupLevelRestartReasons</tt><em class="property"> = NoRestart, RestartCountLimitReached, LastFullRestartAgeLimitReached, BackupLevelLimitReached, LastRestartAgeLimitReached</em><a class="headerlink" href="#AutoArchive._archiving.iarchiving.BackupLevelRestartReasons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reasons for restarting of the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._archiving.iarchiver">
+<span id="iarchiver"></span><h3>iarchiver<a class="headerlink" href="#module-AutoArchive._archiving.iarchiver" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._archiving.iarchiver.MIN_COMPRESSION_STRENGTH" title="AutoArchive._archiving.iarchiver.MIN_COMPRESSION_STRENGTH"><tt class="xref py py-const docutils literal"><span class="pre">MIN_COMPRESSION_STRENGTH</span></tt></a> and <a class="reference internal" href="#AutoArchive._archiving.iarchiver.MAX_COMPRESSION_STRENGTH" title="AutoArchive._archiving.iarchiver.MAX_COMPRESSION_STRENGTH"><tt class="xref py py-const docutils literal"><span class="pre">MAX_COMPRESSION_STRENGTH</span></tt></a> constants, <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupTypes" title="AutoArchive._archiving.iarchiver.BackupTypes"><tt class="xref py py-data docutils literal"><span class="pre">BackupTypes</span></tt></a>,
+<a class="reference internal" href="#AutoArchive._archiving.iarchiver.ArchiverFeatures" title="AutoArchive._archiving.iarchiver.ArchiverFeatures"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverFeatures</span></tt></a>, <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupSubOperations" title="AutoArchive._archiving.iarchiver.BackupSubOperations"><tt class="xref py py-data docutils literal"><span class="pre">BackupSubOperations</span></tt></a>, <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupOperationErrors" title="AutoArchive._archiving.iarchiver.BackupOperationErrors"><tt class="xref py py-data docutils literal"><span class="pre">BackupOperationErrors</span></tt></a> enums and <a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver" title="AutoArchive._archiving.iarchiver.IArchiver"><tt class="xref py py-class docutils literal"><span class="pre">IArchiver</span></tt></a>
+interface and <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition" title="AutoArchive._archiving.iarchiver.BackupDefinition"><tt class="xref py py-class docutils literal"><span class="pre">BackupDefinition</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver">
+<em class="property">class </em><tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">IArchiver</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>SPI for backup creation and management.</p>
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.backupFiles">
+<tt class="descname">backupFiles</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.backupFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.backupFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a backup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>backupDefinition</strong> (<a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition" title="AutoArchive._archiving.iarchiver.BackupDefinition"><tt class="xref py py-class docutils literal"><span class="pre">BackupDefinition</span></tt></a>) &#8211; Defines the backup that shall be created.  All attributes of the passed instance has
+to be initialized.</li>
+<li><strong>compressionStrength</strong> (<tt class="docutils literal"><span class="pre">int</span></tt>) &#8211; Value from interval &lt;MIN_COMPRESSION_STRENGTH, MAX_COMPRESSION_STRENGTH&gt;
+representing the strength of compression.  It has to be non-None only for backup types that supports
+compression and compression strength setting.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Path to the created backup.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">str</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>RuntimeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">compressionStrength</span></tt> is non-<tt class="docutils literal"><span class="pre">None</span></tt> and <tt class="docutils literal"><span class="pre">backupDefinition.backupType</span></tt> does not
+supports compression or compression strength setting.  If an unknown error occurred during backup creation.</li>
+<li><strong>ValueError</strong> &#8211; If <tt class="docutils literal"><span class="pre">compressionStrength</span></tt> is outside of required interval or if
+<tt class="docutils literal"><span class="pre">backupDefinition.backupType</span></tt> is not supported by the implementation.</li>
+<li><strong>OSError</strong> &#8211; If a system error occurred while making the backup.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.backupFilesIncrementally">
+<tt class="descname">backupFilesIncrementally</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.backupFilesIncrementally"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.backupFilesIncrementally" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an incremental backup.</p>
+<p>A backup of specified level or the next level in a row will be created.  The maximal backup level will be
+increased (see <a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">getMaxBackupLevel()</span></tt></a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>backupDefinition</strong> (<a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition" title="AutoArchive._archiving.iarchiver.BackupDefinition"><tt class="xref py py-class docutils literal"><span class="pre">BackupDefinition</span></tt></a>) &#8211; Defines the backup that shall be created.  All attributes of the passed instance has
+to be initialized.</li>
+<li><strong>compressionStrength</strong> (<tt class="docutils literal"><span class="pre">int</span></tt>) &#8211; Value from interval &lt;MIN_COMPRESSION_STRENGTH, MAX_COMPRESSION_STRENGTH&gt;
+representing the strength of compression.  It has to be non-None only for backup types that supports
+compression and compression strength setting.</li>
+<li><strong>level</strong> (<tt class="docutils literal"><span class="pre">int</span></tt>) &#8211; Backup level that shall be created.  If <tt class="docutils literal"><span class="pre">None</span></tt>, the next level in a row will be created, which
+is the the one returned by <a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">getMaxBackupLevel()</span></tt></a>.  The value has to be from interval
+&lt;0, <a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">getMaxBackupLevel()</span></tt></a>&gt;.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Path to the created backup.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">str</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>RuntimeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">compressionStrength</span></tt> is non-<tt class="docutils literal"><span class="pre">None</span></tt> and <tt class="docutils literal"><span class="pre">backupDefinition.backupType</span></tt> does not
+supports compression or compression strength setting.  If an unknown error occurred during backup creation.</li>
+<li><strong>ValueError</strong> &#8211; If <tt class="docutils literal"><span class="pre">compressionStrength</span></tt> or <tt class="docutils literal"><span class="pre">level</span></tt> is outside of required interval or if
+<tt class="docutils literal"><span class="pre">backupDefinition.backupType</span></tt> is not supported by the implementation.</li>
+<li><strong>NotImplementedError</strong> &#8211; If incremental backup is not supported.</li>
+<li><strong>OSError</strong> &#8211; If a system error occurred while making the backup.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel">
+<tt class="descname">getMaxBackupLevel</tt><big>(</big><em>backupId</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.getMaxBackupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines and returns maximal backup level that can be created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>backupId</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; ID of the backup for which the level shall be determined.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The maximal backup level that can be created by <a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.backupFilesIncrementally" title="AutoArchive._archiving.iarchiver.IArchiver.backupFilesIncrementally"><tt class="xref py py-meth docutils literal"><span class="pre">backupFilesIncrementally()</span></tt></a>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>NotImplementedError</strong> &#8211; If incremental backup is not supported.</li>
+<li><strong>OSError</strong> &#8211; If a system error occurred.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.getStoredBackupIds">
+<tt class="descname">getStoredBackupIds</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.getStoredBackupIds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.getStoredBackupIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns iterable of archive IDs which has some data stored in a persistent storage.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.purgeStoredBackupData" title="AutoArchive._archiving.iarchiver.IArchiver.purgeStoredBackupData"><tt class="xref py py-meth docutils literal"><span class="pre">purgeStoredBackupData()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Iterable of archive names.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises OSError:</th><td class="field-body">If a system error occurred.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.getSupportedFeatures">
+<tt class="descname">getSupportedFeatures</tt><big>(</big><em>backupType=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.getSupportedFeatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.getSupportedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of supported features, ether all of them or for given <tt class="docutils literal"><span class="pre">backupType</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backupType</strong> (<a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupTypes" title="AutoArchive._archiving.iarchiver.BackupTypes"><tt class="xref py py-data docutils literal"><span class="pre">BackupTypes</span></tt></a>) &#8211; The backup type for which the features shall be returned or <tt class="docutils literal"><span class="pre">None</span></tt> if all supported
+features shall be returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Supported features for given <tt class="docutils literal"><span class="pre">backupType</span></tt> or all supported features.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">set&lt;ArchiverFeatures&gt;</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If the given <tt class="docutils literal"><span class="pre">backupType</span></tt> is not supported by this service</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.purgeStoredBackupData">
+<tt class="descname">purgeStoredBackupData</tt><big>(</big><em>backupId</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.purgeStoredBackupData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.purgeStoredBackupData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes internal data from a persistent storage for the passed <tt class="docutils literal"><span class="pre">backupId</span></tt>.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.getStoredBackupIds" title="AutoArchive._archiving.iarchiver.IArchiver.getStoredBackupIds"><tt class="xref py py-meth docutils literal"><span class="pre">getStoredBackupIds()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backupId</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; ID of the backup of which data shall be purged.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises OSError:</th><td class="field-body">If a system error occurred.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.removeBackup">
+<tt class="descname">removeBackup</tt><big>(</big><em>backupDefinition</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.removeBackup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.removeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a backup.</p>
+<p>Backup defined by <tt class="docutils literal"><span class="pre">backupDefinition</span></tt> will be removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>backupDefinition</strong> (<a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition" title="AutoArchive._archiving.iarchiver.BackupDefinition"><tt class="xref py py-class docutils literal"><span class="pre">BackupDefinition</span></tt></a>) &#8211; Defines backup that shall be removed.  <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.backupId" title="AutoArchive._archiving.iarchiver.BackupDefinition.backupId"><tt class="xref py py-attr docutils literal"><span class="pre">BackupDefinition.backupId</span></tt></a>,
+<a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.backupType" title="AutoArchive._archiving.iarchiver.BackupDefinition.backupType"><tt class="xref py py-attr docutils literal"><span class="pre">BackupDefinition.backupType</span></tt></a> and <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.destination" title="AutoArchive._archiving.iarchiver.BackupDefinition.destination"><tt class="xref py py-attr docutils literal"><span class="pre">BackupDefinition.destination</span></tt></a> attributes of the passed
+instance has to be initialized.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> &#8211; If <tt class="docutils literal"><span class="pre">backupDefinition.backupType</span></tt> is not supported by the implementation.</li>
+<li><strong>OSError</strong> &#8211; If a system error occurred during removing operation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.removeBackupIncrements">
+<tt class="descname">removeBackupIncrements</tt><big>(</big><em>backupDefinition</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.removeBackupIncrements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.removeBackupIncrements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove backup increments starting from <tt class="docutils literal"><span class="pre">level</span></tt>.</p>
+<p>Backups (increments) of backup level higher or equal than <tt class="docutils literal"><span class="pre">level</span></tt> or higher that the current backup level - in
+case <tt class="docutils literal"><span class="pre">level</span></tt> is <tt class="docutils literal"><span class="pre">None</span></tt> - will be removed.  The maximal backup level (<a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">getMaxBackupLevel()</span></tt></a>) will be
+set to the value <tt class="docutils literal"><span class="pre">level</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>backupDefinition</strong> (<a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition" title="AutoArchive._archiving.iarchiver.BackupDefinition"><tt class="xref py py-class docutils literal"><span class="pre">BackupDefinition</span></tt></a>) &#8211; Defines backup that shall be removed.  <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.backupId" title="AutoArchive._archiving.iarchiver.BackupDefinition.backupId"><tt class="xref py py-attr docutils literal"><span class="pre">BackupDefinition.backupId</span></tt></a>,
+<a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.backupType" title="AutoArchive._archiving.iarchiver.BackupDefinition.backupType"><tt class="xref py py-attr docutils literal"><span class="pre">BackupDefinition.backupType</span></tt></a> and <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.destination" title="AutoArchive._archiving.iarchiver.BackupDefinition.destination"><tt class="xref py py-attr docutils literal"><span class="pre">BackupDefinition.destination</span></tt></a> attributes of the passed
+instance has to be initialized.</li>
+<li><strong>level</strong> (<tt class="docutils literal"><span class="pre">int</span></tt>) &#8211; The first level that shall be removed.  All backups of levels higher or equal than <tt class="docutils literal"><span class="pre">level</span></tt> will
+be removed.  If <tt class="docutils literal"><span class="pre">None</span></tt>, backups of levels higher or equal than the one returned by
+<a class="reference internal" href="#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">getMaxBackupLevel()</span></tt></a> will be removed.  The value has to be &gt;= 0.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> &#8211; If <tt class="docutils literal"><span class="pre">level</span></tt> is outside of required interval or if <tt class="docutils literal"><span class="pre">backupDefinition.backupType</span></tt> is not
+supported by the implementation.</li>
+<li><strong>NotImplementedError</strong> &#8211; If incremental backup is not supported.</li>
+<li><strong>OSError</strong> &#8211; If a system error occurred during removing operation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.backupOperationError">
+<tt class="descname">backupOperationError</tt><em class="property"> = &lt;AutoArchive._py_additions.event object at 0x7f690b587518&gt;</em><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.backupOperationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.backupOperationError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.fileAdd">
+<tt class="descname">fileAdd</tt><em class="property"> = &lt;AutoArchive._py_additions.event object at 0x7f690b5874e0&gt;</em><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.fileAdd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.fileAdd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.IArchiver.supportedBackupTypes">
+<tt class="descname">supportedBackupTypes</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#IArchiver.supportedBackupTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.IArchiver.supportedBackupTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a set of backup types supported by this archiver service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">set&lt;BackupTypes&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._archiving.iarchiver.BackupDefinition">
+<em class="property">class </em><tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">BackupDefinition</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#BackupDefinition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Container class for information needed to create a backup.</p>
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.BackupDefinition.backupId">
+<tt class="descname">backupId</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#BackupDefinition.backupId"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupDefinition.backupId" title="Permalink to this definition">¶</a></dt>
+<dd><p>The backup identifier, typically the name is used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.BackupDefinition.backupType">
+<tt class="descname">backupType</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#BackupDefinition.backupType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupDefinition.backupType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of the backup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupTypes" title="AutoArchive._archiving.iarchiver.BackupTypes"><tt class="xref py py-data docutils literal"><span class="pre">BackupTypes</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.BackupDefinition.destination">
+<tt class="descname">destination</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#BackupDefinition.destination"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupDefinition.destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the directory which contains the backup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.BackupDefinition.excludeFiles">
+<tt class="descname">excludeFiles</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#BackupDefinition.excludeFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupDefinition.excludeFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of excluded filesystem objects paths relative to <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.root" title="AutoArchive._archiving.iarchiver.BackupDefinition.root"><tt class="xref py py-attr docutils literal"><span class="pre">root</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Set&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.BackupDefinition.includeFiles">
+<tt class="descname">includeFiles</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#BackupDefinition.includeFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupDefinition.includeFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of source filesystem objects paths relative to <a class="reference internal" href="#AutoArchive._archiving.iarchiver.BackupDefinition.root" title="AutoArchive._archiving.iarchiver.BackupDefinition.root"><tt class="xref py py-attr docutils literal"><span class="pre">root</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Set&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._archiving.iarchiver.BackupDefinition.root">
+<tt class="descname">root</tt><a class="reference internal" href="../_modules/AutoArchive/_archiving/iarchiver.html#BackupDefinition.root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupDefinition.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the root directory of the source content.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiver.MIN_COMPRESSION_STRENGTH">
+<tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">MIN_COMPRESSION_STRENGTH</tt><em class="property"> = 0</em><a class="headerlink" href="#AutoArchive._archiving.iarchiver.MIN_COMPRESSION_STRENGTH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimal compression strength value.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiver.MAX_COMPRESSION_STRENGTH">
+<tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">MAX_COMPRESSION_STRENGTH</tt><em class="property"> = 9</em><a class="headerlink" href="#AutoArchive._archiving.iarchiver.MAX_COMPRESSION_STRENGTH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximal compression strength value.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiver.BackupTypes">
+<tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">BackupTypes</tt><em class="property"> = Tar, TarGz, TarBz2, TarXz</em><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backup types.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiver.ArchiverFeatures">
+<tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">ArchiverFeatures</tt><em class="property"> = CompressionStrength, Incremental</em><a class="headerlink" href="#AutoArchive._archiving.iarchiver.ArchiverFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Features that archiver service may support.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiver.BackupSubOperations">
+<tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">BackupSubOperations</tt><em class="property"> = Unknown, UnknownFileOperation, Stat, Open, Read, Finish</em><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupSubOperations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Operations executed during backup creation.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._archiving.iarchiver.BackupOperationErrors">
+<tt class="descclassname">AutoArchive._archiving.iarchiver.</tt><tt class="descname">BackupOperationErrors</tt><em class="property"> = UnknownError, UnknownOsError, PermissionDenied, SocketIgnored, UnknownTypeIgnored, FileChanged, SomeFilesChanged, DirectoryRenamed</em><a class="headerlink" href="#AutoArchive._archiving.iarchiver.BackupOperationErrors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Errors that may occur during backup operation.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._archiving</a><ul>
+<li><a class="reference internal" href="#sub-packages">Sub-Packages</a></li>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._archiving.iarchiving">iarchiving</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._archiving.iarchiver">iarchiver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mainf.core.html"
+                        title="previous chapter">AutoArchive._mainf._core</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="archiving.core.html"
+                        title="next chapter">AutoArchive._archiving._core</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="archiving.core.html" title="AutoArchive._archiving._core"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mainf.core.html" title="AutoArchive._mainf._core"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._services.archiver &mdash; AutoArchive Developer Manual (ver. 1.0.3)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.0.3)" href="../index.html" />
+    <link rel="up" title="AutoArchive._services" href="services.html" />
+    <link rel="next" title="aa" href="aa.html" />
+    <link rel="prev" title="AutoArchive._services" href="services.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aa.html" title="aa"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="services.html" title="AutoArchive._services"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="services.html" accesskey="U">AutoArchive._services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._services.archiver">
+<span id="autoarchive-services-archiver"></span><h1>AutoArchive._services.archiver<a class="headerlink" href="#module-AutoArchive._services.archiver" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../glossary.html#term-archiver-service-component"><em class="xref std std-term">Archiver Service Component</em></a>.</p>
+<p>Provides services for creating the backup.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._services.archiver.archiver_service_creator">
+<span id="archiver-service-creator"></span><h3>archiver_service_creator<a class="headerlink" href="#module-AutoArchive._services.archiver.archiver_service_creator" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders" title="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverServiceProviders</span></tt></a> enum and <a class="reference internal" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator" title="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator"><tt class="xref py py-class docutils literal"><span class="pre">ArchiverServiceCreator</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator">
+<em class="property">class </em><tt class="descclassname">AutoArchive._services.archiver.archiver_service_creator.</tt><tt class="descname">ArchiverServiceCreator</tt><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/archiver_service_creator.html#ArchiverServiceCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Creator of archiver service instances.</p>
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.destroyServices">
+<em class="property">classmethod </em><tt class="descname">destroyServices</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/archiver_service_creator.html#ArchiverServiceCreator.destroyServices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.destroyServices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all existing archiver service instances.</p>
+<p>Existing instances of all services will be forgotten.  Subsequent request to
+<a class="reference internal" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getOrCreateArchiverService" title="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getOrCreateArchiverService"><tt class="xref py py-meth docutils literal"><span class="pre">getOrCreateArchiverService()</span></tt></a> will result in creation of a new instance.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getOrCreateArchiverService">
+<em class="property">classmethod </em><tt class="descname">getOrCreateArchiverService</tt><big>(</big><em>archiverServiceProvider</em>, <em>workDir</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/archiver_service_creator.html#ArchiverServiceCreator.getOrCreateArchiverService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getOrCreateArchiverService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets existing or creates the new archiver service instance.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.destroyServices" title="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.destroyServices"><tt class="xref py py-meth docutils literal"><span class="pre">destroyServices()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>archiverServiceProvider</strong> (<a class="reference internal" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders" title="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverServiceProviders</span></tt></a>) &#8211; The requested service provider.</li>
+<li><strong>workDir</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to a directory which can be used to persistently store data.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Instance of an archiver service.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver" title="AutoArchive._archiving.iarchiver.IArchiver"><tt class="xref py py-class docutils literal"><span class="pre">IArchiver</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises RuntimeError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">If creation of the service provider failed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getSupportedBackupTypes">
+<em class="property">classmethod </em><tt class="descname">getSupportedBackupTypes</tt><big>(</big><em>archiverServiceProvider</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/archiver_service_creator.html#ArchiverServiceCreator.getSupportedBackupTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getSupportedBackupTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of backup types supported by the given archiver service provider.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>archiverServiceProvider</strong> (<a class="reference internal" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders" title="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverServiceProviders</span></tt></a>) &#8211; Service provider for which the backup types shall be returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Set of supported backup types.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">set&lt;BackupTypes&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getSupportedFeatures">
+<em class="property">classmethod </em><tt class="descname">getSupportedFeatures</tt><big>(</big><em>archiverServiceProvider</em>, <em>backupType=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/archiver_service_creator.html#ArchiverServiceCreator.getSupportedFeatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceCreator.getSupportedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of features supported by the given archiver service provider.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>archiverServiceProvider</strong> (<a class="reference internal" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders" title="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverServiceProviders</span></tt></a>) &#8211; Service provider for which the backup types shall be returned.</li>
+<li><strong>backupType</strong> (<tt class="xref py py-data docutils literal"><span class="pre">BackupTypes</span></tt>) &#8211; The backup type for which the features shall be returned or <tt class="docutils literal"><span class="pre">None</span></tt> if all supported
+features shall be returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set of supported features.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">set&lt;ArchiverFeatures&gt;</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">If the given <tt class="docutils literal"><span class="pre">backupType</span></tt> is not supported by the <tt class="docutils literal"><span class="pre">archiverServiceProvider</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders">
+<tt class="descclassname">AutoArchive._services.archiver.archiver_service_creator.</tt><tt class="descname">ArchiverServiceProviders</tt><em class="property"> = TarInternal, TarExternal</em><a class="headerlink" href="#AutoArchive._services.archiver.archiver_service_creator.ArchiverServiceProviders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementations of the archiver service.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._services.archiver._tar_archiver_provider_base">
+<span id="tar-archiver-provider-base"></span><h3>_tar_archiver_provider_base<a class="headerlink" href="#module-AutoArchive._services.archiver._tar_archiver_provider_base" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase"><tt class="xref py py-class docutils literal"><span class="pre">_TarArchiverProviderBase</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase">
+<em class="property">class </em><tt class="descclassname">AutoArchive._services.archiver._tar_archiver_provider_base.</tt><tt class="descname">_TarArchiverProviderBase</tt><big>(</big><em>workDir</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver" title="AutoArchive._archiving.iarchiver.IArchiver"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._archiving.iarchiver.IArchiver</span></tt></a></p>
+<p>Base class for tar archiver service providers.</p>
+<p>Abstract constructor of this class, should be called from derived constructors.  It initializes the
+<a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.workDir_" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.workDir_"><tt class="xref py py-attr docutils literal"><span class="pre">workDir_</span></tt></a> property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>workDir</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to a writable directory.  The service will use it as persistent storage.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFiles">
+<tt class="descname">backupFiles</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.backupFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs basic checks before the backup creation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Derived classes should call this base method on the beginning of the overridden method.</p>
+</div>
+<p>See also: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.backupFiles" title="AutoArchive._archiving.iarchiver.IArchiver.backupFiles"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.backupFiles()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFilesIncrementally">
+<tt class="descname">backupFilesIncrementally</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.backupFilesIncrementally"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFilesIncrementally" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs basic checks before the incremental backup creation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Derived classes should call this base method on the beginning of the overridden method.</p>
+</div>
+<p>See also: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.backupFilesIncrementally" title="AutoArchive._archiving.iarchiver.IArchiver.backupFilesIncrementally"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.backupFilesIncrementally()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getBackupFilePath_">
+<em class="property">static </em><tt class="descname">getBackupFilePath_</tt><big>(</big><em>backupId</em>, <em>backupType</em>, <em>destination</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.getBackupFilePath_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getBackupFilePath_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assembles the backup file name and returns a path to it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>backupId</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; ID of the backup for which the path shall be returned.</li>
+<li><strong>backupType</strong> (<tt class="xref py py-data docutils literal"><span class="pre">BackupTypes</span></tt>) &#8211; Type of the backup.</li>
+<li><strong>destination</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the directory where the to the backup shall be created.</li>
+<li><strong>level</strong> (<tt class="docutils literal"><span class="pre">int</span></tt>) &#8211; Backup level.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Path to the backup file.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">str</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getMaxBackupLevel">
+<tt class="descname">getMaxBackupLevel</tt><big>(</big><em>backupId</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.getMaxBackupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getMaxBackupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.getMaxBackupLevel()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getStoredBackupIds">
+<tt class="descname">getStoredBackupIds</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.getStoredBackupIds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getStoredBackupIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel" title="AutoArchive._archiving.iarchiver.IArchiver.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.getMaxBackupLevel()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getSupportedFeatures">
+<em class="property">classmethod </em><tt class="descname">getSupportedFeatures</tt><big>(</big><em>backupType=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.getSupportedFeatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getSupportedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.getSupportedFeatures" title="AutoArchive._archiving.iarchiver.IArchiver.getSupportedFeatures"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.getSupportedFeatures()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getWorkingPath_">
+<em class="property">classmethod </em><tt class="descname">getWorkingPath_</tt><big>(</big><em>properPath</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.getWorkingPath_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getWorkingPath_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.purgeStoredBackupData">
+<tt class="descname">purgeStoredBackupData</tt><big>(</big><em>backupId</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.purgeStoredBackupData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.purgeStoredBackupData" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.purgeStoredBackupData" title="AutoArchive._archiving.iarchiver.IArchiver.purgeStoredBackupData"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.purgeStoredBackupData()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.raiseIfUnsupportedBackupType_">
+<em class="property">classmethod </em><tt class="descname">raiseIfUnsupportedBackupType_</tt><big>(</big><em>backupType</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.raiseIfUnsupportedBackupType_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.raiseIfUnsupportedBackupType_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an exception if the passed <tt class="docutils literal"><span class="pre">backupType</span></tt> is not supported by the implementation.</p>
+<p>See also: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.supportedBackupTypes" title="AutoArchive._archiving.iarchiver.IArchiver.supportedBackupTypes"><tt class="xref py py-attr docutils literal"><span class="pre">IArchiver.supportedBackupTypes</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backupType</strong> (<a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.BackupTypes" title="AutoArchive._archiving.iarchiver.BackupTypes"><tt class="xref py py-data docutils literal"><span class="pre">BackupTypes</span></tt></a>) &#8211; The backup type that shall be checked.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If the passed <tt class="docutils literal"><span class="pre">backupType</span></tt> is not supported by the concrete implementation.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.raiseIfUnsupportedFeature_">
+<em class="property">classmethod </em><tt class="descname">raiseIfUnsupportedFeature_</tt><big>(</big><em>backupType</em>, <em>compressionStrength=None</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.raiseIfUnsupportedFeature_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.raiseIfUnsupportedFeature_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.removeBackup">
+<tt class="descname">removeBackup</tt><big>(</big><em>backupDefinition</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.removeBackup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.removeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.removeBackup" title="AutoArchive._archiving.iarchiver.IArchiver.removeBackup"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.removeBackup()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.removeBackupIncrements">
+<tt class="descname">removeBackupIncrements</tt><big>(</big><em>backupDefinition</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.removeBackupIncrements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.removeBackupIncrements" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="archiving.html#AutoArchive._archiving.iarchiver.IArchiver.removeBackupIncrements" title="AutoArchive._archiving.iarchiver.IArchiver.removeBackupIncrements"><tt class="xref py py-meth docutils literal"><span class="pre">IArchiver.removeBackupIncrements()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupOperationError">
+<tt class="descname">backupOperationError</tt><em class="property"> = &lt;AutoArchive._py_additions.event object at 0x7f690b58fc50&gt;</em><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.backupOperationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupOperationError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.fileAdd">
+<tt class="descname">fileAdd</tt><em class="property"> = &lt;AutoArchive._py_additions.event object at 0x7f690b58fc18&gt;</em><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.fileAdd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.fileAdd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.workDir_">
+<tt class="descname">workDir_</tt><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_tar_archiver_provider_base.html#_TarArchiverProviderBase.workDir_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.workDir_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets path to the working directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._services.archiver._external_tar_archiver_provider">
+<span id="external-tar-archiver-provider"></span><h3>_external_tar_archiver_provider<a class="headerlink" href="#module-AutoArchive._services.archiver._external_tar_archiver_provider" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider" title="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider"><tt class="xref py py-class docutils literal"><span class="pre">_ExternalTarArchiverProvider</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider">
+<em class="property">class </em><tt class="descclassname">AutoArchive._services.archiver._external_tar_archiver_provider.</tt><tt class="descname">_ExternalTarArchiverProvider</tt><big>(</big><em>workDir</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase</span></tt></a></p>
+<p>External archiver service provider.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase"><tt class="xref py py-class docutils literal"><span class="pre">_TarArchiverProviderBase</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises OSError:</th><td class="field-body">If creation of the snapshot directory failed.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.backupFiles">
+<tt class="descname">backupFiles</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.backupFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.backupFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFiles" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFiles"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.backupFiles()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.backupFilesIncrementally">
+<tt class="descname">backupFilesIncrementally</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.backupFilesIncrementally"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.backupFilesIncrementally" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFilesIncrementally" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFilesIncrementally"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.backupFilesIncrementally()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.getMaxBackupLevel">
+<tt class="descname">getMaxBackupLevel</tt><big>(</big><em>backupId</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.getMaxBackupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.getMaxBackupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getMaxBackupLevel" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getMaxBackupLevel"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.getMaxBackupLevel()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.getStoredBackupIds">
+<tt class="descname">getStoredBackupIds</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.getStoredBackupIds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.getStoredBackupIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getStoredBackupIds" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getStoredBackupIds"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.getStoredBackupIds()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.getSupportedFeatures">
+<em class="property">classmethod </em><tt class="descname">getSupportedFeatures</tt><big>(</big><em>backupType=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.getSupportedFeatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.getSupportedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getSupportedFeatures" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getSupportedFeatures"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.getSupportedFeatures()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.purgeStoredBackupData">
+<tt class="descname">purgeStoredBackupData</tt><big>(</big><em>backupId</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.purgeStoredBackupData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.purgeStoredBackupData" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.purgeStoredBackupData" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.purgeStoredBackupData"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.purgeStoredBackupData()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.removeBackupIncrements">
+<tt class="descname">removeBackupIncrements</tt><big>(</big><em>backupDefinition</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.removeBackupIncrements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.removeBackupIncrements" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.removeBackupIncrements" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.removeBackupIncrements"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.removeBackupIncrements()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.supportedBackupTypes">
+<tt class="descname">supportedBackupTypes</tt><em class="property"> = frozenset({0, 1, 2, 3})</em><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_external_tar_archiver_provider.html#_ExternalTarArchiverProvider.supportedBackupTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._external_tar_archiver_provider._ExternalTarArchiverProvider.supportedBackupTypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._services.archiver._internal_tar_archiver_provider">
+<span id="internal-tar-archiver-provider"></span><h3>_internal_tar_archiver_provider<a class="headerlink" href="#module-AutoArchive._services.archiver._internal_tar_archiver_provider" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider" title="AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider"><tt class="xref py py-class docutils literal"><span class="pre">_InternalTarArchiverProvider</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider">
+<em class="property">class </em><tt class="descclassname">AutoArchive._services.archiver._internal_tar_archiver_provider.</tt><tt class="descname">_InternalTarArchiverProvider</tt><big>(</big><em>workDir</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_internal_tar_archiver_provider.html#_InternalTarArchiverProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase</span></tt></a></p>
+<p>Internal archiver service provider.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase"><tt class="xref py py-class docutils literal"><span class="pre">_TarArchiverProviderBase</span></tt></a>.</p>
+<dl class="method">
+<dt id="AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.backupFiles">
+<tt class="descname">backupFiles</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_internal_tar_archiver_provider.html#_InternalTarArchiverProvider.backupFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.backupFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFiles" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFiles"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.backupFiles()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.backupFilesIncrementally">
+<tt class="descname">backupFilesIncrementally</tt><big>(</big><em>backupDefinition</em>, <em>compressionStrength=None</em>, <em>level=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_internal_tar_archiver_provider.html#_InternalTarArchiverProvider.backupFilesIncrementally"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.backupFilesIncrementally" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFilesIncrementally" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.backupFilesIncrementally"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.backupFilesIncrementally()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.getSupportedFeatures">
+<em class="property">classmethod </em><tt class="descname">getSupportedFeatures</tt><big>(</big><em>backupType=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_internal_tar_archiver_provider.html#_InternalTarArchiverProvider.getSupportedFeatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.getSupportedFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <a class="reference internal" href="#AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getSupportedFeatures" title="AutoArchive._services.archiver._tar_archiver_provider_base._TarArchiverProviderBase.getSupportedFeatures"><tt class="xref py py-meth docutils literal"><span class="pre">_TarArchiverProviderBase.getSupportedFeatures()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.supportedBackupTypes">
+<tt class="descname">supportedBackupTypes</tt><em class="property"> = frozenset({0, 1, 2})</em><a class="reference internal" href="../_modules/AutoArchive/_services/archiver/_internal_tar_archiver_provider.html#_InternalTarArchiverProvider.supportedBackupTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._services.archiver._internal_tar_archiver_provider._InternalTarArchiverProvider.supportedBackupTypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._services.archiver</a><ul>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._services.archiver.archiver_service_creator">archiver_service_creator</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._services.archiver._tar_archiver_provider_base">_tar_archiver_provider_base</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._services.archiver._external_tar_archiver_provider">_external_tar_archiver_provider</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._services.archiver._internal_tar_archiver_provider">_internal_tar_archiver_provider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="services.html"
+                        title="previous chapter">AutoArchive._services</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aa.html"
+                        title="next chapter">aa</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aa.html" title="aa"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="services.html" title="AutoArchive._services"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.0.3)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="services.html" >AutoArchive._services</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
