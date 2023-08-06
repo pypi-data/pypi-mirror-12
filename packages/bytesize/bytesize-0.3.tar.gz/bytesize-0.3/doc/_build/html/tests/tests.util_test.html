@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tests.util_test module &mdash; bytesize 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="bytesize 1.0 documentation" href="../index.html" />
+    <link rel="up" title="tests package" href="tests.html" />
+    <link rel="next" title="tests.utils module" href="tests.utils.html" />
+    <link rel="prev" title="tests.errors_test module" href="tests.errors_test.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.utils.html" title="tests.utils module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tests.errors_test.html" title="tests.errors_test module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">bytesize 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >tests</a> &raquo;</li>
+          <li><a href="tests.html" accesskey="U">tests package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-tests.util_test">
+<span id="tests-util-test-module"></span><h1>tests.util_test module<a class="headerlink" href="#module-tests.util_test" title="Permalink to this headline">¶</a></h1>
+<p>Test for utility functions.</p>
+<dl class="class">
+<dt id="tests.util_test.FormatTestCase">
+<em class="property">class </em><tt class="descclassname">tests.util_test.</tt><tt class="descname">FormatTestCase</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="headerlink" href="#tests.util_test.FormatTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></tt></p>
+<p>Test formatting.</p>
+<dl class="method">
+<dt id="tests.util_test.FormatTestCase.testExactness">
+<tt class="descname">testExactness</tt><big>(</big><em>n=HypothesisProvided(value=integers())</em>, <em>e=HypothesisProvided(value=integers(min_value=0))</em><big>)</big><a class="headerlink" href="#tests.util_test.FormatTestCase.testExactness" title="Permalink to this definition">¶</a></dt>
+<dd><p>When max_places is not specified and the denominator of
+the value is a power of 10 the string result is exact.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.util_test.FormatTestCase.testException">
+<tt class="descname">testException</tt><big>(</big><big>)</big><a class="headerlink" href="#tests.util_test.FormatTestCase.testException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises exception on bad input.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tests.util_test.GetRepeatingFractionTestCase">
+<em class="property">class </em><tt class="descclassname">tests.util_test.</tt><tt class="descname">GetRepeatingFractionTestCase</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="headerlink" href="#tests.util_test.GetRepeatingFractionTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></tt></p>
+<p>Test get_repeating_fraction.</p>
+<dl class="method">
+<dt id="tests.util_test.GetRepeatingFractionTestCase.testExceptions">
+<tt class="descname">testExceptions</tt><big>(</big><big>)</big><a class="headerlink" href="#tests.util_test.GetRepeatingFractionTestCase.testExceptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test exceptions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tests.util_test.LongDecimalDivisionTestCase">
+<em class="property">class </em><tt class="descclassname">tests.util_test.</tt><tt class="descname">LongDecimalDivisionTestCase</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="headerlink" href="#tests.util_test.LongDecimalDivisionTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></tt></p>
+<p>Test long decimal division.</p>
+<dl class="method">
+<dt id="tests.util_test.LongDecimalDivisionTestCase.testComplexRepeatingDecimal">
+<tt class="descname">testComplexRepeatingDecimal</tt><big>(</big><em>divisor=HypothesisProvided(value=integers() | fractions() | decimals().filter(lambda x: x.is_finite()).filter(lambda x: x != 0))</em>, <em>multiplier=HypothesisProvided(value=integers().filter(lambda x: x &gt; 0))</em><big>)</big><a class="headerlink" href="#tests.util_test.LongDecimalDivisionTestCase.testComplexRepeatingDecimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should always end in .16666.....</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.util_test.LongDecimalDivisionTestCase.testExact">
+<tt class="descname">testExact</tt><big>(</big><em>divisor=HypothesisProvided(value=integers() | fractions() | decimals().filter(lambda x: x.is_finite()).filter(lambda x: x != 0))</em>, <em>multiplier=HypothesisProvided(value=integers().filter(lambda x: x &gt; 0))</em><big>)</big><a class="headerlink" href="#tests.util_test.LongDecimalDivisionTestCase.testExact" title="Permalink to this definition">¶</a></dt>
+<dd><p>A divisor that divides the dividend has no decimal part.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.util_test.LongDecimalDivisionTestCase.testException">
+<tt class="descname">testException</tt><big>(</big><big>)</big><a class="headerlink" href="#tests.util_test.LongDecimalDivisionTestCase.testException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test exceptions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.util_test.LongDecimalDivisionTestCase.testMoreComplexRepeatingDecimal">
+<tt class="descname">testMoreComplexRepeatingDecimal</tt><big>(</big><em>divisor=HypothesisProvided(value=integers() | fractions() | decimals().filter(lambda x: x.is_finite()).filter(lambda x: x != 0))</em>, <em>multiplier=HypothesisProvided(value=integers().filter(lambda x: x &gt; 0))</em><big>)</big><a class="headerlink" href="#tests.util_test.LongDecimalDivisionTestCase.testMoreComplexRepeatingDecimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should always end in .142857142857....</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.util_test.LongDecimalDivisionTestCase.testNonRepeatingDecimal">
+<tt class="descname">testNonRepeatingDecimal</tt><big>(</big><em>divisor=HypothesisProvided(value=integers() | fractions() | decimals().filter(lambda x: x.is_finite()).filter(lambda x: x != 0))</em>, <em>multiplier=HypothesisProvided(value=integers().filter(lambda x: x &gt; 0))</em><big>)</big><a class="headerlink" href="#tests.util_test.LongDecimalDivisionTestCase.testNonRepeatingDecimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should always end in .5.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.util_test.LongDecimalDivisionTestCase.testRepeatingDecimal">
+<tt class="descname">testRepeatingDecimal</tt><big>(</big><em>divisor=HypothesisProvided(value=integers() | fractions() | decimals().filter(lambda x: x.is_finite()).filter(lambda x: x != 0))</em>, <em>multiplier=HypothesisProvided(value=integers().filter(lambda x: x &gt; 0))</em><big>)</big><a class="headerlink" href="#tests.util_test.LongDecimalDivisionTestCase.testRepeatingDecimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should always end in .33333.....</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tests.util_test.RoundingTestCase">
+<em class="property">class </em><tt class="descclassname">tests.util_test.</tt><tt class="descname">RoundingTestCase</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="headerlink" href="#tests.util_test.RoundingTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></tt></p>
+<p>Test rounding of fraction.</p>
+<dl class="method">
+<dt id="tests.util_test.RoundingTestCase.testExceptions">
+<tt class="descname">testExceptions</tt><big>(</big><big>)</big><a class="headerlink" href="#tests.util_test.RoundingTestCase.testExceptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises exception on bad input.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.util_test.RoundingTestCase.testRounding">
+<tt class="descname">testRounding</tt><big>(</big><em>i=HypothesisProvided(value=integers(min_value=1</em>, <em>max_value=9))</em><big>)</big><a class="headerlink" href="#tests.util_test.RoundingTestCase.testRounding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rounding various values according to various methods.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tests.errors_test.html"
+                        title="previous chapter">tests.errors_test module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tests.utils.html"
+                        title="next chapter">tests.utils module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tests/tests.util_test.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.utils.html" title="tests.utils module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tests.errors_test.html" title="tests.errors_test module"
+             >previous</a> |</li>
+        <li><a href="../index.html">bytesize 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >tests</a> &raquo;</li>
+          <li><a href="tests.html" >tests package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, mulhern.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

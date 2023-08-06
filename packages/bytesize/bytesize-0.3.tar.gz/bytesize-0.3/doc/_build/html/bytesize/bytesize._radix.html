@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>bytesize._radix module &mdash; bytesize 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="bytesize 1.0 documentation" href="../index.html" />
+    <link rel="up" title="bytesize package" href="bytesize.html" />
+    <link rel="next" title="bytesize._size module" href="bytesize._size.html" />
+    <link rel="prev" title="bytesize._errors module" href="bytesize._errors.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bytesize._size.html" title="bytesize._size module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bytesize._errors.html" title="bytesize._errors module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">bytesize 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >bytesize</a> &raquo;</li>
+          <li><a href="bytesize.html" accesskey="U">bytesize package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-bytesize._radix">
+<span id="bytesize-radix-module"></span><h1>bytesize._radix module<a class="headerlink" href="#module-bytesize._radix" title="Permalink to this headline">¶</a></h1>
+<p>Class for handling numbers in various bases.</p>
+<dl class="class">
+<dt id="bytesize._radix.BaseInteger">
+<em class="property">class </em><tt class="descclassname">bytesize._radix.</tt><tt class="descname">BaseInteger</tt><big>(</big><em>sign</em>, <em>value</em>, <em>base</em><big>)</big><a class="headerlink" href="#bytesize._radix.BaseInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>An integer encoded as a list of ints and a base.</p>
+<dl class="method">
+<dt id="bytesize._radix.BaseInteger.convertTo">
+<tt class="descname">convertTo</tt><big>(</big><em>base</em><big>)</big><a class="headerlink" href="#bytesize._radix.BaseInteger.convertTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to designated base.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>base</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; the designated base (&gt; than 1)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">converted value</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">BaseInt</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bytesize._radix.RadixNumber">
+<em class="property">class </em><tt class="descclassname">bytesize._radix.</tt><tt class="descname">RadixNumber</tt><big>(</big><em>left</em>, <em>right</em>, <em>repeat_length</em>, <em>base</em>, <em>sign=True</em><big>)</big><a class="headerlink" href="#bytesize._radix.RadixNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>Class for instantiating RadixNumber objects.</p>
+<p>This class is just another way of representing rationl numbers
+and should be interconvertible with Fraction.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bytesize._errors.html"
+                        title="previous chapter">bytesize._errors module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="bytesize._size.html"
+                        title="next chapter">bytesize._size module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/bytesize/bytesize._radix.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bytesize._size.html" title="bytesize._size module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bytesize._errors.html" title="bytesize._errors module"
+             >previous</a> |</li>
+        <li><a href="../index.html">bytesize 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >bytesize</a> &raquo;</li>
+          <li><a href="bytesize.html" >bytesize package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, mulhern.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
