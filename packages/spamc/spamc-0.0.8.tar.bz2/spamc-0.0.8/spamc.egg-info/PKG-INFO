@@ -1,0 +1,110 @@
+Metadata-Version: 1.1
+Name: spamc
+Version: 0.0.8
+Summary: Python spamassassin spamc client library
+Home-page: https://github.com/akissa/spamc
+Author: Andrew Colin Kissa
+Author-email: andrew@topdog.za.net
+License: AGPLv3+
+Description: spamc
+        =====
+        
+        Python spamassassin spamc client library
+        ----------------------------------------
+        
+        spamc is a python module that provides fully compliant client side
+        functionality of the `spamassassin <https://spamassassin.apache.org>`__
+        `spamd
+        protocol <https://github.com/apache/spamassassin/blob/trunk/spamd/PROTOCOL>`__
+        
+        It can be used with `gevent <http://www.gevent.org>`__ and
+        `eventlet <http://www.eventlet.net>`__, is thread safe and supports
+        streaming.
+        
+        |Build Status| |Code Climate| |codecov.io| |Documentation Status|
+        |License|
+        
+        Installation
+        ------------
+        
+        Install from PyPi
+        
+        ::
+        
+            pip install spamc
+        
+        Install from Githib
+        
+        ::
+        
+            git clone https://github.com/akissa/spamc.git
+            cd spamc
+            python setup.py install
+        
+        Usage
+        -----
+        
+        Examples are in the
+        `examples <https://github.com/akissa/spamc/tree/master/examples/>`__
+        directory
+        
+        .. code:: bash
+        
+            $ ./examples/example1.py -h
+            Usage: example1.py [options]
+        
+            Options:
+              -h, --help            show this help message and exit
+              -s SERVER, --server=SERVER
+                                    The spamassassin spamd server to connect to
+              -p PORT, --port=PORT  The spamassassin spamd server port to connect to
+              -u SOCKET_PATH, --unix-socket=SOCKET_PATH
+                                    The spamassassin spamd unix socket to connect to
+              -t, --tls             Use TLS
+              -z, --use-zlib-compression
+                                    Use Zlib compression
+              -l COMPRESS_LEVEL, --zlib-compression-level=COMPRESS_LEVEL
+                                    Zlib compression level
+              -a USER, --user=USER  Username of the user on whose behalfthis scan is being
+                                    performed
+        
+        Module documentation is available on
+        `readthedocs.org <https://spamc.readthedocs.org>`__
+        
+        Contributing
+        ------------
+        
+        1. Fork it (https://github.com/akissa/spamc/fork)
+        2. Create your feature branch (``git checkout -b my-new-feature``)
+        3. Commit your changes (``git commit -am 'Add some feature'``)
+        4. Push to the branch (``git push origin my-new-feature``)
+        5. Create new Pull Request
+        
+        License
+        -------
+        
+        All code is licensed under the `AGPLv3+
+        License <https://github.com/akissa/spamc/blob/master/LICENSE>`__.
+        
+        .. |Build Status| image:: https://travis-ci.org/akissa/spamc.svg
+           :target: https://travis-ci.org/akissa/spamc
+        .. |Code Climate| image:: https://codeclimate.com/github/akissa/spamc/badges/gpa.svg
+           :target: https://codeclimate.com/github/akissa/spamc
+        .. |codecov.io| image:: https://codecov.io/github/akissa/spamc/coverage.svg?branch=master
+           :target: https://codecov.io/github/akissa/spamc?branch=master
+        .. |Documentation Status| image:: https://readthedocs.org/projects/spamc/badge/?version=latest
+           :target: http://spamc.readthedocs.org/en/latest/?badge=latest
+        .. |License| image:: https://img.shields.io/badge/license-AGPLv3%2B-blue.svg
+           :target: https://github.com/akissa/spamc/blob/master/LICENSE
+        
+Keywords: spam spamc spamassassin
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
