@@ -1,0 +1,194 @@
+Metadata-Version: 1.1
+Name: hypatia-engine
+Version: 0.3.6
+Summary: 2D action adventure game engine
+Home-page: http://hypatia-engine.github.io/hypatia
+Author: Lillian Lemmer
+Author-email: lillian.lynn.lemmer@gmail.com
+License: MIT
+Download-URL: https://github.com/hypatia-engine/hypatia/releases/tag/0.3.6
+Description: Hypatia 0.3.6 (alpha)
+        =====================
+        
+        .. figure:: http://engine.hypatia.software/assets/logotype-dark.png
+           :alt: Hypatia 0.3.6
+        
+           Hypatia 0.3.6
+        
+        |GitHub license| |PyPI Version| |Travis| |Code Climate| |PyPI
+        Popularity| |Bountysource| |Donate with Paypal|
+        
+        Make 2D action adventure games. For programmers and nonprogrammers
+        alike.
+        
+        Create games like `*Legend of Zelda: Oracle of Ages* and *Oracle of
+        Seasons* <http://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Oracle_of_Seasons_and_Oracle_of_Ages>`__.
+        
+        The included demo game (``demo/game.py``) in action:
+        
+        .. figure:: http://engine.hypatia.software/assets/demo-2015-11-07.gif
+           :alt: The demo game in action.
+        
+           The demo game in action.
+        
+        What makes this project special?
+        --------------------------------
+        
+        -  Each release tested in FreeBSD, Mac OS X, Linux, and Windows
+        -  Built and tested in FreeBSD first
+        -  A labor of love, `permissively (MIT) licensed <./LICENSE>`__, meaning
+           you Hypatia for commercial or non-commercial purposes and not worry
+           about legalese--it's really free for any purpose without strings
+           attached.
+        
+        Hypatia stricly enforces the ``CODE-OF-CONDUCT.md``. We strive for a
+        safe, healthy social environment for all women, whether
+        `cis <https://en.wikipedia.org/wiki/Cisgender>`__ or trans.
+        
+        Trans women have access to mentorships, funding, team chat, and more!
+        For more information please see the `Hypatia Software Organization
+        website <http://hypatia.software>`__.
+        
+        Resources
+        ---------
+        
+        -  `Hypatia Software Organization <http://hypatia.software>`__: The
+           organization which made this fine product.
+        -  `Platform-specific
+           packages <http://hypatia-engine.github.io/get.html>`__
+        -  `Hypatia Wiki <http://hypatia-engine.github.io/wiki/>`__ (great
+           resource for nonprogrammers, too!)
+        -  `The official Hypatia website <http://engine.hypatia.software>`__
+        -  Official IRC support chat: `#hypatia on Freenode
+           (webui!) <http://webchat.freenode.net/?channels=hypatia>`__
+        -  You can contact the author via email: lillian.lynn.lemmer@gmail.com,
+           [@LilyLemmer](https:/twitter.com/LilyLemmer) on Twitter.
+        
+        To know your way around the project, I strongly recommend reading the
+        `CONTRIBUTING.md <./CONTRIBUTING.md>`__ file. It covers everything you
+        need to know about contributing to Hypatia, as well as navigating the
+        project.
+        
+        Getting Started
+        ---------------
+        
+        If you have just one version of Python installed, simply use:
+        
+        .. code:: shell
+        
+            ./scripts/bootstrap
+        
+        Otherwise, if you want to install for a specific version of Python, use
+        something like:
+        
+        .. code:: shell
+        
+            python3.3 scripts/bootstrap
+        
+        If the bootstrap fails, you can try to install yourself:
+        
+        1. Install Pygame (platform-specific). Installing Pygame is a different
+           process on various systems. See the *Installing Pygame* section
+           below.
+        2. ``pip install --user .``
+        
+        Checkout the Demo
+        ~~~~~~~~~~~~~~~~~
+        
+        .. code:: shell
+        
+            $ cd demo
+            $ python game.py
+        
+        Installing Pygame
+        ~~~~~~~~~~~~~~~~~
+        
+        **You can skip this section if the bootstrap worked for you.**
+        
+        Installing Pygame on various platforms. I assume you have Python
+        installed and know how to use ``pip``.
+        
+        FreeBSD, DragonflyBSD, PC-BSD, etc.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        
+        The easiest thing to do is use Python 2.7. You can simply:
+        
+        .. code:: shell
+        
+            sudo pkg install py27-game
+        
+        OpenBSD
+        ^^^^^^^
+        
+        .. code:: shell
+        
+            sudo pkg_add pygame
+        
+        Debian, Ubuntu
+        ^^^^^^^^^^^^^^
+        
+        .. code:: shell
+        
+            sudo apt-get install python-pygame
+        
+        Mac OS X
+        ^^^^^^^^
+        
+        Install pygame through Homebrew. You may want to install Python through
+        Homebrew as well.
+        
+        .. code:: shell
+        
+            # install homebrew
+            ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            # install pygame through homebrew
+            brew install homebrew/python/pygame
+        
+        Windows
+        ^^^^^^^
+        
+        For Python 2.x I recommend using `Pygame's official Windows
+        installers <http://www.pygame.org/download.shtml>`__.
+        
+        If you're using Python 3.x, I recommend using Christoph Gohlke's
+        *unofficial* Pygame binaries. Make sure to download the ``whl`` specific
+        to your Python version and architecture (win32 vs win\_amd64). To
+        install the ``whl`` do the following in command prompt (in the directory
+        containing the ``whl``):
+        
+        .. code:: shell
+        
+            pip install wheel
+            pip install pygame-*.whl
+        
+        .. |GitHub license| image:: https://img.shields.io/github/license/hypatia-software-organization/hypatia-engine.svg?style=flat-square
+           :target: https://raw.githubusercontent.com/hypatia-software-organization/hypatia-engine/master/LICENSE
+        .. |PyPI Version| image:: https://img.shields.io/pypi/v/hypatia_engine.svg?style=flat-square
+           :target: https://pypi.python.org/pypi/hypatia_engine/
+        .. |Travis| image:: https://img.shields.io/travis/hypatia-software-organization/hypatia-engine.svg?style=flat-square
+           :target: https://travis-ci.org/hypatia-software-organization/hypatia-engine
+        .. |Code Climate| image:: https://img.shields.io/codeclimate/github/lillian-lemmer/hypatia.svg?style=flat-square
+           :target: https://codeclimate.com/github/hypatia-software-organization/hypatia-engine
+        .. |PyPI Popularity| image:: https://img.shields.io/pypi/dm/hypatia_engine.svg?style=flat-square
+           :target: https://pypi.python.org/pypi/hypatia_engine/
+        .. |Bountysource| image:: https://img.shields.io/bountysource/team/hypatia-engine/activity.svg?style=flat-square
+           :target: https://www.bountysource.com/teams/hypatia-software-org
+        .. |Donate with Paypal| image:: https://img.shields.io/badge/paypal-donate-ff69b4.svg?style=flat-square
+           :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZU5EVKVY2DX2S
+        
+Keywords: games gaming development sprites adventure game tilemap tilesheet zelda gamedev 2d
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Operating System :: Microsoft :: Windows :: Windows 7
+Classifier: Operating System :: Microsoft :: Windows :: Windows Vista
+Classifier: Operating System :: Microsoft :: Windows :: Windows XP
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: BSD :: FreeBSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Games/Entertainment :: Role-Playing
+Classifier: Topic :: Software Development :: Libraries :: pygame
