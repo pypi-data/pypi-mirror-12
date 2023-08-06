@@ -1,0 +1,48 @@
+StackOverFlow Helper for Python.
+#####################################################################################################################
+                                           StackOverFlow Helper 0.1.1
+Author: Arockia Arulnathan
+
+Installation:
+Dependencies:
+    1. requests
+    2. BeautifulSoup
+
+install by running the below command
+ easy_install SOFHelp
+
+#####################################################################################################################
+Example:
+#####################################################################################################################
+
+#create object
+from SOFHelp import *
+soverflow = SOFHelp()
+#set proxy if you are accessing behind proxy server
+soverflow.set_proxy(http="http://USERNAME:PASSWORD@PROXY_ADDRESS:PORT")
+
+Ex:
+
+try:
+    number1=0
+    number2=5
+    result = int(number2) / int(number1)
+except Exception as e:
+    soverflow.get_help(str(e))
+
+#####################################################################################################################
+Output:
+#####################################################################################################################
+
+Q: getting ZeroDivisionError: integer division or modulo by zero
+http://stackoverflow.com/questions/32379687/getting-zerodivisionerror-integer-division-or-modulo-by-zero
+Q: I am getting for an erroc ZeroDivisionErrror: integer division or modulo by zero. What is wr&hellip;
+http://stackoverflow.com/questions/13715134/i-am-getting-for-an-erroc-zerodivisionerrror-integer-division-or-modulo-by-zero
+Q: python integer division error - modulo by zero - BUT divisor != 0
+http://stackoverflow.com/questions/14578790/python-integer-division-error-modulo-by-zero-but-divisor-0
+Q: Why this exception doesn&#39;t print 0?
+http://stackoverflow.com/questions/28315357/why-this-exception-doesnt-print-0
+Q: Python Divide By Zero Error
+http://stackoverflow.com/questions/13646347/python-divide-by-zero-error
+
+#####################################################################################################################
