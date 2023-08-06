@@ -1,0 +1,185 @@
+Soup Creation
+=============
+
+    >>> from zope.configuration.xmlconfig import XMLConfig
+    >>> import zope.component
+    >>> XMLConfig("meta.zcml", zope.component)()
+    >>> import zope.browserpage
+    >>> XMLConfig("meta.zcml", zope.browserpage)()
+    >>> import zope.annotation
+    >>> XMLConfig("configure.zcml", zope.annotation)()
+    >>> import rapido.core
+    >>> XMLConfig("configure.zcml", rapido.core)()
+    >>> import rapido.souper
+    >>> XMLConfig("configure.zcml", rapido.souper)()
+    >>> import rapido.core.tests
+    >>> XMLConfig("configure.zcml", rapido.core.tests)()
+
+    >>> from rapido.core.interfaces import IRapidoApplication
+
+Create object which can store soup data::
+
+    >>> from rapido.core.tests.base import SiteNode
+    >>> root = SiteNode()
+
+Create a persistent object that will be adapted as a rapido app::
+    
+    >>> from rapido.core.tests.base import SimpleRapidoApplication
+    >>> root['myapp'] = SimpleRapidoApplication("testapp", root)
+    >>> app_obj = root['myapp']
+    >>> app = IRapidoApplication(app_obj)
+    >>> app.initialize()
+
+Create a record::
+
+    >>> record = app.create_record(id='record_1')
+    >>> record.id == 'record_1'
+    True
+    >>> uid = record.uid
+    >>> record['author'] = "Joseph Conrad"
+    >>> record['book_tile'] = "Lord Jim"
+    >>> record['author']
+    'Joseph Conrad'
+    >>> record['not_important'] = 2
+    >>> 'not_important' in record
+    True
+    >>> del record['not_important']
+    >>> [key for key in record]
+    ['book_tile', 'id', 'author']
+
+Records can be found by uid or by id::
+    >>> record.reindex()
+    >>> app.get_record(uid).uid == app.get_record('record_1').uid
+    True
+
+A id is always unique::
+    >>> record_bis = app.create_record(id='record_1')
+    >>> record_bis.id
+    'record_1-...'
+
+We can use block to display records::
+
+    >>> from rapido.core.interfaces import IBlock
+    >>> block = app.get_block('frmBook')
+    >>> block.display(None, edit=True)
+    u'<form\n    name="frmBook"\n    class="rapido-block"\n    action="http://here/block/frmBook"\n    rapido-settings=\'{"app": {"url": "http://here"}, "id": "frmBook", "title": "Book"}\'\n    method="POST">Author: <input type="text"\n        name="author" value="Victor Hugo" />\n<footer>Powered by Rapido</footer></form>\n'
+    >>> block.display(record)
+    u'<form\n    name="frmBook"\n    class="rapido-block"\n    action="http://here/record/record_1"\n    rapido-settings=\'{"title": "Book", "app": {"url": "http://here"}, "id": "frmBook"}\'\n    method="POST">Author: Joseph Conrad\n<footer>Powered by Rapido</footer></form>\n'
+    >>> block.display(record, edit=True)
+    u'<form\n    name="frmBook"\n    class="rapido-block"\n    action="http://here/record/record_1"\n    rapido-settings=\'{"title": "Book", "app": {"url": "http://here"}, "id": "frmBook"}\'\n    method="POST">Author: <input type="text"\n        name="author" value="Joseph Conrad" />\n<footer>Powered by Rapido</footer></form>\n'
+
+After saving the record, the `on_save` method is called. In our case, the author
+has been changed to uppercase::
+    >>> record.save(block=block)
+    >>> record['author']
+    'JOSEPH CONRAD'
+
+Records can be searched::
+    >>> [record['author'] for record in app.search('id=="record_1"')]
+    ['JOSEPH CONRAD']
+    >>> [record['author'] for record in app.search('author=="JOSEPH CONRAD"')]
+    ['JOSEPH CONRAD']
+    >>> [record['author'] for record in app.search('"joseph" in author')]
+    ['JOSEPH CONRAD']
+
+Records can be deleted::
+    >>> record2 = app.create_record()
+    >>> the_id = record2.id
+    >>> app.delete_record(record=record2)
+    >>> app.get_record(the_id) is None
+    True
+
+The record id can be computed::
+    >>> app_obj.set_fake_block_data('py', """
+    ... def record_id(context):
+    ...     return 'my-id'""")
+    >>> block = app.get_block('frmBook')
+    >>> record2 = app.create_record()
+    >>> record2.save({'author': "John DosPassos"}, block=block, creation=True)
+    >>> record2.id
+    'my-id'
+    >>> record3 = app.create_record()
+    >>> record3.save({'author': "John DosPassos"}, block=block, creation=True)
+    >>> record3.id
+    'my-id-...'
+
+By default, the record title is the block title::
+    >>> record.title
+    'Book'
+
+But it can be computed::
+    >>> app_obj.set_fake_block_data('py', """
+    ... def title(context):
+    ...     return context.record['author']""")
+    >>> block = app.get_block('frmBook')
+    >>> record.save(block=block)
+    >>> record.title
+    'JOSEPH CONRAD'
+
+Elements can be computed on save::
+    >>> app_obj.set_fake_block_data('py', """
+    ... def famous_quote(context):
+    ...     existing = context.record['famous_quote']
+    ...     if not existing:
+    ...         return 'A good plan violently executed now is better than a perfect plan executed next week.'
+    ...     return existing + " Or next week." """)
+    >>> block = app.get_block('frmBook')
+    >>> record.save(block=block)
+    >>> record['famous_quote']
+    'A good plan violently executed now is better than a perfect plan executed next week.'
+    >>> record.save(block=block)
+    >>> record['famous_quote']
+    'A good plan violently executed now is better than a perfect plan executed next week. Or next week.'
+
+Elements can be computed on creation::
+    >>> app_obj.set_fake_block_data('py', """
+    ... def forever(context):
+    ...     return 'I will never change.'""")
+    >>> block = app.get_block('frmBook')
+    >>> record4 = app.create_record()
+    >>> record4.save(block=block, creation=True)
+    >>> record4['forever']
+    'I will never change.'
+    >>> record.save(block=block)
+    >>> record.get('forever') is None
+    True
+
+Access rights
+    >>> from rapido.core.interfaces import IDisplay
+    >>> display = IDisplay(app)
+    >>> app_obj.set_fake_user("nobody")
+    >>> app.acl.has_access_right("reader")
+    False
+    >>> display.GET(['testapp', 'record', 'record_1'], {})
+    Traceback (most recent call last):
+    ...
+    Unauthorized
+    >>> app_obj.set_fake_user("isaac.newton")
+    >>> app.acl.has_access_right("reader")
+    True
+    >>> display.GET(['testapp', 'record', 'record_1'], {})
+    (u'<form\n    name="frmBook"\n    class="rapido-block"\n    action="http://here/record/record_1"\n    rapido-settings=\'{"app": {"url": "http://here"}, "id": "frmBook", "title": "Book"}\'\n    method="POST">Author: JOSEPH CONRAD\n<footer>Powered by Rapido</footer></form>\n', '')
+    >>> display.POST(['testapp', 'record', 'record_1'], {'_save': True, 'item2': 'value2'})
+    Traceback (most recent call last):
+    ...
+    Unauthorized
+    >>> app_obj.set_fake_user("FamousDiscoverers")
+    >>> app.acl.has_access_right("author")
+    True
+    >>> display.POST(['testapp', 'record', 'record_1'], {'_save': True, 'item2': 'value2'})
+    Traceback (most recent call last):
+    ...
+    Unauthorized
+    >>> display.POST(['testapp', 'record', 'record_1'], {'_delete': True})
+    Traceback (most recent call last):
+    ...
+    Unauthorized
+    >>> display.POST(['testapp', 'block', 'frmBook'], {'_save': True, 'item1': 'value1'})
+    ('', 'http://here/record/...')
+    >>> app_obj.set_fake_user("marie.curie")
+    >>> app.acl.has_access_right("editor")
+    True
+    >>> display.POST(['testapp', 'record', 'record_1'], {'_save': True, 'item2': 'value2'})
+    (u'<form\n    name="frmBook"\n    class="rapido-block"\n    action="http://here/record/record_1"\n    rapido-settings=\'{"app": {"url": "http://here"}, "id": "frmBook", "title": "Book"}\'\n    method="POST">Author: JOSEPH CONRAD\n<footer>Powered by Rapido</footer></form>\n', '')
+    >>> display.POST(['testapp', 'record', 'record_1'], {'_delete': True})
+    ('deleted', '')
