@@ -1,0 +1,41 @@
+Metadata-Version: 2.0
+Name: django-grep-db
+Version: 0.1.7
+Summary: A simple Django app for command-line searching via the ORM
+Home-page: https://github.com/exonian/django-grep-db
+Author: Michael Blatherwick
+Author-email: michael.blatherwick@exeter.oxon.org
+License: MIT
+Keywords: django search grep cli
+Platform: UNKNOWN
+Requires-Dist: colorama (>=0.3.3)
+Requires-Dist: django (>=1.7)
+Requires-Dist: termcolor (>=1.1.0)
+
+======
+django_grepdb
+======
+
+django_grepdb is a simple command-line app to provide basic grep-like searching of
+Django model fields using the ORM.
+
+Quick start
+-----------
+
+1. Add "django_grepdb" to your INSTALLED_APPS setting like this::
+
+    INSTALLED_APPS = (
+        ...
+        'django_grepdb',
+    )
+
+   or, if you have a separate settings file for development in which you
+   extend your global settings, like this::
+
+    INSTALLED_APPS = INSTALLED_APPS + ('django_grepdb',) 
+
+2. Run::
+
+    python manage.py grepdb <pattern> <app_label.Model.field_name>
+
+
