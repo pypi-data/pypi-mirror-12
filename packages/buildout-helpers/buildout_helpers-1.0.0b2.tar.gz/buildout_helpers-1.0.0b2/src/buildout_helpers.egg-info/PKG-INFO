@@ -1,0 +1,165 @@
+Metadata-Version: 1.1
+Name: buildout-helpers
+Version: 1.0.0b2
+Summary: A buildout config file normalizer
+Home-page: http://pypi.python.org/pypi/buildout_helpers
+Author: Patrick Gerken
+Author-email: patrick.gerken@zumtobelgroup.com
+License: BSD
+Description: .. This README is meant for consumption by humans and pypi. Pypi can render rst files so please do not use Sphinx features.
+           If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide_addons.html
+           This text does not appear on pypi or github. It is a comment.
+        
+        buildout_helpers
+        =============================
+        
+        Do you have multiple buildouts and you want an easy way to apply new best practices to each buildout in a simple way, but you cannot, because every buildout file is configured slightly different?
+        
+        Then this package is for you. The normalize_buildout is a script that will normalize your buildout file.
+        
+        The tool sorts sections and the keys in each section alphabetically, also some special multi line values, like eggs.
+        
+        Features
+        --------
+        
+        normalize_buildout by default will replace the given config file in place.
+        It has a command line option for not changing the file and only reporting via exit code if the file is not normalized. This can easily be integrated in check tools or ci tools.
+        
+        The script understands the special meaning of some sections and keys:
+        
+          - buildout section is always the first
+          - versions, and sources section are always the last
+          - recipe key is always first
+          - eggs, and zcml values get sorted.
+          - keys of sources entries get sorted, values get indented so that branch settings are all on the same column.
+          - mr.developer options are grouped and separated from the other buildout options
+        
+        Comments above sections and above keys get shuffled together with key or section.
+        You can document why you need to pin a specific version of a package and after normalization, the comment is still above the right version specifier.
+        - Can be bullet points
+        
+        
+        Installation
+        ------------
+        
+        You can install the package with pip or zc.buildout.
+        
+        PIP::
+        
+            $ pip install buildout_helpers
+        
+        Buildout::
+        
+           [buildout]
+        
+            ...
+            [extras]
+            recipe = zc.recipe.egg
+            eggs =
+                buildout_helpers
+        
+        
+        and then running "bin/buildout"
+        
+        Usage
+        -----
+        
+        You can do three things with this command.
+        
+        1. Check if a config file is normalized (for CI)::
+        
+           $ normalize_buildout -c buildout.cfg
+        
+           This will either return nothing, or a warning that the buildout is not normalized. It will have a falsy return code for CI.
+        
+        2. Normalize a config file in place::
+        
+           $ normalize_buildout buildout.cfg
+        
+           This will normalize the buildout file.
+        
+        3. Read a config file from stdin and print it on stdout, useful in vim::
+        
+           :%!normalize_buildout -
+        
+           On failure, this command will print out the config file unmodified.
+        
+        Contribute
+        ----------
+        
+        - Issue Tracker: https://github.com/collective/buildout_helpers/issues
+        - Source Code: https://github.com/collective/buildout_helpers
+        
+        Contributors
+        ============
+        
+        - Patrick Gerken, patrick.gerken@zumtobelgroup.com
+        
+        Changelog
+        =========
+        
+        
+        1.0.0b2 (2015-12-14)
+        --------------------
+        
+        - Mostly refactor freeze command. Still hard to read and needs more love.
+          [do3cc]
+        
+        
+        1.0.0b1 (2015-12-14)
+        --------------------
+        
+        - Add freeze command, downloads all external buildout files, with
+          headers that allow the same freeze command to update it.
+          [do3cc]
+        
+        - Add version info command that show which buildout file pins which
+          version. Inspired from @jensens script
+          [do3cc]
+        
+        - Rename package to buildout_helpers. Namespace packages cause trobule
+          with pip and buildout
+          [do3cc]
+        
+        0.3.0 (2015-09-22)
+        ------------------
+        
+        - Mr.developer variables in buildout sections are now separated
+          and at the end of the buildout section
+          [do3cc]
+        
+        - Sources sections are at the end now
+          [do3cc]
+        
+        - Multiline options do not need an indent of 4 spaces, one is enough.
+          Now this script correctly identifies them
+          [do3cc]
+        
+        
+        0.2.0 (2015-09-11)
+        ------------------
+        
+        - Support piping.
+          [do3cc]
+        
+        - Remove unneeded dependency.
+          [do3cc]
+        
+        - Fix 3 bugs resulting in bad buildout.cfgs.
+          [do3cc]
+        
+        
+        0.1 (2015-09-10)
+        ----------------
+        
+        - Initial release.
+          [do3cc]
+        
+        
+Keywords: Python Plone
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: License :: OSI Approved :: BSD License
