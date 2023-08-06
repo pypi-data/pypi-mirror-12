@@ -1,0 +1,18 @@
+{% load renditionaware_image_tags %}
+<!--StacksImage Image Left, Content Right-->
+<div class="stacks-module stuff-left-content-right stacks-image stacks-image-left-content-right grid {{ addl_classes }}">
+    {% if self.title %}<h2 class="module-title">{{ self.title }}</h2>{% endif %}
+    <div class="grid-2up grid-block first-in-row">
+        <div class="image-container">
+            {% image self.image image_rendition as img %}
+            <img class="lazy" data-original="{{ img.url }}" alt="{{ self.title }}"/>
+        </div>
+    </div>
+    <div class="grid-2up grid-block last-in-row">
+        {% if self.additional_content %}
+        <div class="text-container">
+            {{ self.additional_content }}
+        </div>
+        {% endif %}
+    </div>
+</div>

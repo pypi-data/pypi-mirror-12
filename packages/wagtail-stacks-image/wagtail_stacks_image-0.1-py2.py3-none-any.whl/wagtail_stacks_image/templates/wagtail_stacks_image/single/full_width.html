@@ -1,0 +1,17 @@
+<!--StacksImage Full Width-->
+{% load renditionaware_image_tags %}
+<div class="stacks-module stacks-image full-width grid {{ addl_classes }}">
+
+    <div class="grid-1up">
+        <div class="image-container">
+            {% image self.image image_rendition as img %}
+            <img class="lazy" data-original="{{ img.url }}" alt="{{ self.title }}"/>
+        </div>
+        {% if self.title or self.additional_content %}
+        <div class="text-container">
+            {% if self.title %}<h2 class="module-title">{{ self.title }}</h2>{% endif %}
+            {{ self.additional_content }}
+        </div>
+        {% endif %}
+    </div>
+</div>

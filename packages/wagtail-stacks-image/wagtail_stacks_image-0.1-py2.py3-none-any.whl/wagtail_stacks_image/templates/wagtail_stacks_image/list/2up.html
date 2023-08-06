@@ -1,0 +1,19 @@
+<!--StacksImageList 2-up Grid-->
+
+<div class="stacks-module list-2up stacks-image stacks-image-list-2up grid {{ addl_classes }}">
+    {% if self.title %}<h2 class="module-title">{{ self.title }}</h2>{% endif %}
+    {% for item in self.list %}
+    {% if forloop.first or forloop.counter0|divisibleby:'2' %}
+    <div class="media-row grid-row">
+    {% endif %}
+        <div class="grid-2up grid-block
+            {% if forloop.first or forloop.counter0|divisibleby:'2' %}first-in-row{% endif %} {% if forloop.counter|divisibleby:'2' %}last-in-row{% endif %}">
+            <div class="grid-block-inner">
+                {{ item }}
+            </div>
+        </div>
+    {% if forloop.last or forloop.counter|divisibleby:'2' %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

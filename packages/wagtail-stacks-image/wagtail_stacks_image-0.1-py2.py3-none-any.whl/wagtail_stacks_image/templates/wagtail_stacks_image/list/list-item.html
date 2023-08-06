@@ -1,0 +1,15 @@
+<!-- StacksImage List Item -->
+{% load renditionaware_image_tags %}
+<div class="image-container">
+    {% image self.image image_rendition as img %}
+    <img class="lazy" data-original="{{ img.url }}" alt="{{ self.title }}"/>
+</div>
+{% if self.overline %}
+<h5 class="overline">{{ self.overline }}</h5>
+{% endif %}
+{% if self.title %}<h4 class="list-heading">{{ self.title }}</h4>{% endif %}
+{% if self.additional_content %}
+<div class="text-container">
+    {{ self.additional_content }}
+</div>
+{% endif %}
