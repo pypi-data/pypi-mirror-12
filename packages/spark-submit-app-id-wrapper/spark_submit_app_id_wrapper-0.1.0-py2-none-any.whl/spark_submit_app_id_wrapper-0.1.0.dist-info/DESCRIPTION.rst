@@ -1,0 +1,12 @@
+A wrapper around spark-submit, specifically tested with YARN, to intercept and
+extract the appliation id from stderr. Once the application id is detected, it
+prints it to stderr, so that your calling script can process it.
+
+See https://github.com/gak/spark-submit-app-id-wrapper for more information.
+
+Home-page: https://github.com/gak/spark-submit-app-id-wrapper
+Author: Gerald Kaszuba
+Author-email: gak@gak0.com
+License: Apache Licence 2.0
+Description: UNKNOWN
+Platform: UNKNOWN
