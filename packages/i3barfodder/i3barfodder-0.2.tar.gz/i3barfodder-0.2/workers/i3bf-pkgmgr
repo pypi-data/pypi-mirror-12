@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+# Released under GPL3 terms (see LICENSE)
+
+
+from i3bfutils import (pkgmgr, template, io, SELFNAME)
+
+dflt_layout = '({new} update(s?{_new}!=1) available?{_new}>0)'
+LAYOUT = io.get_var('LAYOUT', default=dflt_layout)
+
+unset_msg = 'Specify a package manager by setting PKGMGR to one of: ' + \
+            ', '.join(pkgmgr.NAMES)
+PKGMGR = io.get_var('PKGMGR', unset_msg=unset_msg)
+PKGMGR = PKGMGR.lower()
+
+try:
+    pm = getattr(pkgmgr, PKGMGR)()
+except AttributeError:
+    io.croak('Unknown package manager: {!r}\nAvailable options are: {}'
+             .format(PKGMGR, PKGMGRS))
+
+info = template.PrettyDict(new=pm.count_new_packages())
+tmplt = template.Template(SELFNAME, LAYOUT)
+
+io.push(tmplt.make_blocks(info, init=True))
+while True:
+    pm.wait_for_cache_update()
+    info['new'] = pm.count_new_packages()
+    io.debug('Package cache was updated: {} new packages'.format(info['new']))
+    io.push(tmplt.make_blocks(info, init=False))

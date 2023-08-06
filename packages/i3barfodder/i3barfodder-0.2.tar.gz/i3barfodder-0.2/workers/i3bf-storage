@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+#
+# Released under GPL3 terms (see LICENSE)
+
+
+from i3bfutils import (storage, convert, template, io, delay, SELFNAME)
+
+INTERVAL = io.get_var('INTERVAL', default=1)
+SAMPLES = io.get_var('SAMPLES', default=3)
+WHITELIST = io.get_var('WHITELIST', default='')
+BLACKLIST = io.get_var('BLACKLIST', default='')
+
+# Generate default format from a bunch of config variables
+dflt_layout_cfg = {
+    'LED_COLORS': io.get_var('LED_COLORS', default='#665-#FF4'),
+    'PATH_COLOR': io.get_var('PATH_COLOR', default='#D95'),
+    'USED_COLORS': io.get_var('USED_COLORS', default='#D95-#F51'),
+    'USED_MIN': convert.percent2num(io.get_var('USED_MIN', default='70%')),
+    'USED_MAX': convert.percent2num(io.get_var('USED_MAX', default='95%')),
+}
+dflt_layout = ('[● |{{_rw}}:max=1M:{LED_COLORS}]'
+               '[{{path}} |{PATH_COLOR}]'
+               '[<small>{{free}} free</small>|{{_used%}}:{USED_COLORS}:'
+               'min={USED_MIN}:max={USED_MAX}]30').format(**dflt_layout_cfg)
+LAYOUT = io.get_var('LAYOUT', default=dflt_layout)
+if LAYOUT == dflt_layout:
+    io.push({'markup': 'pango'})  # Default format uses pango markup
+
+MAX = { '{_used%}': 100, '{_free%}': 100 }
+SOFTMAX = { '{_read}': '1M', '{_write}': '1M', '{_rw}': '1M' }
+tmplt = template.Template(SELFNAME+'_{path}', LAYOUT, max=MAX, softmax=SOFTMAX)
+
+mountpoints = storage.Mountpoints(iosamples=SAMPLES)
+mountpoints.whitelist = [path.strip() for path in WHITELIST.split(',') if path]
+mountpoints.blacklist = [path.strip() for path in BLACKLIST.split(',') if path]
+
+blocks = {}  # Map mountpoint path to ready-to-push list of blocks
+order = []   # Sorted mountpoint paths
+
+def sort_mountpoints():
+    global order
+    order = [path for path in sorted(blocks.keys())]
+
+def init_mountpoint(mp):
+    blocks[mp['_path']] = tmplt.make_blocks(mp, init=True)
+    sort_mountpoints()
+
+def update_mountpoint(mp):
+    blocks[mp['_path']] = tmplt.make_blocks(mp, init=False)
+
+def remove_mountpoint(mp):
+    del(blocks[mp['_path']])
+    sort_mountpoints()
+
+mountpoints.add_hook('mounted', init_mountpoint)
+mountpoints.add_hook('updated', update_mountpoint)
+mountpoints.add_hook('unmounted', remove_mountpoint)
+
+while True:
+    mountpoints.poll()
+    io.push([block
+             for path in order
+             for block in blocks[path]])
+    delay.sleep_roughly(INTERVAL)
