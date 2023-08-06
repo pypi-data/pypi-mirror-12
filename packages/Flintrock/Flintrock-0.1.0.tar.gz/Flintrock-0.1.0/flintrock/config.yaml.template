@@ -1,0 +1,33 @@
+modules:
+  spark:
+    version: 1.5.2
+    # git-commit:  # mutually exclusive with version
+    # git-repository:  # optional; defaults to https://github.com/apache/spark.git
+  hdfs:
+    version: 2.7.1
+
+provider: ec2
+
+providers:
+  ec2:
+    key-name: key_name
+    identity-file: /path/to/key.pem
+    instance-type: m3.medium
+    region: us-east-1
+    # availability-zone: <name>
+    ami: ami-60b6c60a   # Amazon Linux
+    user: ec2-user
+    # ami: ami-61bbf104   # CentOS 7
+    # user: centos
+    # spot-price: <price>
+    # vpc-id: <id>
+    # subnet-id: <id>
+    # placement-group: <name>
+    tenancy: default  # default | dedicated
+    ebs-optimized: no  # yes | no
+    instance-initiated-shutdown-behavior: terminate  # terminate | stop
+
+launch:
+  num-slaves: 1
+  # install-hdfs: False
+  # install-spark: False
