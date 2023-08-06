@@ -1,0 +1,40 @@
+Metadata-Version: 2.0
+Name: vycro
+Version: 1.0.0
+Summary: VBA macro wrapper for Python to be used with Microsoft Excel.
+Home-page: https://github.com/gannon93/vycro
+Author: Zach Gannon
+Author-email: zachgannon93@gmail.com
+License: MIT
+Keywords: VBA,macros,Excel
+Platform: UNKNOWN
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: pypiwin32
+
+Vycro
+=====
+
+``vycro`` is a Python wrapper designed to make calling VBA functions and
+subroutines with Microsoft Excel as easy as a couple of standard file
+I/O calls.
+
+.. code:: python
+
+    from vycro import MacroWrapper
+
+    mw = MacroWrapper()
+    wb_kwargs = {"ReadOnly":"True"}
+    m_args = ["arg1", "True", "111"]
+    with mw.open_workbook("/full/path/with.extension", **wb_kwargs):
+        mw.run_macro("macro_name", *m_args)  # See declaration for function args
+
+``vycro`` currently supports Python 2.7 and Python 3.1-3.5, and requires
+pywin32-219.
+
+
