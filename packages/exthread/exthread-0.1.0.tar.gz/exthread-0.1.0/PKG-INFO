@@ -1,0 +1,35 @@
+Metadata-Version: 1.1
+Name: exthread
+Version: 0.1.0
+Summary: Supercharged threads
+Home-page: https://github.com/eugene-eeo/exthread/
+Author: Eeo Jun
+Author-email: packwolf58@gmail.com
+License: UNKNOWN
+Description: ExThread
+        ========
+        
+        Supercharged (sensible) execption propogating and lightweight
+        wrapper around the standard library Thread. Usage example:
+        
+        .. code-block:: python
+        
+            >>> from exthread import ExThread
+            >>> def task():
+                    arr = [1,2,3]
+                    arr[4]
+        
+            >>> t = ExThread(task)
+            >>> t.start()
+            >>> t.join()
+            Traceback (most recent call last):
+                ...
+            IndexError: ...
+        
+        You don't really need it. *But you want it.*
+        
+Platform: any
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
