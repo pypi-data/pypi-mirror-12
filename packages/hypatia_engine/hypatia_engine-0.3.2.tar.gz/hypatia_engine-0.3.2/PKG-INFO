@@ -1,0 +1,150 @@
+Metadata-Version: 1.1
+Name: hypatia_engine
+Version: 0.3.2
+Summary: 2D action adventure game engine
+Home-page: http://hypatia-engine.github.io/hypatia
+Author: Lillian Lemmer
+Author-email: lillian.lynn.lemmer@gmail.com
+License: MIT
+Download-URL: https://github.com/hypatia-engine/hypatia/releases/tag/0.3.2
+Description: Hypatia 0.3.2 (alpha)
+        =====================
+        
+        .. figure:: http://hypatia-engine.github.io/assets/logotype-dark.png
+           :alt: Hypatia 0.3.2
+        
+           Hypatia 0.3.2
+        
+        |GitHub license| |PyPI Version| |Travis| |Coveralls| |Code Climate|
+        |PyPI Popularity| |Bountysource| |Donate with Paypal| |Donate with
+        Patreon|
+        
+        Make 2D action adventure games. For programmers and nonprogrammers
+        alike.
+        
+        Create games like `*Legend of Zelda: Oracle of Ages* and *Oracle of
+        Seasons* <http://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Oracle_of_Seasons_and_Oracle_of_Ages>`__.
+        
+        The included demo game (``demo/game.py``) in action:
+        
+        .. figure:: http://hypatia-engine.github.io/assets/demo.gif
+           :alt: The demo game in action.
+        
+           The demo game in action.
+        
+        What makes this project special?
+        --------------------------------
+        
+        -  Each release tested in FreeBSD, Linux, and Windows
+        -  Built and tested in FreeBSD first
+        -  A labor of love, `permissively (MIT)
+           licensed <https://raw.githubusercontent.com/hypatia-engine/hypatia/master/LICENSE>`__,
+           meaning you Hypatia for commercial or non-commercial purposes and not
+           worry about legalese--it's really free for any purpose without
+           strings attached.
+        
+        Resources
+        ---------
+        
+        -  `Platform-specific
+           packages <http://hypatia-engine.github.io/get.html>`__
+        -  `Hypatia Wiki <http://hypatia-engine.github.io/wiki/>`__ (great
+           resource for nonprogrammers, too!)
+        -  `The official Hypatia website <http://hypatia-engine.github.io/>`__
+        -  Official support chat: `#hypatia on Freenode
+           (webui!) <http://webchat.freenode.net/?channels=hypatia>`__
+        -  `Hypatia Engine Slack team
+           chat <https://hypatia-engine.slack.com/>`__
+        -  You can contact the author via email: lillian.lynn.lemmer@gmail.com,
+           [@LilyLemmer](https:/twitter.com/LilyLemmer) on Twitter.
+        
+        To know your way around the project, I strongly recommend reading the
+        `CONTRIBUTING.md <https://github.com/lillian-lemmer/hypatia/blob/master/CONTRIBUTING.md>`__
+        file. It covers everything you need to know about contributing to
+        Hypatia, as well as navigating the project.
+        
+        Getting Started
+        ---------------
+        
+        To install from the repo there are two instructions:
+        
+        1. Install Pygame (platform-specific)
+        2. In the repository root, run
+           ``python -m pip install --user -r requirements/python2.txt .`` (for
+           Python 2), or if you're running Python 3 run
+           ``python -m pip install --user -r rquirements/base.txt .``
+        
+        Additionally, you can run the demo:
+        
+        .. code:: shell
+        
+            $ cd demo
+            $ python game.py
+        
+        Platform-Specific Pre-requisite Instructions
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+        Windows
+        ^^^^^^^
+        
+        For Python 2.x I recommend using `Pygame's official Windows
+        installers <http://www.pygame.org/download.shtml>`__.
+        
+        If you're using Python 3.x, I recommend using Christoph Gohlke's
+        *unofficial* Pygame binaries. Make sure to download the ``whl`` specific
+        to your Python version and architecture (win32 vs win\_amd64). To
+        install the ``whl`` do the following in command prompt (in the directory
+        containing the \`whl):
+        
+        .. code:: shell
+        
+            pip install wheel
+            pip install pygame-*.whl
+        
+        Mac OS X
+        ^^^^^^^^
+        
+        Install pygame through Homebrew.
+        
+        .. code:: shell
+        
+            # install homebrew
+            ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            # install pygame through homebrew
+            brew install homebrew/python/pygame
+        
+        .. |GitHub license| image:: https://img.shields.io/github/license/hypatia-engine/hypatia.svg?style=flat-square
+           :target: https://raw.githubusercontent.com/hypatia-engine/hypatia/master/LICENSE
+        .. |PyPI Version| image:: https://img.shields.io/pypi/v/hypatia_engine.svg?style=flat-square
+           :target: https://pypi.python.org/pypi/hypatia_engine/
+        .. |Travis| image:: https://img.shields.io/travis/hypatia-engine/hypatia.svg?style=flat-square
+           :target: https://travis-ci.org/hypatia-engine/hypatia
+        .. |Coveralls| image:: https://img.shields.io/coveralls/lillian-lemmer/hypatia.svg?style=flat-square
+           :target: https://coveralls.io/r/lillian-lemmer/hypatia
+        .. |Code Climate| image:: https://img.shields.io/codeclimate/github/lillian-lemmer/hypatia.svg?style=flat-square
+           :target: https://codeclimate.com/github/lillian-lemmer/hypatia
+        .. |PyPI Popularity| image:: https://img.shields.io/pypi/dm/hypatia_engine.svg?style=flat-square
+           :target: https://pypi.python.org/pypi/hypatia_engine/
+        .. |Bountysource| image:: https://img.shields.io/bountysource/team/hypatia/activity.svg?style=flat-square
+           :target: https://www.bountysource.com/teams/hypatia
+        .. |Donate with Paypal| image:: https://img.shields.io/badge/paypal-donate-ff69b4.svg?style=flat-square
+           :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YFHB5TMMXMNT6
+        .. |Donate with Patreon| image:: https://img.shields.io/badge/patreon-donate%20monthly-ff69b4.svg?style=flat-square
+           :target: https://www.patreon.com/lilylemmer
+        
+Keywords: games gaming development sprites adventure game tilemap tilesheet zelda gamedev 2d
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Operating System :: Microsoft :: Windows :: Windows 7
+Classifier: Operating System :: Microsoft :: Windows :: Windows Vista
+Classifier: Operating System :: Microsoft :: Windows :: Windows XP
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: BSD :: FreeBSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Games/Entertainment :: Role-Playing
+Classifier: Topic :: Software Development :: Libraries :: pygame
