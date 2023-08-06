@@ -1,0 +1,34 @@
+{#
+Navigation: Breadcrum
+#}
+
+{% macro menu(key) %}
+
+    <ol class="breadcrumb">
+        {% for nav in __g.NAV_MENU %}
+            {% set nav_name = nav[1] %}
+            {% set nav_items = nav[2] %}
+            {% set nav_kwargs = nav[3] %}
+
+            {% if nav_kwargs["key"] == key %}
+                {% for item in nav_items %}
+                    {% set item_name = item[1] %}
+                    {% set item_endpoint = item[2] %}
+                    {% set item_kwargs = item[3] %}
+                    {% set item_endpoint_kwargs = item_kwargs["endpoint_kwargs"] %}
+                    {% set item_url = url_for(item_endpoint, **item_endpoint_kwargs) %}
+                    {% if "url" in item_kwargs %}
+                        {% set item_url = item_kwargs["url"] %}
+                    {% endif %}
+                    {% set item_target = "" %}
+                    {% if "target" in item_kwargs %}
+                        {% set item_target = item_kwargs["target"] %}
+                    {% endif %}
+
+                    <li><a href="{{ item_url | safe  }}" target="{{ item_target }}">{{ item_name | safe }}</a></li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </ol>
+
+{% endmacro %}
