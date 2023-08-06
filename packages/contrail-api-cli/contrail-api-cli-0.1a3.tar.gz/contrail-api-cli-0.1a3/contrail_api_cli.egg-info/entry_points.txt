@@ -1,0 +1,6 @@
+[console_scripts]
+contrail-api-cli = contrail_api_cli.prompt:main
+
+[keystoneclient.auth.plugin]
+http = contrail_api_cli.auth:HTTPAuth
+
