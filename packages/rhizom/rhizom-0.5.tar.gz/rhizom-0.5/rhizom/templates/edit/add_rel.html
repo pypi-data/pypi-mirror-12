@@ -1,0 +1,29 @@
+{% import '_macros.html' as macros %}
+
+<form role="form" method="post" class="form-inline"
+      action="{{ url_for('api_rel_add', graph=graph.id) }}">
+    {% if newrel_form.errors %}
+    <div class="alert alert-danger">
+        {{ _("The form has errors, please fix them.") }}
+    </div>
+    {% endif %}
+    {{ newrel_form.hidden_tag() }}
+    <input type="hidden" name="person" value="{{ person.id }}" />
+    <input type="hidden" name="source" value="{{ person.name }}" />
+    {{ macros.render_field_table(newrel_form.target, class="autocomplete") }}
+    {{ macros.render_field_table(newrel_form.rtype, class="form-control input-sm") }}
+    {{ macros.render_field_table(newrel_form.dotted, class="form-control input-sm") }}
+    <div class="form-group">
+        <button name="_method" value="POST"  data-loading-text="..."
+                class="btn btn-sm btn-primary" title="{{ _("Add") }}">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+</form>
+
+<script>
+$(function() {
+    var existingNames = graph.getPersonNames();
+    setup_autocomplete($('input.autocomplete'), existingNames);
+});
+</script>

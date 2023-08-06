@@ -1,0 +1,89 @@
+
+{% macro render_field(field) %}
+    <span {% if field.errors %}class="has-error"{% endif %}>
+        {{ field(**kwargs) }}
+        {% if field.errors %}
+        <span class="help-block">
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </span>
+{% endmacro %}
+
+{% macro render_field_p(field) %}
+    <p {% if field.errors %}class="has-error"{% endif %}>
+        {{ field.label }}&nbsp;:
+        {{ field(**kwargs) }}
+        {% if field.errors %}
+        <span class="help-block">
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+{% endmacro %}
+
+{% macro render_field_table(field) %}
+    <div class="form-group {% if field.errors %}has-error{% endif %}">
+        {{ field(**kwargs) }}
+        {% if field.errors %}
+        <span class="help-block">
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_field_horizontal(field, label_text=None) %}
+    <div class="form-group {% if field.errors %}has-error{% endif %}">
+        {% if field.type == "BooleanField" %}
+        <div class="col-sm-9 col-sm-offset-3">
+            <div class="checkbox">
+                <label>
+                    {{ field(**kwargs) }}
+                    {{ label_text or field.label.text }}
+                </label>
+            </div>
+        </div>
+        {% else %}
+        {{ field.label(class="col-sm-3 control-label", text=label_text) }}
+        <div class="col-sm-9">
+            {{ field(**kwargs) }}
+            {% if field.errors %}
+            <span class="help-block">
+                {% for error in field.errors %}
+                {{ error }}
+                {% endfor %}
+            </span>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_field_inline(field, label_text=None) %}
+    <div class="form-group {% if field.errors %}has-error{% endif %}">
+        {{ field.label(text=label_text) }}
+        {{ field(**kwargs) }}
+        {% if field.errors %}
+        <span class="help-block">
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_nav_item(url, title, extra_classes='') %}
+    <li class="{{ extra_classes }}
+        {% if request.script_root + request.path == url %}active{% endif %}
+        ">
+        <a class="navbar-link" href="{{ url }}">{{ title }}</a>
+    </li>
+{% endmacro %}

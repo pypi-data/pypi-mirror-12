@@ -1,0 +1,307 @@
+/*
+ * Generic
+ */
+
+.ajaxloader {
+    display: block;
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.flashmessages {
+    position: fixed;
+    top: 3em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+.flashmessage .alert {
+    display: inline-block;
+}
+.flashmessage.dismissible {
+    position: absolute;
+    left: 50%;
+}
+.flashmessage.dismissible .alert-dismissible {
+    position: relative;
+    left: -50%;
+}
+
+.navbar-brand img { display: inline }
+
+.loadable {
+    width: 16px;
+    height: 16px;
+    margin: 5px auto;
+    background-image: url("ajax-loader.gif");
+}
+
+.smaller {
+    font-size: 70%;
+}
+.smaller .glyphicon {
+    font-size: 85%;
+}
+
+.form-table {
+    display: table;
+    border-collapse: collapse;
+    margin: 0px auto;
+}
+.form-table .form-table-head {
+    display: table-row;
+}
+.form-table .form-table-head .form-table-cell,
+.form-table form.form-inline .form-group {
+    display: table-cell;
+    padding: 0.4em 1em;
+}
+.form-table .form-table-head .form-table-cell {
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+}
+.form-table form.form-inline {
+    display: table-row;
+}
+.form-table form.form-inline .form-group {
+    border-top: 1px solid #ddd;
+}
+.form-table form.form-inline .form-group input[type='checkbox'],
+.form-table form.form-inline .form-group input[type='select'] {
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+/*
+ * Front page
+ */
+
+img.signin {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+div.newgraph {
+    margin-top: 3em;
+}
+
+.graphlist li a {
+    margin-right: 0.5em;
+}
+
+
+
+/*
+ * Graph styles, those only applies to the web, not SVG
+ */
+
+#graph-container {
+    overflow-x: hidden;
+    border: 1px solid black;
+}
+
+#graph {
+    height: 200px; /* Will be adapted to the screen height on load */
+}
+
+#graph .ajaxloader {
+    padding-top: 2em;
+}
+
+#graph > svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.node circle {
+    cursor: move;
+}
+
+
+
+/*
+ * Footer
+ */
+
+#graph-footer {
+    padding-top: 1em;
+    text-align: center;
+    font-size: 90%;
+    clear: both;
+}
+#graph-footer p {
+    margin-top: 0.2em;
+    margin-bottom: 0;
+}
+#legend ul {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+#legend ul li {
+    display: inline-block;
+    margin-left: 1em;
+}
+#legend ul li span {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: baseline;
+}
+#legend ul li a {
+    text-decoration: none;
+    color: black;
+    outline: none;
+}
+#legend ul li a:hover {
+    text-decoration: none;
+}
+
+#graph-actions {
+    margin-top: 0.5em;
+}
+
+/* Anonymous button */
+#btn-anonymous span.glyphicon-eye-open,
+#btn-anonymous.active span.glyphicon-eye-close {
+    display: inline;
+}
+#btn-anonymous.active span.glyphicon-eye-open,
+#btn-anonymous span.glyphicon-eye-close {
+    display: none;
+}
+
+#linkdistance {
+    width: 85px;
+    margin: 0 0.5em;
+    display: inline-block;
+}
+#linkdistance .ui-slider-handle {
+    outline: none;
+}
+
+
+/*
+ * Edit mode
+ */
+.edit-panel {
+    z-index: 1;
+    border-right: 1px solid gray;
+    background-color: #fefefe;
+    width: 50%;
+    margin-left: -50%;
+    float: left;
+}
+.edit-panel .ajaxloader {
+    width: auto;
+    left: auto;
+    display: none;
+}
+.edit-panel .ajaxloader img {
+    width: 32px;
+    height: 32px;
+}
+.edit-panel .edit-panel-content {
+    padding: 1em;
+    padding-top: 0.3em;
+}
+.edit-panel .edit-panel-content h4 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.edit-panel .edit-panel-content h5 {
+    font-size: 16px;
+    margin-top: 1em;
+}
+.edit-panel .edit-panel-toolbar {
+    text-align: right;
+    font-size: 120%;
+    line-height: 1em;
+}
+.edit-panel .edit-panel-toolbar a {
+    color: #999;
+    margin-left: 0.2em;
+}
+.edit-panel .edit-panel-toolbar a:hover {
+    text-decoration: none;
+    color: #444;
+}
+.edit-panel .edit-panel-content .edit-panel-form {
+    clear: both;
+}
+.edit-panel .edit-panel-form .form-table input[type='text'] {
+    /*width: 10em;*/
+}
+.edit-panel .form-group.buttons {
+    white-space: nowrap;
+}
+
+
+/*
+ * Admin
+ */
+
+table.table.table-centered {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+table.table.table-centered th {
+    text-align: center;
+}
+table.table.table-centered td {
+    padding-left: 1em;
+    padding-right: 1em;
+    vertical-align: middle;
+}
+
+input.form-control.color {
+    width: 5em;
+}
+
+
+
+/*
+ * Footer
+ */
+#footer {
+    margin-top: 4em;
+}
+#footer p {
+    text-align: center;
+    font-size: 90%;
+    color: #777;
+}
+
+
+/*
+ * Autocomplete
+ */
+.tt-dropdown-menu {
+    border-left: 1px solid #66afe9;
+    border-right: 1px solid #66afe9;
+    border-bottom: 1px solid #66afe9;
+    padding: 2px 0px;
+    border-radius: 3px;
+    background-color: #ffffff;
+}
+.tt-dropdown-menu .tt-suggestion p {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+}
+.tt-dropdown-menu .tt-suggestion {
+    padding: 0.2em 1.5em;
+    cursor: pointer;
+}
+.tt-dropdown-menu .tt-cursor {
+    background-color: #eeeeee;
+}

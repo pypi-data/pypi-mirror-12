@@ -1,0 +1,52 @@
+{% import '_macros.html' as macros %}
+
+<div class="form-table">
+    <div class="form-table-head">
+        <div class="form-table-cell">{{ _("Name") }}</div>
+        <div class="form-table-cell">{{ _("Color") }}</div>
+        <div class="form-table-cell">{{ _("Count") }}</div>
+        <div class="form-table-cell"></div>
+    </div>
+    <form role="form" method="post" class="form-inline"
+          action="{{ url_for('api_reltype', graph=graph.id, _method='POST') }}">
+        {{ reltypes_form.hidden_tag() }}
+        {{ macros.render_field_table(reltypes_form.name) }}
+        {{ macros.render_field_table(reltypes_form.color, class="color") }}
+        <div class="form-group"></div>
+        <div class="form-group">
+            <button name="_method" value="POST" data-loading-text="..."
+                    class="btn btn-sm btn-primary" title="{{ _("Add") }}">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </form>
+    {% for reltype in rel_types %}
+    <form role="form" method="post" class="form-inline"
+          action="{{ url_for('api_reltype', graph=graph.id, name=reltype.name, _method='PUT') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <div class="form-group">
+            <input type="text" name="newname" class="form-control input-sm" value="{{ reltype.name }}" />
+        </div>
+        <div class="form-group">
+            <input type="color" name="color" class="form-control input-sm color" value="{{ reltype.color }}" />
+        </div>
+        <div class="form-group text-center">
+            {{ reltype.rel_count }}
+        </div>
+        <div class="form-group">
+            <button name="_method" value="PUT" data-loading-text="..."
+                    class="btn btn-sm btn-info" title="{{ _("Update") }}">
+                <span class="glyphicon glyphicon-edit"></span>
+            </button>
+            <button name="_method" value="DELETE" data-loading-text="..."
+                    class="btn btn-sm btn-warning" title="{{ _("Delete") }}"
+                    {% if reltype.rel_count != 0 %}
+                    data-confirm="{{ _("You are deleting %(count)s relationships.", count=reltype.rel_count) }}"
+                    {% endif %}
+                    >
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+    </form>
+    {% endfor %}
+</div>

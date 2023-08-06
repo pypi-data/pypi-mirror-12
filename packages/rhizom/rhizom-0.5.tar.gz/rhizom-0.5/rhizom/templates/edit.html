@@ -1,0 +1,43 @@
+{% import '_macros.html' as macros %}
+
+
+{% if newrel_form.rtype.choices %} {# There is at least a relationship type defined #}
+
+{% if person %}
+<h4>{{ _("Relationships for <strong>%(name)s</strong>", name=person.name) }}</h4>
+
+<div class="form-table">
+    <div class="form-table-head">
+        <div class="form-table-cell">{{ _("With") }}</div>
+        <div class="form-table-cell">{{ _("Type") }}</div>
+        <div class="form-table-cell">{{ _("Dotted") }}</div>
+        <div class="form-table-cell"></div>
+    </div>
+    {% include "edit/add_rel.html" %}
+    {% for rel in relationships %}
+        {% include "edit/edit_rel.html" %}
+    {% endfor %}
+</div>
+
+{% else %}
+
+<h4>{{ _("New relationship") }}</h4>
+
+{% include "edit/new_rel.html" %}
+
+{% endif %}
+
+
+{% else %} {# There is no relationship type defined #}
+<div class="alert alert-danger">
+    {{ _("No relationship type has been configured yet.") }}
+    {% if current_user.has_perm(graph, 'admin') %}
+    {% autoescape false %}
+    {{ _("Start by adding one <a %(href)s>on the admin page</a>.", href='href="%s"' % url_for('admin', graph_id=graph.id)) }}
+    {% endautoescape %}
+    {% else %}
+    {{ _("Ask the graph admin to add some.") }}
+    {% endif %}
+</div>
+{% endif %}
+
