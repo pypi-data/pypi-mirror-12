@@ -1,0 +1,17 @@
+include INSTALL
+include README
+include COPYRIGHT
+include CHANGELOG
+include MIGRATION
+include LICENSE
+include MANIFEST
+include Makefile
+include *.txt
+include *.md
+include *.py
+include tox.ini
+include .coveragerc
+exclude *.pyc, *.swp
+graft templates
+graft static
+recursive-include beacons *
