@@ -1,0 +1,77 @@
+/* This file is only used when ftw.theming is installed. */
+
+@include portal-type-font-awesome-icon(ftw-simplelayout-contentpage, list-alt);
+@include portal-type-font-awesome-icon(ftw-simplelayout-filelistingblock, list);
+@include portal-type-font-awesome-icon(ftw-simplelayout-galleryblock, picture-o);
+@include portal-type-font-awesome-icon(ftw-simplelayout-listingblock, list-ul);
+@include portal-type-font-awesome-icon(ftw-simplelayout-textblock, paragraph);
+@include portal-type-font-awesome-icon(ftw-simplelayout-videoblock, film);
+
+
+@mixin horizontal-align() {
+  display: block;
+  margin: 0 auto;
+  clear: right;
+}
+
+.sl-toolbar-layout,
+.sl-toolbar-block {
+  @include ul(plain);
+}
+
+
+.sl-image {
+  &.left {
+    float: left;
+  }
+  &.right {
+    float: right;
+  }
+  &.sl_textblock_small{
+    width: 25%;
+  }
+  &.sl_textblock_middle {
+    width: 50%;
+  }
+  &.sl_textblock_large {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+
+.ui-sortable-disabled .sl-layout:hover .sl-toolbar-layout {
+  opacity: 0;
+}
+
+
+.galleryblockImageWrapper{
+  display: table-cell;
+  float: left;
+  background-color: #eee;
+  overflow: hidden;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  width: 130px;
+  height: 130px;
+}
+.galleryblockImageWrapper a{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.galleryblockImageWrapper img{
+  @include horizontal-align();
+}
+.contenttreeWindowBlocker {
+    z-index: 70000 !important;
+}
+.contenttreeWindow {
+    z-index: 70001 !important;
+}
