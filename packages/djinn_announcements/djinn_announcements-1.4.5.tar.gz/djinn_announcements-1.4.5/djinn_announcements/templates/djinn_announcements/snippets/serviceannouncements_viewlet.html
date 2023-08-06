@@ -1,0 +1,74 @@
+{% load i18n humanize djinn_announcements_tags auth_tags %}
+
+<section id="serviceannouncements" class="editmode">
+  
+  <header>
+    <h1>{% trans "Service announcements" %}</h1>
+
+      {% ifpermission "" request.user 'djinn_announcements.add_serviceannouncement' %}
+      <span class="controls">
+        <a
+           class="add-inline"
+           data-toggle="tooltip"
+           title="{% trans 'Add service announcement' %}"
+           href="{% url 'djinn_announcements_add_serviceannouncement' %}">
+           <i class="icon-plus"></i>
+        </a>
+        <div class="help">
+            <div class="help-tooltip">
+                {% trans "tooltip-add-serviceannouncement" %}
+            </div>
+        </div>
+      </span>
+      {% endifpermission %}
+  </header>
+
+  {% if view.announcements|length > 0 %}
+
+  <ul class="simple-list">
+    {% for announcement in view.announcements %}
+    <li class="announcement">
+      <a
+         href="{% url 'djinn_announcements_view_serviceannouncement' announcement.id announcement.slug %}" >
+        {{ announcement.title }}
+      </a>
+      <time class="time">{{ announcement.start_date|naturalday:_("MONTH_DAY_FORMAT") }} {{ announcement.start_date|time }} {% if announcement.end_date %}- {{ announcement.end_date|naturalday:_("MONTH_DAY_FORMAT") }} {{ announcement.end_date|time }}{% endif %}</time>
+      <div class="alert-update">
+      {% if announcement.status > -1 %}
+        <em class="{{ announcement.status|statusclass }}">{{ announcement.formatted_status }}</em>
+      {% endif %}
+      {% if announcement.updates.all.exists %}
+        <em class="updates">
+{% blocktrans count counter=announcement.updates.count %}
+{{ counter }} update
+{% plural %}
+{{ counter }} updates
+{% endblocktrans %}
+        </em>
+      {% endif %}
+      </div>
+
+      {% comment %}
+      {{ announcement.text|safe|truncatechars:"150" }}
+      
+      {% if announcement.updates.all.exists %}
+      <time class="pull-left">Update {{ announcement.sorted_updates.0.date }}</time>{{ announcement.sorted_updates.0.text|safe }}
+      {% endif %}
+      {% endcomment %}
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if view.show_more %}
+  <a href="{% url 'haystack_search' %}?content_type=serviceannouncement&sortorder=-changed&restrict_filters=">{% trans "All service announcements" %}</a>
+  {% endif %}
+
+  {% else %}
+  
+  <div class="alert alert-info" id="announcements-alert">
+    {% trans "No announcements" %}
+  </div>
+  
+  {% endif %}
+  
+</section>
