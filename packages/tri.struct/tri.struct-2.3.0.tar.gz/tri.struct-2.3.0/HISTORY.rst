@@ -1,0 +1,36 @@
+Changelog
+=========
+
+2.3.0 - 2015-12-02
+~~~~~~~~~~~~~~~~~~
+
+* Add mixin class `Frozen`to make read-only versions of a dict-derived
+  class (typically a Struct or a subclass there of.)
+
+* Use the `Frozen` mixin to implement `FrozenStruct`
+
+2.2.0 - 2015-11-12
+~~~~~~~~~~~~~~~~~~
+
+* Add keyword arguments to `merged` function.
+
+2.1.2 - 2015-11-11
+~~~~~~~~~~~~~~~~~~
+
+* Redo the C implementation to be a "heaptype", and remove the hack of
+  setting `__dict__` = `self`. Instead, `object` will control the type
+  storage, letting us "insert" attributes into the object without
+  polluting the `dict`.
+
+2.0 - (never released)
+~~~~~~~~~~~~~~~~~~~~~~
+
+* slim down interface to again match dict
+* add tri.struct.merged function to join structs
+* add optional C implementation to speed up instantiation
+
+1.0 - 2015-09-29
+~~~~~~~~~~~~~~~~
+
+* Struct with attribute & dict interface
+* __add__ and __or__ to combine structs
