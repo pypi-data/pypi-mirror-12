@@ -1,0 +1,64 @@
+Metadata-Version: 1.1
+Name: ascribe
+Version: 0.0.6.dev1
+Summary: ascribe api
+Home-page: https://github.com/ascribe/ascribe-api-wrapper
+Author: Oskar Paolini, Sylvain Bellemare
+Author-email: sylvain@ascribe.io
+License: MIT
+Description: ascribe SPOOL API Python Wrapper
+        ================================
+        
+        This is a communauty-based python wrapper around the `ascribe ownership REST
+        API <http://docs.ascribe.apiary.io>`_.
+        
+        
+        Installation
+        ------------
+        
+        .. code-block:: python
+        
+            pip install ascribe
+        
+        
+        Usage Example: Registering a Piece
+        ----------------------------------
+        
+        .. code-block:: python
+            
+            >>> from ascribe import AscribeWrapper
+            >>> ascribe_wrapper = AscribeWrapper('your-token')
+            >>> piece = {
+                'file_url': 'https://s3.eu-central-1.amazonaws.com/bucket/img.jpg',
+                'artist_name': 'mystery',
+                'title': 'universe',
+            }
+            >>> ascribe_wrapper.create_piece(piece)
+            {'piece': {
+                'artist_name': 'mystery',
+                'bitcoin_id': 'bitcoin-id',
+                'date_created': '2015-01-01',
+                'datetime_registered': '2015-11-28T20:42:19.917896Z',
+                'license_type': {
+                    'code': 'default',
+                    'name': 'All rights reserved',
+                    'organization': 'ascribe',
+                    'url': 'https://www.ascribe.io/faq/#legals'
+                },
+                'title': 'universe',
+                'user_registered': 'mystery'
+                ...
+                ...
+            }}
+        
+Keywords: intellectual property,attribution,ownership,art,blockchain,api digital work,provenance,spool
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
