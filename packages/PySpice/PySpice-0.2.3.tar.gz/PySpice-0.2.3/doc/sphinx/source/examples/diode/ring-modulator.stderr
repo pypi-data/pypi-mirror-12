@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/gv/fabrice/developpement/PySpice/examples/diode/__example_rst_factory__t0vqwzt6.py", line 84, in <module>
+    analysis = simulator.transient(step_time=modulator.period/1000, end_time=modulator.period)
+  File "/home/gv/sys/fc14/fabrice/PySpice/PySpice/Spice/Simulation.py", line 391, in transient
+    return self._run('transient', *args, **kwargs)
+  File "/home/gv/sys/fc14/fabrice/PySpice/PySpice/Spice/Simulation.py", line 419, in _run
+    raw_file = self._spice_server(str(self))
+  File "/home/gv/sys/fc14/fabrice/PySpice/PySpice/Spice/Server.py", line 151, in __call__
+    number_of_points = self._parse_stderr(stderr)
+  File "/home/gv/sys/fc14/fabrice/PySpice/PySpice/Spice/Server.py", line 124, in _parse_stderr
+    raise NameError("Simulation aborted\n" + stderr)
+NameError: Simulation aborted
+doAnalyses: TRAN:  Timestep too small; time = 3.73019e-08, timestep = 1.25e-18: trouble with xring_modulator.xd1:1n4148-instance d.xring_modulator.xd1.d1
+
+
+run simulation(s) aborted
+
