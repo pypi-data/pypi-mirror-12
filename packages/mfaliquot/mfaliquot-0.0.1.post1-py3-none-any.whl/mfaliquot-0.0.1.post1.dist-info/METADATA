@@ -1,0 +1,49 @@
+Metadata-Version: 2.0
+Name: mfaliquot
+Version: 0.0.1.post1
+Summary: A software 'suite' relating to aliquot sequences and their analysis
+Home-page: https://github.com/dubslow/MersenneForumAliquot
+Author: Bill Winslow
+Author-email: Dubslow @ mersenneforum.org
+License: GPLv3+
+Keywords: aliquot sequences mersenne mersenneforum perfect numbers
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3 :: Only
+
+This is a suite of various semi-related software concerning MersenneForum's
+Aliquot sequences forum. Of most note is the website that maintains the current
+status of all sequences less than 10^6 -- its primary script, as well as all
+HTML templates, are included in this repository. The primary script relies on
+the various other things located here as well.
+
+The website/ folder contains the relevant HTML/JS/CSS/etc.
+
+The scripts/ folder contains the main website script, as well as the
+reservations tracking script, a small script to find sequences with drivers
+susceptible to breaking, and the merge detecting script.
+
+The mfaliquot/ package contains the numtheory.py and aliquot.py modules
+I wrote while I was talking a number theory course -- the former module has a
+lot of unrelated-to-aliquot material, but has a bunch of relevant stuff as well,
+which aliquot.py and in turn the website and other scripts depend on.
+
+The fdb/ pseudo-package can be ignored for now. (I had the ambitious idea of
+writing a Python package that extends some HTML parsing done in the scripts/
+folder into a complete FDB "API" that interacts with the HTML. Work halted for
+the forseeable future.)
+
+All code, markup, and text in this repository (save for the website/html/js/
+folder, which contains external projects) is copyright by Dubslow (aka Bill
+Winslow), and is licensed under the GPL. See LICENSE for details.
+
+Contributors: Christian Beer
+
+
