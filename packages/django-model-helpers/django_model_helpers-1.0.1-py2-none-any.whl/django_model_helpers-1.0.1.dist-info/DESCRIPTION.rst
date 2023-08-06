@@ -1,0 +1,213 @@
+Model Helpers
+-------------
+
+Model helpers are small collection of django functions and classes that make working
+with models easier. All functions here are compliant with pylint and has
+test cases with over 95% code coverage. This doc describe each of these
+helpers.
+
+**model\_helpers.upload\_to**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pass ``model_helpers.upload_to`` as ``upload_to`` parameter for any
+FileField or ImageField. This will generates random file name and return
+it while keeping the original file extension. each model get its own
+storage folder named after model’s name.
+
+``upload_to`` function also block files with certain harmful extentions
+like “php” or “py” from being uploaded.
+
+**Sample usage:**
+
+::
+
+    import model_helpers
+
+    class Profile(models.model):
+        name = CharField(max_length=100)
+        picture = ImageField(upload_to=model_helpers.upload_to)
+
+uploaded images for this model will be stored in:
+``media/Profile/&lt;current_year&gt;/&lt;slugified_original_filename&gt;``.
+
+\_\_Note:\_\_f filename exceeds 40 character, it will be trimmedl.
+
+cached\_model\_property decorator
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``cached_model_property`` is a decorator for model functions that takes
+no arguments. The decorator convert the function into a property that
+support caching out of the box
+
+**Note**: ``cached_model_property`` is totally different from django’s
+``model_property`` the later is not true caching but rather memorizing
+function’s return value.
+
+**Sample usage:**
+
+::
+
+    class Team(models.Model):
+        @cached_model_property
+        def points(self):
+            # Do complex DB queries
+            return result
+
+        @cached_model_property(readonly=False)
+        def editable_points(self):
+            # get result
+            return result
+
+        @cached_model_property(cache_timeout=1)
+        def one_second_cache(self):
+            # get result
+            return result
+
+Now try
+
+::
+
+    team = Team.objects.first()
+
+-  ``team.points`` &lt;– complex DB queries will happen, result will be
+   returned
+-  ``team.points`` &lt;– this time result is returned from cache (points
+   function is not called
+-  ``del team.points`` &lt;– points value has been removed from cache
+-  ``team.points`` &lt;– complex DB queries will happen, result will be
+   returned
+
+**How does it work?**: first time the decorator store the function
+output in the cache with
+``key = "&lt;model_class&gt;_&lt;instance.pk&gt;_&lt;function_name&gt;"`` so if you have
+two models with same name, or have model that provide no primary key you
+can’t use this decorator.
+
+set ``readonly`` parameter to ``False`` to make the property writeable
+
+``team.editable_points = 88``
+
+In this case the assigned value will replace the value stored in the
+cache
+
+``team.editable_points`` returns 88
+
+I personally don’t use the writable cached property option but might be
+useful to someone else
+
+   from
+
+to
+
+Choices class *inspired by `Django Choices`_.*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Dealing with Django’s ``choices`` attribute is a pain. Here is a proper
+way of implementing choice field in Django
+
+::
+
+    class Student(models.Model):
+        FRESHMAN = 'FR'
+        SOPHOMORE = 'SO'
+        JUNIOR = 'JR'
+        SENIOR = 'SR'
+        YEAR_IN_SCHOOL_CHOICES = (
+            (FRESHMAN, 'Freshman'),
+            (SOPHOMORE, 'Sophomore'),
+            (JUNIOR, 'Junior'),
+            (SENIOR, 'Senior'),
+        )
+        year_in_school = models.CharField(
+                            max_length=2,
+                            choices=YEAR_IN_SCHOOL_CHOICES,
+                            default=FRESHMAN)
+
+Then you can do
+
+::
+
+    student = Student.objects.first()
+    if student.year_in_school == Student.SENIOR:
+          # do some senior stuff
+
+With Choices class this becomes
+
+::
+
+    YEAR_IN_SCHOOL_CHOICES = Choices({
+        "freshman": "FR",
+        "sophomore": "SO",
+        "junior": "JR",
+        "Senior": "SR"
+    })
+
+
+    class Student(models.Model):
+        year_in_school = models.CharField(
+                            max_length=2,
+                            choices=YEAR_IN_SCHOOL_CHOICES(),
+                            default=YEAR_IN_SCHOOL_CHOICES.freshman)
+
+Then you can do
+
+::
+
+    student = Student.objects.first()
+    if student.year_in_school == YEAR_IN_SCHOOL_CHOICES.senior:
+          # do some senior stuff
+
+``YEAR_IN_SCHOOL_CHOICES`` is a readonly OrderedDict and you can treat
+it as such. for example: ``YEAR_IN_SCHOOL_CHOICES.keys()`` or
+``YEAR_IN_SCHOOL_CHOICES.iteritems()``
+
+``Choices`` class is more flexible because it allow you to specify 3
+values. choice name, choice db value, choice display name. The example
+above can be better written like that
+
+::
+
+     YEAR_IN_SCHOOL_CHOICES = Choices({
+         "freshman": {"id": 0, "display": "New comer"},
+         "sophomore": 1,
+         "junior": 2,
+         "Senior": 3
+      }, order_by="id")
+
+
+    class Student(models.Model):
+        year_in_school = models.SmalllIntegerField(
+                            choices=YEAR_IN_SCHOOL_CHOICES(),
+                            default=YEAR_IN_SCHOOL_CHOICES.freshman)
+
+Then you can do something like this
+
+::
+
+    Student.objects.filter(
+        year_in_school__gt=YEAR_IN_SCHOOL_CHOICES.sophomore)
+
+To return all students in grades higher than Sophomore
+
+-  A choice can be defined as key/value ``"sophomore": 1`` in which case
+   display name will be code name capitalized ``"Sophomore"`` and will
+   be saved in DB as number ``1``
+-  A choice can be fully defined as key/dict
+   ``"freshman": {"id": 0, "display": "New comer"}`` in which case
+   display name will be ``"New comer"`` and id will be ``0``
+
+Defining extra keys to use in your code.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As mentioned before ``Choices`` can be treated as an OrderedDictionary
+and so you should feel free to use the free functionality, for example
+adding extra keys
+
+::
+
+        AVAILABLE_SETTINGS = Choices({
+            "max_page_width": {"id": 0, "display": "Maxim
+
+.. _Django Choices: https://pypi.python.org/pypi/django-choices/
+
+
