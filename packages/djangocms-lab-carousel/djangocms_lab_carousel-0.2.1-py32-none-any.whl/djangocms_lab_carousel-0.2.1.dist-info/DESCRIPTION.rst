@@ -1,0 +1,150 @@
+**********************
+djangocms-lab-carousel
+**********************
+
+``djangocms-lab-carousel`` is a Django app for adding a carousel of recent papers, etc. to a Django site with django CMS-specific features. It uses ``djangocms-lab-publications`` manage publications.
+
+Source code is available on GitHub at `mfcovington/djangocms-lab-carousel <https://github.com/mfcovington/djangocms-lab-carousel>`_. Information about and source code for ``djangocms-lab-carousel`` is available on GitHub at `mfcovington/djangocms-lab-publications <https://github.com/mfcovington/djangocms-lab-publications>`_.
+
+.. contents:: :local:
+
+
+Installation
+============
+
+**PyPI**
+
+.. code-block:: sh
+
+    pip install djangocms-lab-carousel
+
+
+**GitHub (development branch)**
+
+.. code-block:: sh
+
+    pip install git+http://github.com/mfcovington/djangocms-lab-carousel.git@develop
+
+
+Configuration
+=============
+
+- `Install django CMS and start a project <http://docs.django-cms.org/en/latest/introduction/install.html>`_, if one doesn't already exist.
+
+  - Unless you use this app as part of `djangocms-lab-site <https://github.com/mfcovington/djangocms-lab-site>`_ or plan to style the app from scratch, you will want to choose the ``Use Twitter Bootstrap Theme`` option (when running ``djangocms``) and then edit the resulting ``templates/base.html``. This will add style that looks like Bootstrap 2. To use Bootstrap 3 styling, remove the following line for the ``bootstrap-theme.min.css`` stylesheet from ``templates/base.html``:
+
+    .. code-block:: python
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.x.x/css/bootstrap-theme.min.css">
+
+
+- Do the following in ``settings.py``:
+
+  - Add ``cms_lab_carousel`` and its dependencies to ``INSTALLED_APPS``:
+
+    .. code-block:: python
+
+        INSTALLED_APPS = (
+            # ...
+            'cms_lab_carousel',
+            'cms_lab_publications',
+            'easy_thumbnails',
+            'filer',
+            'mptt',
+            'taggit',
+        )
+
+
+  - Add ``easy_thumbnail`` settings: 
+
+    .. code-block:: python
+
+        # For easy_thumbnails to support retina displays (recent MacBooks, iOS)
+        THUMBNAIL_HIGH_RESOLUTION = True
+        THUMBNAIL_QUALITY = 95
+        THUMBNAIL_PROCESSORS = (
+            'easy_thumbnails.processors.colorspace',
+            'easy_thumbnails.processors.autocrop',
+            'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+            'easy_thumbnails.processors.filters',
+        )
+        THUMBNAIL_PRESERVE_EXTENSIONS = ('png', 'gif')
+        THUMBNAIL_SUBDIR = 'versions'
+
+
+Migrations
+==========
+
+Create and perform migrations ``cms_lab_carousel`` and its dependencies:
+
+.. code-block:: sh
+
+    python manage.py makemigrations cms_lab_carousel
+    python manage.py makemigrations cms_lab_publications
+    python manage.py migrate
+
+
+Usage
+=====
+
+- Start the development server:
+
+.. code-block:: sh
+
+    python manage.py runserver
+
+
+- Visit: ``http://127.0.0.1:8000/``
+- Create a CMS page.
+- Insert the ``Carousel Plugin`` into a placeholder field.
+
+
+*Version 0.2.1*
+
+
+Revision History
+================
+
+0.2.1 2015-12-07
+
+- Set slide's publication date based on article's publication date
+- Prevent deletion of publication that is being used by a slide
+- On carousel deletion, set slide's carousel field to null
+- Show (and sort by) # of slides in carousel admin's list display
+- Add save buttons to top of carousel admin
+- Minor behind-the-scenes improvements
+- Update README with more complete and accurate instructions
+- Prepare for distribution via PyPI
+
+
+0.2.0 2015-08-27
+
+- Allow linking from a slide to a journal article (``djangocms-lab-publication``)
+- Configure bumpversion & wheel for easier distribution
+
+
+0.1.4 2015-05-08
+
+- Add optional CMS page link button for slides
+
+
+0.1.3 2015-04-21
+
+- Make minor improvements to styling
+
+
+0.1.2 2015-04-19
+
+- Make minor improvements to styling
+
+
+0.1.1 2015-04-17
+
+- Correct app name in ``setup.py``
+
+
+0.1.0 2015-04-17
+
+- A Django app for adding carousel of recent papers, etc. to a Django site with django CMS-specific features
+
+
