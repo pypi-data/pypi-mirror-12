@@ -1,0 +1,46 @@
+#!/usr/bin/python
+
+# pysendmail
+# author, maintainer: Ondrej Sika, <ondrej@ondrejsika.com>
+# license: MIT <https://ondrejsika.com/license/mit.txt>
+
+
+import os
+import argparse
+
+from libpysendmail import sendmail
+
+
+FROM = os.environ.get("PYSENDMAIL_FROM", None)
+TO = os.environ.get("PYSENDMAIL_TO", None)
+MESSAGE = os.environ.get("PYSENDMAIL_MESSAGE", None)
+
+USER = os.environ.get("PYSENDMAIL_USER", None)
+TLS = os.environ.get("PYSENDMAIL_TLS", None)
+SERVER = os.environ.get("PYSENDMAIL_SERVER", None)
+PASSWORD = os.environ.get("PYSENDMAIL_PASSWORD", None)
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-f", "--fromemail", help="from email", required=(False if FROM else True), default=FROM)
+parser.add_argument("-t", "--toemail", help="to email", required=(False if TO else True), default=TO)
+parser.add_argument("-m", "--message", help="message", required=(False if MESSAGE else True), default=MESSAGE)
+
+parser.add_argument("-u", "--user", help="user", required=(False if USER else True), default=USER)
+parser.add_argument("-T", "--tls", help="tls", required=(False if TLS else True), default=TLS)
+parser.add_argument("-p", "--password", help="password", required=(False if PASSWORD else True), default=PASSWORD)
+parser.add_argument("-s", "--server", help="server:port", required=(False if SERVER else True), default=SERVER)
+
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    sendmail(
+        args.fromemail,
+        args.toemail,
+        args.message,
+        args.user,
+        args.password,
+        args.server,
+        args.tls == "TRUE",
+    )
+
