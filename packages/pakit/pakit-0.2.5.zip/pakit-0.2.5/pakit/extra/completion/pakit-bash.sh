@@ -1,0 +1,89 @@
+# $1 is needle rest is haystack
+word_in_array() {
+  local found needle word words
+  needle="$1"
+  shift
+  words=( ${@} )
+  found=0
+
+  for word in ${words[@]} ; do
+    if [ "$needle" = "$word" ]; then
+      found=1
+      break
+    fi
+  done
+
+  echo $found
+}
+
+_pakit() {
+  local cur prev prog split=false
+  cur=$(_get_cword "=")
+  prev="${COMP_WORDS[COMP_CWORD-1]}"
+  prog="${COMP_WORDS[0]}"
+  COMPREPLY=()
+
+  _expand || return 0
+
+  local available opts subcoms
+  opts="-c -h -v --conf --help --version"
+  subcoms="install remove update display list available search relink"
+  if [ "${__COMP_CACHE_PAKIT}x" = "x" ]; then
+    available=$($prog available --short 2>/dev/null)
+    __COMP_CACHE_PAKIT=( "$available" )
+    export __COMP_CACHE_PAKIT
+  else
+    available="${__COMP_CACHE_PAKIT[0]}"
+  fi
+
+  _split_longopt && split=true
+
+  case "${prev}" in
+    # file completion
+    -c|--conf)
+      _filedir
+      return 0
+      ;;
+    # require args, no completion
+    -h|-v|--help|--version)
+      return 0
+      ;;
+  esac
+
+  # Subcommand case, have to scan for more than just $prev
+  local subopts="-h --help"
+  if [ "$(word_in_array "install" "${COMP_WORDS[@]}")" = "1" ] ||
+     [ "$(word_in_array "display" "${COMP_WORDS[@]}")" = "1" ]; then
+    COMPREPLY=( $(compgen -W "${subopts} ${available}" -- "${cur}") )
+    return 0
+  elif [ "$(word_in_array "remove" "${COMP_WORDS[@]}")" = "1" ] ||
+       [ "$(word_in_array "update" "${COMP_WORDS[@]}")" = "1" ]; then
+    local installed=$($prog list --short 2>/dev/null)
+    COMPREPLY=( $(compgen -W "${subopts} ${installed}" -- "${cur}") )
+    return 0
+  elif [ "$(word_in_array "list" "${COMP_WORDS[@]}")" = "1" ] ||
+       [ "$(word_in_array "available" "${COMP_WORDS[@]}")" = "1" ]; then
+    COMPREPLY=( $(compgen -W "${subopts} --short" -- "${cur}") )
+    return 0
+  elif [ "$(word_in_array "search" "${COMP_WORDS[@]}")" = "1" ]; then
+    local search_flags="--case --names"
+    COMPREPLY=( $(compgen -W "${subopts} ${search_flags}" -- "${cur}") )
+    return 0
+  elif [ "$(word_in_array "purge" "${COMP_WORDS[@]}")" = "1" ] ||
+       [ "$(word_in_array "relink" "${COMP_WORDS[@]}")" = "1" ]; then
+    COMPREPLY=( $(compgen -W "${subopts}" -- "${cur}") )
+    return 0
+  fi
+
+  $split && return 0
+
+  case "${cur}" in
+    *)
+      COMPREPLY=( $(compgen -W "${opts} ${subcoms}" -- "${cur}") )
+      return 0
+      ;;
+  esac
+}
+
+have pakit && complete -F _pakit ${nospace} pakit
+# vim:set ft=sh ts=2 sts=2 sw=2:
