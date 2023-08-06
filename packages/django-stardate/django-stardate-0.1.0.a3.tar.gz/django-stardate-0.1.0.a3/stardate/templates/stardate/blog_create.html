@@ -1,0 +1,86 @@
+{% extends "stardate/base_stardate.html" %}
+
+
+{% block content_title %}
+    <h1>Create blog</h1>
+{% endblock content_title %}
+
+
+{% block content %}
+
+    <form action="." method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+    </form>
+
+{% comment %}
+    {% if form.errors %}
+        {{ form.errors }}
+    {% endif %}
+
+    <form action="." method="POST">
+    {% csrf_token %}
+
+    {% if not form.social_auth.value %}
+        {% for backend in backends.associated %}
+            <input type="hidden" name="backend" value="{{ backend.provider }}" />
+            <input type="submit" value="{{ backend.provider }}"></input>
+        {% endfor %}
+    {% else %}
+        {{ form.social_auth}}
+
+        {{ form.name }}
+
+        {% if form.name.value %}
+        {{ form.backend_file }}
+        {% endif %}
+
+        <input type="submit"></input>
+    {% endif %}
+    </form>
+    {% endcomment %}
+
+    {% comment %}
+    {% if not backends.associated %}
+        <ul>
+        {% for backend in backends.backends %}
+            <li>
+                {% if backend in backends.not_associated %}
+                    <a href="{% url 'social:begin' backend %}">
+                        Connect to {{ backend|capfirst }}
+                    </a>
+                {% else %}
+                    <form method="post" action="{% url 'social:disconnect' backend %}">
+                        {% csrf_token %}
+                        <button type="submot">Disconnect from {{ backend|capfirst }}</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        
+        <form action="." method="POST">
+            {% csrf_token %}
+
+            {{ form.errors }}
+
+            <p>
+                {{ form.name }}
+            </p>
+
+            <p>
+                {{ form.social_auth }}
+            </p>
+
+
+            {% if form.name.value %}
+            <p>{{ form.backend_file }}</p>
+            {% endif %}
+
+            <p><button type="submit">Create</button></p>
+        </form>
+    {% endif %}
+    {% endcomment %}
+{% endblock content %}
