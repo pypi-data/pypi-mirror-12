@@ -1,0 +1,193 @@
+Metadata-Version: 2.0
+Name: natcap.opal
+Version: 1.1.0
+Summary: Decision support tool for mitigating development impacts to ecosystem services
+Home-page: https://bitbucket.org/natcap/opal
+Author: James Douglass
+Author-email: jdouglass@stanford.edu
+License: This tool has an open license. All people are invited to use the tool
+
+under the following conditions and terms:
+
+Copyright (c) 2015, The Natural Capital Project
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+ * Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+ * Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+ * Neither the name of the Natural Capital Project nor the names of
+   its contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Description: OPAL: Offset Portfolio Analyzer and Locator
+        ===========================================
+        
+        A tool by the Natural Capital Project.
+        
+        Visit http://naturalcapitalproject.org/OPAL.html for more information.
+        
+        
+        Changes
+        =======
+        
+        1.1.0 (2015-11-12)
+        -----------
+        - (Feature) OPAL now saves a vector to the workspace of those municipalities 
+          (softboundary 3) that intersect the project footprint.  This is only saved
+          when the softboundary 3 input is provided by the user.
+        - (Bugfix) Corrected an issue where testing future scenarios in the static map 
+          generator would raise an exception.
+        - (Usability) Versioning replaced by `natcap.versioner`
+        - (Usability) OPAL UI is now offered in spanish as well as english.
+        - (Usability) OPAL UI allows for the user to select their language of choice among 
+          those offered (currently english and spanish).
+        - (Feature) OPAL/MAFE-T report and output CSV values are rounded to 3 significant 
+          figures.
+        - (Bufgix) Improved sorting by checkboxes in output report.
+        - (Usability) Improved logging to user within longer-running processes.
+        - (Feature) User's guide is tracked as a subrepository along with each build of
+          OPAL.  User's guide version numbers are pulled from the OPAL source tree.
+        - (Feature) OPAL/MAFE-T report now includes the OPAL version used and a 
+          time/date stamp.
+        - (Bugfix) The OPAL/MAFE-T report used to offer a hyperlink to the vector
+          (a multi-part ESRI Shapefile) containing the set of parcels matching 
+          criteria.  Clicking this link would only download part of the file.
+          It has been replaced with a text reference to the location of the file on 
+          disk.
+        - (Usability) Select all/Select None buttons have been removed from the report.
+          They didn't work.  They will be added back when they work properly.
+        - (Usability) Files within the workspace that are outside of the per-hydrozone
+          analysis are now hidden within an intermediate/ folder.
+        - (Usability) Various files have been renamed.
+        - (Bugfix) The headers of the top table of the output report now render in the
+          language of the OPAL run.  They used to always render in english.
+        - (Bugfix) Parcels in the parcels table of the report are now correctly screened
+          to ensure that they are at least as large as the smallest impacted area
+          of the same ecosystem type.
+        - (Usability) The user is now unable to close the OPAL/MAFE-T execution dialog
+          unless the model run has completed or the process is terminated externally.
+        - (Bugfix) Better handling for when the user provides an ecosystem vector without
+          any features or when the vector is of the wrong type (points or lines instead
+          of polygons).
+        - (Usability) When a validated, optional input has its value removed from a UI
+          input, the green checkbox indicating input validity is now disabled.
+        - (Bugfix) OPAL UI now allows files containing any UTF-8 character to be selected
+          by the user.
+        - (Feature) Output vector of selected offsets now includes the distance from the 
+          nearest impact site and the parcel size in the attribute table.
+        - (Bugfix) Output report had some columns that were incorrectly rounded to 1 
+          decimal place instead of 2.
+        - (Usability) OPAL/MAFE-T will now confirm that the user wishes to overwrite the
+          workspace if files exist within the user-defined workspace.  This dialog
+          is triggered if the user-defined workspace exists and there are files within.
+        - (Usability) OPAL/MAFE-T will now prompt the user for a language on startup
+          and remember the user's selection.  The language may be set at any time
+          through File -> Select Language.  Changing the language will trigger an 
+          application restart.
+        
+        
+        1.0.3 (2015-3-20)
+        -----------------
+        - (Usability) Improved many UI labels.
+        - (Usability) Improved folder name of the results folder.
+        - (Bugfix) Removed empty folders created by the tool in the workspace.
+        - (Bugfix) Corrected text of link to offsets vector in report.
+        - (Bugfix) Implemented automatic window sizing.
+        - (Usability) Filled in empty UI HelpText bubbles.
+        - (Usability) Renamed static map folder inputs to indicate it needs a folder.
+        - (Docs) Updated documentation to 1.0.3.
+        - (Bugfix) Clarified in report that impact/offset values are unitless unless
+          run on static maps generated by calibrated models.
+        - (Bugfix) Paths containing spaces now handled properly in UI.
+        - (Feature) If user does not define an AOI, the AOI column is not included in
+          the report.
+        - (Feature) Added Table of Contents to the output report.
+        - (Usability) Updated labels of Windows Start Menu shortcuts.
+        - (Bugfix) Offset parcels are now identified by a new column ("parcel_id") in
+          the selected_parcels.shp vector.
+        - (Bugfix) If there is only one subzone per zone, we omit the soft boundary 1
+          (subzone) column from the parcels table in the report.
+        - (Feature) Sped up initialization of the execution thread in the UI.
+        - (Feature) Updated CSS to improve readability of output report tables.
+        - (Feature) Added ability to export the parcels table to CSV.
+        - (Feature) Binary 1/0 values in report columns are now centered for readability.
+        - (Feature) UI now allows user to specify whether to open the workspace after
+          Successful execution.  Once execution completes (regardless of success or
+          failure), the input changes to a button, allowing the user to open the
+          workspace.
+        - (Feature) Parcels table in the report now includes a binary column indicating
+          whether each parcel is in the suggested set of parcels.
+        - (Feature) Updated InVEST version dependency to use more recent versions of
+          hydrological routing algorithms.
+        
+        1.0.2 (2015-1-20)
+        -----------------
+        - OPAL only: forcing the OPAL UI to use English.  This fixes an issue found by
+          users whose default OS language is not English.
+        
+        1.0.1 (2014-12-16)
+        ------------------
+        - Updated MAFE-T static map UIs to provide correct parameters to OPAL core
+          while retaining MAFE-T's original functionality.
+        - Updated MAFE-T UI input validation to reflect name changes for some static inputs.
+        - Replaced servicesheds of MAFE-T with a more complete version.
+        - Retained older version of servicesheds for use with OPAL.
+        - Updated MAFE-T User's guide PDF.
+        - Fixed issue with MAFE-T installer where static map zipfiles were not downloaded.
+        
+        1.0.0 (2014-12-3)
+        -----------------
+        - Initial public release of OPAL distribution.
+        - New features for OPAL:
+          - Offset parcel recommendation that reattributes services to impacted beneficiaries
+          - Support for protection or restoration as a future scenario
+        
+        0.5.1 (2014-10-13)
+        ------------------
+        - Added zipfile validation to the MAFE-T installer (Issue 3148)
+        - MAFE-T installer now remembers selections when switching pages (Issue 3153)
+        - Added validation to MAFE-T UI for the impacts vector (Issue 3149)
+        
+        0.5.0 (2014-10-8)
+        -----------------
+        - Initial public release of MAFE-T distribution.
+        
+        
+Keywords: GIS
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 2 :: Only
+Classifier: Topic :: Scientific/Engineering :: GIS
+Requires: numpy
+Requires: scipy
+Requires: shapely
+Requires: GDAL
+Requires: pyyaml
