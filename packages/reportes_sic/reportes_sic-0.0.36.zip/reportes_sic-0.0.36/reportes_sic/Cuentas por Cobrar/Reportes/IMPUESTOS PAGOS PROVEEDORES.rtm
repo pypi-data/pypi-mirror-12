@@ -1,0 +1,1389 @@
+object ppReport: TppReport
+  AutoStop = False
+  DataPipeline = daFIBQueryDataView1.DATOS
+  PrinterSetup.BinName = 'Default'
+  PrinterSetup.DocumentName = 'Report'
+  PrinterSetup.Orientation = poLandscape
+  PrinterSetup.PaperName = 'Custom'
+  PrinterSetup.PrinterName = 'Default'
+  PrinterSetup.mmMarginBottom = 6350
+  PrinterSetup.mmMarginLeft = 6350
+  PrinterSetup.mmMarginRight = 6350
+  PrinterSetup.mmMarginTop = 6350
+  PrinterSetup.mmPaperHeight = 215900
+  PrinterSetup.mmPaperWidth = 317501
+  PrinterSetup.PaperSize = 256
+  SaveAsTemplate = True
+  Template.DatabaseSettings.DataPipeline = plRBItem
+  Template.DatabaseSettings.Name = 'IMPUESTOS PAGOS PROVEEDORES'
+  Template.DatabaseSettings.NameField = 'NAME'
+  Template.DatabaseSettings.TemplateField = 'TEMPLATE'
+  Template.FileName = 
+    'C:\Users\SIC2-U\Documents\BitBucket\reportes_sic\reportes_sic\Cu' +
+    'entas por cobrar\Reportes\IMPUESTOS PAGOS PROVEEDORES.rtm'
+  Template.Format = ftASCII
+  AllowPrintToFile = True
+  DeviceType = 'Screen'
+  EmailSettings.ReportFormat = 'PDF'
+  Language = lgSpanishMexico
+  OutlineSettings.CreateNode = True
+  OutlineSettings.CreatePageNodes = True
+  OutlineSettings.Enabled = False
+  OutlineSettings.Visible = False
+  TextSearchSettings.DefaultString = '<HallarTexto>'
+  TextSearchSettings.Enabled = False
+  Left = 4
+  Top = 208
+  Version = '10.08'
+  mmColumnWidth = 0
+  DataPipelineName = 'DATOS'
+  object ppTitleBand1: TppTitleBand
+    mmBottomOffset = 0
+    mmHeight = 13229
+    mmPrintPosition = 0
+    object ppLabel11: TppLabel
+      UserName = 'Label11'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'IMPUESTOS POR FACTURA'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 16
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 6615
+      mmLeft = 112448
+      mmTop = 265
+      mmWidth = 74877
+      BandType = 1
+    end
+    object ppLabel12: TppLabel
+      UserName = 'Label12'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'Compras'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 16
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 6646
+      mmLeft = 138113
+      mmTop = 6615
+      mmWidth = 24384
+      BandType = 1
+    end
+  end
+  object ppHeaderBand1: TppHeaderBand
+    mmBottomOffset = 0
+    mmHeight = 12965
+    mmPrintPosition = 0
+    object ppShape11: TppShape
+      UserName = 'Shape101'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 247386
+      mmTop = 9790
+      mmWidth = 16404
+      BandType = 0
+    end
+    object ppShape10: TppShape
+      UserName = 'Shape10'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 229394
+      mmTop = 9790
+      mmWidth = 16140
+      BandType = 0
+    end
+    object ppShape9: TppShape
+      UserName = 'Shape9'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 212461
+      mmTop = 9790
+      mmWidth = 15081
+      BandType = 0
+    end
+    object ppShape8: TppShape
+      UserName = 'Shape8'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 195263
+      mmTop = 9790
+      mmWidth = 15346
+      BandType = 0
+    end
+    object ppShape7: TppShape
+      UserName = 'Shape7'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 171980
+      mmTop = 9790
+      mmWidth = 17992
+      BandType = 0
+    end
+    object ppShape6: TppShape
+      UserName = 'Shape6'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 2910
+      mmLeft = 120650
+      mmTop = 9790
+      mmWidth = 46038
+      BandType = 0
+    end
+    object ppShape4: TppShape
+      UserName = 'Shape4'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 96044
+      mmTop = 9790
+      mmWidth = 15346
+      BandType = 0
+    end
+    object ppShape3: TppShape
+      UserName = 'Shape3'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 44715
+      mmTop = 9790
+      mmWidth = 23813
+      BandType = 0
+    end
+    object ppShape2: TppShape
+      UserName = 'Shape2'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 13229
+      mmTop = 9790
+      mmWidth = 8467
+      BandType = 0
+    end
+    object ppLabel2: TppLabel
+      UserName = 'Label2'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'FOLIO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 2646
+      mmLeft = 13229
+      mmTop = 10054
+      mmWidth = 13229
+      BandType = 0
+    end
+    object ppShape1: TppShape
+      UserName = 'Shape1'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 265
+      mmTop = 9790
+      mmWidth = 8467
+      BandType = 0
+    end
+    object ppLabel1: TppLabel
+      UserName = 'Label1'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'FECHA'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 2582
+      mmLeft = 265
+      mmTop = 10054
+      mmWidth = 15610
+      BandType = 0
+    end
+    object ppLabel3: TppLabel
+      UserName = 'Label3'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'NOMBRE_CLIENTE'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 2582
+      mmLeft = 44715
+      mmTop = 9790
+      mmWidth = 51065
+      BandType = 0
+    end
+    object ppLabel4: TppLabel
+      UserName = 'Label4'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'RFC'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 2582
+      mmLeft = 96573
+      mmTop = 9790
+      mmWidth = 9790
+      BandType = 0
+    end
+    object ppLabel5: TppLabel
+      UserName = 'Label5'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'Producto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 2381
+      mmLeft = 120650
+      mmTop = 9790
+      mmWidth = 48154
+      BandType = 0
+    end
+    object ppLabel6: TppLabel
+      UserName = 'Label6'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'Empaque'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 2582
+      mmLeft = 172244
+      mmTop = 9790
+      mmWidth = 18785
+      BandType = 0
+    end
+    object ppLabel7: TppLabel
+      UserName = 'Label7'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'Venta Gravada'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      mmHeight = 2646
+      mmLeft = 193411
+      mmTop = 9790
+      mmWidth = 16404
+      BandType = 0
+    end
+    object ppDBText9: TppDBText
+      UserName = 'DBText9'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'V1'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2582
+      mmLeft = 211667
+      mmTop = 9790
+      mmWidth = 15875
+      BandType = 0
+    end
+    object ppDBText10: TppDBText
+      UserName = 'DBText10'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'V2'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2582
+      mmLeft = 229130
+      mmTop = 9790
+      mmWidth = 16404
+      BandType = 0
+    end
+    object ppDBText13: TppDBText
+      UserName = 'DBText13'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'V3'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2582
+      mmLeft = 248180
+      mmTop = 9790
+      mmWidth = 15610
+      BandType = 0
+    end
+    object ppLabel10: TppLabel
+      UserName = 'Label10'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'Impuestos (%)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 3440
+      mmLeft = 241565
+      mmTop = 3969
+      mmWidth = 26988
+      BandType = 0
+    end
+    object ppShape12: TppShape
+      UserName = 'Shape12'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 284692
+      mmTop = 9790
+      mmWidth = 16404
+      BandType = 0
+    end
+    object ppShape13: TppShape
+      UserName = 'Shape102'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 266701
+      mmTop = 9790
+      mmWidth = 16140
+      BandType = 0
+    end
+    object ppDBText16: TppDBText
+      UserName = 'DBText101'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'V4'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2582
+      mmLeft = 266436
+      mmTop = 9790
+      mmWidth = 16404
+      BandType = 0
+    end
+    object ppDBText17: TppDBText
+      UserName = 'DBText17'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'V5'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2582
+      mmLeft = 285486
+      mmTop = 9790
+      mmWidth = 15610
+      BandType = 0
+    end
+    object ppShape5: TppShape
+      UserName = 'Shape5'
+      Brush.Color = clBtnText
+      Pen.Color = clBackground
+      mmHeight = 3175
+      mmLeft = 29369
+      mmTop = 9790
+      mmWidth = 8467
+      BandType = 0
+    end
+    object ppLabel8: TppLabel
+      UserName = 'Label8'
+      AutoSize = False
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Caption = 'COBRO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 2646
+      mmLeft = 29633
+      mmTop = 10319
+      mmWidth = 13229
+      BandType = 0
+    end
+  end
+  object ppDetailBand1: TppDetailBand
+    mmBottomOffset = 0
+    mmHeight = 2910
+    mmPrintPosition = 0
+    object ppDBText1: TppDBText
+      UserName = 'DBText1'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'FECHA'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      DisplayFormat = 'd/mmm/yy'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 22225
+      BandType = 4
+    end
+    object ppDBText2: TppDBText
+      UserName = 'DBText2'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'FOLIO'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 12435
+      mmTop = 0
+      mmWidth = 19844
+      BandType = 4
+    end
+    object ppDBText3: TppDBText
+      UserName = 'DBText3'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'NOMBRE'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 44715
+      mmTop = 0
+      mmWidth = 50800
+      BandType = 4
+    end
+    object ppDBText4: TppDBText
+      UserName = 'DBText4'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'RFC_CURP'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 96573
+      mmTop = 0
+      mmWidth = 25929
+      BandType = 4
+    end
+    object ppDBText5: TppDBText
+      UserName = 'DBText5'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'ARTICULO'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2117
+      mmLeft = 120650
+      mmTop = 0
+      mmWidth = 52652
+      BandType = 4
+    end
+    object ppDBText6: TppDBText
+      UserName = 'DBText6'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'UNIDAD_VENTA'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      TextAlignment = taCentered
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 172244
+      mmTop = 0
+      mmWidth = 21167
+      BandType = 4
+    end
+    object ppDBText7: TppDBText
+      UserName = 'DBText7'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'PRECIO_TOTAL_NETO'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      DisplayFormat = '$#,0.00;($#,0.00)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 196586
+      mmTop = 0
+      mmWidth = 14023
+      BandType = 4
+    end
+    object ppDBText8: TppDBText
+      UserName = 'DBText8'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'I1'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      DisplayFormat = '#,0.00;(#,0.00)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 213784
+      mmTop = 0
+      mmWidth = 13758
+      BandType = 4
+    end
+    object ppDBText11: TppDBText
+      UserName = 'DBText11'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'I2'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      DisplayFormat = '$#,0.00;($#,0.00)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 228865
+      mmTop = 0
+      mmWidth = 16669
+      BandType = 4
+    end
+    object ppDBText12: TppDBText
+      UserName = 'DBText12'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'I3'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      DisplayFormat = '$#,0.00;($#,0.00)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 248709
+      mmTop = 0
+      mmWidth = 15081
+      BandType = 4
+    end
+    object ppLine1: TppLine
+      UserName = 'Line1'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Position = lpLeft
+      Weight = 0.750000000000000000
+      mmHeight = 2910
+      mmLeft = 212461
+      mmTop = 0
+      mmWidth = 265
+      BandType = 4
+    end
+    object ppLine2: TppLine
+      UserName = 'Line2'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Position = lpLeft
+      Weight = 0.750000000000000000
+      mmHeight = 2910
+      mmLeft = 227807
+      mmTop = 0
+      mmWidth = 265
+      BandType = 4
+    end
+    object ppLine3: TppLine
+      UserName = 'Line3'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Position = lpLeft
+      Weight = 0.750000000000000000
+      mmHeight = 2910
+      mmLeft = 246857
+      mmTop = 0
+      mmWidth = 265
+      BandType = 4
+    end
+    object ppDBText14: TppDBText
+      UserName = 'DBText14'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'I4'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      DisplayFormat = '$#,0.00;($#,0.00)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 266171
+      mmTop = 0
+      mmWidth = 16669
+      BandType = 4
+    end
+    object ppDBText15: TppDBText
+      UserName = 'DBText15'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'I5'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      DisplayFormat = '$#,0.00;($#,0.00)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 286015
+      mmTop = 0
+      mmWidth = 15081
+      BandType = 4
+    end
+    object ppLine4: TppLine
+      UserName = 'Line4'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Position = lpLeft
+      Weight = 0.750000000000000000
+      mmHeight = 2910
+      mmLeft = 284163
+      mmTop = 0
+      mmWidth = 265
+      BandType = 4
+    end
+    object ppLine5: TppLine
+      UserName = 'Line5'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      Position = lpLeft
+      Weight = 0.750000000000000000
+      mmHeight = 2910
+      mmLeft = 265378
+      mmTop = 0
+      mmWidth = 265
+      BandType = 4
+    end
+    object ppDBText18: TppDBText
+      UserName = 'DBText18'
+      Border.BorderPositions = []
+      Border.Color = clBlack
+      Border.Style = psSolid
+      Border.Visible = False
+      DataField = 'FOLIO_COBRO'
+      DataPipeline = daFIBQueryDataView1.DATOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 6
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'DATOS'
+      mmHeight = 2498
+      mmLeft = 29633
+      mmTop = 0
+      mmWidth = 19844
+      BandType = 4
+    end
+  end
+  object ppFooterBand1: TppFooterBand
+    mmBottomOffset = 0
+    mmHeight = 0
+    mmPrintPosition = 0
+  end
+  object daDataModule1: TdaDataModule
+    object daFIBQueryDataView1: TdaFIBQueryDataView
+      UserName = 'Query_DATOS'
+      Height = 403
+      Left = 10
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 10
+      TypeColumnWidth = 52
+      Width = 339
+      AutoSearchTabOrder = 0
+      object DATOS: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'DATOS'
+        object ppField1: TppField
+          FieldAlias = 'FOLIO'
+          FieldName = 'FOLIO'
+          FieldLength = 9
+          DisplayWidth = 9
+          Position = 0
+        end
+        object ppField2: TppField
+          FieldAlias = 'FOLIO_COBRO'
+          FieldName = 'FOLIO_COBRO'
+          FieldLength = 9
+          DisplayWidth = 9
+          Position = 1
+        end
+        object ppField3: TppField
+          FieldAlias = 'IMPORTE_VENTA'
+          FieldName = 'IMPORTE_VENTA'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 2
+        end
+        object ppField4: TppField
+          FieldAlias = 'IMPORTE_COBRO'
+          FieldName = 'IMPORTE_COBRO'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 3
+        end
+        object ppField5: TppField
+          FieldAlias = 'PROPORCION_PAGO'
+          FieldName = 'PROPORCION_PAGO'
+          FieldLength = 4
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 4
+        end
+        object ppField6: TppField
+          FieldAlias = 'FECHA'
+          FieldName = 'FECHA'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 10
+          Position = 5
+        end
+        object ppField7: TppField
+          FieldAlias = 'NOMBRE'
+          FieldName = 'NOMBRE'
+          FieldLength = 100
+          DisplayWidth = 100
+          Position = 6
+        end
+        object ppField8: TppField
+          FieldAlias = 'RFC_CURP'
+          FieldName = 'RFC_CURP'
+          FieldLength = 18
+          DisplayWidth = 18
+          Position = 7
+        end
+        object ppField9: TppField
+          FieldAlias = 'ESTADO'
+          FieldName = 'ESTADO'
+          FieldLength = 9
+          DisplayWidth = 9
+          Position = 8
+        end
+        object ppField10: TppField
+          FieldAlias = 'ARTICULO'
+          FieldName = 'ARTICULO'
+          FieldLength = 100
+          DisplayWidth = 100
+          Position = 9
+        end
+        object ppField11: TppField
+          FieldAlias = 'UNIDAD_VENTA'
+          FieldName = 'UNIDAD_VENTA'
+          FieldLength = 20
+          DisplayWidth = 20
+          Position = 10
+        end
+        object ppField12: TppField
+          FieldAlias = 'PRECIO_TOTAL_NETO'
+          FieldName = 'PRECIO_TOTAL_NETO'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 11
+        end
+        object ppField13: TppField
+          FieldAlias = 'I1'
+          FieldName = 'I1'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 12
+        end
+        object ppField14: TppField
+          FieldAlias = 'I2'
+          FieldName = 'I2'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 13
+        end
+        object ppField15: TppField
+          FieldAlias = 'I3'
+          FieldName = 'I3'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 14
+        end
+        object ppField16: TppField
+          FieldAlias = 'I4'
+          FieldName = 'I4'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 15
+        end
+        object ppField17: TppField
+          FieldAlias = 'I5'
+          FieldName = 'I5'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 16
+        end
+        object ppField18: TppField
+          FieldAlias = 'V1'
+          FieldName = 'V1'
+          FieldLength = 21
+          DisplayWidth = 21
+          Position = 17
+        end
+        object ppField19: TppField
+          FieldAlias = 'V2'
+          FieldName = 'V2'
+          FieldLength = 21
+          DisplayWidth = 21
+          Position = 18
+        end
+        object ppField20: TppField
+          FieldAlias = 'V3'
+          FieldName = 'V3'
+          FieldLength = 21
+          DisplayWidth = 21
+          Position = 19
+        end
+        object ppField21: TppField
+          FieldAlias = 'V4'
+          FieldName = 'V4'
+          FieldLength = 21
+          DisplayWidth = 21
+          Position = 20
+        end
+        object ppField22: TppField
+          FieldAlias = 'V5'
+          FieldName = 'V5'
+          FieldLength = 21
+          DisplayWidth = 21
+          Position = 21
+        end
+      end
+      object daSQL1: TdaSQL
+        CollationType = ctASCII
+        DatabaseName = 'dtbsMicrosip'
+        DatabaseType = dtInterBase
+        DataPipelineName = 'DATOS'
+        EditSQLAsText = True
+        IsCaseSensitive = True
+        LinkColor = clBlack
+        MaxSQLFieldAliasLength = 0
+        SQLText.Strings = (
+          'SELECT * FROM('
+          'SELECT'
+          '    /*dc.docto_cc_id,'
+          '    dc2.docto_cc_id,'
+          '    dc.folio,'
+          '    dc2.folio,'
+          '    idc.importe,*/'
+          '    dc.folio,'
+          '    dp.folio as folio_cobro,'
+          '    (dc.importe_neto + dc.total_impuestos) as importe_venta,'
+          '    idp.importe as importe_cobro,'
+          
+            '    (idp.importe/(dc.importe_neto + dc.total_impuestos)) as prop' +
+            'orcion_pago,'
+          '    dc.fecha,'
+          '    pr.nombre,'
+          '    pr.rfc_curp,'
+          '    '#39'Chihuahua'#39' as estado,'
+          '    a.nombre as articulo,'
+          '    a.unidad_venta,'
+          
+            '    (dcd.precio_total_neto *(idp.importe/(dc.importe_neto + dc.t' +
+            'otal_impuestos))) as precio_total_neto,'
+          '    (case'
+          
+            '    when   cast(:impuesto1 as numeric(9,6)) in (select pctje_imp' +
+            'uesto from impuestos im'
+          
+            '            join impuestos_articulos iar on iar.impuesto_id=im.i' +
+            'mpuesto_id'
+          
+            '            join articulos ar on ar.articulo_id = iar.articulo_i' +
+            'd'
+          
+            '            where ar.articulo_id=a.articulo_id) then dcd.precio_' +
+            'total_neto*cast(:impuesto1 as numeric(9,6))/100 * (idp.importe/(' +
+            'dc.importe_neto + dc.total_impuestos))'
+          '    else null'
+          ' end ) as  I1,'
+          '(case'
+          
+            '    when   cast(:impuesto2 as numeric(9,6)) in (select pctje_imp' +
+            'uesto from impuestos im'
+          
+            '            join impuestos_articulos iar on iar.impuesto_id=im.i' +
+            'mpuesto_id'
+          
+            '            join articulos ar on ar.articulo_id = iar.articulo_i' +
+            'd'
+          
+            '            where ar.articulo_id=a.articulo_id) then dcd.precio_' +
+            'total_neto*cast(:impuesto2 as numeric(9,6))/100 * (idp.importe/(' +
+            'dc.importe_neto + dc.total_impuestos))'
+          '    else null'
+          ' end ) as  I2,'
+          ' (case'
+          
+            '    when   cast(:impuesto3 as numeric(9,6)) in (select pctje_imp' +
+            'uesto from impuestos im'
+          
+            '            join impuestos_articulos iar on iar.impuesto_id=im.i' +
+            'mpuesto_id'
+          
+            '            join articulos ar on ar.articulo_id = iar.articulo_i' +
+            'd'
+          
+            '            where ar.articulo_id=a.articulo_id) then dcd.precio_' +
+            'total_neto*cast(:impuesto3 as numeric(9,6))/100 * (idp.importe/(' +
+            'dc.importe_neto + dc.total_impuestos))'
+          '    else null'
+          ' end ) as  I3,'
+          ' (case'
+          
+            '    when   cast(:impuesto4 as numeric(9,6)) in (select pctje_imp' +
+            'uesto from impuestos im'
+          
+            '            join impuestos_articulos iar on iar.impuesto_id=im.i' +
+            'mpuesto_id'
+          
+            '            join articulos ar on ar.articulo_id = iar.articulo_i' +
+            'd'
+          
+            '            where ar.articulo_id=a.articulo_id) then dcd.precio_' +
+            'total_neto*cast(:impuesto4 as numeric(9,6))/100 * (idp.importe/(' +
+            'dc.importe_neto + dc.total_impuestos))'
+          '    else null'
+          ' end ) as  I4,'
+          ' (case'
+          
+            '    when   cast(:impuesto5 as numeric(9,6)) in (select pctje_imp' +
+            'uesto from impuestos im'
+          
+            '            join impuestos_articulos iar on iar.impuesto_id=im.i' +
+            'mpuesto_id'
+          
+            '            join articulos ar on ar.articulo_id = iar.articulo_i' +
+            'd'
+          
+            '            where ar.articulo_id=a.articulo_id) then dcd.precio_' +
+            'total_neto*cast(:impuesto5 as numeric(9,6))/100 * (idp.importe/(' +
+            'dc.importe_neto + dc.total_impuestos))'
+          '    else null'
+          ' end ) as  I5,'
+          
+            ' (select cast(:impuesto1 as varchar(20))||'#39'%'#39' from rdb$database)' +
+            'as v1,'
+          
+            ' (select cast(:impuesto2 as varchar(20))||'#39'%'#39' from rdb$database)' +
+            'as v2,'
+          
+            ' (select cast(:impuesto3 as varchar(20))||'#39'%'#39' from rdb$database)' +
+            'as v3,'
+          
+            ' (select cast(:impuesto4 as varchar(20))||'#39'%'#39' from rdb$database)' +
+            'as v4,'
+          
+            ' (select cast(:impuesto5 as varchar(20))||'#39'%'#39' from rdb$database)' +
+            'as v5'
+          'FROM DOCTOS_CP DP JOIN'
+          'CONCEPTOS_CP CP ON CP.concepto_cp_id = DP.concepto_cp_id join'
+          'importes_doctos_cp idp on idp.docto_cp_id = dp.docto_cp_id join'
+          'doctos_cp dp2 on dp2.docto_cp_id = idp.docto_cp_acr_id join'
+          'doctos_entre_sis des on des.docto_dest_id = dp2.docto_cp_id JOIN'
+          'doctos_cm dc on dc.docto_cm_id = des.docto_fte_id join'
+          'proveedores pr on pr.proveedor_id = dp.proveedor_id join'
+          'doctos_cm_det dcd on dcd.docto_cm_id = dc.docto_cm_id join'
+          'articulos a on a.articulo_id = dcd.articulo_id'
+          'WHERE cp.tipo = '#39'P'#39' and dp.fecha between :F_FECHA_INICIO'
+          'and :F_FECHA_FIN)'
+          'WHERE ((I1>0) or (I2>0)or (I3>0) or (I4>0) or (I5>0))'
+          'order by fecha, FOLIO, FOLIO_COBRO')
+        SQLType = sqSQL2
+        object daField1: TdaField
+          Alias = 'FOLIO'
+          DisplayWidth = 9
+          FieldAlias = 'FOLIO'
+          FieldLength = 9
+          FieldName = 'FOLIO'
+          SQLFieldName = 'FOLIO'
+        end
+        object daField2: TdaField
+          Alias = 'FOLIO_COBRO'
+          DisplayWidth = 9
+          FieldAlias = 'FOLIO_COBRO'
+          FieldLength = 9
+          FieldName = 'FOLIO_COBRO'
+          SQLFieldName = 'FOLIO_COBRO'
+        end
+        object daField3: TdaField
+          Alias = 'IMPORTE_VENTA'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'IMPORTE_VENTA'
+          FieldLength = 2
+          FieldName = 'IMPORTE_VENTA'
+          SQLFieldName = 'IMPORTE_VENTA'
+        end
+        object daField4: TdaField
+          Alias = 'IMPORTE_COBRO'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'IMPORTE_COBRO'
+          FieldLength = 2
+          FieldName = 'IMPORTE_COBRO'
+          SQLFieldName = 'IMPORTE_COBRO'
+        end
+        object daField5: TdaField
+          Alias = 'PROPORCION_PAGO'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'PROPORCION_PAGO'
+          FieldLength = 4
+          FieldName = 'PROPORCION_PAGO'
+          SQLFieldName = 'PROPORCION_PAGO'
+        end
+        object daField6: TdaField
+          Alias = 'FECHA'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'FECHA'
+          FieldLength = 0
+          FieldName = 'FECHA'
+          SQLFieldName = 'FECHA'
+        end
+        object daField7: TdaField
+          Alias = 'NOMBRE'
+          DisplayWidth = 100
+          FieldAlias = 'NOMBRE'
+          FieldLength = 100
+          FieldName = 'NOMBRE'
+          SQLFieldName = 'NOMBRE'
+        end
+        object daField8: TdaField
+          Alias = 'RFC_CURP'
+          DisplayWidth = 18
+          FieldAlias = 'RFC_CURP'
+          FieldLength = 18
+          FieldName = 'RFC_CURP'
+          SQLFieldName = 'RFC_CURP'
+        end
+        object daField9: TdaField
+          Alias = 'ESTADO'
+          DisplayWidth = 9
+          FieldAlias = 'ESTADO'
+          FieldLength = 9
+          FieldName = 'ESTADO'
+          SQLFieldName = 'ESTADO'
+        end
+        object daField10: TdaField
+          Alias = 'ARTICULO'
+          DisplayWidth = 100
+          FieldAlias = 'ARTICULO'
+          FieldLength = 100
+          FieldName = 'ARTICULO'
+          SQLFieldName = 'ARTICULO'
+        end
+        object daField11: TdaField
+          Alias = 'UNIDAD_VENTA'
+          DisplayWidth = 20
+          FieldAlias = 'UNIDAD_VENTA'
+          FieldLength = 20
+          FieldName = 'UNIDAD_VENTA'
+          SQLFieldName = 'UNIDAD_VENTA'
+        end
+        object daField12: TdaField
+          Alias = 'PRECIO_TOTAL_NETO'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'PRECIO_TOTAL_NETO'
+          FieldLength = 0
+          FieldName = 'PRECIO_TOTAL_NETO'
+          SQLFieldName = 'PRECIO_TOTAL_NETO'
+        end
+        object daField13: TdaField
+          Alias = 'I1'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'I1'
+          FieldLength = 0
+          FieldName = 'I1'
+          SQLFieldName = 'I1'
+        end
+        object daField14: TdaField
+          Alias = 'I2'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'I2'
+          FieldLength = 0
+          FieldName = 'I2'
+          SQLFieldName = 'I2'
+        end
+        object daField15: TdaField
+          Alias = 'I3'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'I3'
+          FieldLength = 0
+          FieldName = 'I3'
+          SQLFieldName = 'I3'
+        end
+        object daField16: TdaField
+          Alias = 'I4'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'I4'
+          FieldLength = 0
+          FieldName = 'I4'
+          SQLFieldName = 'I4'
+        end
+        object daField17: TdaField
+          Alias = 'I5'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'I5'
+          FieldLength = 0
+          FieldName = 'I5'
+          SQLFieldName = 'I5'
+        end
+        object daField18: TdaField
+          Alias = 'V1'
+          DisplayWidth = 21
+          FieldAlias = 'V1'
+          FieldLength = 21
+          FieldName = 'V1'
+          SQLFieldName = 'V1'
+        end
+        object daField19: TdaField
+          Alias = 'V2'
+          DisplayWidth = 21
+          FieldAlias = 'V2'
+          FieldLength = 21
+          FieldName = 'V2'
+          SQLFieldName = 'V2'
+        end
+        object daField20: TdaField
+          Alias = 'V3'
+          DisplayWidth = 21
+          FieldAlias = 'V3'
+          FieldLength = 21
+          FieldName = 'V3'
+          SQLFieldName = 'V3'
+        end
+        object daField21: TdaField
+          Alias = 'V4'
+          DisplayWidth = 21
+          FieldAlias = 'V4'
+          FieldLength = 21
+          FieldName = 'V4'
+          SQLFieldName = 'V4'
+        end
+        object daField22: TdaField
+          Alias = 'V5'
+          DisplayWidth = 21
+          FieldAlias = 'V5'
+          FieldLength = 21
+          FieldName = 'V5'
+          SQLFieldName = 'V5'
+        end
+      end
+    end
+  end
+  object ppParameterList1: TppParameterList
+  end
+end
