@@ -1,0 +1,74 @@
+Metadata-Version: 1.1
+Name: fief
+Version: 0.1.1
+Summary: Decorator for effective parameter filtering
+Home-page: https://github.com/Aluriak/fief
+Author: lucas
+Author-email: lucas.bourneuf@laposte.net
+License: UNKNOWN
+Description: # FiEf, the Effective Parameter Filter
+        
+        ## The problem
+        You have this function:
+        
+            def func(a, b):
+                # some implementation
+        
+        and that configuration, extrapolated from CLI, init file and whatever:
+        
+            config = {'a': 1, 'b': 'doe', 'loglevel': 'WARNING'}
+        
+        Then, you can't just do that:
+        
+            func(\*\*config)
+        
+        Because of the expected:
+        
+            TypeError: func() got an unexpected keyword argument 'loglevel'
+        
+        One solution can be:
+        
+            # perform an interesting and easily maintenable treatment
+            config_func = {
+                arg: val
+                for arg, val in config
+                if arg in ('a', 'b')
+            }
+            # and, finally, call that function
+            func(\*\*config_func)
+        
+        But, as any programmer, you will use the *inspect* module, that can give you the formal parameter of *func*, and filter out unwanted effective parameters.
+        Just as FiEf do.
+        
+        ## The solution
+        About the previous *func*:
+        
+            from fief import filter\_effective\_parameters as fief
+        
+            @fief
+            def func(a, b):
+                # some implementation
+        
+            # and then, use it as you always want to:
+            func(\*\*MY\_BIG\_CONFIG\_DICT\_WITH\_MANY\_WEIRD\_KEYS)
+        
+            # or as you always do:
+            func(a=42, b='pip install efpafi')
+        
+            # or, for a one time usage:
+            fief(func)(\*\*MY\_BIG\_CONFIG\_DICT\_WITH\_MANY\_WEIRD\_KEYS)
+        
+        ## Installation
+        
+            pip install efpafi
+        
+        ## Licence
+        WTFPL.
+        
+Keywords: decorator parameter filter
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Natural Language :: English
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
