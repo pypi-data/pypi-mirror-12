@@ -1,0 +1,98 @@
+Metadata-Version: 2.0
+Name: walls
+Version: 0.1.1
+Summary: Random Flickr wallpapers.
+Home-page: https://github.com/nickfrostatx/walls
+Author: Nick Frost
+Author-email: nickfrostatx@gmail.com
+License: MIT
+Keywords: walls
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: flickrapi
+Requires-Dist: requests
+Provides-Extra: testing
+Requires-Dist: pytest; extra == 'testing'
+Requires-Dist: pytest-cov; extra == 'testing'
+Requires-Dist: pytest-pep8; extra == 'testing'
+Requires-Dist: pytest-pep257; extra == 'testing'
+
+walls
+=====
+
+.. image:: https://img.shields.io/travis/nickfrostatx/walls.svg
+    :target: https://travis-ci.org/nickfrostatx/walls
+
+.. image:: https://img.shields.io/coveralls/nickfrostatx/walls.svg
+    :target: https://coveralls.io/github/nickfrostatx/walls
+
+.. image:: https://img.shields.io/pypi/v/walls.svg
+    :target: https://pypi.python.org/pypi/walls
+
+.. image:: https://img.shields.io/pypi/l/walls.svg
+    :target: https://raw.githubusercontent.com/nickfrostatx/walls/master/LICENSE
+
+``walls`` downloads random wallpapers from Flickr. It searches recent Flickr
+images matching a given list of tags, and downloads the first one with
+dimensions large enough to be used as a wallpaper.
+
+Installation
+------------
+
+.. code-block:: bash
+
+    $ pip install walls
+
+Config
+------
+
+The default config location is ``~/.wallsrc``. Here is an example configuration:
+
+.. code-block:: ini
+
+    [walls]
+    api_key = YOUR_API_KEY
+    api_secret = YOUR_API_SECRET
+    tags = cats,dogs
+    image_dir = ~/Pictures
+    width = 1920
+    height = 1080
+
+Usage
+-----
+
+.. code-block:: bash
+
+    $ walls [-c] [config_file]
+
+``-c`` or ``--clear`` will clear out images in the destination directory.
+
+If supplied, ``config_file`` will be used instead of ``~/.wallsrc``.
+
+
+.. :changelog:
+
+History
+-------
+
+0.1.1 (2015-11-28)
+++++++++++++++++++
+
+- Refactor the codebase
+
+0.1.0 (2015-11-28)
+++++++++++++++++++
+
+- Initial release
+
+
