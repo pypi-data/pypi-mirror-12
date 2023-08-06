@@ -1,0 +1,30 @@
+{% load thumbnail sekizai_tags staticfiles %}
+
+{% addtoblock "css" strip %}
+  <link rel="stylesheet" type="text/css" href="{% static 'cms_lab_members/plugins.css' %}">
+{% endaddtoblock %}
+
+<div class="scientist-plugin">
+  <div class="row text-center">
+    <div class="image-container">
+
+      <a href="{% url 'lab_members:scientist_detail' instance.scientist.slug %}">
+        {% if instance.scientist.photo %}
+          <img src="{% thumbnail instance.scientist.photo 300x300 crop upscale subject_location=instance.scientist.photo.subject_location %}" alt={{ instance.scientist.full_name }}>
+        {% else %}
+          <img src="http://placehold.it/300x300" alt={{ instance.scientist.full_name }}>
+        {% endif %}
+
+        <div class="gradient-overlay">
+          <div class="text-overlay">
+            <p class="text-overlay-name">{{ instance.scientist.full_name }}</p>
+            {% if instance.scientist.title != None %}
+              <p class="text-overlay-title">{{ instance.scientist.title }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
