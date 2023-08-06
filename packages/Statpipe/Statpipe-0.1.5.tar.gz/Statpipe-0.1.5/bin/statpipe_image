@@ -1,0 +1,23 @@
+import os
+import subprocess
+import sys
+import clint
+from clint import arguments
+args = arguments.Args()
+
+import envoy
+
+def statpipeimage():
+    for i in args.files:
+        if "eps" in os.path.splitext(i)[1]:
+            name = os.path.join(os.getcwd(), i)
+            newname = os.path.join(os.getcwd(), i.replace("eps", "png"))
+            # sys.stdout.write(str(['convert', name, newname]))
+            result = subprocess.check_output(['convert', name, newname])
+            sys.stdout.write(result)
+            sys.stdout.write("<img src={}>\n".format(os.path.join(os.getcwd(),newname)))
+        return 0
+
+
+if __name__ == "__main__":
+    statpipeimage()
