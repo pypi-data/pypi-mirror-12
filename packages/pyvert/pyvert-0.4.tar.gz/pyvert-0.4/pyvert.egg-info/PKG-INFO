@@ -1,0 +1,64 @@
+Metadata-Version: 1.1
+Name: pyvert
+Version: 0.4
+Summary: pyvert is a tool to convert a filesystem directory structure to and from YAML
+Home-page: http://github.com/blaketmiller/pyvert
+Author: Blake Miller
+Author-email: blakethomasmiller@gmail.com
+License: GNU GPL v2.0
+Description: pyvert
+        ======
+        
+        Pyvert is a tool to convert a filesystem directory structure to and from YAML. Comes in useful for development when a directory of test files and folders is desired.
+        
+        
+        Modules
+        -------
+        For converting a directory to a dict, use convert_dir:
+        
+        .. code-block:: python
+        
+            >>> from pyvert import convert_dir
+            >>> foo = convert_dir.to_dict("/path/to/directory")
+            >>> type(foo)
+            <type 'dict'>
+        
+        
+        Scripts
+        -------
+        From command line, generate a YAML file of a given directory:
+        
+        .. code-block:: bash
+        
+            $ dir2yaml /path/to/foobar
+            Dictionary written to foobar.yaml
+        
+        Also works in reverse:
+        
+        .. code-block:: bash
+        
+            $ yaml2dir foobar.yaml
+            Directory created at /path/to/foobar
+        
+        
+        Installation
+        ------------
+        To install Pyvert, simply:
+        
+        .. code-block:: bash
+        
+            $ pip install pyvert
+        
+Keywords: convert folder file dictionary yaml structure filesystem represent utility
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Filesystems
+Classifier: Topic :: System :: Archiving
+Classifier: Topic :: Utilities
