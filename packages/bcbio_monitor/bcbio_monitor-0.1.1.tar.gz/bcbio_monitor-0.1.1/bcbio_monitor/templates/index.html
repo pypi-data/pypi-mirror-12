@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} - Home{% endblock %}
+{% block content %}
+
+<div id="welcome">
+  <h1>{{ title }}</h1>
+  <div class="col-lg-6" id="progress_graph" class="graphviz-graph">
+      <!-- Source for the graph (or static image) will go here -->
+  </div>
+  <div class="col-lg-6">
+        <div class="bs-component">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Pipeline step</th>
+                <th>Started at</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="progress_table"></tbody>
+          </table>
+        </div>
+        {% if update %}
+        <div class="bs-component">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Last log message read</h3>
+              </div>
+              <div class="panel-body">
+                  <pre class="log-message" id='panel-message'>
+                  </pre>
+              </div>
+            </div>
+        </div>
+        {% endif %}
+  </div>
+</div>
+
+{% endblock %}
