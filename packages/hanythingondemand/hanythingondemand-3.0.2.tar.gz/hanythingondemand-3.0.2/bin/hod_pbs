@@ -1,0 +1,19 @@
+#!/bin/bash 
+#PBS -l nodes=1:ppn=all
+
+MODULEPATH=~/.local/easybuild/modules/all:$MODULEPATH 
+
+module load hanythingondemand
+module load vsc-mympirun
+module load Java
+
+echo masternode=$HOSTNAME > ${PBS_O_WORKDIR}/masternode.${PBS_JOBID}
+
+$EBROOTVSCMINMYMPIRUN/bin/mympirun \
+    --output=${PBS_O_WORKDIR}/hod.output.${PBS_JOBID} \
+    --hybrid=1 \
+    --variablesprefix=HADOOP,JAVA,HOD,MAPRED,HDFS,HDFS,MAPRED \
+    python ${EBROOTHANYTHINGONDEMAND}/bin/hodservice \
+        ${EBROOTHANYTHINGONDEMAND}/etc/Hadoop-2.0.0-cdh4.4.0/ \
+        ${PBS_NODEFILE}
+
