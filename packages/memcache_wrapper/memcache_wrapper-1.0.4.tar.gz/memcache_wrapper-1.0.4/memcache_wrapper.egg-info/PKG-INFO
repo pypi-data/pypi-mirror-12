@@ -1,0 +1,46 @@
+Metadata-Version: 1.1
+Name: memcache-wrapper
+Version: 1.0.4
+Summary: A Python function wrapper to cache method results using memcache
+Home-page: https://github.com/azraelxyz/memcache_wrapper
+Author: xwhuang
+Author-email: xwhuang@qnap.com
+License: UNKNOWN
+Description: A Python function wrapper to cache method results using memcache 
+        
+        Usage:
+        
+        from memcache_wrapper import Memcached
+        from mockcache import Client
+        
+        mc_client = Client()
+        
+        @Memcached('/myprefix', mc_client)
+        def myfunc(args):
+            ...
+        
+        or
+        
+        mc = Memcached('/myprefix', mc_client)
+        cached_myfunc = mc.wrap(myfunc)
+        
+        For short,
+        cached_myfunc = Memcached('/myprefix', mc_client).wrap(myfunc)
+        
+        See more examples at test/test_memcache_wrapper.py
+        
+        Parameters:
+        
+          prefix: used as memached's key prefix
+        
+          mc_client: memcache client instance, such as python-memcached or mockcache
+        
+          ttl: time to live in memcache, default: 10
+        
+          bypass_cache: if True, bypass cache and save the result
+        
+          cache_negative: if False, do not cache negative result, such as [], {}, and None. Otherwise, it will cache everything.
+        
+        
+Platform: UNKNOWN
+Classifier: Topic :: Utilities
