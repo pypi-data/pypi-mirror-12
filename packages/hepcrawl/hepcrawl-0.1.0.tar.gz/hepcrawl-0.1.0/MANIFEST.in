@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of hepcrawl.
+# Copyright (C) 2015 CERN.
+#
+# hepcrawl is a free software; you can redistribute it and/or modify it
+# under the terms of the Revised BSD License; see LICENSE file for
+# more details.
+
+include LICENSE *.rst
+include pytest.ini
+include scrapy.cfg
+
+recursive-include hepcrawl *
+recursive-include *.py *.css *.css_t *.conf *.html
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+recursive-include tests *.py
+recursive-include tests *.xml
+recursive-include tests *.zip
+recursive-include tests netrc
