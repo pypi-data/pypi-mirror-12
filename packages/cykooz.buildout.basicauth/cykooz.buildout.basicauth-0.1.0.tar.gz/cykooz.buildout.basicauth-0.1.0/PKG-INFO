@@ -1,0 +1,105 @@
+Metadata-Version: 1.0
+Name: cykooz.buildout.basicauth
+Version: 0.1.0
+Summary: Buildout extension providing basic authentication support
+Home-page: https://bitbucket.org/cykooz/cykooz.buildout.basicauth
+Author: Kirill Kuzminykh
+Author-email: saikuz@mail.ru
+License: Apache Public License
+Description: This is a fork of ``isotoma.buildout.basicauth``. Main differences are:
+        
+        - Added Python 3 support.
+        
+        =========================
+        cykooz.buildout.basicauth
+        =========================
+        
+        This buildout extension allows your buildouts to use ``${buildout:extends}`` or
+        eggs that are protected by basic auth. The minimum configuration::
+        
+            [buildout]
+            extensions = cykooz.buildout.basicauth
+        
+        Any downloads that require basic auth will now prompt for a username and
+        password. It will be stored in a secure keyring if one is available. If your
+        credentials are in .pypirc they will be detected and used.
+        
+        You can provide credentials to the extension via buildout, for non-interactive
+        situations. For example::
+        
+            [basicauth]
+            credentials =
+                github
+            interactive = false
+        
+            [github]
+            uri = https://raw.github.com/
+            username = user
+            password = chunky
+        
+        Each of the credentials parts provides authentication details for a different
+        uri. The part must contain a uri, user and password to be used by the
+        extension.
+        
+        The "interactive" option determines whether or not fetcher methods can prompt
+        the user for input.
+        
+        
+        Changelog
+        =========
+        
+        0.1.0 (2015-11-09)
+        ------------------
+        
+        - Project was forked. Source code moved to Bitbucket.
+        - Added Python 3 support.
+        
+        0.0.7 (2013-07-30)
+        ------------------
+        
+        - Read basicauth:credentials option from ~/.pypirc.
+        
+        
+        0.0.6 (2013-04-18)
+        ------------------
+        
+        - Remove the hard-dependency on python-keyring
+        
+        
+        0.0.5 (2012-09-14)
+        ------------------
+        
+        - Support usernames and passwords with '/' in them.
+        
+        
+        0.0.4 (2012-07-28)
+        ------------------
+        
+        - Restore pytho2.4 support.
+        
+        
+        0.0.3 (2012-07-28)
+        ------------------
+        
+        - Force download to happen straight away so we can handle retries for buildout.
+        
+        
+        0.0.2 (2012-07-28)
+        ------------------
+        
+        - Fix injection of credentials in urlretrieve
+        
+        
+        0.0.1 (2012-07-27)
+        ------------------
+        
+        - Disable keyring backend until we can support it on python2.4
+        
+        
+        0.0.0 (2012-07-27)
+        ------------------
+        
+        - Initial release
+        
+Keywords: buildout basicauth http authentication
+Platform: UNKNOWN
