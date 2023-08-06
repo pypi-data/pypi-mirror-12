@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pydevDAG._display module &mdash; pydevDAG 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pydevDAG 1.0 documentation" href="../index.html" />
+    <link rel="up" title="pydevDAG package" href="pydevDAG.html" />
+    <link rel="next" title="pydevDAG._graphs module" href="pydevDAG._graphs.html" />
+    <link rel="prev" title="pydevDAG._compare module" href="pydevDAG._compare.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._graphs.html" title="pydevDAG._graphs module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._compare.html" title="pydevDAG._compare module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pydevDAG 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >pydevDAG</a> &raquo;</li>
+          <li><a href="pydevDAG.html" accesskey="U">pydevDAG package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pydevDAG._display">
+<span id="pydevdag-display-module"></span><h1>pydevDAG._display module<a class="headerlink" href="#module-pydevDAG._display" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pydevdag-display">
+<h2>pydevDAG._display<a class="headerlink" href="#pydevdag-display" title="Permalink to this headline">¶</a></h2>
+<p>Tools to display graphs of various kinds.</p>
+<dl class="class">
+<dt id="pydevDAG._display.AddedEdgeTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">AddedEdgeTransformer</tt><a class="headerlink" href="#pydevDAG._display.AddedEdgeTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Decorate added edges.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.AddedEdgeTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.AddedEdgeTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.AddedEdgeTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.AddedEdgeTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.AddedNodeTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">AddedNodeTransformer</tt><a class="headerlink" href="#pydevDAG._display.AddedNodeTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Decorate added nodes.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.AddedNodeTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.AddedNodeTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.AddedNodeTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.AddedNodeTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.CongruenceEdgeTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">CongruenceEdgeTransformer</tt><a class="headerlink" href="#pydevDAG._display.CongruenceEdgeTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Make congruence edges dotted.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.CongruenceEdgeTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.CongruenceEdgeTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.CongruenceEdgeTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.CongruenceEdgeTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.GraphTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">GraphTransformer</tt><a class="headerlink" href="#pydevDAG._display.GraphTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>Abstract superclass of graph transformers.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.GraphTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.GraphTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Locate the objects to transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>graph</strong> (<em>AGraph</em>) &#8211; the graph</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an iterable of objects</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">iterable</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pydevDAG._display.GraphTransformer.xform">
+<em class="property">classmethod </em><tt class="descname">xform</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.GraphTransformer.xform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do the transformation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>graph</strong> (<em>AGraph</em>) &#8211; the graph</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.GraphTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.GraphTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform <tt class="docutils literal"><span class="pre">obj</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<em>AGraph</em>) &#8211; the graph</li>
+<li><strong>obj</strong> &#8211; the object to transform</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.GraphTransformers">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">GraphTransformers</tt><a class="headerlink" href="#pydevDAG._display.GraphTransformers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>A class that orders and does all graph transformations.</p>
+<dl class="staticmethod">
+<dt id="pydevDAG._display.GraphTransformers.xform">
+<em class="property">static </em><tt class="descname">xform</tt><big>(</big><em>graph</em>, <em>klasses</em><big>)</big><a class="headerlink" href="#pydevDAG._display.GraphTransformers.xform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a graph for more helpful viewing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<em>A_Graph</em>) &#8211; the networkx graph</li>
+<li><strong>klasses</strong> (list of <cite>GraphTransformer</cite>) &#8211; a list of transformation classes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.HTMLUtils">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">HTMLUtils</tt><a class="headerlink" href="#pydevDAG._display.HTMLUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>A class to handle HTML generation for HTML-style labels.</p>
+<dl class="staticmethod">
+<dt id="pydevDAG._display.HTMLUtils.make_table">
+<em class="property">static </em><tt class="descname">make_table</tt><big>(</big><em>rows</em><big>)</big><a class="headerlink" href="#pydevDAG._display.HTMLUtils.make_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make an HTML table from a list of rows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rows</strong> (<em>list of str</em>) &#8211; a list of rows as &lt;td&gt;...&lt;/td&gt; strings</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">HTML sring designating a table</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.HTMLUtils.set_html_label">
+<em class="property">static </em><tt class="descname">set_html_label</tt><big>(</big><em>node</em>, <em>label</em><big>)</big><a class="headerlink" href="#pydevDAG._display.HTMLUtils.set_html_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set an html label on a node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>node</strong> (<em>Node</em>) &#8211; the node</li>
+<li><strong>label</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; the label</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.PartitionEdgeTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">PartitionEdgeTransformer</tt><a class="headerlink" href="#pydevDAG._display.PartitionEdgeTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Make partition edges dashed.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.PartitionEdgeTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.PartitionEdgeTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.PartitionEdgeTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.PartitionEdgeTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.PartitionTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">PartitionTransformer</tt><a class="headerlink" href="#pydevDAG._display.PartitionTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Transforms nodes that are partitions.</p>
+<p>Sets node label to device name rather than device path.
+Sets node shape to rectangle.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.PartitionTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.PartitionTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.PartitionTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.PartitionTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.PartitionedDiskTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">PartitionedDiskTransformer</tt><a class="headerlink" href="#pydevDAG._display.PartitionedDiskTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Transforms a partitioned disk into a partitioned node.</p>
+<p>Does not do anything if the disk has no partitions or if some
+non-partition edges point to any partitions.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.PartitionedDiskTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.PartitionedDiskTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.PartitionedDiskTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.PartitionedDiskTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.RemovedEdgeTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">RemovedEdgeTransformer</tt><a class="headerlink" href="#pydevDAG._display.RemovedEdgeTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Decorate removed edges.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.RemovedEdgeTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.RemovedEdgeTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.RemovedEdgeTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.RemovedEdgeTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.RemovedNodeTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">RemovedNodeTransformer</tt><a class="headerlink" href="#pydevDAG._display.RemovedNodeTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Decorate removed nodes.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.RemovedNodeTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.RemovedNodeTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.RemovedNodeTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.RemovedNodeTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.SpindleTransformer">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">SpindleTransformer</tt><a class="headerlink" href="#pydevDAG._display.SpindleTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydevDAG._display.GraphTransformer" title="pydevDAG._display.GraphTransformer"><tt class="xref py py-class docutils literal"><span class="pre">pydevDAG._display.GraphTransformer</span></tt></a></p>
+<p>Make every actual physical spindle an octagon.</p>
+<dl class="classmethod">
+<dt id="pydevDAG._display.SpindleTransformer.objects">
+<em class="property">classmethod </em><tt class="descname">objects</tt><big>(</big><em>graph</em><big>)</big><a class="headerlink" href="#pydevDAG._display.SpindleTransformer.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.SpindleTransformer.xform_object">
+<em class="property">static </em><tt class="descname">xform_object</tt><big>(</big><em>graph</em>, <em>obj</em><big>)</big><a class="headerlink" href="#pydevDAG._display.SpindleTransformer.xform_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pydevDAG._display.Utils">
+<em class="property">class </em><tt class="descclassname">pydevDAG._display.</tt><tt class="descname">Utils</tt><a class="headerlink" href="#pydevDAG._display.Utils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>General utilities for graph transformations.</p>
+<dl class="staticmethod">
+<dt id="pydevDAG._display.Utils.copy_attr">
+<em class="property">static </em><tt class="descname">copy_attr</tt><big>(</big><em>attr</em><big>)</big><a class="headerlink" href="#pydevDAG._display.Utils.copy_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy attr object to a dict of keys and values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>attr</strong> &#8211; the attributes oject</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dict of attributes</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.Utils.get_attr">
+<em class="property">static </em><tt class="descname">get_attr</tt><big>(</big><em>ele</em>, <em>keys</em><big>)</big><a class="headerlink" href="#pydevDAG._display.Utils.get_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve the value of <tt class="docutils literal"><span class="pre">keys</span></tt> on <tt class="docutils literal"><span class="pre">ele</span></tt>.</p>
+<p>Since any nested values end up as simple strings, need to evaluate
+the resulting string to get an actual dict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ele</strong> (a <cite>Node</cite> or <cite>Edge</cite>) &#8211; a graph element</li>
+<li><strong>keys</strong> (<em>list of str</em>) &#8211; a list of keys</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the result of reading from the nested dicts or None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or NoneType</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.Utils.is_diff_status">
+<em class="property">static </em><tt class="descname">is_diff_status</tt><big>(</big><em>ele</em>, <em>diff_status</em><big>)</big><a class="headerlink" href="#pydevDAG._display.Utils.is_diff_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether <tt class="docutils literal"><span class="pre">ele</span></tt> has diff status <tt class="docutils literal"><span class="pre">diff_status</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ele</strong> &#8211; the graph element</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if <tt class="docutils literal"><span class="pre">ele</span></tt> has status <tt class="docutils literal"><span class="pre">diff_status</span></tt>, otherwise False</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.Utils.is_edge_type">
+<em class="property">static </em><tt class="descname">is_edge_type</tt><big>(</big><em>edge</em>, <em>edge_type</em><big>)</big><a class="headerlink" href="#pydevDAG._display.Utils.is_edge_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether <tt class="docutils literal"><span class="pre">edge</span></tt> has type <tt class="docutils literal"><span class="pre">edge_type</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>edge</strong> (<em>agraph.Edge</em>) &#8211; the edge</li>
+<li><strong>edge_type</strong> (<em>EdgeType</em>) &#8211; an edge type</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if <tt class="docutils literal"><span class="pre">edge</span></tt> has type <tt class="docutils literal"><span class="pre">edge_type</span></tt>, otherwise False</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._display.Utils.is_node_type">
+<em class="property">static </em><tt class="descname">is_node_type</tt><big>(</big><em>node</em>, <em>node_type</em><big>)</big><a class="headerlink" href="#pydevDAG._display.Utils.is_node_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether <tt class="docutils literal"><span class="pre">node</span></tt> has type <tt class="docutils literal"><span class="pre">node_type</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node</strong> (<em>agraph.Edge</em>) &#8211; the node</li>
+<li><strong>node_type</strong> (<em>EdgeType</em>) &#8211; an node type</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if <tt class="docutils literal"><span class="pre">node</span></tt> has type <tt class="docutils literal"><span class="pre">node_type</span></tt>, otherwise False</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pydevDAG._display module</a><ul>
+<li><a class="reference internal" href="#pydevdag-display">pydevDAG._display</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pydevDAG._compare.html"
+                        title="previous chapter">pydevDAG._compare module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pydevDAG._graphs.html"
+                        title="next chapter">pydevDAG._graphs module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/pydevDAG/pydevDAG._display.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._graphs.html" title="pydevDAG._graphs module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._compare.html" title="pydevDAG._compare module"
+             >previous</a> |</li>
+        <li><a href="../index.html">pydevDAG 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >pydevDAG</a> &raquo;</li>
+          <li><a href="pydevDAG.html" >pydevDAG package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, mulhern.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

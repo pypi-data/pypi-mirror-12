@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pydevDAG._decorations._decorators module &mdash; pydevDAG 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pydevDAG 1.0 documentation" href="../index.html" />
+    <link rel="up" title="pydevDAG._decorations package" href="pydevDAG._decorations.html" />
+    <link rel="next" title="pydevDAG._decorations._devlink module" href="pydevDAG._decorations._devlink.html" />
+    <link rel="prev" title="pydevDAG._decorations._decorations module" href="pydevDAG._decorations._decorations.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._decorations._devlink.html" title="pydevDAG._decorations._devlink module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._decorations._decorations.html" title="pydevDAG._decorations._decorations module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pydevDAG 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >pydevDAG</a> &raquo;</li>
+          <li><a href="pydevDAG.html" >pydevDAG package</a> &raquo;</li>
+          <li><a href="pydevDAG._decorations.html" accesskey="U">pydevDAG._decorations package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pydevDAG._decorations._decorators">
+<span id="pydevdag-decorations-decorators-module"></span><h1>pydevDAG._decorations._decorators module<a class="headerlink" href="#module-pydevDAG._decorations._decorators" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pydevdag-decorations-decorators">
+<h2>pydevDAG._decorations._decorators<a class="headerlink" href="#pydevdag-decorations-decorators" title="Permalink to this headline">¶</a></h2>
+<p>Tools to decorate networkx graphs in situ, i.e., as
+constructed rather than as read from a textual file.</p>
+<dl class="class">
+<dt id="pydevDAG._decorations._decorators.DifferenceMarkers">
+<em class="property">class </em><tt class="descclassname">pydevDAG._decorations._decorators.</tt><tt class="descname">DifferenceMarkers</tt><a class="headerlink" href="#pydevDAG._decorations._decorators.DifferenceMarkers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>Difference markers, either added or removed or present.</p>
+<dl class="staticmethod">
+<dt id="pydevDAG._decorations._decorators.DifferenceMarkers.edge_differences">
+<em class="property">static </em><tt class="descname">edge_differences</tt><big>(</big><em>graph</em>, <em>difference</em>, <em>value</em><big>)</big><a class="headerlink" href="#pydevDAG._decorations._decorators.DifferenceMarkers.edge_differences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get edge differences in <tt class="docutils literal"><span class="pre">graph</span></tt> based on <tt class="docutils literal"><span class="pre">difference</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<em>DiGraph</em>) &#8211; the graph</li>
+<li><strong>difference</strong> (<em>DiGraph</em>) &#8211; a graph representing the difference</li>
+<li><strong>value</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; marker to add to graph</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If edge is in difference, adds <tt class="docutils literal"><span class="pre">value</span></tt> as &#8220;diffstatus&#8221; attribute.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydevDAG._decorations._decorators.DifferenceMarkers.node_differences">
+<em class="property">static </em><tt class="descname">node_differences</tt><big>(</big><em>graph</em>, <em>difference</em>, <em>value</em><big>)</big><a class="headerlink" href="#pydevDAG._decorations._decorators.DifferenceMarkers.node_differences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get node differences in <tt class="docutils literal"><span class="pre">graph</span></tt> based on <tt class="docutils literal"><span class="pre">difference</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<em>DiGraph</em>) &#8211; the graph</li>
+<li><strong>difference</strong> (<em>DiGraph</em>) &#8211; a graph representing the difference</li>
+<li><strong>value</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; marker to add to graph</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If node is in difference, adds <tt class="docutils literal"><span class="pre">value</span></tt> as &#8220;diffstatus&#8221; attribute.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pydevDAG._decorations._decorators module</a><ul>
+<li><a class="reference internal" href="#pydevdag-decorations-decorators">pydevDAG._decorations._decorators</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pydevDAG._decorations._decorations.html"
+                        title="previous chapter">pydevDAG._decorations._decorations module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pydevDAG._decorations._devlink.html"
+                        title="next chapter">pydevDAG._decorations._devlink module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/pydevDAG/pydevDAG._decorations._decorators.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._decorations._devlink.html" title="pydevDAG._decorations._devlink module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pydevDAG._decorations._decorations.html" title="pydevDAG._decorations._decorations module"
+             >previous</a> |</li>
+        <li><a href="../index.html">pydevDAG 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >pydevDAG</a> &raquo;</li>
+          <li><a href="pydevDAG.html" >pydevDAG package</a> &raquo;</li>
+          <li><a href="pydevDAG._decorations.html" >pydevDAG._decorations package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, mulhern.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
