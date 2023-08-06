@@ -1,0 +1,693 @@
+# Translations template for pypowervm.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the pypowervm project.
+# Automatically generated, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pypowervm 0.0.3.dev270\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-10-06 13:53-0500\n"
+"PO-Revision-Date: 2015-10-06 13:53-0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.0\n"
+
+#: pypowervm/exceptions.py:116
+#, python-format
+msgid ""
+"Unable to derive the appropriate physical FC port for WWPN %(wwpn)s.  The"
+" VIOS Extended Attribute Groups may have been insufficient.  The VIOS URI"
+" for the query was %(vio_uri)s."
+msgstr ""
+"WWPN %(wwpn)s에 대한 적합한 물리적 FC 포트를 얻을 수 없습니다. VIOS "
+"확장 속성 그룹이 충분하지 않았을 수 있습니다. 조회에 대한 VIOS URI는 "
+"%(vio_uri)s입니다."
+
+#: pypowervm/exceptions.py:122
+#, python-format
+msgid "Element not found: %(element_type)s %(element)s"
+msgstr "요소를 찾을 수 없음: %(element_type)s %(element)s"
+
+#: pypowervm/exceptions.py:126
+#, python-format
+msgid "LPAR not found: %(lpar_name)s"
+msgstr "LPAR을 찾을 수 없음: %(lpar_name)s"
+
+#: pypowervm/exceptions.py:130
+#, python-format
+msgid "The '%(operation_name)s' operation failed. %(error)s"
+msgstr "'%(operation_name)s' 조작이 실패했습니다. %(error)s"
+
+#: pypowervm/exceptions.py:134
+#, python-format
+msgid ""
+"The '%(operation_name)s' operation failed. Failed to complete the task in"
+" %(seconds)d seconds."
+msgstr ""
+"'%(operation_name)s' 조작이 실패했습니다. %(seconds)d초 안에 "
+"태스크를 완료하는 데 실패했습니다."
+
+#: pypowervm/exceptions.py:139
+#, python-format
+msgid "Failed to power off Virtual Machine %(lpar_nm)s: %(reason)s"
+msgstr "가상 머신 %(lpar_nm)s의 전원을 끄는 데 실패함: %(reason)s"
+
+#: pypowervm/exceptions.py:143
+#, python-format
+msgid "Failed to power on Virtual Machine %(lpar_nm)s: %(reason)s"
+msgstr "가상 머신 %(lpar_nm)s의 전원을 켜는 데 실패함: %(reason)s"
+
+#: pypowervm/exceptions.py:147
+#, python-format
+msgid ""
+"Unable to remove VLAN %(vlan_id)d as it is the Primary VLAN Identifier on"
+" a different Network Bridge."
+msgstr ""
+"다른 네트워크 브릿지의 1차 VLAN ID이므로 VLAN %(vlan_id)d을(를) "
+"제거할 수 없습니다."
+
+#: pypowervm/exceptions.py:152
+#, python-format
+msgid ""
+"Unable to provision VLAN %(vlan_id)d.  It appears to be contained on "
+"device '%(dev_name)s' on Virtual I/O Server %(vios)s.  That device is not"
+" connected to any Network Bridge (Shared Ethernet Adapter).  Please "
+"manually remove the device or add it to the Network Bridge before "
+"continuing."
+msgstr ""
+"VLAN %(vlan_id)d을(를) 프로비저닝할 수 없습니다. Virtual I/O "
+"Server %(vios)s의 '%(dev_name)s' 장치에 포함된 것으로 보입니다. "
+"해당 장치가 네트워크 브릿지(공유 이더넷 어댑터)에 연결되지 "
+"않았습니다. 계속하기 전에 수동으로 장치를 제거하거나 네트워크 "
+"브릿지에 추가하십시오."
+
+#: pypowervm/exceptions.py:161
+#, python-format
+msgid ""
+"A Logical Unit with name %(lu_name)s already exists on Shared Storage "
+"Pool %(ssp_name)s."
+msgstr ""
+"이름이 %(lu_name)s인 논리 장치가 이미 공유 스토리지 "
+"풀 %(ssp_name)s에 있습니다."
+
+#: pypowervm/exceptions.py:166
+msgid ""
+"Unable to find a physical port to map a virtual Fibre Channel port to.  "
+"This is due to either a Virtual I/O Server being unavailable, or improper"
+" port specification for the physical Fibre Channel ports."
+msgstr ""
+"가상 파이버 채널 포트를 맵핑할 물리적 포트를 찾을 수 없습니다. "
+"이는 Virtual I/O Server가 사용 불가능하거나 물리적 파이버 채널 포트에 대한 포트 스펙이 "
+"적절하지 않기 때문입니다."
+
+#: pypowervm/exceptions.py:173
+msgid ""
+"Unable to start the console to the Virtual Machine.  The pypowervm API is"
+" running in a non-local mode.  The console can only be deployed when "
+"pypowervm is co-located with the PowerVM API."
+msgstr ""
+"가상 머신에 대한 콘솔을 시작할 수 없습니다. pypowervm API가 "
+"로컬이 아닌 모드에서 실행 중입니다. 콘솔은 pypowervm이 PowerVM API와 "
+"공존하는 경우에만 배치될 수 있습니다."
+
+#: pypowervm/exceptions.py:180
+#, python-format
+msgid "WrapperTask %(name)s has no subtasks!"
+msgstr "WrapperTask %(name)s에 하위 태스크가 없습니다!"
+
+#: pypowervm/exceptions.py:184
+msgid "FeedTask can't have an empty feed."
+msgstr "FeedTask에서는 피드가 비어 있을 수 없습니다."
+
+#: pypowervm/exceptions.py:188
+#, python-format
+msgid "OS unable to read file %(access_file)s."
+msgstr "OS가 %(access_file)s 파일을 읽을 수 없습니다."
+
+#: pypowervm/exceptions.py:192
+#, python-format
+msgid "OS able to read file %(access_file)s, but encountered an access error."
+msgstr "OS가 %(access_file)s 파일을 읽을 수 있지만 액세스 오류가 발생했습니다."
+
+#: pypowervm/exceptions.py:197
+#, python-format
+msgid "The migration task failed. %(error)s"
+msgstr "마이그레이션 태스크에 실패했습니다. %(error)s"
+
+#: pypowervm/exceptions.py:201
+#, python-format
+msgid "No load source found for VM %(vm_name)s"
+msgstr "VM %(vm_name)s에 대한 로드 소스를 찾을 수 없음"
+
+#: pypowervm/util.py:122
+#, python-format
+msgid ""
+"Proposed extended attribute group '%(arg_xag)s' doesn't match existing "
+"extended attribute group '%(path_xag)s'"
+msgstr ""
+"제안된 확장 속성 그룹 '%(arg_xag)s'이(가) 기존 "
+"확장 속성 그룹 '%(path_xag)s'과(와) 일치하지 않습니다."
+
+#: pypowervm/util.py:391
+#, python-format
+msgid "Prefix and suffix together may not be more than %d characters."
+msgstr "접두부 및 접미부는 모두 %d자를 초과하지 않아야 합니다."
+
+#: pypowervm/util.py:396
+msgid "Total length must be at least 1 character."
+msgstr "총 길이는 한 문자 이상이어야 합니다."
+
+#: pypowervm/util.py:419
+msgid "The name parameter must be at least one character long."
+msgstr "이름 매개변수 길이는 한 문자 이상이어야 합니다."
+
+#: pypowervm/util.py:422
+#, python-format
+msgid "The name parameter must not exceed %d characters when trunk_ok is False."
+msgstr "trunk_ok가 false인 경우 이름 매개변수는 %d자를 초과해서는 안됩니다."
+
+#: pypowervm/helpers/log_helper.py:82
+#, python-format
+msgid "REQUEST: %s"
+msgstr "요청: %s"
+
+#: pypowervm/helpers/log_helper.py:102
+#, python-format
+msgid "RESPONSE: %s"
+msgstr "응답: %s"
+
+#: pypowervm/tasks/cna.py:77
+#, python-format
+msgid "Unable to find the Virtual Switch %s on the system."
+msgstr "시스템에서 가상 스위치 %s을(를) 찾을 수 없습니다."
+
+#: pypowervm/tasks/hdisk.py:182
+#, python-format
+msgid ""
+"hdisk discovery failed; will scrub stale storage for LPAR IDs %s and "
+"retry."
+msgstr ""
+"hdisk 검색에 실패했습니다. LPAR ID %s의 시간이 경과된(stale) 스토리지를 제거하고 "
+"재시도합니다."
+
+#: pypowervm/tasks/hdisk.py:324
+#, python-format
+msgid "LUA Recovery Successful. Device Found: %s"
+msgstr "LUA 복구 성공. 발견된 장치: %s"
+
+#: pypowervm/tasks/hdisk.py:328
+#, python-format
+msgid "ITL Error encountered: %s"
+msgstr "ITL 오류 발생: %s"
+
+#: pypowervm/tasks/hdisk.py:330
+#, python-format
+msgid "%s Device is currently in use."
+msgstr "%s 장치가 현재 사용 중입니다."
+
+#: pypowervm/tasks/hdisk.py:332
+#, python-format
+msgid "%s Device discovered with unknown UDID."
+msgstr "%s 장치가 알 수 없는 UDID로 검색되었습니다."
+
+#: pypowervm/tasks/hdisk.py:334
+#, python-format
+msgid "Failed to Discover the Device : %s"
+msgstr "장치 검색 실패: %s"
+
+#: pypowervm/tasks/hdisk.py:404
+#, python-format
+msgid "CLIRunner Error: %s"
+msgstr "CLIRunner 오류: %s"
+
+#: pypowervm/tasks/memory.py:101
+#, python-format
+msgid ""
+"Error obtaining host memory overhead for host with UUID '%(host)s': "
+"%(error)s."
+msgstr ""
+"UUID가 '%(host)s'인 호스트에 대한 호스트 메모리 오버헤드를 가져오는 중에 오류 발생: "
+"%(error)s."
+
+#: pypowervm/tasks/power.py:159 pypowervm/tasks/power.py:168
+#, python-format
+msgid "Error: %s"
+msgstr "오류: %s"
+
+#: pypowervm/tasks/power.py:200
+#, python-format
+msgid ""
+"Error invalidating adapter cache for LPAR  %(lpar_name) with UUID "
+"%(lpar_uuid)s: %(exc)s"
+msgstr ""
+"UUID %(lpar_uuid)s인 LPAR %(lpar_name) 에 대한 어댑터 캐시 무효화 중 오류 발생: "
+"%(exc)s"
+
+#: pypowervm/tasks/scsi_mapper.py:38
+msgid "Retrying modification of SCSI Mapping."
+msgstr "SCSI 맵핑 수정을 재시도 중입니다."
+
+#: pypowervm/tasks/scsi_mapper.py:89
+#, python-format
+msgid ""
+"Found existing mapping of %(stg_type)s storage element %(stg_name)s from "
+"Virtual I/O Server %(vios_name)s to client LPAR %(lpar_uuid)s."
+msgstr ""
+"Virtual I/O Server %(vios_name)s에서 클라이언트 LPAR %(lpar_uuid)s(으)로 %(stg_type)s 스토리지 요소 %(stg_name)s의 기존 맵핑을 "
+"찾았습니다."
+
+#: pypowervm/tasks/scsi_mapper.py:107
+#, python-format
+msgid ""
+"Creating mapping of %(stg_type)s storage element %(stg_name)s from "
+"Virtual I/O Server %(vios_name)s to client LPAR %(lpar_uuid)s."
+msgstr ""
+"Virtual I/O Server %(vios_name)s에서 클라이언트 LPAR %(lpar_uuid)s(으)로 %(stg_type)s 스토리지 요소 %(stg_name)s의 맵핑을 "
+"작성 중입니다."
+
+#: pypowervm/tasks/scsi_mapper.py:371
+msgid "Must not specify both match_func and stg_elem."
+msgstr "match_func 및 stg_elem을 모두 지정해서는 안됩니다."
+
+#: pypowervm/tasks/storage.py:287
+#, python-format
+msgid "Unable to cleanup after file upload. File uuid: %s"
+msgstr "파일 업로드 후 정리할 수 없습니다. 파일 UUID: %s"
+
+#: pypowervm/tasks/storage.py:385
+#, python-format
+msgid ""
+"Linked clone Logical Unit %(luname)s (UDID %(udid)s) has no backing image"
+" LU.  It should probably be deleted."
+msgstr ""
+"링크된 복제본 논리 장치 %(luname)s(UDID %(udid)s)에 백업 이미지 LU가 "
+"없습니다. 삭제되어야 합니다."
+
+#: pypowervm/tasks/storage.py:430
+msgid "Unable to locate new vDisk on file upload."
+msgstr "파일 업로드에서 새 vDisk를 찾을 수 없습니다."
+
+#: pypowervm/tasks/storage.py:480
+#, python-format
+msgid "Deleting virtual disk %(vdisk)s from volume group %(vg)s"
+msgstr "볼륨 그룹 %(vg)s에서 가상 디스크 %(vdisk)s 삭제 중"
+
+#: pypowervm/tasks/storage.py:504
+#, python-format
+msgid "Deleting virtual optical device %(vopt)s from volume group %(vg)s"
+msgstr "볼륨 그룹 %(vg)s에서 가상 광학 장치 %(vopt)s 삭제 중"
+
+#: pypowervm/tasks/storage.py:559
+#, python-format
+msgid "Removing LU %(lu_name)s from SSP %(ssp_name)s"
+msgstr "SSP %(ssp_name)s에서 LU %(lu_name)s 제거 중"
+
+#: pypowervm/tasks/storage.py:580
+#, python-format
+msgid ""
+"Removing Image LU %(lu_name)s from SSP %(ssp_name)s because it is no "
+"longer in use."
+msgstr ""
+"이미지 LU %(lu_name)s이(가) 더 이상 사용되고 있지 않으므로 SSP %(ssp_name)s에서 이를 "
+"제거 중입니다."
+
+#: pypowervm/tasks/storage.py:625
+#, python-format
+msgid ""
+"Removing %(num_maps)d orphan %(stg_type)s mappings from VIOS "
+"%(vios_name)s."
+msgstr ""
+"%(num_maps)d개의 orphan %(stg_type)s 맵핑을 VIOS %(vios_name)s에서 "
+"제거 중입니다."
+
+#: pypowervm/tasks/storage.py:652
+#, python-format
+msgid ""
+"Removing %(num_maps)d %(stg_type)s mappings associated with LPAR ID "
+"%(lpar_id)d from VIOS %(vios_name)s."
+msgstr ""
+"LPAR ID %(lpar_id)d과(와) 연관된 %(num_maps)d개의 %(stg_type)s 맵핑을 "
+"VIOS %(vios_name)s에서 제거 중입니다."
+
+#: pypowervm/tasks/storage.py:725
+#, python-format
+msgid "Unexpected storage element type %s."
+msgstr "예상치 않은 스토리지 요소 유형 %s입니다."
+
+#: pypowervm/tasks/storage.py:742
+#, python-format
+msgid ""
+"Scrubbing the following %(vdcount)d Virtual Disks from VIOS %(vios)s: "
+"%(vdlist)s"
+msgstr ""
+"VIOS %(vios)s에서 다음 %(vdcount)d 가상 디스크 제거 중: "
+"%(vdlist)s"
+
+#: pypowervm/tasks/storage.py:750
+#, python-format
+msgid ""
+"Scrubbing the following %(vocount)d Virtual Opticals from VIOS %(vios)s: "
+"%(volist)s"
+msgstr ""
+"VIOS %(vios)s에서 다음 %(vocount)d 가상 광학 제거 중: "
+"%(volist)s"
+
+#: pypowervm/tasks/storage.py:814
+#, python-format
+msgid ""
+"Skipping scrub of %(stg_type)s mappings from VIOS %(vios_name)s for the "
+"following LPAR IDs because those LPARs exist: %(lpar_ids)s"
+msgstr ""
+"해당 LPAR가 있으므로 LPAR ID %(lpar_ids)s에 대한 VIOS %(vios_name)s에서 "
+" %(stg_type)s 맵핑의 제거를 건너뛰는 중입니다."
+
+#: pypowervm/tasks/vfc_mapper.py:379
+#, python-format
+msgid "Detected a stale mapping for LPAR with UUID %s."
+msgstr "UUID %s인 LPAR에 대해 시간이 경과된 맵핑을 발견했습니다."
+
+#: pypowervm/tasks/vfc_mapper.py:583
+#, python-format
+msgid ""
+"Unable to find appropriate VIOS.  The payload provided was likely "
+"insufficient.  The payload data is:\n"
+" %s)"
+msgstr ""
+"적절한 VIOS를 찾을 수 없습니다. 제공된 페이로드가 충분하지 "
+"않았을 수 있습니다. 페이로드 데이터는 다음과 같습니다.\n"
+" %s"
+
+#: pypowervm/tasks/vterm.py:61
+msgid "Unable to close vterm."
+msgstr "vterm을 닫을 수 없습니다."
+
+#: pypowervm/tests/test_i18n.py:33
+msgid "This is a test"
+msgstr "테스트입니다."
+
+#: pypowervm/tests/test_i18n.py:36
+msgid "This is a message for which a translation doesn't exist"
+msgstr "다음은 변환되지 않은 메시지입니다."
+
+#: pypowervm/utils/retry.py:152
+#, python-format
+msgid ""
+"Attempt %(retry)d of total %(total)d for URI %(uri)s.  Error was a known "
+"retry response code: %(resp_code)s"
+msgstr ""
+"URI %(uri)s에 대해 총 %(total)d회 중 %(retry)d회를 시도합니다. 오류는 알려진 "
+"재시도 응답 코드입니다. %(resp_code)s"
+
+#: pypowervm/utils/retry.py:159
+#, python-format
+msgid ""
+"Attempt %(retry)d of %(total)d failed.  Will retry. The exception was:\n"
+" %(except)s."
+msgstr ""
+"총 %(total)d회 중 %(retry)d회 시도에 실패했습니다. 재시도합니다. 예외는 다음과 같습니다.\n"
+" %(except)s."
+
+#: pypowervm/utils/transaction.py:311
+msgid "Must supply either EntryWrapper or EntryWrapperGetter."
+msgstr "EntryWrapper 또는 EntryWrapperGetter를 제공해야 합니다."
+
+#: pypowervm/utils/transaction.py:337
+msgid "Must supply a valid Subtask."
+msgstr "올바른 하위 태스크를 제공해야 합니다."
+
+#: pypowervm/utils/transaction.py:341
+#, python-format
+msgid "Duplicate 'provides' name %s."
+msgstr "'provides' 이름 %s이(가) 중복됩니다."
+
+#: pypowervm/utils/transaction.py:416
+#, python-format
+msgid "WrapperTask %s has no Subtasks; no-op execution."
+msgstr "WrapperTask %s에 하위 태스크가 없습니다. 조작이 실행되지 않습니다."
+
+#: pypowervm/utils/transaction.py:541
+msgid "Must supply either a list of EntryWrappers or a FeedGetter."
+msgstr "EntryWrappers 또는 FeedGetter의 목록을 제공해야 합니다."
+
+#: pypowervm/utils/transaction.py:720
+#, python-format
+msgid "FeedTask %s has no Subtasks; no-op execution."
+msgstr "FeedTask %s에 하위 태스크가 없습니다. 조작이 실행되지 않습니다."
+
+#: pypowervm/utils/validation.py:160
+#, python-format
+msgid ""
+"Insufficient available %(res_name)s on host for virtual machine "
+"'%(instance_name)s' (%(requested)s requested, %(avail)s available)"
+msgstr ""
+"가상 머신 '%(instance_name)s'에 대한 호스트에서 사용 가능한 %(res_name)s이(가) 충분하지 "
+"않음(%(requested)s 요청됨, %(avail)s 사용 가능)"
+
+#: pypowervm/utils/validation.py:187
+msgid "memory"
+msgstr "메모리"
+
+#: pypowervm/utils/validation.py:207
+#, python-format
+msgid ""
+"The virtual machine must be powered off before changing the minimum or "
+"maximum memory. Power off virtual machine %s and try again."
+msgstr ""
+"최소 또는 최대 메모리를 변경하기 전에 먼저 가상 머신의 전원을 "
+"꺼야 합니다. 가상 머신 %s의 전원을 끄고 다시 시도하십시오."
+
+#: pypowervm/utils/validation.py:292
+msgid "CPUs"
+msgstr "CPU"
+
+#: pypowervm/utils/validation.py:308
+msgid "processing units"
+msgstr "처리 장치"
+
+#: pypowervm/utils/validation.py:349
+#, python-format
+msgid ""
+"The virtual machine must be powered off before changing the minimum or "
+"maximum processors. Power off virtual machine %s and try again."
+msgstr ""
+"최소 또는 최대 프로세서를 변경하기 전에 먼저 가상 머신의 전원을 "
+"꺼야 합니다. 가상 머신 %s의 전원을 끄고 다시 시도하십시오."
+
+#: pypowervm/utils/validation.py:359
+#, python-format
+msgid ""
+"The virtual machine must be powered off before changing the minimum or "
+"maximum processor units. Power off virtual machine %s and try again."
+msgstr ""
+"최소 또는 최대 프로세서 단위를 변경하기 전에 먼저 가상 머신의 전원을 "
+"꺼야 합니다. 가상 머신 %s의 전원을 끄고 다시 시도하십시오."
+
+#: pypowervm/utils/validation.py:375
+#, python-format
+msgid ""
+"The virtual machine must be powered off before changing the processor "
+"compatibility mode. Power off virtual machine %s and try again."
+msgstr ""
+"프로세서 호환 모드를 변경하기 전에 먼저 가상 머신의 전원을 "
+"꺼야 합니다. 가상 머신 %s의 전원을 끄고 다시 시도하십시오."
+
+#: pypowervm/utils/validation.py:383
+#, python-format
+msgid ""
+"The virtual machine must be powered off before changing the processing "
+"mode. Power off virtual machine %s and try again."
+msgstr ""
+"처리 모드를 변경하기 전에 먼저 가상 머신의 전원을 꺼야 합니다. "
+"가상 머신 %s의 전원을 끄고 다시 시도하십시오."
+
+#: pypowervm/utils/validation.py:412
+#, python-format
+msgid ""
+"The desired processors (%(vcpus)d) cannot be above the maximum allowed "
+"processors per partition (%(max_allowed)d) for virtual machine "
+"'%(instance_name)s'."
+msgstr ""
+"원하는 프로세서(%(vcpus)d)가 가상 머신 '%(instance_name)s'에 "
+"대해 파티션당 허용되는 최대 프로세서 수(%(max_allowed)d)를 "
+"초과할 수 없습니다."
+
+#: pypowervm/utils/validation.py:424
+#, python-format
+msgid ""
+"The maximum processors (%(vcpus)d) cannot be above the maximum system "
+"capacity processor limit (%(max_allowed)d) for virtual machine "
+"'%(instance_name)s'."
+msgstr ""
+"최대 프로세서(%(vcpus)d)가 가상 머신 '%(instance_name)s'에 대한 "
+"최대 시스템 용량 프로세서 한계(%(max_allowed)d)를 "
+"초과할 수 없습니다."
+
+#: pypowervm/utils/validation.py:442
+#, python-format
+msgid "The shared processor pool for %s must be DefaultPool."
+msgstr "%s에 대한 공유 프로세서 풀은 DefaultPool이어야 합니다."
+
+#: pypowervm/utils/validation.py:450
+#, python-format
+msgid "The shared processor pool for %s cannot be changed."
+msgstr "%s에 대한 공유 프로세서 풀을 변경할 수 없습니다."
+
+#: pypowervm/utils/validation.py:513
+#, python-format
+msgid ""
+"The virtual machine must be powered off before changing the simplified "
+"remote restart capability. Power off virtual machine %s and try again."
+msgstr ""
+"단순 원격 다시 시작 기능을 변경하기 전에 먼저 가상 머신의 전원을 "
+"꺼야 합니다. 가상 머신 %s의 전원을 끄고 다시 시도하십시오."
+
+#: pypowervm/wrappers/base_partition.py:470
+#, python-format
+msgid "Invalid KeylockPos '%s'."
+msgstr "올바르지 않은 KeylockPos '%s'입니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:258
+#, python-format
+msgid "Cannot convert %(property_name)s='%(value)s' in object %(pvmobject)s"
+msgstr "오브젝트 %(pvmobject)s의 %(property_name)s='%(value)s'을(를) 변환할 수 없음"
+
+#: pypowervm/wrappers/entry_wrapper.py:337
+#, python-format
+msgid "The expected parameter of %(param)s was not found in %(identifier)s"
+msgstr "%(param)s의 예상 매개변수가 %(identifier)s에 없음"
+
+#: pypowervm/wrappers/entry_wrapper.py:386
+msgid ""
+"Refusing set href over multiple links.\n"
+"Path: %{path}s\n"
+"Number of links found: %{nlinks}d"
+msgstr ""
+"다중 링크에서 href 설정 거부 중입니다.\n"
+"경로: %{path}s\n"
+"찾은 링크 수: %{nlinks}d"
+
+#: pypowervm/wrappers/entry_wrapper.py:430
+msgid "Refusing to construct and wrap an Element without a tag."
+msgstr "태그가 없는 요소의 구성 및 랩핑을 거부 중입니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:554
+msgid "Response is missing 'entry' property."
+msgstr "응답에서 'entry' 특성이 누락되었습니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:568
+#, python-format
+msgid "Must supply a Response or Entry to wrap.  Got %s"
+msgstr "랩핑할 응답 또는 항목을 제공해야 합니다. %s을(를) 가져왔습니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:667
+msgid "Parent UUID specified without parent type."
+msgstr "상위 유형이 없이 지정된 상위 UUID입니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:670
+msgid "The search() method requires exactly one key=value argument."
+msgstr "search() 메소드에는 정확히 하나의 키=값 인수가 필요합니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:698
+#, python-format
+msgid "Wrapper class %(class)s does not support search key '%(key)s'."
+msgstr "랩퍼 클래스 %(class)s이(가) 검색 키 '%(key)s'을(를) 지원하지 않습니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:774
+msgid "Must specify both parent type and UUID, or neither."
+msgstr "상위 유형 및 UUID를 모두 지정하거나 모두 지정하지 않아야 합니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:851
+msgid "Cannot set uuid."
+msgstr "UUID를 설정할 수 없습니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:1041
+msgid "No such child element."
+msgstr "해당 하위 요소가 없습니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:1102
+msgid "Cannot set UUID on Wrapper with no Metadata."
+msgstr "메타데이터가 없는 랩퍼에서 UUID를 설정할 수 없습니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:1107
+#, python-format
+msgid "uuid value not valid: %s"
+msgstr "UUID 값이 올바르지 않음: %s"
+
+#: pypowervm/wrappers/entry_wrapper.py:1155
+msgid "Must specify a Wrapper subclass."
+msgstr "랩퍼 서브클래스를 지정해야 합니다."
+
+#: pypowervm/wrappers/entry_wrapper.py:1162
+msgid "Must specify both parent class and parent UUID, or neither."
+msgstr "상위 클래스 및 상위 UUID를 모두 지정하거나 모두 지정하지 않아야 합니다."
+
+#: pypowervm/wrappers/job.py:281
+#, python-format
+msgid "Job %(job_id)s failed to cancel after %(timeout)s seconds."
+msgstr "%(timeout)s초 후 %(job_id)s 작업을 취소하는 데 실패했습니다."
+
+#: pypowervm/wrappers/job.py:302
+#, python-format
+msgid "Job %s not deleted. Job is in running state."
+msgstr "%s 작업이 삭제되지 않았습니다. 작업이 실행 중 상태입니다."
+
+#: pypowervm/wrappers/logical_partition.py:139
+#: pypowervm/wrappers/logical_partition.py:208
+msgid "LPAR does not have an active RMC connection."
+msgstr "LPAR에 활성 RMC 연결이 없습니다."
+
+#: pypowervm/wrappers/logical_partition.py:141
+#, python-format
+msgid "LPAR does not have an active DLPAR capability for %s."
+msgstr "LPAR에 %s에 대한 활성 DLPAR 기능이 없습니다."
+
+#: pypowervm/wrappers/logical_partition.py:153
+msgid "I/O"
+msgstr "I/O"
+
+#: pypowervm/wrappers/logical_partition.py:163
+msgid "Memory"
+msgstr "메모리"
+
+#: pypowervm/wrappers/logical_partition.py:173
+msgid "Processors"
+msgstr "프로세서"
+
+#: pypowervm/wrappers/logical_partition.py:190
+msgid "LPAR is not in an active state."
+msgstr "LPAR이 활성 상태가 아닙니다."
+
+#: pypowervm/wrappers/logical_partition.py:196
+msgid "IBM i LPAR does not have restricted I/O."
+msgstr "IBM i LPAR에서는 I/O가 제한되지 않습니다."
+
+#: pypowervm/wrappers/logical_partition.py:200
+msgid "Source system does not have the IBM i LPAR Mobility Capability."
+msgstr "소스 시스템에 IBM i LPAR 이동 기능이 없습니다."
+
+#: pypowervm/wrappers/logical_partition.py:205
+msgid "IBM i LPAR Live Migration is only supported on POWER7 and higher systems."
+msgstr "IBM i LPAR 실시간 마이그레이션은 POWER7 이상 시스템에서만 지원됩니다."
+
+#: pypowervm/wrappers/logical_partition.py:212
+msgid "LPAR is not available for LPM due to missing DLPAR capabilities."
+msgstr "DLPAR 기능이 누락되어 LPAR을 LPM에 사용할 수 없습니다."
+
+#: pypowervm/wrappers/logical_partition.py:273
+#, python-format
+msgid "Invalid IPLSrc '%s'."
+msgstr "올바르지 않은 IPLSrc '%s'입니다."
+
+#: pypowervm/wrappers/storage.py:437
+#, python-format
+msgid ""
+"PV had encoded pg83 descriptor \"%(pg83_raw)s\", but it failed to decode "
+"(%(type_error)s)."
+msgstr ""
+"PV가 pg83 디스크립터 \"%(pg83_raw)s\"을(를) 인코딩했지만 디코드하는 데 "
+"실패했습니다(%(type_error)s)."
+
