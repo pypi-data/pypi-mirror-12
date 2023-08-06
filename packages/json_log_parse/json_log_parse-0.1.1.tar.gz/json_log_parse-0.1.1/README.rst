@@ -1,0 +1,1 @@
+I like to look at log files. I like data JSON formatted, because I don't know what I'm going to do with it next. I'm not good with RegEx. That's where this script comes in.
