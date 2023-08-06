@@ -1,0 +1,41 @@
+Metadata-Version: 1.0
+Name: remote-tox
+Version: 0.0.1
+Summary: A python package that helps run tox remotely
+Home-page: https://github.com/harlowja/remote_tox
+Author: Joshua Harlow
+Author-email: harlowja@yahoo-inc.com
+License: ASL 2.0
+Description: RemoteTox
+        =========
+        
+        Remote testing of python environments (that use `tox`).
+        
+        What this does
+        --------------
+        
+        1. Acquires a lock to ensure simultaneous repositories are not being tested.
+        2. Connects to (randomly selected if multiple are given) remote machine (ssh
+           keys need to be setup to allow this to happen in a non-intrusive way).
+        3. Archives the current working directory into a tarball.
+        4. Sends this tarball to the remote machine (after removing any
+           old or previous tarballs, test environments...).
+        5. Runs `tox` on the remote machine, proxying the stderr/stdout to the
+           local stderr/stdout (making it look like the output of that remote
+           program is actually local).
+        6. Returns the remote `tox` programs exit code as the local programs exit
+           code (making it look like the remote programs exit code was the local
+           programs exit code).
+        
+Keywords: testing tox remote
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4

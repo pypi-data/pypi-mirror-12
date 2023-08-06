@@ -1,0 +1,292 @@
+#!/usr/bin/env python
+
+import argparse
+
+import contextlib
+import errno
+import getpass
+import os
+import random
+import select
+import sys
+import tarfile
+import tempfile
+import threading
+import time
+
+import fcntl
+from fcntl import (F_GETFL, F_SETFL, LOCK_EX, LOCK_NB, LOCK_UN)
+from os import O_NONBLOCK
+
+import six
+from six.moves import configparser
+
+import plumbum
+from plumbum import local
+from plumbum.path import utils
+
+DEF_VENV = 'py27'
+OK_HIDDEN = [
+    ".git", '.testr.conf',
+    '.gitreview', '.gitignore',
+    '.coveragerc', '.mailmap',
+]
+SKIP_EXTENSIONS = [
+    '.pyc',
+    '.pyo',
+]
+CONF_FILE = os.path.expanduser("~/.remotes.ini")
+
+
+def read_hosts(args):
+    hosts = []
+    hosts.extend(args.hosts)
+    ini_hosts = read_option('hosts')
+    if ini_hosts:
+        for h in ini_hosts.strip().split(","):
+            hosts.append(h.strip())
+    dupless_hosts = []
+    for h in hosts:
+        h = h.strip()
+        if not h:
+            continue
+        h = h.lower()
+        if h in dupless_hosts:
+            continue
+        dupless_hosts.append(h)
+    return dupless_hosts
+
+
+def read_option(name, default=None):
+    if os.path.isfile(CONF_FILE):
+        cfg = configparser.RawConfigParser()
+        with open(CONF_FILE, 'rb') as fh:
+            cfg.readfp(fh, filename=CONF_FILE)
+            try:
+                return cfg.get('remote', name)
+            except (configparser.NoSectionError, configparser.NoOptionError):
+                pass
+    return default
+
+
+def read_write(read_from, write_where, chunk_size=128):
+    while True:
+        try:
+            data = os.read(read_from.fileno(), chunk_size)
+            if len(data):
+                write_where.write(data)
+                write_where.flush()
+            else:
+                break
+        except OSError:
+            break
+
+
+@contextlib.contextmanager
+def lock_file(path, blocking=False):
+
+    def try_lock(f):
+        fcntl.lockf(f, LOCK_EX | LOCK_NB)
+
+    def unlock(f):
+        fcntl.lockf(f, LOCK_UN)
+
+    f = open(path, 'w')
+    try:
+        while True:
+            try:
+                try_lock(f)
+            except IOError as e:
+                if e.errno in (errno.EACCES, errno.EAGAIN):
+                    if not blocking:
+                        raise RuntimeError("Lock '%s' already"
+                                           " acquired" % path)
+                    else:
+                        time.sleep(0.01)
+                else:
+                    raise threading.ThreadError("Lock '%s' acquisition"
+                                                " failed: %s" % (path, e))
+            else:
+                break
+        try:
+            yield path
+        finally:
+            unlock(f)
+    finally:
+        f.close()
+
+
+def spinning_cursor():
+    while True:
+        for ch in '|/-\\':
+            yield ch
+
+
+def runner(cmd, args):
+    p = cmd.popen(args=tuple(args))
+    flags = fcntl.fcntl(p.stdout, F_GETFL)
+    fcntl.fcntl(p.stdout, F_SETFL, flags | O_NONBLOCK)
+    flags = fcntl.fcntl(p.stderr, F_GETFL)
+    fcntl.fcntl(p.stderr, F_SETFL, flags | O_NONBLOCK)
+    inputs = [p.stdout, p.stderr]
+    inputs_outputs = {
+        p.stdout: sys.stdout,
+        p.stderr: sys.stderr,
+    }
+    spinner = spinning_cursor()
+    while p.poll() is None:
+        i_ready, o_ready, e_ready = select.select(inputs, [], [], 0.05)
+        for s in i_ready:
+            read_write(s, inputs_outputs[s])
+        sys.stdout.write(spinner.next())
+        sys.stdout.flush()
+        time.sleep(0.1)
+        sys.stdout.write('\b')
+    # Ensure everything is read (just incase).
+    for (innie, outtie) in six.iteritems(inputs_outputs):
+        read_write(innie, outtie)
+    return p.returncode
+
+
+def is_hidden(path):
+    while path not in ["/", '']:
+        (parent_path, base) = os.path.split(path)
+        if base.startswith("."):
+            if base not in OK_HIDDEN:
+                return True
+        path = parent_path
+    return False
+
+
+def is_valid_extension(path):
+    base, ext = os.path.splitext(path)
+    if ext.lower() in SKIP_EXTENSIONS:
+        return True
+    return False
+
+
+def make_bool(text):
+    if isinstance(text, bool):
+        return text
+    if isinstance(text, int):
+        return bool(text)
+    if text.lower() in ('1', 'yes', 'true'):
+        return True
+    return False
+
+
+def tar_up_dir(tarball, path, verbose=False):
+    path = os.path.abspath(path)
+    if not os.path.isdir(path):
+        raise ValueError("'%s' is not a directory" % path)
+    path_filters = [is_hidden, is_valid_extension]
+    for (dirpath, dirnames, filenames) in os.walk(path):
+        for name in filenames:
+            filepath = os.path.abspath(os.path.join(dirpath, name))
+            requested_skips = 0
+            for f in path_filters:
+                if f(filepath):
+                    requested_skips += 1
+            if requested_skips:
+                if verbose:
+                    print("Skipping %s" % (filepath))
+                continue
+            if not filepath.startswith(path):
+                # Do not allow outside directory includes...
+                raise IOError("Invalid path '%s' found" % (filepath))
+            arcname = filepath[len(path):]
+            if verbose:
+                print("Adding '%s' as '%s'" % (filepath, arcname))
+            tarball.add(filepath, arcname=arcname)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    default_verbose = make_bool(read_option('verbose', default='no'))
+    parser.add_argument("-v", "--verbose",
+                        help="increase output verbosity"
+                             " (default: %s)" % default_verbose,
+                        action="store_true", default=default_verbose)
+    default_source_dir = os.getcwd()
+    parser.add_argument("-d", "--directory",
+                        help="test directory"
+                             " (default: %s)" % default_source_dir,
+                        action="store", default=default_source_dir,
+                        metavar="DIR")
+    parser.add_argument("--host", help="remote test host",
+                        action="append", metavar="HOST", dest='hosts',
+                        default=[])
+    default_user = read_option('user', default=getpass.getuser())
+    parser.add_argument("-u", "--user",
+                        help="remote test"
+                             " user (default: %s)" % default_user,
+                        action="store", metavar="USER", default=default_user)
+    default_venv = read_option('venv', default=DEF_VENV)
+    parser.add_argument("--venv",
+                        help="remote test"
+                             " venv (default: %s)" % default_venv,
+                        action="store", metavar="VENV",
+                        default=default_venv)
+    default_test_dir = read_option('test_path',
+                                   default=os.path.expanduser("~/.testing"))
+    parser.add_argument("--path",
+                        help="remote test"
+                             " path (default: %s)" % default_test_dir,
+                        action="store", metavar="DIR",
+                        default=default_test_dir)
+    args = parser.parse_args()
+    src_path = args.directory
+    src = local.path(src_path)
+    user = args.user
+    hosts = read_hosts(args)
+    if not hosts:
+        print("No remote hosts available. This will not end well.")
+        return 1
+    if not os.path.exists(os.path.join(src_path, "tox.ini")):
+        print("No tox.ini file available. This will not end well.")
+        return 1
+    host = random.choice(hosts)
+    lock_path = os.path.join(tempfile.gettempdir(),
+                             "%s.remote_lock" % (src.basename))
+    with lock_file(lock_path):
+        print("-" * 70)
+        print("Connecting to %s@%s..." % (user, host))
+        with plumbum.SshMachine(host=host, user=user) as m:
+            archive_suffix = ".%s.tar" % src.basename
+            with tempfile.NamedTemporaryFile(suffix=archive_suffix) as fh:
+                print("Tarring up %s -> %s..." % (src, fh.name))
+                tarball = tarfile.open(fileobj=fh, mode='w')
+                try:
+                    tar_up_dir(tarball, src_path, verbose=args.verbose)
+                finally:
+                    tarball.close()
+                fh.flush()
+                mk = m['mkdir']
+                base = m.path(args.path)
+                if not base.exists:
+                    mk("-p", base)
+                target = base / src.basename
+                if target.exists:
+                    print("Removing old %s..." % (target))
+                    rm = m['rm']
+                    rm("-rf", target)
+                mk("-p", target)
+                tar_target = target / os.path.split(fh.name)[1]
+                print("Copying %s to %s..." % (fh.name, tar_target))
+                utils.copy(fh.name, tar_target)
+                with m.cwd(target):
+                    print("Extracting %s..." % (tar_target))
+                    e = m['tar']
+                    e('-xf', tar_target.basename)
+                print('Running tox with venv %s...' % (args.venv))
+                print("-" * 70)
+                with m.cwd(target):
+                    tox_args = ["-e%s" % args.venv]
+                    if args.verbose:
+                        tox_args.append("-v")
+                    rc = runner(m['tox'], tox_args)
+                return rc
+
+
+if __name__ == '__main__':
+    sys.exit(main())
