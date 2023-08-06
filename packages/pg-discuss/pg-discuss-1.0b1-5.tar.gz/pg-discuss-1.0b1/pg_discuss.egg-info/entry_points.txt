@@ -1,0 +1,8 @@
+[console_scripts]
+pgd-admin = pg_discuss.management:execute_from_command_line
+
+[pg_discuss.ext]
+core_escaping_renderer = pg_discuss.drivers.escaping_renderer:EscapingRenderer
+core_iso_date_json_encoder = pg_discuss.drivers.iso_date_json_encoder:IsoDateJSONEncoder
+core_null_identity_policy = pg_discuss.drivers.null_identity_policy:NullIdentityPolicy
+
