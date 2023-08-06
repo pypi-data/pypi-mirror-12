@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>EPeriodicalSemanticInfo structure &mdash; edeposit.amqp.aleph 1.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="edeposit.amqp.aleph 1.9.3 documentation" href="../../index.html" />
+    <link rel="up" title="Data structures" href="datastructures.html" />
+    <link rel="next" title="AlephRecord structure" href="alephrecord.html" />
+    <link rel="prev" title="SemanticInfo structure" href="semanticinfo.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="alephrecord.html" title="AlephRecord structure"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="semanticinfo.html" title="SemanticInfo structure"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">edeposit.amqp.aleph 1.9.3 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="datastructures.html" accesskey="U">Data structures</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-aleph.datastructures.eperiodical_semantic_info">
+<span id="eperiodicalsemanticinfo-structure"></span><h1>EPeriodicalSemanticInfo structure<a class="headerlink" href="#module-aleph.datastructures.eperiodical_semantic_info" title="Permalink to this headline">¶</a></h1>
+<p>Definition of structures, which are used to hold informations about
+catalogization process of periodical publications.</p>
+<dl class="class">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo">
+<em class="property">class </em><code class="descclassname">aleph.datastructures.eperiodical_semantic_info.</code><code class="descname">EPeriodicalSemanticInfo</code><a class="reference internal" href="../../_modules/aleph/datastructures/eperiodical_semantic_info.html#EPeriodicalSemanticInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>This structure is used to represent informations about export progress in
+Aleph.</p>
+<p>It contains informations about state of the record, so it can be tracked
+from edeposit project.</p>
+<dl class="attribute">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.hasAcquisitionFields">
+<code class="descname">hasAcquisitionFields</code><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.hasAcquisitionFields" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> &#8211; Was the record aproved by acquisition?</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.acquisitionFields">
+<code class="descname">acquisitionFields</code><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.acquisitionFields" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; Acquisition fields if it the record was
+signed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.isClosed">
+<code class="descname">isClosed</code><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.isClosed" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> &#8211; Was the record closed? This sometimes happen when bad
+ISBN is given by creator of the record, but different is in the
+book.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.isSummaryRecord">
+<code class="descname">isSummaryRecord</code><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.isSummaryRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> &#8211; Is the content of FMT == &#8220;SE&#8221;?</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.contentOfFMT">
+<code class="descname">contentOfFMT</code><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.contentOfFMT" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str, default &#8220;&#8221;</em> &#8211; Content of FMT subrecord.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.parsedSummaryRecordSysNumber">
+<code class="descname">parsedSummaryRecordSysNumber</code><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.parsedSummaryRecordSysNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; Same as
+<a class="reference internal" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.summaryRecordSysNumber" title="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.summaryRecordSysNumber"><code class="xref py py-attr docutils literal"><span class="pre">summaryRecordSysNumber</span></code></a> but without natural language
+details.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.summaryRecordSysNumber">
+<code class="descname">summaryRecordSysNumber</code><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.summaryRecordSysNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; Identificator of the new record if
+<cite>.isClosed</cite> is True. Format of the string is not specified and can
+be different for each record.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.from_xml">
+<em class="property">static </em><code class="descname">from_xml</code><span class="sig-paren">(</span><em>xml</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aleph/datastructures/eperiodical_semantic_info.html#EPeriodicalSemanticInfo.from_xml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aleph.datastructures.eperiodical_semantic_info.EPeriodicalSemanticInfo.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pick informations from <code class="xref py py-class docutils literal"><span class="pre">MARCXMLRecord</span></code> object and use it to
+build <a class="reference internal" href="semanticinfo.html#aleph.datastructures.semanticinfo.SemanticInfo" title="aleph.datastructures.semanticinfo.SemanticInfo"><code class="xref py py-class docutils literal"><span class="pre">SemanticInfo</span></code></a> structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>xml</strong> (<em>str/MARCXMLRecord</em>) &#8211; MarcXML which will be converted to
+SemanticInfo. In case of str, <code class="docutils literal"><span class="pre">&lt;record&gt;</span></code> tag is required.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="semanticinfo.html#aleph.datastructures.semanticinfo.SemanticInfo" title="aleph.datastructures.semanticinfo.SemanticInfo"><code class="xref py py-class docutils literal"><span class="pre">SemanticInfo</span></code></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">structure</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/nkp_logo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="semanticinfo.html"
+                        title="previous chapter">SemanticInfo structure</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="alephrecord.html"
+                        title="next chapter">AlephRecord structure</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/datastructures/eperiodical_semantic_info.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="alephrecord.html" title="AlephRecord structure"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="semanticinfo.html" title="SemanticInfo structure"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">edeposit.amqp.aleph 1.9.3 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="datastructures.html" >Data structures</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015 E-deposit team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
