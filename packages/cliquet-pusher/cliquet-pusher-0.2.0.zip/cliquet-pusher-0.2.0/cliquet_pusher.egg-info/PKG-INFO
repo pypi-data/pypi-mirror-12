@@ -1,0 +1,93 @@
+Metadata-Version: 1.1
+Name: cliquet-pusher
+Version: 0.2.0
+Summary: Plug Cliquet notifications with Pusher.com
+Home-page: https://github.com/leplatrem/cliquet-pusher
+Author: Mathieu Leplatre
+Author-email: mathieu@leplat.re
+License: Apache License (2.0)
+Description: ===============================
+        Cliquet Pusher
+        ===============================
+        
+        .. image:: https://img.shields.io/travis/leplatrem/cliquet-pusher.svg
+                :target: https://travis-ci.org/leplatrem/cliquet-pusher
+        
+        .. image:: https://img.shields.io/pypi/v/cliquet-pusher.svg
+                :target: https://pypi.python.org/pypi/cliquet-pusher
+        
+        **proof-of-concept**: Plug `Cliquet notifications <http://cliquet.readthedocs.org/en/latest/reference/notifications.html>`_
+        with `Pusher.com <http://pusher.com>`_.
+        
+        
+        Install
+        -------
+        
+        ::
+        
+            pip install cliquet-pusher
+        
+        
+        Setup
+        -----
+        
+        In the Cliquet-based application settings:
+        
+        ::
+        
+            cliquet.includes = cliquet_pusher
+        
+            cliquet.event_listeners = cliquet_pusher.listener
+            cliquet.event_listeners.pusher.resources = <list of resource names>
+            cliquet.event_listeners.pusher.channel = <channel-name or pattern>
+        
+            pusher.app_id = <pusher-app-id>
+            pusher.key = <pusher-key>
+            pusher.secret = <pusher-secret>
+        
+        
+        For example, in `Kinto <http://kinto.readthedocs.org/>`_, to be notified of
+        record updates per collection:
+        
+        ::
+        
+            kinto.event_listeners.pusher.resources = record
+            kinto.event_listeners.pusher.channel = {bucket_id}-{collection_id}-{resource_name}
+        
+        > **Note:** *This channel format is the one used in the demo*
+        
+        
+        TODO
+        ----
+        
+        - Add view for authenticated channels
+        
+        
+        Changelog
+        =========
+        
+        0.2.0 (2015-11-20)
+        ------------------
+        
+        - Add HTML demo with *Kinto* and *Leaflet*
+        - Works with *Cliquet* 2.11
+        
+        
+        0.1.0 (2015-11-05)
+        ------------------
+        
+        - Initial working proof-of-concept.
+        
+Keywords: cliquet pusher
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
