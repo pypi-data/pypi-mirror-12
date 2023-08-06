@@ -1,0 +1,20 @@
+<div class="main-menu-list">
+  {% for resource in menu if resource.node.in_menu and resource.node.visible recursive %}
+    <div class="main-menu-list__item
+            {% for item in lineage(context) if item and item.node==resource.node %}
+                main-menu-list__item_in_current_branch
+            {% endfor %}
+            {% if resource.node == context.node or resource.node == page %}
+              main-menu-list__item_state_current
+            {% endif %}
+            {% if resource.children_qty %}
+              main-menu-list__item_state_has-child
+            {% endif %}">
+      <a href="{{ request.resource_url(resource) }}"
+        class="main-menu-list__item-link">
+        {{ resource.node.name }}
+      </a>
+      <div class="main-menu-list">{{ loop(resource.children) }}</div>
+    </div>
+  {% endfor %}
+</div>
