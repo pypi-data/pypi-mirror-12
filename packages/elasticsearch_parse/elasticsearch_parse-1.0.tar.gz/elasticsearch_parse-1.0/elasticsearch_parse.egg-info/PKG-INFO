@@ -1,0 +1,113 @@
+Metadata-Version: 1.1
+Name: elasticsearch-parse
+Version: 1.0
+Summary: elasticsearch parse
+Home-page: http://xiaorui.cc
+Author: ruifengyun
+Author-email: rfyiamcool@163.com
+License: MIT
+Description: #elasticsearch_parse
+        =================
+        
+        首先注明下本项目是由来,学习Elasticsearch本身是有些痛苦的, 我们可以熟练的编写SQL 、 Mongodb语句，但对于Elasticsearch Dsl语法总是蒙头，一个劲的翻找笔记...  
+        简单说 Elasticsearch Parse可以让你更容易的上手ES, 他的功能主要是语句映射, 有点ORM的意思... 
+        
+        此项目继承于`elasticsearch-dsl-py`, 其实砍掉了大量的代码,然后中间又加了一些佐料, 只是为了DSL语句映射功能 ! 
+        
+        用原始的DSL语法操作的过程  
+        ```
+        from elasticsearch import Elasticsearch
+        client = Elasticsearch()
+        
+        response = client.search(
+            index="my-index",
+            body={
+              "query": {
+                "filtered": {
+                  "query": {
+                    "bool": {
+                      "must": [{"match": {"title": "python"}}],
+                      "must_not": [{"match": {"description": "beta"}}]
+                    }
+                  },
+                  "filter": {"term": {"category": "search"}}
+                }
+              },
+              "aggs" : {
+                "per_tag": {
+                  "terms": {"field": "tags"},
+                  "aggs": {
+                    "max_lines": {"max": {"field": "lines"}}
+                  }
+                }
+              }
+            }
+        )
+        
+        ```
+        
+        下面是使用Elasticsearch_parse的用法
+        
+        ```
+        from elasticsearch_parse import Search, Q
+        
+        s = Search(index="my-index") \
+            .filter("term", blog="xiaorui.cc") \
+            .query("match", author="ruifengyun")   \
+            .query(~Q("match", face="good"))
+        
+        s.aggs.bucket('per_tag', 'terms', field='tags')
+        
+        response = s.execute()
+        ```
+        我们得到的结果是:
+        ```
+        {
+            "query": {
+                "filtered": {
+                    "filter": {
+                        "term": {
+                            "blog": "xiaorui.cc"
+                        }
+                    },
+                    "query": {
+                        "bool": {
+                            "must_not": [
+                                {
+                                    "match": {
+                                        "face": "good"
+                                    }
+                                }
+                            ],
+                            "must": [
+                                {
+                                    "match": {
+                                        "author": "ruifengyun"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "aggs": {
+                "per_tag": {
+                    "terms": {
+                        "field": "tags"
+                    }
+                }
+            }
+        }
+        ```
+        
+        s.query('range', ** {'@timestamp': {'lt': 'now'}})
+        
+Keywords: elasticsearch_parse,fengyun
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
