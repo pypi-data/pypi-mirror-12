@@ -1,0 +1,27 @@
+---
++++
+@@ -14,9 +14,10 @@
+ import pickle
+
+ class HoneyPotCommand(object):
+-    def __init__(self, honeypot, *args):
++    def __init__(self, honeypot, *args, **kwargs):
+         self.honeypot = honeypot
+         self.args = args
++        self.env = kwargs
+         self.writeln = self.honeypot.writeln
+         self.write = self.honeypot.terminal.write
+         self.nextLine = self.honeypot.terminal.nextLine
+@@ -122,7 +123,11 @@
+         if cmdclass:
+             print 'Command found: %s' % (line,)
+             self.honeypot.logDispatch('Command found: %s' % (line,))
+-            self.honeypot.call_command(cmdclass, *rargs)
++
++            if hasattr(cmdclass, 'resolve_args'):
++                self.honeypot.call_command(cmdclass, *rargs, **envvars)
++            else:
++                self.honeypot.call_command(cmdclass, *args, **envvars)
+         else:
+             self.honeypot.logDispatch('Command not found: %s' % (line,))
+             print 'Command not found: %s' % (line,)
