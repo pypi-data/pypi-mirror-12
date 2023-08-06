@@ -1,0 +1,21 @@
+<configure
+    xmlns:zope="http://namespaces.zope.org/zope"
+    xmlns="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="p01">
+
+  <page
+      name="index.html"
+      for="p01.cdn.interfaces.IResourceNotFound"
+      class=".error.ResourceNotFoundPage"
+      permission="zope.Public"
+      layer="p01.cdn.layer.ICDNRequest"
+      />
+
+  <defaultView
+      name="index.html"
+      for="p01.cdn.interfaces.IResourceNotFound"
+      layer="p01.cdn.layer.ICDNRequest"
+      />
+
+</configure>
