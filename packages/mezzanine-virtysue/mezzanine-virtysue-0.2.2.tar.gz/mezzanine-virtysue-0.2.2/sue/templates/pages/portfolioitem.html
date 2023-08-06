@@ -1,0 +1,53 @@
+{% extends "pages/page.html" %}
+{% load i18n %}
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+
+
+{% block main %}
+
+
+{% if not page.portfolioitem.images.all %}
+  {% if page.portfolioitem.featured_image %}
+    <img src="{{ MEDIA_URL }}{{ portfolioitem.featured_image }}" class="img-responsive center-block" alt="{{ portfolioitem.title }}" />
+  {% endif %}
+{% endif %}
+
+  {% if page.portfolioitem.featured_image %}
+        <!-- Carousel -->
+        {% if page.portfolioitem.images.all %}
+        <div class="bs-example">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+         
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">
+                <img src="{{ MEDIA_URL }}{% thumbnail page.portfolioitem.featured_image 700 360 %}" class="img-responsive center-block col-xs-12" alt="{{ portfolioitem.title }}" >          
+            </div>
+          {% for slide in page.portfolioitem.images.all %}
+            <div class="item">
+                <img src="{{ MEDIA_URL }}{% thumbnail slide.file 700 360 %}" class="img-responsive center-block col-xs-12" alt="" >               
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- carousel nav -->
+        <a class="carousel-controls left" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-controls right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+       </a>
+       <!-- //carousel nav -->
+
+    </div>
+</div>
+      {% endif %}
+      <!-- //Carousel -->
+  {% endif %}
+
+{% if page.portfolioitem.content %}
+  <p>{{ page.portfolioitem.content|richtext_filters|safe }}</p>
+{% endif %}
+
+{% endblock %}
