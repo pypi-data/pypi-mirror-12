@@ -1,0 +1,34 @@
+[console_scripts]
+plainbox-trusted-launcher-1 = plainbox.impl.secure.launcher1:main
+plainbox = plainbox.public:main
+stubbox = plainbox.impl.box:stubbox_main
+plainbox-qml-shell = plainbox.qml_shell.qml_shell:main
+
+[plainbox.unit]
+unit = plainbox.impl.unit.unit:Unit
+exporter = plainbox.impl.unit.exporter:ExporterUnit
+test plan = plainbox.impl.unit.testplan:TestPlanUnit
+packaging meta-data = plainbox.impl.unit.packaging:PackagingMetaDataUnit
+manifest entry = plainbox.impl.unit.manifest:ManifestEntryUnit
+template = plainbox.impl.unit.template:TemplateUnit
+job = plainbox.impl.unit.job:JobDefinition
+category = plainbox.impl.unit.category:CategoryUnit
+
+[plainbox.buildsystem]
+autotools = plainbox.impl.buildsystems:AutotoolsBuildSystem
+make = plainbox.impl.buildsystems:MakefileBuildSystem
+go = plainbox.impl.buildsystems:GoBuildSystem
+
+[plainbox.exporter]
+text = plainbox.impl.exporter.text:TextSessionStateExporter
+rfc822 = plainbox.impl.exporter.rfc822:RFC822SessionStateExporter
+xlsx = plainbox.impl.exporter.xlsx:XLSXSessionStateExporter [xlsx]
+jinja2 = plainbox.impl.exporter.jinja2:Jinja2SessionStateExporter
+json = plainbox.impl.exporter.json:JSONSessionStateExporter
+
+[plainbox.parsers]
+regex = plainbox.impl.xparsers:Re.parse
+whitelist = plainbox.impl.xparsers:WhiteList.parse
+pxu = plainbox.impl.secure.rfc822:load_rfc822_records
+pxu-override = plainbox.impl.xparsers:FieldOverride.parse
+
