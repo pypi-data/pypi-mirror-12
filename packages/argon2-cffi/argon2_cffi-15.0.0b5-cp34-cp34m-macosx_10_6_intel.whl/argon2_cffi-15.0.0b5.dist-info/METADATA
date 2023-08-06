@@ -1,0 +1,289 @@
+Metadata-Version: 2.0
+Name: argon2-cffi
+Version: 15.0.0b5
+Summary: argon2 password hashing algorithm.
+Home-page: UNKNOWN
+Author: Hynek Schlawack
+Author-email: hs@ox.cx
+License: MIT
+Keywords: password,hash,hashing,security
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: cffi (>=1.0.0)
+Requires-Dist: six
+
+=====================================
+CFFI-based Argon2 Bindings for Python
+=====================================
+
+.. image:: https://travis-ci.org/hynek/argon2_cffi.svg?branch=master
+  :target: https://travis-ci.org/hynek/argon2_cffi
+
+.. image:: https://codecov.io/github/hynek/argon2_cffi/coverage.svg?branch=master
+  :target: https://codecov.io/github/hynek/argon2_cffi
+
+.. image:: https://www.irccloud.com/invite-svg?channel=%23cryptography-dev&amp;hostname=irc.freenode.net&amp;port=6697&amp;ssl=1
+    :target: https://www.irccloud.com/invite?channel=%23cryptography-dev&amp;hostname=irc.freenode.net&amp;port=6697&amp;ssl=1
+
+.. begin
+
+
+`Argon2 <https://github.com/p-h-c/phc-winner-argon2>`_ won the `Password Hashing Competition <https://password-hashing.net/>`_ in 2015.
+``argon2_cffi`` is the simplest way to use it in Python and PyPy:
+
+.. code-block:: pycon
+
+  >>> import argon2
+  >>> encoded_hash = argon2.hash_password(b"secret", b"somesalt")
+  >>> encoded_hash
+  b'$argon2i$m=4096,t=3,p=2$c29tZXNhbHQ$FNqxwHC2l1liWu3JTgGn6w'
+  >>> argon2.verify_password(encoded_hash, b"secret")
+  True
+  >>> argon2.verify_password(encoded_hash, b"wrong")
+  Traceback (most recent call last):
+    ...
+  argon2.exceptions.VerificationError: Decoding failed
+
+You can omit the ``salt`` argument for a secure random salt of length ``argon2.DEFAULT_RANDOM_SALT_LENGTH``:
+
+.. code-block:: pycon
+
+  >>> argon2.hash_password(b"secret")  # doctest: +SKIP
+  b'$argon2i$m=4096,t=3,p=2$GIESi4asMZaP051OPlH/zw$s5bQHIupLB1Fep/U5NXIVQ'
+
+
+Installation
+============
+
+A working C compiler is required because the official Argon2 C implementation is shipped along with the Python CFFI bindings.
+Otherwise a plain ``pip install argon2_cffi`` should just work.
+Binary `wheels <http://pythonwheels.com>`_ are offered for OS X and Windows.
+
+
+Hands-on
+========
+
+``argon2_cffi`` comes with hopefully reasonable defaults for Argon2 parameters.
+But of course, you can set them yourself if you wish:
+
+.. code-block:: pycon
+
+  >>> argon2.hash_password(
+  ...     b"secret", b"somesalt",
+  ...     time_cost=1,         # number of iterations
+  ...     memory_cost=8,       # used memory in KiB
+  ...     parallelism=1,       # number of threads used; changes hash!
+  ...     hash_len=64,         # length of resulting raw hash
+  ...     type=argon2.Type.D,  # choose Argon2i or Argon2d
+  ... )
+  b'$argon2d$m=8,t=1,p=1$c29tZXNhbHQ$H0oN1/L3H8t8hcg47pAyJZ8toBh2UbgcMt0zRFrqt4mEJCeKSEWGxt+KpZrMwxvr7M5qktNcc/bk/hvbinueJA'
+
+The raw hash can also be computed.
+The function takes the same parameters as ``hash_password()``:
+
+.. code-block:: pycon
+
+  >>> argon2.hash_password_raw(b"secret", b"somesalt")
+  b'\x14\xda\xb1\xc0p\xb6\x97YbZ\xed\xc9N\x01\xa7\xeb'
+
+
+Choosing Parameters
+-------------------
+
+Finding the right parameters for a password hashing algorithm is a daunting task.
+The authors of Argon2 specified a method in their `paper <https://github.com/P-H-C/phc-winner-argon2/blob/master/argon2-specs.pdf>`_ but it should be noted that they also  mention that no value for ``time_cost`` or ``memory_cost`` is actually insecure (cf. section 6.4).
+
+
+#. Choose whether you want Argon2i or Argon2d (``type``).
+   If you don't know what that means, choose Argon2i (``Type.I``).
+#. Figure out how many threads can be used on each call to Argon2 (``parallelism``).
+   They recommend twice as many as the number of cores dedicated to hashing passwords.
+#. Figure out how much memory each call can afford (``memory_cost``).
+#. Choose a salt length.
+   16 Bytes are fine.
+#. Choose a hash length (``hash_len``).
+   16 Bytes are fine.
+#. Figure out how long each call can take.
+   One `recommendation <https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2015/march/enough-with-the-salts-updates-on-secure-password-schemes/>`_ for concurent user logins is to keep it under 0.5ms.
+#. Measure the time for hashing using your chosen parameters.
+   Find a ``time_cost`` that is within your accounted time.
+   If ``time_cost=1`` takes too long, lower ``memory_cost``.
+
+
+CLI
+^^^
+
+To aid you with finding the parameters, ``argon2_cffi`` offers a CLI interface that can be accessed using ``python -m argon2``.
+It will benchmark Argon2’s *password verification* in the current environment.
+You can use command line arguments to set hashing parameters:
+
+.. code-block:: text
+
+  $ python -m argon2 -t 1 -m 512 -p 2
+  Running Argon2i 100 times with:
+  hash_len: 16
+  memory_cost: 512
+  parallelism: 2
+  time_cost: 1
+
+  Measuring...
+
+  0.418ms per password verification
+
+This should make it much easier to determine the right parameters for your use case and your environment.
+
+
+Credits
+=======
+
+``argon2_cffi`` is written and maintained by Hynek Schlawack.
+
+The development is kindly supported by `Variomedia AG <https://www.variomedia.de/>`_.
+
+A full list of contributors can be found on `GitHub <https://github.com/hynek/argon2_cffi/graphs/contributors>`_.
+
+
+Vendored Code
+-------------
+
+Argon2
+^^^^^^
+
+The original Argon2 repo can be found at https://github.com/P-H-C/phc-winner-argon2/.
+
+Except for the components listed below, the Argon2 code in this repository is copyright (c) 2015 Daniel Dinu, Dmitry Khovratovich (main authors), Jean-Philippe Aumasson and Samuel Neves, and under CC0 license.
+
+The string encoding routines in src/encoding.c are copyright (c) 2015 Thomas Pornin, and under CC0 license.
+
+The BLAKE2 code in src/blake2/ is copyright (c) Samuel Neves, 2013-2015, and under CC0 license.
+
+
+msinttypes
+^^^^^^^^^^
+
+In order to be able to compile on Visual Studio 2008 which is required for Python 2.7, we also ship two headers with integer types.
+They are from the `msinttypes project <https://code.google.com/p/msinttypes/>`_ (`auto-import on GitHub <https://github.com/chemeris/msinttypes>`_) and licensed under New BSD:
+
+Copyright (c) 2006-2013 Alexander Chemeris
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+  1. Redistributions of source code must retain the above copyright notice,
+     this list of conditions and the following disclaimer.
+  2. Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+  3. Neither the name of the product nor the names of its contributors may
+     be used to endorse or promote products derived from this software
+     without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Changelog
+=========
+
+Versions are year-based with a strict backward compatibility policy.
+The third digit is only for regressions.
+
+
+15.0.0 (UNRELEASED)
+-------------------
+
+Vendoring ``argon2`` @ `4fe0d8cda37691228dd5a96a310be57369403a4b <https://github.com/P-H-C/phc-winner-argon2/tree/4fe0d8cda37691228dd5a96a310be57369403a4b>`_.
+
+Changes:
+^^^^^^^^
+
+
+15.0.0b5 (2015-12-10)
+---------------------
+
+Vendoring ``argon2`` @ `4fe0d8cda37691228dd5a96a310be57369403a4b <https://github.com/P-H-C/phc-winner-argon2/tree/4fe0d8cda37691228dd5a96a310be57369403a4b>`_.
+
+Changes:
+^^^^^^^^
+
+- Vendor msinttypes to build on Visual Studio 2008 for Python 2.7.
+  See AUTHORS.rst for licensing details.
+- Update ``argon2``.
+  The authors were kind enough to `help me <https://github.com/P-H-C/phc-winner-argon2/issues/44>`_ to get it building under that ancient compiler we’re forced to use.
+
+
+15.0.0b4 (2015-12-10)
+---------------------
+
+Vendoring ``argon2`` @ `567c22d97bf137cf4aeca99decb12d946d1799c7 <https://github.com/P-H-C/phc-winner-argon2/tree/567c22d97bf137cf4aeca99decb12d946d1799c7>`_.
+
+Changes:
+^^^^^^^^
+
+- Update ``argon2``.
+
+
+15.0.0b3 (2015-12-09)
+---------------------
+
+Vendoring ``argon2`` @ `7f0dbc3efa0d07b338c3a40260aef92f3b619a00 <https://github.com/P-H-C/phc-winner-argon2/tree/7f0dbc3efa0d07b338c3a40260aef92f3b619a00>`_.
+
+Changes:
+^^^^^^^^
+
+- More Windows fixes.
+
+
+15.0.0b2 (2015-12-09)
+---------------------
+
+Vendoring ``argon2`` @ `7f0dbc3efa0d07b338c3a40260aef92f3b619a00 <https://github.com/P-H-C/phc-winner-argon2/tree/7f0dbc3efa0d07b338c3a40260aef92f3b619a00>`_.
+
+Changes:
+^^^^^^^^
+
+- Use proper `#include` in CFFI aka fix Windows packaging some more.
+
+
+15.0.0b1 (2015-12-09)
+---------------------
+
+Vendoring ``argon2`` @ `7f0dbc3efa0d07b338c3a40260aef92f3b619a00 <https://github.com/P-H-C/phc-winner-argon2/tree/7f0dbc3efa0d07b338c3a40260aef92f3b619a00>`_.
+
+Changes:
+^^^^^^^^
+
+- Fix packaging on Windows.
+
+
+15.0.0b0 (2015-12-09)
+---------------------
+
+Vendoring ``argon2`` @ `7f0dbc3efa0d07b338c3a40260aef92f3b619a00 <https://github.com/P-H-C/phc-winner-argon2/tree/7f0dbc3efa0d07b338c3a40260aef92f3b619a00>`_.
+
+Initial work.
+
+
