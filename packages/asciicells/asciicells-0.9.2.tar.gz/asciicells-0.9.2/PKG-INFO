@@ -1,0 +1,79 @@
+Metadata-Version: 1.1
+Name: asciicells
+Version: 0.9.2
+Summary: A Simple ASCII Table Generator
+Home-page: https://github.com/mitnk/asciicells
+Author: mitnk
+Author-email: w@mitnk.com
+License: MIT
+Description: 
+        Home Page: https://github.com/mitnk/asciicells
+        
+        Install
+        ::
+        
+            $ pip install asciicells
+        
+        
+        High level usages
+        -----------------
+        
+        After installed, an executable ``asciicells`` would available for use.
+        If not, please replace following examples with ``python -m asciicells``.
+        
+        ::
+        
+            $ asciicells -f demo.csv
+        
+            +-----+---------+-----------+
+            | No. | sample  | name      |
+            |     |         |           |
+            | 1   | a,b,c   | lettes    |
+            |     |         |           |
+            | 2   | + - x / | operators |
+            +-----+---------+-----------+
+        
+        With header:
+        
+        ::
+        
+            $ asciicells -f demo.csv -H
+        
+            +-----+---------+-----------+
+            | No. | sample  | name      |
+            +-----+---------+-----------+
+            | 1   | a,b,c   | lettes    |
+            |     |         |           |
+            | 2   | + - x / | operators |
+            +-----+---------+-----------+
+        
+        Also support TSV: `asciicells -f demo.tsv -t -H`
+        
+        
+        Low level usages
+        ----------------
+        
+        ::
+        
+            >>> import asciicells
+            >>> ac = asciicells.AsciiCells()
+            >>> L = [['a', 'b'], ['1', '2']]
+            >>> print(ac.render(L))
+            +---+---+
+            | a | b |
+            |   |   |
+            | 1 | 2 |
+            +---+---+
+        
+        More information: https://github.com/mitnk/asciicells
+        
+Keywords: ascii table generator
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
