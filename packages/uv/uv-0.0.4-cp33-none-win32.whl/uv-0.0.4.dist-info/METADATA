@@ -1,0 +1,54 @@
+Metadata-Version: 2.0
+Name: uv
+Version: 0.0.4
+Summary: Python LibUV CFFI Bindings
+Home-page: https://www.koehlma.de/projects/uv/
+Author: Maximilian Köhl
+Author-email: mail@koehlma.de
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: POSIX :: BSD :: FreeBSD
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Internet
+Requires: cffi
+Requires: enum34
+
+Python LibUV CFFI Bindings
+==========================
+This package aims to provide an object oriented wrapper around the LibUV
+asynchronous IO library.
+
+Features
+--------
+- full featured event loop backed by epoll, kqueue, IOCP and events ports
+- asynchronous TCP and UDP sockets
+- asynchronous SSL sockets (based on Python's SSL module)
+- asynchronous DNS resolution
+- asynchronous file and file system operations
+- asynchronous file system events
+- cross platform ANSI escape code controlled TTY
+- IPC with socket sharing, using UNIX domain sockets or named pipes (Windows)
+- child processes
+- signal handling
+- PyPy and CPython support (but only Python Language version 3)
+
+Status
+------
+.. image:: https://travis-ci.org/koehlma/uv.svg?branch=master
+    :target: https://travis-ci.org/koehlma/uv
+
+.. image:: https://ci.appveyor.com/api/projects/status/jpa8jt5o9m7ow8ep/branch/master?svg=true
+    :target: https://ci.appveyor.com/project/koehlma/uv
+
