@@ -1,0 +1,27 @@
+## Example of direct instantiation. Faster if you know the port.
+
+	from practichem_biodetector import Biodetector
+	from practichem_device import SerialHandler
+
+	serial_handler = SerialHandler()
+	serial_handler.openPort("COM32")
+	serial_handler.start()
+	biodetector = Biodetector(serial_handler)
+
+	print(biodetector.getPrimaryAbsorbance())
+
+## Example using the DeviceManager which is in the practichem_device package
+
+	from practichem_device import DeviceManager
+	import practichem_biodetector # required to register the product name
+
+	device_manager = DeviceManager()
+	biodetector = device_manager.getDeviceByProductName("BioDetector")
+
+	print(biodetector.getPrimaryAbsorbance())
+
+## Example of using the BiodetectorEmulator
+
+	from practichem_biodetector import BiodetectorEmulator
+	biodetector = BiodetectorEmulator()
+	print(biodetector.getPrimaryAbsorbance())
