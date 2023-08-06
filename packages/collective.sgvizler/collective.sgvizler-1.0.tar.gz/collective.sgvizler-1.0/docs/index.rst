@@ -1,0 +1,5 @@
+====================
+collective.sgvizler
+====================
+
+User documentation
