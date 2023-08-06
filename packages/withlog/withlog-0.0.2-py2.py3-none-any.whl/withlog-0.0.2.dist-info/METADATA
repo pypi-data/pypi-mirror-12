@@ -1,0 +1,56 @@
+Metadata-Version: 1.2
+Name: withlog
+Version: 0.0.2
+Summary: A context manager to deal with logging level as context manager. 
+Home-page: https://github.com/Carreau/withlog
+License: UNKNOWN
+Author: Matthias Bussonnier
+Author-email: bussonniermatthias@gmail.com
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: colorama
+
+Withlog
+=======
+
+Logging as a context manager.
+
+Visually inspired by how `Credo <https://github.com/rrrene/credo>`__
+looks like, I always find difficult to communicate with user in command
+line interface. So this is a logging/printing system which is more block
+based than line base, and with color also.
+
+The following will show a nice formatted message :
+
+.. code:: python
+
+    with Message('Hello there') as log:
+        log('This is a Logging message context manager')
+        log('it support nesting and will render in a User friendly way')
+        log('I need to fix multi \nline \nstring')
+
+.. figure:: ./screenshot/single_message.png
+   :alt: 
+
+You can nest these:
+
+.. code:: python
+
+    with Message('Hello there') as log:
+        log('This is a Logging message context manager')
+        log('it support nesting and will render in a User friendly way')
+        log('I need to fix multi \nline \nstring')
+        with Warning('Nested it does support') as log1:
+            log1('like Yoda speach order ')
+            log1('of words are')
+
+        with Critical('Come to the dark side') as log2:
+            log2('we have cookies')
+
+            with OK("Paternity test") as log3:
+                log3('I am your father')
+
+To get nested messages:
+
+.. figure:: ./screenshot/nested.png
+   :alt: 
+
