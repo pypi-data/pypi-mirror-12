@@ -1,0 +1,69 @@
+{% load staticfiles cms_tags sekizai_tags menu_tags i18n compress socialschools_tags %}
+
+<!DOCTYPE html>
+<html>
+    {% include "socialschools_cms/includes/head.html" %}
+    <body>
+        {% cms_toolbar %}
+        {% static_placeholder "Theme Plugin" inherit %}
+        <div class="footer-row">
+            <div class="topbar-theme-12">
+                <div class="stripe-theme-12 stripe-1"></div>
+                <div class="stripe-theme-12 stripe-2"></div>
+                <div class="stripe-theme-12 stripe-3"></div>
+                <div class="stripe-theme-12 stripe-1"></div>
+                <div class="stripe-theme-12 stripe-2"></div>
+                <div class="container">
+                    <div class="logo-theme-12 pull-left">
+                        <span class="helper"></span>
+                        {% placeholder "Logo Plugin" inherit %}
+                    </div>
+                    {% placeholder "Login" inherit %}
+                </div>
+            </div>
+            <nav class="navbar navbar-default">
+              <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        {% show_menu 0 0 0 100 "socialschools_cms/menu/menu.html" %}
+                      </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="footer-row-expand">
+            <div class="container">
+                {% block wrapper %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer class="footer-row css-footer">
+            {% block footer %}
+            <div class="container">
+                {% show_menu 0 1 1 100 "socialschools_cms/includes/footer.html" %}
+            </div>
+            {% endblock %}
+        </footer>
+         {% if debug %}
+            <script type="text/javascript" src="{% static 'js/jquery.1.9.1.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/jquery.colorbox.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/socialschools-cms.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/multitenant.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/theme3-topbar.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/bootstrap-hover-dropdown.min.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'js/multitenant-cms.min.js' %}"></script>
+        {% endif %}
+        {% render_block 'js' %}
+    </body>
+</html>

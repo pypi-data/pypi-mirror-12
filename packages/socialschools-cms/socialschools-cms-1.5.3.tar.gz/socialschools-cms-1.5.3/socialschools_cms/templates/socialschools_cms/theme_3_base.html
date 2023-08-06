@@ -1,0 +1,126 @@
+{% load staticfiles cms_tags sekizai_tags menu_tags i18n compress socialschools_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="csrf-token" content="{{csrf_token}}">
+
+      <title>{% page_attribute "page_title" %}</title>
+
+      <meta name="description" content="{% block _description %}{% endblock %}">
+      <meta name="keywords" content="{% block _keywords %}{% endblock %}">
+      <meta name="author" content="Changer">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <script type="text/javascript" src="{% static 'js/jquery.1.9.1.min.js' %}"></script>
+
+      {% addtoblock "css" %}
+      {% if debug %}
+          <link rel="stylesheet/less" type="text/css" href="{% static 'css/styles.less' %}">
+          <script src="{% static 'js/less.min.js' %}"></script>
+          <link rel="stylesheet" type="text/css" href="{% static 'css/colorbox.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'css/cmsplugin_fourpillars.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'css/cmsplugin_team.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'css/cmsplugins_banners.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'css/css-slider.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'css/cmsplugin_socialschools.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'css/cmsplugin_googlemaps.css' %}">
+      {% else %}
+          <link rel="stylesheet" type="text/css" href="{% static 'css/styles.min.css' %}">
+
+      {% endif %}
+      {% endaddtoblock %}
+
+      <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+      <style>
+      .video-thumbnail {
+          .iframe-video-container {
+              position: relative;
+          }
+          .ratio {
+              display: block;
+              width: 100%;
+              height: auto;
+          }
+          iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+          }
+      }
+      </style>
+      {% render_block "css" %}
+  </head>
+
+  <body class="theme-3">
+      {% cms_toolbar %}
+      {% static_placeholder "Theme Plugin"  %}
+      <div class="footer-row">
+          <nav class="navbar navbar-fixed-top navbar-theme-3">
+              <div class="theme-3-login-bar">
+                  <div class="container">
+                      {% static_placeholder "Login"  %}
+                  </div>
+              </div>
+              <div class="container">
+                  <div class="navbar-header navbar-header-theme-3">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                      <a class="logo-theme-3-expandable logo-expanded pull-left" href="/">
+                          <span class="helper"></span>
+                          {% static_placeholder "Logo Plugin" %}
+                      </a>
+                  </div>
+              {% block navbar %}
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav navbar-left">
+                          {% show_menu 0 1 1 100 "socialschools_cms/menu/menu_dropdown.html" %}
+                      </ul>
+                  </div>
+              {% endblock %}
+              </div>
+          </nav>
+      </div>
+      <div class="footer-row-expand">
+          {% block wrapper %}
+          {% endblock %}
+      </div>
+
+      <footer class="footer-row css-footer">
+          {% block footer %}
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4 offset8">
+                      {% static_placeholder "Search Engine" %}
+                  </div>
+              </div>
+              {% show_menu 0 1 1 100 "socialschools_cms/includes/footer.html" %}
+          </div>
+          {% endblock %}
+      </footer>
+
+      {% if debug %}
+          <script type="text/javascript" src="{% static 'js/jquery.1.9.1.min.js' %}"></script>
+          <script type="text/javascript" src="{% static 'js/jquery.colorbox.js' %}"></script>
+          <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+          <script type="text/javascript" src="{% static 'js/socialschools-cms.js' %}"></script>
+          <script type="text/javascript" src="{% static 'js/multitenant.js' %}"></script>
+          <script type="text/javascript" src="{% static 'js/theme3-topbar.js' %}"></script>
+          <script type="text/javascript" src="{% static 'js/bootstrap-hover-dropdown.min.js' %}"></script>
+      {% else %}
+          <script type="text/javascript" src="{% static 'js/multitenant-cms.min.js' %}"></script>
+      {% endif %}
+      {% render_block 'js' %}
+      {% static_placeholder "Google Analytics" %}
+  </body>
+</html>
+
