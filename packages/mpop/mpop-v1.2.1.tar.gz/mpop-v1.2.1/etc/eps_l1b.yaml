@@ -1,0 +1,293 @@
+dataset:
+- calibration:
+  - reflectance
+  - radiance
+  file_key:
+  - reflectance_1
+  - radiance_1
+  file_type:
+  - avhrr_eps_l1b
+  - avhrr_eps_l1b
+  name: '1'
+  navigation:
+  - avhrr
+  - avhrr
+  resolution:
+  - '1050'
+  - '1050'
+  standard_name:
+  - reflectance
+  - radiance
+  wavelength_range:
+  - '0.58'
+  - '0.63'
+  - '0.68'
+- calibration:
+  - reflectance
+  - radiance
+  file_key:
+  - reflectance_2
+  - radiance_2
+  file_type:
+  - avhrr_eps_l1b
+  - avhrr_eps_l1b
+  name: '2'
+  navigation:
+  - avhrr
+  - avhrr
+  resolution:
+  - '1050'
+  - '1050'
+  standard_name:
+  - reflectance
+  - radiance
+  wavelength_range:
+  - '0.725'
+  - '0.8625'
+  - '1.0'
+- calibration:
+  - reflectance
+  - radiance
+  file_key:
+  - reflectance_3a
+  - radiance_3a
+  file_type:
+  - avhrr_eps_l1b
+  - avhrr_eps_l1b
+  name: 3a
+  navigation:
+  - avhrr
+  - avhrr
+  resolution:
+  - '1050'
+  - '1050'
+  standard_name:
+  - reflectance
+  - radiance
+  wavelength_range:
+  - '1.58'
+  - '1.61'
+  - '1.64'
+- calibration:
+  - bt
+  - radiance
+  file_key:
+  - bt_3b
+  - radiance_3b
+  file_type:
+  - avhrr_eps_l1b
+  - avhrr_eps_l1b
+  name: 3b
+  navigation:
+  - avhrr
+  - avhrr
+  resolution:
+  - '1050'
+  - '1050'
+  standard_name:
+  - brightness_temperature
+  - radiance
+  wavelength_range:
+  - '3.55'
+  - '3.74'
+  - '3.93'
+- calibration:
+  - bt
+  - radiance
+  file_key:
+  - bt_4
+  - radiance_4
+  file_type:
+  - avhrr_eps_l1b
+  - avhrr_eps_l1b
+  name: '4'
+  navigation:
+  - avhrr
+  - avhrr
+  resolution:
+  - '1050'
+  - '1050'
+  standard_name:
+  - brightness_temperature
+  - radiance
+  wavelength_range:
+  - '10.3'
+  - '10.8'
+  - '11.3'
+- calibration:
+  - bt
+  - radiance
+  file_key:
+  - bt_5
+  - radiance_4
+  file_type:
+  - avhrr_eps_l1b
+  - avhrr_eps_l1b
+  name: '5'
+  navigation:
+  - avhrr
+  - avhrr
+  resolution:
+  - '1050'
+  - '1050'
+  standard_name:
+  - brightness_temperature
+  - radiance
+  wavelength_range:
+  - '11.5'
+  - '12.0'
+  - '12.5'
+file_key:
+- band_index: '0'
+  file_units: W m-2 sr-1
+  name: radiance_1
+  units: W m-2 um-1 sr-1
+  variable_name: SCENE_RADIANCES
+- band_index: '1'
+  file_units: W m-2 sr-1
+  name: radiance_2
+  units: W m-2 um-1 sr-1
+  variable_name: SCENE_RADIANCES
+- band_index: '2'
+  file_units: W m-2 sr-1
+  name: radiance_3a
+  units: W m-2 um-1 sr-1
+  variable_name: SCENE_RADIANCES
+- band_index: '2'
+  file_units: W m-2 sr-1
+  name: radiance_3b
+  units: W m-2 um-1 sr-1
+  variable_name: SCENE_RADIANCES
+- band_index: '3'
+  file_units: W m-2 sr-1
+  name: radiance_4
+  units: W m-2 um-1 sr-1
+  variable_name: SCENE_RADIANCES
+- band_index: '4'
+  file_units: W m-2 sr-1
+  name: radiance_5
+  units: W m-2 um-1 sr-1
+  variable_name: SCENE_RADIANCES
+- band_index: '0'
+  calib_type: reflectance
+  file_units: '%'
+  name: reflectance_1
+  solar_irradiance: ch1_sfi
+  units: '%'
+  variable_name: SCENE_RADIANCES
+- band_index: '1'
+  calib_type: reflectance
+  file_units: '%'
+  name: reflectance_2
+  solar_irradiance: ch2_sfi
+  units: '%'
+  variable_name: SCENE_RADIANCES
+- band_index: '2'
+  calib_type: reflectance
+  file_units: '%'
+  frame_indicator: '65536'
+  name: reflectance_3a
+  solar_irradiance: ch3_sfi
+  units: '%'
+  variable_name: SCENE_RADIANCES
+- band_index: '2'
+  calib_type: bt
+  channel_constant_key: ch3_constant
+  cw_key: ch3_wavelength
+  file_units: K
+  frame_indicator: '0'
+  name: bt_3b
+  slope_constant_key: ch3_slope
+  variable_name: SCENE_RADIANCES
+- band_index: '3'
+  calib_type: bt
+  channel_constant_key: ch4_constant
+  cw_key: ch4_wavelength
+  file_units: K
+  name: bt_4
+  slope_constant_key: ch4_slope
+  variable_name: SCENE_RADIANCES
+- band_index: '4'
+  calib_type: bt
+  channel_constant_key: ch5_constant
+  cw_key: ch5_wavelength
+  file_units: K
+  name: bt_5
+  slope_constant_key: ch5_slope
+  variable_name: SCENE_RADIANCES
+- geo_index: '1'
+  name: longitude
+  variable_name:
+  - EARTH_LOCATION_FIRST
+  - EARTH_LOCATIONS
+  - EARTH_LOCATION_LAST
+- geo_index: '0'
+  name: latitude
+  variable_name:
+  - EARTH_LOCATION_FIRST
+  - EARTH_LOCATIONS
+  - EARTH_LOCATION_LAST
+- file_units: '%'
+  name: reflectance
+  units: '%'
+  variable_name: All_Data/{file_group}_All/Radiance
+- file_units: K
+  name: bt
+  units: K
+  variable_name: All_Data/{file_group}_All/Radiance
+- name: start_time
+  variable_name: SENSING_START
+- name: end_time
+  variable_name: SENSING_END
+- name: frame_indicator
+  variable_name: FRAME_INDICATOR
+- name: ch1_sfi
+  variable_name: CH1_SOLAR_FILTERED_IRRADIANCE
+- name: ch2_sfi
+  variable_name: CH2_SOLAR_FILTERED_IRRADIANCE
+- name: ch3_sfi
+  variable_name: CH3A_SOLAR_FILTERED_IRRADIANCE
+- name: ch3_wavelength
+  variable_name: CH3B_CENTRAL_WAVENUMBER
+- name: ch3_constant
+  variable_name: CH3B_CONSTANT1
+- name: ch3_slope
+  variable_name: CH3B_CONSTANT2_SLOPE
+- name: ch4_wavelength
+  variable_name: CH4_CENTRAL_WAVENUMBER
+- name: ch4_constant
+  variable_name: CH4_CONSTANT1
+- name: ch4_slope
+  variable_name: CH4_CONSTANT2_SLOPE
+- name: ch5_wavelength
+  variable_name: CH5_CENTRAL_WAVENUMBER
+- name: ch5_constant
+  variable_name: CH5_CONSTANT1
+- name: ch5_slope
+  variable_name: CH5_CONSTANT2_SLOPE
+- name: views_per_scanline
+  variable_name: EARTH_VIEWS_PER_SCANLINE
+file_type:
+- file_patterns: AVHR_xxx_1B_{platform_short_name}_{start_time:%Y%m%d%H%M%SZ}_{end_time:%Y%m%d%H%M%SZ}_N_O_{creation_time:%Y%m%d%H%M%SZ}
+  file_reader: mpop.readers.eps_l1b.AVHRREPSL1BFileReader
+  name: avhrr_eps_l1b
+navigation:
+- description: AVHRR navigation
+  file_type: avhrr_eps_l1b
+  latitude_key: latitude
+  longitude_key: longitude
+  nadir_resolution: '1050'
+  name: avhrr
+reader:
+- default_channels:
+  - '1'
+  - '2'
+  - 3a
+  - 3b
+  - '4'
+  - '5'
+  description: EPS l1b Reader for Metop AVHRR
+  name: avhrr_eps_l1b
+  reader: mpop.readers.eps_l1b.EPSL1BReader
+  sensor: avhrr/3
+
