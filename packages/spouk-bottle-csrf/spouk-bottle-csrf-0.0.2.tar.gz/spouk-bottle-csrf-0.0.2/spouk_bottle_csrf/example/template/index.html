@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="{{app.csrf.csrf_token}}" name="csrf_token">
+  </head>
+<body>
+<h3> User form </h3>
+<hr/>
+     <form  method="post" action="{{ url_for('root')}}">
+            {{ csrf_html() }}
+        Username: <input type="text" name="username" >
+        Password: <input type="password" name="password">
+        <input type="submit" name="sender" value="Login">
+     </form>
+<hr/>
+{% if request.method == "POST" %}
+   <h3> Result validate form </h3>
+   <br/>
+   <p> Validate result: {{result}}
+    
+{% endif %}
+    
+</body>
+</html>
+
