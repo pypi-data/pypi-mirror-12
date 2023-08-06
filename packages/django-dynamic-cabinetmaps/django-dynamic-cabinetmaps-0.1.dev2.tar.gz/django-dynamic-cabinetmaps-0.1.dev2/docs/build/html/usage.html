@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage &mdash; django-dynamic-cabinetmaps 0.1.dev2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.dev2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-dynamic-cabinetmaps 0.1.dev2 documentation" href="index.html" />
+    <link rel="next" title="Stylesheet" href="stylesheet.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="stylesheet.html" title="Stylesheet"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-dynamic-cabinetmaps 0.1.dev2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="usage">
+<span id="ref-usage"></span><h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>首先你需要在你APP的views中，继承CabinetViews类，该类提供三个API。</p>
+<div class="section" id="template-name">
+<h3>template_name<a class="headerlink" href="#template-name" title="Permalink to this headline">¶</a></h3>
+<p>用于指定渲染机柜的模版</p>
+</div>
+<div class="section" id="cabinet-cells">
+<h3>cabinet_cells<a class="headerlink" href="#cabinet-cells" title="Permalink to this headline">¶</a></h3>
+<p>提供总共需要多少个机柜</p>
+</div>
+<div class="section" id="rack-rows">
+<h3>rack_rows<a class="headerlink" href="#rack-rows" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">default:</th><td class="field-body"><code class="docutils literal"><span class="pre">42</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>提供每个机柜总共有多少个导轨</p>
+</div>
+<div class="section" id="example">
+<h3>example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">cabinet_structure.views</span> <span class="kn">import</span> <span class="n">CabinetViews</span>
+
+<span class="k">class</span> <span class="nc">MyViews</span><span class="p">(</span><span class="n">CabinetViews</span><span class="p">):</span>
+
+   <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;MyAPP/MyAPP.html&#39;</span>
+   <span class="n">cabinet_cells</span> <span class="o">=</span> <span class="mi">8</span>
+   <span class="c"># rack_rows = 42</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">cabinet_cells可以手工填写；但更推荐从数据库中进行计算.</p>
+</div>
+</div>
+</div>
+<div class="section" id="css">
+<h2>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h2>
+<p>需要引入bootstrap框架以及本项目有关的样式套件cabinet_style.css</p>
+<div class="section" id="id1">
+<h3>example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>{% load staticfiles %}
+......
+&lt;head&gt;
+......
+  &lt;link href=&quot;{% static &#39;....bootstrap.min.css&#39; %}&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;{% static &#39;cabinetmaps/css/cabinet_style.css&#39; %}&quot;&gt;
+......
+&lt;/head&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>....
+
+&lt;div ....&gt;
+
+       {{ cabinet_data }}
+&lt;/div&gt;
+
+....
+</pre></div>
+</div>
+</div>
+<div class="section" id="cabinet-data">
+<h3>{{ cabinet_data }}<a class="headerlink" href="#cabinet-data" title="Permalink to this headline">¶</a></h3>
+<p>在模版中指定一下标签变量{{ cabinet_data }}, 该标签涵盖了所有生成后的机柜HTML信息</p>
+</div>
+<div class="section" id="id3">
+<h3>查看机柜编号<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>生成后的机柜图,通过HTML可以查看,如下所示</p>
+<ol class="arabic simple">
+<li>机柜编号</li>
+</ol>
+<p>下面html示例中,假设类 <code class="docutils literal"><span class="pre">rack-title</span></code> 下的 <code class="docutils literal"><span class="pre">&lt;p&gt;</span></code> 里标注的A1......即为 <code class="docutils literal"><span class="pre">机柜编号</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;tr&gt;&lt;td class=&quot;rack&quot; ......&gt;
+        &lt;font class=&quot;rack-title&quot;&gt;&lt;p&gt;A1&lt;/p&gt;&lt;/font&gt;&lt;/td&gt;
+&lt;/tr&gt;
+......
+
+&lt;tr&gt;&lt;td class=&quot;rack&quot; ......&gt;
+        &lt;font class=&quot;rack-title&quot;&gt;&lt;p&gt;A9&lt;/p&gt;&lt;/font&gt;&lt;/td&gt;
+&lt;/tr&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>机柜上的的导轨编号</li>
+</ol>
+<p>下面html示例中,假设类 <code class="docutils literal"><span class="pre">rack</span></code> 下的 <code class="docutils literal"><span class="pre">&lt;id&gt;</span></code> 里标注的信息,如 <code class="docutils literal"><span class="pre">id=4</span></code> , <code class="docutils literal"><span class="pre">id=12</span></code> 即为 <code class="docutils literal"><span class="pre">机柜的导轨编号</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre>.......
+&lt;tr&gt;&lt;td class=&#39;rack&#39; align=&#39;center&#39; valign=&#39;bottom&#39; id=&#39;4&#39;&gt;&lt;/td&gt;&lt;/tr&gt;
+.......
+&lt;tr&gt;&lt;td class=&#39;rack&#39; align=&#39;center&#39; valign=&#39;bottom&#39; id=&#39;12&#39;&gt;&lt;/td&gt;&lt;/tr&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">在之后的版本中,对于机柜编号的定制会得到加强,并提供数据填充的API.</p>
+</div>
+</div>
+</div>
+<div class="section" id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="django.conf.settings.MAX_CABINET_ROWS_NUM">
+<code class="descclassname">django.conf.settings.</code><code class="descname">MAX_CABINET_ROWS_NUM</code><a class="headerlink" href="#django.conf.settings.MAX_CABINET_ROWS_NUM" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Default:</th><td class="field-body"><code class="docutils literal"><span class="pre">6</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>用于指定页面每行中显示多少个机柜</p>
+</dd></dl>
+
+<div class="section" id="id4">
+<h3>example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>假设指定页面每行显示7个机柜</p>
+<div class="highlight-python"><div class="highlight"><pre>   # in settings.py
+
+   MAX_CABINET_ROWS_NUM = 7
+
+
+.. warning::
+
+   目前&#39;开发测试版&#39;中,试图设置该参数,会导致前端样式的显示问题,在之后的版本中会修复,请多关注!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="demo">
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>从git上克隆 <a class="reference external" href="https://github.com/boylegu/django-dynamic-cabinetmaps.git">https://github.com/boylegu/django-dynamic-cabinetmaps.git</a></li>
+<li>然后进入 <code class="docutils literal"><span class="pre">demoapp</span></code></li>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></code></li>
+<li>通过浏览器访问 <code class="docutils literal"><span class="pre">http://127.0.0.1:8000/cabinetmaps/</span></code></li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">目前demo是需要django 1.6运行</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#api">API</a><ul>
+<li><a class="reference internal" href="#template-name">template_name</a></li>
+<li><a class="reference internal" href="#cabinet-cells">cabinet_cells</a></li>
+<li><a class="reference internal" href="#rack-rows">rack_rows</a></li>
+<li><a class="reference internal" href="#example">example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#css">CSS</a><ul>
+<li><a class="reference internal" href="#id1">example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#templates">Templates</a><ul>
+<li><a class="reference internal" href="#id2">example</a></li>
+<li><a class="reference internal" href="#cabinet-data">{{ cabinet_data }}</a></li>
+<li><a class="reference internal" href="#id3">查看机柜编号</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings">Settings</a><ul>
+<li><a class="reference internal" href="#id4">example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#demo">Demo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="stylesheet.html"
+                        title="next chapter">Stylesheet</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/usage.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="stylesheet.html" title="Stylesheet"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">django-dynamic-cabinetmaps 0.1.dev2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, BoyleGu.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+    </div>
+  </body>
+</html>
