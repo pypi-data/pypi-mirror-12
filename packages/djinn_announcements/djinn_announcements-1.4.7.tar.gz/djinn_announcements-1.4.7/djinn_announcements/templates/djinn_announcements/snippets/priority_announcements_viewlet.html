@@ -1,0 +1,40 @@
+{% load auth_tags djinn_announcements_tags humanize %}
+
+{% if view.announcements %}
+
+  {% for announcement in view.announcements %}
+    <header>
+      <h1>
+        <a href="{% url 'djinn_announcements_view_serviceannouncement' announcement.pk announcement.slug %}">
+          {{ announcement.title }}
+        </a>
+        {% ifpermission object request.user contenttypes.change_contenttype %}
+        <span class="controls">
+          <a href="{% url 'djinn_announcements_edit_serviceannouncement' announcement.id %}">
+            <i class="icon-pencil"></i>
+          </a>
+        </span>
+        {% endifpermission %}
+      </h1>
+    </header>
+    
+    <div class="time">{{ announcement.start_date|naturalday:_("MONTH_DAY_FORMAT") }} {{ announcement.start_date|time }} {% if announcement.end_date %}- {{ announcement.end_date|naturalday:_("MONTH_DAY_FORMAT") }} {{ announcement.end_date|time }}{% endif %}</div>
+    {{ announcement.text|safe }}
+
+    <div class="alert-update">
+      {% if announcement.status > -1 %}
+        <em class="{{ announcement.status|statusclass }}">{{ announcement.formatted_status }}</em>
+      {% endif %}
+    </div>
+    {% if announcement.updates.exists %}
+    <dl>
+    {% for update in announcement.updates.all %}
+      <dt>Update {{ forloop.counter }}: {{ update.date|naturalday:_("MONTH_DAY_FORMAT") }}, {{ update.date|time }}</dt>
+      <dd>{{ update.text|safe }}</dd>
+    {% endfor %}
+    </dl>
+    {% endif %}
+
+  {% endfor %}
+
+{% endif %}
