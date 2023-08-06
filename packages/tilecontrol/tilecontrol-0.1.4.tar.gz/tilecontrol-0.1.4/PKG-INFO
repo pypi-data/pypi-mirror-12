@@ -1,0 +1,106 @@
+Metadata-Version: 1.0
+Name: tilecontrol
+Version: 0.1.4
+Summary: PXM ingest quality control
+Home-page: https://github.com/mapbox/tilecontrol
+Author: Siyu Song
+Author-email: siyu@mapbox.com
+License: MIT
+Description: |Build Status| |PyPI|
+        
+        tilecontrol
+        ===========
+        
+        Tilecontrol contains utilities for satellite basemap quality control.
+        
+        .. figure:: https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Isfahan_Lotfollah_mosque_ceiling_symmetric.jpg/2880px-Isfahan_Lotfollah_mosque_ceiling_symmetric.jpg
+           :alt: 
+        
+        Usage
+        -----
+        
+        Tilecontrol contains a set of command line utilities useful to Mapbox
+        satellite basemap quality control.
+        
+        ``parse``
+        ^^^^^^^^^
+        
+        ``tlc parse`` outputs a list of ZXY tiles that require QC for a
+        particular render.
+        
+        ::
+        
+            tlc parse <source_id> <layer_id> <cache_file> <output_directory> --token <MapboxAuthToken>
+        
+        To use a recent DigitalGlobe job as an example, ``tlc parse`` would
+        looke something like this:
+        
+        ::
+        
+            tlc parse dg_vivid_seasia_oceania digitalglobe.vivid-seasia-oceania cache_file output_dir --token <MapboxAuthToken>
+        
+        Output would look something like:
+        
+        ::
+        
+            13-6664-4696
+            13-6664-4697
+            13-6664-4698
+            13-6664-4698
+            13-6664-4699
+            13-6664-4700
+            13-6664-4700
+            13-6664-4701
+            13-6664-4702
+            13-6665-4696
+        
+        ``edges``
+        ^^^^^^^^^
+        
+        ``tlc edges`` identifies the edge tiles for a given list of ZXY's
+        
+        Additional documentation can be found by appending the ``--help`` flag
+        to any command.
+        
+        API Token
+        ^^^^^^^^^
+        
+        The token we use for testing can be found at
+        https://github.com/mapbox/dg-utils/issues/140.
+        
+        Installation
+        ------------
+        
+        Install ``tilecontrol`` with:
+        
+        ::
+        
+            pip install tilecontrol
+        
+        Contributing
+        ------------
+        
+        To develop against ``tilecontrol``:
+        
+        ::
+        
+            git clone git@github.com:mapbox/tilecontrol.git
+            cd tilecontrol
+            pip install -e ".[test]"
+        
+        Tests can be run with ``py.test``
+        
+        Changelog
+        ---------
+        
+        ``0.1.4``
+        ^^^^^^^^^
+        
+        -  Checker uses Asyncio instead of multiprocessing
+        
+        .. |Build Status| image:: https://magnum.travis-ci.com/mapbox/tilecontrol.svg?token=5hEJ9x9Ljj2yfkNFpMu5&branch=master
+           :target: https://magnum.travis-ci.com/mapbox/tilecontrol
+        .. |PyPI| image:: https://img.shields.io/pypi/v/tilecontrol.svg
+           :target: https://pypi.python.org/pypi/tilecontrol
+        
+Platform: UNKNOWN
