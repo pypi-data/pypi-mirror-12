@@ -1,0 +1,31 @@
+{% load i18n %}
+<table>
+    <tr>
+        <td>{% trans 'Hash' %}</td>
+        <td>{{ hash }}</td>
+    </tr>
+    <tr>
+        <td>{% trans 'Short hash' %}</td>
+        <td>{{ short_hash }}</td>
+    </tr>
+    <tr>
+        <td>{% trans 'Branch' %}</td>
+        <td>{{ branch_name }}</td>
+    </tr>
+    <tr>
+        <td>{% trans 'Commit message' %}</td>
+        <td>{{ message|linebreaks }}</td>
+    </tr>
+    <tr>
+        <td>{% trans 'Author' %}</td>
+        <td>{{ author }}</td>
+    </tr>
+    <tr>
+        <td>{% trans 'Committer' %}</td>
+        <td>{{ committer }}</td>
+    </tr>
+    <tr>
+        <td>{% trans 'Updated at' %}</td>
+        <td>{{ updated_at }}</td>
+    </tr>
+</table>

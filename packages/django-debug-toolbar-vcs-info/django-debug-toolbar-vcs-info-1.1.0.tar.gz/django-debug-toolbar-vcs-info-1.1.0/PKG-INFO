@@ -1,0 +1,86 @@
+Metadata-Version: 1.1
+Name: django-debug-toolbar-vcs-info
+Version: 1.1.0
+Summary: A Django Debug Toolbar panel to show VCS info
+Home-page: https://github.com/giginet/django-debug-toolbar-vcs-info
+Author: giginet
+Author-email: giginet.net@gmail.com
+License: MIT
+Download-URL: https://github.com/giginet/django-debug-toolbar-vcs-info/tarball/master
+Description: django-debug-toolbar-vcs-info
+        ==============================
+        
+        .. image:: https://travis-ci.org/giginet/django-debug-toolbar-vcs-info.svg?branch=master
+            :target: https://travis-ci.org/giginet/django-debug-toolbar-vcs-info
+        .. image:: https://coveralls.io/repos/giginet/django-debug-toolbar-vcs-info/badge.svg?branch=master&service=github
+            :target: https://coveralls.io/github/giginet/django-debug-toolbar-vcs-info?branch=master
+        
+        
+        
+        A Django Debug Toolbar panel to show VCS info
+        
+        .. image:: https://raw.githubusercontent.com/giginet/django-debug-toolbar-vcs-info/master/images/vcs_info_panel.png
+        
+        Supported python versions
+            2.6, 3.2, 3.3, 3.4, 3.5
+        Supported django versions
+            1.7 - 1.9
+        Supported VCS
+            git
+        
+        Installation
+        ------------------------
+        
+        Use pip_ ::
+        
+            $ pip install django-debug-toolbar-vcs-info
+        
+        .. _pip:  https://pypi.python.org/pypi/pip
+        
+        Add ``vcs_info_panel`` into `INSTALL_APPS` in `settings.py` file
+        
+        .. code:: python
+        
+          INSTALLED_APPS += (
+              'vcs_info_panel',
+          )
+        
+        Add the panel you want to use. currently, you can use ``GitInfoPanel`` only.
+        
+        
+        .. code:: python
+        
+          DEBUG_TOOLBAR_PANELS = (
+            ...
+            'vcs_info_panel.panels.GitInfoPanel',
+          )
+        
+        Author
+        -------------------
+        
+        giginet <giginet.net@gmail.com>
+        
+        LICENSE
+        -------------------------
+        
+        MIT License
+        
+Keywords: django django-debug-toolbar git vcs info revision hash panel
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
