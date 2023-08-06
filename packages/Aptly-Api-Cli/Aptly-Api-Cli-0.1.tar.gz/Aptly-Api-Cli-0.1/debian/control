@@ -1,0 +1,11 @@
+Source: aptly-cli
+Section: python
+Priority: extra
+Maintainer: Tim Susa <timsusa@gmx.de>
+Build-Depends: debhelper (>= 9), python, dh-virtualenv, python-dev
+Standards-Version: 3.9.5
+
+Package: aptly-cli
+Architecture: amd64
+Depends: ${python:Depends}, ${misc:Depends}, acl
+Description: a tool to remotely request aptly server calls
