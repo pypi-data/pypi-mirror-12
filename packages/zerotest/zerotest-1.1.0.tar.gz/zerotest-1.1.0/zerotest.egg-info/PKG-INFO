@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: zerotest
+Version: 1.1.0
+Summary: Lazy guy's testing tool, test your API server like a boss.
+Home-page: https://github.com/jjyr/zerotest
+Author: Hari Jiang
+Author-email: hari.jiang@outlook.com
+License: MIT
+Description: b'ZEROTEST |PyPI| |Travis|\n========================\n\nZerotest makes it easy to test API server, start a micro proxy, send\nrequests, and generate test code by these behaviours.\n\n    *Zerotest makes test api server like a boss!*\n\nInstall\n-------\n\nStable version: ``pip install zerotest``\n\nDevelop version:\n``pip install git+https://github.com/jjyr/zerotest.git``\n\n**zerotest require python2.7 or 3.2+**\n\nUsage\n-----\n\n1. Start a local proxy to capture http traffic\n   ``zerotest server https://api.github.com -f octocat.data``\n\n2. Make few requests ``curl -i http://localhost:7000/users/octocat``\n\n3. Press ``C-c`` to exit local proxy\n\n4. Generate test code\n   ``zerotest generate octocat.data --ignore-all-headers > test_octocat.py``\n\n5. Type ``py.test test_octocat.py`` to run test\n\nDevelop\n-------\n\nExport debug flag environment ``ZEROTEST_DEBUG=true`` to see verbose\nlogs during program or test running.\n\nContributors\n------------\n\n`Contributors <https://github.com/jjyr/zerotest/graphs/contributors>`__\n\nContribute\n----------\n\n-  Open issue if found bugs or some cool ideas\n-  Feel free to ask if have any questions\n-  Testing is very important for a test tool, commit your test file\n   together with pull request\n\n.. |PyPI| image:: https://img.shields.io/pypi/v/zerotest.svg\n   :target: https://pypi.python.org/pypi/zerotest\n.. |Travis| image:: https://img.shields.io/travis/jjyr/zerotest.svg\n   :target: https://travis-ci.org/jjyr/zerotest\n'
+Platform: unix
+Platform: linux
+Platform: osx
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Utilities
