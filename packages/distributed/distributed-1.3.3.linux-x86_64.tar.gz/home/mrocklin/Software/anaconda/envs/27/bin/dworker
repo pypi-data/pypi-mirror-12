@@ -1,0 +1,59 @@
+#!/home/mrocklin/Software/anaconda/envs/27/bin/python
+
+import logging
+from sys import argv, exit
+import socket
+
+import click
+from distributed import Worker
+from distributed.utils import get_ip
+from tornado.ioloop import IOLoop
+
+logger = logging.getLogger('distributed.dworker')
+
+ip = get_ip()
+
+# Set up signal handling
+import signal
+
+def handle_signal(sig, frame):
+    IOLoop.instance().add_callback(IOLoop.instance().stop)
+
+signal.signal(signal.SIGINT, handle_signal)
+signal.signal(signal.SIGTERM, handle_signal)
+
+
+@click.command()
+@click.argument('center', type=str)
+@click.option('--port', type=int, default=8788, help="Serving port")
+@click.option('--host', type=str, default=ip, help="Serving host")
+@click.option('--ncores', type=int, default=0, help="Number of cores to serve")
+def go(center, host, port, ncores):
+    while True:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            sock.bind(('127.0.0.1', port))
+        except socket.error:
+            logger.info("Port %d taken.  Trying %d", port, port + 1)
+            port += 1
+        else:
+            sock.close()
+            break
+
+    try:
+        center_ip, center_port = center.split(':')
+        center_port = int(center_port)
+    except IndexError:
+        logger.info("Usage:  dworker center_host:center_port")
+    try:
+        worker = Worker(host, port, center_ip, center_port, ncores=ncores)
+        worker.start()
+        IOLoop.current().start()
+    except KeyboardInterrupt:
+        assert worker.status == 'closed'
+
+    IOLoop.current().close()
+    logger.info("\nEnd worker at %s:%d\n", ip, port)
+
+if __name__ == '__main__':
+    go()
