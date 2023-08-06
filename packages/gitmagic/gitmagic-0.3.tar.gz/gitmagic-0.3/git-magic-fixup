@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+# Copyright (c) 2015 BalaBit
+# All rights reserved.
+
+import sys
+import gitmagic
+from git import Repo
+from git.cmd import Git
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-i", "--interactive", help="confirm every step of the magic...", action="store_true")
+parser.add_argument("-l", "--left_ref", help="specify left head of merge base", default='master')
+args = parser.parse_args()
+
+repo = Repo('.')
+c_range = gitmagic.commit_range(repo, left=args.left_ref)
+destination_picker = gitmagic.FixupDestinationPicker(repo, c_range)
+gitmagic.fixup(repo, destination_picker, gitmagic.find_changes, vars( args ))
+git = Git(repo.working_dir)
+gitmagic.checkpoint("Should I run rebase autosquash?", vars( args ))
+git.execute(['git', '-c', 'core.editor=true', 'rebase', '--autosquash', '-i', 'master' ])
