@@ -1,0 +1,67 @@
+Metadata-Version: 1.1
+Name: dbus2any
+Version: 0.1.0
+Summary: convert dbus instrospection to code
+Home-page: https://github.com/hugosenari/dbus2any
+Author: Hugo Ribeiro
+Author-email: hugosenari@gmail.com
+License: ISCL
+Description: ===============================
+        dbus2any
+        ===============================
+        
+        .. image:: https://img.shields.io/travis/hugosenari/dbus2any.svg
+                :target: https://travis-ci.org/hugosenari/dbus2any
+        
+        .. image:: https://img.shields.io/pypi/v/dbus2any.svg
+                :target: https://pypi.python.org/pypi/dbus2any
+        
+        
+        convert dbus instrospection to code
+        
+        * Free software: ISC license
+        * Documentation: https://dbus2any.readthedocs.org.
+        
+        Features
+        --------
+        
+        * Convert xml into python-dbus client
+        
+        
+        examples
+        --------
+        
+        MPRIS2 media players
+        
+        > python -m dbus2any -t pydbusclient.tpl -n 'org.mpris.MediaPlayer2.gmusicbrowser' -p '/org/mpris/MediaPlayer2'
+        
+        > python -m dbus2any -t pydbusclient.tpl -n 'org.mpris.MediaPlayer2.vlc' -p '/org/mpris/MediaPlayer2'
+        
+        Pidgin (libpurple)
+        
+        > python -m dbus2any -t pydbusclient.tpl -n 'im.pidgin.purple.PurpleService' -p '/im/pidgin/purple/PurpleObject'
+        
+        
+        
+        
+        
+        History
+        -------
+        
+        0.1.0 (2015-01-11)
+        ---------------------
+        
+        * First release on PyPI.
+        
+Keywords: dbus2any
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
