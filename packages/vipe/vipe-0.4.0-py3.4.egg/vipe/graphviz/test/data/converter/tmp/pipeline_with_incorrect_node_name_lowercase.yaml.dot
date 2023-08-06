@@ -1,0 +1,50 @@
+digraph {
+"cloner" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_person">&#9654; person</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="2" BGCOLOR="cyan" BORDER="1">cloner<BR/>type=JavaAction</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_person">person &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"consumer" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_data">&#9654; data</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="2" BGCOLOR="cyan" BORDER="1">consumer<BR/>type=JavaAction</TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"input" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2" BGCOLOR="cyan" BORDER="1">input<BR/>type=JavaAction</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_person">person &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"cloner":"output_person" -> "consumer":"input_data"
+"input":"output_person" -> "cloner":"input_person"
+}
+
