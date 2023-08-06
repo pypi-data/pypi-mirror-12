@@ -1,0 +1,79 @@
+Metadata-Version: 1.0
+Name: alicloudcli
+Version: 1.0.0
+Summary: Universal Command Line Environment for alicloud
+Home-page: http://www.alicloud.com
+Author: aliyun-developers-efficiency
+Author-email: aliyun-developers-efficiency@list.alibaba-inc.com
+License: UNKNOWN
+Description: 
+        #AliCloud Command Line Interface
+        
+        The AliCloud Command Line Interface is a unified tool to manage your AliCloud services. With just one tool to download and configure, you can control multiple AliCloud services from the command line and automate them through scripts. 
+        
+        
+        If you got any problems, please send mail to us:
+        
+        aliyun-developers-efficiency@list.alibaba-inc.com
+        
+        ###Prerequisites:
+        
+            * Windows, Linux, OS X, or Unix
+        	* Python 2 version 2.6.X or version 2.7.x not support python 3.x
+        	* Pip
+        
+        ###Install the Alicloud CLI using pip:
+        
+            $ sudo pip install alicloudcli
+        
+        To upgrade an existing Alicloud CLI installation, use the --upgrade option::
+        
+            $ sudo pip install --upgrade alicloudcli
+        For windows system, you please dont use sudo.
+        
+        
+        ###Command Completion:
+        On Linux and Mac OS systems, the AliCloud CLI includes a command-completion feature that can enable you to use the TAB key to complete a partially typed command. This feature needs you configure it manually.
+        
+        Configuring command completion requires two pieces of information: the name of the shell you are using and the location of the alicloud_completer script.
+        
+        ####bash:
+        
+            $ complete -C '/usr/local/bin/alicloud_completer' alicloud
+        
+        ####zsh:
+        
+            % source /usr/local/bin/alicloud_zsh_complete.sh
+        
+        ###Configure the AliCloud CLI:
+        
+        Run alicloud configure at the command line to set up your credentials and settings.
+        
+        	$ alicloud configure
+        	Alicloud Access Key ID [****************wQ7v]:
+        	Alicloud Access Key Secret [****************fxGu]:
+        	Default Region Id [cn-hangzhou]:
+        	Default output format [json]:
+        
+        After configure you can use the tool now:
+        
+        	$ alicloud Ecs DescribeInstances
+        	$ alicloud Ecs StartInstance --InstanceId your_instance_id
+        	$ alicloud Rds DescribeDBInstances
+        
+        ###Install the SDK using pip
+        AliCloud CLI needs SDK to work , you can install SDK using pip like follow:
+        
+        	$sudo pip install aliyun-python-sdk-ecs
+        	$sudo pip install aliyun-python-sdk-rds
+        	$sudo pip install aliyun-python-sdk-slb
+        
+        More detail you can access our official website:
+        
+        http://intl.alicloud.com
+        
+Platform: unix
+Platform: linux
+Platform: osx
+Platform: win64
+Platform: win32
