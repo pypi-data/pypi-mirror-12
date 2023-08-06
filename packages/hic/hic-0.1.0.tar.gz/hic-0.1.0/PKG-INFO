@@ -1,0 +1,77 @@
+Metadata-Version: 1.1
+Name: hic
+Version: 0.1.0
+Summary: Tools for analyzing heavy-ion collision simulations.
+Home-page: https://github.com/Duke-QCD/hic
+Author: Jonah Bernhard
+Author-email: jonah.bernhard@gmail.com
+License: MIT
+Description: hic
+        ===
+        
+        .. image:: http://img.shields.io/travis/Duke-QCD/hic.svg?style=flat-square
+          :target: https://travis-ci.org/Duke-QCD/hic
+        
+        Tools for analyzing heavy-ion collision simulations in Python.
+        
+        Documentation
+        -------------
+        `qcd.phy.duke.edu/hic <http://qcd.phy.duke.edu/hic>`_
+        
+        Installation
+        ------------
+        Requirements: Python 2.7 or 3.3+ with numpy_.
+        
+        Install the latest release with pip_::
+        
+           pip install hic
+        
+        To run the tests, install nose_ and run ::
+        
+           nosetests -v hic
+        
+        Simple examples
+        ---------------
+        Calculate flow cumulants:
+        
+        .. code:: python
+        
+           from hic import flow
+        
+           vnk = flow.Cumulant(mult, q2, q3)
+           v22 = vnk.flow(2, 2)
+        
+        Randomly sample events with specified flows:
+        
+        .. code:: python
+        
+           sampler = flow.Sampler(v2, v3)
+           phi = sampler.sample(mult)
+        
+        Calculate initial condition eccentricities:
+        
+        .. code:: python
+        
+           from hic import initial
+        
+           ic = initial.IC(profile, dxy)
+           e2 = ic.ecc(2)
+        
+        .. _numpy: http://www.numpy.org
+        .. _pip: https://pip.pypa.io
+        .. _nose: https://nose.readthedocs.org
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Scientific/Engineering :: Physics
