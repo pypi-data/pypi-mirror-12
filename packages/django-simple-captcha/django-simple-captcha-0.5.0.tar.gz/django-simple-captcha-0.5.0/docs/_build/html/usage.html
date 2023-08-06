@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using django-simple-captcha &mdash; Django Simple Captcha 0.4.8 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Django Simple Captcha 0.4.8 documentation" href="index.html" />
+    <link rel="next" title="Advanced topics" href="advanced.html" />
+    <link rel="prev" title="Django Simple Captcha" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="advanced.html" title="Advanced topics"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Django Simple Captcha"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Django Simple Captcha 0.4.8 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-django-simple-captcha">
+<h1>Using django-simple-captcha<a class="headerlink" href="#using-django-simple-captcha" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Download <code class="docutils literal"><span class="pre">django-simple-captcha</span></code> using <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a> by running: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span>&nbsp; <span class="pre">django-simple-captcha</span></code></p>
+</li>
+<li><p class="first">Add <code class="docutils literal"><span class="pre">captcha</span></code> to the <code class="docutils literal"><span class="pre">INSTALLED_APPS</span></code> in your <code class="docutils literal"><span class="pre">settings.py</span></code></p>
+</li>
+<li><p class="first">Run <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span></code> (or <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate</span></code> if you are managing database migrations via South) to create the required database tables</p>
+</li>
+<li><p class="first">Add an entry to your <code class="docutils literal"><span class="pre">urls.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^captcha/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;captcha.urls&#39;</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Django-simple-captcha 0.4.3 and later supports both Django 1.7&#8217;s new migrations and South migrations: if you are using South and Django &lt; 1.7, you must define the following in your settings:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">SOUTH_MIGRATION_MODULES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;captcha&#39;</span><span class="p">:</span> <span class="s">&#39;captcha.south_migrations&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note: PIL and Pillow require that image libraries are installed on your system. On e.g. Debian or Ubuntu, you&#8217;d need these packages to compile and install Pillow:</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get -y install libz-dev libjpeg-dev libfreetype6-dev python-dev
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-to-a-form">
+<h2>Adding to a Form<a class="headerlink" href="#adding-to-a-form" title="Permalink to this headline">¶</a></h2>
+<p>Using a <code class="docutils literal"><span class="pre">CaptchaField</span></code> is quite straight-forward:</p>
+<div class="section" id="define-the-form">
+<h3>Define the Form<a class="headerlink" href="#define-the-form" title="Permalink to this headline">¶</a></h3>
+<p>To embed a CAPTCHA in your forms, simply add a <code class="docutils literal"><span class="pre">CaptchaField</span></code> to the form definition:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">captcha.fields</span> <span class="kn">import</span> <span class="n">CaptchaField</span>
+
+<span class="k">class</span> <span class="nc">CaptchaTestForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">myfield</span> <span class="o">=</span> <span class="n">AnyOtherField</span><span class="p">()</span>
+    <span class="n">captcha</span> <span class="o">=</span> <span class="n">CaptchaField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>…or, as a <code class="docutils literal"><span class="pre">ModelForm</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">captcha.fields</span> <span class="kn">import</span> <span class="n">CaptchaField</span>
+
+<span class="k">class</span> <span class="nc">CaptchaTestModelForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="n">captcha</span> <span class="o">=</span> <span class="n">CaptchaField</span><span class="p">()</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validate-the-form">
+<h3>Validate the Form<a class="headerlink" href="#validate-the-form" title="Permalink to this headline">¶</a></h3>
+<p>In your view, validate the form as usually: if the user didn&#8217;t provide a valid response to the CAPTCHA challenge, the form will raise a <code class="docutils literal"><span class="pre">ValidationError</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">CaptchaTestForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+
+        <span class="c"># Validate the form: the captcha field will automatically</span>
+        <span class="c"># check the input</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">human</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">CaptchaTestForm</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;template.html&#39;</span><span class="p">,</span><span class="nb">locals</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="passing-arguments-to-the-field">
+<h3>Passing arguments to the field<a class="headerlink" href="#passing-arguments-to-the-field" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">CaptchaField</span></code> takes a few optional arguements:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">output_format</span></code> will let you format the layout of the rendered field. Defaults to the value defined in : <a class="reference internal" href="advanced.html#output-format-ref"><span>CAPTCHA_OUTPUT_FORMAT</span></a>.</li>
+<li><code class="docutils literal"><span class="pre">id_prefix</span></code> Optional prefix that will be added to the ID attribute in the generated fields and labels, to be used when e.g. several Captcha fields are being displayed on a same page. (added in version 0.4.4)</li>
+</ul>
+</div>
+<div class="section" id="example-usage-for-ajax-form">
+<h3>Example usage for ajax form<a class="headerlink" href="#example-usage-for-ajax-form" title="Permalink to this headline">¶</a></h3>
+<p>An example CAPTCHA validation in AJAX:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.views.generic.edit</span> <span class="kn">import</span> <span class="n">CreateView</span>
+<span class="kn">from</span> <span class="nn">captcha.models</span> <span class="kn">import</span> <span class="n">CaptchaStore</span>
+<span class="kn">from</span> <span class="nn">captcha.helpers</span> <span class="kn">import</span> <span class="n">captcha_image_url</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">class</span> <span class="nc">AjaxExampleForm</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">AjaxForm</span>
+
+    <span class="k">def</span> <span class="nf">form_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+            <span class="n">to_json_response</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;form_errors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">errors</span>
+
+            <span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;new_cptch_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CaptchaStore</span><span class="o">.</span><span class="n">generate_key</span><span class="p">()</span>
+            <span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;new_cptch_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">captcha_image_url</span><span class="p">(</span><span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;new_cptch_key&#39;</span><span class="p">])</span>
+
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">to_json_response</span><span class="p">),</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&#39;application/json&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+            <span class="n">to_json_response</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;new_cptch_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CaptchaStore</span><span class="o">.</span><span class="n">generate_key</span><span class="p">()</span>
+            <span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;new_cptch_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">captcha_image_url</span><span class="p">(</span><span class="n">to_json_response</span><span class="p">[</span><span class="s">&#39;new_cptch_key&#39;</span><span class="p">])</span>
+
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">to_json_response</span><span class="p">),</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&#39;application/json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And in javascript your must update the image and hidden input in form</p>
+</div>
+<div class="section" id="example-usage-ajax-refresh-button">
+<h3>Example usage ajax refresh button<a class="headerlink" href="#example-usage-ajax-refresh-button" title="Permalink to this headline">¶</a></h3>
+<p># html:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;form action=&#39;.&#39; method=&#39;POST&#39;&gt;
+    {{ form }}
+    &lt;input type=&quot;submit&quot; /&gt;
+    &lt;button class=&#39;js-captcha-refresh&#39;&gt;&lt;/button&gt;
+&lt;/form&gt;
+</pre></div>
+</div>
+<p># javascript:</p>
+<div class="highlight-python"><div class="highlight"><pre>$(&#39;.js-captcha-refresh&#39;).click(function(){
+    $form = $(this).parents(&#39;form&#39;);
+
+    $.getJSON($(this).data(&#39;url&#39;), {}, function(json) {
+        // This should update your captcha image src and captcha hidden input
+    });
+
+    return false;
+});
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using django-simple-captcha</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#adding-to-a-form">Adding to a Form</a><ul>
+<li><a class="reference internal" href="#define-the-form">Define the Form</a></li>
+<li><a class="reference internal" href="#validate-the-form">Validate the Form</a></li>
+<li><a class="reference internal" href="#passing-arguments-to-the-field">Passing arguments to the field</a></li>
+<li><a class="reference internal" href="#example-usage-for-ajax-form">Example usage for ajax form</a></li>
+<li><a class="reference internal" href="#example-usage-ajax-refresh-button">Example usage ajax refresh button</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Django Simple Captcha</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="advanced.html"
+                        title="next chapter">Advanced topics</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/usage.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="advanced.html" title="Advanced topics"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Django Simple Captcha"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Django Simple Captcha 0.4.8 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2011-2015 Marco Bonetti.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

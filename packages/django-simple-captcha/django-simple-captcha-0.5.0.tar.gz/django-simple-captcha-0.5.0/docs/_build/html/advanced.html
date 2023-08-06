@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Advanced topics &mdash; Django Simple Captcha 0.4.8 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Django Simple Captcha 0.4.8 documentation" href="index.html" />
+    <link rel="prev" title="Using django-simple-captcha" href="usage.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Using django-simple-captcha"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Django Simple Captcha 0.4.8 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="advanced-topics">
+<h1>Advanced topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="configuration-toggles">
+<h2>Configuration toggles<a class="headerlink" href="#configuration-toggles" title="Permalink to this headline">¶</a></h2>
+<p>The following configuration elements can be defined (in your <code class="docutils literal"><span class="pre">settings.py</span></code>)</p>
+<div class="section" id="captcha-font-path">
+<h3>CAPTCHA_FONT_PATH<a class="headerlink" href="#captcha-font-path" title="Permalink to this headline">¶</a></h3>
+<p>Full path and filename of a TrueType (TTF), OpenType, or pilfont font file used to render text.</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">fonts/Vera.ttf</span></code> (included in the application, GPL font).</p>
+<p>Note that your PIL installation must support TTF and/or OpenFont if you want to use these kind of glyphs (most modern distributions of PIL do.)</p>
+<p>Note: as of version 0.4.6, <code class="docutils literal"><span class="pre">CAPTCHA_FONT_PATH</span></code> may be an iterable of font paths, in which case a font will be picked randomly from the list for each CAPTCHA.</p>
+</div>
+<div class="section" id="captcha-font-size">
+<h3>CAPTCHA_FONT_SIZE<a class="headerlink" href="#captcha-font-size" title="Permalink to this headline">¶</a></h3>
+<p>Font-size in pixels of the rendered text.</p>
+<p>Defaults to &#8216;22&#8217;.</p>
+</div>
+<div class="section" id="captcha-image-size">
+<h3>CAPTCHA_IMAGE_SIZE<a class="headerlink" href="#captcha-image-size" title="Permalink to this headline">¶</a></h3>
+<p>Image size in pixels of generated captcha, specified by 2-tuple (width, height)</p>
+<p>Defaults to <cite>None</cite> (automatically calculated)</p>
+</div>
+<div class="section" id="captcha-letter-rotation">
+<h3>CAPTCHA_LETTER_ROTATION<a class="headerlink" href="#captcha-letter-rotation" title="Permalink to this headline">¶</a></h3>
+<p>A random rotation in this interval is applied to each letter in the challenge text.</p>
+<p>Defaults to <code class="docutils literal"><span class="pre">(-35,35)</span></code>.</p>
+<p>New in version 0.1.6: set this to None to disable letter roation.</p>
+</div>
+<div class="section" id="captcha-background-color">
+<h3>CAPTCHA_BACKGROUND_COLOR<a class="headerlink" href="#captcha-background-color" title="Permalink to this headline">¶</a></h3>
+<p>Background-color of the captcha. Can be expressed as html-style #rrggbb, rgb(red, green, blue), or common html names (e.g. &#8220;red&#8221;).</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">'#ffffff'</span></code></p>
+</div>
+<div class="section" id="captcha-foreground-color">
+<h3>CAPTCHA_FOREGROUND_COLOR<a class="headerlink" href="#captcha-foreground-color" title="Permalink to this headline">¶</a></h3>
+<p>Foreground-color of the captcha.</p>
+<p>Defaults to <code class="docutils literal"><span class="pre">'#001100'</span></code></p>
+</div>
+<div class="section" id="captcha-challenge-funct">
+<h3>CAPTCHA_CHALLENGE_FUNCT<a class="headerlink" href="#captcha-challenge-funct" title="Permalink to this headline">¶</a></h3>
+<p>String representing a python callable (i.e. a function) to use as challenge generator.</p>
+<p>See Generators below for a list of available generators and a guide on how to write your own.</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">'captcha.helpers.random_char_challenge'</span></code></p>
+</div>
+<div class="section" id="captcha-noise-functions">
+<h3>CAPTCHA_NOISE_FUNCTIONS<a class="headerlink" href="#captcha-noise-functions" title="Permalink to this headline">¶</a></h3>
+<p>List of strings of python callables that take a PIL <code class="docutils literal"><span class="pre">DrawImage</span></code> object and an <code class="docutils literal"><span class="pre">Image</span></code> image as input, modify the <code class="docutils literal"><span class="pre">DrawImage</span></code>, then return it.</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">('captcha.helpers.noise_arcs','captcha.helpers.noise_dots',)</span></code></p>
+<p>A null noise helper function useful when debugging issues is available at <code class="docutils literal"><span class="pre">'captcha.helpers.noise_null'</span></code>.</p>
+</div>
+<div class="section" id="captcha-filter-functions">
+<h3>CAPTCHA_FILTER_FUNCTIONS<a class="headerlink" href="#captcha-filter-functions" title="Permalink to this headline">¶</a></h3>
+<p>List of strings of python callables that take a PIL <code class="docutils literal"><span class="pre">Image</span></code> object as input, modify it and return it.</p>
+<p>These are called right before the rendering, i.e. after the noise functions.</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">('captcha.helpers.post_smooth',)</span></code></p>
+</div>
+<div class="section" id="captcha-words-dictionary">
+<h3>CAPTCHA_WORDS_DICTIONARY<a class="headerlink" href="#captcha-words-dictionary" title="Permalink to this headline">¶</a></h3>
+<p>Required for the <code class="docutils literal"><span class="pre">word_challenge</span></code> challenge function only. Points a file containing a list of words, one per line.</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">'/usr/share/dict/words'</span></code></p>
+</div>
+<div class="section" id="captcha-flite-path">
+<h3>CAPTCHA_FLITE_PATH<a class="headerlink" href="#captcha-flite-path" title="Permalink to this headline">¶</a></h3>
+<p>Full path to the <code class="docutils literal"><span class="pre">flite</span></code> executable. When defined, will automatically add audio output to the captcha.</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">None</span></code> (no audio output)</p>
+</div>
+<div class="section" id="captcha-timeout">
+<h3>CAPTCHA_TIMEOUT<a class="headerlink" href="#captcha-timeout" title="Permalink to this headline">¶</a></h3>
+<p>Integer. Lifespan, in minutes, of the generated captcha.</p>
+<p>Defaults to: 5</p>
+</div>
+<div class="section" id="captcha-length">
+<h3>CAPTCHA_LENGTH<a class="headerlink" href="#captcha-length" title="Permalink to this headline">¶</a></h3>
+<p>Sets the length, in chars, of the generated captcha. (for the <code class="docutils literal"><span class="pre">'captcha.helpers.random_char_challenge'</span></code> challenge)</p>
+<p>Defaults to: 4</p>
+</div>
+<div class="section" id="captcha-dictionary-min-length">
+<h3>CAPTCHA_DICTIONARY_MIN_LENGTH<a class="headerlink" href="#captcha-dictionary-min-length" title="Permalink to this headline">¶</a></h3>
+<p>When using the word_challenge challenge function, controls the minimum length of the words to be randomly picked from the dictionary file.</p>
+<p>Defaults to: 0</p>
+</div>
+<div class="section" id="captcha-dictionary-max-length">
+<h3>CAPTCHA_DICTIONARY_MAX_LENGTH<a class="headerlink" href="#captcha-dictionary-max-length" title="Permalink to this headline">¶</a></h3>
+<p>When using the word_challenge challenge function, controls the maximal length of the words to be randomly picked from the dictionary file.</p>
+<p>Defaults to: 99</p>
+<p>Note: it&#8217;s perfectly safe to specify e.g. <code class="docutils literal"><span class="pre">CAPTCHA_DICTIONARY_MIN_LENGTH</span> <span class="pre">=</span> <span class="pre">CAPTCHA_DICTIONARY_MAX_LENGTH</span> <span class="pre">=</span> <span class="pre">6</span></code> but it&#8217;s considered an error to define <code class="docutils literal"><span class="pre">CAPTCHA_DICTIONARY_MAX_LENGTH</span></code> to be smaller than <code class="docutils literal"><span class="pre">CAPTCHA_DICTIONARY_MIN_LENGTH</span></code>.</p>
+</div>
+<div class="section" id="captcha-output-format">
+<span id="output-format-ref"></span><h3>CAPTCHA_OUTPUT_FORMAT<a class="headerlink" href="#captcha-output-format" title="Permalink to this headline">¶</a></h3>
+<p>New in version 0.1.6</p>
+<p>Specify your own output format for the generated markup, when e.g. you want to position the captcha image relative to the text field in your form.</p>
+<p>Defaults to: <code class="docutils literal"><span class="pre">None</span></code></p>
+<p>(Used to default to: <code class="docutils literal"><span class="pre">u'%(image)s</span> <span class="pre">%(hidden_field)s</span> <span class="pre">%(text_field)s'</span></code>)</p>
+<p>Note: this settings is deprecated in favor of template-based field rendering, use <code class="docutils literal"><span class="pre">CAPTCHA_FIELD_TEMPLATE</span></code> instead (see the Rendering section below).</p>
+</div>
+<div class="section" id="captcha-test-mode">
+<h3>CAPTCHA_TEST_MODE<a class="headerlink" href="#captcha-test-mode" title="Permalink to this headline">¶</a></h3>
+<p>New in version 0.3.6</p>
+<p>When set to True, the string &#8220;PASSED&#8221; (any case) will be accepted as a valid response to any CAPTCHA.
+Use this for testing purposes. Warning: do NOT set this to True in production.</p>
+<p>Defaults to: False</p>
+</div>
+</div>
+<div class="section" id="rendering">
+<h2>Rendering<a class="headerlink" href="#rendering" title="Permalink to this headline">¶</a></h2>
+<p>A CAPTCHA field is made up of three components:</p>
+<ul class="simple">
+<li>The actual image that the end user has to copy from</li>
+<li>A text field, that the user has to fill with the content of the image</li>
+<li>A hidden field, containing the database reference of the CAPTCHA (for verification).</li>
+</ul>
+<p>These three elements are rendered individually, then assembled into a single bit of HTML.</p>
+<p>As of version 0.4.7 you can control how the individual components are rendered, as well as how all components are assembled, by overriding four templates:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">captcha/image.html</span></code> controls the rendering of the image (and optionnally audio) element</li>
+<li><code class="docutils literal"><span class="pre">captcha/text_field.html</span></code> controls the rendering of the text field</li>
+<li><code class="docutils literal"><span class="pre">captcha/hidden_field.html</span></code> controls the rendering of the hidden input</li>
+<li><code class="docutils literal"><span class="pre">captcha/field.html</span></code> controls the assembling of the previous three elements</li>
+</ul>
+<p>These templates can be overriden in your own <code class="docutils literal"><span class="pre">templates</span></code> folder, or you can change the actual template names by settings <code class="docutils literal"><span class="pre">CAPTCHA_IMAGE_TEMPLATE</span></code>, <code class="docutils literal"><span class="pre">CAPTCHA_TEXT_FIELD_TEMPLATE</span></code>, <code class="docutils literal"><span class="pre">CAPTCHA_HIDDEN_FIELD_TEMPLATE</span></code> and <code class="docutils literal"><span class="pre">CAPTCHA_FIELD_TEMPLATE</span></code>, respectively.</p>
+<div class="section" id="context">
+<h3>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h3>
+<p>The following context variables are passed to the three &#8220;individual&#8221; templates:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">image</span></code>: The URL of the rendered CAPTCHA image</li>
+<li><code class="docutils literal"><span class="pre">name</span></code>: name of the field (i.e. the name of your form field)</li>
+<li><code class="docutils literal"><span class="pre">key</span></code>: the hashed value (identifier) of this CAPTCHA: this is stored and passed in the hidden input</li>
+<li><code class="docutils literal"><span class="pre">id</span></code>: the HTML <code class="docutils literal"><span class="pre">id</span></code> attribute to be used</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">captcha/field.html</span></code> template receives the following context:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">image</span></code>: the rendered (HTML) image and optionnaly audio elements</li>
+<li><code class="docutils literal"><span class="pre">hidden_field</span></code>: the rendered hidden input</li>
+<li><code class="docutils literal"><span class="pre">text_field</span></code>: the rendered text input</li>
+</ul>
+<p>Note: these elements have been marked as safe, you can render them straight into your template.</p>
+</div>
+</div>
+<div class="section" id="generators-and-modifiers">
+<h2>Generators and modifiers<a class="headerlink" href="#generators-and-modifiers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="random-chars">
+<h3>Random chars<a class="headerlink" href="#random-chars" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/random_chars.png" src="_images/random_chars.png" />
+<p>Classic captcha that picks four random chars. This is case insensitive.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">CAPTCHA_CHALLENGE_FUNCT</span> <span class="o">=</span> <span class="s">&#39;captcha.helpers.random_char_challenge&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="simple-math">
+<h3>Simple Math<a class="headerlink" href="#simple-math" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/math.png" src="_images/math.png" />
+<p>Another classic, that challenges the user to resolve a simple math challenge by randomly picking two numbers between one and nine, and a random operator among plus, minus, times.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">CAPTCHA_CHALLENGE_FUNCT</span> <span class="o">=</span> <span class="s">&#39;captcha.helpers.math_challenge&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dictionary-word">
+<h3>Dictionary Word<a class="headerlink" href="#dictionary-word" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/dict.png" src="_images/dict.png" />
+<p>Picks a random word from a dictionary file. Note, you must define <code class="docutils literal"><span class="pre">CAPTCHA_WORDS_DICTIONARY</span></code> in your cofiguration to use this generator.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">CAPTCHA_CHALLENGE_FUNCT</span> <span class="o">=</span> <span class="s">&#39;captcha.helpers.word_challenge&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="roll-your-own">
+<h3>Roll your own<a class="headerlink" href="#roll-your-own" title="Permalink to this headline">¶</a></h3>
+<p>To have your own challenge generator, simply point <code class="docutils literal"><span class="pre">CAPTCHA_CHALLENGE_FUNCT</span></code> to a function that returns a tuple of strings: the first one (the challenge) will be rendered in the captcha, the second is the valid response to the challenge, e.g. <code class="docutils literal"><span class="pre">('5+10=',</span> <span class="pre">'15')</span></code>, <code class="docutils literal"><span class="pre">('AAAA',</span> <span class="pre">'aaaa')</span></code></p>
+<p>This sample generator that returns six random digits:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">random_digit_challenge</span><span class="p">():</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="s">u&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">,</span> <span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Advanced topics</a><ul>
+<li><a class="reference internal" href="#configuration-toggles">Configuration toggles</a><ul>
+<li><a class="reference internal" href="#captcha-font-path">CAPTCHA_FONT_PATH</a></li>
+<li><a class="reference internal" href="#captcha-font-size">CAPTCHA_FONT_SIZE</a></li>
+<li><a class="reference internal" href="#captcha-image-size">CAPTCHA_IMAGE_SIZE</a></li>
+<li><a class="reference internal" href="#captcha-letter-rotation">CAPTCHA_LETTER_ROTATION</a></li>
+<li><a class="reference internal" href="#captcha-background-color">CAPTCHA_BACKGROUND_COLOR</a></li>
+<li><a class="reference internal" href="#captcha-foreground-color">CAPTCHA_FOREGROUND_COLOR</a></li>
+<li><a class="reference internal" href="#captcha-challenge-funct">CAPTCHA_CHALLENGE_FUNCT</a></li>
+<li><a class="reference internal" href="#captcha-noise-functions">CAPTCHA_NOISE_FUNCTIONS</a></li>
+<li><a class="reference internal" href="#captcha-filter-functions">CAPTCHA_FILTER_FUNCTIONS</a></li>
+<li><a class="reference internal" href="#captcha-words-dictionary">CAPTCHA_WORDS_DICTIONARY</a></li>
+<li><a class="reference internal" href="#captcha-flite-path">CAPTCHA_FLITE_PATH</a></li>
+<li><a class="reference internal" href="#captcha-timeout">CAPTCHA_TIMEOUT</a></li>
+<li><a class="reference internal" href="#captcha-length">CAPTCHA_LENGTH</a></li>
+<li><a class="reference internal" href="#captcha-dictionary-min-length">CAPTCHA_DICTIONARY_MIN_LENGTH</a></li>
+<li><a class="reference internal" href="#captcha-dictionary-max-length">CAPTCHA_DICTIONARY_MAX_LENGTH</a></li>
+<li><a class="reference internal" href="#captcha-output-format">CAPTCHA_OUTPUT_FORMAT</a></li>
+<li><a class="reference internal" href="#captcha-test-mode">CAPTCHA_TEST_MODE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rendering">Rendering</a><ul>
+<li><a class="reference internal" href="#context">Context</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generators-and-modifiers">Generators and modifiers</a><ul>
+<li><a class="reference internal" href="#random-chars">Random chars</a></li>
+<li><a class="reference internal" href="#simple-math">Simple Math</a></li>
+<li><a class="reference internal" href="#dictionary-word">Dictionary Word</a></li>
+<li><a class="reference internal" href="#roll-your-own">Roll your own</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Using django-simple-captcha</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/advanced.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Using django-simple-captcha"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Django Simple Captcha 0.4.8 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2011-2015 Marco Bonetti.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
