@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+
+import os, sys, argparse, time
+from mixcoatl.geography.subscription import Subscription
+from mixcoatl import utils
+from prettytable import PrettyTable
+
+if __name__ == '__main__':
+    """ List subscriptions. """
+    start = time.time()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--region', '-r', type=int, help='Region ID')
+
+    group_one = parser.add_mutually_exclusive_group()
+    group_one.add_argument('--json', action='store_true', help='print API response in JSON format.')
+    group_one.add_argument('--xml', action='store_true', help='print API response in XML format.')
+    group_one.add_argument('--csv', action='store_true', help='print API response in CSV format.')
+    cmd_args = parser.parse_args()
+
+    if cmd_args.region is not None:
+        results = Subscription.all(region_id=cmd_args.region)
+    else:
+        results = Subscription.all()
+
+    if cmd_args.xml is True or cmd_args.json is True or cmd_args.csv is True:
+        if cmd_args.xml is True:
+            payload_format = "xml"
+        elif cmd_args.csv is True:
+            payload_format = "csv"
+        else:
+            payload_format = "json"
+
+        print utils.print_format(results, payload_format)
+    else:
+        table = PrettyTable(["Region ID",
+                            "Email",
+                            "Firewall",
+                            "Load Balancers",
+                            "Machine Image",
+                            "Network",
+                            "RDBMS",
+                            "Server",
+                            "Snapshot",
+                            "Static IP",
+                            "Volume"])
+
+        for r in results:
+            table.add_row([r.region_id if hasattr(r, 'region_id') else None,
+                            r.subscribed_email if hasattr(r, 'subscribed_email') else None,
+                            r.subscribed_firewall if hasattr(r, 'subscribed_firewall') else None,
+                            r.subscribed_load_balancer if hasattr(r, 'subscribed_load_balancer') else None,
+                            r.subscribed_machine_image if hasattr(r, 'subscribed_machine_image') else None,
+                            r.subscribed_network if hasattr(r, 'subscribed_network') else None,
+                            r.subscribed_rdbms if hasattr(r, 'subscribed_rdbms') else None,
+                            r.subscribed_server if hasattr(r, 'subscribed_server') else None,
+                            r.subscribed_snapshot if hasattr(r, 'subscribed_snapshot') else None,
+                            r.subscribed_static_ip if hasattr(r, 'subscribed_static_ip') else None,
+                            r.subscribed_volume if hasattr(r, 'subscribed_volume') else None
+                           ])
+        table.align = 'l'
+        print(table)
+
+    if 'DCM_DEBUG' in os.environ:
+        print 'Results returned in', time.time()-start, 'seconds.'
