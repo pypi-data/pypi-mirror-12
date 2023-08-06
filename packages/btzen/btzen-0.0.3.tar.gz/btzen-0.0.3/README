@@ -1,0 +1,31 @@
+Library to read data from Bluetooth Smart sensors.
+
+Supported devices and sensor readings
+
+- SensorTag (CC2541DK, CC2650STK)
+
+  - temperature
+  - pressure
+  - humidity
+  - light (CC2541DK only)
+
+Please update your sensor device to its latest firmware.
+
+Run `bluetoothd` with `-E` option.
+
+As root::
+
+    $ hciconfig hci0 up
+    $ hcitool lescan
+    $ hcitool lecc <MAC>
+
+As an user::
+
+    $ PYTHONPATH=. bin/btzen <MAC>
+
+Requirements
+
+- bluez 5.36
+- Python 3
+- Python D-Bus bindings
+
