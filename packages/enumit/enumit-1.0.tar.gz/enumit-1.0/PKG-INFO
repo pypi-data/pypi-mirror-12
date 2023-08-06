@@ -1,0 +1,49 @@
+Metadata-Version: 1.1
+Name: enumit
+Version: 1.0
+Summary: Enumeration library for python.
+Home-page: https://github.com/farukcepni/enumit
+Author: Faruk Cepni
+Author-email: farukcepni@gmail.com
+License: UNKNOWN
+Description: enumit
+        ======
+        Enumeration library for python.
+        
+        Basic Usage
+        -----------
+        ::
+        
+            from enumit import Enum
+        
+        
+            class Status(Enum):
+                APPROVED = Enum.Field('approved')
+                DENIED = Enum.Field('denied', 'Denied')
+        
+            >> Status.APPROVED
+            >> approved
+        
+            >> Status['approved']
+            >> Approved
+        
+            >> Status.choices()
+            >> [('approved', 'Approved'), ('denied', 'Denied')]
+        
+            >> Status.values()
+            >> ['approved', 'denied']
+        
+            >> Status.names()
+            >> ['Approved', 'Denied']
+        
+            >> 'approved' in Status
+            >> True
+        
+Keywords: enumeration,enum
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
