@@ -1,0 +1,96 @@
+Metadata-Version: 1.1
+Name: ionize
+Version: 0.14.0
+Summary: A package for calculating electrolyte properties.
+Home-page: http://lewisamarshall.github.io/ionize/
+Author: Lewis A. Marshall
+Author-email: lewis.a.marshall@gmail.com
+License: LICENSE
+Description: ionize
+        ======
+        
+        |Code Climate| |Build Status| |Coverage Status| |Docs Status|
+        
+        A unified Python package for calculating buffer properties.
+        
+        **ionize** calculates the properties of individual ionic species in
+        aqueous solution, as well as aqueous solutions containing arbitrary sets
+        of ions.
+        
+        The **ionize** model uses techniques demonstrated by
+        `Peakmaster <http://web.natur.cuni.cz/gas/>`__,
+        `Spresso <http://stanfordspresso.blogspot.com/>`__, and
+        `STEEP <http://microfluidics.stanford.edu/download/>`__. The **ionize**
+        model takes into account pH, ionic strength, and temperature effects,
+        including the most up-to-date temperature model published in STEEP. The
+        **ionize** object classes make these techniques directly accessible as a
+        backend for simulations written in python.
+        
+        Installation
+        ------------
+        
+        One-line install using `pip <https://pypi.python.org/pypi/pip>`__:
+        
+        ::
+        
+            pip install ionize
+        
+        Tutorial
+        --------
+        
+        Want to use **ionize**? Read the `tutorial <./tutorial.ipynb>`__.
+        
+        Examples
+        --------
+        
+        Want to see some examples of **ionize** in action? Take a look at the
+        `examples <./examples.ipynb>`__.
+        
+        ionize Components
+        -----------------
+        
+        **ionize** has two main components:
+        
+        The Ion Class
+        ~~~~~~~~~~~~~
+        
+        The core of **ionize** is the **Ion** class, which represents a single
+        ionic species. An ion contains a name, a set of ionization states, and
+        an optional temperature parameter. Each ionization state contains a
+        charge, a pKa, and an absolute mobility. An ionization state may also
+        include values for ΔH and ΔCp of ionization to improve the accuracy of
+        temperature correction.
+        
+        The Solution Class
+        ~~~~~~~~~~~~~~~~~~
+        
+        The **Solution** class represents an aqueous solution containing any
+        number of ionic species. A **Solution** contains a list of **Ion**
+        objects, and a second list containing the concentrations of each
+        species. **Solution** can also take an optional temperature parameter.
+        **Solution** solves for pH, iteratively accounting for the ionic
+        strength. Based on ionic strength and pH, the **Ions** calculate their
+        own properties, and the **Solution** calculates bulk properties like
+        conductivity.
+        
+        .. |Code Climate| image:: https://codeclimate.com/github/lewisamarshall/ionize/badges/gpa.svg
+           :target: https://codeclimate.com/github/lewisamarshall/ionize
+        .. |Build Status| image:: https://travis-ci.org/lewisamarshall/ionize.svg?branch=master
+           :target: https://travis-ci.org/lewisamarshall/ionize
+        .. |Coverage Status| image:: https://coveralls.io/repos/lewisamarshall/ionize/badge.svg?branch=master&service=github
+           :target: https://coveralls.io/github/lewisamarshall/ionize?branch=master
+        .. |Docs Status| image:: https://readthedocs.org/projects/ionize/badge/?version=latest
+           :target: https://ionize.readthedocs.org
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Requires: numpy
+Requires: scipy
+Requires: biopython
+Requires: click
