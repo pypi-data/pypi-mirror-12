@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Changelog &mdash; &#34;numdifftools&#34; 0.9.13+g4a3e8a6.dirty documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="&#34;numdifftools&#34; 0.9.13+g4a3e8a6.dirty documentation" href="index.html"/>
+        <link rel="next" title="Modules" href="api/modules.html"/>
+        <link rel="prev" title="Developers" href="authors.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> "numdifftools"</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="src/overview.html">Introduction to Numdifftools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/overview.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/overview.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src/numerical/main.html">Numerical differentiation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#numerical-differentiation-of-a-general-function-of-one-variable">Numerical differentiation of a general function of one variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#unequally-spaced-finite-difference-rules">Unequally spaced finite difference rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#odd-and-even-transformations-of-a-function">Odd and even transformations of a function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#complex-step-derivative">Complex step derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#high-order-derivative">High order derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#richardson-extrapolation-methodology-applied-to-derivative-estimation">Richardson extrapolation methodology applied to derivative estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#multiple-term-richardson-extrapolants">Multiple term Richardson extrapolants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#uncertainty-estimates-for-derivative">Uncertainty estimates for Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#derivative-in-action">Derivative in action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#gradient-and-hessian-estimation">Gradient and Hessian  estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/numerical/derivest.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src/algorithmic/main.html">Algorithmic differentiation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/algorithmic/ad.html">Numdifftools.nd_algopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/algorithmic/ad.html#algoritmic-differentiation">Algoritmic differentiation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Developers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2012</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2011</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">2009</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">Module reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/numdifftools.html">numdifftools package</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">"numdifftools"</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Changelog</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/changes.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="changelog">
+<span id="changes"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<p>Created with gitcommand: git shortlog v0.9.12..v0.9.13</p>
+<div class="section" id="id1">
+<h2>2015<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="october-30">
+<h3>October 30<a class="headerlink" href="#october-30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-9-13">
+<h4>Version 0.9.13<a class="headerlink" href="#version-0-9-13" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (21):</dt>
+<dd>Updated README.rst and CHANGES.rst.
+updated Limits.
+Made it possible to differentiate complex functions and allow zero&#8217;th order derivative.
+BUG: added missing derivative order, n to Gradient, Hessian, Jacobian.
+Made test more robust.
+Updated structure in setup according to pyscaffold version 2.4.2.
+Updated setup.cfg and deleted duplicate tests folder.
+removed unused code.
+Added appveyor.yml.
+Added required appveyor install scripts
+Fixed bug in appveyor.yml.
+added wheel to requirements.txt.
+updated appveyor.yml.
+Removed import matplotlib.</dd>
+<dt>Justin Lecher (1):</dt>
+<dd>Fix min version for numpy.</dd>
+<dt>kikocorreoso (1):</dt>
+<dd>fix some prints on run_benchmark.py to make it work with py3</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="august-28">
+<h3>August 28<a class="headerlink" href="#august-28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-9-12">
+<h4>Version 0.9.12<a class="headerlink" href="#version-0-9-12" title="Permalink to this headline">¶</a></h4>
+<p>pbrod (12):</p>
+<blockquote>
+<div>Updated documentation.
+Updated version in conf.py.
+Updated CHANGES.rst.
+Reimplemented outlier detection and made it more robust.
+Added limits.py with tests.
+Updated main tests folder.
+Moved Richardson and dea3 to extrapolation.py.
+Making a new release in order to upload to pypi.</div></blockquote>
+</div>
+</div>
+<div class="section" id="august-27">
+<h3>August 27<a class="headerlink" href="#august-27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-9-11">
+<h4>Version 0.9.11<a class="headerlink" href="#version-0-9-11" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (2):</dt>
+<dd>Fixed sphinx-build and updated docs.
+Fixed issue #9 Backward differentiation method fails with additional parameters.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="august-26">
+<h3>August 26<a class="headerlink" href="#august-26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-9-10">
+<h4>Version 0.9.10<a class="headerlink" href="#version-0-9-10" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (7):</dt>
+<dd>Fixed sphinx-build and updated docs.
+Added more tests to nd_algopy.
+Dropped support for Python 2.6.</dd>
+</dl>
+</div>
+<div class="section" id="version-0-9-4">
+<h4>Version 0.9.4<a class="headerlink" href="#version-0-9-4" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (7):</dt>
+<dd>Fixed sphinx-build and updated docs.</dd>
+</dl>
+</div>
+<div class="section" id="version-0-9-3">
+<h4>Version 0.9.3<a class="headerlink" href="#version-0-9-3" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Paul Kienzle (1):</dt>
+<dd>more useful benchmark plots.</dd>
+<dt>pbrod (7):</dt>
+<dd>Fixed bugs and updated docs.
+Major rewrite of the easy to use interface to Algopy.
+Added possibility to calculate n&#8217;th order derivative not just for n=1 in nd_algopy.
+Added tests to the easy to use interface to algopy.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="august-20">
+<h3>August 20<a class="headerlink" href="#august-20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-9-2">
+<h4>Version 0.9.2<a class="headerlink" href="#version-0-9-2" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (3):</dt>
+<dd>Updated documentation
+Added parenthesis to a call to the print function
+Made the test less strict in order to pass the tests on Travis for python 2.6 and 3.2.</dd>
+</dl>
+</div>
+<div class="section" id="version-0-9-1">
+<h4>Version 0.9.1<a class="headerlink" href="#version-0-9-1" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Christoph Deil (1):</dt>
+<dd>Fix Sphinx build</dd>
+<dt>pbrod (47):</dt>
+<dd><dl class="first last docutils">
+<dt>Total remake of numdifftools with slightly different call syntax.</dt>
+<dd>Can compute derivatives of order up to 10-14 depending on function and method used.
+Updated documentation and tests accordingly.
+Fixed a bug in dea3.
+Added StepsGenerator as an replacement for the adaptive option.
+Added bicomplex class for testing the complex step second derivative.
+Added fornberg_weights_all for computing optimal finite difference rules in a stable way.
+Added higher order complex step derivative methods.</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>2014<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="december-18">
+<h3>December 18<a class="headerlink" href="#december-18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-7-7">
+<h4>Version 0.7.7<a class="headerlink" href="#version-0-7-7" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (35):</dt>
+<dd>Got travis-ci working in order to run the tests automatically.
+Fixed bugs in Dea class.
+Fixed better error estimate for the Hessian.
+Fixed tests for python 2.6.
+Adding tests as subpackage.
+Restructerd folders of numdifftools.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="december-17">
+<h3>December 17<a class="headerlink" href="#december-17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-7-3">
+<h4>Version 0.7.3<a class="headerlink" href="#version-0-7-3" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (5):</dt>
+<dd>Small cosmetic fixes.
+pep8 + some refactorings.
+Simplified code by refactoring.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="february-8">
+<h3>February 8<a class="headerlink" href="#february-8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-6-0">
+<h4>Version 0.6.0<a class="headerlink" href="#version-0-6-0" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (20):</dt>
+<dd>Update and rename README.md to README.rst.
+Simplified call to Derivative: removed step_fix.
+Deleted unused code.
+Simplified and Refactored. Now possible to choose step_num=1.
+Changed default step_nom from max(abs(x0), 0.2) to max(log2(abs(x0)), 0.2).
+pep8ified code and made sure that all tests pass.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="january-10">
+<h3>January 10<a class="headerlink" href="#january-10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-5-0">
+<h4>Version 0.5.0<a class="headerlink" href="#version-0-5-0" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (9):</dt>
+<dd>Updated the examples in Gradient class and in info.py.
+Added test for vec2mat and docstrings + cosmetic fixes.
+Refactored code into private methods.
+Fixed issue #7: Derivative(fun)(numpy.ones((10,5)) * 2) failed.
+Made print statements compatible with python 3.</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2012<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="may-5">
+<h3>May 5<a class="headerlink" href="#may-5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-4-0">
+<h4>Version 0.4.0<a class="headerlink" href="#version-0-4-0" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (1)</dt>
+<dd>Fixed a bug for inf and nan values.</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>2011<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="may-19">
+<h3>May 19<a class="headerlink" href="#may-19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-3-5">
+<h4>Version 0.3.5<a class="headerlink" href="#version-0-3-5" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (1)</dt>
+<dd>Fixed a bug for inf and nan values.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="feb-24">
+<h3>Feb 24<a class="headerlink" href="#feb-24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-3-4">
+<h4>Version 0.3.4<a class="headerlink" href="#version-0-3-4" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (11)</dt>
+<dd>Made automatic choice for the stepsize more robust.
+Added easy to use interface to the algopy and scientificpython modules.</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>2009<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="may-20">
+<h3>May 20<a class="headerlink" href="#may-20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="version-0-3-1">
+<h4>Version 0.3.1<a class="headerlink" href="#version-0-3-1" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>pbrod (4)</dt>
+<dd>First version of numdifftools published on google.code</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/modules.html" class="btn btn-neutral float-right" title="Modules">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="authors.html" class="btn btn-neutral" title="Developers"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2009-2015, Per A Brodtkorb, John D&#39;Errico.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.9.13+g4a3e8a6.dirty',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
