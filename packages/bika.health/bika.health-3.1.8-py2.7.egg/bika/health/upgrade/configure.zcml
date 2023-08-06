@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="bika">
+
+<genericsetup:upgradeStep
+        title="Bika Health 3.1.6"
+        description=""
+        source="3006"
+        destination="316"
+        handler="bika.health.upgrade.to316.upgrade"
+        sortkey="1"
+        profile="bika.health:default"/>
+
+<genericsetup:upgradeStep
+        title="Bika Health 3.1.7"
+        description=""
+        source="316"
+        destination="317"
+        handler="bika.health.upgrade.to317.upgrade"
+        sortkey="1"
+        profile="bika.health:default"/>
+
+<genericsetup:upgradeStep
+        title="Bika Health 3.1.8"
+        description=""
+        source="317"
+        destination="318"
+        handler="bika.health.upgrade.to318.upgrade"
+        sortkey="1"
+        profile="bika.health:default"/>
+</configure>
