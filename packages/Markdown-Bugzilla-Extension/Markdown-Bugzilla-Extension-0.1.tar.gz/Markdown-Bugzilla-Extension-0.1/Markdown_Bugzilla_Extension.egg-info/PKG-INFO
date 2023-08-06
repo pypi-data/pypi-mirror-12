@@ -1,0 +1,57 @@
+Metadata-Version: 1.1
+Name: Markdown-Bugzilla-Extension
+Version: 0.1
+Summary: Bugzilla extension for Markdown.
+Home-page: https://github.com/atodorov/Markdown-Bugzilla-Extension
+Author: Alexander Todorov
+Author-email: atodorov@nopam.otb.bg
+License: BSD
+Description: Markdown Bugzilla Extension
+        ---------------------------
+        
+        .. image:: https://img.shields.io/travis/atodorov/Markdown-Bugzilla-Extension/master.svg
+           :target: https://travis-ci.org/atodorov/Markdown-Bugzilla-Extension
+           :alt: Build status
+        
+        
+        This is Markdown extension for faster linking to Bugzilla bugs::
+        
+            md = Markdown(extensions=['mdbz'], 
+                          extension_configs={
+                            'mdbz' : {
+                                'bugzillaURL' : 'http://bugzilla.example.com/%s'
+                            }
+                          }
+                        )
+        
+            md = Markdown(extensions=['mdbz.rhbz'])
+        
+        
+        then strings of the form `[bz#123]` will become links to the specified bug number.
+        The `mdbz.rhbz` extension is preconfigured for Red Hat's Bugzilla and
+        supports the `[rhbz#123]` syntax instead.
+        
+        
+        Contributing
+        ============
+        
+        Source code and issue tracker are at https://github.com/atodorov/Markdown-Bugzilla-Extension
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Communications :: Email :: Filters
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content :: CGI Tools/Libraries
+Classifier: Topic :: Internet :: WWW/HTTP :: Site Management
+Classifier: Topic :: Software Development :: Documentation
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing :: Filters
+Classifier: Topic :: Text Processing :: Markup :: HTML
