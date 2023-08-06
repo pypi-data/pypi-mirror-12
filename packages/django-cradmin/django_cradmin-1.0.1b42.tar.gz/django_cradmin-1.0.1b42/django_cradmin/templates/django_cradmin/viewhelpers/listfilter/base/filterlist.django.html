@@ -1,0 +1,10 @@
+<div id="{{ me.get_dom_id_prefix }}"
+     django-cradmin-listfilter={{ me.get_angularjs_options_json|safe }}>
+    <ol class="{{ me.get_css_classes_string }}">
+        {% for renderable in me.iter_renderables %}
+            <li>
+                {{ renderable.render }}
+            </li>
+        {% endfor %}
+    </ol>
+</div>
