@@ -1,0 +1,41 @@
+Metadata-Version: 1.1
+Name: pysmile
+Version: 0.1
+Summary: Tools for working with the SMILE data format
+Home-page: https://github.com/jhosmer/PySmile
+Author: Jonathan Hosmer
+Author-email: jon@pythonforios.com
+License: Apache License, Version 2.0
+Description: PySmile
+        
+        Encode/Decode SMILE format objects
+        
+        Based on https://github.com/brianm/libsmile
+        
+        
+        Install:
+        
+        python setup.py clean build test install
+        
+        
+        Example Usage:
+        
+        >>> import pysmile
+        >>> d = open('test/data/smile/test1.smile', 'rb').read()
+        >>> print repr(d)
+        ':)\n\x03\xfa\x87test key#\x88nullField!\x82foo\xc2\x83foo2\xfa\x80a\xc6\xfb\xc2a\xc3\xa3b$\n\x85\x802\xf8\xc2\xc4\xc6\xf9\x84"foo"Ffoo\nbar\xfb'
+        >>> print pysmile.decode(d)
+        {u'"foo"': u'foo\nbar',
+         u'2': [1, 2, 3],
+         u'a\xe3b': -323,
+         u'foo': 1,
+         u'foo2': {u'a': 3},
+         u'nullField': None,
+         u'test key': True}
+        
+Keywords: json smile
+Platform: Linux
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
