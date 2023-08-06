@@ -1,0 +1,40 @@
+Metadata-Version: 1.1
+Name: clusterpolate
+Version: 0.2.0
+Summary: Clusterpolate: Inter- and extrapolation for clustered data.
+Home-page: https://github.com/torfsen/clusterpolate
+Author: Florian Brucker
+Author-email: mail@florianbrucker.de
+License: MIT
+Description: Traditional approaches for inter- and extrapolation of scattered data
+        work on a filled rectangular area surrounding the data points or in
+        their filled convex hull. However, scattered data often consists of
+        different clusters of irregular shapes and usually contains areas where
+        there simply is no data. Forcing such data into a traditional inter-
+        or extrapolation scheme often does not lead to the desired results.
+        
+        Heatmaps, on the other hand, deal well with scattered data but often do
+        not provide real interpolation: Instead they usually use raw sums of
+        kernel functions which overestimate the target value in densely
+        populated areas.
+        
+        Clusterpolation is a hybrid inter- and extrapolation scheme to fix this.
+        It uses kernel functions for a weighted inter- and extrapolation of
+        local values, as well as for a density estimation of the data. The
+        latter is used to assign a membership degree to clusterpolated points:
+        Points with a low membership degree lie in an area where there's just
+        not enough data.
+Keywords: interpolation,extrapolation,data,cluster,scattered,heatmap,scatterplot
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Visualization
