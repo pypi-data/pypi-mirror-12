@@ -1,0 +1,29 @@
+{% load thumbnail %}
+
+<div class="item  col-xs-12 col-sm-4 col-md-3 col-lg-3">
+  <div class="thumbnail">
+    <a href="{% url 'lab_members:scientist_detail' scientist.slug %}">
+      {% if scientist.photo %}
+        <img src="{% thumbnail scientist.photo 600x600 crop upscale subject_location=scientist.photo.subject_location %}" alt={{ scientist.full_name }}>
+      {% else %}
+        <img src="http://placehold.it/600x600" alt={{ scientist.full_name }}>
+      {% endif %}
+      <div class="caption">
+        <h4 class="group inner list-group-item-heading text-center">
+          {{ scientist.full_name }}
+        </h4>
+
+        {% if not scientist.current %}
+          <p class="group inner list-group-item-text text-center">
+            {% if scientist.alumni_current_title %}{{ scientist.alumni_current_title }}<br>{% endif %}{% if scientist.alumni_current_institution %}{{ scientist.alumni_current_institution }}{% endif %}
+          </p>
+        {% endif %}
+
+        <p class="group inner list-group-item-text text-center {% if not scientist.current %}former-title{% endif %}">
+          {% if scientist.title and not scientist.current %}Former{% endif %}
+          {{ scientist.title|default:"&nbsp;" }}
+        </p>
+      </div>
+    </a>
+  </div>
+</div>

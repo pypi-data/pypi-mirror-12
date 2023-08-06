@@ -1,0 +1,52 @@
+{% load friendly_loader %}
+{% friendly_load cms_tags %}
+
+{% if_has_tag render_placeholder %}
+  <div class="container-fluid hidden-md hidden-lg">
+      <div class="text-center">
+        <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#{{ scientist.slug }}-sidebar"><span class="glyphicon glyphicon-info-sign"></span> more info</button>
+      </div>
+
+      <div class="modal fade" id="{{ scientist.slug }}-sidebar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">More info for {{ scientist.full_name }}:</h4>
+            </div>
+
+            <div class="modal-body">
+              <div class="container-fluid">
+                {% render_placeholder scientist.sidebar %}
+              </div>
+            </div>
+
+            <div class="modal-footer hidden-xs">
+              <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+            <div class="modal-footer visible-xs">
+              <div class="container-fluid">
+                <div class="row-fluid">
+                  <div class="btn-group-vertical col-xs-12" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+
+  <div class="container-fluid hidden-xs hidden-sm">
+      {% render_placeholder scientist.sidebar %}
+  </div>
+{% endif_has_tag %}

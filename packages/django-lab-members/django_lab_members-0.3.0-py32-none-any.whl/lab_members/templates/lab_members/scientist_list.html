@@ -1,0 +1,43 @@
+{% extends CMS|yesno:"base.html,lab_members/base.html,lab_members/base.html" %}
+{% load sekizai_tags staticfiles %}
+
+{% block content %}
+
+  {% addtoblock "css" strip %}
+    <link rel="stylesheet" type="text/css" href="{% static 'lab_members/app.css' %}">
+  {% endaddtoblock %}
+
+  <div class="container">
+
+    <h1 class="text-center gallery-heading">Lab Members</h1>
+    <div class="container-fluid">
+      <div id="lab-members" class="row">
+        {% for scientist in current_list %}
+          {% include "lab_members/_scientist_list_item.html" %}
+        {% empty %}
+          <p>Need to add lab members!</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <hr>
+
+    {% if alumni_list %}
+      <h1 class="text-center gallery-heading">Lab Alumni</h1>
+      <div class="container-fluid">
+        <div id="lab-alumni" class="row">
+          {% for scientist in alumni_list %}
+            {% include "lab_members/_scientist_list_item.html" %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {% addtoblock "js" strip %}
+    <script src="{% static 'lab_members/jquery.matchHeight-min.js' %}"></script>
+    <script src="{% static 'lab_members/app.js' %}"></script>
+  {% endaddtoblock %}
+
+{% endblock content %}

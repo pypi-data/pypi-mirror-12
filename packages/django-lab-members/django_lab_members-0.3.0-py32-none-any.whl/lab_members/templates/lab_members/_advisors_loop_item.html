@@ -1,0 +1,6 @@
+{% if forloop.last and forloop.counter > 1 %}and{% endif %}
+{% if advisor.url %}
+  <a href="{{ advisor.url }}" target="_blank">{{ advisor }}</a>{% if forloop.counter|add:forloop.revcounter0 > 2 and not forloop.last %},{% endif %}
+{% else %}
+  {{ advisor|default:"" }}{% if not forloop.last %},{% endif %}
+{% endif %}
