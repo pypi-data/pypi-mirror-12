@@ -1,0 +1,4 @@
+identifier = /#\w+/;
+node = '(' [id:identifier] label:/[^()]+/ {children+:node}* ')';
+edge = src:identifier 'to' dst:identifier ';';
+ast = >node {edges+:edge}*;
