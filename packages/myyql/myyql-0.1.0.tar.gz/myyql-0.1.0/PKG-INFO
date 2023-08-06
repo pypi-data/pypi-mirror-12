@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: myyql
+Version: 0.1.0
+Summary: YQL(Yahoo Query Language) client written in python3
+Home-page: https://github.com/chikyukotei/myyql
+Author: chikyukotei
+Author-email: chikyukotei1122@gmail.com
+License: UNKNOWN
+Description: myyql
+        ---
+        YQL(Yahoo Query Language) client written in python3
+        
+        ## How do we get set up?
+        ```sh
+        pip install myyql
+        ```
+        
+        ## Usage
+        ```python3
+        import myyql.request
+        myyql.request.send(query='select * from yahoo.finance.historicaldata where symbol in ("EUR=X") and startDate = "2014-01-01" and endDate = "2014-12-31"', fmt='json')
+        ```
+        
+        ## Home
+        [Github](https://github.com/chikyukotei/myyql)
+        
+        ## TO DO
+        This is alpha
+        
+        ## YQL info
+        
+        ### tables
+        
+        * yahoo.finance.xchange
+        * yahoo.finance.historicaldata
+        
+Keywords: python3,yql
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
