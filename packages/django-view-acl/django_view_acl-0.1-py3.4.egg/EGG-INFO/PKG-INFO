@@ -1,0 +1,77 @@
+Metadata-Version: 1.1
+Name: django-view-acl
+Version: 0.1
+Summary: Views ACL plugin is a Django app to provide method for automatic permissions generation based on urlpatterns in urls.py
+Home-page: UNKNOWN
+Author: Perfectial
+Author-email: UNKNOWN
+License: Apache License
+Description: =======================
+        Django Views ACL plugin
+        =======================
+        
+        Views ACL plugin is a Django app that provides:
+         - Automatic permissions generation for django views, based on urlpatterns defined in urls.py
+         - Control Access to Django Views
+        
+        Views ACL is flexible plugin, it allows to define list of views,
+        for which permissions will be generated, or define excluded list.
+        
+        Permission can be assigned for user by admin page.
+        By default if permission for view is generated, the user doesn't have access
+        until the admin won't give permission for the user.
+        
+        
+        Quick start
+        -----------
+        
+        1. Add "view_acl" to your INSTALLED_APPS setting::
+        
+                INSTALLED_APPS = (
+                    ...
+                    'view_acl',)
+        
+        
+        2. Include 'view_acl.middleware.CustomViewProcessMiddleware' to MIDDLEWARE_CLASSES.
+        
+        
+        3. Add ACL_ALLOWED_VIEWS variable to settings.py.
+           Views ACL plugin generate permission for all views defined in ACL_ALLOWED_VIEWS.
+           Only those views should be checked for access::
+        
+               ACL_ALLOWED_VIEWS=('polls.*',)
+        
+           In this case, permissions will be generated for all views from polls app.
+        
+        
+        4. You can also define ACL_EXCLUDED_VIEWS in settings.py::
+        
+                ACL_EXCLUDED_VIEWS = ('django.*',)
+        
+        
+        5. If you want to change default name and codename prefix for permission,
+           define ACL_CODE_PREFIX and ACL_NAME_PREFIX  variables in settings.py::
+        
+                ACL_NAME_PREFIX = 'Myite ACL '
+                ACL_CODE_PREFIX = 'mysite_acl_view'
+        
+        
+        6. Call method for automatic permissions generation based on urlpatterns in urls.py::
+        
+            view_acl.autodiscover()
+        
+        
+        7. Assign view permissions to user by admin page.
+           Default permission name:
+               "ACL app.module.view"
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
