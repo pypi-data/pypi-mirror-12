@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="quintagroup.slidertemplates">
+    
+  <!-- Register resources -->
+
+  <plone:static
+    directory="static"
+    type="plone"
+    name="slidertemplates"
+    />
+      
+  <browser:resourceDirectory
+    name="quintagroup.theme.vane.templates"
+    directory="templates"
+    />
+
+  <configure zcml:condition="installed collective.portlet.ngcollection">
+  <include package="collective.portlet.ngcollection" file="meta.zcml" />
+  <plone:portletTemplates    
+    interface="collective.portlet.ngcollection.ngcollection.INGCollection"
+    directory="templates"
+    />
+  </configure>
+
+</configure>

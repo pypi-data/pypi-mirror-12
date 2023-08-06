@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="quintagroup.slidertemplates">
+
+  <include package=".browser" />
+
+  <genericsetup:registerProfile
+    name="default"
+    title="Plone Slider Templates"
+    description="Installs the quintagroup.slidertemplates package"
+    directory="profiles/default"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+  <genericsetup:registerProfile
+    name="uninstall"
+    title="Uninstall Plone Slider Templates"
+    description="Uninstall profile for Slider Templates Product"
+    directory="profiles/uninstall"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+</configure>
