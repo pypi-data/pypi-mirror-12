@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import '_macros.html' as macros %}
+
+{% block title %}{{ _("Users") }} | {{ super() }}{% endblock %}
+
+{% block content %}
+
+<h3>{{ _("Users") }}</h3>
+
+<div class="form-table">
+    <div class="form-table-head">
+        <div class="form-table-cell">{{ _("Connection email") }}</div>
+        <div class="form-table-cell">{{ _("Name") }}</div>
+        <div class="form-table-cell">{{ _("Graphs") }}</div>
+        <div class="form-table-cell"></div>
+    </div>
+    {% for user in users %}
+    <form role="form" method="post" class="form-inline"
+          action="{{ url_for('api_users_edit', email=user.email) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <div class="form-group">
+            <p class="form-control-static">{{ user.email }}</p>
+        </div>
+        <div class="form-group">
+            {% if user.name %}
+            <p class="form-control-static">{{ user.name }}</p>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <p class="form-control-static">
+            {% for perm in user.permissions %}
+                <a href="{{ url_for('view', graph_id=perm.graph.id) }}">{{ perm.graph.name }}</a>
+                ({{ perm.level_as_string }})
+                {% if not loop.last -%}, {% endif %}
+            {% endfor %}
+            </p>
+        </div>
+        <div class="form-group">
+            <button name="_method" value="DELETE" data-loading-text="..."
+                    class="btn btn-sm btn-warning" title="{{ _("Delete") }}">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock %}

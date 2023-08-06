@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% import '_macros.html' as macros %}
+
+{% block title %}{{ _("Administration") }} | {{ super() }}{% endblock %}
+
+{% block content %}
+
+
+<h3>{{ _("Graph properties") }}</h3>
+
+<form role="form" method="post" class="form-inline">
+    <input type="hidden" name="formname" value="graphprops" />
+    {{ graphprops_form.hidden_tag() }}
+
+    {{ macros.render_field_p(graphprops_form.name, class="input-sm") }}
+    {{ macros.render_field_p(graphprops_form.center_id, class="form-control input-sm") }}
+    {{ macros.render_field_p(graphprops_form.anonymous, class="form-control input-sm") }}
+    <p><button type="submit" class="btn btn-primary">{{ _("Change") }}</button></p>
+
+</form>
+
+<hr />
+
+<h3>{{ _("Relationship types") }}</h3>
+
+{% include "admin/edit_reltypes.html" %}
+
+
+<hr />
+
+<h3>{{ _("Authorizations") }}</h3>
+
+{% include "admin/edit_accesses.html" %}
+
+<hr />
+
+<h3>{{ _("Import / Export") }}</h3>
+
+<div class="col-md-6 text-center">
+    <a class="btn btn-primary"
+       href="{{ url_for("export_graph", graph_id=graph.id, name=graph.name) }}">
+       {{ _("Export graph") }}
+    </a>
+</div>
+<form role="form" method="post" enctype="multipart/form-data"
+      class="form-inline col-md-6 text-center with-loading-button"
+      action="{{ url_for('admin', graph_id=graph.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <input type="hidden" name="formname" value="graphimport" />
+    <input type="file" class="form-control" name="import"/>
+    <button type="submit" class="btn btn-primary"
+        data-loading-text="{{ _('Importing...') }}">{{ _("Import graph") }}</button>
+</form>
+<div class="clearfix"></div>
+
+<hr />
+
+<h3>{{ _("Deletion") }}</h3>
+
+<p>
+    <form role="form" method="post" class="form-delete"
+          action="{{ url_for('admin', graph_id=graph.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <input type="hidden" name="formname" value="graphdel" />
+    <button type="submit" class="btn btn-danger"
+        data-confirm="{{ _("Undoing this is impossible. Go on?") }}"
+        >{{ _("Delete %(name)s", name=graph.name) }}</button>
+    </form>
+</p>
+
+{% endblock %}
+
+
+{% block more_headers %}
+<link rel="stylesheet" href="{{ url_for('static', filename='spectrum/spectrum.css') }}" />
+{% endblock %}
+{% block more_js %}
+<script src="{{ url_for('static', filename='spectrum/spectrum.js') }}"></script>
+<script>
+    $(function() {
+        $("form.form-delete button").click(function(e) {
+            var response = confirm($(this).attr("data-confirm"));
+            if (!response) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+{% endblock %}

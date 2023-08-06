@@ -1,0 +1,30 @@
+{% import '_macros.html' as macros %}
+
+<form role="form" method="post" class="form-horizontal rel-add"
+      action="{{ url_for('api_rel_add', graph=graph.id) }}">
+    {% if newrel_form.errors %}
+    <div class="alert alert-danger">
+        {{ _("The form has errors, please fix them.") }}
+    </div>
+    {% endif %}
+    {{ newrel_form.hidden_tag() }}
+    {{ macros.render_field_horizontal(newrel_form.source, label_text=_("First"), class="autocomplete") }}
+    {{ macros.render_field_horizontal(newrel_form.target, label_text=_("Second"), class="autocomplete") }}
+    {{ macros.render_field_horizontal(newrel_form.rtype, class="form-control input-sm") }}
+    {{ macros.render_field_horizontal(newrel_form.dotted) }}
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <button name="_method" value="POST" class="btn btn-sm btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+                {{ _("Add") }}
+            </button>
+        </div>
+    </div>
+
+    <script>
+    $(function() {
+        var existingNames = graph.getPersonNames();
+        setup_autocomplete($('input.autocomplete'), existingNames);
+    });
+    </script>
+</form>
