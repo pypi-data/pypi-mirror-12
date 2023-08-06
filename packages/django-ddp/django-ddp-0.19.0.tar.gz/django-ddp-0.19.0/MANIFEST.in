@@ -1,0 +1,16 @@
+include LICENSE
+include *.rst
+include *.sh
+include *.txt
+include requirements*.txt
+include .gitignore
+include Makefile
+exclude tox.ini
+graft dddp/test/meteor_todos
+prune dddp/test/build
+prune dddp/test/meteor_todos/.meteor/local
+graft docs
+prune docs/_build
+prune docs/node_modules
+exclude .travis.yml.sh
+exclude .travis.yml
