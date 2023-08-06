@@ -1,0 +1,50 @@
+language: python
+
+python:
+  - 2.7
+  - 3.4
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+
+sudo: false
+
+env:
+    global:
+        - BUILD=TEST
+        # TODO: add test with / without running cython
+
+matrix:
+    include:
+        # Extra build to make sure that `iminuit` works without the optional dependencies
+        - python: 2.7
+          env: BUILD=NO_EXTRA_DEPS
+
+        # Extra build to make sure that `iminuit` works with Python 2.6
+        # Note that IPython doesn't support Python 2.6 any more ...
+        - python: 2.6
+          env: BUILD=NO_EXTRA_DEPS
+
+        # Extra build to make sure that the docs build without errors or warnings
+        - python: 2.7
+          env: BUILD=DOCS
+
+        # Extra build to compute coverage
+        - python: 2.7
+          env: BUILD='COVERAGE'
+
+before_install:
+  - pip install Cython
+  - if [[ $BUILD != NO_EXTRA_DEPS ]]; then pip install IPython numpy matplotlib coverage; fi
+  - if [[ $BUILD == DOCS ]]; then pip install matplotlib sphinx sphinx_rtd_theme; fi
+
+install:
+  - python setup.py build_ext -i
+
+script:
+  - if [[ $BUILD == TEST ]]; then nosetests -v; fi
+  - if [[ $BUILD == COVERAGE ]]; then python setup.py coverage; fi
+  # TODO: add -W option to Sphinx build once this Sphinx bug is fixed:
+  # https://github.com/iminuit/iminuit/pull/132#issuecomment-62139507
+  - if [[ $BUILD == DOCS ]]; then cd doc; sphinx-build -a -E -b html -d _build/doctrees . _build/html; fi
