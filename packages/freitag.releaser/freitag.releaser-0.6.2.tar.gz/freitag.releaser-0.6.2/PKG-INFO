@@ -1,0 +1,149 @@
+Metadata-Version: 1.1
+Name: freitag.releaser
+Version: 0.6.2
+Summary: Release facilities to ease the management of buildout based projects.
+Home-page: https://github.com/derFreitag/freitag.releaser
+Author: Gil Forcada Codinachs
+Author-email: gil.gnome@gmail.com
+License: GPL
+Description: .. -*- coding: utf-8 -*-
+        
+        .. image:: https://travis-ci.org/derFreitag/freitag.releaser.svg?branch=master
+           :target: https://travis-ci.org/derFreitag/freitag.releaser
+        
+        ================
+        freitag.releaser
+        ================
+        Release facilities to ease the management of buildout based projects.
+        
+        Standing on the shoulder of giants
+        ==================================
+        This distribution intends to be as small as possible by integrating a few custom release choices done by the `der Freitag`_ development team.
+        
+        For that it heavily relies on a couple of well known distributions:
+        
+        - `plone.releaser`_
+        - `zest.releaser`_
+        
+        What's in?
+        ==========
+        A few zest.releaser plugins that:
+        
+        - check that the git repository is updated *update_git_branch*
+        - update development branches after a release *update_develop_branches*
+        - check translation files are updated *check_translations*
+        
+        Additions to plone.releaser:
+        
+        - ability to release a distribution within the parent (buildout) project
+        
+          - check to ensure the correct branch on the parent project is used *check_zope_branch*
+          - check that the distribution about to release exists *check_folders*
+          - update versions.cfg with the new released version *update_versions_cfg*
+        
+        - gather the changes on distributions (more than only *collect_changelog*)
+        - push cfg files *publish_cfg_files*
+        - check which distributions need a release
+        - **(TODO)**: update batou version pins (components/{plone,zeo}/versions/versions.cfg
+        
+        .. _`der Freitag`: https://www.freitag.de
+        .. _`plone.releaser`: https://pypi.python.org/pypi/plone.releaser
+        .. _`zest.releaser`: https://pypi.python.org/pypi/zest.releaser
+        
+        
+        .. -*- coding: utf-8 -*-
+        
+        Changelog
+        =========
+        
+        0.6.2 (2015-11-13)
+        ------------------
+        
+        - More verbose and more string formatting fixes.
+          [gforcada]
+        
+        - Check that a distribution has a source defined on buildout before trying
+          to clone it.
+          [gforcada]
+        
+        0.6.1 (2015-11-13)
+        ------------------
+        
+        - Be more verbose, so one know about which distribution the output is about.
+          [gforcada]
+        
+        - Fix two strings that were not formatted.
+          [gforcada]
+        
+        0.6 (2015-11-13)
+        ----------------
+        
+        - Add dry-run mode to fullrelease command.
+          [gforcada]
+        
+        0.5 (2015-11-13)
+        ----------------
+        
+        - Add update distribution ``CHANGES.rst``.
+          [gforcada]
+        
+        0.4 (2015-11-13)
+        ----------------
+        
+        - Add gather changelog command.
+          [gforcada]
+        
+        0.3 (2015-11-13)
+        ----------------
+        
+        - Cleanups and code reorganization.
+          [gforcada]
+        
+        - Add full-release command.
+          [gforcada]
+        
+        0.2 (2015-11-11)
+        ----------------
+        
+        - 0.1 was never released, due to not being registered on PyPI.
+          [gforcada]
+        
+        0.1 (2015-11-11)
+        ----------------
+        - add zest.releaser plugins:
+        
+          - vcs_updated: checkouts master and develop branches,
+            rebases the former on top of the later (master catches up with develop)
+            and leaves the checked out branch as master,
+            ready to be released
+          - i18n: runs ``bin/i18ndude find-untranslated`` and reports back if there
+            are any strings not marked for translation
+          - update_branches: the oposite from vcs_updated,
+            rebased develop branch on top of master (which was used to make the release)
+        
+          [gforcada]
+        
+        - emulate ``plone.releaser`` and create a ``freitag_manage`` command with:
+        
+          - publish_cfg_files: send two specific files to a specific server
+          - release: releases a distribution (with ``zest.releaser``)
+        
+          [gforcada]
+        
+        - initial release
+          [gforcada]
+        
+Keywords: releasing,packaging,pypi
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
