@@ -1,0 +1,53 @@
+CHANGES
+=======
+
+1.0.3
+-----
+
+* Add pickle/unpickle basic test
+* Ensure notifiers are pickleable
+
+1.0.2
+-----
+
+* Fix listeners iter not returning pair (event_type, listeners
+* Add travis badge
+* Add travis yml file until we move this elsewhere
+
+1.0.1
+-----
+
+* Change homepage until further notice
+* Remove forced version now that pbr can figure it out
+
+1.0
+---
+
+* Add docstring onto '_do_dispatch'
+* Expose class constant 'DISALLOWED_NOTIFICATION_EVENTS'
+* Return named tuple from '_do_dispatch'
+* Fix docstring now that this raises a value error
+* Basic test for futures results
+* Raise a value error instead of logging a debug message on bad event type
+* Have notify return a future that will eventually return how many listeners were called
+* Add listener dead property
+* Improve a few docstrings
+* Don't bother calling details filter if callback is dead
+* Use futurist sync exector to perform listener dispatching
+* Add listener uuids (and removal by)
+* Add weak reference to callback ability
+* Get docs building correctly
+* Fix numbering
+* Tweak this file to be more useful
+* Allow for providing a customized logger to be used on debug/warn calls
+* Ensure 'register' and 'is_registered' obtains the thread lock
+* Have 'register' return the listener registered
+* Update docstring for 'can_be_registered' method
+* Get tox env tests working
+* Move and expose ANY constant
+* Use a frozendict to ensure immutable listener keyword arguments
+* Denote that the listeners returned from iteration should not be mutated
+* Fix newlines and imports
+* Thread safe usage and tests
+* Initial shift from taskflow -> notifier
+* Initial commit
