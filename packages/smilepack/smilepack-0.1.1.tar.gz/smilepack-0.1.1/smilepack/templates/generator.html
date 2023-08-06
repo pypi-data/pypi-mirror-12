@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>{% if pack %}{{ pack.name or pack.hid }}{% else %}{{ _("Create smilepack") }}{% endif %}</title>
+    {{ stylesheet_tag("generator_css") | safe }}
+</head>
+<body>
+
+<div class="top">
+    <div class="header">
+        <div class="actions-menu">
+            {{ _("Other actions") }} ▼
+            <ul class="actions-list">
+                <li id="action-storage-save">{{ _("Save to localStorage") }}</li>
+                <li id="action-storage-load">{{ _("Load from localStorage") }}</li>
+                <li id="action-import-userscript">{{ _("Import userscript") }}</li>
+                <li id="action-toggle-dark">{{ _("Change background") }}</li>
+            </ul>
+        </div>
+        <div class="header-right">
+            {% if config['ISSUE_REPORT_LINK'] -%}
+                <a href="{{ config['ISSUE_REPORT_LINK'] }}" target="_blank" class="report-link">{{ _("Report an issue") }}</a>
+            {%- endif %}
+        </div>
+        <div class="logo"><a href="{{ url_for('pages.index') }}" id="index_link">{{ _("Smilepack") }}</a></div>
+    </div>
+
+    <div class="settings">
+    {{ _("Name") }}: <input class="text" id="name" value="{{ pack.name if pack else '' }}" autocomplete="off" placeholder="{{ _("Optional") }}" />
+    {% if config['ALLOW_LIFETIME_SELECT'] -%}
+    {{ _("Delete from server after") }}:
+    <select id="lifetime" autocomplete="off">
+        <option{{ ' selected' if (not pack and config['MAX_LIFETIME']) or lifetime == 1800 else '' }} value="1800">{{ _("Half an hour") }}</option>
+        {% for tm, title in [[28800, _("8 hours")], [86400, _("1 day")], [604800, _("Week")], [2592000, _("30 days")]] -%}
+        {%- if not config['MAX_LIFETIME'] or config['MAX_LIFETIME'] >= tm -%}
+            <option{{ ' selected' if pack and lifetime == tm else '' }} value="{{ tm }}">{{ title }}</option>
+        {% endif -%}
+        {%- endfor %}
+
+        {%- if not config['MAX_LIFETIME'] -%}
+            <option{{ ' selected' if not lifetime else '' }} value="0">{{ _("Keep forever") }}</option>
+        {%- endif %}
+    </select>
+    {%- endif %}
+    {% if pack %}
+    <button class="button button-primary action-save">{{ _("Save new smilepack") }}</button>
+    <a href="{{ url_for('smilepacks.download_compat', smp_id=pack.hid) }}" target="_blank" id="smp-last-url">{{ _("Download last saved version") }}</a>
+    {% else %}
+    <button class="button button-primary action-save">{{ _("Save and download smilepack!") }}</button>
+    <a href="#" target="_blank" id="smp-last-url" style="display: none;">{{ _("Download last saved version") }}</a>
+    {% endif %}
+    {% if pack_deletion_date %}
+    <span id="smp-delete-container">({{ _("smilepack will be deleted") }} <span id="smp-delete-date">{{ pack_deletion_date }}</span>)</span>
+    {% else %}
+    <span id="smp-delete-container" style="display: none;">({{ _("smilepack will be deleted") }} <span id="smp-delete-date"></span>)</span>
+    {% endif %}
+    </div>
+</div>
+
+<div class="container">
+<div class="container-left" id="collection">
+    <div style="text-align: center"><img src="{{ asset_url_for('images/loading.gif') }}" alt="" /></div>
+    <div class="additional" style="display: none;">
+        <button class="button action-select-all">{{ _("Select all") }}</button>
+        <button class="button action-copy">{{ _("Copy category with name and icon") }}</button>
+    </div>
+</div><div class="container-right" id="smilepack">
+    <div class="additional" style="display: none">
+        <button class="button action-add-smile">{{ _("Add your smile") }}</button>
+    </div>
+</div>
+</div><!-- /container -->
+
+<div class="container-actions">
+<div class="container-actions-left smiles-actions-panel" id="collection-action-panel" style="display: none;">
+    <div>{{ _("Selected smiles:") }} <span class="smiles-actions-count">N/A</span></div>
+    <div class="smiles-actions-list">
+        <button class="button smiles-action-add">{{ _("Add selected smiles to current category") }}</button>
+    </div>
+</div><div class="container-actions-right smiles-actions-panel" id="smilepack-action-panel" style="display: none;">
+    <div>{{ _("Selected smiles:") }} <span class="smiles-actions-count">N/A</span></div>
+    <div class="smiles-actions-list">
+        {{ _("Move to another category") }} <select class="smiles-actions-selector smiles-action-select-move"></select> <button class="button smiles-action-move">OK</button><br/>
+        <button class="button smiles-action-remove">{{ _("Remove selected smiles from smilepack") }}</button>
+    </div>
+</div>
+</div>
+
+<div id="dialog-background" class="dialog-background hidden"></div>
+
+<div id="dialog-new-category" class="dialog hidden mode-add">
+    <div class="dialog-title"><a class="dialog-close"></a> <span class="mode-add">{{ _("Adding a category") }}</span><span class="mode-edit">{{ _("Changing a category") }}</span></div>
+
+    <form action="#">
+        <label for="name">{{ _("Category name") }}:</label><br/>
+        <input name="name" class="text input-width-full" /><br/>
+
+        <label for="icon">{{ _("Icon") }}:</label><br/>
+        <div class="icon-container">
+        {%- for icon in icons %}
+            <label>
+                <input type="radio" name="icon" data-value-url="{{ icon.url }}" value="{{ icon.id }}"{{ ' checked' if loop.first else '' }} />
+                <img src="{{ icon.url }}" alt="" class="dialog-icon" />
+            </label>
+        {%- endfor %}
+        </div>
+
+        <input type="hidden" name="category" value="" />
+
+        <span class="mode-add"><input type="submit" class="button button-primary" value="{{ _("Add") }}" /></span>
+        <span class="mode-edit"><input type="submit" class="button button-primary" value="{{ _("Save") }}" /></span>
+    </form>
+</div>
+
+<div id="dialog-new-smile" class="dialog hidden">
+    <div class="dialog-title"><a class="dialog-close"></a> {{ _("Adding a smile") }}</div>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+        {% if config.UPLOAD_METHOD != None -%}
+        <div class="uploader-choice">
+            <label><input type="radio" name="uploader" value="link" autocomplete="off" checked> {{ _("From link") }}</label>
+            <label><input type="radio" name="uploader" value="file" autocomplete="off"> {{ _("From computer") }}</label>
+        </div>
+
+        <div class="file-uploader" style="display: none">
+            <input name="file" type="file" class="input-width-full" accept="image/jpeg,image/png,image/gif" /><br/>
+        </div>
+        {% endif -%}
+
+        <div class="link-uploader">
+            <label for="url">{{ _("Link") }}:</label><br/>
+            <input name="url" class="text input-width-full" /><br/>
+        </div>
+
+        {{ _("Smile size") }}:
+        <input name="w" type="number" style="width: 6em;" value="" placeholder="{{ _("Width") }}" class="text" />
+        x
+        <input name="h" type="number" style="width: 6em;" value="" placeholder="{{ _("Height") }}" class="text" />
+        <label><input type="checkbox" name="save_aspect" checked />{{ _("Keep aspect ratio") }}</label>
+        <br/>
+        {%- if config['COMPRESSION'] and not config['FORCE_COMPRESSION'] %}
+        <label><input type="checkbox" name="compress" checked />{{ _("Compress if possible (lossless)") }}</label>
+        <br/>
+        {%- endif %}
+        <div class="smile-add-notice">{{ _("Image will not be resized.") }}  {{ _("If possible, it's best to compress it yourself in a graphics editor.") }}</div>
+
+        <div class="new-smile-preview-area">
+            <img class="new-smile-preview" src="data:image/gif;base64,R0lGODdhAQABAIABAP///+dubiwAAAAAAQABAAACAkQBADs=" width="0" height="0" />
+        </div>
+
+        <input type="hidden" name="level" value="0" />
+        <input type="hidden" name="category" value="0" />
+
+        <input type="submit" class="button button-primary" value="{{ _("Add") }}" disabled />
+    </form>
+</div>
+
+<div id="dialog-import-userscript" class="dialog hidden">
+    <div class="dialog-title"><a class="dialog-close"></a> {{ _("Importing a userscript") }}</div>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <label for="url">{{ _("Select an userscript file") }}</label><br/>
+        <input type="file" name="file" /><br/>
+
+        <input type="submit" class="button button-primary" value="{{ _("Import") }}" />
+    </form>
+</div>
+
+<div id="dialog-save" class="dialog hidden">
+    <div class="dialog-title">{{ _("Saving the smilepack") }}</div>
+    <div class="processing">
+        <span class="processing-begin">{{ _("Create a smile") }} <span class="smile-current">%d</span> / <span class="smiles-count">%d</span>...</span>
+        <span class="processing-end">{{ _("Saving...") }}</span>
+    </div>
+    <div class="saved" style="display: none; text-align: center;">
+        <div style="font-size: 1.25em">{{ _("Smilepack saved!") }}</div>
+        <div style="font-size: 1.45em; line-height: 3em">{{ _("His id:") }} <span class="smp-id" style="font-weight: bold;"></span></div>
+
+        {{ _("Now you can:") }}<br/>
+        <ol style="text-align: left; line-height: 1.5em;">
+        <li><a href="#" class="smp-url" target="_blank">{{ _("Download userscript") }}</a> {{ _("and install it in your browser to use smilepack at all sites that support HTML or BBCode.") }}</li>
+        <li>{{ _("Give a look to someone your smilepack by sharing this link:") }} <a href="#" class="smp-view-url" target="_blank">#</a></li>
+        <!-- <li>Интегрировать его в сайт, поддерживающий смайлопак, без установки юзерскрипта с помощью указанного выше id. Но пока сайтов с поддержкой интеграции нет и неизвестно, появятся ли вообще, поэтому эта строчка закомментирована :)</li> -->
+        <li>{{ _("Close this message and continue editing to create another smilepack (previous saved smilepack will be unchanged).") }}</li>
+        </ol>
+
+        <a href="#" class="dialog-close">{{ _("Back to editing") }}</a>
+    </div>
+</div>
+{{ javascript_tag("generator_js") | safe }}
+{# TODO: This should loaded with ajax #}
+<script>
+generator.collectionData = {{ collection_data|tojson|safe }};
+{% if pack %}
+generator.smilepackData = {{ pack.bl.as_json(with_smiles=True)|tojson|safe }};
+{% endif %}
+</script>
+</body>
+</html>
