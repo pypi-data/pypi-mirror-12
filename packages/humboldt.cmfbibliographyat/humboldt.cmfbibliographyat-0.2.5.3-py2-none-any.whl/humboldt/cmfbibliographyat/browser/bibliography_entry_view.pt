@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="cmfbibliographyat">
+<body>
+
+<metal:main fill-slot="main">
+
+    <tal:main-macro metal:define-macro="main">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <metal:bibliography-entry-view metal:use-macro="here/bibliography_entry_macros/macros/bibliography_entry_view" />
+
+         <div metal:use-macro="here/bibliography_entry_macros/macros/bibliography_entry_camefrom">
+          Show where we came from
+        </div>
+    
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+        <div tal:define="toc context/table_of_contents|nothing"
+             tal:condition="toc">
+          <label i18n:domain="humboldt.cmfbibliographyat" i18n:translate="toc_head"></label>
+          <div tal:content="structure toc" />
+        </div>
+        
+    </tal:main-macro>
+
+</metal:main>
+
+</body>
+</html>

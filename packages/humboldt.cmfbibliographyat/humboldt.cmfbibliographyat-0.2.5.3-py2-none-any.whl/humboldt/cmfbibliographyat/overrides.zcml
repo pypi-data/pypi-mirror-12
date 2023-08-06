@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser">
+ 
+    <browser:page
+      for="Products.CMFBibliographyAT.interface.IBibliographicItem"
+      name="bibliography_entry_view"
+      permission="zope.Public"
+      template="browser/bibliography_entry_view.pt"
+      layer="humboldt.cmfbibliographyat.interfaces.IBibLayer"
+    />
+
+</configure>
