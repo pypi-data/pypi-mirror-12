@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  metal:use-macro="here/main_template/macros/master"
+  i18n:domain="redturtle.overlays">
+  <body>
+      <metal:main fill-slot="main">
+          <tal:main-macro metal:define-macro="main">
+            <ul>
+              <li><a href="test_rendering" data-overlay>Test rendering as default in ajax overlay<a></li>
+              <li><a href="test_rendering" data-overlay-ajax>Test rendering in ajax overlay<a></li>
+              <li><a href="test_rendering" data-overlay-iframe>Test rendering in iframe overlay<a></li>
+              <li><a href="logo.png" data-overlay-image>Test rendering in image overlay<a></li>
+              <li><a href="./" data-overlay-image data-overlay-options='{"urlmatch": "$", "urlreplace": "/logo.png"}'>Test url transformation<a></li>
+              <li><a href="test_rendering" data-overlay-iframe data-overlay-options='{"width": "80%"}'>
+                Test rendering in iframe overlay with 80% width<a></li>
+              <li><a href="test_rendering"
+                     data-overlay-ajax
+                     data-overlay-options='{"closeselector": "*"}'>
+                Test rendering in ajax overlay: click everywhere to close<a></li>
+            </ul>
+          </tal:main-macro>
+      </metal:main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="redturtle.prepoverlays">
+
+  <browser:page
+    for="*"
+    name="test_redturtle_overlays"
+    permission="zope.Public"
+    template="templates/test_redturtle_overlays.pt"
+    layer="redturtle.prepoverlays.interfaces.IRedturtlePrepoverlaysLayer"
+  />
+
+</configure>
