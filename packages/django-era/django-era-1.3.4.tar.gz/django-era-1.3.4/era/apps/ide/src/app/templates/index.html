@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load markup %}
+{% load media %}
+
+{% block body %}
+    {% navbar fixed='top' container=True %}
+        {% brand %}{% icon name='magic' large=True %}
+        {% collapse %}{% main-menu class='navbar-nav navbar-right' %}
+    {% end-navbar %}
+
+    {% block content %}
+        {% container class='relative' %}
+            {% messages %}
+            {% content %}
+        {% end-container %}
+    {% endblock %}
+{% endblock %}
