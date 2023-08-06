@@ -1,0 +1,80 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Best Lab Ever</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'lab_members:scientist_list' %}">Lab Members</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right user-tools">
+        {% if user.is_authenticated %}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{% url 'admin:index' %}">Site Admin</a></li>
+              <li><a href="{% url 'admin:lab_members_scientist_changelist' %}">Scientist Admin</a></li>
+              <li class="divider"></li>
+              <li><a href="{% url 'admin:lab_members_scientist_add' %}">Add New Scientist</a></li>
+              {% if scientist %}
+                  <li><a href="{% url 'admin:lab_members_scientist_change' scientist.id %}">Edit Current Scientist</a></li>
+              {% endif %}
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              {% firstof user.email user.get_username %} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="{% url 'admin:lab_members_scientist_change' user.id %}">
+                  Edit Account Info
+                </a>
+              </li>
+
+              {# Add link to edit current user's page #}
+              <li>
+                <a href="#">
+                  Edit Lab Member Page
+                </a>
+              </li>
+
+              {% if user.has_usable_password %}
+                <li>
+                  <a href="{% url 'admin:password_change' %}">
+                    Change Password
+                  </a>
+                </li>
+              {% endif %}
+
+              <li class="divider"></li>
+
+              <li>
+                <a href="{% url 'admin:logout' %}?next={{ request.path }}">
+                  Log Out
+                </a>
+              </li>
+            </ul>
+          </li>
+        {% else %}
+          <li>
+            <a href="{% url 'admin:login' %}?next={{ request.path }}">Log In</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
+  </div>
+</nav>

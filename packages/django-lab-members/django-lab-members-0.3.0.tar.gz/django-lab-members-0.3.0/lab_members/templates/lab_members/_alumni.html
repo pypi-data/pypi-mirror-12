@@ -1,0 +1,22 @@
+{% if not scientist.current %}
+  <div class="alert alert-info text-center" role="alert">
+    <p><strong>Former Lab Member</strong></p>
+    {% if scientist.alumni_current_title or scientist.alumni_current_institution %}
+      <p>Current position:
+        <br class="visible-xs-block">
+        {% if scientist.alumni_redirect_url %}
+          <a class="alumni-link" href="{{ scientist.alumni_redirect_url }}">
+        {% endif %}
+        {{ scientist.alumni_current_title|default:'' }}
+        {% if scientist.alumni_current_institution %}
+          at {{ scientist.alumni_current_institution }}
+        {% endif %}
+        {% if scientist.alumni_redirect_url %}
+          </a>
+        {% endif %}
+      </p>
+    {% elif scientist.alumni_redirect_url %}
+      <p>{{ scientist.full_name }} can now be found: <a class="alumni-link" href="{{ scientist.alumni_redirect_url }}">here</a></p>
+    {% endif %}
+  </div>
+{% endif %}

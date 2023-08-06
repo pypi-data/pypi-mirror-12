@@ -1,0 +1,37 @@
+{% if scientist.employment_set.exists %}
+  <div class="container-fluid">
+    <h4>Experience</h4>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="table-responsive">
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th class="active">Position</th>
+                <th class="active">Field</th>
+                <th class="active">Institution</th>
+                <th class="active">Year(s)</th>
+                <th class="active">Advisor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for employment in scientist.employment_set.all %}
+                <tr>
+                  <td>{{ employment.position|default:"" }}</td>
+                  <td>{{ employment.field|default:"" }}</td>
+                  <td>{{ employment.institution|default:"" }}</td>
+                  <td>{{ employment }}</td>
+                  <td>
+                    {% for advisor in employment.advisors.all %}
+                      {% include "lab_members/_advisors_loop_item.html" %}
+                    {% endfor %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,94 @@
+{% extends CMS|yesno:"base.html,lab_members/base.html,lab_members/base.html" %}
+{% load friendly_loader sekizai_tags staticfiles thumbnail %}
+{% friendly_load cms_tags %}
+
+{% block title %}
+  {{ scientist.full_name }}{% if LAB_NAME %} | {{ LAB_NAME }}{% endif %}
+{% endblock title %}
+
+{% block content %}
+
+  {% addtoblock "css" strip %}
+    <link rel="stylesheet" type="text/css" href="{% static 'lab_members/app.css' %}">
+  {% endaddtoblock %}
+
+  <div class="container">
+
+    <div class="row">
+      {% include "lab_members/_alumni.html" %}
+
+      <div class="col-sm-12 col-md-3">
+
+        <div class="row text-center">
+          {% if scientist.photo %}
+            <img class="scientist-photo" src="{% thumbnail scientist.photo 600x600 crop upscale subject_location=scientist.photo.subject_location %}" alt={{ scientist.full_name }}>
+          {% else %}
+            <img class="scientist-photo" src="http://placehold.it/600x600" alt={{ scientist.full_name }}>
+          {% endif %}
+
+          <h2>
+            {% if_has_tag render_model %}
+              {% render_model scientist "full_name" %}
+            {% else %}
+              {{ scientist.full_name }}
+            {% endif_has_tag %}
+          </h2>
+
+          {% if not scientist.current %}
+            {% if scientist.alumni_current_title %}
+              <h4 class="alumni-info">
+                {{ scientist.alumni_current_title }}
+              </h4>
+            {% endif %}
+            {% if scientist.alumni_current_institution %}
+              <h4 class="alumni-info">
+                {{ scientist.alumni_current_institution }}
+              </h4>
+            {% endif %}
+          {% endif %}
+
+          {% if scientist.title %}
+            {% if scientist.current %}
+              <h4>{{ scientist.title }}</h4>
+            {% else %}
+              <h5 class="former-title">Former {{ scientist.title }}</h5>
+            {% endif %}
+          {% endif %}
+
+          <div class="scientist-contact-info">
+            <p><a href="mailto:{{ scientist.email }}">{{ scientist.email }}</a></p>
+
+            {% if scientist.website_url %}
+              <p>
+                <a href="{{ scientist.website_url }}" target="_blank">
+                  {% if scientist.website_name %}
+                    {{ scientist.website_name }}
+                  {% else %}
+                    {{ scientist.website_url }}
+                  {% endif %}
+                </a>
+              </p>
+            {% endif %}
+          </div>
+        </div>
+
+        {% include "lab_members/_sidebar.html" %}
+
+      </div>
+
+      <div class="col-sm-12 col-md-9">
+        {% include "lab_members/_research.html" %}
+        {% include "lab_members/_personal.html" %}
+        {% include "lab_members/_education.html" %}
+        {% include "lab_members/_employment.html" %}
+        {% if_has_tag render_placeholder %}
+          <div class="container-fluid">
+            {% render_placeholder scientist.publications %}
+          </div>
+        {% endif_has_tag %}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock content %}
