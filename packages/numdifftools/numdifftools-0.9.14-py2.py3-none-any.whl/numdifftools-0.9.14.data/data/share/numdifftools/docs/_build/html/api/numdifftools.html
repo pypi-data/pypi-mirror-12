@@ -1,0 +1,1781 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numdifftools package &mdash; numdifftools 0.9.13.post0.dev36+g29bd164.dirty documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="numdifftools 0.9.13.post0.dev36+g29bd164.dirty documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="modules.html"/>
+        <link rel="next" title="numdifftools.tests package" href="numdifftools.tests.html"/>
+        <link rel="prev" title="Modules" href="modules.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> numdifftools</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../src/overview.html">Introduction to Numdifftools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../src/overview.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/overview.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../src/numerical/main.html">Numerical differentiation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#numerical-differentiation-of-a-general-function-of-one-variable">Numerical differentiation of a general function of one variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#unequally-spaced-finite-difference-rules">Unequally spaced finite difference rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#odd-and-even-transformations-of-a-function">Odd and even transformations of a function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#complex-step-derivative">Complex step derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#high-order-derivative">High order derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#richardson-extrapolation-methodology-applied-to-derivative-estimation">Richardson extrapolation methodology applied to derivative estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#multiple-term-richardson-extrapolants">Multiple term Richardson extrapolants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#uncertainty-estimates-for-derivative">Uncertainty estimates for Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#derivative-in-action">Derivative in action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#gradient-and-hessian-estimation">Gradient and Hessian  estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/numerical/derivest.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../src/algorithmic/main.html">Algorithmic differentiation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../src/algorithmic/ad.html">Numdifftools.nd_algopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../src/algorithmic/ad.html#algoritmic-differentiation">Algoritmic differentiation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-13-october-30-2015">Version 0.9.13, October 30, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-12-august-28-2015">Version 0.9.12, August 28, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-11-august-27-2015">Version 0.9.11, August 27, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-10-august-26-2015">Version 0.9.10, August 26, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-4-august-26-2015">Version 0.9.4, August 26, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-3-august-23-2015">Version 0.9.3, August 23, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-2-august-20-2015">Version 0.9.2, August 20, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-9-1-august-20-2015">Version 0.9.1, August 20,2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-7-7-december-18-2014">Version 0.7.7, December 18, 2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-7-3-december-17-2014">Version 0.7.3, December 17, 2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-6-0-february-8-2014">Version 0.6.0, February 8, 2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-5-0-january-10-2014">Version 0.5.0, January 10, 2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-4-0-may-5-2012">Version 0.4.0, May 5, 2012</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-3-5-may-19-2011">Version 0.3.5, May 19, 2011</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-3-4-feb-24-2011">Version 0.3.4, Feb 24, 2011</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changes.html#version-0-3-1-may-20-2009">Version 0.3.1, May 20, 2009</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Module reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">numdifftools package</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">numdifftools</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="modules.html">Modules</a> &raquo;</li>
+      
+    <li>numdifftools package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/api/numdifftools.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="numdifftools-package">
+<h1>numdifftools package<a class="headerlink" href="#numdifftools-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numdifftools.tests.html">numdifftools.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.conftest">numdifftools.tests.conftest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.test_extrapolation">numdifftools.tests.test_extrapolation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.test_hessian">numdifftools.tests.test_hessian module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.test_limits">numdifftools.tests.test_limits module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.test_multicomplex">numdifftools.tests.test_multicomplex module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.test_nd_algopy">numdifftools.tests.test_nd_algopy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.test_numdifftools">numdifftools.tests.test_numdifftools module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests.test_numdifftools_docstrings">numdifftools.tests.test_numdifftools_docstrings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numdifftools.tests.html#module-numdifftools.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-numdifftools.core">
+<span id="numdifftools-core-module"></span><h2>numdifftools.core module<a class="headerlink" href="#module-numdifftools.core" title="Permalink to this headline">¶</a></h2>
+<p>numerical differentiation functions:</p>
+<p>Derivative, Gradient, Jacobian, and Hessian</p>
+<p>Author:      Per A. Brodtkorb</p>
+<p>Created:     01.08.2008
+Copyright:   (c) pab 2008
+Licence:     New BSD</p>
+<p>Based on matlab functions derivest.m gradest.m hessdiag.m, hessian.m
+and jacobianest.m version 1.0 released 12/27/2006 by  John D&#8217;Errico
+(e-mail: <a class="reference external" href="mailto:woodchips&#37;&#52;&#48;rochester&#46;rr&#46;com">woodchips<span>&#64;</span>rochester<span>&#46;</span>rr<span>&#46;</span>com</a>)</p>
+<p>Also based on the python functions approx_fprime, approx_fprime_cs,
+approx_hess_cs, approx_hess1, approx_hess2 and approx_hess3 in the
+statsmodels.tools.numdiff module released in 2014 written by Josef Perktold.</p>
+<dl class="function">
+<dt id="numdifftools.core.dea3">
+<code class="descclassname">numdifftools.core.</code><code class="descname">dea3</code><span class="sig-paren">(</span><em>v0</em>, <em>v1</em>, <em>v2</em>, <em>symmetric=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#dea3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.dea3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extrapolate a slowly convergent sequence</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>v0, v1, v2</strong> : array-like</p>
+<blockquote>
+<div><p>3 values of a convergent sequence to extrapolate</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : array-like</p>
+<blockquote>
+<div><p>extrapolated value</p>
+</div></blockquote>
+<p><strong>abserr</strong> : array-like</p>
+<blockquote class="last">
+<div><p>absolute error estimate</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.Derivative">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">Derivative</code><span class="sig-paren">(</span><em>f</em>, <em>step=None</em>, <em>method='central'</em>, <em>order=2</em>, <em>n=1</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/core.html#Derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.Derivative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">numdifftools.core._Derivative</span></code></p>
+<p>Calculate n-th derivative with finite difference approximation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>step</strong> : float, array-like or StepGenerator object, optional</p>
+<blockquote>
+<div><p>Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [&#8216;complex&#8217;, &#8216;multicomplex&#8217;], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.</p>
+</div></blockquote>
+<p><strong>method</strong> : {&#8216;central&#8217;, &#8216;complex&#8217;, &#8216;multicomplex&#8217;, &#8216;forward&#8217;, &#8216;backward&#8217;}</p>
+<blockquote>
+<div><p>defines the method used in the approximation</p>
+</div></blockquote>
+<p><strong>order</strong> : int, optional</p>
+<blockquote>
+<div><p>defines the order of the error term in the Taylor approximation used.
+For &#8216;central&#8217; and &#8216;complex&#8217; methods, it must be an even number.</p>
+</div></blockquote>
+<p><strong>n</strong> : int, optional</p>
+<blockquote>
+<div><p>Order of the derivative.</p>
+</div></blockquote>
+<p><strong>full_output</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <cite>full_output</cite> is False, only the derivative is returned.
+If <cite>full_output</cite> is True, then (der, r) is returned <cite>der</cite> is the
+derivative, and <cite>r</cite> is a Results object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>der</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>array of derivatives</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.core.Gradient" title="numdifftools.core.Gradient"><code class="xref py py-obj docutils literal"><span class="pre">Gradient</span></code></a>, <a class="reference internal" href="#numdifftools.core.Hessian" title="numdifftools.core.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex-step derivative has truncation error O(steps**2) for <cite>n=1</cite> and
+O(steps**4) for <cite>n</cite> larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex-step derivative avoids the problem of
+round-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the &#8216;central&#8217; method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.</p>
+<p>For all methods one should be careful in decreasing the step size too much
+due to round-off errors.</p>
+<p>Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.</p>
+<dl class="attribute">
+<dt id="numdifftools.core.Derivative.n">
+<code class="descname">n</code><a class="headerlink" href="#numdifftools.core.Derivative.n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.Jacobian">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">Jacobian</code><span class="sig-paren">(</span><em>f</em>, <em>step=None</em>, <em>method='central'</em>, <em>order=2</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/core.html#Jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.Jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#numdifftools.core.Gradient" title="numdifftools.core.Gradient"><code class="xref py py-class docutils literal"><span class="pre">numdifftools.core.Gradient</span></code></a></p>
+<p>Calculate Jacobian with finite difference approximation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>step</strong> : float, array-like or StepGenerator object, optional</p>
+<blockquote>
+<div><p>Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [&#8216;complex&#8217;, &#8216;multicomplex&#8217;], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.</p>
+</div></blockquote>
+<p><strong>method</strong> : {&#8216;central&#8217;, &#8216;complex&#8217;, &#8216;multicomplex&#8217;, &#8216;forward&#8217;, &#8216;backward&#8217;}</p>
+<blockquote>
+<div><p>defines the method used in the approximation</p>
+</div></blockquote>
+<p><strong>order</strong> : int, optional</p>
+<blockquote>
+<div><p>defines the order of the error term in the Taylor approximation used.
+For &#8216;central&#8217; and &#8216;complex&#8217; methods, it must be an even number.</p>
+</div></blockquote>
+<p><strong>full_output</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <cite>full_output</cite> is False, only the derivative is returned.
+If <cite>full_output</cite> is True, then (der, r) is returned <cite>der</cite> is the
+derivative, and <cite>r</cite> is a Results object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>jacob</strong> : array</p>
+<blockquote class="last">
+<div><p>Jacobian</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.core.Derivative" title="numdifftools.core.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.core.Hessian" title="numdifftools.core.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a>, <a class="reference internal" href="#numdifftools.core.Gradient" title="numdifftools.core.Gradient"><code class="xref py py-obj docutils literal"><span class="pre">Gradient</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex-step derivative has truncation error O(steps**2) for <cite>n=1</cite> and
+O(steps**4) for <cite>n</cite> larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex-step derivative avoids the problem of
+round-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the &#8216;central&#8217; method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.</p>
+<p>For all methods one should be careful in decreasing the step size too much
+due to round-off errors.</p>
+<p>Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.</p>
+<p>If f returns a 1d array, it returns a Jacobian. If a 2d array is returned
+by f (e.g., with a value for each observation), it returns a 3d array
+with the Jacobian of each observation with shape xk x nobs x xk. I.e.,
+the Jacobian of the first observation would be [:, 0, :]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.Gradient">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">Gradient</code><span class="sig-paren">(</span><em>f</em>, <em>step=None</em>, <em>method='central'</em>, <em>order=2</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/core.html#Gradient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.Gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#numdifftools.core.Derivative" title="numdifftools.core.Derivative"><code class="xref py py-class docutils literal"><span class="pre">numdifftools.core.Derivative</span></code></a></p>
+<p>Calculate Gradient with finite difference approximation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>step</strong> : float, array-like or StepGenerator object, optional</p>
+<blockquote>
+<div><p>Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [&#8216;complex&#8217;, &#8216;multicomplex&#8217;], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.</p>
+</div></blockquote>
+<p><strong>method</strong> : {&#8216;central&#8217;, &#8216;complex&#8217;, &#8216;multicomplex&#8217;, &#8216;forward&#8217;, &#8216;backward&#8217;}</p>
+<blockquote>
+<div><p>defines the method used in the approximation</p>
+</div></blockquote>
+<p><strong>order</strong> : int, optional</p>
+<blockquote>
+<div><p>defines the order of the error term in the Taylor approximation used.
+For &#8216;central&#8217; and &#8216;complex&#8217; methods, it must be an even number.</p>
+</div></blockquote>
+<p><strong>full_output</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <cite>full_output</cite> is False, only the derivative is returned.
+If <cite>full_output</cite> is True, then (der, r) is returned <cite>der</cite> is the
+derivative, and <cite>r</cite> is a Results object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>grad</strong> : array</p>
+<blockquote class="last">
+<div><p>gradient</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.core.Derivative" title="numdifftools.core.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.core.Hessian" title="numdifftools.core.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a>, <a class="reference internal" href="#numdifftools.core.Jacobian" title="numdifftools.core.Jacobian"><code class="xref py py-obj docutils literal"><span class="pre">Jacobian</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex-step derivative has truncation error O(steps**2) for <cite>n=1</cite> and
+O(steps**4) for <cite>n</cite> larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex-step derivative avoids the problem of
+round-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the &#8216;central&#8217; method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.</p>
+<p>For all methods one should be careful in decreasing the step size too much
+due to round-off errors.</p>
+<p>Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.Hessian">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">Hessian</code><span class="sig-paren">(</span><em>f</em>, <em>step=None</em>, <em>method='central'</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/core.html#Hessian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.Hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">numdifftools.core._Derivative</span></code></p>
+<p>Calculate Hessian with finite difference approximation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>step</strong> : float, array-like or StepGenerator object, optional</p>
+<blockquote>
+<div><p>Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [&#8216;complex&#8217;, &#8216;multicomplex&#8217;], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.</p>
+</div></blockquote>
+<p><strong>method</strong> : {&#8216;central&#8217;, &#8216;complex&#8217;, &#8216;multicomplex&#8217;, &#8216;forward&#8217;, &#8216;backward&#8217;}</p>
+<blockquote>
+<div><p>defines the method used in the approximation</p>
+</div></blockquote>
+<p><strong>full_output</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <cite>full_output</cite> is False, only the derivative is returned.
+If <cite>full_output</cite> is True, then (der, r) is returned <cite>der</cite> is the
+derivative, and <cite>r</cite> is a Results object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hess</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>array of partial second derivatives, Hessian</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.core.Derivative" title="numdifftools.core.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.core.Hessian" title="numdifftools.core.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex-step derivative has truncation error O(steps**2) for <cite>n=1</cite> and
+O(steps**4) for <cite>n</cite> larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex-step derivative avoids the problem of
+round-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the &#8216;central&#8217; method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.</p>
+<p>For all methods one should be careful in decreasing the step size too much
+due to round-off errors.</p>
+<p>Computes the Hessian according to method as:
+&#8216;forward&#8217; <a href="#equation-7">(1)</a>, &#8216;central&#8217; <a href="#equation-9">(2)</a> and &#8216;complex&#8217; <a href="#equation-10">(3)</a>:</p>
+<div class="math" id="equation-7">
+<p><span class="eqno">(1)</span><img src="../_images/math/3d9d88f61ee3612e5d65a9c71b98ca73d36a49a7.png" alt="\quad ((f(x + d_j e_j + d_k e_k) - f(x + d_j e_j))) / (d_j d_k)"/></p>
+</div><div class="math" id="equation-9">
+<p><span class="eqno">(2)</span><img src="../_images/math/f7ce7b4bb9915d94f9077aca7f758e225f214eaa.png" alt="\quad  ((f(x + d_j e_j + d_k e_k) - f(x + d_j e_j - d_k e_k)) -  (f(x - d_j e_j + d_k e_k) - f(x - d_j e_j - d_k e_k)) / (4 d_j d_k)"/></p>
+</div><div class="math" id="equation-10">
+<p><span class="eqno">(3)</span><img src="../_images/math/54e4411149225b497559ea998ea671576e845f9c.png" alt="imag(f(x + i d_j e_j + d_k e_k) - f(x + i d_j e_j - d_k e_k)) /(2 d_j d_k)"/></p>
+</div><p>where <img class="math" src="../_images/math/25e35903ce9f7aa008fb3728a0320fee8dc7f422.png" alt="e_j"/> is a vector with element <img class="math" src="../_images/math/d32c78b759903e3f4bd4fd2ce0b86358f7500c5d.png" alt="j"/> is one and the rest
+are zero and <img class="math" src="../_images/math/834549ae5e0900f9ed580875b44353cf5fe073a1.png" alt="d_j"/> is a scalar spacing <img class="math" src="../_images/math/e4a3a53884f9fa3ca24f82ee51dd4eb0c6db5099.png" alt="steps_j"/>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.Hessdiag">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">Hessdiag</code><span class="sig-paren">(</span><em>f</em>, <em>step=None</em>, <em>method='central'</em>, <em>order=2</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/core.html#Hessdiag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.Hessdiag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#numdifftools.core.Derivative" title="numdifftools.core.Derivative"><code class="xref py py-class docutils literal"><span class="pre">numdifftools.core.Derivative</span></code></a></p>
+<p>Calculate Hessian diagonal with finite difference approximation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>step</strong> : float, array-like or StepGenerator object, optional</p>
+<blockquote>
+<div><p>Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [&#8216;complex&#8217;, &#8216;multicomplex&#8217;], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.</p>
+</div></blockquote>
+<p><strong>method</strong> : {&#8216;central&#8217;, &#8216;complex&#8217;, &#8216;multicomplex&#8217;, &#8216;forward&#8217;, &#8216;backward&#8217;}</p>
+<blockquote>
+<div><p>defines the method used in the approximationorder : int, optional
+defines the order of the error term in the Taylor approximation used.
+For &#8216;central&#8217; and &#8216;complex&#8217; methods, it must be an even number.</p>
+</div></blockquote>
+<p><strong>full_output</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <cite>full_output</cite> is False, only the derivative is returned.
+If <cite>full_output</cite> is True, then (der, r) is returned <cite>der</cite> is the
+derivative, and <cite>r</cite> is a Results object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hessdiag</strong> : array</p>
+<blockquote class="last">
+<div><p>hessian diagonal</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.core.Derivative" title="numdifftools.core.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.core.Hessian" title="numdifftools.core.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a>, <a class="reference internal" href="#numdifftools.core.Jacobian" title="numdifftools.core.Jacobian"><code class="xref py py-obj docutils literal"><span class="pre">Jacobian</span></code></a>, <a class="reference internal" href="#numdifftools.core.Gradient" title="numdifftools.core.Gradient"><code class="xref py py-obj docutils literal"><span class="pre">Gradient</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex-step derivative has truncation error O(steps**2) for <cite>n=1</cite> and
+O(steps**4) for <cite>n</cite> larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex-step derivative avoids the problem of
+round-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the &#8216;central&#8217; method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.</p>
+<p>For all methods one should be careful in decreasing the step size too much
+due to round-off errors.</p>
+<p>Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.MinStepGenerator">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">MinStepGenerator</code><span class="sig-paren">(</span><em>base_step=None</em>, <em>step_ratio=2</em>, <em>num_steps=None</em>, <em>offset=0</em>, <em>scale=None</em>, <em>num_extrap=0</em>, <em>use_exact_steps=True</em>, <em>check_num_steps=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/core.html#MinStepGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.MinStepGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Generates a sequence of steps</p>
+<p>where steps = base_step * step_ratio ** (np.arange(num_steps) + offset)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>base_step</strong> : float, array-like, optional</p>
+<blockquote>
+<div><p>Defines the base step, if None, then base_step is set to
+EPS**(1/scale)*max(log(1+|x|), 1) where x is supplied at runtime
+through the __call__ method.</p>
+</div></blockquote>
+<p><strong>step_ratio</strong> : real scalar, optional, default 2</p>
+<blockquote>
+<div><p>Ratio between sequential steps generated.
+Note: Ratio &gt; 1
+If None then step_ratio is 2 for n=1 otherwise step_ratio is 1.6</p>
+</div></blockquote>
+<p><strong>num_steps</strong> : scalar integer, optional, default  n + order - 1 + num_extrap</p>
+<blockquote>
+<div><p>defines number of steps generated. It should be larger than
+n + order - 1</p>
+</div></blockquote>
+<p><strong>offset</strong> : real scalar, optional, default 0</p>
+<blockquote>
+<div><p>offset to the base step</p>
+</div></blockquote>
+<p><strong>scale</strong> : real scalar, optional</p>
+<blockquote class="last">
+<div><p>scale used in base step. If not None it will override the default
+computed with the default_scale function.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.MaxStepGenerator">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">MaxStepGenerator</code><span class="sig-paren">(</span><em>step_max=2.0</em>, <em>step_ratio=2.0</em>, <em>num_steps=15</em>, <em>step_nom=None</em>, <em>offset=0</em>, <em>num_extrap=0</em>, <em>use_exact_steps=False</em>, <em>check_num_steps=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/core.html#MaxStepGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.MaxStepGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#numdifftools.core.MinStepGenerator" title="numdifftools.core.MinStepGenerator"><code class="xref py py-class docutils literal"><span class="pre">numdifftools.core.MinStepGenerator</span></code></a></p>
+<p>Generates a sequence of steps</p>
+<dl class="docutils">
+<dt>where</dt>
+<dd>steps = base_step * step_ratio ** (-np.arange(num_steps) + offset)
+base_step = step_max * step_nom</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>max_step</strong> : float, array-like, optional default 2</p>
+<blockquote>
+<div><p>Defines the maximum step</p>
+</div></blockquote>
+<p><strong>step_ratio</strong> : real scalar, optional, default 2</p>
+<blockquote>
+<div><p>Ratio between sequential steps generated.
+Note: Ratio &gt; 1</p>
+</div></blockquote>
+<p><strong>num_steps</strong> : scalar integer, optional, default  n + order - 1 + num_extrap</p>
+<blockquote>
+<div><p>defines number of steps generated. It should be larger than
+n + order - 1</p>
+</div></blockquote>
+<p><strong>step_nom</strong> :  default maximum(log1p(abs(x)), 1)</p>
+<blockquote>
+<div><p>Nominal step.</p>
+</div></blockquote>
+<p><strong>offset</strong> : real scalar, optional, default 0</p>
+<blockquote class="last">
+<div><p>offset to the base step: max_step * nom_step</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.core.Richardson">
+<em class="property">class </em><code class="descclassname">numdifftools.core.</code><code class="descname">Richardson</code><span class="sig-paren">(</span><em>step_ratio=2.0</em>, <em>step=1</em>, <em>order=1</em>, <em>num_terms=2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#Richardson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.Richardson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Extrapolates as sequence with Richardsons method</p>
+<p class="rubric">Notes</p>
+<p>Suppose you have series expansion that goes like this</p>
+<p>L = f(h) + a0 * h^p_0 + a1 * h^p_1+ a2 * h^p_2 + ...</p>
+<p>where p_i = order + step * i  and f(h) -&gt; L as h -&gt; 0, but f(0) != L.</p>
+<p>If we evaluate the right hand side for different stepsizes h
+we can fit a polynomial to that sequence of approximations.
+This is exactly what this class does.</p>
+<dl class="method">
+<dt id="numdifftools.core.Richardson.extrapolate">
+<code class="descname">extrapolate</code><span class="sig-paren">(</span><em>sequence</em>, <em>steps</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#Richardson.extrapolate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.core.Richardson.extrapolate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-numdifftools.extrapolation">
+<span id="numdifftools-extrapolation-module"></span><h2>numdifftools.extrapolation module<a class="headerlink" href="#module-numdifftools.extrapolation" title="Permalink to this headline">¶</a></h2>
+<p>Created on 28. aug. 2015</p>
+<p>&#64;author: pab</p>
+<dl class="class">
+<dt id="numdifftools.extrapolation.Dea">
+<em class="property">class </em><code class="descclassname">numdifftools.extrapolation.</code><code class="descname">Dea</code><span class="sig-paren">(</span><em>limexp=3</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#Dea"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.extrapolation.Dea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>LIMEXP  is the maximum number of elements the
+epsilon table data can contain. The epsilon table
+is stored in the first (LIMEXP+2) entries of EPSTAB.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.extrapolation.Richardson">
+<em class="property">class </em><code class="descclassname">numdifftools.extrapolation.</code><code class="descname">Richardson</code><span class="sig-paren">(</span><em>step_ratio=2.0</em>, <em>step=1</em>, <em>order=1</em>, <em>num_terms=2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#Richardson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.extrapolation.Richardson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Extrapolates as sequence with Richardsons method</p>
+<p class="rubric">Notes</p>
+<p>Suppose you have series expansion that goes like this</p>
+<p>L = f(h) + a0 * h^p_0 + a1 * h^p_1+ a2 * h^p_2 + ...</p>
+<p>where p_i = order + step * i  and f(h) -&gt; L as h -&gt; 0, but f(0) != L.</p>
+<p>If we evaluate the right hand side for different stepsizes h
+we can fit a polynomial to that sequence of approximations.
+This is exactly what this class does.</p>
+<dl class="method">
+<dt id="numdifftools.extrapolation.Richardson.extrapolate">
+<code class="descname">extrapolate</code><span class="sig-paren">(</span><em>sequence</em>, <em>steps</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#Richardson.extrapolate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.extrapolation.Richardson.extrapolate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.extrapolation.convolve">
+<code class="descclassname">numdifftools.extrapolation.</code><code class="descname">convolve</code><span class="sig-paren">(</span><em>sequence</em>, <em>rule</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#convolve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.extrapolation.convolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper around scipy.ndimage.convolve1d that allows complex input.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.extrapolation.dea3">
+<code class="descclassname">numdifftools.extrapolation.</code><code class="descname">dea3</code><span class="sig-paren">(</span><em>v0</em>, <em>v1</em>, <em>v2</em>, <em>symmetric=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#dea3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.extrapolation.dea3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extrapolate a slowly convergent sequence</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>v0, v1, v2</strong> : array-like</p>
+<blockquote>
+<div><p>3 values of a convergent sequence to extrapolate</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : array-like</p>
+<blockquote>
+<div><p>extrapolated value</p>
+</div></blockquote>
+<p><strong>abserr</strong> : array-like</p>
+<blockquote class="last">
+<div><p>absolute error estimate</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.extrapolation.test_dea">
+<code class="descclassname">numdifftools.extrapolation.</code><code class="descname">test_dea</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/extrapolation.html#test_dea"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.extrapolation.test_dea" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-numdifftools.info">
+<span id="numdifftools-info-module"></span><h2>numdifftools.info module<a class="headerlink" href="#module-numdifftools.info" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction-to-numdifftools">
+<h3>Introduction to Numdifftools<a class="headerlink" href="#introduction-to-numdifftools" title="Permalink to this headline">¶</a></h3>
+<p>Numdifftools is a suite of tools written in Python to solve automatic numerical
+differentiation problems in one or more variables. Finite differences are used
+in an adaptive manner, coupled with a Richardson extrapolation methodology to
+provide a maximally accurate result. The user can configure many options like;
+changing the order of the method or the extrapolation, even allowing the user
+to specify whether <cite>complex</cite>, <cite>multicomplex</cite>, <cite>central</cite>, <cite>forward</cite> or
+<cite>backward</cite> differences are used. The methods provided are:</p>
+<dl class="docutils">
+<dt><em>Derivative:</em></dt>
+<dd>Computates the derivative of order 1 through 10 on any scalar function.</dd>
+<dt><em>Gradient:</em></dt>
+<dd>Computes the gradient vector of a scalar function of one or more variables.</dd>
+<dt><em>Jacobian:</em></dt>
+<dd>Computes the Jacobian matrix of a vector valued function of one or more
+variables.</dd>
+<dt><em>Hessian:</em></dt>
+<dd>Computes the Hessian matrix of all 2nd partial derivatives of a scalar
+function of one or more variables.</dd>
+<dt><em>Hessdiag:</em></dt>
+<dd>Computes only the diagonal elements of the Hessian matrix</dd>
+</dl>
+<p>All of these methods also produce error estimates on the result.</p>
+<p>Numdifftools also provide an easy to use interface to derivatives calculated
+with AlgoPy. Algopy stands for Algorithmic Differentiation in Python.
+The purpose of AlgoPy is the evaluation of higher-order derivatives in the
+<cite>forward</cite> and <cite>reverse</cite> mode of Algorithmic Differentiation (AD) of functions
+that are implemented as Python programs.</p>
+<p>Documentation is at: <a class="reference external" href="http://numdifftools.readthedocs.org/">http://numdifftools.readthedocs.org/</a></p>
+<p>Code and issue tracker is at <a class="reference external" href="https://github.com/pbrod/numdifftools">https://github.com/pbrod/numdifftools</a>.</p>
+<p>Latest stable release is at <a class="reference external" href="http://pypi.python.org/pypi/Numdifftools">http://pypi.python.org/pypi/Numdifftools</a>.</p>
+<p>To test if the toolbox is working paste the following in an interactive
+python session:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numdifftools</span> <span class="kn">as</span> <span class="nn">nd</span>
+<span class="n">nd</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">coverage</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">doctests</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="getting-started">
+<h4>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h4>
+<p>Compute 1&#8217;st and 2&#8217;nd derivative of exp(x), at x == 1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numdifftools</span> <span class="kn">as</span> <span class="nn">nd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>        <span class="c"># 1&#39;st derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdd</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c"># 2&#39;nd derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fdd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Nonlinear least squares:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ydata</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.75</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span> <span class="o">-</span> <span class="n">ydata</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Jfun</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Jfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.75</span><span class="p">])),</span> <span class="mi">0</span><span class="p">)</span> <span class="c"># should be numerically zero</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Compute gradient of sum(x**2):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([ 2.,  4.,  6.])</span>
+</pre></div>
+</div>
+<p>Compute the same with the easy to use interface to AlgoPy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numdifftools.nd_algopy</span> <span class="kn">as</span> <span class="nn">nda</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>        <span class="c"># 1&#39;st derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdd</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c"># 2&#39;nd derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fdd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Nonlinear least squares:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ydata</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.75</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span> <span class="o">-</span> <span class="n">ydata</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Jfun</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;reverse&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Jfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.75</span><span class="p">])),</span> <span class="mi">0</span><span class="p">)</span> <span class="c"># should be numerically zero</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Compute gradient of sum(x**2):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([ 2.,  4.,  6.])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h4>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h4>
+<p>scipy.misc.derivative</p>
+<dl class="function">
+<dt id="numdifftools.info.test_docstrings">
+<code class="descclassname">numdifftools.info.</code><code class="descname">test_docstrings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/info.html#test_docstrings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.info.test_docstrings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="module-numdifftools.limits">
+<span id="numdifftools-limits-module"></span><h2>numdifftools.limits module<a class="headerlink" href="#module-numdifftools.limits" title="Permalink to this headline">¶</a></h2>
+<p>Created on 27. aug. 2015</p>
+<p>&#64;author: pab
+Author: John D&#8217;Errico
+e-mail: <a class="reference external" href="mailto:woodchips&#37;&#52;&#48;rochester&#46;rr&#46;com">woodchips<span>&#64;</span>rochester<span>&#46;</span>rr<span>&#46;</span>com</a>
+Release: 1.0
+Release date: 5/23/2008</p>
+<dl class="class">
+<dt id="numdifftools.limits.Limit">
+<em class="property">class </em><code class="descclassname">numdifftools.limits.</code><code class="descname">Limit</code><span class="sig-paren">(</span><em>f</em>, <em>step=None</em>, <em>method='above'</em>, <em>order=4</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/limits.html#Limit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.limits.Limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Compute limit of a function at a given point</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : callable</p>
+<blockquote>
+<div><p>function of one array f(z, <cite>*args</cite>, <cite>**kwds</cite>) to compute the limit for.
+The function, f, is assumed to return a result of the same shape and
+size as its input, <cite>z</cite>.</p>
+</div></blockquote>
+<p><strong>step: float, complex, array-like or StepGenerator object, optional</strong></p>
+<blockquote>
+<div><p>Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=4)</p>
+</div></blockquote>
+<p><strong>method</strong> : {&#8216;above&#8217;, &#8216;below&#8217;}</p>
+<blockquote>
+<div><p>defines if the limit is taken from <cite>above</cite> or <cite>below</cite></p>
+</div></blockquote>
+<p><strong>order: positive scalar integer, optional.</strong></p>
+<blockquote>
+<div><p>defines the order of approximation used to find the specified limit.
+The order must be member of [1 2 3 4 5 6 7 8]. 4 is a good compromise.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">limit_fz: array like</p>
+<blockquote>
+<div><p>estimated limit of f(z) as z &#8211;&gt; z0</p>
+</div></blockquote>
+<p>info:</p>
+<blockquote class="last">
+<div><p>Only given if full_output is True and contains the following:
+error estimate: ndarray</p>
+<blockquote>
+<div><p>95 uncertainty estimate around the limit, such that
+abs(limit_fz - f(z0)*(z-z0)) &lt; error_estimate</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>final_step: ndarray</dt>
+<dd><p class="first last">final step used in approximation</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="numdifftools.limits.Limit.info">
+<em class="property">class </em><code class="descname">info</code><a class="headerlink" href="#numdifftools.limits.Limit.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
+<dl class="attribute">
+<dt id="numdifftools.limits.Limit.info.error_estimate">
+<code class="descname">error_estimate</code><a class="headerlink" href="#numdifftools.limits.Limit.info.error_estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.limits.Limit.info.final_step">
+<code class="descname">final_step</code><a class="headerlink" href="#numdifftools.limits.Limit.info.final_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.limits.Limit.info.index">
+<code class="descname">index</code><a class="headerlink" href="#numdifftools.limits.Limit.info.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.limits.Limit.limit">
+<code class="descclassname">Limit.</code><code class="descname">limit</code><span class="sig-paren">(</span><em>x</em>, <em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/limits.html#Limit.limit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.limits.Limit.limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.limits.MinStepGenerator">
+<em class="property">class </em><code class="descclassname">numdifftools.limits.</code><code class="descname">MinStepGenerator</code><span class="sig-paren">(</span><em>base_step=None</em>, <em>step_ratio=4.0</em>, <em>num_steps=None</em>, <em>offset=0</em>, <em>scale=1.2</em>, <em>use_exact_steps=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/limits.html#MinStepGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.limits.MinStepGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Generates a sequence of steps</p>
+<p>where steps = base_step * step_ratio ** (np.arange(num_steps) + offset)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>base_step</strong> : float, array-like, optional</p>
+<blockquote>
+<div><p>Defines the base step, if None, then base_step is set to
+EPS**(1/scale)*max(log(1+|x|), 1) where x is supplied at runtime
+through the __call__ method.</p>
+</div></blockquote>
+<p><strong>step_ratio</strong> : real scalar, optional, default 4</p>
+<blockquote>
+<div><p>Ratio between sequential steps generated.</p>
+</div></blockquote>
+<p><strong>num_steps</strong> : scalar integer, optional, default  n + order - 1 + num_extrap</p>
+<blockquote>
+<div><p>defines number of steps generated. It should be larger than
+n + order - 1</p>
+</div></blockquote>
+<p><strong>offset</strong> : real scalar, optional, default 0</p>
+<blockquote>
+<div><p>offset to the base step</p>
+</div></blockquote>
+<p><strong>scale</strong> : real scalar, optional</p>
+<blockquote class="last">
+<div><p>scale used in base step. If not None it will override the default
+computed with the default_scale function.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.limits.nom_step">
+<code class="descclassname">numdifftools.limits.</code><code class="descname">nom_step</code><span class="sig-paren">(</span><em>x=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/limits.html#nom_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.limits.nom_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return nominal step</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.limits.test_docstrings">
+<code class="descclassname">numdifftools.limits.</code><code class="descname">test_docstrings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/limits.html#test_docstrings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.limits.test_docstrings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.limits.valarray">
+<code class="descclassname">numdifftools.limits.</code><code class="descname">valarray</code><span class="sig-paren">(</span><em>shape</em>, <em>value=nan</em>, <em>typecode=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/limits.html#valarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.limits.valarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an array of all value.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-numdifftools.multicomplex">
+<span id="numdifftools-multicomplex-module"></span><h2>numdifftools.multicomplex module<a class="headerlink" href="#module-numdifftools.multicomplex" title="Permalink to this headline">¶</a></h2>
+<p>Created on 22. apr. 2015</p>
+<p>&#64;author: pab</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<p>A METHODOLOGY FOR ROBUST OPTIMIZATION OF
+LOW-THRUST TRAJECTORIES IN MULTI-BODY
+ENVIRONMENTS
+Gregory Lantoine (2010)
+Phd thesis, Georgia Institute of Technology</p>
+<p>USING MULTICOMPLEX VARIABLES FOR AUTOMATIC
+COMPUTATION OF HIGH-ORDER DERIVATIVES
+Gregory Lantoine, Ryan P. Russell , and Thierry Dargent
+ACM Transactions on Mathematical Software, Vol. 38, No. 3, Article 16,
+April 2012, 21 pages,</p>
+<p>M.E. Luna-Elizarraras, M. Shapiro, D.C. Struppa1, A. Vajiac (2012)
+CUBO A Mathematical Journal
+Vol. 14, No 2, (61-80). June 2012.</p>
+<p>Computation of higher-order derivatives using the multi-complex
+step method
+Adriaen Verheyleweghen, (2014)
+Project report, NTNU</p>
+<dl class="class">
+<dt id="numdifftools.multicomplex.bicomplex">
+<em class="property">class </em><code class="descclassname">numdifftools.multicomplex.</code><code class="descname">bicomplex</code><span class="sig-paren">(</span><em>z1</em>, <em>z2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Creates an instance of a bicomplex object.
+zeta = z1 + j*z2, where z1 and z2 are complex numbers.</p>
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arccos">
+<code class="descname">arccos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arccos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arccos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arccosh">
+<code class="descname">arccosh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arccosh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arccosh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arcsin">
+<code class="descname">arcsin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arcsin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arcsin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arcsinh">
+<code class="descname">arcsinh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arcsinh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arcsinh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arctan">
+<code class="descname">arctan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arctan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arctan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arctanh">
+<code class="descname">arctanh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arctanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arctanh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arg_c">
+<code class="descname">arg_c</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arg_c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arg_c" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.arg_c1p">
+<code class="descname">arg_c1p</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.arg_c1p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.arg_c1p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="numdifftools.multicomplex.bicomplex.asarray">
+<em class="property">static </em><code class="descname">asarray</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.asarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.asarray" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.conjugate">
+<code class="descname">conjugate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.conjugate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.conjugate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.cos">
+<code class="descname">cos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.cos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.cos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.cosh">
+<code class="descname">cosh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.cosh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.cosh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.cot">
+<code class="descname">cot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.cot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.cot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.coth">
+<code class="descname">coth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.coth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.coth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.csc">
+<code class="descname">csc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.csc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.csc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.csch">
+<code class="descname">csch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.csch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.csch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.dot">
+<code class="descname">dot</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.dot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.dot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.exp">
+<code class="descname">exp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.exp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.exp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.exp2">
+<code class="descname">exp2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.exp2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.exp2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.expm1">
+<code class="descname">expm1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.expm1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.expm1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.flat">
+<code class="descname">flat</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.flat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.flat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.multicomplex.bicomplex.imag">
+<code class="descname">imag</code><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.imag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.multicomplex.bicomplex.imag1">
+<code class="descname">imag1</code><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.imag1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.multicomplex.bicomplex.imag12">
+<code class="descname">imag12</code><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.imag12" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.multicomplex.bicomplex.imag2">
+<code class="descname">imag2</code><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.imag2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.log">
+<code class="descname">log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.log10">
+<code class="descname">log10</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.log10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.log10" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.log1p">
+<code class="descname">log1p</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.log1p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.log1p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.log2">
+<code class="descname">log2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.log2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.log2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.logaddexp">
+<code class="descname">logaddexp</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.logaddexp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.logaddexp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.logaddexp2">
+<code class="descname">logaddexp2</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.logaddexp2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.logaddexp2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="numdifftools.multicomplex.bicomplex.mat2bicomp">
+<em class="property">static </em><code class="descname">mat2bicomp</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.mat2bicomp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.mat2bicomp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.mod_c">
+<code class="descname">mod_c</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.mod_c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.mod_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Complex modulus</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.norm">
+<code class="descname">norm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.norm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.norm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.multicomplex.bicomplex.real">
+<code class="descname">real</code><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.real" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.sec">
+<code class="descname">sec</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.sec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.sec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.sech">
+<code class="descname">sech</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.sech"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.sech" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.multicomplex.bicomplex.shape">
+<code class="descname">shape</code><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.sin">
+<code class="descname">sin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.sin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.sin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.sinh">
+<code class="descname">sinh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.sinh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.sinh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numdifftools.multicomplex.bicomplex.size">
+<code class="descname">size</code><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.sqrt">
+<code class="descname">sqrt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.sqrt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.sqrt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.tan">
+<code class="descname">tan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.tan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.tan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="numdifftools.multicomplex.bicomplex.tanh">
+<code class="descname">tanh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#bicomplex.tanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.bicomplex.tanh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.multicomplex.c_abs">
+<code class="descclassname">numdifftools.multicomplex.</code><code class="descname">c_abs</code><span class="sig-paren">(</span><em>z</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#c_abs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.c_abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.multicomplex.c_atan2">
+<code class="descclassname">numdifftools.multicomplex.</code><code class="descname">c_atan2</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#c_atan2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.c_atan2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.multicomplex.c_max">
+<code class="descclassname">numdifftools.multicomplex.</code><code class="descname">c_max</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#c_max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.c_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.multicomplex.c_min">
+<code class="descclassname">numdifftools.multicomplex.</code><code class="descname">c_min</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/multicomplex.html#c_min"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.multicomplex.c_min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-numdifftools.nd_algopy">
+<span id="numdifftools-nd-algopy-module"></span><h2>numdifftools.nd_algopy module<a class="headerlink" href="#module-numdifftools.nd_algopy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="numdifftools-nd-algopy">
+<h3>Numdifftools.nd_algopy<a class="headerlink" href="#numdifftools-nd-algopy" title="Permalink to this headline">¶</a></h3>
+<p>This module provide an easy to use interface to derivatives calculated with
+AlgoPy. Algopy stands for Algorithmic Differentiation in Python.</p>
+<p>The purpose of AlgoPy is the evaluation of higher-order derivatives in the
+forward and reverse mode of Algorithmic Differentiation (AD) of functions that
+are implemented as Python programs. Particular focus are functions that contain
+numerical linear algebra functions as they often appear in statistically
+motivated functions. The intended use of AlgoPy is for easy prototyping at
+reasonable execution speeds. More precisely, for a typical program a
+directional derivative takes order 10 times as much time as time as the
+function evaluation. This is approximately also true for the gradient.</p>
+</div>
+<div class="section" id="algoritmic-differentiation">
+<h3>Algoritmic differentiation<a class="headerlink" href="#algoritmic-differentiation" title="Permalink to this headline">¶</a></h3>
+<p>Algorithmic differentiation (AD) is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.</p>
+<p>Algorithmic differentiation is not:</p>
+<p>Symbolic differentiation, nor Numerical differentiation (the method of
+finite differences). These classical methods run into problems:
+symbolic differentiation leads to inefficient code (unless carefully done)
+and faces the difficulty of converting a computer program into a single
+expression, while numerical differentiation can introduce round-off errors
+in the discretization process and cancellation. Both classical methods have
+problems with calculating higher derivatives, where the complexity and
+errors increase. Finally, both classical methods are slow at computing the
+partial derivatives of a function with respect to many inputs, as is needed
+for gradient-based optimization algorithms. Algoritmic differentiation
+solves all of these problems.</p>
+<div class="section" id="reference">
+<h4>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h4>
+<p>Sebastian F. Walter and Lutz Lehmann 2013,
+&#8220;Algorithmic differentiation in Python with AlgoPy&#8221;,
+in Journal of Computational Science, vol 4, no 5, pp 334 - 344,
+<a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S1877750311001013">http://www.sciencedirect.com/science/article/pii/S1877750311001013</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Automatic_differentiation">https://en.wikipedia.org/wiki/Automatic_differentiation</a></p>
+<p><a class="reference external" href="https://pythonhosted.org/algopy/index.html">https://pythonhosted.org/algopy/index.html</a></p>
+<dl class="class">
+<dt id="numdifftools.nd_algopy.Derivative">
+<em class="property">class </em><code class="descclassname">numdifftools.nd_algopy.</code><code class="descname">Derivative</code><span class="sig-paren">(</span><em>f</em>, <em>n=1</em>, <em>method='forward'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/nd_algopy.html#Derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.nd_algopy.Derivative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">numdifftools.nd_algopy._Common</span></code></p>
+<p>Calculate n-th derivative with Algorithmic Differentiation method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>n</strong> : int, optional</p>
+<blockquote>
+<div><p>Order of the derivative.</p>
+</div></blockquote>
+<p><strong>method</strong> : string, optional {&#8216;forward&#8217;, &#8216;reverse&#8217;}</p>
+<blockquote>
+<div><p>defines method used in the approximation</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>der</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>array of derivatives</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.nd_algopy.Gradient" title="numdifftools.nd_algopy.Gradient"><code class="xref py py-obj docutils literal"><span class="pre">Gradient</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessdiag" title="numdifftools.nd_algopy.Hessdiag"><code class="xref py py-obj docutils literal"><span class="pre">Hessdiag</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessian" title="numdifftools.nd_algopy.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Jacobian" title="numdifftools.nd_algopy.Jacobian"><code class="xref py py-obj docutils literal"><span class="pre">Jacobian</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.nd_algopy.Gradient">
+<em class="property">class </em><code class="descclassname">numdifftools.nd_algopy.</code><code class="descname">Gradient</code><span class="sig-paren">(</span><em>f</em>, <em>method='forward'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/nd_algopy.html#Gradient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.nd_algopy.Gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">numdifftools.nd_algopy._Common</span></code></p>
+<p>Calculate Gradient with Algorithmic Differentiation method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>method</strong> : string, optional {&#8216;forward&#8217;, &#8216;reverse&#8217;}</p>
+<blockquote>
+<div><p>defines method used in the approximation</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>grad</strong> : array</p>
+<blockquote class="last">
+<div><p>gradient</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.nd_algopy.Derivative" title="numdifftools.nd_algopy.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Jacobian" title="numdifftools.nd_algopy.Jacobian"><code class="xref py py-obj docutils literal"><span class="pre">Jacobian</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessdiag" title="numdifftools.nd_algopy.Hessdiag"><code class="xref py py-obj docutils literal"><span class="pre">Hessdiag</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessian" title="numdifftools.nd_algopy.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.nd_algopy.Hessdiag">
+<em class="property">class </em><code class="descclassname">numdifftools.nd_algopy.</code><code class="descname">Hessdiag</code><span class="sig-paren">(</span><em>f</em>, <em>method='forward'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/nd_algopy.html#Hessdiag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.nd_algopy.Hessdiag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#numdifftools.nd_algopy.Hessian" title="numdifftools.nd_algopy.Hessian"><code class="xref py py-class docutils literal"><span class="pre">numdifftools.nd_algopy.Hessian</span></code></a></p>
+<p>Calculate Hessian diagonal with Algorithmic Differentiation method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>method</strong> : string, optional {&#8216;forward&#8217;, &#8216;reverse&#8217;}</p>
+<blockquote>
+<div><p>defines method used in the approximation</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hessdiag</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>Hessian diagonal array of partial second order derivatives.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.nd_algopy.Derivative" title="numdifftools.nd_algopy.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Gradient" title="numdifftools.nd_algopy.Gradient"><code class="xref py py-obj docutils literal"><span class="pre">Gradient</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Jacobian" title="numdifftools.nd_algopy.Jacobian"><code class="xref py py-obj docutils literal"><span class="pre">Jacobian</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessian" title="numdifftools.nd_algopy.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.nd_algopy.Hessian">
+<em class="property">class </em><code class="descclassname">numdifftools.nd_algopy.</code><code class="descname">Hessian</code><span class="sig-paren">(</span><em>f</em>, <em>method='forward'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/nd_algopy.html#Hessian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.nd_algopy.Hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">numdifftools.nd_algopy._Common</span></code></p>
+<p>Calculate Hessian with Algorithmic Differentiation method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>method</strong> : string, optional {&#8216;forward&#8217;, &#8216;reverse&#8217;}</p>
+<blockquote>
+<div><p>defines method used in the approximation</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hess</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>array of partial second derivatives, Hessian</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.nd_algopy.Derivative" title="numdifftools.nd_algopy.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Gradient" title="numdifftools.nd_algopy.Gradient"><code class="xref py py-obj docutils literal"><span class="pre">Gradient</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Jacobian" title="numdifftools.nd_algopy.Jacobian"><code class="xref py py-obj docutils literal"><span class="pre">Jacobian</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessdiag" title="numdifftools.nd_algopy.Hessdiag"><code class="xref py py-obj docutils literal"><span class="pre">Hessdiag</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="numdifftools.nd_algopy.Jacobian">
+<em class="property">class </em><code class="descclassname">numdifftools.nd_algopy.</code><code class="descname">Jacobian</code><span class="sig-paren">(</span><em>f</em>, <em>method='forward'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/nd_algopy.html#Jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.nd_algopy.Jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">numdifftools.nd_algopy._Common</span></code></p>
+<p>Calculate Jacobian with Algorithmic Differentiation method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>function of one array f(x, <cite>*args</cite>, <cite>**kwds</cite>)</p>
+</div></blockquote>
+<p><strong>method</strong> : string, optional {&#8216;forward&#8217;, &#8216;reverse&#8217;}</p>
+<blockquote>
+<div><p>defines method used in the approximation</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>jacob</strong> : array</p>
+<blockquote class="last">
+<div><p>Jacobian</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#numdifftools.nd_algopy.Derivative" title="numdifftools.nd_algopy.Derivative"><code class="xref py py-obj docutils literal"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Gradient" title="numdifftools.nd_algopy.Gradient"><code class="xref py py-obj docutils literal"><span class="pre">Gradient</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessdiag" title="numdifftools.nd_algopy.Hessdiag"><code class="xref py py-obj docutils literal"><span class="pre">Hessdiag</span></code></a>, <a class="reference internal" href="#numdifftools.nd_algopy.Hessian" title="numdifftools.nd_algopy.Hessian"><code class="xref py py-obj docutils literal"><span class="pre">Hessian</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.nd_algopy.test_docstrings">
+<code class="descclassname">numdifftools.nd_algopy.</code><code class="descname">test_docstrings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/nd_algopy.html#test_docstrings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.nd_algopy.test_docstrings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="numdifftools-run-benchmark-module">
+<h2>numdifftools.run_benchmark module<a class="headerlink" href="#numdifftools-run-benchmark-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-numdifftools.test_functions">
+<span id="numdifftools-test-functions-module"></span><h2>numdifftools.test_functions module<a class="headerlink" href="#module-numdifftools.test_functions" title="Permalink to this headline">¶</a></h2>
+<p>Created on 17. mai 2015</p>
+<p>&#64;author: pab</p>
+<dl class="function">
+<dt id="numdifftools.test_functions.dcos">
+<code class="descclassname">numdifftools.test_functions.</code><code class="descname">dcos</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/test_functions.html#dcos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.test_functions.dcos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.test_functions.ddcos">
+<code class="descclassname">numdifftools.test_functions.</code><code class="descname">ddcos</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/test_functions.html#ddcos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.test_functions.ddcos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="numdifftools.test_functions.get_function">
+<code class="descclassname">numdifftools.test_functions.</code><code class="descname">get_function</code><span class="sig-paren">(</span><em>fun_name</em>, <em>n=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/numdifftools/test_functions.html#get_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#numdifftools.test_functions.get_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-numdifftools">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-numdifftools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Introduction to Numdifftools<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Numdifftools is a suite of tools written in Python to solve automatic numerical
+differentiation problems in one or more variables. Finite differences are used
+in an adaptive manner, coupled with a Richardson extrapolation methodology to
+provide a maximally accurate result. The user can configure many options like;
+changing the order of the method or the extrapolation, even allowing the user
+to specify whether <cite>complex</cite>, <cite>multicomplex</cite>, <cite>central</cite>, <cite>forward</cite> or
+<cite>backward</cite> differences are used. The methods provided are:</p>
+<dl class="docutils">
+<dt><em>Derivative:</em></dt>
+<dd>Computates the derivative of order 1 through 10 on any scalar function.</dd>
+<dt><em>Gradient:</em></dt>
+<dd>Computes the gradient vector of a scalar function of one or more variables.</dd>
+<dt><em>Jacobian:</em></dt>
+<dd>Computes the Jacobian matrix of a vector valued function of one or more
+variables.</dd>
+<dt><em>Hessian:</em></dt>
+<dd>Computes the Hessian matrix of all 2nd partial derivatives of a scalar
+function of one or more variables.</dd>
+<dt><em>Hessdiag:</em></dt>
+<dd>Computes only the diagonal elements of the Hessian matrix</dd>
+</dl>
+<p>All of these methods also produce error estimates on the result.</p>
+<p>Numdifftools also provide an easy to use interface to derivatives calculated
+with AlgoPy. Algopy stands for Algorithmic Differentiation in Python.
+The purpose of AlgoPy is the evaluation of higher-order derivatives in the
+<cite>forward</cite> and <cite>reverse</cite> mode of Algorithmic Differentiation (AD) of functions
+that are implemented as Python programs.</p>
+<p>Documentation is at: <a class="reference external" href="http://numdifftools.readthedocs.org/">http://numdifftools.readthedocs.org/</a></p>
+<p>Code and issue tracker is at <a class="reference external" href="https://github.com/pbrod/numdifftools">https://github.com/pbrod/numdifftools</a>.</p>
+<p>Latest stable release is at <a class="reference external" href="http://pypi.python.org/pypi/Numdifftools">http://pypi.python.org/pypi/Numdifftools</a>.</p>
+<p>To test if the toolbox is working paste the following in an interactive
+python session:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numdifftools</span> <span class="kn">as</span> <span class="nn">nd</span>
+<span class="n">nd</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">coverage</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">doctests</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h4>Getting Started<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Compute 1&#8217;st and 2&#8217;nd derivative of exp(x), at x == 1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numdifftools</span> <span class="kn">as</span> <span class="nn">nd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>        <span class="c"># 1&#39;st derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdd</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c"># 2&#39;nd derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fdd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Nonlinear least squares:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ydata</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.75</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span> <span class="o">-</span> <span class="n">ydata</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Jfun</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Jfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.75</span><span class="p">])),</span> <span class="mi">0</span><span class="p">)</span> <span class="c"># should be numerically zero</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Compute gradient of sum(x**2):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([ 2.,  4.,  6.])</span>
+</pre></div>
+</div>
+<p>Compute the same with the easy to use interface to AlgoPy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numdifftools.nd_algopy</span> <span class="kn">as</span> <span class="nn">nda</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>        <span class="c"># 1&#39;st derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdd</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c"># 2&#39;nd derivative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">fdd</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mf">2.7182818284590424</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Nonlinear least squares:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ydata</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.75</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">xdata</span><span class="p">)</span> <span class="o">-</span> <span class="n">ydata</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Jfun</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;reverse&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Jfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.75</span><span class="p">])),</span> <span class="mi">0</span><span class="p">)</span> <span class="c"># should be numerically zero</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Compute gradient of sum(x**2):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span> <span class="o">=</span> <span class="n">nda</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfun</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([ 2.,  4.,  6.])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>See also<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>scipy.misc.derivative</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numdifftools.tests.html" class="btn btn-neutral float-right" title="numdifftools.tests package">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="Modules"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2009-2015, Per A Brodtkorb, John D&#39;Errico.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.9.13.post0.dev36+g29bd164.dirty',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

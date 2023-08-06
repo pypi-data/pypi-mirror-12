@@ -1,0 +1,3419 @@
+.\" Man page generated from reStructuredText.
+.
+.TH "NUMDIFFTOOLS" "1" "November 08, 2015" "0.9.13.post0.dev36+g29bd164.dirty" "numdifftools"
+.SH NAME
+numdifftools \- numdifftools 0.9.13.post0.dev36+g29bd164.dirty
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+\fI\%\fP\fI\%\fP\fI\%\fP\fI\%Code Health\fP\fI\%\fP\fI\%\fP
+.sp
+This is the documentation of \fBNumdifftools\fP 0.9.13.post0.dev36+g29bd164.dirty\&.
+.sp
+Bleeding edge available at: \fI\%https://github.com/pbrod/numdifftools\fP\&.
+.sp
+Official releases are available at: \fI\%http://pypi.python.org/pypi/Numdifftools\fP\&.
+.SH INTRODUCTION TO NUMDIFFTOOLS
+.sp
+Numdifftools is a suite of tools written in Python to solve automatic numerical
+differentiation problems in one or more variables. Finite differences are used
+in an adaptive manner, coupled with a Richardson extrapolation methodology to
+provide a maximally accurate result. The user can configure many options like;
+changing the order of the method or the extrapolation, even allowing the user
+to specify whether \fIcomplex\fP, \fImulticomplex\fP, \fIcentral\fP, \fIforward\fP or
+\fIbackward\fP differences are used. The methods provided are:
+.INDENT 0.0
+.TP
+.B \fIDerivative:\fP
+Computates the derivative of order 1 through 10 on any scalar function.
+.TP
+.B \fIGradient:\fP
+Computes the gradient vector of a scalar function of one or more variables.
+.TP
+.B \fIJacobian:\fP
+Computes the Jacobian matrix of a vector valued function of one or more
+variables.
+.TP
+.B \fIHessian:\fP
+Computes the Hessian matrix of all 2nd partial derivatives of a scalar
+function of one or more variables.
+.TP
+.B \fIHessdiag:\fP
+Computes only the diagonal elements of the Hessian matrix
+.UNINDENT
+.sp
+All of these methods also produce error estimates on the result.
+.sp
+Numdifftools also provide an easy to use interface to derivatives calculated
+with AlgoPy. Algopy stands for Algorithmic Differentiation in Python.
+The purpose of AlgoPy is the evaluation of higher\-order derivatives in the
+\fIforward\fP and \fIreverse\fP mode of Algorithmic Differentiation (AD) of functions
+that are implemented as Python programs.
+.sp
+Documentation is at: \fI\%http://numdifftools.readthedocs.org/\fP
+.sp
+Code and issue tracker is at \fI\%https://github.com/pbrod/numdifftools\fP\&.
+.sp
+Latest stable release is at \fI\%http://pypi.python.org/pypi/Numdifftools\fP\&.
+.sp
+To test if the toolbox is working paste the following in an interactive
+python session:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+import numdifftools as nd
+nd.test(coverage=True, doctests=True)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Getting Started
+.sp
+Compute 1\(aqst and 2\(aqnd derivative of exp(x), at x == 1:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> import numpy as np
+>>> import numdifftools as nd
+>>> fd = nd.Derivative(np.exp)        # 1\(aqst derivative
+>>> fdd = nd.Derivative(np.exp, n=2)  # 2\(aqnd derivative
+>>> np.allclose(fd(1), 2.7182818284590424)
+True
+>>> np.allclose(fdd(1), 2.7182818284590424)
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Nonlinear least squares:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> xdata = np.reshape(np.arange(0,1,0.1),(\-1,1))
+>>> ydata = 1+2*np.exp(0.75*xdata)
+>>> fun = lambda c: (c[0]+c[1]*np.exp(c[2]*xdata) \- ydata)**2
+>>> Jfun = nd.Jacobian(fun)
+>>> np.allclose(np.abs(Jfun([1,2,0.75])), 0) # should be numerically zero
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute gradient of sum(x**2):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> fun = lambda x: np.sum(x**2)
+>>> dfun = nd.Gradient(fun)
+>>> dfun([1,2,3])
+array([ 2.,  4.,  6.])
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute the same with the easy to use interface to AlgoPy:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> import numdifftools.nd_algopy as nda
+>>> import numpy as np
+>>> fd = nda.Derivative(np.exp)        # 1\(aqst derivative
+>>> fdd = nda.Derivative(np.exp, n=2)  # 2\(aqnd derivative
+>>> np.allclose(fd(1), 2.7182818284590424)
+True
+>>> np.allclose(fdd(1), 2.7182818284590424)
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Nonlinear least squares:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> xdata = np.reshape(np.arange(0,1,0.1),(\-1,1))
+>>> ydata = 1+2*np.exp(0.75*xdata)
+>>> fun = lambda c: (c[0]+c[1]*np.exp(c[2]*xdata) \- ydata)**2
+>>> Jfun = nda.Jacobian(fun, method=\(aqreverse\(aq)
+>>> np.allclose(np.abs(Jfun([1,2,0.75])), 0) # should be numerically zero
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute gradient of sum(x**2):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> fun = lambda x: np.sum(x**2)
+>>> dfun = nda.Gradient(fun)
+>>> dfun([1,2,3])
+array([ 2.,  4.,  6.])
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS See also
+.sp
+scipy.misc.derivative
+.SH NUMERICAL DIFFERENTIATION
+.SS Introduction
+.sp
+The general problem of differentiation of a function typically pops up in three ways in Python.
+.INDENT 0.0
+.IP \(bu 2
+The symbolic derivative of a function.
+.IP \(bu 2
+Compute numerical derivatives of a function defined only by a sequence of data points.
+.IP \(bu 2
+Compute numerical derivatives of a analytically supplied function.
+.UNINDENT
+.sp
+Clearly the first member of this list is the domain of the symbolic toolbox SymPy, or some set of symbolic tools. Numerical differentiation of a function defined by data points can be achieved with the function gradient, or perhaps by differentiation of a curve fit to the data, perhaps to an interpolating spline or a least squares spline fit.
+.sp
+The third class of differentiation problems is where Numdifftools is valuable. This document will describe the methods used in Numdifftools and in particular the Derivative class.
+.SS Numerical differentiation of a general function of one variable
+.sp
+Surely you recall the traditional definition of a derivative, in terms of a limit.
+.sp
+.ce
+
+.ce 0
+.sp
+For small \delta, the limit approaches f'(x)\&. This is a one\-sided approximation for the derivative. For a fixed value of \delta, this is also known as a finite difference approximation (a forward difference.) Other approximations for the derivative are also available. We will see the origin of these approximations in the Taylor series expansion of a function f(x) around some point x_0\&.
+.sp
+.ce
+
+.ce 0
+.sp
+Truncate the series in 2 to the first three terms, divide by \delta and rearrange yields the forward difference approximation 1:
+.sp
+.ce
+
+.ce 0
+.sp
+When \delta is small, \delta^2 and any higher powers are vanishingly small. So we tend to ignore those higher powers, and describe the approximation in 3 as a first order approximation since the error in this approximation approaches zero at the same rate as the first power of \delta\&.  [1] The values of f''(x_0) and f'''(x_0), while unknown to us, are fixed constants as \delta varies.
+.sp
+Higher order approximations arise in the same fashion. The central difference 4 is a second order approximation.
+.sp
+.ce
+
+.ce 0
+.SS Unequally spaced finite difference rules
+.sp
+While most finite difference rules used to differentiate a function will use equally spaced points, this fails to be appropriate when one does not know the final spacing. Adaptive quadrature rules can succeed by subdividing each sub\-interval as necessary. But an adaptive differentiation scheme must work differently, since differentiation is a point estimate. Derivative generates a sequence of sample points that follow a log spacing away from the point in question, then it uses a single rule (generated on the fly) to estimate the desired derivative. Because the points are log spaced, the same rule applies at any scale, with only a scale factor applied.
+.SS Odd and even transformations of a function
+.sp
+Returning to the Taylor series expansion of f(x) around some point x_0, an even function  [2] around x_0 must have all the odd order derivatives vanish at x_0\&. An odd function has all its even derivatives vanish from its expansion. Consider the derived functions f_{odd}(x) and f_{even}(x)\&.
+.sp
+.ce
+
+.ce 0
+.sp
+.ce
+
+.ce 0
+.sp
+The Taylor series expansion of f_{odd}(x) around zero has the useful property that we have killed off any even order terms, but the odd order terms are identical to f(x), as expanded around x_0\&.
+.sp
+.ce
+
+.ce 0
+.sp
+Likewise, the Taylor series expansion of f_{even}(x) has no odd order terms or a constant term, but other even order terms that are identical to f(x)\&.
+.sp
+.ce
+
+.ce 0
+.sp
+The point of these transformations is we can rather simply generate a higher order approximation for any odd order derivatives of f(x) by working with f_{odd}(x)\&. Even order derivatives of f(x) are similarly generated from f_{even}(x)\&. For example, a second order approximation for f'(x_0) is trivially written in 9 as a function of \delta\&.
+.sp
+.ce
+
+.ce 0
+.sp
+We can do better rather simply, so why not? 10 shows a fourth order approximation for f'(x_0)\&.
+.sp
+.ce
+
+.ce 0
+.sp
+Again, the next non\-zero term 11 in that expansion has a higher power of \delta on it, so we would normally ignore it since the lowest order neglected term should dominate the behavior for small \delta\&.
+.sp
+.ce
+
+.ce 0
+.sp
+Derivative uses similar approximations for all derivatives of f up to any order. Of course, it is not always possible for evaluation of a function on both sides of a point, as central difference rules will require. In these cases, you can specify forward or backward difference rules as appropriate. You can also specify to use the complex step derivative, which we will outline in the next section.
+.SS Complex step derivative
+.sp
+The derivation of the complex\-step derivative approximation is accomplished by replacing \delta in 2
+with a complex step i h:
+.sp
+.ce
+
+.ce 0
+.sp
+Taking only the imaginary parts of both sides gives
+.sp
+.ce
+
+.ce 0
+.sp
+Dividing with h and rearranging yields:
+.sp
+.ce
+
+.ce 0
+.sp
+Terms with order h^2 or higher can safely be ignored since the interval h can be chosen up to machine precision
+without fear of rounding errors stemming from subtraction (since there are not any). Thus to within second\-order the complex\-step derivative approximation is given by:
+.sp
+.ce
+
+.ce 0
+.sp
+Next, consider replacing the step \delta in 8 with the complex step i^\frac{1}{2}  h:
+.sp
+.ce
+
+.ce 0
+.sp
+Similarly dividing with h^2/2 and taking only the imaginary components yields:
+.sp
+.ce
+
+.ce 0
+.sp
+This approximation is still subject to difference errors, but the error associated with this approximation is proportional to
+h^4\&. Neglecting these higher order terms yields:
+.sp
+.ce
+
+.ce 0
+.sp
+See [LaiCrassidisCheng2005] and [Ridout2009] for more details.
+The complex\-step derivative in numdifftools.Derivative has truncation error
+O(\delta^4) for both odd and even order derivatives for n>1\&. For n=1
+the truncation error is on the order of O(\delta^2), so
+truncation error can be eliminated by choosing steps to be very small.  The first order complex\-step derivative avoids the problem of
+round\-off error with small steps because there is no subtraction. However,
+the function to differentiate needs to be analytic. This method does not work if it does
+not support complex numbers or involves non\-analytic functions such as
+e.g.: abs, max, min. For this reason the \fIcentral\fP method is the default method.
+.SS High order derivative
+.sp
+So how do we construct these higher order approximation formulas? Here we will deomonstrate the principle by computing the 6\(aqth order central approximation for the first\-order derivative. In order to do so we simply set f_{odd}(\delta) equal to its 3\-term Taylor expansion:
+.sp
+.ce
+
+.ce 0
+.sp
+By inserting three different stepsizes into 12, eg \delta, \delta/2, \delta/4, we get a set of linear equations:
+.sp
+.ce
+
+.ce 0
+.sp
+The solution of these equations are simply:
+.sp
+.ce
+
+.ce 0
+.sp
+The first row of 14a gives the coefficients for 6\(aqth order approximation. Looking at at row two and three, we see also that
+this gives the 6\(aqth order approximation for the 3\(aqrd and 5\(aqth order derivatives as bonus. Thus this is also a general method for obtaining high order differentiation rules. As previously noted these formulas have the additional benefit of beeing applicable to any scale, with only a scale factor applied.
+.SS Richardson extrapolation methodology applied to derivative estimation
+.sp
+Some individuals might suggest that the above set of approximations are entirely adequate for any sane person. Can we do better?
+.sp
+Suppose we were to generate several different estimates of the approximation in 3 for different values of \delta at a fixed x_0\&. Thus, choose a single \delta, estimate a corresponding resulting approximation to f'(x_0), then do the same for \delta/2\&. If we assume that the error drops off linearly as \delta \to 0, then it is a simple matter to extrapolate this process to a zero step size. Our lack of knowledge of f''(x_0) is irrelevant. All that matters is \delta is small enough that the linear term dominates so we can ignore the quadratic term, therefore the error is purely linear.
+.sp
+.ce
+
+.ce 0
+.sp
+The linear extrapolant for this interval halving scheme as \delta \to 0 is given by:
+.sp
+.ce
+
+.ce 0
+.sp
+Since I\(aqve always been a big fan of convincing myself that something will work before I proceed too far, lets try this out in Python. Consider the function e^x\&. Generate a pair of approximations to f'(0), once at \delta of 0.1, and the second approximation at 1/2 that value. Recall that \frac{d(e^x)}{dx} = e^x, so at x = 0, the derivative should be exactly 1. How well will we do?
+.sp
+.nf
+.ft C
+>>> from numpy import exp, allclose
+>>> f = exp
+>>> dx = 0.1
+>>> df1 = (f(dx) \- f(0))/dx
+>>> allclose(df1, 1.05170918075648)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> df2 = (f(dx/2) \- f(0))/(dx/2)
+>>> allclose(df2, 1.02542192752048)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> allclose(2*df2 \- df1, 0.999134674284488)
+True
+.ft P
+.fi
+.sp
+In fact, this worked very nicely, reducing the error to roughly 1 percent of our initial estimates. Should we be surprised at this reduction? Not if we recall that last term in 3\&. We saw there that the next term in the expansion was O(\delta^2)\&. Since \delta was 0.1 in our experiment, that 1 percent number makes perfect sense.
+.sp
+The Richardson extrapolant in 16 assumed a linear process, with a specific reduction in \delta by a factor of 2. Assume the two term (linear + quadratic) residual term in 3, evaluating our approximation there with a third value of \delta\&. Again, assume the step size is cut in half again. The three term Richardson extrapolant is given by:
+.sp
+.ce
+
+.ce 0
+.sp
+A quick test in Python yields much better results yet.
+.sp
+.nf
+.ft C
+>>> from numpy import exp, allclose
+>>> f = exp
+>>> dx = 0.1
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> df1 = (f(dx) \- f(0))/dx
+>>> allclose(df1,  1.05170918075648)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> df2 = (f(dx/2) \- f(0))/(dx/2)
+>>> allclose(df2, 1.02542192752048)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> df3 = (f(dx/4) \- f(0))/(dx/4)
+>>> allclose(df3, 1.01260482097715)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> allclose(1./3*df1 \- 2*df2 + 8./3*df3, 1.00000539448361)
+True
+.ft P
+.fi
+.sp
+Again, Derivative uses the appropriate multiple term Richardson extrapolants for all derivatives of f up to any order [3]\&. This, combined with the use of high order approximations for the derivatives, allows the use of quite large step sizes. See [LynessMoler1966] and [LynessMoler1969]\&. How to compute the multiple term Richardson extrapolants will be elaborated further in the next section.
+.SS Multiple term Richardson extrapolants
+.sp
+We shall now indicate how we can calculate the multiple term Richardson extrapolant for f_{odd}(\delta)/\delta by rearranging 12:
+.sp
+.ce
+
+.ce 0
+.sp
+This equation has the form
+.sp
+.ce
+
+.ce 0
+.sp
+where L stands for f'(x_0) and \phi(\delta) for the numerical differentiation formula f_{odd}(\delta)/\delta\&.
+.sp
+By neglecting higher order terms (a_3 \delta^8) and inserting three different stepsizes into 18, eg \delta, \delta/2, \delta/4, we get a set of linear equations:
+.sp
+.ce
+
+.ce 0
+.sp
+The solution of these equations are simply:
+.sp
+.ce
+
+.ce 0
+.sp
+The first row of 20 gives the coefficients for Richardson extrapolation scheme.
+.SS Uncertainty estimates for Derivative
+.sp
+We can view the Richardson extrapolation step as a polynomial curve fit in the step size parameter \delta\&. Our desired extrapolated value is seen as simply the constant term coefficient in that polynomial model. Remember though, this polynomial model (see 10 and 11) has only a few terms in it with known non\-zero coefficients. That is, we will expect a constant term a_0, a term of the form a_1 \delta^4, and a third term a_2 \delta^6\&.
+.sp
+A neat trick to compute the statistical uncertainty in the estimate of our desired derivative is to use statistical methodology for that error estimate. While I do appreciate that there is nothing truly statistical or stochastic in this estimate, the approach still works nicely, providing a very reasonable estimate in practice. A three term Richardson\-like extrapolant, then evaluated at four distinct values for \delta, will yield an estimate of the standard error of the constant term, with one spare degree of freedom. The uncertainty is then derived by multiplying that standard error by the appropriate percentile from the Students\-t distribution.
+.sp
+.nf
+.ft C
+>>> import scipy.stats as ss
+>>> allclose(ss.t.cdf(12.7062047361747, 1), 0.975)
+True
+.ft P
+.fi
+.sp
+This critical level will yield a two\-sided confidence interval of 95 percent.
+.sp
+These error estimates are also of value in a different sense. Since they are efficiently generated at all the different scales, the particular spacing which yields the minimum predicted error is chosen as the best derivative estimate. This has been shown to work consistently well. A spacing too large tends to have large errors of approximation due to the finite difference schemes used. But a too small spacing is bad also, in that we see a significant amplification of least significant fit errors in the approximation. A middle value generally seems to yield quite good results. For example, Derivative will estimate the derivative of e^x automatically. As we see, the final overall spacing used was 0.0078125.
+.sp
+.nf
+.ft C
+>>> import numdifftools as nd
+>>> from numpy import exp, allclose
+>>> f = nd.Derivative(exp, full_output=True)
+>>> val, info = f(1)
+>>> allclose(val, 2.71828183)
+True
+>>> allclose(info.error_estimate, 6.927791673660977e\-14)
+True
+>>> allclose(info.final_step, 0.0078125)
+True
+.ft P
+.fi
+.sp
+However, if we force the step size to be artificially large, then approximation error takes over.
+.sp
+.nf
+.ft C
+>>> f = nd.Derivative(exp, step=1, full_output=True)
+>>> val, info = f(1)
+>>> allclose(val, 3.19452805)
+True
+>>> allclose(val\-exp(1), 0.47624622)
+True
+>>> allclose(info.final_step, 1)
+True
+.ft P
+.fi
+.sp
+And if the step size is forced to be too small, then we see noise dominate the problem.
+.sp
+.nf
+.ft C
+>>> f = nd.Derivative(exp, step=1e\-10, full_output=True)
+>>> val, info = f(1)
+>>> allclose(val, 2.71828093)
+True
+>>> allclose(val \- exp(1), \-8.97648138e\-07)
+True
+>>> allclose(info.final_step, 1.0000000e\-10)
+True
+.ft P
+.fi
+.sp
+Numdifftools, like Goldilocks in the fairy tale bearing her name, stays comfortably in the middle ground.
+.SS Derivative in action
+.sp
+How does numdifftools.Derivative work in action? A simple nonlinear function with a well known derivative is e^x\&. At x = 0, the derivative should be 1.
+.sp
+.nf
+.ft C
+>>> f = nd.Derivative(exp, full_output=True)
+>>> val, info = f(0)
+>>> allclose(val, 1)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> allclose(info.error_estimate, 5.28466160e\-14)
+True
+.ft P
+.fi
+.sp
+A second simple example comes from trig functions. The first four derivatives of the sine function, evaluated at x = 0, should be respectively [cos(0), -sin(0), -cos(0), sin(0)], or [1,0,-1,0]\&.
+.sp
+.nf
+.ft C
+>>> from numpy import sin, allclose
+>>> import numdifftools as nd
+>>> df = nd.Derivative(sin, n=1)
+>>> allclose(df(0), 1.)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> ddf = nd.Derivative(sin, n=2)
+>>> allclose(ddf(0), 0.)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> dddf = nd.Derivative(sin, n=3)
+>>> allclose(dddf(0), \-1.)
+True
+.ft P
+.fi
+.sp
+.nf
+.ft C
+>>> ddddf = nd.Derivative(sin, n=4)
+>>> allclose(ddddf(0), 0.)
+True
+.ft P
+.fi
+.SS Gradient and Hessian  estimation
+.sp
+Estimation of the gradient vector (numdifftools.Gradient) of a function of multiple variables is a simple task, requiring merely repeated calls to numdifftools.Derivative. Likewise, the diagonal elements of the hessian matrix are merely pure second partial derivatives of a function. numdifftools.Hessdiag accomplishes this task, again calling numdifftools.Derivative multiple times. Efficient computation of the off\-diagonal (mixed partial derivative) elements of the Hessian matrix uses a scheme much like that of numdifftools.Derivative, then Richardson extrapolation is used to improve a set of second order finite difference estimates of those mixed partials.
+.SS Conclusion
+.sp
+numdifftools.Derivative is an a adaptive scheme that can compute the derivative of arbitrary (well behaved) functions. It is reasonably fast as an adaptive method. Many options have been provided for the user who wishes the ultimate amount of control over the estimation.
+.SS Acknowledgments
+.sp
+The numdifftools package was originally a translation of an adaptive numerical differentiation toolbox written in Matlab by John D\(aqErrico [DErrico2006]\&.
+.sp
+Numdifftools has as of version 0.9 been extended with some of the functionality
+found in the statsmodels.tools.numdiff module written by Josef Perktold [Perktold2014]\&.
+.SS References
+.IP [LynessMoler1966] 5
+Lyness, J. M., Moler, C. B. (1966). Vandermonde Systems and Numerical
+Differentiation. \fINumerische Mathematik\fP\&.
+.IP [LynessMoler1969] 5
+Lyness, J. M., Moler, C. B. (1969). Generalized Romberg Methods for
+Integrals of Derivatives. \fINumerische Mathematik\fP\&.
+.IP [DErrico2006] 5
+D\(aqErrico, J. R.  (2006), Adaptive Robust Numerical Differentiation
+\fI\%http://www.mathworks.com/matlabcentral/fileexchange/13490\-adaptive\-robust\-numerical\-differentiation\fP
+.IP [Perktold2014] 5
+Perktold, J (2014), numdiff package
+\fI\%http://statsmodels.sourceforge.net/0.6.0/_modules/statsmodels/tools/numdiff.html\fP
+.IP [LaiCrassidisCheng2005] 5
+K.\-L. Lai, J.L. Crassidis, Y. Cheng, J. Kim (2005), New complex step derivative approximations with                                                                          application to second\-order kalman filtering,
+AIAA Guidance, \fINavigation and Control Conference\fP,
+San Francisco, California, August 2005, AIAA\-2005\-5944.
+.IP [Ridout2009] 5
+Ridout, M.S. (2009) Statistical applications of the complex\-step method
+of numerical differentiation. \fIThe American Statistician\fP, 63, 66\-74
+.IP [NAG] 5
+\fINAG Library\fP\&. NAG Fortran Library Document: D04AAF
+.SH FOOTNOTES
+.IP [1] 5
+We would normally write these additional terms using O() notation,
+where all that matters is that the error term is O(\delta) or
+perhaps O(\delta^2), but explicit understanding of these
+error terms will be useful in the Richardson extrapolation step later
+on.
+.IP [2] 5
+An even function is one which expresses an even symmetry around a
+given point. An even symmetry has the property that
+f(x) = f(-x)\&. Likewise, an odd function expresses an odd
+symmetry, wherein f(x) = -f(-x)\&.
+.IP [3] 5
+For practical purposes the maximum order of the derivative is between 4 and 10
+depending on the function to differentiate and also the method used
+in the approximation.
+.SH ALGORITHMIC DIFFERENTIATION
+.SS Numdifftools.nd_algopy
+.sp
+This module provide an easy to use interface to derivatives calculated with
+AlgoPy. Algopy stands for Algorithmic Differentiation in Python.
+.sp
+The purpose of AlgoPy is the evaluation of higher\-order derivatives in the
+forward and reverse mode of Algorithmic Differentiation (AD) of functions that
+are implemented as Python programs. Particular focus are functions that contain
+numerical linear algebra functions as they often appear in statistically
+motivated functions. The intended use of AlgoPy is for easy prototyping at
+reasonable execution speeds. More precisely, for a typical program a
+directional derivative takes order 10 times as much time as time as the
+function evaluation. This is approximately also true for the gradient.
+.SS Algoritmic differentiation
+.sp
+Algorithmic differentiation (AD) is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.
+.sp
+Algorithmic differentiation is not:
+.sp
+Symbolic differentiation, nor Numerical differentiation (the method of
+finite differences). These classical methods run into problems:
+symbolic differentiation leads to inefficient code (unless carefully done)
+and faces the difficulty of converting a computer program into a single
+expression, while numerical differentiation can introduce round\-off errors
+in the discretization process and cancellation. Both classical methods have
+problems with calculating higher derivatives, where the complexity and
+errors increase. Finally, both classical methods are slow at computing the
+partial derivatives of a function with respect to many inputs, as is needed
+for gradient\-based optimization algorithms. Algoritmic differentiation
+solves all of these problems.
+.SS Reference
+.sp
+Sebastian F. Walter and Lutz Lehmann 2013,
+"Algorithmic differentiation in Python with AlgoPy",
+in Journal of Computational Science, vol 4, no 5, pp 334 \- 344,
+\fI\%http://www.sciencedirect.com/science/article/pii/S1877750311001013\fP
+.sp
+\fI\%https://en.wikipedia.org/wiki/Automatic_differentiation\fP
+.sp
+\fI\%https://pythonhosted.org/algopy/index.html\fP
+.SH LICENSE
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Copyright (c) 2014, Per A. Brodtkorb, John D\(aqErrico
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the {organization} nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH DEVELOPERS
+.INDENT 0.0
+.IP \(bu 2
+Per A. Brodtkorb <per.andreas.brodtkorb (at) gmail.com>
+.IP \(bu 2
+John D\(aqErrico <woodchips (at) rochester.rr.com>
+.UNINDENT
+.SH CHANGELOG
+.sp
+Created with gitcommand: git shortlog v0.9.12..v0.9.13
+.SS Version 0.9.13, October 30, 2015
+.INDENT 0.0
+.TP
+.B pbrod (21):
+.INDENT 7.0
+.IP \(bu 2
+Updated README.rst and CHANGES.rst.
+.IP \(bu 2
+updated Limits.
+.IP \(bu 2
+Made it possible to differentiate complex functions and allow zero\(aqth order derivative.
+.IP \(bu 2
+BUG: added missing derivative order, n to Gradient, Hessian, Jacobian.
+.IP \(bu 2
+Made test more robust.
+.IP \(bu 2
+Updated structure in setup according to pyscaffold version 2.4.2.
+.IP \(bu 2
+Updated setup.cfg and deleted duplicate tests folder.
+.IP \(bu 2
+removed unused code.
+.IP \(bu 2
+Added appveyor.yml.
+.IP \(bu 2
+Added required appveyor install scripts
+.IP \(bu 2
+Fixed bug in appveyor.yml.
+.IP \(bu 2
+added wheel to requirements.txt.
+.IP \(bu 2
+updated appveyor.yml.
+.IP \(bu 2
+Removed import matplotlib.
+.UNINDENT
+.TP
+.B Justin Lecher (1):
+.INDENT 7.0
+.IP \(bu 2
+Fix min version for numpy.
+.UNINDENT
+.TP
+.B kikocorreoso (1):
+.INDENT 7.0
+.IP \(bu 2
+fix some prints on run_benchmark.py to make it work with py3
+.UNINDENT
+.UNINDENT
+.SS Version 0.9.12, August 28, 2015
+.sp
+pbrod (12):
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+Updated documentation.
+.IP \(bu 2
+Updated version in conf.py.
+.IP \(bu 2
+Updated CHANGES.rst.
+.IP \(bu 2
+Reimplemented outlier detection and made it more robust.
+.IP \(bu 2
+Added limits.py with tests.
+.IP \(bu 2
+Updated main tests folder.
+.IP \(bu 2
+Moved Richardson and dea3 to extrapolation.py.
+.IP \(bu 2
+Making a new release in order to upload to pypi.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Version 0.9.11, August 27, 2015
+.INDENT 0.0
+.TP
+.B pbrod (2):
+.INDENT 7.0
+.IP \(bu 2
+Fixed sphinx\-build and updated docs.
+.IP \(bu 2
+Fixed issue #9 Backward differentiation method fails with additional parameters.
+.UNINDENT
+.UNINDENT
+.SS Version 0.9.10, August 26, 2015
+.INDENT 0.0
+.TP
+.B pbrod (7):
+.INDENT 7.0
+.IP \(bu 2
+Fixed sphinx\-build and updated docs.
+.IP \(bu 2
+Added more tests to nd_algopy.
+.IP \(bu 2
+Dropped support for Python 2.6.
+.UNINDENT
+.UNINDENT
+.SS Version 0.9.4, August 26, 2015
+.INDENT 0.0
+.TP
+.B pbrod (7):
+.INDENT 7.0
+.IP \(bu 2
+Fixed sphinx\-build and updated docs.
+.UNINDENT
+.UNINDENT
+.SS Version 0.9.3, August 23, 2015
+.INDENT 0.0
+.TP
+.B Paul Kienzle (1):
+.INDENT 7.0
+.IP \(bu 2
+more useful benchmark plots.
+.UNINDENT
+.TP
+.B pbrod (7):
+.INDENT 7.0
+.IP \(bu 2
+Fixed bugs and updated docs.
+.IP \(bu 2
+Major rewrite of the easy to use interface to Algopy.
+.IP \(bu 2
+Added possibility to calculate n\(aqth order derivative not just for n=1 in nd_algopy.
+.IP \(bu 2
+Added tests to the easy to use interface to algopy.
+.UNINDENT
+.UNINDENT
+.SS Version 0.9.2, August 20, 2015
+.INDENT 0.0
+.TP
+.B pbrod (3):
+.INDENT 7.0
+.IP \(bu 2
+Updated documentation
+.IP \(bu 2
+Added parenthesis to a call to the print function
+.IP \(bu 2
+Made the test less strict in order to pass the tests on Travis for python 2.6 and 3.2.
+.UNINDENT
+.UNINDENT
+.SS Version 0.9.1, August 20,2015
+.INDENT 0.0
+.TP
+.B Christoph Deil (1):
+.INDENT 7.0
+.IP \(bu 2
+Fix Sphinx build
+.UNINDENT
+.TP
+.B pbrod (47):
+.INDENT 7.0
+.IP \(bu 2
+.INDENT 2.0
+.TP
+.B Total remake of numdifftools with slightly different call syntax.
+.INDENT 7.0
+.IP \(bu 2
+Can compute derivatives of order up to 10\-14 depending on function and method used.
+.IP \(bu 2
+Updated documentation and tests accordingly.
+.IP \(bu 2
+Fixed a bug in dea3.
+.IP \(bu 2
+Added StepsGenerator as an replacement for the adaptive option.
+.IP \(bu 2
+Added bicomplex class for testing the complex step second derivative.
+.IP \(bu 2
+Added fornberg_weights_all for computing optimal finite difference rules in a stable way.
+.IP \(bu 2
+Added higher order complex step derivative methods.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Version 0.7.7, December 18, 2014
+.INDENT 0.0
+.TP
+.B pbrod (35):
+.INDENT 7.0
+.IP \(bu 2
+Got travis\-ci working in order to run the tests automatically.
+.IP \(bu 2
+Fixed bugs in Dea class.
+.IP \(bu 2
+Fixed better error estimate for the Hessian.
+.IP \(bu 2
+Fixed tests for python 2.6.
+.IP \(bu 2
+Adding tests as subpackage.
+.IP \(bu 2
+Restructerd folders of numdifftools.
+.UNINDENT
+.UNINDENT
+.SS Version 0.7.3, December 17, 2014
+.INDENT 0.0
+.TP
+.B pbrod (5):
+.INDENT 7.0
+.IP \(bu 2
+Small cosmetic fixes.
+.IP \(bu 2
+pep8 + some refactorings.
+.IP \(bu 2
+Simplified code by refactoring.
+.UNINDENT
+.UNINDENT
+.SS Version 0.6.0, February 8, 2014
+.INDENT 0.0
+.TP
+.B pbrod (20):
+.INDENT 7.0
+.IP \(bu 2
+Update and rename README.md to README.rst.
+.IP \(bu 2
+Simplified call to Derivative: removed step_fix.
+.IP \(bu 2
+Deleted unused code.
+.IP \(bu 2
+Simplified and Refactored. Now possible to choose step_num=1.
+.IP \(bu 2
+Changed default step_nom from max(abs(x0), 0.2) to max(log2(abs(x0)), 0.2).
+.IP \(bu 2
+pep8ified code and made sure that all tests pass.
+.UNINDENT
+.UNINDENT
+.SS Version 0.5.0, January 10, 2014
+.INDENT 0.0
+.TP
+.B pbrod (9):
+.INDENT 7.0
+.IP \(bu 2
+Updated the examples in Gradient class and in info.py.
+.IP \(bu 2
+Added test for vec2mat and docstrings + cosmetic fixes.
+.IP \(bu 2
+Refactored code into private methods.
+.IP \(bu 2
+Fixed issue #7: Derivative(fun)(numpy.ones((10,5)) * 2) failed.
+.IP \(bu 2
+Made print statements compatible with python 3.
+.UNINDENT
+.UNINDENT
+.SS Version 0.4.0, May 5, 2012
+.INDENT 0.0
+.TP
+.B pbrod (1)
+.INDENT 7.0
+.IP \(bu 2
+Fixed a bug for inf and nan values.
+.UNINDENT
+.UNINDENT
+.SS Version 0.3.5, May 19, 2011
+.INDENT 0.0
+.TP
+.B pbrod (1)
+.INDENT 7.0
+.IP \(bu 2
+Fixed a bug for inf and nan values.
+.UNINDENT
+.UNINDENT
+.SS Version 0.3.4, Feb 24, 2011
+.INDENT 0.0
+.TP
+.B pbrod (11)
+.INDENT 7.0
+.IP \(bu 2
+Made automatic choice for the stepsize more robust.
+.IP \(bu 2
+Added easy to use interface to the algopy and scientificpython modules.
+.UNINDENT
+.UNINDENT
+.SS Version 0.3.1, May 20, 2009
+.INDENT 0.0
+.TP
+.B pbrod (4)
+.INDENT 7.0
+.IP \(bu 2
+First version of numdifftools published on google.code
+.UNINDENT
+.UNINDENT
+.SH MODULES
+.SS numdifftools package
+.SS Subpackages
+.SS numdifftools.tests package
+.SS Submodules
+.SS numdifftools.tests.conftest module
+.sp
+Dummy conftest.py for numdifftools.
+.sp
+If you don\(aqt know what this is for, just leave it empty.
+Read more about conftest.py under:
+\fI\%https://pytest.org/latest/plugins.html\fP
+.SS numdifftools.tests.test_extrapolation module
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_extrapolation.TestExtrapolation(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B setUp()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_dea3_on_trapz_sin()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_dea_on_trapz_sin()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_richardson()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_extrapolation.TestRichardson(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_order_step_combinations()
+.UNINDENT
+.UNINDENT
+.SS numdifftools.tests.test_hessian module
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_hessian.TestHessian(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_hessian()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_hessian.classicalHamiltonian
+Bases: \fI\%object\fP
+.sp
+Hamiltonian
+.INDENT 7.0
+.TP
+.B Parameters
+\fBN\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+number of ions in the chain
+.UNINDENT
+.UNINDENT
+.sp
+\fBw\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+angular trap frequency
+.UNINDENT
+.UNINDENT
+.sp
+\fBC\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+Coulomb constant times the electronic charge in SI units.
+.UNINDENT
+.UNINDENT
+.sp
+\fBm\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+the mass of a single trapped ion in the chain
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B initialposition()
+Defines initial position as an estimate for the minimize process.
+.UNINDENT
+.INDENT 7.0
+.TP
+.B normal_modes(eigenvalues)
+Return normal modes
+.sp
+the computed eigenvalues of the matrix Vx are of the form
+(normal_modes)2*m.
+.UNINDENT
+.INDENT 7.0
+.TP
+.B potential(positionvector)
+Return potential
+.sp
+positionvector is an 1\-d array (vector) of length N that contains the
+positions of the N ions
+.UNINDENT
+.UNINDENT
+.SS numdifftools.tests.test_limits module
+.sp
+Created on 28. aug. 2015
+.sp
+@author: pab
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_limits.TestLimit(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_derivative_of_cos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_difficult_limit()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_residue()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_sinx_divx()
+.UNINDENT
+.UNINDENT
+.SS numdifftools.tests.test_multicomplex module
+.sp
+Created on 22. apr. 2015
+.sp
+@author: pab
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_multicomplex.BicomplexTester(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_add()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_arccos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_arcsin()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_arg_c()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_assign()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_conjugate()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_cos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_der_abs()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_der_arccos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_der_arccosh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_der_arctan()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_der_cos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_der_log()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_division()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_dot()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_eq()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_flat()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_ge()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_gt()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_init()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_le()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_lt()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_multiplication()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_neg()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_norm()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_pow()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_repr()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_rpow()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_rsub()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_shape()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_sub()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_subsref()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_multicomplex.DerivativeTester(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_all_first_derivatives()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_all_second_derivatives()
+.UNINDENT
+.UNINDENT
+.SS numdifftools.tests.test_nd_algopy module
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_nd_algopy.TestDerivative(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_derivative_cube()
+Test for Issue 7
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_exp()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_on_log()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_on_sinh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_sin()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_fun_with_additional_parameters()
+Test for issue #9
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_high_order_derivative_cos()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_nd_algopy.TestGradient(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_on_scalar_function()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_nd_algopy.TestHessdiag(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_forward()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_reverse()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_nd_algopy.TestHessian(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_hessian_cosIx_yI_at_I0_0I()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_run_hamiltonian()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_nd_algopy.TestJacobian(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_on_scalar_function()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_on_vector_valued_function()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_nd_algopy.classicalHamiltonian
+Bases: \fI\%object\fP
+.sp
+Hamiltonian
+.INDENT 7.0
+.TP
+.B Parameters
+\fBN\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+number of ions in the chain
+.UNINDENT
+.UNINDENT
+.sp
+\fBw\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+angular trap frequency
+.UNINDENT
+.UNINDENT
+.sp
+\fBC\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+Coulomb constant times the electronic charge in SI units.
+.UNINDENT
+.UNINDENT
+.sp
+\fBm\fP : scalar
+.INDENT 7.0
+.INDENT 3.5
+the mass of a single trapped ion in the chain
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B initialposition()
+Defines initial position as an estimate for the minimize process.
+.UNINDENT
+.INDENT 7.0
+.TP
+.B normal_modes(eigenvalues)
+Return normal modes
+.INDENT 7.0
+.TP
+.B Computed eigenvalues of the matrix Vx are of the form
+(normal_modes)**2*m.
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B potential(positionvector)
+Return potential
+.sp
+positionvector is an 1\-d array (vector) of length N that contains the
+positions of the N ions
+.UNINDENT
+.UNINDENT
+.SS numdifftools.tests.test_numdifftools module
+.sp
+Test functions for numdifftools module
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestDerivative(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_backward_derivative_on_sinh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_central_and_forward_derivative_on_log()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_default_scale()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_cube()
+Test for Issue 7
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_exp()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_of_cos_x()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_derivative_sin()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_fun_with_additional_parameters()
+Test for issue #9
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_high_order_derivative_cos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_infinite_functions()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestFornbergWeights(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_weights()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestGlobalFunctions(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B testdea3()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestGradient(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B testgradient()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestHessdiag(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_complex()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_default_step()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_fixed_step()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestHessian(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_hessian_cosIx_yI_at_I0_0I()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestJacobian(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B testjacobian()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestRichardson(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_central()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_complex()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_forward_backward()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.tests.test_numdifftools.TestStepGenerator(methodName=\(aqrunTest\(aq)
+Bases: \fBunittest.case.TestCase\fP
+.INDENT 7.0
+.TP
+.B test_default_base_step()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_default_generator()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B test_fixed_base_step()
+.UNINDENT
+.UNINDENT
+.SS numdifftools.tests.test_numdifftools_docstrings module
+.INDENT 0.0
+.TP
+.B numdifftools.tests.test_numdifftools_docstrings.load_tests(loader=None, tests=None, ignore=None)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.tests.test_numdifftools_docstrings.suite()
+.UNINDENT
+.SS Module contents
+.SS Submodules
+.SS numdifftools.core module
+.sp
+numerical differentiation functions:
+.sp
+Derivative, Gradient, Jacobian, and Hessian
+.sp
+Author:      Per A. Brodtkorb
+.sp
+Created:     01.08.2008
+Copyright:   (c) pab 2008
+Licence:     New BSD
+.sp
+Based on matlab functions derivest.m gradest.m hessdiag.m, hessian.m
+and jacobianest.m version 1.0 released 12/27/2006 by  John D\(aqErrico
+(e\-mail: \fI\%woodchips@rochester.rr.com\fP)
+.sp
+Also based on the python functions approx_fprime, approx_fprime_cs,
+approx_hess_cs, approx_hess1, approx_hess2 and approx_hess3 in the
+statsmodels.tools.numdiff module released in 2014 written by Josef Perktold.
+.INDENT 0.0
+.TP
+.B numdifftools.core.dea3(v0, v1, v2, symmetric=False)
+Extrapolate a slowly convergent sequence
+.INDENT 7.0
+.TP
+.B Parameters
+\fBv0, v1, v2\fP : array\-like
+.INDENT 7.0
+.INDENT 3.5
+3 values of a convergent sequence to extrapolate
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBresult\fP : array\-like
+.INDENT 7.0
+.INDENT 3.5
+extrapolated value
+.UNINDENT
+.UNINDENT
+.sp
+\fBabserr\fP : array\-like
+.INDENT 7.0
+.INDENT 3.5
+absolute error estimate
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.Derivative(f, step=None, method=\(aqcentral\(aq, order=2, n=1, full_output=False)
+Bases: \fBnumdifftools.core._Derivative\fP
+.sp
+Calculate n\-th derivative with finite difference approximation
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep\fP : float, array\-like or StepGenerator object, optional
+.INDENT 7.0
+.INDENT 3.5
+Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [\(aqcomplex\(aq, \(aqmulticomplex\(aq], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : {\(aqcentral\(aq, \(aqcomplex\(aq, \(aqmulticomplex\(aq, \(aqforward\(aq, \(aqbackward\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines the method used in the approximation
+.UNINDENT
+.UNINDENT
+.sp
+\fBorder\fP : int, optional
+.INDENT 7.0
+.INDENT 3.5
+defines the order of the error term in the Taylor approximation used.
+For \(aqcentral\(aq and \(aqcomplex\(aq methods, it must be an even number.
+.UNINDENT
+.UNINDENT
+.sp
+\fBn\fP : int, optional
+.INDENT 7.0
+.INDENT 3.5
+Order of the derivative.
+.UNINDENT
+.UNINDENT
+.sp
+\fBfull_output\fP : bool, optional
+.INDENT 7.0
+.INDENT 3.5
+If \fIfull_output\fP is False, only the derivative is returned.
+If \fIfull_output\fP is True, then (der, r) is returned \fIder\fP is the
+derivative, and \fIr\fP is a Results object.
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBder\fP : ndarray
+.INDENT 7.0
+.INDENT 3.5
+array of derivatives
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Gradient\fP, \fI\%Hessian\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex\-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex\-step derivative has truncation error O(steps**2) for \fIn=1\fP and
+O(steps**4) for \fIn\fP larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex\-step derivative avoids the problem of
+round\-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non\-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the \(aqcentral\(aq method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.
+.sp
+For all methods one should be careful in decreasing the step size too much
+due to round\-off errors.
+.sp
+Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.
+.INDENT 7.0
+.TP
+.B n
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.Jacobian(f, step=None, method=\(aqcentral\(aq, order=2, full_output=False)
+Bases: \fI\%numdifftools.core.Gradient\fP
+.sp
+Calculate Jacobian with finite difference approximation
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep\fP : float, array\-like or StepGenerator object, optional
+.INDENT 7.0
+.INDENT 3.5
+Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [\(aqcomplex\(aq, \(aqmulticomplex\(aq], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : {\(aqcentral\(aq, \(aqcomplex\(aq, \(aqmulticomplex\(aq, \(aqforward\(aq, \(aqbackward\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines the method used in the approximation
+.UNINDENT
+.UNINDENT
+.sp
+\fBorder\fP : int, optional
+.INDENT 7.0
+.INDENT 3.5
+defines the order of the error term in the Taylor approximation used.
+For \(aqcentral\(aq and \(aqcomplex\(aq methods, it must be an even number.
+.UNINDENT
+.UNINDENT
+.sp
+\fBfull_output\fP : bool, optional
+.INDENT 7.0
+.INDENT 3.5
+If \fIfull_output\fP is False, only the derivative is returned.
+If \fIfull_output\fP is True, then (der, r) is returned \fIder\fP is the
+derivative, and \fIr\fP is a Results object.
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBjacob\fP : array
+.INDENT 7.0
+.INDENT 3.5
+Jacobian
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Hessian\fP, \fI\%Gradient\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex\-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex\-step derivative has truncation error O(steps**2) for \fIn=1\fP and
+O(steps**4) for \fIn\fP larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex\-step derivative avoids the problem of
+round\-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non\-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the \(aqcentral\(aq method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.
+.sp
+For all methods one should be careful in decreasing the step size too much
+due to round\-off errors.
+.sp
+Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.
+.sp
+If f returns a 1d array, it returns a Jacobian. If a 2d array is returned
+by f (e.g., with a value for each observation), it returns a 3d array
+with the Jacobian of each observation with shape xk x nobs x xk. I.e.,
+the Jacobian of the first observation would be [:, 0, :]
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.Gradient(f, step=None, method=\(aqcentral\(aq, order=2, full_output=False)
+Bases: \fI\%numdifftools.core.Derivative\fP
+.sp
+Calculate Gradient with finite difference approximation
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep\fP : float, array\-like or StepGenerator object, optional
+.INDENT 7.0
+.INDENT 3.5
+Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [\(aqcomplex\(aq, \(aqmulticomplex\(aq], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : {\(aqcentral\(aq, \(aqcomplex\(aq, \(aqmulticomplex\(aq, \(aqforward\(aq, \(aqbackward\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines the method used in the approximation
+.UNINDENT
+.UNINDENT
+.sp
+\fBorder\fP : int, optional
+.INDENT 7.0
+.INDENT 3.5
+defines the order of the error term in the Taylor approximation used.
+For \(aqcentral\(aq and \(aqcomplex\(aq methods, it must be an even number.
+.UNINDENT
+.UNINDENT
+.sp
+\fBfull_output\fP : bool, optional
+.INDENT 7.0
+.INDENT 3.5
+If \fIfull_output\fP is False, only the derivative is returned.
+If \fIfull_output\fP is True, then (der, r) is returned \fIder\fP is the
+derivative, and \fIr\fP is a Results object.
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBgrad\fP : array
+.INDENT 7.0
+.INDENT 3.5
+gradient
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Hessian\fP, \fI\%Jacobian\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex\-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex\-step derivative has truncation error O(steps**2) for \fIn=1\fP and
+O(steps**4) for \fIn\fP larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex\-step derivative avoids the problem of
+round\-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non\-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the \(aqcentral\(aq method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.
+.sp
+For all methods one should be careful in decreasing the step size too much
+due to round\-off errors.
+.sp
+Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.Hessian(f, step=None, method=\(aqcentral\(aq, full_output=False)
+Bases: \fBnumdifftools.core._Derivative\fP
+.sp
+Calculate Hessian with finite difference approximation
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep\fP : float, array\-like or StepGenerator object, optional
+.INDENT 7.0
+.INDENT 3.5
+Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [\(aqcomplex\(aq, \(aqmulticomplex\(aq], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : {\(aqcentral\(aq, \(aqcomplex\(aq, \(aqmulticomplex\(aq, \(aqforward\(aq, \(aqbackward\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines the method used in the approximation
+.UNINDENT
+.UNINDENT
+.sp
+\fBfull_output\fP : bool, optional
+.INDENT 7.0
+.INDENT 3.5
+If \fIfull_output\fP is False, only the derivative is returned.
+If \fIfull_output\fP is True, then (der, r) is returned \fIder\fP is the
+derivative, and \fIr\fP is a Results object.
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBhess\fP : ndarray
+.INDENT 7.0
+.INDENT 3.5
+array of partial second derivatives, Hessian
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Hessian\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex\-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex\-step derivative has truncation error O(steps**2) for \fIn=1\fP and
+O(steps**4) for \fIn\fP larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex\-step derivative avoids the problem of
+round\-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non\-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the \(aqcentral\(aq method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.
+.sp
+For all methods one should be careful in decreasing the step size too much
+due to round\-off errors.
+.sp
+Computes the Hessian according to method as:
+\(aqforward\(aq 7, \(aqcentral\(aq 9 and \(aqcomplex\(aq 10:
+.sp
+.ce
+
+.ce 0
+.sp
+.ce
+
+.ce 0
+.sp
+.ce
+
+.ce 0
+.sp
+where e_j is a vector with element j is one and the rest
+are zero and d_j is a scalar spacing steps_j\&.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.Hessdiag(f, step=None, method=\(aqcentral\(aq, order=2, full_output=False)
+Bases: \fI\%numdifftools.core.Derivative\fP
+.sp
+Calculate Hessian diagonal with finite difference approximation
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep\fP : float, array\-like or StepGenerator object, optional
+.INDENT 7.0
+.INDENT 3.5
+Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=None)
+if step or method in in [\(aqcomplex\(aq, \(aqmulticomplex\(aq], otherwise
+MaxStepGenerator(step_ratio=None, num_extrap=14)
+The results are extrapolated if the StepGenerator generate more than 3
+steps.
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : {\(aqcentral\(aq, \(aqcomplex\(aq, \(aqmulticomplex\(aq, \(aqforward\(aq, \(aqbackward\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines the method used in the approximationorder : int, optional
+defines the order of the error term in the Taylor approximation used.
+For \(aqcentral\(aq and \(aqcomplex\(aq methods, it must be an even number.
+.UNINDENT
+.UNINDENT
+.sp
+\fBfull_output\fP : bool, optional
+.INDENT 7.0
+.INDENT 3.5
+If \fIfull_output\fP is False, only the derivative is returned.
+If \fIfull_output\fP is True, then (der, r) is returned \fIder\fP is the
+derivative, and \fIr\fP is a Results object.
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBhessdiag\fP : array
+.INDENT 7.0
+.INDENT 3.5
+hessian diagonal
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Hessian\fP, \fI\%Jacobian\fP, \fI\%Gradient\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Complex methods are usually the most accurate provided the function to
+differentiate is analytic. The complex\-step methods also requires fewer
+steps than the other methods and can work very close to the support of
+a function.
+The complex\-step derivative has truncation error O(steps**2) for \fIn=1\fP and
+O(steps**4) for \fIn\fP larger, so truncation error can be eliminated by
+choosing steps to be very small.
+Especially the first order complex\-step derivative avoids the problem of
+round\-off error with small steps because there is no subtraction. However,
+this method fails if f(x) does not support complex numbers or involves
+non\-analytic functions such as e.g.: abs, max, min.
+Central difference methods are almost as accurate and has no restriction on
+type of function. For this reason the \(aqcentral\(aq method is the default
+method, but sometimes one can only allow evaluation in forward or backward
+direction.
+.sp
+For all methods one should be careful in decreasing the step size too much
+due to round\-off errors.
+.sp
+Higher order approximation methods will generally be more accurate, but may
+also suffer more from numerical problems. First order methods is usually
+not recommended.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.MinStepGenerator(base_step=None, step_ratio=2, num_steps=None, offset=0, scale=None, num_extrap=0, use_exact_steps=True, check_num_steps=True)
+Bases: \fI\%object\fP
+.sp
+Generates a sequence of steps
+.sp
+where steps = base_step * step_ratio ** (np.arange(num_steps) + offset)
+.INDENT 7.0
+.TP
+.B Parameters
+\fBbase_step\fP : float, array\-like, optional
+.INDENT 7.0
+.INDENT 3.5
+Defines the base step, if None, then base_step is set to
+EPS**(1/scale)*max(log(1+|x|), 1) where x is supplied at runtime
+through the __call__ method.
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep_ratio\fP : real scalar, optional, default 2
+.INDENT 7.0
+.INDENT 3.5
+Ratio between sequential steps generated.
+Note: Ratio > 1
+If None then step_ratio is 2 for n=1 otherwise step_ratio is 1.6
+.UNINDENT
+.UNINDENT
+.sp
+\fBnum_steps\fP : scalar integer, optional, default  n + order \- 1 + num_extrap
+.INDENT 7.0
+.INDENT 3.5
+defines number of steps generated. It should be larger than
+n + order \- 1
+.UNINDENT
+.UNINDENT
+.sp
+\fBoffset\fP : real scalar, optional, default 0
+.INDENT 7.0
+.INDENT 3.5
+offset to the base step
+.UNINDENT
+.UNINDENT
+.sp
+\fBscale\fP : real scalar, optional
+.INDENT 7.0
+.INDENT 3.5
+scale used in base step. If not None it will override the default
+computed with the default_scale function.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.MaxStepGenerator(step_max=2.0, step_ratio=2.0, num_steps=15, step_nom=None, offset=0, num_extrap=0, use_exact_steps=False, check_num_steps=True)
+Bases: \fI\%numdifftools.core.MinStepGenerator\fP
+.sp
+Generates a sequence of steps
+.INDENT 7.0
+.TP
+.B where
+steps = base_step * step_ratio ** (\-np.arange(num_steps) + offset)
+base_step = step_max * step_nom
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Parameters
+\fBmax_step\fP : float, array\-like, optional default 2
+.INDENT 7.0
+.INDENT 3.5
+Defines the maximum step
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep_ratio\fP : real scalar, optional, default 2
+.INDENT 7.0
+.INDENT 3.5
+Ratio between sequential steps generated.
+Note: Ratio > 1
+.UNINDENT
+.UNINDENT
+.sp
+\fBnum_steps\fP : scalar integer, optional, default  n + order \- 1 + num_extrap
+.INDENT 7.0
+.INDENT 3.5
+defines number of steps generated. It should be larger than
+n + order \- 1
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep_nom\fP :  default maximum(log1p(abs(x)), 1)
+.INDENT 7.0
+.INDENT 3.5
+Nominal step.
+.UNINDENT
+.UNINDENT
+.sp
+\fBoffset\fP : real scalar, optional, default 0
+.INDENT 7.0
+.INDENT 3.5
+offset to the base step: max_step * nom_step
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.core.Richardson(step_ratio=2.0, step=1, order=1, num_terms=2)
+Bases: \fI\%object\fP
+.sp
+Extrapolates as sequence with Richardsons method
+Notes
+.sp
+Suppose you have series expansion that goes like this
+.sp
+L = f(h) + a0 * h^p_0 + a1 * h^p_1+ a2 * h^p_2 + ...
+.sp
+where p_i = order + step * i  and f(h) \-> L as h \-> 0, but f(0) != L.
+.sp
+If we evaluate the right hand side for different stepsizes h
+we can fit a polynomial to that sequence of approximations.
+This is exactly what this class does.
+.INDENT 7.0
+.TP
+.B extrapolate(sequence, steps)
+.UNINDENT
+.UNINDENT
+.SS numdifftools.extrapolation module
+.sp
+Created on 28. aug. 2015
+.sp
+@author: pab
+.INDENT 0.0
+.TP
+.B class numdifftools.extrapolation.Dea(limexp=3)
+Bases: \fI\%object\fP
+.sp
+LIMEXP  is the maximum number of elements the
+epsilon table data can contain. The epsilon table
+is stored in the first (LIMEXP+2) entries of EPSTAB.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.extrapolation.Richardson(step_ratio=2.0, step=1, order=1, num_terms=2)
+Bases: \fI\%object\fP
+.sp
+Extrapolates as sequence with Richardsons method
+Notes
+.sp
+Suppose you have series expansion that goes like this
+.sp
+L = f(h) + a0 * h^p_0 + a1 * h^p_1+ a2 * h^p_2 + ...
+.sp
+where p_i = order + step * i  and f(h) \-> L as h \-> 0, but f(0) != L.
+.sp
+If we evaluate the right hand side for different stepsizes h
+we can fit a polynomial to that sequence of approximations.
+This is exactly what this class does.
+.INDENT 7.0
+.TP
+.B extrapolate(sequence, steps)
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.extrapolation.convolve(sequence, rule, **kwds)
+Wrapper around scipy.ndimage.convolve1d that allows complex input.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.extrapolation.dea3(v0, v1, v2, symmetric=False)
+Extrapolate a slowly convergent sequence
+.INDENT 7.0
+.TP
+.B Parameters
+\fBv0, v1, v2\fP : array\-like
+.INDENT 7.0
+.INDENT 3.5
+3 values of a convergent sequence to extrapolate
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBresult\fP : array\-like
+.INDENT 7.0
+.INDENT 3.5
+extrapolated value
+.UNINDENT
+.UNINDENT
+.sp
+\fBabserr\fP : array\-like
+.INDENT 7.0
+.INDENT 3.5
+absolute error estimate
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.extrapolation.test_dea()
+.UNINDENT
+.SS numdifftools.info module
+.SS Introduction to Numdifftools
+.sp
+Numdifftools is a suite of tools written in Python to solve automatic numerical
+differentiation problems in one or more variables. Finite differences are used
+in an adaptive manner, coupled with a Richardson extrapolation methodology to
+provide a maximally accurate result. The user can configure many options like;
+changing the order of the method or the extrapolation, even allowing the user
+to specify whether \fIcomplex\fP, \fImulticomplex\fP, \fIcentral\fP, \fIforward\fP or
+\fIbackward\fP differences are used. The methods provided are:
+.INDENT 0.0
+.TP
+.B \fIDerivative:\fP
+Computates the derivative of order 1 through 10 on any scalar function.
+.TP
+.B \fIGradient:\fP
+Computes the gradient vector of a scalar function of one or more variables.
+.TP
+.B \fIJacobian:\fP
+Computes the Jacobian matrix of a vector valued function of one or more
+variables.
+.TP
+.B \fIHessian:\fP
+Computes the Hessian matrix of all 2nd partial derivatives of a scalar
+function of one or more variables.
+.TP
+.B \fIHessdiag:\fP
+Computes only the diagonal elements of the Hessian matrix
+.UNINDENT
+.sp
+All of these methods also produce error estimates on the result.
+.sp
+Numdifftools also provide an easy to use interface to derivatives calculated
+with AlgoPy. Algopy stands for Algorithmic Differentiation in Python.
+The purpose of AlgoPy is the evaluation of higher\-order derivatives in the
+\fIforward\fP and \fIreverse\fP mode of Algorithmic Differentiation (AD) of functions
+that are implemented as Python programs.
+.sp
+Documentation is at: \fI\%http://numdifftools.readthedocs.org/\fP
+.sp
+Code and issue tracker is at \fI\%https://github.com/pbrod/numdifftools\fP\&.
+.sp
+Latest stable release is at \fI\%http://pypi.python.org/pypi/Numdifftools\fP\&.
+.sp
+To test if the toolbox is working paste the following in an interactive
+python session:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+import numdifftools as nd
+nd.test(coverage=True, doctests=True)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Getting Started
+.sp
+Compute 1\(aqst and 2\(aqnd derivative of exp(x), at x == 1:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> import numpy as np
+>>> import numdifftools as nd
+>>> fd = nd.Derivative(np.exp)        # 1\(aqst derivative
+>>> fdd = nd.Derivative(np.exp, n=2)  # 2\(aqnd derivative
+>>> np.allclose(fd(1), 2.7182818284590424)
+True
+>>> np.allclose(fdd(1), 2.7182818284590424)
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Nonlinear least squares:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> xdata = np.reshape(np.arange(0,1,0.1),(\-1,1))
+>>> ydata = 1+2*np.exp(0.75*xdata)
+>>> fun = lambda c: (c[0]+c[1]*np.exp(c[2]*xdata) \- ydata)**2
+>>> Jfun = nd.Jacobian(fun)
+>>> np.allclose(np.abs(Jfun([1,2,0.75])), 0) # should be numerically zero
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute gradient of sum(x**2):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> fun = lambda x: np.sum(x**2)
+>>> dfun = nd.Gradient(fun)
+>>> dfun([1,2,3])
+array([ 2.,  4.,  6.])
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute the same with the easy to use interface to AlgoPy:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> import numdifftools.nd_algopy as nda
+>>> import numpy as np
+>>> fd = nda.Derivative(np.exp)        # 1\(aqst derivative
+>>> fdd = nda.Derivative(np.exp, n=2)  # 2\(aqnd derivative
+>>> np.allclose(fd(1), 2.7182818284590424)
+True
+>>> np.allclose(fdd(1), 2.7182818284590424)
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Nonlinear least squares:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> xdata = np.reshape(np.arange(0,1,0.1),(\-1,1))
+>>> ydata = 1+2*np.exp(0.75*xdata)
+>>> fun = lambda c: (c[0]+c[1]*np.exp(c[2]*xdata) \- ydata)**2
+>>> Jfun = nda.Jacobian(fun, method=\(aqreverse\(aq)
+>>> np.allclose(np.abs(Jfun([1,2,0.75])), 0) # should be numerically zero
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute gradient of sum(x**2):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> fun = lambda x: np.sum(x**2)
+>>> dfun = nda.Gradient(fun)
+>>> dfun([1,2,3])
+array([ 2.,  4.,  6.])
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS See also
+.sp
+scipy.misc.derivative
+.INDENT 0.0
+.TP
+.B numdifftools.info.test_docstrings()
+.UNINDENT
+.SS numdifftools.limits module
+.sp
+Created on 27. aug. 2015
+.sp
+@author: pab
+Author: John D\(aqErrico
+e\-mail: \fI\%woodchips@rochester.rr.com\fP
+Release: 1.0
+Release date: 5/23/2008
+.INDENT 0.0
+.TP
+.B class numdifftools.limits.Limit(f, step=None, method=\(aqabove\(aq, order=4, full_output=False)
+Bases: \fI\%object\fP
+.sp
+Compute limit of a function at a given point
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : callable
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(z, \fI*args\fP, \fI**kwds\fP) to compute the limit for.
+The function, f, is assumed to return a result of the same shape and
+size as its input, \fIz\fP\&.
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep: float, complex, array\-like or StepGenerator object, optional\fP
+.INDENT 7.0
+.INDENT 3.5
+Defines the spacing used in the approximation.
+Default is  MinStepGenerator(base_step=step, step_ratio=4)
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : {\(aqabove\(aq, \(aqbelow\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines if the limit is taken from \fIabove\fP or \fIbelow\fP
+.UNINDENT
+.UNINDENT
+.sp
+\fBorder: positive scalar integer, optional.\fP
+.INDENT 7.0
+.INDENT 3.5
+defines the order of approximation used to find the specified limit.
+The order must be member of [1 2 3 4 5 6 7 8]. 4 is a good compromise.
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+limit_fz: array like
+.INDENT 7.0
+.INDENT 3.5
+estimated limit of f(z) as z \-\-> z0
+.UNINDENT
+.UNINDENT
+.sp
+info:
+.INDENT 7.0
+.INDENT 3.5
+Only given if full_output is True and contains the following:
+error estimate: ndarray
+.INDENT 0.0
+.INDENT 3.5
+95 uncertainty estimate around the limit, such that
+abs(limit_fz \- f(z0)*(z\-z0)) < error_estimate
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B final_step: ndarray
+final step used in approximation
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B class info
+Bases: \fBtuple\fP
+.INDENT 7.0
+.TP
+.B error_estimate
+Alias for field number 0
+.UNINDENT
+.INDENT 7.0
+.TP
+.B final_step
+Alias for field number 1
+.UNINDENT
+.INDENT 7.0
+.TP
+.B index
+Alias for field number 2
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B Limit.limit(x, *args, **kwds)
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.limits.MinStepGenerator(base_step=None, step_ratio=4.0, num_steps=None, offset=0, scale=1.2, use_exact_steps=True)
+Bases: \fI\%object\fP
+.sp
+Generates a sequence of steps
+.sp
+where steps = base_step * step_ratio ** (np.arange(num_steps) + offset)
+.INDENT 7.0
+.TP
+.B Parameters
+\fBbase_step\fP : float, array\-like, optional
+.INDENT 7.0
+.INDENT 3.5
+Defines the base step, if None, then base_step is set to
+EPS**(1/scale)*max(log(1+|x|), 1) where x is supplied at runtime
+through the __call__ method.
+.UNINDENT
+.UNINDENT
+.sp
+\fBstep_ratio\fP : real scalar, optional, default 4
+.INDENT 7.0
+.INDENT 3.5
+Ratio between sequential steps generated.
+.UNINDENT
+.UNINDENT
+.sp
+\fBnum_steps\fP : scalar integer, optional, default  n + order \- 1 + num_extrap
+.INDENT 7.0
+.INDENT 3.5
+defines number of steps generated. It should be larger than
+n + order \- 1
+.UNINDENT
+.UNINDENT
+.sp
+\fBoffset\fP : real scalar, optional, default 0
+.INDENT 7.0
+.INDENT 3.5
+offset to the base step
+.UNINDENT
+.UNINDENT
+.sp
+\fBscale\fP : real scalar, optional
+.INDENT 7.0
+.INDENT 3.5
+scale used in base step. If not None it will override the default
+computed with the default_scale function.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.limits.nom_step(x=None)
+Return nominal step
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.limits.test_docstrings()
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.limits.valarray(shape, value=nan, typecode=None)
+Return an array of all value.
+.UNINDENT
+.SS numdifftools.multicomplex module
+.sp
+Created on 22. apr. 2015
+.sp
+@author: pab
+.SS References
+.sp
+A METHODOLOGY FOR ROBUST OPTIMIZATION OF
+LOW\-THRUST TRAJECTORIES IN MULTI\-BODY
+ENVIRONMENTS
+Gregory Lantoine (2010)
+Phd thesis, Georgia Institute of Technology
+.sp
+USING MULTICOMPLEX VARIABLES FOR AUTOMATIC
+COMPUTATION OF HIGH\-ORDER DERIVATIVES
+Gregory Lantoine, Ryan P. Russell , and Thierry Dargent
+ACM Transactions on Mathematical Software, Vol. 38, No. 3, Article 16,
+April 2012, 21 pages,
+.sp
+M.E. Luna\-Elizarraras, M. Shapiro, D.C. Struppa1, A. Vajiac (2012)
+CUBO A Mathematical Journal
+Vol. 14, No 2, (61\-80). June 2012.
+.sp
+Computation of higher\-order derivatives using the multi\-complex
+step method
+Adriaen Verheyleweghen, (2014)
+Project report, NTNU
+.INDENT 0.0
+.TP
+.B class numdifftools.multicomplex.bicomplex(z1, z2)
+Bases: \fI\%object\fP
+.sp
+Creates an instance of a bicomplex object.
+zeta = z1 + j*z2, where z1 and z2 are complex numbers.
+.INDENT 7.0
+.TP
+.B arccos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B arccosh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B arcsin()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B arcsinh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B arctan()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B arctanh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B arg_c()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B arg_c1p()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B static asarray(other)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B conjugate()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B cos()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B cosh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B cot()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B coth()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B csc()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B csch()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B dot(other)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B exp()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B exp2()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B expm1()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B flat(index)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B imag
+.UNINDENT
+.INDENT 7.0
+.TP
+.B imag1
+.UNINDENT
+.INDENT 7.0
+.TP
+.B imag12
+.UNINDENT
+.INDENT 7.0
+.TP
+.B imag2
+.UNINDENT
+.INDENT 7.0
+.TP
+.B log()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B log10()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B log1p()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B log2()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B logaddexp(other)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B logaddexp2(other)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B static mat2bicomp(arr)
+.UNINDENT
+.INDENT 7.0
+.TP
+.B mod_c()
+Complex modulus
+.UNINDENT
+.INDENT 7.0
+.TP
+.B norm()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B real
+.UNINDENT
+.INDENT 7.0
+.TP
+.B sec()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B sech()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B shape
+.UNINDENT
+.INDENT 7.0
+.TP
+.B sin()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B sinh()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B size
+.UNINDENT
+.INDENT 7.0
+.TP
+.B sqrt()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B tan()
+.UNINDENT
+.INDENT 7.0
+.TP
+.B tanh()
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.multicomplex.c_abs(z)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.multicomplex.c_atan2(x, y)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.multicomplex.c_max(x, y)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.multicomplex.c_min(x, y)
+.UNINDENT
+.SS numdifftools.nd_algopy module
+.SS Numdifftools.nd_algopy
+.sp
+This module provide an easy to use interface to derivatives calculated with
+AlgoPy. Algopy stands for Algorithmic Differentiation in Python.
+.sp
+The purpose of AlgoPy is the evaluation of higher\-order derivatives in the
+forward and reverse mode of Algorithmic Differentiation (AD) of functions that
+are implemented as Python programs. Particular focus are functions that contain
+numerical linear algebra functions as they often appear in statistically
+motivated functions. The intended use of AlgoPy is for easy prototyping at
+reasonable execution speeds. More precisely, for a typical program a
+directional derivative takes order 10 times as much time as time as the
+function evaluation. This is approximately also true for the gradient.
+.SS Algoritmic differentiation
+.sp
+Algorithmic differentiation (AD) is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.
+.sp
+Algorithmic differentiation is not:
+.sp
+Symbolic differentiation, nor Numerical differentiation (the method of
+finite differences). These classical methods run into problems:
+symbolic differentiation leads to inefficient code (unless carefully done)
+and faces the difficulty of converting a computer program into a single
+expression, while numerical differentiation can introduce round\-off errors
+in the discretization process and cancellation. Both classical methods have
+problems with calculating higher derivatives, where the complexity and
+errors increase. Finally, both classical methods are slow at computing the
+partial derivatives of a function with respect to many inputs, as is needed
+for gradient\-based optimization algorithms. Algoritmic differentiation
+solves all of these problems.
+.SS Reference
+.sp
+Sebastian F. Walter and Lutz Lehmann 2013,
+"Algorithmic differentiation in Python with AlgoPy",
+in Journal of Computational Science, vol 4, no 5, pp 334 \- 344,
+\fI\%http://www.sciencedirect.com/science/article/pii/S1877750311001013\fP
+.sp
+\fI\%https://en.wikipedia.org/wiki/Automatic_differentiation\fP
+.sp
+\fI\%https://pythonhosted.org/algopy/index.html\fP
+.INDENT 0.0
+.TP
+.B class numdifftools.nd_algopy.Derivative(f, n=1, method=\(aqforward\(aq)
+Bases: \fBnumdifftools.nd_algopy._Common\fP
+.sp
+Calculate n\-th derivative with Algorithmic Differentiation method
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBn\fP : int, optional
+.INDENT 7.0
+.INDENT 3.5
+Order of the derivative.
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : string, optional {\(aqforward\(aq, \(aqreverse\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines method used in the approximation
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBder\fP : ndarray
+.INDENT 7.0
+.INDENT 3.5
+array of derivatives
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Gradient\fP, \fI\%Hessdiag\fP, \fI\%Hessian\fP, \fI\%Jacobian\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.nd_algopy.Gradient(f, method=\(aqforward\(aq)
+Bases: \fBnumdifftools.nd_algopy._Common\fP
+.sp
+Calculate Gradient with Algorithmic Differentiation method
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : string, optional {\(aqforward\(aq, \(aqreverse\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines method used in the approximation
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBgrad\fP : array
+.INDENT 7.0
+.INDENT 3.5
+gradient
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Jacobian\fP, \fI\%Hessdiag\fP, \fI\%Hessian\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.nd_algopy.Hessdiag(f, method=\(aqforward\(aq)
+Bases: \fI\%numdifftools.nd_algopy.Hessian\fP
+.sp
+Calculate Hessian diagonal with Algorithmic Differentiation method
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : string, optional {\(aqforward\(aq, \(aqreverse\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines method used in the approximation
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBhessdiag\fP : ndarray
+.INDENT 7.0
+.INDENT 3.5
+Hessian diagonal array of partial second order derivatives.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Gradient\fP, \fI\%Jacobian\fP, \fI\%Hessian\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.nd_algopy.Hessian(f, method=\(aqforward\(aq)
+Bases: \fBnumdifftools.nd_algopy._Common\fP
+.sp
+Calculate Hessian with Algorithmic Differentiation method
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : string, optional {\(aqforward\(aq, \(aqreverse\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines method used in the approximation
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBhess\fP : ndarray
+.INDENT 7.0
+.INDENT 3.5
+array of partial second derivatives, Hessian
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Gradient\fP, \fI\%Jacobian\fP, \fI\%Hessdiag\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B class numdifftools.nd_algopy.Jacobian(f, method=\(aqforward\(aq)
+Bases: \fBnumdifftools.nd_algopy._Common\fP
+.sp
+Calculate Jacobian with Algorithmic Differentiation method
+.INDENT 7.0
+.TP
+.B Parameters
+\fBf\fP : function
+.INDENT 7.0
+.INDENT 3.5
+function of one array f(x, \fI*args\fP, \fI**kwds\fP)
+.UNINDENT
+.UNINDENT
+.sp
+\fBmethod\fP : string, optional {\(aqforward\(aq, \(aqreverse\(aq}
+.INDENT 7.0
+.INDENT 3.5
+defines method used in the approximation
+.UNINDENT
+.UNINDENT
+.TP
+.B Returns
+\fBjacob\fP : array
+.INDENT 7.0
+.INDENT 3.5
+Jacobian
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBSEE ALSO:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fI\%Derivative\fP, \fI\%Gradient\fP, \fI\%Hessdiag\fP, \fI\%Hessian\fP
+.UNINDENT
+.UNINDENT
+Notes
+.sp
+Algorithmic differentiation is a set of techniques to numerically
+evaluate the derivative of a function specified by a computer program. AD
+exploits the fact that every computer program, no matter how complicated,
+executes a sequence of elementary arithmetic operations (addition,
+subtraction, multiplication, division, etc.) and elementary functions
+(exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these
+operations, derivatives of arbitrary order can be computed automatically,
+accurately to working precision, and using at most a small constant factor
+more arithmetic operations than the original program.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.nd_algopy.test_docstrings()
+.UNINDENT
+.SS numdifftools.run_benchmark module
+.SS numdifftools.test_functions module
+.sp
+Created on 17. mai 2015
+.sp
+@author: pab
+.INDENT 0.0
+.TP
+.B numdifftools.test_functions.dcos(x)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.test_functions.ddcos(x)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B numdifftools.test_functions.get_function(fun_name, n=1)
+.UNINDENT
+.SS Module contents
+.SS Introduction to Numdifftools
+.sp
+Numdifftools is a suite of tools written in Python to solve automatic numerical
+differentiation problems in one or more variables. Finite differences are used
+in an adaptive manner, coupled with a Richardson extrapolation methodology to
+provide a maximally accurate result. The user can configure many options like;
+changing the order of the method or the extrapolation, even allowing the user
+to specify whether \fIcomplex\fP, \fImulticomplex\fP, \fIcentral\fP, \fIforward\fP or
+\fIbackward\fP differences are used. The methods provided are:
+.INDENT 0.0
+.TP
+.B \fIDerivative:\fP
+Computates the derivative of order 1 through 10 on any scalar function.
+.TP
+.B \fIGradient:\fP
+Computes the gradient vector of a scalar function of one or more variables.
+.TP
+.B \fIJacobian:\fP
+Computes the Jacobian matrix of a vector valued function of one or more
+variables.
+.TP
+.B \fIHessian:\fP
+Computes the Hessian matrix of all 2nd partial derivatives of a scalar
+function of one or more variables.
+.TP
+.B \fIHessdiag:\fP
+Computes only the diagonal elements of the Hessian matrix
+.UNINDENT
+.sp
+All of these methods also produce error estimates on the result.
+.sp
+Numdifftools also provide an easy to use interface to derivatives calculated
+with AlgoPy. Algopy stands for Algorithmic Differentiation in Python.
+The purpose of AlgoPy is the evaluation of higher\-order derivatives in the
+\fIforward\fP and \fIreverse\fP mode of Algorithmic Differentiation (AD) of functions
+that are implemented as Python programs.
+.sp
+Documentation is at: \fI\%http://numdifftools.readthedocs.org/\fP
+.sp
+Code and issue tracker is at \fI\%https://github.com/pbrod/numdifftools\fP\&.
+.sp
+Latest stable release is at \fI\%http://pypi.python.org/pypi/Numdifftools\fP\&.
+.sp
+To test if the toolbox is working paste the following in an interactive
+python session:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+import numdifftools as nd
+nd.test(coverage=True, doctests=True)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Getting Started
+.sp
+Compute 1\(aqst and 2\(aqnd derivative of exp(x), at x == 1:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> import numpy as np
+>>> import numdifftools as nd
+>>> fd = nd.Derivative(np.exp)        # 1\(aqst derivative
+>>> fdd = nd.Derivative(np.exp, n=2)  # 2\(aqnd derivative
+>>> np.allclose(fd(1), 2.7182818284590424)
+True
+>>> np.allclose(fdd(1), 2.7182818284590424)
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Nonlinear least squares:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> xdata = np.reshape(np.arange(0,1,0.1),(\-1,1))
+>>> ydata = 1+2*np.exp(0.75*xdata)
+>>> fun = lambda c: (c[0]+c[1]*np.exp(c[2]*xdata) \- ydata)**2
+>>> Jfun = nd.Jacobian(fun)
+>>> np.allclose(np.abs(Jfun([1,2,0.75])), 0) # should be numerically zero
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute gradient of sum(x**2):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> fun = lambda x: np.sum(x**2)
+>>> dfun = nd.Gradient(fun)
+>>> dfun([1,2,3])
+array([ 2.,  4.,  6.])
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute the same with the easy to use interface to AlgoPy:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> import numdifftools.nd_algopy as nda
+>>> import numpy as np
+>>> fd = nda.Derivative(np.exp)        # 1\(aqst derivative
+>>> fdd = nda.Derivative(np.exp, n=2)  # 2\(aqnd derivative
+>>> np.allclose(fd(1), 2.7182818284590424)
+True
+>>> np.allclose(fdd(1), 2.7182818284590424)
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Nonlinear least squares:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> xdata = np.reshape(np.arange(0,1,0.1),(\-1,1))
+>>> ydata = 1+2*np.exp(0.75*xdata)
+>>> fun = lambda c: (c[0]+c[1]*np.exp(c[2]*xdata) \- ydata)**2
+>>> Jfun = nda.Jacobian(fun, method=\(aqreverse\(aq)
+>>> np.allclose(np.abs(Jfun([1,2,0.75])), 0) # should be numerically zero
+True
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Compute gradient of sum(x**2):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+>>> fun = lambda x: np.sum(x**2)
+>>> dfun = nda.Gradient(fun)
+>>> dfun([1,2,3])
+array([ 2.,  4.,  6.])
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS See also
+.sp
+scipy.misc.derivative
+.INDENT 0.0
+.IP \(bu 2
+genindex
+.IP \(bu 2
+modindex
+.IP \(bu 2
+search
+.UNINDENT
+.SH COPYRIGHT
+2009-2015, Per A Brodtkorb, John D'Errico
+.\" Generated by docutils manpage writer.
+.
