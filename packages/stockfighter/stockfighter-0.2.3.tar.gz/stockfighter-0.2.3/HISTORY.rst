@@ -1,0 +1,28 @@
+=======
+History
+=======
+
+0.2.2 (2015-12-12)
+------------------
+
+* Fix testing and implementation for place_order
+
+0.2.2 (2015-12-11)
+------------------
+
+* Make py2 and py3 compatibility a thing, guaranteed by Tox and Travis.
+
+0.2.1 (2015-12-11)
+------------------
+
+* Working README and quick install
+
+0.2.0 (2015-12-11)
+------------------
+
+* All API functions implemented and tested
+
+0.1.0 (2015-12-11)
+------------------
+
+* First release on PyPI.
