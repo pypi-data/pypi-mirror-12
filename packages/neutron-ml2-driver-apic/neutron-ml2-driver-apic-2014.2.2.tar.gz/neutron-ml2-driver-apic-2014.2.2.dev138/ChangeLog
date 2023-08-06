@@ -1,0 +1,130 @@
+CHANGES
+=======
+
+* pin requirements for 2014.2.2
+* actually use apicapi for unit testing
+* Fix packaging scripts to handle dev version
+* Update juno release version to 2014.2.2
+* fix unit tests and pep8 errors
+* Bump version to 2014.2.1
+* Create link to NAT EPG in same transation
+* scope ctx name on gbp_details
+* SNAT Network for SNAT pool
+* Renamed apic-ns-metadata-proxy to opflex-ns-proxy
+* Added ns-proxy support for domains
+* Fixing port binding for SNAT ports
+* Few minor fixes
+* Defensive check in update_gw_router_info
+* Delegate feature checking to the attestator
+* introduce endpoint attestation
+* RPC-driven allocation of SNAT IPs for Hosts
+* Add IP mapping details for all kinds of ports
+* Use value of 'preexisting' flag
+* Add mixin class to handle IP ownership updates
+* Use elevated context when retrieving ports
+* HA IP address to Owner Port ID association
+* Don't drop port-updates notifications for router-interface port changes
+* on demand synchronization (not asynchronous)
+* Fix RPM packaging for new console script
+* Updated metadata-ns-proxy for host-ip param
+* Fix an error in router port status update
+* add dhcp_server_ips to the subnet definition on rpc call
+* enhance subnet definition to accomodate metadata/dhcp server info
+* Appropriately set status for router ports
+* Set 'Associated L3Out' for external BD
+* Add test-cases for cross-tenant shadow L3out
+* Create shadow L3outs for each openstack tenant
+* Updated defaults: No sync on start, use_uuid
+* Avoid leaving behind stale L3Outs when clearing gateway
+* Handle pre-existing L3Out properly with/without NAT-ing
+* exclude external subnets from VRF info
+* retrieve vm name when requested by opflex agent
+* consider the case where tenant name has no UUID suffix
+* monkey patch apic DB for better name lookup
+* change scoping policy for single tenant mode
+* Scope tenant names in IP-mapping info
+* add per_tenant_context and single_tenant_mode options
+* Fix nat-enabled check
+* Fix apicapi dependency for DEBs
+* Fix package dependencies
+* Send network details in GBP RPC
+* Create subnets in NAT BD
+* Add config file option to disable NAT per external network
+* introduce per_tenant_context configuration option
+* test l3 plugin for shared networks
+* Support shared networks for common VRF
+* Added APIC specific dnsmasq usage
+* Updated agent timers (agent_*_interval) to 60 sec
+* Add opflexagent to requirements.txt
+* More fixes to use of pre-existing L3 for NAT
+* Remove extraneous parameter 'scope'
+* Disable NAT-ing if use_vmm is False
+* Fix get_gbp_details(
+* Use mapped-names for NAT related objects
+* Add missing call to setup RPC
+* Add console script entries
+* Add oslo concurrency as package dependency
+* Change name of LLDP package that we depend on (lldpd -> lldpad)
+* Add debian changelog file and minor versioning changes
+* Fix names of service files
+* Add files for creating RPM and Debian packages
+* Wrap dupicate DB entry error into info LOG for topology svc
+* Auto move to work with VPC properly
+* Call path deletion with host config on integrated topology service
+* Avoid pushing void segments to APIC during host discovery
+* Fix mechanism callback API version to match agent notifier
+* Add topology agents and LLDP movable hosts
+* Fix external gateway related UTs
+* Port update causes path deletion if needed
+* Remove check migration from pep8 tests
+* Avoid unwanted creation of port path for external gateway ifaces
+* Single manager in same Neutron controller
+* use EPG tenant when pushin static path configuration for a port
+* Avoid unwanted external contract deletion
+* Use pre_existing name mapping for preexisting L3Out
+* Avoid scoping for preexisting APIC external networks
+* Use preexisting APIC external networks
+* Fix entry-point names of drivers
+* change create_router override on l3 service to reflect neutron changes
+* override create_router to move gw operation out of transaction
+* Fix pep8 errors
+* Add support for NAT
+* Add oslo concurrency as package dependency
+* override create_router to move gw operation out of transaction
+* Port update causes path deletion if needed
+* Push scoped tenant on GBP details for opflex agents
+* Wrap dupicate DB entry error into info LOG for topology svc
+* Auto move to work with VPC properly
+* Remove check migration from pep8 tests
+* Call path deletion with host config on integrated topology service
+* Avoid pushing void segments to APIC during host discovery
+* Fix mechanism callback API version to match agent notifier
+* Movable host with LLDP agent
+* Change name of LLDP package that we depend on (lldpd -> lldpad)
+* Avoid unwanted creation of port path for external gateway ifaces
+* Single manager in same Neutron controller
+* Add debian changelog file and minor versioning changes
+* Use apic_ml2 related agents
+* Fix names of service files
+* Add files for creating RPM and Debian packages
+* use EPG tenant when pushin static path configuration for a port
+* Add app-profile to gbp details
+* add ml2 vlan configuration to the mechanism driver
+* Avoid unwanted external contract deletion
+* Add apic_l3 plugin to entry points
+* Fixed LLDP sync to converge faster after neutron restart
+* Updated lldp parameters
+* Use pre_existing name mapping for preexisting L3Out
+* Added support to detect VPC bundle name using LLDP
+* Avoid scoping for preexisting APIC external networks
+* Use preexisting APIC external networks
+* Fixed typo in Opflex RPC
+* Rpc for opflex agent
+* Opflex agent integration
+* Juno branch init
+* Fixed None gateway issue
+* Non compute port binding fix
+* Version and reference fix
+* Fix setup.cfg
+* Repo Setup
+* first commit
