@@ -1,0 +1,175 @@
+digraph {
+"additional_summary_consumer" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_input">&#9654; input</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="2" BGCOLOR="white" BORDER="1">additional_summary_consumer<BR/>type=Other</TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"data_producer" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2" BGCOLOR="cyan" BORDER="1">data_producer<BR/>type=Other</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_dataset">dataset &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"dataset_additional_producer" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2" BGCOLOR="lightcyan" BORDER="1">dataset_additional_producer<BR/>type=Other</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_output">output &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"exporter" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_person_summary">&#9654; person_summary</TD></TR>
+        <TR><TD ALIGN="LEFT" PORT="input_persons_linked_to_datasets">&#9654; persons_linked_to_datasets</TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="2" BGCOLOR="cyan" BORDER="1">exporter<BR/>type=JavaMapReduceAction</TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"importer" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2" BGCOLOR="cyan" BORDER="1">importer<BR/>type=Other</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_person">person &#9654;</TD></TR>
+        <TR><TD ALIGN="RIGHT" PORT="output_document">document &#9654;</TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"person-transformer" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_input">&#9654; input</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="2" BGCOLOR="lightcyan" BORDER="1">person-transformer<BR/>type=PigAction</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_output">output &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"person_summary_processor" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_person">&#9654; person</TD></TR>
+        <TR><TD ALIGN="LEFT" PORT="input_external_data">&#9654; external_data</TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="2" BGCOLOR="cyan" BORDER="1">person_summary_processor<BR/>type=Other</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_person_summary">person_summary &#9654;</TD></TR>
+        <TR><TD ALIGN="RIGHT" PORT="output_additional_summary">additional_summary &#9654;</TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"processor" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="3">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_dataset">&#9654; dataset</TD></TR>
+        <TR><TD ALIGN="LEFT" PORT="input_person">&#9654; person</TD></TR>
+        <TR><TD ALIGN="LEFT" PORT="input_dataset_additional_data">&#9654; dataset_additional_data</TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="3" BGCOLOR="cyan" BORDER="1">processor<BR/>type=Other</TD>
+    <TD ROWSPAN="3">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_persons_linked_to_datasets">persons_linked_to_datasets &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"processor-bypass" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2" BGCOLOR="white" BORDER="1">processor-bypass<BR/>type=JavaAction</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_persons_to_datasets">persons_to_datasets &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"trivial_data_filter" [label=<
+<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+  <TR>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="LEFT" PORT="input_dataset">&#9654; dataset</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+    <TD ROWSPAN="2" BGCOLOR="white" BORDER="1">trivial_data_filter<BR/>type=Other</TD>
+    <TD ROWSPAN="2">
+      <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD ALIGN="RIGHT" PORT="output_dataset">dataset &#9654;</TD></TR>
+        <TR><TD BORDER="0"> </TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+</TABLE>>
+ shape=none]
+"person_summary_processor":"output_additional_summary" -> "additional_summary_consumer":"input_input"
+"person-transformer":"output_output" -> "person_summary_processor":"input_person"
+"person-transformer":"output_output" -> "processor":"input_person"
+"dataset_additional_producer":"output_output" -> "processor":"input_dataset_additional_data"
+"trivial_data_filter":"output_dataset" -> "processor":"input_dataset"
+"data_producer":"output_dataset" -> "trivial_data_filter":"input_dataset"
+"OUTPUT" [label="OUTPUT" shape=rarrow]
+"importer":"output_document" -> "OUTPUT"
+"INPUT" [label="INPUT" shape=rarrow]
+"INPUT" -> "person_summary_processor":"input_external_data"
+"person_datasets_id" [shape=point]
+"processor":"output_persons_linked_to_datasets" -> "person_datasets_id"
+"processor-bypass":"output_persons_to_datasets" -> "person_datasets_id"
+"person_datasets_id" -> "exporter":"input_persons_linked_to_datasets"
+"importer":"output_person" -> "person-transformer":"input_input"
+"person_summary_processor":"output_person_summary" -> "exporter":"input_person_summary"
+}
+
