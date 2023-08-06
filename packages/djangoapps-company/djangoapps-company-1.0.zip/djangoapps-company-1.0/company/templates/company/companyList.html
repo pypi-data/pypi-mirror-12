@@ -1,0 +1,69 @@
+<div ng-controller="companyCtrl">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+               <div class="row">
+                   <div class="col-lg-2">
+                       <h2>公司列表</h2>
+                   </div>
+                   <div class="col-lg-4 col-lg-offset-6">
+                        <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="query" />
+                                </div>
+                                <button type="submit" class="btn btn-default">
+                                    Search
+                                </button>
+                            </form>
+                   </div>
+               </div>
+              <div class="row">
+                  <div class="col-lg-1">
+                      <button class="btn btn-danger btn-block btn-sm" ng-click="open('lg')">创建</button>
+                  </div>
+              </div>
+           <div class="row"></div>
+      </div>
+    </div>
+
+    <div class="panel panel-warning">
+        <div class="panel-body">
+               <table class="table table-hover table-condensed">
+                    <thead>
+                       <tr>
+                          <th>
+                             序号
+                          </th>
+                          <th>
+                             公司名称
+                          </th>
+                          <th>
+                             新增日期
+                          </th>
+                          <th>
+                              录入人
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                    {% verbatim %}
+                       <tr  ng-repeat="company in companies | filter:query" ng-click="changeModal('lg',$index)">
+                           <td>
+                             {{ company.id }}
+                          </td>
+                          <td>
+                             {{ company.name }}
+                          </td>
+                          <td>
+                             {{ company.create_time | date:"yyyy/MM/dd  HH:mm" }}
+                          </td>
+                           <td>
+                               {{ company.create_user_username }}
+                           </td>
+                       </tr>
+                    {% endverbatim %}
+                      </tbody>
+                 </table>
+        </div>
+    </div>
+</div>

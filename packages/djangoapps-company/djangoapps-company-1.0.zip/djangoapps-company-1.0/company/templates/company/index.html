@@ -1,0 +1,30 @@
+{% extends 'bases/base_with_nav.html' %}
+{% load staticfiles %}
+{% block title %}公司{% endblock %}
+
+{% block app-page %}
+    <div ng-app="company">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="list-group" ng-controller="listgroupCtrl">
+                          <a href="#company_list" class="list-group-item" ng-class="{active: $route.current.activetab == 'company_list'}">公司列表</a>
+                          <a href="#" class="list-group-item">Morbi leo risus</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-10">
+                        <ng-view/>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{%  static 'company/company.js' %}" ></script>
+    <script src="{%  static 'company/service/company_service.js' %}" ></script>
+    <script src="{%  static 'company/controller/company_lsit_ctrl.js' %}" ></script>
+    <script src="{%  static 'company/ui-bootstrap-tpls-0.14.2.min.js' %}" ></script>
+{% endblock %}
