@@ -1,0 +1,14 @@
+"""{LANG} to {TOLANG} Converter {STYLE} {NP} test
+
+Testing suite for converter {lang} to {tolang} {np} in the {style} style.
+
+"""
+
+from lexor.command.test import nose_msg_explanations
+
+
+def test_{np}():
+    """{lang}.converter.{tolang}.{style}.{np}: MSG_EXPLANATION """
+    nose_msg_explanations(
+        '{lang}', 'converter', '{style}', '{np}', '{tolang}'
+    )
