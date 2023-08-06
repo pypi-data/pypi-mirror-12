@@ -1,0 +1,3 @@
+- Jens Klein, jens@bluedynamics.com
+- Matthias Dollfuss, matthias.dollfuss@gmail.com
+- Érico Andrei
