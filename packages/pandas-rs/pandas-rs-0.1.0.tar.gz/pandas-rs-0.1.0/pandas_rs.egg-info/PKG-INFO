@@ -1,0 +1,59 @@
+Metadata-Version: 1.1
+Name: pandas-rs
+Version: 0.1.0
+Summary: pandas extension for AWS RedShift (Not Officail library)
+Home-page: https://github.com/SamuraiT/pandas-rs
+Author: Tatsuro Yasukawa
+Author-email: mark@diveintomark.org
+License: UNKNOWN
+Description: # pandas-rs
+        
+        Pandas extension for AWS RedShift (not official)
+        inspired by [pandas-td](https://github.com/treasure-data/pandas-td)
+        
+        # installation
+        
+        ~~~
+        pip install pandas-rs
+        ~~~
+        
+        
+        # Usage
+        
+        First export password via shell(recommended)
+        
+        ~~~shell
+        export REDSHIFT_PASSWORD='password'
+        ~~~
+        
+        ~~~py
+        import pandas_rs as rs
+        import os # use only if you will access password through environment variables
+        
+        rs.create_engine(
+            dbname='dev',
+            user='test',
+            password=os.environ['REDSHIFT_PASSWORD'],
+            host='foobar.redshift.exmple',
+            port='5439'
+        )
+        
+        
+        print(rs.read_sql("""select 'hello redshift' greeting"""))
+        ~~~
+        
+        result
+        
+        ~~~py
+                 greeting
+        0  hello redshift
+        ~~~
+        
+Keywords: pandas,RedShift,sql
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Other Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
