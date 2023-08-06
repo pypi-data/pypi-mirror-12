@@ -1,0 +1,47 @@
+{% extends 'bases/base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+
+    <div ng-app='usercenter' class="col-md-4 col-md-offset-4">
+            <div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title  text-center">
+						用户登录
+					</h3>
+				</div>
+				<div class="panel-body">
+                    <form class="form-horizontal" ng-controller="login_form" ng-submit="login()">
+                        <div class="form-group">
+                                <label class="col-md-3 control-label">用户名</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="loginuser.username" required>
+                                </div>
+                        </div>
+                       {% verbatim %}<h5 class="text-danger text-left col-md-offset-3">{{ loginErrorMessage.username['0'] }}</h5>{% endverbatim %}
+                        <div class="form-group">
+                                <label class="col-md-3 control-label">密码</label>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control" ng-model="loginuser.password" required>
+                                </div>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-1 alert alert-danger text-center" ng-show="loginErrorMessage"><h5>{% verbatim %}{{ loginErrorMessage.non_field_errors['0'] }}{% endverbatim %}</h5></div>
+                       {% verbatim %}<h5 class="text-danger text-left col-md-offset-3">{{ loginErrorMessage.password['0'] }}</h5>{% endverbatim %}
+                        <div class="form-group">
+                            <div class="col-md-offset-5">
+                                <button type="submit" class="btn btn-primary">登陆</button>
+                                <a href="/usercenter/register">用户注册</a>
+                            </div>
+                        </div>
+                    </form>
+
+				</div>
+
+			</div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{%  static 'usercenter/usercenter.js' %}"></script>
+{% endblock %}

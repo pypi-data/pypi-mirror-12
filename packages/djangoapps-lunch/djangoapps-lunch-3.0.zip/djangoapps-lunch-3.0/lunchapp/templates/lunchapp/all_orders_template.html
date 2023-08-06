@@ -1,0 +1,72 @@
+<h2>all orders</h2>
+{% verbatim %}
+<div ng-controller="all_orderlines">
+
+
+
+     <div class="col-md-10">
+         <form class="form-horizontal"></form>
+         <div class="form-group">
+             <label class="col-lg-1 control-label">Search</label>
+             <div class="col-lg-2">
+              <input  class="form-control" ng-model="query">
+            </div>
+         </div>
+         </form>
+        <table class="table table-striped table-hover table-condensed">
+                <thead>
+                   <tr class="danger">
+                      <th>
+                         时间
+                      </th>
+                      <th>
+                         创建人
+                      </th>
+                      <th>
+                         产品
+                      </th>
+                      <th>
+                         数量
+                      </th>
+                     <th>
+                         价格
+                      </th>
+                      <th>
+                         备注
+                      </th>
+                       <th>
+                         状态
+                       </th>
+
+
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr ng-repeat="order_line in orderlines | filter:query">
+                      <td>
+                         {{ order_line.create_time |date:"yyyy/MM/dd  HH:mm" }}
+                      </td>
+                      <td>
+                         {{ order_line.creator }}
+                      </td>
+                      <td>
+                         {{ order_line.name }}
+                      </td>
+                      <td>
+                         {{ order_line.qty }}
+                      </td>
+                      <td>
+                         {{ order_line.price }}
+                      </td>
+                     <td>
+                         {{ order_line.description }}
+                      </td>
+                      <td>
+                         {{ order_line.state }}
+                      </td>
+                   </tr>
+                  </tbody>
+             </table>
+    </div>
+</div>
+{% endverbatim %}

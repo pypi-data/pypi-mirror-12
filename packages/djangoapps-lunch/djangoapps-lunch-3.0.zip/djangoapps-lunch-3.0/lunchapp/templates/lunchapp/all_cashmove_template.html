@@ -1,0 +1,59 @@
+<div class="page-header">
+  <h1>流水记录</h1>
+</div>
+
+<div ng-controller="allcashCtrl">
+    <table class="table table-striped table-hover table-condensed">
+            <thead>
+               <tr>
+                  <th>
+                     时间
+                  </th>
+                  <th>
+                     用户
+                  </th>
+                  <th>
+                     金额
+                  </th>
+                  <th>
+                     类型
+                  </th>
+                     <th>
+                     说明
+                  </th>
+                     <th>
+                     处理人
+                  </th>
+               </tr>
+            </thead>
+            {% verbatim %}
+            <tbody>
+               <tr ng-repeat="move in cashmoves">
+                  <td>
+                     {{ move.create_time | date:"yyyy/MM/dd  HH:mm" }}
+                  </td>
+                  <td>
+                     {{ move.user }}
+                  </td>
+                  <td>
+                     {{ move.amount }}
+                  </td>
+                  <td>
+                     {{ move.state }}
+                  </td>
+                  <td>
+                     {{ move.description }}
+                  </td>
+                 <td>
+                     {{ move.create_uid }}
+                  </td>
+
+
+               </tr>
+              </tbody>
+         </table>
+         {% endverbatim %}
+
+
+
+</div>

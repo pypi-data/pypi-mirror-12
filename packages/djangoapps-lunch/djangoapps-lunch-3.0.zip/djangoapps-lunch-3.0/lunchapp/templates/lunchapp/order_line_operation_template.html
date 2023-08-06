@@ -1,0 +1,71 @@
+<div class="page-header">
+  <h1>订单处理</h1>
+</div>
+
+
+{% verbatim %}
+<div class="row" ng-controller="order_lines_operation">
+    <div class="col-md-10">
+        <table class="table table-striped table-hover table-condensed">
+                <thead>
+                   <tr class="danger">
+                      <th>
+                         时间
+                      </th>
+                      <th>
+                         创建人
+                      </th>
+                      <th>
+                         产品
+                      </th>
+                      <th>
+                         数量
+                      </th>
+                     <th>
+                         价格
+                      </th>
+                      <th>
+                         备注
+                      </th>
+                       <th>
+                         状态
+                       </th>
+                     <th>
+                         操作
+                      </th>
+
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr ng-repeat="order_line in orderlines">
+                      <td>
+                         {{ order_line.create_time |date:"yyyy/MM/dd  HH:mm" }}
+                      </td>
+                      <td>
+                         {{ order_line.creator }}
+                      </td>
+                      <td>
+                         {{ order_line.name }}
+                      </td>
+                      <td>
+                         {{ order_line.qty }}
+                      </td>
+                      <td>
+                         {{ order_line.price }}
+                      </td>
+                     <td>
+                         {{ order_line.description }}
+                      </td>
+                      <td>
+                         {{ order_line.state }}
+                      </td>
+                       <td>
+                            <button class="btn btn-primary btn-sm"  ng-click="order_line_confirm($index)" ng-show="order_line.state=='new'">确认</button>
+                           <button class="btn btn-danger btn-sm"  ng-click="order_line_confirm($index)" ng-show="order_line.state=='confirmed'">完成</button>
+                       </td>
+                   </tr>
+                  </tbody>
+             </table>
+    </div>
+</div>
+{% endverbatim %}

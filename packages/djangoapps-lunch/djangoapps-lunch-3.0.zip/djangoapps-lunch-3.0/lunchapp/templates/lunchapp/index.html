@@ -1,0 +1,82 @@
+{% extends 'bases/base_with_nav.html' %}
+{% load staticfiles %}
+
+{% block title %}lunchapp{% endblock %}
+
+{% block app-page %}
+    <div ng-app="lunchapp" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+                <div ng-controller="listgroup">
+                        <div class="panel-group ">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading text-left" >
+                                      <h3 class="panel-title">
+                                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>   午餐管理
+                                      </h3>
+                                </div>
+                                <div  class="panel-collapse text-right" >
+                                      <div class="list-group">
+                                              <a href="#order_add" class="list-group-item" ng-class="{active: $route.current.activetab == 'order_add'}">新增订餐</a>
+                                              <a href="#my_orders" class="list-group-item" ng-class="{active: $route.current.activetab == 'my_orders'}">历史订单</a>
+                                              <a href="#my_cashmoves" class="list-group-item" ng-class="{active: $route.current.activetab == 'my_cashmoves'}">我的账户</a>
+                                      </div>
+                                </div>
+                          </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading text-left" >
+                                      <h3 class="panel-title">
+                                          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>订单管理
+                                      </h3>
+                                </div>
+                                <div  class="panel-collapse text-right" >
+                                      <div class="list-group">
+                                              <a href="#order_line_operation" class="list-group-item" ng-class="{active: $route.current.activetab == 'order_line_operation'}">待处理</a>
+                                              <a href="#all_orders" class="list-group-item" ng-class="{active: $route.current.activetab == 'all_orders'}">历史查询</a>
+                                      </div>
+                                </div>
+                          </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading text-left" >
+                                      <h4 class="panel-title">
+                                          <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>充值管理
+                                      </h4>
+                                </div>
+                                <div  class="panel-collapse text-right" >
+                                      <div class="list-group">
+                                              <a href="#account_charge" class="list-group-item" ng-class="{active: $route.current.activetab == 'account_charge'}">账户充值</a>
+                                              <a href="#all_cashmoves" class="list-group-item" ng-class="{active: $route.current.activetab == 'all_cashmoves'}">消费查询</a>
+                                      </div>
+                                </div>
+                          </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading text-left" >
+                                      <h4 class="panel-title">
+                                          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>产品管理
+                                      </h4>
+                                </div>
+                                <div  class="panel-collapse text-right" >
+                                      <div class="list-group">
+                                              <a href="#product_list" class="list-group-item" ng-class="{active: $route.current.activetab == 'product_list'}">产品管理</a>
+                                              <a href="#product_category_list" class="list-group-item" ng-class="{active: $route.current.activetab == 'product_category_list'}">分类管理</a>
+                                      </div>
+                                </div>
+                          </div>
+
+                        </div>
+
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <ng-view/>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{%  static 'lunchapp/lunch.js' %}" ></script>
+    <script src="{%  static 'lunchapp/ui-bootstrap-tpls-0.14.2.min.js' %}" ></script>
+{% endblock %}

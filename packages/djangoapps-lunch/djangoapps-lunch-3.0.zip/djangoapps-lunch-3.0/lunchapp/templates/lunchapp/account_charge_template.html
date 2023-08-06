@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>余额充值</h1>
+</div>
+
+
+<div class="col-lg-8" ng-controller="chargeCtrl">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                充值
+            </h3>
+        </div>
+
+        <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">
+                                姓名：
+                            </label>
+                            <div class="col-lg-4">
+                                <select class="form-control"  ng-model="cashmove.user">
+                                     {% for user in userlist %}
+                                            <option value="{{ user.id }}">{{user.username }}</option>
+                                     {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">
+                                金额：
+                            </label>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" ng-model="cashmove.amount"  required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-4">
+                                <button class="btn btn-danger" ng-click="create_cashmove()">保存</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+        </div>
+
+        <div class="panel-footer">
+                Panelfooter
+        </div>
+    </div>
+</div>

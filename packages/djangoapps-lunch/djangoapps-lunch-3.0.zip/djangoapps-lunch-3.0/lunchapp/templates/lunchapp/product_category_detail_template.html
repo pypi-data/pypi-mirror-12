@@ -1,0 +1,30 @@
+
+<div class="page-header">
+  <h1>分类详情</h1>
+</div>
+
+{% verbatim %}
+<div class="row" ng-controller="CategoryDetailCtrl">
+    <div class="col-lg-12">
+        <form class="form-horizontal" ng-submit="update_category_detail()">
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">
+                        分类名称：
+                    </label>
+                    <div  class="col-lg-4">
+                        <input class="form-control" type="text" ng-model="category_detail.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="col-lg-offset-3 btn btn-danger">保存</button>
+                    <a href="#/product_category_list"><button  class=" btn btn-warning">取消</button></a>
+                    <button type="button" ng-click="category_delete()" class="btn btn-info">删除</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+{% endverbatim %}

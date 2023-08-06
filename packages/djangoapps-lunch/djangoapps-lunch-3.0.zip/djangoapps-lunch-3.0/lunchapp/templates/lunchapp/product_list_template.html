@@ -1,0 +1,74 @@
+<div class="page-header">
+  <h1>产品管理</h1>
+</div>
+
+<div class="row"><!--新增产品-->
+    <div class="col-lg-1 col-lg-offset-5">
+        {% verbatim %}
+            <div ng-controller="AddProductModalCtrl">
+                <button type="button" class="btn btn-warning btn-block" ng-click="open('lg')">新增</button>
+            </div>
+        {% endverbatim %}
+    </div>
+</div>
+
+{% verbatim %}
+<div class="row">
+            <div class="col-lg-10" ng-controller="ProductListCtrl">
+                <table class="table table-striped table-hover table-condensed">
+                    <thead>
+                       <tr>
+                          <th>
+                             序号
+                          </th>
+                          <th>
+                             名称
+                          </th>
+                         <th>
+                             分类
+                          </th>
+                         <th>
+                             价格
+                          </th>
+                         <th>
+                             说明
+                          </th>
+
+                          <th>
+                             创建时间
+                          </th>
+
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr  ng-repeat="product in $parent.products">
+                          <td>
+                             {{ product.id }}
+                          </td>
+                          <td>
+                             <a href="#/product_detail/{{ product.id }}/"> {{ product.name }}</a>
+                          </td>
+                         <td>
+                             {{ product.category_name }}
+                          </td>
+                          <td>
+                             {{ product.price }}
+                          </td>
+                         <td>
+                             {{ product.description }}
+                          </td>
+                          <td>
+                             {{ product.create_time |date:"yyyy/MM/dd  HH:mm" }}
+                          </td>
+
+
+                       </tr>
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+{% endverbatim %}
