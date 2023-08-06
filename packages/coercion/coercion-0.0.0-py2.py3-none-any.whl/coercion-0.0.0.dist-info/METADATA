@@ -1,0 +1,60 @@
+Metadata-Version: 2.0
+Name: coercion
+Version: 0.0.0
+Summary: Coercing data into a normalized form
+Home-page: https://github.com/dave-shawley/to-unicode
+Author: Dave Shawley
+Author-email: daveshawley@gmail.com
+License: BSD
+Platform: any
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 1 - Planning
+Classifier: Topic :: Text Processing
+
+coercion
+========
+|ReadTheDocs| |TravisCI| |CodeCov|
+
+This library provides functions that coerce datastructures into
+normalized forms.  For example, converting an arbitrary ``dict``
+into a form that is suitable for passing to ``json.dumps``.
+
+The `tornado`_ framework has a function called `recursive_unicode`_
+in the ``tornado.escape`` module.  It is a very simple recursive
+walk of datastructure that switches on type and transforms string
+values into unicode strings.  I use this in production software
+regularly and it works like a charm.  Or at least it did until my
+software encountered a deeply nested dictionary and I received a
+``RuntimeError: maximum recursion depth exceeded`` error in my
+service log.  This is one of the exceptions that strikes fear into
+most engineers when it rears it's head in production.
+
+That is the primary reason for this library existing.  It provides
+the same simple string encoding function iteratively instead of
+recursively.  At the same time, the need to coerce values into a
+normalized string form is something that I've had to do repeatedly
+so it might as well be plopped into a reusable library.
+
+.. _tornado: http://www.tornadoweb.org/
+.. _recursive_unicode: http://www.tornadoweb.org/en/stable/escape.html
+   #tornado.escape.recursive_unicode
+
+.. |ReadTheDocs| image:: https://readthedocs.org/projects/coercion/badge/
+   ?version=latest
+   :target: https://coercion.readthedocs.org/
+   :alt: [Documentation]
+.. |TravisCI| image:: https://travis-ci.org/dave-shawley/coercion.svg
+   ?branch=master
+   :target: https://travis-ci.org/dave-shawley/coercion
+   :alt: [Build Status]
+.. |CodeCov| image:: https://codecov.io/github/dave-shawley/coercion/
+   coverage.svg?branch=master
+   :target: https://codecov.io/github/dave-shawley/coercion?branch=master
+   :alt: [Test Coverage]
+
+
