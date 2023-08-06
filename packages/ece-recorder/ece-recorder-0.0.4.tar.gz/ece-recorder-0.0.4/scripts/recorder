@@ -1,0 +1,60 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+.. module:: TODO
+   :synopsis: TODO.
+
+.. moduleauthor:: Aljosha Friemann <aljosha.friemann@gmail.com>
+
+"""
+
+import time, logging, sys, os
+
+import click
+
+from recorder import recorder
+
+logger = logging.getLogger('recorder')
+
+def setup_log(debug, logfile):
+    formatter = logging.Formatter(
+            '%(asctime)s [%(levelname)-8s](%(name)s): %(message)s',
+            datefmt='%Y-%m-%d | %M:%H:%S')
+
+    stream_handler = logging.StreamHandler()
+    file_handler = logging.FileHandler(logfile, mode='a')
+
+    stream_handler.setFormatter(formatter)
+    file_handler.setFormatter(formatter)
+
+    logging.basicConfig(level=logging.DEBUG if debug else logging.INFO,
+                        handlers=[stream_handler, file_handler])
+
+@click.command(context_settings={'help_option_names':['-h','--help']})
+@click.option('-d', '--debug/--no-debug')
+@click.option('-l', '--log', default='record.log')
+@click.option('--vcodec', default='libx264', show_default=True)
+@click.option('--acodec', default='pcm_s16le', show_default=True)
+@click.option('--threads', type=int, default=0, show_default=True)
+@click.argument('output')
+def cli(debug, log, vcodec, acodec, threads, output):
+    """eclipsecon europe recording tool"""
+
+    setup_log(debug, log)
+
+    try:
+        if os.path.splitext(output)[1] == '':
+            raise Exception("no format specified for output file: %s" % output)
+
+        logger.info('starting recording to output file %s with vcodec=%s, acodec=%s and threads=%s',
+                output, vcodec, acodec, threads)
+
+        recorder.record(acodec, vcodec, threads, output)
+    except Exception as e:
+        logger.critical(click.style(str(e), fg='red', bold=True))
+        sys.exit(1)
+
+if __name__ == '__main__':
+    cli()
+
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4 fenc=utf-8
