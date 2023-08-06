@@ -1,0 +1,20 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="plonetrick.csrfworkarounds">
+
+  <browser:page
+    name="disable_csrf_protection"
+    for="*"
+    class=".disable_csrf_protection.View"
+    permission="zope2.Public"
+  />
+
+  <browser:page
+    name="tinymce-jsonconfiguration-csrf-free"
+    for="*"
+    class=".tinymce.JsonConfiguration"
+    permission="zope2.View"
+  />
+
+</configure>
