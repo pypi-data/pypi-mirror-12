@@ -1,0 +1,63 @@
+Metadata-Version: 1.1
+Name: django-migrate-with-schema-override
+Version: 0.4
+Summary: Override migrate command not to trip on tables with schema name provided via db_tables.
+Home-page: https://github.com/acercado/django-migrate-with-schema-override
+Author: Ariel Cercado
+Author-email: ariel.cercado@gmail.com
+License: MIT
+Description: About
+        -----
+        
+        I need some cursor override to prevent migrate from tripping on models with schema definition on 'db_table' such as those used with herokuconnect's salesforce schema.
+        
+        Installation
+        ------------
+        
+        The library is hosted on
+        `PyPi <https://pypi.python.org/pypi/django-migrate-with-schema-override/>`_, so you can
+        grab it there with::
+        
+            pip install django-migrate-with-schema-override
+        
+        Then add ``cursor_override`` to your ``INSTALLED_APPS``.::
+        
+            INSTALLED_APPS = (
+                # ...
+                'cursor_override',
+                # ...
+            )
+        
+        Usage
+        -----
+        
+        You need to add this line to your ``settings.py`` to enable the override:
+        
+        ::
+        
+            # Set to False to allow writes
+            CURSOR_OVERRIDE = True
+        
+        Credits
+        -----
+        
+        Credit goes to 'http://github.com/streeter/django-db-readonly' where I've patterned the repository for I could not find any tutorials on how to override django's utils.py
+        
+        Thanks to you Chris Streeter!
+        
+        
+        License
+        -------
+        
+        Uses the `MIT <http://opensource.org/licenses/MIT>`_ license.
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development
