@@ -1,0 +1,42 @@
+
+#portal-personaltools-wrapper {
+  float: right;
+
+  dl {
+    @include dl(plain);
+  }
+
+  /* Anonymous: list actions by floating */
+  > ul {
+    @include ul(inline);
+    margin-left: 1em;
+    li {
+      @include linklist;
+    }
+  }
+}
+
+
+#document-actions {
+  float: right;
+  width: auto;
+  >ul {
+    @include ul(inline);
+    @include linklist;
+  }
+}
+
+
+#bottom-actions {
+  width: $page-wrapper-width;
+  margin: 0 auto;
+  #portal-siteactions {
+    @include ul(plain);
+    @include linklist;
+    margin-bottom: 1em;
+
+    a {
+      color: $gray;
+    }
+  }
+}
