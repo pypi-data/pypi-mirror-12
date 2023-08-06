@@ -1,0 +1,6 @@
+<h3>{{ _('Tags Statistics') }}</h3>
+
+{% set stats = h.tagmanager_tags_stats() %}
+<p>Number of tags: {{stats['tags']}} </p>
+<p>Tag usage: {{ stats['taggings'] }}</p>
+
