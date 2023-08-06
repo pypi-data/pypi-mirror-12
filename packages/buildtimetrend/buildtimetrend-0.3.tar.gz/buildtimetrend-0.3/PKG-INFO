@@ -1,0 +1,26 @@
+Metadata-Version: 1.1
+Name: buildtimetrend
+Version: 0.3
+Summary: Visualise what's trending in your build process
+Home-page: https://buildtimetrend.github.io/
+Author: Dieter Adriaenssens
+Author-email: ruleant@users.sourceforge.net
+License: AGPLv3+
+Description: Buildtime Trend generates and gathers timing data of build processes. The aggregated data is used to create charts to visualise trends of the build process.
+        These trends can help you gain insight in your build process : which stages take most time? Which stages are stable or have a fluctuating duration? Is there a decrease or increase in average build duration over time?
+        With these insights you can improve the stability of your build process and make it more efficient.
+        
+        The generation of timing data is done with either a client or using Buildtime Trend as a Service.
+        The Python based client generates custom timing tags for any shell based build process and can easily be integrated. A script processes the generated timing tags when the build is finished, and stores the results.
+        Buildtime Trend as a Service gets timing and build related data by parsing the logfiles of a buildprocess. Currently, Travis CI is supported. Simply trigger the service at the end of a Travis CI build and the parsing, aggregating and storing ofthe data is done automatically.
+Keywords: trends,charts,build,ci,timing data
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Software Development :: Quality Assurance
