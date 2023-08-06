@@ -1,0 +1,325 @@
+body
+{
+    padding-top: 64px;
+    font-size: 12pt;
+}
+
+.headerlink
+{
+    margin-left: .1em;
+}
+
+ul, ol
+{
+    margin: 0px 0px 2em;
+}
+
+/*
+footer
+*/
+
+.footer
+{
+    border: none;
+    margin-top: 20px;
+    padding: 20px 20px 10px 20px;
+
+    background: hsl(207, 90%, 54%);
+    color: white;
+
+    -webkit-box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.footer a
+{
+    font-weight: bold;
+    color: white !important;
+}
+
+/*
+sidebar
+*/
+@media screen and (min-width: 992px)
+{
+    .bs-sidenav.affix-top
+    {
+        width: 213px;
+    }
+}
+
+@media screen and (max-width: 991px)
+{
+    .bs-sidenav.affix-bottom
+    {
+        position: static !important;
+    }
+}
+
+@media screen and (min-width: 1200px)
+{
+    .bs-sidenav.affix-top
+    {
+        width: 263px;
+    }
+}
+
+.bs-sidenav .nav > li > a
+{
+    border-right: 2px solid transparent;
+}
+
+.bs-sidenav .nav > li > a:hover, .bs-sidenav .nav > li > a:focus
+{
+    border-right: 2px solid hsl(207, 90%, 54%);
+}
+
+/*
+toctree
+*/
+
+.toctree-wrapper
+{
+    margin-bottom: 50px;
+    color: #333;
+    padding: 3px 0 1px 20px;
+    border-left: 4px solid hsl(207, 90%, 54%);
+}
+
+.toctree-wrapper > .caption
+{
+    margin-bottom: 5px;
+    font-size: 20pt;
+}
+
+.toctree-wrapper > ul
+{
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+.toctree-wrapper > ul > li > ul
+{
+    margin-left: 5px;
+    padding-left: 10px;
+    border-left: 1px dashed hsl(207, 90%, 80%);
+    list-style-type: none;
+}
+
+/*
+citations and footnotes
+*/
+
+table.citation
+{
+    border: none;
+}
+
+td.label
+{
+    display: table-cell !important;
+    width: 6em;
+    text-align: right;
+    font-size: 75% !important;
+    color: inherit;
+}
+
+.table.citation > thead > tr > th, .table.citation > tbody > tr > th,
+.table.citation > tfoot > tr > th, .table.citation > thead > tr > td,
+.table.citation > tbody > tr > td, .table.citation > tfoot > tr > td
+{
+    border: none;
+}
+
+.table.footnote
+{
+    width: 100%;
+}
+
+/*
+admonition
+*/
+
+div.admonition
+{
+    padding: 10px 20px;
+}
+
+.admonition > p
+{
+    display: inline;
+}
+
+.admonition-title
+{
+    text-transform: uppercase;
+}
+
+/*
+highlighting
+*/
+
+.highlighted
+{
+    color: #111;
+}
+
+:target:not(.section)
+{
+    background-color: hsl(60, 100%, 83%);
+}
+
+.section:target > :first-child
+{
+    background-color: hsl(60, 100%, 83%);
+}
+
+.table .table
+{
+    background-color: inherit;
+}
+
+/*
+code-blocks language label
+*/
+
+.highlight > pre:before
+{
+    display: block;
+    min-width: 595px;
+    margin: -11px -11px 11px;
+    padding: 1px 8px;
+    background: #ccc;
+    color: #111;
+}
+
+.highlight-c > .highlight > pre:before
+{
+    content: "C";
+}
+
+.highlight-cpp > .highlight > pre:before
+{
+    content: "C++";
+}
+
+.highlight-perl > .highlight > pre:before
+{
+    content: "Perl";
+}
+
+.highlight-python > .highlight > pre:before
+{
+    content: "Python";
+}
+
+.highlight-javascript > .highlight > pre:before
+{
+    content: "JavaScript";
+}
+
+.highlight-html > .highlight > pre:before
+{
+    content: "HTML";
+}
+
+.highlight-yaml > .highlight > pre:before
+{
+    content: "YAML";
+}
+
+/*
+pre line-length indicator
+*/
+
+pre
+{
+    position: relative;
+    word-wrap: normal;
+}
+
+pre:after
+{
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 1px;
+    left: 595px;
+    background: #ccc;
+}
+
+/*
+navbar version number
+*/
+
+.navbar-version
+{
+    margin: 0 15px 0 5px;
+}
+
+.navbar-version > b
+{
+    font-weight: lighter;
+    font-size: 18pt;
+    line-height: 64px;
+    color: hsl(207, 90%, 80%);
+}
+
+.navbar-version > b:before
+{
+    content: 'v';
+}
+
+/*
+search page
+*/
+
+ul.search
+{
+    margin: 0;
+    list-style: none;
+}
+
+ul.search > li
+{
+    background: none;
+    padding: 10px 20px;
+}
+
+/*
+Bootstrap enhancements
+*/
+
+.btn
+{
+    border: none !important;
+    outline: none !important;
+}
+
+.navbar-form, .navbar-collapse
+{
+    border: none;
+    box-shadow: none;
+}
+
+/*
+RTD injected pop-up
+*/
+
+.rst-versions
+{
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#flyout-search-form > input
+{
+    line-height: 37px;
+    padding: 0 5px;
+    outline: none;
+    color: white;
+    background: none;
+}
