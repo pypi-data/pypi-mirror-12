@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._ui._cmdline &mdash; AutoArchive Developer Manual (ver. 1.2.1)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.2.1)" href="../index.html" />
+    <link rel="up" title="AutoArchive._ui" href="ui.html" />
+    <link rel="next" title="aa" href="aa.html" />
+    <link rel="prev" title="AutoArchive._ui" href="ui.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aa.html" title="aa"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ui.html" title="AutoArchive._ui"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="ui.html" accesskey="U">AutoArchive._ui</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._ui.cmdline">
+<span id="autoarchive-ui-cmdline"></span><h1>AutoArchive._ui._cmdline<a class="headerlink" href="#module-AutoArchive._ui.cmdline" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../glossary.html#term-cmdline-ui"><em class="xref std std-term">Cmdline UI</em></a> component.</p>
+<p>Package implements command-line user interface.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._ui.cmdline._user_action_executor">
+<span id="user-action-executor"></span><h3>_user_action_executor<a class="headerlink" href="#module-AutoArchive._ui.cmdline._user_action_executor" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._ui.cmdline._user_action_executor.UserActionExecutor" title="AutoArchive._ui.cmdline._user_action_executor.UserActionExecutor"><tt class="xref py py-class docutils literal"><span class="pre">UserActionExecutor</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._ui.cmdline._user_action_executor.UserActionExecutor">
+<em class="property">class </em><tt class="descclassname">AutoArchive._ui.cmdline._user_action_executor.</tt><tt class="descname">UserActionExecutor</tt><big>(</big><em>componentUi</em>, <em>applicationContext</em>, <em>archivingApplication</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_user_action_executor.html#UserActionExecutor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._user_action_executor.UserActionExecutor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Takes care of execution of a user action specified on the command line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>componentUi</strong> (<a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a>) &#8211; Access to user interface.</li>
+<li><strong>applicationContext</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._application_context.ApplicationContext" title="AutoArchive._infrastructure._application_context.ApplicationContext"><tt class="xref py py-class docutils literal"><span class="pre">ApplicationContext</span></tt></a>) &#8211; Application context.</li>
+<li><strong>archivingApplication</strong> (<a class="reference internal" href="application.archiving.html#AutoArchive._application.archiving.archiving_application.ArchivingApplication" title="AutoArchive._application.archiving.archiving_application.ArchivingApplication"><tt class="xref py py-class docutils literal"><span class="pre">ArchivingApplication</span></tt></a>) &#8211; The application interface.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._user_action_executor.UserActionExecutor.execute">
+<tt class="descname">execute</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_user_action_executor.html#UserActionExecutor.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._user_action_executor.UserActionExecutor.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes an action defined for the specified command for specified
+<a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a>.</p>
+<p>Command is read from the <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.options</span></tt>.  If <tt class="docutils literal"><span class="pre">options</span></tt> has an attribute
+that matches one of the <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands" title="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineCommands</span></tt></a> and the value of that attribute is <tt class="docutils literal"><span class="pre">True</span></tt> then the action
+for the matching command is executed.  If there is no such attribute, then the default action <tt class="docutils literal"><span class="pre">create</span></tt> is
+executed.</p>
+<p>Archive specification files can be specified by following ways:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">By archive names passed in <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.arguments</span></tt>.</p>
+<p>Archive name can not contain the string defined by <a class="reference internal" href="application.archiving.html#AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT" title="AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT"><tt class="xref py py-attr docutils literal"><span class="pre">ConfigConstants.ARCHIVE_SPEC_EXT</span></tt></a> at the end
+otherwise it would be taken as the path to an archive specification file.  Archive specification files
+corresponding to the names are looked up in the path defined by <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR" title="AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ARCHIVE_SPECS_DIR</span></tt></a> option.</p>
+</li>
+<li><p class="first">By paths to archive specification files passed in <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.arguments</span></tt>.</p>
+<p>A path must end with the string defined by <a class="reference internal" href="application.archiving.html#AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT" title="AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT"><tt class="xref py py-attr docutils literal"><span class="pre">ConfigConstants.ARCHIVE_SPEC_EXT</span></tt></a>.</p>
+</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">True</span></tt> if the action execution was successful; <tt class="docutils literal"><span class="pre">False</span></tt> otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">AutoArchive._ui.cmdline._user_action_executor.</tt><tt class="descname">UserActionExecutor</tt><big>(</big><em>componentUi</em>, <em>applicationContext</em>, <em>archivingApplication</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_user_action_executor.html#UserActionExecutor"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Takes care of execution of a user action specified on the command line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>componentUi</strong> (<a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a>) &#8211; Access to user interface.</li>
+<li><strong>applicationContext</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._application_context.ApplicationContext" title="AutoArchive._infrastructure._application_context.ApplicationContext"><tt class="xref py py-class docutils literal"><span class="pre">ApplicationContext</span></tt></a>) &#8211; Application context.</li>
+<li><strong>archivingApplication</strong> (<a class="reference internal" href="application.archiving.html#AutoArchive._application.archiving.archiving_application.ArchivingApplication" title="AutoArchive._application.archiving.archiving_application.ArchivingApplication"><tt class="xref py py-class docutils literal"><span class="pre">ArchivingApplication</span></tt></a>) &#8211; The application interface.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt>
+<tt class="descname">execute</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_user_action_executor.html#UserActionExecutor.execute"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Executes an action defined for the specified command for specified
+<a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a>.</p>
+<p>Command is read from the <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.options</span></tt>.  If <tt class="docutils literal"><span class="pre">options</span></tt> has an attribute
+that matches one of the <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands" title="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineCommands</span></tt></a> and the value of that attribute is <tt class="docutils literal"><span class="pre">True</span></tt> then the action
+for the matching command is executed.  If there is no such attribute, then the default action <tt class="docutils literal"><span class="pre">create</span></tt> is
+executed.</p>
+<p>Archive specification files can be specified by following ways:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">By archive names passed in <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.arguments</span></tt>.</p>
+<p>Archive name can not contain the string defined by <a class="reference internal" href="application.archiving.html#AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT" title="AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT"><tt class="xref py py-attr docutils literal"><span class="pre">ConfigConstants.ARCHIVE_SPEC_EXT</span></tt></a> at the end
+otherwise it would be taken as the path to an archive specification file.  Archive specification files
+corresponding to the names are looked up in the path defined by <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR" title="AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ARCHIVE_SPECS_DIR</span></tt></a> option.</p>
+</li>
+<li><p class="first">By paths to archive specification files passed in <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.arguments</span></tt>.</p>
+<p>A path must end with the string defined by <a class="reference internal" href="application.archiving.html#AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT" title="AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT"><tt class="xref py py-attr docutils literal"><span class="pre">ConfigConstants.ARCHIVE_SPEC_EXT</span></tt></a>.</p>
+</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">True</span></tt> if the action execution was successful; <tt class="docutils literal"><span class="pre">False</span></tt> otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._ui.cmdline._cmdline_ui">
+<span id="cmdline-ui"></span><h3>_cmdline_ui<a class="headerlink" href="#module-AutoArchive._ui.cmdline._cmdline_ui" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi">
+<em class="property">class </em><tt class="descclassname">AutoArchive._ui.cmdline._cmdline_ui.</tt><tt class="descname">CmdlineUi</tt><big>(</big><em>appEnvironment</em>, <em>configuration</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Implementation of the command-line user interface.</p>
+<p>Provides basic methods for showing messages of various importance to a user.  It uses standard output and standard
+error as the user interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>appEnvironment</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._app_environment.AppEnvironment" title="AutoArchive._infrastructure._app_environment.AppEnvironment"><tt class="xref py py-class docutils literal"><span class="pre">AppEnvironment</span></tt></a>) &#8211; Application environment.</li>
+<li><strong>configuration</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt>) &#8211; Application configuration.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.presentLine">
+<tt class="descname">presentLine</tt><big>(</big><em>line</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.presentLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.presentLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Present a line of text to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The verbosity level has no effect on presenting the line.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The text that shall be presented to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.presentMultiFieldLine">
+<tt class="descname">presentMultiFieldLine</tt><big>(</big><em>multiFieldLine</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.presentMultiFieldLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.presentMultiFieldLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Present a line consisting of multiple fields of text to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The verbosity level has no effect on presenting the line.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiFieldLine</strong> (<a class="reference internal" href="infrastructure.ui.html#AutoArchive._infrastructure.ui.multi_field_line.MultiFieldLine" title="AutoArchive._infrastructure.ui.multi_field_line.MultiFieldLine"><tt class="xref py py-class docutils literal"><span class="pre">MultiFieldLine</span></tt></a>) &#8211; Line that shall be presented.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.setProcessingArchSpec">
+<tt class="descname">setProcessingArchSpec</tt><big>(</big><em>archSpec</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.setProcessingArchSpec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.setProcessingArchSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets currently processed <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>archSpec</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The archive specification file name or path to it.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showError">
+<tt class="descname">showError</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show an error message to (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Error</span></tt>) the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showInfo">
+<tt class="descname">showInfo</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show an information message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Info</span></tt>) to the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showNotification">
+<tt class="descname">showNotification</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showNotification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showNotification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show an unintrusive notification message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Notification</span></tt>) to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If user interface implementation does not have means to support notifications then it should be
+presented to the user similarly as <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showInfo" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showInfo"><tt class="xref py py-meth docutils literal"><span class="pre">showInfo()</span></tt></a>.</p>
+</div>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showVerbose">
+<tt class="descname">showVerbose</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showVerbose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showVerbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a verbose-type message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Verbose</span></tt>) to the user.</p>
+<p>Verbose messages should be shown only if user enables it.  Although this method can be called regardless of
+current verbosity level, the concrete implementation can decide whether it will be shown or not if verbosity
+level is 0.  It is not recommended to call this method if verbosity level is 0 due to performance reasons.
+Current verbosity level can be obtained via <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a> property.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showWarning">
+<tt class="descname">showWarning</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a warning message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Warning</span></tt>) to the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.messageShown">
+<tt class="descname">messageShown</tt><em class="property"> = &lt;AutoArchive._infrastructure.py_additions.event object at 0x7fcc51eb0fd0&gt;</em><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.messageShown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.messageShown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity">
+<tt class="descname">verbosity</tt><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.verbosity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the verbosity level.</p>
+<p>If verbosity level is <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Quiet</span></tt> only messages of kind <tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Error</span></tt> are
+shown.  For level <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Normal</span></tt> all messages kinds except <tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Verbose</span></tt>
+are shown.  For level <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Verbose</span></tt> all message kinds are shown.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">AutoArchive._ui.cmdline._cmdline_ui.</tt><tt class="descname">CmdlineUi</tt><big>(</big><em>appEnvironment</em>, <em>configuration</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Implementation of the command-line user interface.</p>
+<p>Provides basic methods for showing messages of various importance to a user.  It uses standard output and standard
+error as the user interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>appEnvironment</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._app_environment.AppEnvironment" title="AutoArchive._infrastructure._app_environment.AppEnvironment"><tt class="xref py py-class docutils literal"><span class="pre">AppEnvironment</span></tt></a>) &#8211; Application environment.</li>
+<li><strong>configuration</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt>) &#8211; Application configuration.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt>
+<tt class="descname">presentLine</tt><big>(</big><em>line</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.presentLine"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Present a line of text to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The verbosity level has no effect on presenting the line.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The text that shall be presented to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">presentMultiFieldLine</tt><big>(</big><em>multiFieldLine</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.presentMultiFieldLine"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Present a line consisting of multiple fields of text to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The verbosity level has no effect on presenting the line.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multiFieldLine</strong> (<a class="reference internal" href="infrastructure.ui.html#AutoArchive._infrastructure.ui.multi_field_line.MultiFieldLine" title="AutoArchive._infrastructure.ui.multi_field_line.MultiFieldLine"><tt class="xref py py-class docutils literal"><span class="pre">MultiFieldLine</span></tt></a>) &#8211; Line that shall be presented.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">setProcessingArchSpec</tt><big>(</big><em>archSpec</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.setProcessingArchSpec"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets currently processed <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>archSpec</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The archive specification file name or path to it.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">showError</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showError"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Show an error message to (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Error</span></tt>) the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">showInfo</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showInfo"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Show an information message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Info</span></tt>) to the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">showNotification</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showNotification"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Show an unintrusive notification message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Notification</span></tt>) to the user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If user interface implementation does not have means to support notifications then it should be
+presented to the user similarly as <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showInfo" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.showInfo"><tt class="xref py py-meth docutils literal"><span class="pre">showInfo()</span></tt></a>.</p>
+</div>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">showVerbose</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showVerbose"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Show a verbose-type message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Verbose</span></tt>) to the user.</p>
+<p>Verbose messages should be shown only if user enables it.  Although this method can be called regardless of
+current verbosity level, the concrete implementation can decide whether it will be shown or not if verbosity
+level is 0.  It is not recommended to call this method if verbosity level is 0 due to performance reasons.
+Current verbosity level can be obtained via <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a> property.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">showWarning</tt><big>(</big><em>msg</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.showWarning"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Show a warning message (<tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Warning</span></tt>) to the user.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi.verbosity"><tt class="xref py py-attr docutils literal"><span class="pre">verbosity</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; The message that should be shown to the user.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">messageShown</tt><em class="property"> = &lt;AutoArchive._infrastructure.py_additions.event object at 0x7fcc51eb0fd0&gt;</em><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.messageShown"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">verbosity</tt><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_ui.html#CmdlineUi.verbosity"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Gets the verbosity level.</p>
+<p>If verbosity level is <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Quiet</span></tt> only messages of kind <tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Error</span></tt> are
+shown.  For level <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Normal</span></tt> all messages kinds except <tt class="xref py py-data docutils literal"><span class="pre">UiMessageKinds.Verbose</span></tt>
+are shown.  For level <tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels.Verbose</span></tt> all message kinds are shown.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-data docutils literal"><span class="pre">VerbosityLevels</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._ui.cmdline._cmdline_commands">
+<span id="cmdline-commands"></span><h3>_cmdline_commands<a class="headerlink" href="#module-AutoArchive._ui.cmdline._cmdline_commands" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands" title="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineCommands</span></tt></a> and <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils" title="AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils"><tt class="xref py py-class docutils literal"><span class="pre">_CmdlineCommandsUtils</span></tt></a> static classes.</p>
+<dl class="class">
+<dt id="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands">
+<em class="property">class </em><tt class="descclassname">AutoArchive._ui.cmdline._cmdline_commands.</tt><tt class="descname">CmdlineCommands</tt><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_commands.html#CmdlineCommands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Constants for command-line command names.</p>
+<p>Command-line commands are used to invoke program operations via a command-line argument.  For example: <tt class="docutils literal"><span class="pre">--create</span></tt>
+will invoke a backup creation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not allowed to change values of these constants.</p>
+</div>
+<dl class="attribute">
+<dt id="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands.CREATE">
+<tt class="descname">CREATE</tt><em class="property"> = 'create'</em><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands.CREATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> for a given <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands.LIST">
+<tt class="descname">LIST</tt><em class="property"> = 'list'</em><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands.LIST" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all archive specification files.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands.PURGE">
+<tt class="descname">PURGE</tt><em class="property"> = 'purge'</em><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands.PURGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Purge orphaned archive data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">AutoArchive._ui.cmdline._cmdline_commands.</tt><tt class="descname">CmdlineCommands</tt><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_commands.html#CmdlineCommands"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Constants for command-line command names.</p>
+<p>Command-line commands are used to invoke program operations via a command-line argument.  For example: <tt class="docutils literal"><span class="pre">--create</span></tt>
+will invoke a backup creation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not allowed to change values of these constants.</p>
+</div>
+<dl class="attribute">
+<dt>
+<tt class="descname">CREATE</tt><em class="property"> = 'create'</em></dt>
+<dd><p>Create <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> for a given <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">LIST</tt><em class="property"> = 'list'</em></dt>
+<dd><p>List all archive specification files.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">PURGE</tt><em class="property"> = 'purge'</em></dt>
+<dd><p>Purge orphaned archive data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils">
+<em class="property">class </em><tt class="descclassname">AutoArchive._ui.cmdline._cmdline_commands.</tt><tt class="descname">_CmdlineCommandsUtils</tt><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_commands.html#_CmdlineCommandsUtils"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Various utility methods working with <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands" title="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineCommands</span></tt></a>.</p>
+<dl class="staticmethod">
+<dt id="AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils.getAllCommands">
+<em class="property">static </em><tt class="descname">getAllCommands</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_commands.html#_CmdlineCommandsUtils.getAllCommands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils.getAllCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over all known commands.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">All options defined in <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands" title="AutoArchive._ui.cmdline._cmdline_commands.CmdlineCommands"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineCommands</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils.isExistingCommand">
+<em class="property">classmethod </em><tt class="descname">isExistingCommand</tt><big>(</big><em>commandName</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_ui/cmdline/_cmdline_commands.html#_CmdlineCommandsUtils.isExistingCommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils.isExistingCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether a command with name <tt class="docutils literal"><span class="pre">commandName</span></tt> does exists in <a class="reference internal" href="#AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils" title="AutoArchive._ui.cmdline._cmdline_commands._CmdlineCommandsUtils"><tt class="xref py py-class docutils literal"><span class="pre">_CmdlineCommandsUtils</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>commandName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the command which existence shall be checked.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">True</span></tt> if option with name <tt class="docutils literal"><span class="pre">commandName</span></tt> exists; <tt class="docutils literal"><span class="pre">False</span></tt> otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._ui._cmdline</a><ul>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._ui.cmdline._user_action_executor">_user_action_executor</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._ui.cmdline._cmdline_ui">_cmdline_ui</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._ui.cmdline._cmdline_commands">_cmdline_commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ui.html"
+                        title="previous chapter">AutoArchive._ui</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aa.html"
+                        title="next chapter">aa</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aa.html" title="aa"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ui.html" title="AutoArchive._ui"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="ui.html" >AutoArchive._ui</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

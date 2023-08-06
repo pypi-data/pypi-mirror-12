@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._infrastructure &mdash; AutoArchive Developer Manual (ver. 1.2.1)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.2.1)" href="../index.html" />
+    <link rel="up" title="AutoArchive" href="autoarchive.html" />
+    <link rel="next" title="AutoArchive._infrastructure.configuration" href="infrastructure.configuration.html" />
+    <link rel="prev" title="AutoArchive._application.archiving._archiver_manipulator" href="application.archiving.archiver_manipulator.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.configuration.html" title="AutoArchive._infrastructure.configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="application.archiving.archiver_manipulator.html" title="AutoArchive._application.archiving._archiver_manipulator"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" accesskey="U">AutoArchive</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._infrastructure">
+<span id="autoarchive-infrastructure"></span><h1>AutoArchive._infrastructure<a class="headerlink" href="#module-AutoArchive._infrastructure" title="Permalink to this headline">¶</a></h1>
+<p>Infrastructure, common and multi-layer classes, helpers.</p>
+<div class="section" id="sub-packages">
+<h2>Sub-Packages<a class="headerlink" href="#sub-packages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.configuration.html">AutoArchive._infrastructure.configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.service.html">AutoArchive._infrastructure.service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.storage.html">AutoArchive._infrastructure.storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.ui.html">AutoArchive._infrastructure.ui</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._infrastructure.py_additions">
+<span id="py-additions"></span><h3>py_additions<a class="headerlink" href="#module-AutoArchive._infrastructure.py_additions" title="Permalink to this headline">¶</a></h3>
+<p>Various enhancements to Python.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.py_additions.Enum">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.py_additions.</tt><tt class="descname">Enum</tt><big>(</big><em>*names</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/py_additions.html#Enum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.py_additions.Enum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">collections.abc.Iterable</span></tt></p>
+<p>Simple enum class.</p>
+<p>Example Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">codes</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">,</span> <span class="s">&quot;BAR&quot;</span><span class="p">,</span> <span class="s">&quot;BAZ&quot;</span><span class="p">)</span> <span class="c"># codes.BAZ will be 2 and so on and str.BAZ will be &quot;BAZ&quot;</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>names</strong> (<tt class="docutils literal"><span class="pre">Iterator&lt;str&gt;</span></tt>) &#8211; Iterable of Enum members.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._infrastructure.py_additions.event">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.py_additions.</tt><tt class="descname">event</tt><big>(</big><em>eventFunction</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/py_additions.html#event"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.py_additions.event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Decorator that declares a function as an <em>event</em>.</p>
+<p>Implements a C#-like events (a call dispatchers).  Decorating a function or method with this decorator declares
+it as an <em>event</em>.  In order to subscribe a handler function to the event, one should use the “+=” operator
+and to unsubscribe the “-=” operator.  Such event can be fired by a calling the decorated function.  This will
+dispatch the event to all subscribers, i.e. subscribed handler methods are called.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Decorated function should implement only <tt class="docutils literal"><span class="pre">pass</span></tt> as its body.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Decorated function can take any number of parameters or keyword parameters.  Subscriber functions has
+to take same parameters as the event.</p>
+</div>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Button</span><span class="p">:</span>
+   <span class="c"># ...</span>
+   <span class="nd">@event</span>
+   <span class="k">def</span> <span class="nf">clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">some_parameter</span><span class="p">):</span>
+       <span class="s">&quot;Fired when the button was clicked.&quot;</span>
+       <span class="k">pass</span>
+   <span class="k">def</span> <span class="nf">_fireClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">some_parameter</span><span class="p">):</span>
+       <span class="n">clicked</span><span class="p">(</span><span class="n">some_parameter</span><span class="p">)</span>
+   <span class="c"># ...</span>
+
+<span class="k">class</span> <span class="nc">Ui</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">button</span><span class="p">):</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">clicked</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_onButtonClicked</span>
+    <span class="k">def</span> <span class="nf">_onButtonClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">some_parameter</span><span class="p">):</span>
+        <span class="s">&quot;Handle the button click.&quot;</span>
+        <span class="c"># play a sound...</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>eventFunction</strong> (<tt class="docutils literal"><span class="pre">function</span></tt>) &#8211; Decorated function or method that becomes an <em>event</em>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._infrastructure.py_additions.classproperty">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.py_additions.</tt><tt class="descname">classproperty</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/py_additions.html#classproperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.py_additions.classproperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.property</span></tt></p>
+<p>Decorator that makes the decorated method a class property.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._infrastructure.py_additions.staticproperty">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.py_additions.</tt><tt class="descname">staticproperty</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/py_additions.html#staticproperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.py_additions.staticproperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.property</span></tt></p>
+<p>Decorator that makes the decorated method a static property.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.utils">
+<span id="utils"></span><h3>utils<a class="headerlink" href="#module-AutoArchive._infrastructure.utils" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.utils.Utils" title="AutoArchive._infrastructure.utils.Utils"><tt class="xref py py-class docutils literal"><span class="pre">Utils</span></tt></a> and <a class="reference internal" href="#AutoArchive._infrastructure.utils.Constants" title="AutoArchive._infrastructure.utils.Constants"><tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></a> classes.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.utils.Utils">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.utils.</tt><tt class="descname">Utils</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/utils.html#Utils"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.utils.Utils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Various utility methods.</p>
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.utils.Utils.fatalExit">
+<em class="property">classmethod </em><tt class="descname">fatalExit</tt><big>(</big><em>msg</em>, <em>appName=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/utils.html#Utils.fatalExit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.utils.Utils.fatalExit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints <tt class="docutils literal"><span class="pre">msg</span></tt> to standard error and exits with exit code 2.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.utils.Utils.printError">
+<em class="property">classmethod </em><tt class="descname">printError</tt><big>(</big><em>msg</em>, <em>appName=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/utils.html#Utils.printError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.utils.Utils.printError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints <tt class="docutils literal"><span class="pre">msg</span></tt> as an error to standard error.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.utils.Utils.printWarning">
+<em class="property">classmethod </em><tt class="descname">printWarning</tt><big>(</big><em>msg</em>, <em>appName=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/utils.html#Utils.printWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.utils.Utils.printWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints <tt class="docutils literal"><span class="pre">msg</span></tt> as a warning to standard error.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="AutoArchive._infrastructure.utils.Utils.uniq">
+<em class="property">static </em><tt class="descname">uniq</tt><big>(</big><em>decorated</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/utils.html#Utils.uniq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.utils.Utils.uniq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator that filters out duplicate elements from an iterable returned by decorated function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._infrastructure.utils.Constants">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.utils.</tt><tt class="descname">Constants</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/utils.html#Constants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.utils.Constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Defines various “global” constants.</p>
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.utils.Constants.DEBUG">
+<tt class="descname">DEBUG</tt><em class="property"> = None</em><a class="headerlink" href="#AutoArchive._infrastructure.utils.Constants.DEBUG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debugging support.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure._app_environment">
+<span id="app-environment"></span><h3>_app_environment<a class="headerlink" href="#module-AutoArchive._infrastructure._app_environment" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure._app_environment.AppEnvironment" title="AutoArchive._infrastructure._app_environment.AppEnvironment"><tt class="xref py py-class docutils literal"><span class="pre">AppEnvironment</span></tt></a> class</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure._app_environment.AppEnvironment">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure._app_environment.</tt><tt class="descname">AppEnvironment</tt><big>(</big><em>executableName</em>, <em>options</em>, <em>arguments</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_app_environment.html#AppEnvironment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._app_environment.AppEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Container class for various application-related information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>executableName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the startup script.</li>
+<li><strong>options</strong> (<tt class="xref py py-class docutils literal"><span class="pre">optparse.Values</span></tt>) &#8211; Options passed on the command line.</li>
+<li><strong>arguments</strong> (<tt class="docutils literal"><span class="pre">list&lt;str&gt;</span></tt>) &#8211; Arguments passed on the command line.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure._app_environment.AppEnvironment.arguments">
+<tt class="descname">arguments</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_app_environment.html#AppEnvironment.arguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._app_environment.AppEnvironment.arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command line arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">list&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure._app_environment.AppEnvironment.executableName">
+<tt class="descname">executableName</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_app_environment.html#AppEnvironment.executableName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._app_environment.AppEnvironment.executableName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the script that was used to start this application.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure._app_environment.AppEnvironment.options">
+<tt class="descname">options</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_app_environment.html#AppEnvironment.options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._app_environment.AppEnvironment.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command line options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">optparse.Values</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure._application_context">
+<span id="application-context"></span><h3>_application_context<a class="headerlink" href="#module-AutoArchive._infrastructure._application_context" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure._application_context.ApplicationContext" title="AutoArchive._infrastructure._application_context.ApplicationContext"><tt class="xref py py-class docutils literal"><span class="pre">ApplicationContext</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure._application_context.ApplicationContext">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure._application_context.</tt><tt class="descname">ApplicationContext</tt><big>(</big><em>appEnvironment</em>, <em>configuration</em>, <em>storage</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_application_context.html#ApplicationContext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._application_context.ApplicationContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Provides access to a various program-related objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>appEnvironment</strong> (<tt class="docutils literal"><span class="pre">object</span></tt>) &#8211; Object that will be made available via <a class="reference internal" href="#AutoArchive._infrastructure._application_context.ApplicationContext.appEnvironment" title="AutoArchive._infrastructure._application_context.ApplicationContext.appEnvironment"><tt class="xref py py-attr docutils literal"><span class="pre">appEnvironment</span></tt></a> property.</li>
+<li><strong>configuration</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt>) &#8211; Application configuration.</li>
+<li><strong>storage</strong> (<a class="reference internal" href="infrastructure.storage.html#AutoArchive._infrastructure.storage._file_storage.FileStorage" title="AutoArchive._infrastructure.storage._file_storage.FileStorage"><tt class="xref py py-class docutils literal"><span class="pre">FileStorage</span></tt></a>) &#8211; Application storage.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure._application_context.ApplicationContext.appEnvironment">
+<tt class="descname">appEnvironment</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_application_context.html#ApplicationContext.appEnvironment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._application_context.ApplicationContext.appEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the application environment object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">object</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure._application_context.ApplicationContext.configuration">
+<tt class="descname">configuration</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_application_context.html#ApplicationContext.configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._application_context.ApplicationContext.configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets access to application configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationBase</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Can be <tt class="docutils literal"><span class="pre">None</span></tt></p>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure._application_context.ApplicationContext.storage">
+<tt class="descname">storage</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/_application_context.html#ApplicationContext.storage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure._application_context.ApplicationContext.storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets access to application persistent storage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="infrastructure.storage.html#AutoArchive._infrastructure.storage._file_storage.FileStorage" title="AutoArchive._infrastructure.storage._file_storage.FileStorage"><tt class="xref py py-class docutils literal"><span class="pre">FileStorage</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Can be <tt class="docutils literal"><span class="pre">None</span></tt></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._infrastructure</a><ul>
+<li><a class="reference internal" href="#sub-packages">Sub-Packages</a></li>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.py_additions">py_additions</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.utils">utils</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure._app_environment">_app_environment</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure._application_context">_application_context</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="application.archiving.archiver_manipulator.html"
+                        title="previous chapter">AutoArchive._application.archiving._archiver_manipulator</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="infrastructure.configuration.html"
+                        title="next chapter">AutoArchive._infrastructure.configuration</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.configuration.html" title="AutoArchive._infrastructure.configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="application.archiving.archiver_manipulator.html" title="AutoArchive._application.archiving._archiver_manipulator"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

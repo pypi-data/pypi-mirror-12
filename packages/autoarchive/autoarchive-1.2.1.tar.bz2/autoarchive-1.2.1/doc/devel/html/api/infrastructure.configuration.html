@@ -1,0 +1,778 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._infrastructure.configuration &mdash; AutoArchive Developer Manual (ver. 1.2.1)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.2.1)" href="../index.html" />
+    <link rel="up" title="AutoArchive._infrastructure" href="infrastructure.html" />
+    <link rel="next" title="AutoArchive._infrastructure.service" href="infrastructure.service.html" />
+    <link rel="prev" title="AutoArchive._infrastructure" href="infrastructure.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.service.html" title="AutoArchive._infrastructure.service"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.html" title="AutoArchive._infrastructure"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="infrastructure.html" accesskey="U">AutoArchive._infrastructure</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._infrastructure.configuration">
+<span id="autoarchive-infrastructure-configuration"></span><h1>AutoArchive._infrastructure.configuration<a class="headerlink" href="#module-AutoArchive._infrastructure.configuration" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../glossary.html#term-configuration"><em class="xref std std-term">Configuration</em></a> component.</p>
+<p>Provides access to configuration options read from <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.options</span></tt>
+(command-line options), <a class="reference internal" href="../glossary.html#term-user-configuration-file"><em class="xref std std-term">user configuration file</em></a> and <a class="reference internal" href="../glossary.html#term-system-configuration-file"><em class="xref std std-term">system configuration file</em></a>. For that purpose it
+provides <a class="reference internal" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationBase</span></tt></a> implementation via <tt class="xref py py-class docutils literal"><span class="pre">ConfigurationFactory</span></tt>.  Configuration should be created
+centrally by some common component and that instance distributed to other components.  Individual components should
+not call <tt class="xref py py-class docutils literal"><span class="pre">ConfigurationFactory</span></tt> directly.</p>
+<p>For more information about <a class="reference internal" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationBase</span></tt></a> provided interface see <a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory" title="AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationFactory</span></tt></a>.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._infrastructure.configuration.configuration_base">
+<span id="configuration-base"></span><h3>configuration_base<a class="headerlink" href="#module-AutoArchive._infrastructure.configuration.configuration_base" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationBase</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration.configuration_base.</tt><tt class="descname">ConfigurationBase</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/configuration_base.html#ConfigurationBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Provides access to configuration options.</p>
+<dl class="method">
+<dt id="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase.getRawValue">
+<tt class="descname">getRawValue</tt><big>(</big><em>option</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/configuration_base.html#ConfigurationBase.getRawValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase.getRawValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the raw value of a configuration option or <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<p>Unlike the <tt class="xref py py-meth docutils literal"><span class="pre">__getitem__()</span></tt> this method returns the real raw value of the <tt class="docutils literal"><span class="pre">option</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>option</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a>) &#8211; The option for which the value should be returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The raw value of the passed <tt class="docutils literal"><span class="pre">option</span></tt> (can be <tt class="docutils literal"><span class="pre">None</span></tt>).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">object</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If <tt class="docutils literal"><span class="pre">option</span></tt> does not exists.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase.options_">
+<tt class="descname">options_</tt><em class="property"> = None</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase.options_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores options and their values.  Key is of <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a> type and value is <tt class="xref py py-obj docutils literal"><span class="pre">object</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.configuration.options">
+<span id="options"></span><h3>options<a class="headerlink" href="#module-AutoArchive._infrastructure.configuration.options" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options" title="AutoArchive._infrastructure.configuration.options.Options"><tt class="xref py py-class docutils literal"><span class="pre">Options</span></tt></a>, <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils" title="AutoArchive._infrastructure.configuration.options.OptionsUtils"><tt class="xref py py-class docutils literal"><span class="pre">OptionsUtils</span></tt></a> and <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.SpecialOptionTypes" title="AutoArchive._infrastructure.configuration.options.SpecialOptionTypes"><tt class="xref py py-class docutils literal"><span class="pre">SpecialOptionTypes</span></tt></a> static classes. <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a> class
+and <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.ArchiverTypes" title="AutoArchive._infrastructure.configuration.options.ArchiverTypes"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverTypes</span></tt></a> enum.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration.options.Options">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration.options.</tt><tt class="descname">Options</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#Options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Constants for configuration options.</p>
+<p>These constants should be used to access options in the <tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt> implementation provided by the
+<a class="reference internal" href="../glossary.html#term-configuration"><em class="xref std std-term">Configuration</em></a> <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not allowed to change values of these constants.</p>
+</div>
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.ALL">
+<tt class="descname">ALL</tt><em class="property"> = &lt;Option all of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.ALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Operate on all configured archive specification files.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.ARCHIVER">
+<tt class="descname">ARCHIVER</tt><em class="property"> = &lt;Option archiver of type Tar, TarGz, TarBz2, TarXz, TarInternal, TarGzInternal, TarBz2Internal&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.ARCHIVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Archiver type.  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR">
+<tt class="descname">ARCHIVE_SPECS_DIR</tt><em class="property"> = &lt;Option archive-specs-dir of type path&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory where <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a> will be searched.
+Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.COMMAND_AFTER_BACKUP">
+<tt class="descname">COMMAND_AFTER_BACKUP</tt><em class="property"> = &lt;Option command-after-backup of type &lt;class 'str'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.COMMAND_AFTER_BACKUP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arbitrary command to executes after the backup creation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.COMMAND_BEFORE_BACKUP">
+<tt class="descname">COMMAND_BEFORE_BACKUP</tt><em class="property"> = &lt;Option command-before-backup of type &lt;class 'str'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.COMMAND_BEFORE_BACKUP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arbitrary command to execute prior to the backup creation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.COMPRESSION_LEVEL">
+<tt class="descname">COMPRESSION_LEVEL</tt><em class="property"> = &lt;Option compression-level of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.COMPRESSION_LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compression strength level.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.DEST_DIR">
+<tt class="descname">DEST_DIR</tt><em class="property"> = &lt;Option dest-dir of type path&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.DEST_DIR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory where the backup will be created.  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.FORCE_ARCHIVER">
+<tt class="descname">FORCE_ARCHIVER</tt><em class="property"> = &lt;Option force-archiver of type Tar, TarGz, TarBz2, TarXz, TarInternal, TarGzInternal, TarBz2Internal&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.FORCE_ARCHIVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force archiver type regardless to what is specified in the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.FORCE_COMPRESSION_LEVEL">
+<tt class="descname">FORCE_COMPRESSION_LEVEL</tt><em class="property"> = &lt;Option force-compression-level of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.FORCE_COMPRESSION_LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force compression level regardless to what is specified in the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.FORCE_DEST_DIR">
+<tt class="descname">FORCE_DEST_DIR</tt><em class="property"> = &lt;Option force-dest-dir of type path&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.FORCE_DEST_DIR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force the directory where the backup will be created.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.FORCE_INCREMENTAL">
+<tt class="descname">FORCE_INCREMENTAL</tt><em class="property"> = &lt;Option force-incremental of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.FORCE_INCREMENTAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force incremental backup regardless to what is specified in the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.FORCE_RESTARTING">
+<tt class="descname">FORCE_RESTARTING</tt><em class="property"> = &lt;Option force-restarting of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.FORCE_RESTARTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force the backup level restarting regardless to what is specified in the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_AGE">
+<tt class="descname">FULL_RESTART_AFTER_AGE</tt><em class="property"> = &lt;Option full-restart-after-age of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_AGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of days after which the backup level is restarted to 0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_COUNT">
+<tt class="descname">FULL_RESTART_AFTER_COUNT</tt><em class="property"> = &lt;Option full-restart-after-count of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_COUNT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of backup level restarts after which the level is restarted to 0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.INCREMENTAL">
+<tt class="descname">INCREMENTAL</tt><em class="property"> = &lt;Option incremental of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.INCREMENTAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Incremental backup.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.KEEP_OLD_BACKUPS">
+<tt class="descname">KEEP_OLD_BACKUPS</tt><em class="property"> = &lt;Option keep-old-backups of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.KEEP_OLD_BACKUPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on backup keeping.  When a backup is about to be overwritten, it is renamed instead.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.LEVEL">
+<tt class="descname">LEVEL</tt><em class="property"> = &lt;Option level of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backup level used in incremental archiving.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.MAX_RESTART_LEVEL_SIZE">
+<tt class="descname">MAX_RESTART_LEVEL_SIZE</tt><em class="property"> = &lt;Option max-restart-level-size of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.MAX_RESTART_LEVEL_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximal percentage size of a <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> (of level &gt; 0) to which level is allowed restart to.  The size is
+percentage of size of the level 0 backup file.  If a backup of particular level has its size bigger than
+defined percentage, restart to that level will not be allowed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.NO_ALL">
+<tt class="descname">NO_ALL</tt><em class="property"> = &lt;Option no-all of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.NO_ALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not operate on all configured archive specification files.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.NO_INCREMENTAL">
+<tt class="descname">NO_INCREMENTAL</tt><em class="property"> = &lt;Option no-incremental of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.NO_INCREMENTAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable incremental backup.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.NO_KEEP_OLD_BACKUPS">
+<tt class="descname">NO_KEEP_OLD_BACKUPS</tt><em class="property"> = &lt;Option no-keep-old-backups of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.NO_KEEP_OLD_BACKUPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn off backup keeping.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.NO_RESTARTING">
+<tt class="descname">NO_RESTARTING</tt><em class="property"> = &lt;Option no-restarting of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.NO_RESTARTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn off backup level restarting.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.NUMBER_OF_OLD_BACKUPS">
+<tt class="descname">NUMBER_OF_OLD_BACKUPS</tt><em class="property"> = &lt;Option number-of-old-backups of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.NUMBER_OF_OLD_BACKUPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of old backups to keep when <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.KEEP_OLD_BACKUPS" title="AutoArchive._infrastructure.configuration.options.Options.KEEP_OLD_BACKUPS"><tt class="xref py py-attr docutils literal"><span class="pre">KEEP_OLD_BACKUPS</span></tt></a> is enabled.  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.QUIET">
+<tt class="descname">QUIET</tt><em class="property"> = &lt;Option quiet of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.QUIET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on quiet output.  Only errors will be shown.  If QUIET is turned on at the same level as VERBOSE
+(e. g. both are specified on the command line) then QUIET has higher priority than VERBOSE.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.REMOVE_OBSOLETE_BACKUPS">
+<tt class="descname">REMOVE_OBSOLETE_BACKUPS</tt><em class="property"> = &lt;Option remove-obsolete-backups of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.REMOVE_OBSOLETE_BACKUPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on removing backups of levels that are no longer valid due to the backup level restart.  All backups of
+the backup level higher than the one currently being created will be removed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.RESTARTING">
+<tt class="descname">RESTARTING</tt><em class="property"> = &lt;Option restarting of type &lt;class 'bool'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.RESTARTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on backup level restarting.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_AGE">
+<tt class="descname">RESTART_AFTER_AGE</tt><em class="property"> = &lt;Option restart-after-age of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_AGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of days after which the backup level is restarted.  Similarly to <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_LEVEL" title="AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_LEVEL"><tt class="xref py py-attr docutils literal"><span class="pre">RESTART_AFTER_LEVEL</span></tt></a> it will be
+restarted to level 1 or higher.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_LEVEL">
+<tt class="descname">RESTART_AFTER_LEVEL</tt><em class="property"> = &lt;Option restart-after-level of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximal backup level.  If reached, it will be restarted back to a lower level (which is typically level 1 but it
+depends on <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.MAX_RESTART_LEVEL_SIZE" title="AutoArchive._infrastructure.configuration.options.Options.MAX_RESTART_LEVEL_SIZE"><tt class="xref py py-attr docutils literal"><span class="pre">MAX_RESTART_LEVEL_SIZE</span></tt></a>).  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR">
+<tt class="descname">USER_CONFIG_DIR</tt><em class="property"> = &lt;Option user-config-dir of type path&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="Permalink to this definition">¶</a></dt>
+<dd><p>User configuration directory.  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_FILE">
+<tt class="descname">USER_CONFIG_FILE</tt><em class="property"> = &lt;Option user-config-file of type path&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_FILE" title="Permalink to this definition">¶</a></dt>
+<dd><p>User configuration file.  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.Options.VERBOSE">
+<tt class="descname">VERBOSE</tt><em class="property"> = &lt;Option verbose of type &lt;class 'int'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Options.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on verbose output.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration.options.</tt><tt class="descname">OptionsUtils</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Various utility methods working with <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options" title="AutoArchive._infrastructure.configuration.options.Options"><tt class="xref py py-class docutils literal"><span class="pre">Options</span></tt></a>.</p>
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.archiverTypeToStr">
+<em class="property">classmethod </em><tt class="descname">archiverTypeToStr</tt><big>(</big><em>archiverType</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.archiverTypeToStr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.archiverTypeToStr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.ArchiverTypes" title="AutoArchive._infrastructure.configuration.options.ArchiverTypes"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverTypes</span></tt></a> to string representation.</p>
+<p>Value of the <tt class="docutils literal"><span class="pre">archiverType</span></tt> parameter is converted to a string representation that is accepted by the
+<a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType" title="AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType"><tt class="xref py py-meth docutils literal"><span class="pre">strToOptionType()</span></tt></a> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>archiverType</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.ArchiverTypes" title="AutoArchive._infrastructure.configuration.options.ArchiverTypes"><tt class="xref py py-data docutils literal"><span class="pre">ArchiverTypes</span></tt></a>) &#8211; Archiver type that shall be converted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">String form of passed <tt class="docutils literal"><span class="pre">archiverType</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If <tt class="docutils literal"><span class="pre">archiverType</span></tt> is not known.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.getAllOptions">
+<em class="property">static </em><tt class="descname">getAllOptions</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.getAllOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.getAllOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over all known options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">All options defined in <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options" title="AutoArchive._infrastructure.configuration.options.Options"><tt class="xref py py-class docutils literal"><span class="pre">Options</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterator&lt;Option&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.getAllSpecialOptionTypes">
+<em class="property">static </em><tt class="descname">getAllSpecialOptionTypes</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.getAllSpecialOptionTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.getAllSpecialOptionTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over all known special option types.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">All option types defined in <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.SpecialOptionTypes" title="AutoArchive._infrastructure.configuration.options.SpecialOptionTypes"><tt class="xref py py-class docutils literal"><span class="pre">SpecialOptionTypes</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterator&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.getOption">
+<em class="property">classmethod </em><tt class="descname">getOption</tt><big>(</big><em>optionName</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.getOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.getOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return option with given name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>optionName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the option that shall be returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">First option from <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.getAllOptions" title="AutoArchive._infrastructure.configuration.options.OptionsUtils.getAllOptions"><tt class="xref py py-meth docutils literal"><span class="pre">getAllOptions()</span></tt></a> which name is <tt class="docutils literal"><span class="pre">optionName</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If option with name <tt class="docutils literal"><span class="pre">optionName</span></tt> does not exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.isExistingOption">
+<em class="property">classmethod </em><tt class="descname">isExistingOption</tt><big>(</big><em>optionName</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.isExistingOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.isExistingOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether an option with name <tt class="docutils literal"><span class="pre">optionName</span></tt> does exists in <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils" title="AutoArchive._infrastructure.configuration.options.OptionsUtils"><tt class="xref py py-class docutils literal"><span class="pre">OptionsUtils</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>optionName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the option which existence shall be checked.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">True</span></tt> if option with name <tt class="docutils literal"><span class="pre">optionName</span></tt> exists; <tt class="docutils literal"><span class="pre">False</span></tt> otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType">
+<em class="property">classmethod </em><tt class="descname">strToOptionType</tt><big>(</big><em>option</em>, <em>optionValue</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.strToOptionType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts string option value to its proper, defined type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>option</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a>) &#8211; Option which value shall be converted.</li>
+<li><strong>optionValue</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Value to be converted.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Converted <tt class="docutils literal"><span class="pre">optionValue</span></tt>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">object</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> &#8211; If <tt class="docutils literal"><span class="pre">optionValue</span></tt> can not be converted to <tt class="docutils literal"><span class="pre">option</span></tt>&#8216;s type.</li>
+<li><strong>RuntimeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">option</span></tt>&#8216;s type is not supported.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.tryGetForceForm">
+<em class="property">classmethod </em><tt class="descname">tryGetForceForm</tt><big>(</big><em>option</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.tryGetForceForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.tryGetForceForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="../glossary.html#term-force-option-form"><em class="xref std std-term">force form</em></a> for <tt class="docutils literal"><span class="pre">option</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>option</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a>) &#8211; An option in the <a class="reference internal" href="../glossary.html#term-normal-option-form"><em class="xref std std-term">normal form</em></a> for which the force form for shall be
+returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Force form of the passed <tt class="docutils literal"><span class="pre">option</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt> if it does not have a force form.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.configuration.options.OptionsUtils.tryGetNegationForm">
+<em class="property">classmethod </em><tt class="descname">tryGetNegationForm</tt><big>(</big><em>option</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#OptionsUtils.tryGetNegationForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.OptionsUtils.tryGetNegationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="../glossary.html#term-negation-option-form"><em class="xref std std-term">negation form</em></a> for <tt class="docutils literal"><span class="pre">option</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>option</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a>) &#8211; An option in the <a class="reference internal" href="../glossary.html#term-normal-option-form"><em class="xref std std-term">normal form</em></a> for which the negation form for shall
+be returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Negation form of the passed <tt class="docutils literal"><span class="pre">option</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt> if it does not have a negation form.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Option" title="AutoArchive._infrastructure.configuration.options.Option"><tt class="xref py py-class docutils literal"><span class="pre">Option</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration.options.Option">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration.options.</tt><tt class="descname">Option</tt><big>(</big><em>name</em>, <em>optType</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#Option"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.Option" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Represents a configuration option.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Option name.</li>
+<li><strong>optType</strong> (<tt class="docutils literal"><span class="pre">type</span></tt> or <tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Type of the option.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration.options.SpecialOptionTypes">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration.options.</tt><tt class="descname">SpecialOptionTypes</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/options.html#SpecialOptionTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.SpecialOptionTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Constants for special option types.</p>
+<p>Normally, options are of some standard type, such as <tt class="docutils literal"><span class="pre">int</span></tt>, <tt class="docutils literal"><span class="pre">str</span></tt>, etc.  Some of them however, requires special
+handling for which the special option types are defined in this class.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not allowed to change values of these constants.</p>
+</div>
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.configuration.options.SpecialOptionTypes.PATH">
+<tt class="descname">PATH</tt><em class="property"> = 'path'</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.SpecialOptionTypes.PATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>A filesystem path.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="AutoArchive._infrastructure.configuration.options.ArchiverTypes">
+<tt class="descclassname">AutoArchive._infrastructure.configuration.options.</tt><tt class="descname">ArchiverTypes</tt><em class="property"> = Tar, TarGz, TarBz2, TarXz, TarInternal, TarGzInternal, TarBz2Internal</em><a class="headerlink" href="#AutoArchive._infrastructure.configuration.options.ArchiverTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Archiver types.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.configuration._configuration_factory">
+<span id="configuration-factory"></span><h3>_configuration_factory<a class="headerlink" href="#module-AutoArchive._infrastructure.configuration._configuration_factory" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory" title="AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationFactory</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration._configuration_factory.</tt><tt class="descname">ConfigurationFactory</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_configuration_factory.html#ConfigurationFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Support of configuration options and a persistent storage.</p>
+<p>During <a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory.makeConfiguration" title="AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory.makeConfiguration"><tt class="xref py py-meth docutils literal"><span class="pre">makeConfiguration()</span></tt></a> call it creates <tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt> implementation instance.  It also
+creates <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a> and <a class="reference internal" href="../glossary.html#term-archive-specifications-directory"><em class="xref std std-term">archive specifications directory</em></a> if either of them does
+not exists.</p>
+<p>The <a class="reference internal" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationBase</span></tt></a>-like class provides access to configuration options.  It is instantiated and
+populated during <a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory.makeConfiguration" title="AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory.makeConfiguration"><tt class="xref py py-meth docutils literal"><span class="pre">makeConfiguration()</span></tt></a> call from <tt class="xref py py-attr docutils literal"><span class="pre">ApplicationContext.appEnvironment.options</span></tt>
+(command-line options) and from configuration files.  The <a class="reference internal" href="../glossary.html#term-system-configuration-file"><em class="xref std std-term">system configuration file</em></a> is &#8220;/etc/aa/aa.conf&#8221;.
+The <a class="reference internal" href="../glossary.html#term-user-configuration-file"><em class="xref std std-term">user configuration file</em></a> location is determined by values of <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_FILE" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_FILE"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_FILE</span></tt></a> and
+<a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> options.  The <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a> is automatically created if
+it does not exists.  The format of configuration files is defined by the standard <tt class="xref py py-mod docutils literal"><span class="pre">configparser</span></tt> module
+(without interpolation).</p>
+<p>The <a class="reference internal" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">ConfigurationBase</span></tt></a> implementation instance is populated in the way that same options specified in
+multiple sources overrides each other so that the order of precedence from highest to lowest is following:
+command-line, user configuration file, system configuration file.  However the implementation recognizes certain
+types of options that does not follow this rule (see <tt class="xref py py-meth docutils literal"><span class="pre">ConfigurationBase.__getitem__()</span></tt>).</p>
+<p>Some of the options, if not specified in neither of possible sources, has some predefined default value.  The list
+of these options with their predefined value follows:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.ARCHIVER" title="AutoArchive._infrastructure.configuration.options.Options.ARCHIVER"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ARCHIVER</span></tt></a>: <tt class="xref py py-attr docutils literal"><span class="pre">ArchiverTypes.TarGz</span></tt></li>
+<li><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.DEST_DIR" title="AutoArchive._infrastructure.configuration.options.Options.DEST_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.DEST_DIR</span></tt></a>: <tt class="docutils literal"><span class="pre">os.curdir</span></tt></li>
+<li><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_LEVEL" title="AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_LEVEL"><tt class="xref py py-attr docutils literal"><span class="pre">Options.RESTART_AFTER_LEVEL</span></tt></a>: 10</li>
+<li><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR" title="AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ARCHIVE_SPECS_DIR</span></tt></a>: <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> + &#8220;archive_specs&#8221;</li>
+<li><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_FILE" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_FILE"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_FILE</span></tt></a>: <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> + &#8220;aa.conf&#8221;</li>
+<li><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a>: &#8220;~/.config/aa&#8221;</li>
+<li><a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options.NUMBER_OF_OLD_BACKUPS" title="AutoArchive._infrastructure.configuration.options.Options.NUMBER_OF_OLD_BACKUPS"><tt class="xref py py-attr docutils literal"><span class="pre">Options.NUMBER_OF_OLD_BACKUPS</span></tt></a>: 3</li>
+<li>options of type <tt class="docutils literal"><span class="pre">bool</span></tt>: <tt class="docutils literal"><span class="pre">False</span></tt></li>
+</ul>
+<dl class="classmethod">
+<dt id="AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory.makeConfiguration">
+<em class="property">classmethod </em><tt class="descname">makeConfiguration</tt><big>(</big><em>appEnvironment</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_configuration_factory.html#ConfigurationFactory.makeConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._configuration_factory.ConfigurationFactory.makeConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and populates configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appEnvironment</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._app_environment.AppEnvironment" title="AutoArchive._infrastructure._app_environment.AppEnvironment"><tt class="xref py py-class docutils literal"><span class="pre">AppEnvironment</span></tt></a>) &#8211; Application environment.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.configuration._configuration">
+<span id="configuration"></span><h3>_configuration<a class="headerlink" href="#module-AutoArchive._infrastructure.configuration._configuration" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration._Configuration" title="AutoArchive._infrastructure.configuration._configuration._Configuration"><tt class="xref py py-class docutils literal"><span class="pre">_Configuration</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration._configuration._Configuration">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration._configuration.</tt><tt class="descname">_Configuration</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_configuration.html#_Configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._configuration._Configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase</span></tt></a></p>
+<p>Application&#8217;s configuration.</p>
+<p>Provides access to application&#8217;s configuration.  All configuration options that can be accessed via this class are
+defined as static attributes of <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options" title="AutoArchive._infrastructure.configuration.options.Options"><tt class="xref py py-class docutils literal"><span class="pre">Options</span></tt></a>.</p>
+<p>After construction, all options are added and initialized to <tt class="docutils literal"><span class="pre">None</span></tt>.  It is expected that concrete values will be
+added using the <a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration._Configuration._addOrReplaceOption" title="AutoArchive._infrastructure.configuration._configuration._Configuration._addOrReplaceOption"><tt class="xref py py-meth docutils literal"><span class="pre">_addOrReplaceOption()</span></tt></a> method.</p>
+<dl class="method">
+<dt id="AutoArchive._infrastructure.configuration._configuration._Configuration._addOrReplaceOption">
+<tt class="descname">_addOrReplaceOption</tt><big>(</big><em>optionName</em>, <em>value</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_configuration.html#_Configuration._addOrReplaceOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._configuration._Configuration._addOrReplaceOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an <em>option</em> and its <em>value</em> replacing the <em>value</em> if already exists.</p>
+<p>String representation of the <em>value</em> is expected.  It will be converted to a proper type defined by the
+<em>option</em>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>optionName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Option that will be added or replaced.</li>
+<li><strong>value</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Value of passed <em>option</em> with name <tt class="docutils literal"><span class="pre">optionName</span></tt>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>KeyError</strong> &#8211; If <em>option</em> with name <tt class="docutils literal"><span class="pre">optionName</span></tt> does not exists.</li>
+<li><strong>ValueError</strong> &#8211; If <em>option&#8217;s</em> <em>value</em> is not correct.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.configuration._cmdline_arguments_processor">
+<span id="cmdline-arguments-processor"></span><h3>_cmdline_arguments_processor<a class="headerlink" href="#module-AutoArchive._infrastructure.configuration._cmdline_arguments_processor" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.configuration._cmdline_arguments_processor._CmdlineArgumentsProcessor" title="AutoArchive._infrastructure.configuration._cmdline_arguments_processor._CmdlineArgumentsProcessor"><tt class="xref py py-class docutils literal"><span class="pre">_CmdlineArgumentsProcessor</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration._cmdline_arguments_processor._CmdlineArgumentsProcessor">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration._cmdline_arguments_processor.</tt><tt class="descname">_CmdlineArgumentsProcessor</tt><big>(</big><em>optparseValues</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_cmdline_arguments_processor.html#_CmdlineArgumentsProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._cmdline_arguments_processor._CmdlineArgumentsProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Processes command-line arguments and populates <tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>optparseValues</strong> (<tt class="xref py py-class docutils literal"><span class="pre">optparse.Values</span></tt>) &#8211; Command-line options and their values.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._infrastructure.configuration._cmdline_arguments_processor._CmdlineArgumentsProcessor.populateConfiguration">
+<tt class="descname">populateConfiguration</tt><big>(</big><em>configuration</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_cmdline_arguments_processor.html#_CmdlineArgumentsProcessor.populateConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._cmdline_arguments_processor._CmdlineArgumentsProcessor.populateConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populates <tt class="docutils literal"><span class="pre">configuration</span></tt> with options specified on the command line.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Options that are not defined in the <a class="reference internal" href="#AutoArchive._infrastructure.configuration.options.Options" title="AutoArchive._infrastructure.configuration.options.Options"><tt class="xref py py-class docutils literal"><span class="pre">Options</span></tt></a> class are skipped; it is assumed that they are
+commands for command-line UI.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>configuration</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration._Configuration" title="AutoArchive._infrastructure.configuration._configuration._Configuration"><tt class="xref py py-class docutils literal"><span class="pre">_Configuration</span></tt></a>) &#8211; Configuration that should be populated.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.configuration._config_file_processor">
+<span id="config-file-processor"></span><h3>_config_file_processor<a class="headerlink" href="#module-AutoArchive._infrastructure.configuration._config_file_processor" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.configuration._config_file_processor._ConfigFileProcessor" title="AutoArchive._infrastructure.configuration._config_file_processor._ConfigFileProcessor"><tt class="xref py py-class docutils literal"><span class="pre">_ConfigFileProcessor</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.configuration._config_file_processor._ConfigFileProcessor">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.configuration._config_file_processor.</tt><tt class="descname">_ConfigFileProcessor</tt><big>(</big><em>appEnvironment</em>, <em>factoryUserConfigDir</em>, <em>factoryUserConfigFileProvider</em>, <em>userConfigDir=None</em>, <em>userConfigFile=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_config_file_processor.html#_ConfigFileProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._config_file_processor._ConfigFileProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Processes configuration files and populates <tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>appEnvironment</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._app_environment.AppEnvironment" title="AutoArchive._infrastructure._app_environment.AppEnvironment"><tt class="xref py py-class docutils literal"><span class="pre">AppEnvironment</span></tt></a>) &#8211; <a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._app_environment.AppEnvironment" title="AutoArchive._infrastructure._app_environment.AppEnvironment"><tt class="xref py py-class docutils literal"><span class="pre">AppEnvironment</span></tt></a> instance.</li>
+<li><strong>factoryUserConfigDir</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Pre-defined path to the <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a>.</li>
+<li><strong>factoryUserConfigFileProvider</strong> (<tt class="docutils literal"><span class="pre">function{str,</span> <span class="pre">=&gt;str}</span></tt>) &#8211; Function that returns path to the <a class="reference internal" href="../glossary.html#term-user-configuration-file"><em class="xref std std-term">user configuration file</em></a> based on
+the passed configuration directory.</li>
+<li><strong>userConfigDir</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the user configuration directory.</li>
+<li><strong>userConfigFile</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the user configuration file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._infrastructure.configuration._config_file_processor._ConfigFileProcessor.populateConfiguration">
+<tt class="descname">populateConfiguration</tt><big>(</big><em>configuration</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/configuration/_config_file_processor.html#_ConfigFileProcessor.populateConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.configuration._config_file_processor._ConfigFileProcessor.populateConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populates <tt class="docutils literal"><span class="pre">configuration</span></tt> with options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>configuration</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.configuration._configuration._Configuration" title="AutoArchive._infrastructure.configuration._configuration._Configuration"><tt class="xref py py-class docutils literal"><span class="pre">_Configuration</span></tt></a>) &#8211; Configuration that should be populated.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._infrastructure.configuration</a><ul>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.configuration.configuration_base">configuration_base</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.configuration.options">options</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.configuration._configuration_factory">_configuration_factory</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.configuration._configuration">_configuration</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.configuration._cmdline_arguments_processor">_cmdline_arguments_processor</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.configuration._config_file_processor">_config_file_processor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="infrastructure.html"
+                        title="previous chapter">AutoArchive._infrastructure</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="infrastructure.service.html"
+                        title="next chapter">AutoArchive._infrastructure.service</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.service.html" title="AutoArchive._infrastructure.service"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.html" title="AutoArchive._infrastructure"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="infrastructure.html" >AutoArchive._infrastructure</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

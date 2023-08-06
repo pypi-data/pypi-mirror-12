@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._infrastructure.service &mdash; AutoArchive Developer Manual (ver. 1.2.1)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.2.1)" href="../index.html" />
+    <link rel="up" title="AutoArchive._infrastructure" href="infrastructure.html" />
+    <link rel="next" title="AutoArchive._infrastructure.storage" href="infrastructure.storage.html" />
+    <link rel="prev" title="AutoArchive._infrastructure.configuration" href="infrastructure.configuration.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.storage.html" title="AutoArchive._infrastructure.storage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.configuration.html" title="AutoArchive._infrastructure.configuration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="infrastructure.html" accesskey="U">AutoArchive._infrastructure</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._infrastructure.service">
+<span id="autoarchive-infrastructure-service"></span><h1>AutoArchive._infrastructure.service<a class="headerlink" href="#module-AutoArchive._infrastructure.service" title="Permalink to this headline">¶</a></h1>
+<p>Support framework for registering and accessing services.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._infrastructure.service.iservice_component">
+<span id="iservice-component"></span><h3>iservice_component<a class="headerlink" href="#module-AutoArchive._infrastructure.service.iservice_component" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_component.IServiceComponent" title="AutoArchive._infrastructure.service.iservice_component.IServiceComponent"><tt class="xref py py-class docutils literal"><span class="pre">IServiceComponent</span></tt></a> interface.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.service.iservice_component.IServiceComponent">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.service.iservice_component.</tt><tt class="descname">IServiceComponent</tt><big>(</big><em>applicationContext</em>, <em>serviceAccessor</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/iservice_component.html#IServiceComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service.iservice_component.IServiceComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Interface for service components.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>serviceAccessor</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IServiceAccessor</span></tt>) &#8211; Can be used to get/register services.</li>
+<li><strong>applicationContext</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._application_context.ApplicationContext" title="AutoArchive._infrastructure._application_context.ApplicationContext"><tt class="xref py py-class docutils literal"><span class="pre">ApplicationContext</span></tt></a>) &#8211; Application context.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._infrastructure.service.iservice_component.IServiceComponent.destroyServices">
+<tt class="descname">destroyServices</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/iservice_component.html#IServiceComponent.destroyServices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service.iservice_component.IServiceComponent.destroyServices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroys all services owned by this component.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.service.iservice">
+<span id="iservice"></span><h3>iservice<a class="headerlink" href="#module-AutoArchive._infrastructure.service.iservice" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.service.iservice.IService" title="AutoArchive._infrastructure.service.iservice.IService"><tt class="xref py py-class docutils literal"><span class="pre">IService</span></tt></a> interface.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.service.iservice.IService">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.service.iservice.</tt><tt class="descname">IService</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/iservice.html#IService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service.iservice.IService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Interface for component&#8217;s services.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor"><tt class="xref py py-class docutils literal"><span class="pre">ServiceAccessor</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.service.iservice_identification">
+<span id="iservice-identification"></span><h3>iservice_identification<a class="headerlink" href="#module-AutoArchive._infrastructure.service.iservice_identification" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a> interface.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.service.iservice_identification.</tt><tt class="descname">IServiceIdentification</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/iservice_identification.html#IServiceIdentification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Identifies a service.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Implementations should be static classes.</p>
+</div>
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification.interface">
+<tt class="descname">interface</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/iservice_identification.html#IServiceIdentification.interface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification.interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interface type of the service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">type{``object</span></tt><tt class="docutils literal"><span class="pre">}</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification.providerIdentificationInterface">
+<tt class="descname">providerIdentificationInterface</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/iservice_identification.html#IServiceIdentification.providerIdentificationInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification.providerIdentificationInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interface type for accessing information about providers of this service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">type{``object</span></tt><tt class="docutils literal"><span class="pre">}</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._infrastructure.service._service_accessor">
+<span id="service-accessor"></span><h3>_service_accessor<a class="headerlink" href="#module-AutoArchive._infrastructure.service._service_accessor" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor"><tt class="xref py py-class docutils literal"><span class="pre">ServiceAccessor</span></tt></a>.</p>
+<dl class="class">
+<dt id="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor">
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.service._service_accessor.</tt><tt class="descname">ServiceAccessor</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Access to services.</p>
+<p>A service can be made available by registering via this interface.  Registered classes has to implement
+<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice.IService" title="AutoArchive._infrastructure.service.iservice.IService"><tt class="xref py py-class docutils literal"><span class="pre">IService</span></tt></a>.</p>
+<dl class="method">
+<dt id="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService">
+<tt class="descname">getOrCreateService</tt><big>(</big><em>serviceIdentification</em>, <em>providerIdentification</em>, <em>*args</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.getOrCreateService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides access to registered services interfaces.</p>
+<p>See also: <tt class="xref py py-meth docutils literal"><span class="pre">registerInterface()</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service that shall be created.</li>
+<li><strong>providerIdentification</strong> (<tt class="docutils literal"><span class="pre">serviceIdentification.providerIdentificationInterface</span></tt>) &#8211; Corresponding service provider identification object.  It should be one of the
+instances returned by <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getProvidersIdentifications" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getProvidersIdentifications"><tt class="xref py py-meth docutils literal"><span class="pre">getProvidersIdentifications()</span></tt></a>.  For services with a single provider
+(implementation) it can be <tt class="docutils literal"><span class="pre">None</span></tt>.</li>
+<li><strong>args</strong> &#8211; Service specific arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Instance of a service provider of the particular service.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">serviceIdentification.interface</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is not registered.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getProvidersIdentifications">
+<tt class="descname">getProvidersIdentifications</tt><big>(</big><em>serviceIdentification</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.getProvidersIdentifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getProvidersIdentifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns providers identifications for the given service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Service providers.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">iterable&lt;serviceIdentification.providerIdentificationInterface&gt;</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is not registered.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.registerService">
+<tt class="descname">registerService</tt><big>(</big><em>serviceIdentification</em>, <em>providerClass</em>, <em>providerIdentification=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.registerService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.registerService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a service.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.unregisterService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.unregisterService"><tt class="xref py py-meth docutils literal"><span class="pre">unregisterService()</span></tt></a>, <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService"><tt class="xref py py-meth docutils literal"><span class="pre">getOrCreateService()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service that shall be registered.</li>
+<li><strong>providerClass</strong> (<tt class="docutils literal"><span class="pre">type{</span></tt> <tt class="docutils literal"><span class="pre">serviceIdentification.interface</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IService</span></tt><tt class="docutils literal"><span class="pre">}</span></tt>) &#8211; Provider of the service.</li>
+<li><strong>providerIdentification</strong> (<tt class="docutils literal"><span class="pre">serviceIdentification.providerIdentificationInterface</span></tt>) &#8211; Corresponding service provider identification object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">providerClass</span></tt> does not implement <tt class="docutils literal"><span class="pre">serviceIdentification.interface</span></tt>.  If
+<tt class="docutils literal"><span class="pre">providerIdentification</span></tt> does not implement <tt class="docutils literal"><span class="pre">serviceIdentification.providerIdentificationInterface</span></tt>.</li>
+<li><strong>KeyError</strong> &#8211; If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is already registered with <tt class="docutils literal"><span class="pre">providerClass</span></tt> or
+<tt class="docutils literal"><span class="pre">providerIdentification</span></tt>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.unregisterService">
+<tt class="descname">unregisterService</tt><big>(</big><em>serviceIdentification</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.unregisterService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.unregisterService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregisters a service with all its providers.</p>
+<p>All serviceType instances all destroyed first.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.registerService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.registerService"><tt class="xref py py-meth docutils literal"><span class="pre">registerService()</span></tt></a>, <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService"><tt class="xref py py-meth docutils literal"><span class="pre">getOrCreateService()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service that shall be registered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is not registered.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">AutoArchive._infrastructure.service._service_accessor.</tt><tt class="descname">ServiceAccessor</tt><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Access to services.</p>
+<p>A service can be made available by registering via this interface.  Registered classes has to implement
+<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice.IService" title="AutoArchive._infrastructure.service.iservice.IService"><tt class="xref py py-class docutils literal"><span class="pre">IService</span></tt></a>.</p>
+<dl class="method">
+<dt>
+<tt class="descname">getOrCreateService</tt><big>(</big><em>serviceIdentification</em>, <em>providerIdentification</em>, <em>*args</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.getOrCreateService"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Provides access to registered services interfaces.</p>
+<p>See also: <tt class="xref py py-meth docutils literal"><span class="pre">registerInterface()</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service that shall be created.</li>
+<li><strong>providerIdentification</strong> (<tt class="docutils literal"><span class="pre">serviceIdentification.providerIdentificationInterface</span></tt>) &#8211; Corresponding service provider identification object.  It should be one of the
+instances returned by <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getProvidersIdentifications" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getProvidersIdentifications"><tt class="xref py py-meth docutils literal"><span class="pre">getProvidersIdentifications()</span></tt></a>.  For services with a single provider
+(implementation) it can be <tt class="docutils literal"><span class="pre">None</span></tt>.</li>
+<li><strong>args</strong> &#8211; Service specific arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Instance of a service provider of the particular service.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">serviceIdentification.interface</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is not registered.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">getProvidersIdentifications</tt><big>(</big><em>serviceIdentification</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.getProvidersIdentifications"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns providers identifications for the given service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Service providers.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">iterable&lt;serviceIdentification.providerIdentificationInterface&gt;</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is not registered.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">registerService</tt><big>(</big><em>serviceIdentification</em>, <em>providerClass</em>, <em>providerIdentification=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.registerService"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Registers a service.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.unregisterService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.unregisterService"><tt class="xref py py-meth docutils literal"><span class="pre">unregisterService()</span></tt></a>, <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService"><tt class="xref py py-meth docutils literal"><span class="pre">getOrCreateService()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service that shall be registered.</li>
+<li><strong>providerClass</strong> (<tt class="docutils literal"><span class="pre">type{</span></tt> <tt class="docutils literal"><span class="pre">serviceIdentification.interface</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">IService</span></tt><tt class="docutils literal"><span class="pre">}</span></tt>) &#8211; Provider of the service.</li>
+<li><strong>providerIdentification</strong> (<tt class="docutils literal"><span class="pre">serviceIdentification.providerIdentificationInterface</span></tt>) &#8211; Corresponding service provider identification object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> &#8211; If <tt class="docutils literal"><span class="pre">providerClass</span></tt> does not implement <tt class="docutils literal"><span class="pre">serviceIdentification.interface</span></tt>.  If
+<tt class="docutils literal"><span class="pre">providerIdentification</span></tt> does not implement <tt class="docutils literal"><span class="pre">serviceIdentification.providerIdentificationInterface</span></tt>.</li>
+<li><strong>KeyError</strong> &#8211; If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is already registered with <tt class="docutils literal"><span class="pre">providerClass</span></tt> or
+<tt class="docutils literal"><span class="pre">providerIdentification</span></tt>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descname">unregisterService</tt><big>(</big><em>serviceIdentification</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_infrastructure/service/_service_accessor.html#ServiceAccessor.unregisterService"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Unregisters a service with all its providers.</p>
+<p>All serviceType instances all destroyed first.</p>
+<p>See also: <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.registerService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.registerService"><tt class="xref py py-meth docutils literal"><span class="pre">registerService()</span></tt></a>, <a class="reference internal" href="#AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService" title="AutoArchive._infrastructure.service._service_accessor.ServiceAccessor.getOrCreateService"><tt class="xref py py-meth docutils literal"><span class="pre">getOrCreateService()</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>serviceIdentification</strong> (<a class="reference internal" href="#AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification" title="AutoArchive._infrastructure.service.iservice_identification.IServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">IServiceIdentification</span></tt></a>) &#8211; Identification of the service that shall be registered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If <tt class="docutils literal"><span class="pre">serviceIdentification</span></tt> is not registered.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._infrastructure.service</a><ul>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.service.iservice_component">iservice_component</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.service.iservice">iservice</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.service.iservice_identification">iservice_identification</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._infrastructure.service._service_accessor">_service_accessor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="infrastructure.configuration.html"
+                        title="previous chapter">AutoArchive._infrastructure.configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="infrastructure.storage.html"
+                        title="next chapter">AutoArchive._infrastructure.storage</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.storage.html" title="AutoArchive._infrastructure.storage"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="infrastructure.configuration.html" title="AutoArchive._infrastructure.configuration"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="infrastructure.html" >AutoArchive._infrastructure</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

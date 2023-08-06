@@ -1,0 +1,1170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._application.archiving &mdash; AutoArchive Developer Manual (ver. 1.2.1)</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.2.1)" href="../index.html" />
+    <link rel="up" title="AutoArchive._application" href="application.html" />
+    <link rel="next" title="AutoArchive._application.archiving._archiver_manipulator" href="application.archiving.archiver_manipulator.html" />
+    <link rel="prev" title="AutoArchive._application" href="application.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="application.archiving.archiver_manipulator.html" title="AutoArchive._application.archiving._archiver_manipulator"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="application.html" title="AutoArchive._application"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="application.html" accesskey="U">AutoArchive._application</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-AutoArchive._application.archiving">
+<span id="autoarchive-application-archiving"></span><h1>AutoArchive._application.archiving<a class="headerlink" href="#module-AutoArchive._application.archiving" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../glossary.html#term-archiving"><em class="xref std std-term">Archiving</em></a> <a class="reference internal" href="../glossary.html#term-component"><em class="xref std std-term">component</em></a>.</p>
+<p>Provides the core functionality of the application.  Executes an <a class="reference internal" href="../glossary.html#term-archiver"><em class="xref std std-term">archiver</em></a> and creates a <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> based
+on provided <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a> and configuration.  It also allows to read various information about
+<a class="reference internal" href="../glossary.html#term-configured-archive"><em class="xref std std-term">configured</em></a> and <a class="reference internal" href="../glossary.html#term-stored-archive"><em class="xref std std-term">stored</em></a> archives. It requires archiver service
+(<a class="reference internal" href="services.archiver.html#AutoArchive._services.archiver.archiver_service_identification.ArchiverServiceIdentification" title="AutoArchive._services.archiver.archiver_service_identification.ArchiverServiceIdentification"><tt class="xref py py-class docutils literal"><span class="pre">ArchiverServiceIdentification</span></tt></a>) for the backup creation.</p>
+<div class="section" id="sub-packages">
+<h2>Sub-Packages<a class="headerlink" href="#sub-packages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="application.archiving.archiver_manipulator.html">AutoArchive._application.archiving._archiver_manipulator</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AutoArchive._application.archiving.archiving_application">
+<span id="archiving-application"></span><h3>archiving_application<a class="headerlink" href="#module-AutoArchive._application.archiving.archiving_application" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving.archiving_application.ArchivingApplication" title="AutoArchive._application.archiving.archiving_application.ArchivingApplication"><tt class="xref py py-class docutils literal"><span class="pre">ArchivingApplication</span></tt></a>.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving.archiving_application.ArchivingApplication">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving.archiving_application.</tt><tt class="descname">ArchivingApplication</tt><big>(</big><em>componentUi</em>, <em>applicationContext</em>, <em>serviceAccessor</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/archiving_application.html#ArchivingApplication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving.archiving_application.ArchivingApplication" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Takes care of executing user actions - application main use cases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>componentUi</strong> (<a class="reference internal" href="ui.cmdline.html#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a>) &#8211; Access to user interface.</li>
+<li><strong>applicationContext</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._application_context.ApplicationContext" title="AutoArchive._infrastructure._application_context.ApplicationContext"><tt class="xref py py-class docutils literal"><span class="pre">ApplicationContext</span></tt></a>) &#8211; Application context.</li>
+<li><strong>serviceAccessor</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IServiceAccessor</span></tt>) &#8211; Access to services.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._application.archiving.archiving_application.ArchivingApplication.executeCreateAction">
+<tt class="descname">executeCreateAction</tt><big>(</big><em>selectedArchiveSpecs</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/archiving_application.html#ArchivingApplication.executeCreateAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving.archiving_application.ArchivingApplication.executeCreateAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes create backup(s) action.</p>
+<p>Takes <tt class="docutils literal"><span class="pre">selectedArchiveSpecs</span></tt> and for each it creates a backup.  If <tt class="docutils literal"><span class="pre">selectedArchiveSpecs</span></tt> is empty or
+<a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.ALL" title="AutoArchive._infrastructure.configuration.options.Options.ALL"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ALL</span></tt></a> is set to <tt class="docutils literal"><span class="pre">True</span></tt> then backups for all knows archives (typically all archive
+specification files in <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR" title="AutoArchive._infrastructure.configuration.options.Options.ARCHIVE_SPECS_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ARCHIVE_SPECS_DIR</span></tt></a> directory) plus those in <tt class="docutils literal"><span class="pre">selectedArchiveSpecs</span></tt>
+are created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>selectedArchiveSpecs</strong> (<tt class="docutils literal"><span class="pre">Sequence&lt;ArchiveSpecInfo&gt;</span></tt>) &#8211; <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a> for which backups
+shall be created.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving.archiving_application.ArchivingApplication.executeListAction">
+<tt class="descname">executeListAction</tt><big>(</big><em>selectedArchiveSpecs</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/archiving_application.html#ArchivingApplication.executeListAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving.archiving_application.ArchivingApplication.executeListAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists information about <a class="reference internal" href="../glossary.html#term-selected-archive"><em class="xref std std-term">selected</em></a> and <a class="reference internal" href="../glossary.html#term-orphaned-archive"><em class="xref std std-term">orphaned</em></a> archives
+to standard output.</p>
+<p>Similarly to <a class="reference internal" href="#AutoArchive._application.archiving.archiving_application.ArchivingApplication.executeCreateAction" title="AutoArchive._application.archiving.archiving_application.ArchivingApplication.executeCreateAction"><tt class="xref py py-meth docutils literal"><span class="pre">executeCreateAction()</span></tt></a> archives in <tt class="docutils literal"><span class="pre">selectedArchiveSpecs</span></tt> are listed.  If it is empty or
+<a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.ALL" title="AutoArchive._infrastructure.configuration.options.Options.ALL"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ALL</span></tt></a> is <tt class="docutils literal"><span class="pre">True</span></tt> then all archives plus selected are listed.  Orphaned archives are always
+listed.</p>
+<p>List of orphaned archives is obtained by following operation: from the list of
+<a class="reference internal" href="../glossary.html#term-stored-archive"><em class="xref std std-term">stored archives</em></a> is subtracted the unique list of valid selected archives and
+valid <a class="reference internal" href="../glossary.html#term-configured-archive"><em class="xref std std-term">configured archives</em></a>.</p>
+<p>Output has two possible formats depending on the <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.VERBOSE" title="AutoArchive._infrastructure.configuration.options.Options.VERBOSE"><tt class="xref py py-attr docutils literal"><span class="pre">Options.VERBOSE</span></tt></a> option.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>selectedArchiveSpecs</strong> (<tt class="docutils literal"><span class="pre">Sequence&lt;ArchiveSpecInfo&gt;</span></tt>) &#8211; <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a> which shall be
+listed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving.archiving_application.ArchivingApplication.executePurgeAction">
+<tt class="descname">executePurgeAction</tt><big>(</big><em>selectedArchiveSpecs</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/archiving_application.html#ArchivingApplication.executePurgeAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving.archiving_application.ArchivingApplication.executePurgeAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all stored information about specified orphaned archives.</p>
+<p>If <tt class="docutils literal"><span class="pre">selectedArchiveSpecs</span></tt> is empty or <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.ALL" title="AutoArchive._infrastructure.configuration.options.Options.ALL"><tt class="xref py py-attr docutils literal"><span class="pre">Options.ALL</span></tt></a> is <tt class="docutils literal"><span class="pre">True</span></tt> then all orphaned archives are
+processed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>selectedArchiveSpecs</strong> (<tt class="docutils literal"><span class="pre">Sequence&lt;ArchiveSpecInfo&gt;</span></tt>) &#8211; <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a> which shall be
+purged.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._application.archiving.config_constants">
+<span id="config-constants"></span><h3>config_constants<a class="headerlink" href="#module-AutoArchive._application.archiving.config_constants" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving.config_constants.ArchiveSpecInfo" title="AutoArchive._application.archiving.config_constants.ArchiveSpecInfo"><tt class="xref py py-class docutils literal"><span class="pre">ArchiveSpecInfo</span></tt></a> and <a class="reference internal" href="#AutoArchive._application.archiving.config_constants.ConfigConstants" title="AutoArchive._application.archiving.config_constants.ConfigConstants"><tt class="xref py py-class docutils literal"><span class="pre">ConfigConstants</span></tt></a>.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving.config_constants.ArchiveSpecInfo">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving.config_constants.</tt><tt class="descname">ArchiveSpecInfo</tt><a class="headerlink" href="#AutoArchive._application.archiving.config_constants.ArchiveSpecInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.tuple</span></tt></p>
+<p>Holds information about an archive specification file; its name and full path.</p>
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving.config_constants.ArchiveSpecInfo.name">
+<tt class="descname">name</tt><a class="headerlink" href="#AutoArchive._application.archiving.config_constants.ArchiveSpecInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving.config_constants.ArchiveSpecInfo.path">
+<tt class="descname">path</tt><a class="headerlink" href="#AutoArchive._application.archiving.config_constants.ArchiveSpecInfo.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._application.archiving.config_constants.ConfigConstants">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving.config_constants.</tt><tt class="descname">ConfigConstants</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/config_constants.html#ConfigConstants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving.config_constants.ConfigConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Configuration related constants.</p>
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT">
+<tt class="descname">ARCHIVE_SPEC_EXT</tt><em class="property"> = '.aa'</em><a class="headerlink" href="#AutoArchive._application.archiving.config_constants.ConfigConstants.ARCHIVE_SPEC_EXT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._application.archiving._archiving">
+<span id="archiving"></span><h3>_archiving<a class="headerlink" href="#module-AutoArchive._application.archiving._archiving" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving._archiving._Archiving" title="AutoArchive._application.archiving._archiving._Archiving"><tt class="xref py py-class docutils literal"><span class="pre">_Archiving</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving._archiving._Archiving">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._archiving.</tt><tt class="descname">_Archiving</tt><big>(</big><em>componentUi</em>, <em>applicationContext</em>, <em>serviceAccessor</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Provides means for working with archives.</p>
+<p>Several methods of this class requires an <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a> as the input parameter (usually
+named <tt class="docutils literal"><span class="pre">specFile</span></tt>).  This file should contain all information required to create the <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a>.  Its format is
+defined by the standard <tt class="xref py py-mod docutils literal"><span class="pre">configparser</span></tt> module.  It has to contain section <tt class="docutils literal"><span class="pre">[Content]</span></tt> and may contain
+section <tt class="docutils literal"><span class="pre">[Archive]</span></tt>.  The <tt class="docutils literal"><span class="pre">[Content]</span></tt> section requires following options to be present: <tt class="docutils literal"><span class="pre">path</span></tt>,
+<tt class="docutils literal"><span class="pre">include-files</span></tt> and <tt class="docutils literal"><span class="pre">exclude-files</span></tt>.  Optionally, <tt class="docutils literal"><span class="pre">name</span></tt> can be present.  Options in the archive
+specification file has higher priority than those in the configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>componentUi</strong> (<a class="reference internal" href="ui.cmdline.html#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a>) &#8211; Access to user interface.</li>
+<li><strong>applicationContext</strong> (<a class="reference internal" href="infrastructure.html#AutoArchive._infrastructure._application_context.ApplicationContext" title="AutoArchive._infrastructure._application_context.ApplicationContext"><tt class="xref py py-class docutils literal"><span class="pre">ApplicationContext</span></tt></a>) &#8211; Application context.</li>
+<li><strong>serviceAccessor</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IServiceAccessor</span></tt>) &#8211; Access to services.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archiving._Archiving.filterValidSpecFiles">
+<tt class="descname">filterValidSpecFiles</tt><big>(</big><em>specFiles</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving.filterValidSpecFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving.filterValidSpecFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns names of <a class="reference internal" href="../glossary.html#term-configured-archive"><em class="xref std std-term">configured archives</em></a> from valid only
+<a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification files</em></a> passed in <tt class="docutils literal"><span class="pre">specFiles</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>specFiles</strong> (<tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt>) &#8211; Paths to archive specification files that shall be validated and from which the names
+shall be retrieved.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Iterable of names of validly configured archives.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archiving._Archiving.getArchiveInfo">
+<tt class="descname">getArchiveInfo</tt><big>(</big><em>specFile</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving.getArchiveInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving.getArchiveInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information about archive represented by the <tt class="docutils literal"><span class="pre">specFile</span></tt> parameter.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method utilizes the <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a> so the option            <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> has to point to an <em>existing</em> directory.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>specFile</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Information about an archive or <tt class="docutils literal"><span class="pre">None</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archiving._Archiving.getArchiveSpecs">
+<tt class="descname">getArchiveSpecs</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving.getArchiveSpecs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving.getArchiveSpecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterable of all known archive specification files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Iterable of archive specification files information.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterable&lt;ArchiveSpecInfo&gt;</span></tt></td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises RuntimeError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">If list of archive specification can not be obtained.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveInfo">
+<tt class="descname">getStoredArchiveInfo</tt><big>(</big><em>archiveName</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving.getStoredArchiveInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information about an archive from stored data.</p>
+<p>Unlike in the <a class="reference internal" href="#AutoArchive._application.archiving._archiving._Archiving.getArchiveInfo" title="AutoArchive._application.archiving._archiving._Archiving.getArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">getArchiveInfo()</span></tt></a> method the information is not read from the
+<a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a> but from other stored data about the archive created by the component in
+previous runs.  Such data can be fetched for example from application storage (<tt class="xref py py-class docutils literal"><span class="pre">IStorage</span></tt>) or other
+sources specific to the archiver.  It is expected that the large portion of data will be missing in the
+returned information.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method utilizes the <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a> so the option            <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> has to point to an <em>existing</em> directory.</p>
+</div>
+<p>See also: <a class="reference internal" href="#AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveNames" title="AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveNames"><tt class="xref py py-meth docutils literal"><span class="pre">getStoredArchiveNames()</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>archiveName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the archive which information shall be returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Information about an archive or <tt class="docutils literal"><span class="pre">None</span></tt> if no data for the archive was found.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveNames">
+<tt class="descname">getStoredArchiveNames</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving.getStoredArchiveNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns iterable of archive names which has some data stored in a persistent storage.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method utilizes the <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a> so the option            <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> has to point to an <em>existing</em> directory.</p>
+</div>
+<p>See also: <a class="reference internal" href="#AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveInfo" title="AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">getStoredArchiveInfo()</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Iterable of archive names.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Iterable&lt;str&gt;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archiving._Archiving.makeBackup">
+<tt class="descname">makeBackup</tt><big>(</big><em>specFile</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving.makeBackup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving.makeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> based on <tt class="docutils literal"><span class="pre">specFile</span></tt>.</p>
+<p>The result can be a file with a full backup or an incremental backup of some particular level.  This depends on
+the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a> (<tt class="docutils literal"><span class="pre">specFile</span></tt>), the configuration (<tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt>), previous
+operations with the <tt class="docutils literal"><span class="pre">specFile</span></tt> and the time.  Some of the properties of <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo" title="AutoArchive._application.archiving._archive_info._ArchiveInfo"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveInfo</span></tt></a> returned by the
+method <a class="reference internal" href="#AutoArchive._application.archiving._archiving._Archiving.getArchiveInfo" title="AutoArchive._application.archiving._archiving._Archiving.getArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">getArchiveInfo()</span></tt></a> can be used to determine what the result will be.  The path and name of the
+created file will be assembled as follows:
+“&lt;Options.DEST_DIR&gt;/&lt;archive_name&gt;[.&lt;backup_level&gt;].&lt;archiver_specific_extension&gt;”.</p>
+<p>Method uses <a class="reference internal" href="ui.cmdline.html#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a>-like interface to report errors, warnings et al. to the user.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method utilizes the <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a> so the option            <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> has to point to an <em>existing</em> directory.</p>
+</div>
+<p>See also: <tt class="xref py py-meth docutils literal"><span class="pre">IArchiving.makeBackup()</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>specFile</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If the desired archiver type is not supported.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archiving._Archiving.purgeStoredArchiveData">
+<tt class="descname">purgeStoredArchiveData</tt><big>(</big><em>archiveName</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving.html#_Archiving.purgeStoredArchiveData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving._Archiving.purgeStoredArchiveData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all data stored for the archive named <tt class="docutils literal"><span class="pre">archiveName</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method utilizes the <a class="reference internal" href="../glossary.html#term-user-configuration-directory"><em class="xref std std-term">user configuration directory</em></a> so the option            <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR" title="AutoArchive._infrastructure.configuration.options.Options.USER_CONFIG_DIR"><tt class="xref py py-attr docutils literal"><span class="pre">Options.USER_CONFIG_DIR</span></tt></a> has to point to an <strong>existing</strong> directory.</p>
+</div>
+<p>See also: <a class="reference internal" href="#AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveInfo" title="AutoArchive._application.archiving._archiving._Archiving.getStoredArchiveInfo"><tt class="xref py py-meth docutils literal"><span class="pre">getStoredArchiveInfo()</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>archiveName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the archive which data shall be purged.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>KeyError</strong> &#8211; If <tt class="docutils literal"><span class="pre">archiveName</span></tt> does not have any stored data to purge.</li>
+<li><strong>OSError</strong> &#8211; If an error occurred during the operation of removing data from a physical storage.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._application.archiving._backup_information_provider">
+<span id="backup-information-provider"></span><h3>_backup_information_provider<a class="headerlink" href="#module-AutoArchive._application.archiving._backup_information_provider" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider" title="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider"><tt class="xref py py-class docutils literal"><span class="pre">_BackupInformationProvider</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._backup_information_provider.</tt><tt class="descname">_BackupInformationProvider</tt><big>(</big><em>archiveSpec</em>, <em>componentUi</em>, <em>storage</em>, <em>serviceAccessor</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Provides information about backups.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>archiveSpec</strong> (<a class="reference internal" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpec" title="AutoArchive._application.archiving._archive_spec._ArchiveSpec"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveSpec</span></tt></a>) &#8211; Archive specification of the backup that this instance will provide information about.</li>
+<li><strong>storage</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IStorage</span></tt>) &#8211; Application storage.</li>
+<li><strong>componentUi</strong> (<a class="reference internal" href="ui.cmdline.html#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a>) &#8211; Access to the user interface.</li>
+<li><strong>serviceAccessor</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IServiceAccessor</span></tt>) &#8211; An <tt class="xref py py-class docutils literal"><span class="pre">IServiceAccessor</span></tt> instance.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>RuntimeError</strong> &#8211; If the archiver service could not be created.</li>
+<li><strong>OSError</strong> &#8211; If a system error occurred.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="staticmethod">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getBackupLevelForBackup">
+<em class="property">static </em><tt class="descname">getBackupLevelForBackup</tt><big>(</big><em>archiveName</em>, <em>userConfigDir</em>, <em>serviceAccessor</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.getBackupLevelForBackup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getBackupLevelForBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current backup level for the passed <tt class="docutils literal"><span class="pre">archiveName</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>archiveName</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Name of the archive for which the backup level shall be returned.</li>
+<li><strong>userConfigDir</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the user configuration directory.</li>
+<li><strong>serviceAccessor</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IServiceAccessor</span></tt>) &#8211; Service accessor.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Current backup level for <tt class="docutils literal"><span class="pre">archiveName</span></tt> or None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>RuntimeError</strong> &#8211; If the archiver service could not be created.</li>
+<li><strong>OSError</strong> &#8211; If a system error occurred.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getLastFullRestartDate">
+<tt class="descname">getLastFullRestartDate</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.getLastFullRestartDate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getLastFullRestartDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the last full restart date from the persistent storage and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Date of the last full backup level restart.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">datetime.date</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getLastRestartDate">
+<tt class="descname">getLastRestartDate</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.getLastRestartDate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getLastRestartDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the last restart date from the persistent storage and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Date of the last backup level restart.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">datetime.date</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getRestartDate">
+<em class="property">static </em><tt class="descname">getRestartDate</tt><big>(</big><em>storageVariable</em>, <em>storagePortion</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.getRestartDate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getRestartDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the date of a backup level restart from storage and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>storageVariable</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Variable that holds the restart date in the persistent storage.</li>
+<li><strong>storagePortion</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IStoragePortion</span></tt>) &#8211; The persistent storage where the variable is located.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A backup level restart date.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">datetime.date</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getStoredArchiveNames">
+<em class="property">static </em><tt class="descname">getStoredArchiveNames</tt><big>(</big><em>userConfigDir</em>, <em>storage</em>, <em>serviceAccessor</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.getStoredArchiveNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.getStoredArchiveNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns iterable of archive names which has some data stored in a persistent storage.</p>
+<p>Persistent storages from which archive names are retrieved are specific to the concrete archiver service.
+A typical storage used by archivers is the application storage (<tt class="xref py py-class docutils literal"><span class="pre">IStorage</span></tt>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>userConfigDir</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; Path to the user configuration directory.</li>
+<li><strong>storage</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IStorage</span></tt>) &#8211; The application storage.</li>
+<li><strong>serviceAccessor</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IServiceAccessor</span></tt>) &#8211; Service accessor.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set of archive names.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">set&lt;str&gt;</span></tt></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises RuntimeError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">If the archiver service could not be created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.archiveSpec">
+<tt class="descname">archiveSpec</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.archiveSpec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.archiveSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the archive specification that corresponds to the backup about which this instance provides information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpec" title="AutoArchive._application.archiving._archive_spec._ArchiveSpec"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveSpec</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.currentBackupLevel">
+<tt class="descname">currentBackupLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.currentBackupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.currentBackupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the current backup level or <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.nextBackupLevel">
+<tt class="descname">nextBackupLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.nextBackupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.nextBackupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the backup level that would be created if the backup creation was triggered.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.restartLevel">
+<tt class="descname">restartLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.restartLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.restartLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> to which a next restart would be done.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.restartReason">
+<tt class="descname">restartReason</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_backup_information_provider.html#_BackupInformationProvider.restartReason"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._backup_information_provider._BackupInformationProvider.restartReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reason for upcoming backup level restart.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-attr docutils literal"><span class="pre">_BackupLevelRestartReasons</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._application.archiving._command_executor">
+<span id="command-executor"></span><h3>_command_executor<a class="headerlink" href="#module-AutoArchive._application.archiving._command_executor" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving._command_executor._CommandExecutor" title="AutoArchive._application.archiving._command_executor._CommandExecutor"><tt class="xref py py-class docutils literal"><span class="pre">_CommandExecutor</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving._command_executor._CommandExecutor">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._command_executor.</tt><tt class="descname">_CommandExecutor</tt><big>(</big><em>archiveSpec</em>, <em>externalCommandExecutor</em>, <em>componentUi</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_command_executor.html#_CommandExecutor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._command_executor._CommandExecutor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<dl class="method">
+<dt id="AutoArchive._application.archiving._command_executor._CommandExecutor.executeAfterCommand">
+<tt class="descname">executeAfterCommand</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_command_executor.html#_CommandExecutor.executeAfterCommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._command_executor._CommandExecutor.executeAfterCommand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AutoArchive._application.archiving._command_executor._CommandExecutor.executeBeforeCommand">
+<tt class="descname">executeBeforeCommand</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_command_executor.html#_CommandExecutor.executeBeforeCommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._command_executor._CommandExecutor.executeBeforeCommand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._application.archiving._archiving_constants">
+<span id="archiving-constants"></span><h3>_archiving_constants<a class="headerlink" href="#module-AutoArchive._application.archiving._archiving_constants" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving._archiving_constants._ArchiverMaps" title="AutoArchive._application.archiving._archiving_constants._ArchiverMaps"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiverMaps</span></tt></a> and <a class="reference internal" href="#AutoArchive._application.archiving._archiving_constants._RestartStorageVariables" title="AutoArchive._application.archiving._archiving_constants._RestartStorageVariables"><tt class="xref py py-class docutils literal"><span class="pre">_RestartStorageVariables</span></tt></a> classes.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving._archiving_constants._ArchiverMaps">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._archiving_constants.</tt><tt class="descname">_ArchiverMaps</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving_constants.html#_ArchiverMaps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving_constants._ArchiverMaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Mappings which involves archiver types.</p>
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archiving_constants._ArchiverMaps.ARCHIVER_TYPE_TO_SERVICE_MAP">
+<tt class="descname">ARCHIVER_TYPE_TO_SERVICE_MAP</tt><em class="property"> = {0: 1, 1: 1, 2: 1, 3: 1, 4: 0, 5: 0, 6: 0}</em><a class="headerlink" href="#AutoArchive._application.archiving._archiving_constants._ArchiverMaps.ARCHIVER_TYPE_TO_SERVICE_MAP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._application.archiving._archiving_constants._RestartStorageVariables">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._archiving_constants.</tt><tt class="descname">_RestartStorageVariables</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archiving_constants.html#_RestartStorageVariables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archiving_constants._RestartStorageVariables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Names of storage variables for backup level restarting.</p>
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.BACKUP_SIZE">
+<tt class="descname">BACKUP_SIZE</tt><em class="property"> = 'archiving-size-level'</em><a class="headerlink" href="#AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.BACKUP_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.LAST_FULL_RESTART">
+<tt class="descname">LAST_FULL_RESTART</tt><em class="property"> = 'archiving-last-full-restart'</em><a class="headerlink" href="#AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.LAST_FULL_RESTART" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.LAST_RESTART">
+<tt class="descname">LAST_RESTART</tt><em class="property"> = 'archiving-last-restart'</em><a class="headerlink" href="#AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.LAST_RESTART" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.RESTART_COUNT">
+<tt class="descname">RESTART_COUNT</tt><em class="property"> = 'archiving-restart-count'</em><a class="headerlink" href="#AutoArchive._application.archiving._archiving_constants._RestartStorageVariables.RESTART_COUNT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._application.archiving._archive_spec">
+<span id="archive-spec"></span><h3>_archive_spec<a class="headerlink" href="#module-AutoArchive._application.archiving._archive_spec" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpec" title="AutoArchive._application.archiving._archive_spec._ArchiveSpec"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveSpec</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving._archive_spec._ArchiveSpec">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._archive_spec.</tt><tt class="descname">_ArchiveSpec</tt><big>(</big><em>specFile</em>, <em>configuration</em>, <em>componentUi=None</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_spec.html#_ArchiveSpec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase" title="AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase"><tt class="xref py py-class docutils literal"><span class="pre">AutoArchive._infrastructure.configuration.configuration_base.ConfigurationBase</span></tt></a></p>
+<p>The <a class="reference internal" href="../glossary.html#term-archive"><em class="xref std std-term">archive</em></a> specification.</p>
+<p>Contains all information needed to create the <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> such as the name, list of files which shall be
+included into the backup, list of files to exclude, etc.  These values can be configured in the
+<a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a> (<tt class="docutils literal"><span class="pre">specFile</span></tt>) or in the general configuration such as command line or
+configuration files.  Options that can be read from this class are defined as static attributes of
+<a class="reference internal" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions" title="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveSpecOptions</span></tt></a> and <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options" title="AutoArchive._infrastructure.configuration.options.Options"><tt class="xref py py-class docutils literal"><span class="pre">Options</span></tt></a>.  If an option is not defined in the
+archive specification file it is read from <tt class="docutils literal"><span class="pre">configuration</span></tt>.</p>
+<p>The instance is fully populated during construction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>specFile</strong> (<tt class="docutils literal"><span class="pre">str</span></tt>) &#8211; <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">Archive specification file</em></a> name (the “.aa file”).</li>
+<li><strong>configuration</strong> (<tt class="xref py py-class docutils literal"><span class="pre">IConfiguration</span></tt>) &#8211; The application&#8217;s configuration.</li>
+<li><strong>componentUi</strong> (<a class="reference internal" href="ui.cmdline.html#AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi" title="AutoArchive._ui.cmdline._cmdline_ui.CmdlineUi"><tt class="xref py py-class docutils literal"><span class="pre">CmdlineUi</span></tt></a>) &#8211; The application&#8217;s <a class="reference internal" href="../glossary.html#term-ui"><em class="xref std std-term">UI</em></a> interface.  If <tt class="docutils literal"><span class="pre">None</span></tt> then messages about non-accessible
+files or other errors during processing of <strong>included</strong> and <strong>excluded</strong> file lists will not be shown.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>IOError</strong> &#8211; If <tt class="docutils literal"><span class="pre">specFile</span></tt> can not be opened.</li>
+<li><strong>LookupError</strong> &#8211; If a <em>section</em> or an <em>option</em> is missing in <tt class="docutils literal"><span class="pre">specFile</span></tt>.</li>
+<li><strong>SyntaxError</strong> &#8211; If <tt class="docutils literal"><span class="pre">specFile</span></tt> can not be parsed.</li>
+<li><strong>KeyError</strong> &#8211; If an invalid (unsupported) <em>section</em> or <em>option</em> is found in the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification
+file</em></a>.</li>
+<li><strong>ValueError</strong> &#8211; If option&#8217;s <em>value</em> is not correct.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="AutoArchive._application.archiving._archive_spec._ArchiveSpec.getRawValue">
+<tt class="descname">getRawValue</tt><big>(</big><em>option</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_spec.html#_ArchiveSpec.getRawValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpec.getRawValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>See: <tt class="xref py py-meth docutils literal"><span class="pre">IConfiguration.getValue()</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._archive_spec.</tt><tt class="descname">_ArchiveSpecOptions</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_spec.html#_ArchiveSpecOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Constants for options used specifically in the <a class="reference internal" href="../glossary.html#term-archive-specification-file"><em class="xref std std-term">archive specification file</em></a>.</p>
+<p>These constants should be used to access options in <a class="reference internal" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpec" title="AutoArchive._application.archiving._archive_spec._ArchiveSpec"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveSpec</span></tt></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not allowed to change values of these constants.</p>
+</div>
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.EXCLUDE_FILES">
+<tt class="descname">EXCLUDE_FILES</tt><em class="property"> = &lt;Option exclude-files of type &lt;class 'str'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.EXCLUDE_FILES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Files and directories that will be excluded from the <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> (<tt class="docutils literal"><span class="pre">frozenset&lt;str&gt;</span></tt>).
+Note that frozenset&lt;str&gt; is not supported by <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType" title="AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType"><tt class="xref py py-meth docutils literal"><span class="pre">OptionsUtils.strToOptionType()</span></tt></a>; it is not used while
+populating this option.  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.INCLUDE_FILES">
+<tt class="descname">INCLUDE_FILES</tt><em class="property"> = &lt;Option include-files of type &lt;class 'str'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.INCLUDE_FILES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Files and directories that will be included in the <a class="reference internal" href="../glossary.html#term-backup"><em class="xref std std-term">backup</em></a> (<tt class="docutils literal"><span class="pre">frozenset&lt;str&gt;</span></tt>).
+Note that frozenset&lt;str&gt; is not supported by <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType" title="AutoArchive._infrastructure.configuration.options.OptionsUtils.strToOptionType"><tt class="xref py py-meth docutils literal"><span class="pre">OptionsUtils.strToOptionType()</span></tt></a>; it is not used while
+populating this option.  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.NAME">
+<tt class="descname">NAME</tt><em class="property"> = &lt;Option name of type &lt;class 'str'&gt;&gt;</em><a class="headerlink" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.NAME" title="Permalink to this definition">¶</a></dt>
+<dd><p>Archive name (<tt class="docutils literal"><span class="pre">str</span></tt>).  Guaranteed to be defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.PATH">
+<tt class="descname">PATH</tt><em class="property"> = &lt;Option path of type path&gt;</em><a class="headerlink" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.PATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the base directory for <a class="reference internal" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.INCLUDE_FILES" title="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.INCLUDE_FILES"><tt class="xref py py-data docutils literal"><span class="pre">INCLUDE_FILES</span></tt></a>, <a class="reference internal" href="#AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.EXCLUDE_FILES" title="AutoArchive._application.archiving._archive_spec._ArchiveSpecOptions.EXCLUDE_FILES"><tt class="xref py py-data docutils literal"><span class="pre">EXCLUDE_FILES</span></tt></a> (<tt class="xref py py-data docutils literal"><span class="pre">SpecialOptionTypes.PATH</span></tt>).
+Guaranteed to be defined.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-AutoArchive._application.archiving._archive_info">
+<span id="archive-info"></span><h3>_archive_info<a class="headerlink" href="#module-AutoArchive._application.archiving._archive_info" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#AutoArchive._application.archiving._archive_info._BackupLevelRestartReasons" title="AutoArchive._application.archiving._archive_info._BackupLevelRestartReasons"><tt class="xref py py-attr docutils literal"><span class="pre">_BackupLevelRestartReasons</span></tt></a> enum and <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo" title="AutoArchive._application.archiving._archive_info._ArchiveInfo"><tt class="xref py py-class docutils literal"><span class="pre">_ArchiveInfo</span></tt></a> class.</p>
+<dl class="class">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo">
+<em class="property">class </em><tt class="descclassname">AutoArchive._application.archiving._archive_info.</tt><tt class="descname">_ArchiveInfo</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Information about an archive.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Class should be instantiated by calling the <tt class="xref py py-meth docutils literal"><span class="pre">_Archiving.getArchiveInfo()</span></tt> or        <tt class="xref py py-meth docutils literal"><span class="pre">_Archiving.getStoredArchiveInfo()</span></tt> factory methods.</p>
+</div>
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType">
+<tt class="descname">archiverType</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.archiverType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the archiver type for this archive.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Value is guaranteed to be non-<tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-attr docutils literal"><span class="pre">ArchiverTypes</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.backupLevel">
+<tt class="descname">backupLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.backupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.backupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the current <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the archive is not incremental or used <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support
+incremental archiving.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For archiver types that supports incremental archiving, whether the return value will be <tt class="docutils literal"><span class="pre">None</span></tt> or            not does not depend on the <em>current</em> <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.incremental" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.incremental"><tt class="xref py py-attr docutils literal"><span class="pre">incremental</span></tt></a> value.  If the archive was configured and created            as incremental previously then the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> will be defined even if the current            <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.incremental" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.incremental"><tt class="xref py py-attr docutils literal"><span class="pre">incremental</span></tt></a> value would be <tt class="docutils literal"><span class="pre">False</span></tt> and vice versa.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.destDir">
+<tt class="descname">destDir</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.destDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.destDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the archive&#8217;s destination directory.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Value is guaranteed to be non-<tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.fullRestartAfterAge">
+<tt class="descname">fullRestartAfterAge</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.fullRestartAfterAge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.fullRestartAfterAge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of days after which the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> should be restarted to level 0.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if no value is
+defined for <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_AGE" title="AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_AGE"><tt class="xref py py-attr docutils literal"><span class="pre">Options.FULL_RESTART_AFTER_AGE</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.fullRestartAfterCount">
+<tt class="descname">fullRestartAfterCount</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.fullRestartAfterCount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.fullRestartAfterCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of restarts after which the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> will be restarted to 0.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if no value            is defined for <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_COUNT" title="AutoArchive._infrastructure.configuration.options.Options.FULL_RESTART_AFTER_COUNT"><tt class="xref py py-attr docutils literal"><span class="pre">Options.FULL_RESTART_AFTER_COUNT</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.incremental">
+<tt class="descname">incremental</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.incremental"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.incremental" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the status of incremental archiving activation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.lastFullRestart">
+<tt class="descname">lastFullRestart</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.lastFullRestart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.lastFullRestart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the date when the last <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restart to level 0 occurred.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if            <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting"><tt class="xref py py-attr docutils literal"><span class="pre">restarting</span></tt></a> was not enabled for the archive in the past.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">datetime.date</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.lastRestart">
+<tt class="descname">lastRestart</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.lastRestart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.lastRestart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the date when the last <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restart occurred.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if            <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting"><tt class="xref py py-attr docutils literal"><span class="pre">restarting</span></tt></a> was not enabled for the archive in the past.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">datetime.date</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.name">
+<tt class="descname">name</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the name of the archive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.nextBackupLevel">
+<tt class="descname">nextBackupLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.nextBackupLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.nextBackupLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the next <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a>.</p>
+<p>See also <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.backupLevel" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.backupLevel"><tt class="xref py py-attr docutils literal"><span class="pre">backupLevel</span></tt></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the archive is not incremental or used <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support
+incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.path">
+<tt class="descname">path</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the path to the archive&#8217;s root.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the archive&#8217;s root can not be retrieved.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">str</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.restartAfterAge">
+<tt class="descname">restartAfterAge</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.restartAfterAge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restartAfterAge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of days after which the <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> should be restarted.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if no value is
+defined for <a class="reference internal" href="infrastructure.configuration.html#AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_AGE" title="AutoArchive._infrastructure.configuration.options.Options.RESTART_AFTER_AGE"><tt class="xref py py-attr docutils literal"><span class="pre">Options.RESTART_AFTER_AGE</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.restartAfterLevel">
+<tt class="descname">restartAfterLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.restartAfterLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restartAfterLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the maximal <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a>; after it is reached it will be restarted to a lower value.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.restartCount">
+<tt class="descname">restartCount</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.restartCount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restartCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restarts already performed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or if            <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting"><tt class="xref py py-attr docutils literal"><span class="pre">restarting</span></tt></a> was not enabled for the archive in the past.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.restartLevel">
+<tt class="descname">restartLevel</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.restartLevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restartLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> to which a next restart would be done.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.restartReason">
+<tt class="descname">restartReason</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.restartReason"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restartReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reason for the upcoming <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restart.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving or the restart
+reason can not be determined.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#AutoArchive._application.archiving._archive_info._BackupLevelRestartReasons" title="AutoArchive._application.archiving._archive_info._BackupLevelRestartReasons"><tt class="xref py py-attr docutils literal"><span class="pre">_BackupLevelRestartReasons</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting">
+<tt class="descname">restarting</tt><a class="reference internal" href="../_modules/AutoArchive/_application/archiving/_archive_info.html#_ArchiveInfo.restarting"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.restarting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the status of <a class="reference internal" href="../glossary.html#term-backup-level"><em class="xref std std-term">backup level</em></a> restarting activation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be <tt class="docutils literal"><span class="pre">None</span></tt> if the <a class="reference internal" href="#AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType" title="AutoArchive._application.archiving._archive_info._ArchiveInfo.archiverType"><tt class="xref py py-attr docutils literal"><span class="pre">archiverType</span></tt></a> does not support incremental archiving.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AutoArchive._application.archiving._archive_info._BackupLevelRestartReasons">
+<tt class="descclassname">AutoArchive._application.archiving._archive_info.</tt><tt class="descname">_BackupLevelRestartReasons</tt><a class="headerlink" href="#AutoArchive._application.archiving._archive_info._BackupLevelRestartReasons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AutoArchive._application.archiving</a><ul>
+<li><a class="reference internal" href="#sub-packages">Sub-Packages</a></li>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving.archiving_application">archiving_application</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving.config_constants">config_constants</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving._archiving">_archiving</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving._backup_information_provider">_backup_information_provider</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving._command_executor">_command_executor</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving._archiving_constants">_archiving_constants</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving._archive_spec">_archive_spec</a></li>
+<li><a class="reference internal" href="#module-AutoArchive._application.archiving._archive_info">_archive_info</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="application.html"
+                        title="previous chapter">AutoArchive._application</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="application.archiving.archiver_manipulator.html"
+                        title="next chapter">AutoArchive._application.archiving._archiver_manipulator</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="application.archiving.archiver_manipulator.html" title="AutoArchive._application.archiving._archiver_manipulator"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="application.html" title="AutoArchive._application"
+             >previous</a> |</li>
+        <li><a href="../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="api_reference.html" >API Reference</a> &raquo;</li>
+          <li><a href="autoarchive.html" >AutoArchive</a> &raquo;</li>
+          <li><a href="application.html" >AutoArchive._application</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

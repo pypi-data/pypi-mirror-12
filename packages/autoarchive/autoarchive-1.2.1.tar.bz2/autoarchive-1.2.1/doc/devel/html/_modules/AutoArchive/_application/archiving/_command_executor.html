@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AutoArchive._application.archiving._command_executor &mdash; AutoArchive Developer Manual (ver. 1.2.1)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="top" title="AutoArchive Developer Manual (ver. 1.2.1)" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for AutoArchive._application.archiving._command_executor</h1><div class="highlight"><pre>
+<span class="c"># _command_executor.py</span>
+<span class="c">#</span>
+<span class="c"># Project: AutoArchive</span>
+<span class="c"># License: GNU GPLv3</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2003 - 2015 Róbert Čerňanský</span>
+
+
+
+<span class="sd">&quot;&quot;&quot;:class:`_CommandExecutor` class.&quot;&quot;&quot;</span>
+
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;_CommandExecutor&quot;</span><span class="p">]</span>
+
+
+
+<span class="c"># {{{ INCLUDES</span>
+
+<span class="kn">import</span> <span class="nn">shlex</span>
+
+<span class="kn">from</span> <span class="nn">AutoArchive._infrastructure.ui</span> <span class="kn">import</span> <span class="n">VerbosityLevels</span>
+<span class="kn">from</span> <span class="nn">AutoArchive._infrastructure.configuration</span> <span class="kn">import</span> <span class="n">Options</span>
+
+<span class="c"># }}} INCLUDES</span>
+
+
+
+<span class="c"># {{{ CLASSES</span>
+
+<div class="viewcode-block" id="_CommandExecutor"><a class="viewcode-back" href="../../../../api/application.archiving.html#AutoArchive._application.archiving._command_executor._CommandExecutor">[docs]</a><span class="k">class</span> <span class="nc">_CommandExecutor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">archiveSpec</span><span class="p">,</span> <span class="n">externalCommandExecutor</span><span class="p">,</span> <span class="n">componentUi</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__archiveSpec</span> <span class="o">=</span> <span class="n">archiveSpec</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__externalCommandExecutor</span> <span class="o">=</span> <span class="n">externalCommandExecutor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__componentUi</span> <span class="o">=</span> <span class="n">componentUi</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__beforeCommand</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__afterCommand</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">beforeCommandString</span> <span class="o">=</span> <span class="n">archiveSpec</span><span class="p">[</span><span class="n">Options</span><span class="o">.</span><span class="n">COMMAND_BEFORE_BACKUP</span><span class="p">]</span>
+        <span class="n">afterCommandString</span> <span class="o">=</span> <span class="n">archiveSpec</span><span class="p">[</span><span class="n">Options</span><span class="o">.</span><span class="n">COMMAND_AFTER_BACKUP</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">beforeCommandString</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__beforeCommand</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">archiveSpec</span><span class="p">[</span><span class="n">Options</span><span class="o">.</span><span class="n">COMMAND_BEFORE_BACKUP</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">afterCommandString</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__afterCommand</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">archiveSpec</span><span class="p">[</span><span class="n">Options</span><span class="o">.</span><span class="n">COMMAND_AFTER_BACKUP</span><span class="p">])</span>
+
+
+
+<div class="viewcode-block" id="_CommandExecutor.executeBeforeCommand"><a class="viewcode-back" href="../../../../api/application.archiving.html#AutoArchive._application.archiving._command_executor._CommandExecutor.executeBeforeCommand">[docs]</a>    <span class="k">def</span> <span class="nf">executeBeforeCommand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__beforeCommand</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__informVerboseUser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__archiveSpec</span><span class="p">[</span><span class="n">Options</span><span class="o">.</span><span class="n">COMMAND_BEFORE_BACKUP</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__externalCommandExecutor</span><span class="o">.</span><span class="n">commandMessage</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__onCommandMessage</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__externalCommandExecutor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__beforeCommand</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">__beforeCommand</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__beforeCommand</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="bp">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__externalCommandExecutor</span><span class="o">.</span><span class="n">commandMessage</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__onCommandMessage</span>
+
+
+</div>
+<div class="viewcode-block" id="_CommandExecutor.executeAfterCommand"><a class="viewcode-back" href="../../../../api/application.archiving.html#AutoArchive._application.archiving._command_executor._CommandExecutor.executeAfterCommand">[docs]</a>    <span class="k">def</span> <span class="nf">executeAfterCommand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__afterCommand</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__informVerboseUser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__archiveSpec</span><span class="p">[</span><span class="n">Options</span><span class="o">.</span><span class="n">COMMAND_AFTER_BACKUP</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__externalCommandExecutor</span><span class="o">.</span><span class="n">commandMessage</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__onCommandMessage</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__externalCommandExecutor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__afterCommand</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">__afterCommand</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__afterCommand</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="bp">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__externalCommandExecutor</span><span class="o">.</span><span class="n">commandMessage</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__onCommandMessage</span>
+
+
+</div>
+    <span class="k">def</span> <span class="nf">__onCommandMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">isError</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">isError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__componentUi</span><span class="o">.</span><span class="n">showWarning</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__componentUi</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">!=</span> <span class="n">VerbosityLevels</span><span class="o">.</span><span class="n">Quiet</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__componentUi</span><span class="o">.</span><span class="n">presentLine</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+
+
+    <span class="k">def</span> <span class="nf">__informVerboseUser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commandString</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__componentUi</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">==</span> <span class="n">VerbosityLevels</span><span class="o">.</span><span class="n">Verbose</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__componentUi</span><span class="o">.</span><span class="n">showVerbose</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;Executing command &#39;{}&#39;&quot;</span><span class="p">,</span> <span class="n">commandString</span><span class="p">))</span>
+
+<span class="c"># }}} CLASSES</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">AutoArchive Developer Manual (ver. 1.2.1)</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003 - 2015, Róbert Čerňanský.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
