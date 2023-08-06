@@ -1,0 +1,96 @@
+Metadata-Version: 1.1
+Name: open511
+Version: 0.5
+Summary: Tools supporting the Open511 format, which aims to make road information open and shareable.
+Home-page: https://github.com/open511/open511
+Author: Michael Mulley
+Author-email: open511@opennorth.ca
+License: MIT
+Description: Some utilities for the `Open511 API <http://www.open511.org/>`__ format.
+        Includes a validator, a tool to convert between Open511 serializations,
+        a Web interface for validation and conversion, and some utility/parsing
+        code.
+        
+        |Build Status|
+        
+        Requirements
+        ------------
+        
+        Python 2.7 or 3.5, libxml2. Linux or MacOS. (It might work on Windows,
+        but hasn't been tested. We'd be happy to work with anyone interested in
+        running this on Windows.)
+        
+        Installation
+        ------------
+        
+        This package is a Python application. The current best practice is to
+        install into an isolated Python environment, created with the
+        ``virtualenv`` package for Python 2, or ``pyvenv`` for Python 3. Things
+        should still work if you don't create an environment, but you may need
+        to run the setup commands below as root.
+        
+        Clone this repository, then run ``python setup.py install``. Or, to
+        install the latest released version, run ``easy_install open511``.
+        
+        Usage
+        -----
+        
+        ::
+        
+            open511-validate filename.xml
+        
+            open511-validate http://demo.open511.org/api/events/
+        
+            open511-convert --help
+        
+            open511-convert filename.xml > filename.json
+        
+            open511-convert filename.json > filename.xml
+        
+        Conversions
+        -----------
+        
+        Available output formats: Open511 JSON (``json``), Open511 XML
+        (``xml``), `MASAS <https://www.masas-x.ca/en/>`__-compatible Atom
+        (``atom``), `KML <https://developers.google.com/kml/>`__ (``kml``)
+        
+        Input formats: Open511 XML or JSON, and `Traffic Management Data
+        Dictionary <http://www.ite.org/standards/tmdd/>`__ (TMDD) XML
+        
+        You can convert from any input format to any output format, e.g.
+        ``open511-convert input.tmdd -f kml output.kml``
+        
+        TMDD
+        ----
+        
+        Due to the size and complexity of the TMDD specification, some input
+        files may not be supported. Please contact us if you have problems with
+        a particular TMDD input file, and we'll try to get it working!
+        
+        To produce production-ready Open511 XML from TMDD, you need to specify
+        provide some information on your Open511 deployment via environment
+        variables. Set ``OPEN511_EVENTS_URL`` to the URL to your Open511 events
+        endpoint, ``OPEN511_JURISDICTION_URL`` to the URL of the appropriate
+        Open511 jurisdiction resource, and ``OPEN511_JURISDICTION_ID`` to the
+        Open511 ID of your jurisdiction. If these are not set, example values
+        will be used.
+        
+        More details on the conversion algorithm is in `docs <docs>`__.
+        
+        Web interface
+        =============
+        
+        A Web interface, available at http://validator.open511.org/, is in
+        open511/webtools/\ **init**.py. Install the dependencies (listed in
+        requirements.txt, or run ``easy_install Flask requests``), then run
+        ``python open511/webtools/__init__.py`` to start up a local server.
+        
+        .. |Build Status| image:: https://travis-ci.org/Open511/open511.png
+           :target: https://travis-ci.org/Open511/open511
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: License :: OSI Approved :: MIT License
