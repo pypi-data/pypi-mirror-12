@@ -1,0 +1,41 @@
+language: python
+python:
+  - "2.7"
+  - "2.7_with_system_site_packages"
+  - "3.3"
+  - "3.4"
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libgsl0-dev libhdf5-serial-dev python-h5py
+
+install:
+  # We install these requirements here rather than through the requirements.txt
+  # file because of issues on readthedocs.
+  - pip install numpy
+  - pip install h5py 
+  - pip install -r requirements.txt
+  - pip install .
+
+script: 
+  - flake8 setup.py msprime tests
+  - nosetests -v --with-coverage --cover-package msprime
+              --cover-branches --cover-erase
+              --cover-inclusive --cover-min-percentage 90 tests
+  - make -C docs 
+
+env:
+  global:
+  # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+  # via the "travis encrypt" command using the project repo's public key
+  - secure: "XRqUqbcFEmdl5dN7bvBeMRRdMtN1Sfcfqc0iLx8mH1xRRy8lQgaSmWG3zdaY5WSFbCGwoPuv2IXy7bPbwX5DKYsH0OkXLfkgo3yjw5X4341hQjMn0B7scr0lM8QU30YcSgqniFxEwMOytmQsQGSKwlz6tMKs2R758GCR7xJIyi4="
+
+addons:
+  coverity_scan:
+    project:
+      name: "jeromekelleher/msprime"
+      description: "Coalescent simulator"
+    notification_email: jk@well.ox.ac.uk
+    build_command_prepend: "cd lib && make avl.o"
+    build_command:   "cd lib && make"
+    branch_pattern: coverity_scan
