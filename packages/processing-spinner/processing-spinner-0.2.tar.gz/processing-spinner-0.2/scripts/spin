@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
+import time
+
+from spinner import Spin, SpinnerType
+
+if __name__ == '__main__':
+    print("type 'bar' (default)")
+    with Spin():
+        time.sleep(3)
+    print("type 'shobon'")
+    with Spin(SpinnerType.shobon, .06):
+        time.sleep(3)
+    print("type 'dot'")
+    with Spin(SpinnerType.dot, .06):
+        time.sleep(3)
+    print("type 'regiment'")
+    with Spin(SpinnerType.regiment, .06):
+        time.sleep(3)
+    print("type 'stripe'")
+    with Spin(SpinnerType.stripe, .06):
+        time.sleep(3)
