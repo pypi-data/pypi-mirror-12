@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+  <source>
+    <entity id="roles" name="_roles">
+      <renderer type="hidden"/>
+    </entity>
+    <entity id="name" name="name" label="Name" type="string" required="true"/>
+    <entity id="description" name="description" label="Description" type="string">
+      <renderer type="textarea" rows="6"/>
+    </entity>
+    <entity id="priority" name="priority" label="Priority" type="integer">
+      <rule expr="( ( ( bool( $priority ) eq False ) or ( $priority lt 6 ) ) or ( ( $priority == 6 ) and bool ( $assignee ) ) )" msg="To set the priority to immidiate you also need to set an assignee."/>
+      <options>
+        <option value="6">immidiate</option>
+        <option value="5">very high</option>
+        <option value="4">high</option>
+        <option value="3">normal</option>
+        <option value="2">low</option>
+        <option value="1">very low</option>
+        <option value="">not specified</option>
+      </options>
+      <renderer type="dropdown"/>
+    </entity>
+    <entity id="severity" name="severity" label="Severity" type="integer">
+      <options>
+        <option value="6">blocker</option>
+        <option value="5">critical</option>
+        <option value="4">major</option>
+        <option value="3">normal</option>
+        <option value="2">minor</option>
+        <option value="1">trivial</option>
+        <option value="">not specified</option>
+      </options>
+      <renderer type="dropdown"/>
+    </entity>
+    <entity id="resolution" name="resolution" label="Resolution" type="integer" required="true">
+      <options>
+        <option value="6">fixed</option>
+        <option value="5">works for me</option>
+        <option value="4">need more info</option>
+        <option value="3">won't fix</option>
+        <option value="2">duplicate</option>
+        <option value="1">invalid</option>
+        <option value="">not specified</option>
+      </options>
+      <renderer type="dropdown"/>
+    </entity>
+    <entity id="state" name="task_state_id" label="State" type="integer">
+      <renderer type="state" layout="simple"/>
+    </entity>
+    <entity id="assignee" name="assignee" label="Assignee">
+      <renderer type="dropdown"/>
+    </entity>
+    <entity id="estimate" name="estimate" label="Estimate" type="integer" required="true">
+      <options>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="8">8</option>
+        <option value="13">13</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="100">100</option>
+        <option value="999">inestimable</option>
+        <option value="">not specified</option>
+      </options>
+      <renderer type="dropdown"/>
+      <help>The estimate indicates how much work remains to be done until the task is completely resolved.</help>
+    </entity>
+    <entity id="nosy" name="nosy" label="Nosy">
+    </entity>
+    <entity id="comments" name="comments" label="Comments">
+      <renderer type="comment"/>
+    </entity>
+    <entity id="tags" name="tags" label="Tags">
+      <renderer type="textoption"/>
+    </entity>
+    <entity id="sprints" name="sprints" label="Sprints">
+      <renderer type="listing" table="plannedprints" hideadd="true"/>
+    </entity>
+  </source>
+  <form id="create" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
+    <field ref="roles"/>
+    <snippet ref="create_snippet"/>
+  </form>
+  <form id="update" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
+    <field ref="roles"/>
+    <snippet ref="read_snippet"/>
+  </form>
+  <form id="read" readonly="true">
+    <field ref="roles"/>
+    <snippet ref="read_snippet"/>
+  </form>
+  <form id="taskcard">
+    <field ref="roles"/>
+    <snippet ref="taskcard_snippet"/>
+  </form>
+  <form id="newsprintitem">
+    <row>
+      <col><field ref="name"/></col>
+    </row>
+    <row>
+      <col><field ref="comments"/></col>
+    </row>
+  </form>
+
+  <snippet id="taskcard_snippet">
+    <row>
+      <col><field ref="name"/></col>
+    </row>
+    <row>
+      <col><field ref="estimate"/></col>
+      <col>
+        <if expr="$task_state_id != 3" type="readonly">
+          <field ref="assignee"/>
+        </if>
+      </col>
+      <col><field ref="state"/></col>
+      <col>
+        <if expr="$task_state_id == 4" type="readonly">
+          <field ref="resolution"/>
+        </if>
+      </col>
+    </row>
+    <row>
+      <col><field ref="comments"/></col>
+    </row>
+  </snippet>
+
+  <snippet id="create_snippet">
+    <row>
+      <col><field ref="name"/></col>
+    </row>
+    <row>
+      <col><field ref="priority"/></col>
+      <col><field ref="severity"/></col>
+      <col><field ref="estimate"/></col>
+    </row>
+    <row>
+      <col><field ref="comments"/></col>
+    </row>
+  </snippet>
+
+  <snippet id="read_snippet">
+    <page id="p1" label="Task">
+      <row>
+        <field ref="roles"/>
+        <col width="9"><field ref="name"/></col>
+        <col width="3"><field ref="tags"/></col>
+      </row>
+    <row>
+      <col>
+        <if expr="$task_state_id != 3" type="readonly">
+          <field ref="assignee"/>
+        </if>
+      </col>
+      <col><field ref="state"/></col>
+      <col>
+        <if expr="$task_state_id == 4" type="readonly">
+          <field ref="resolution"/>
+        </if>
+      </col>
+    </row>
+      <row>
+        <col><field ref="comments"/></col>
+      </row>
+    </page>
+    <page id="p2" label="Sprint Planning">
+      <row>
+        <col><field ref="priority"/></col>
+        <col><field ref="severity"/></col>
+      </row>
+      <row>
+        <col><field ref="estimate"/></col>
+      </row>
+      <row>
+        <col><field ref="sprints"/></col>
+      </row>
+    </page>
+  </snippet>
+</configuration>
