@@ -1,0 +1,30 @@
+{% extends "texsitecleanblog/base.html" %}
+
+{% load i18n %}
+
+{% block clean-blog-body-content %}
+    {{ block.super }}
+
+    {% for block in page.body %}
+        {% if block.block_type == "intro" %}
+            {% include "texsitecleanblog/includes/intro.html" with type=page.content_type.model image=block.value.keyvisual title=page.title slogan=block.value.slogan author=page.owner published_at=page.first_published_at only %}
+            <article>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {% else %}
+            {{ block }}
+        {% endif %}
+
+        {% if forloop.last %}
+                            <hr>
+
+                            {% include "texsitecleanblog/includes/navigator.html" with backlink=page.get_parent.url backtitle=page.get_parent.title nextlink=page.next_sibling.url nexttitle=page.next_sibling.title previouslink=page.previous_sibling.url previoustitle=page.previous_sibling.title only %}
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
