@@ -1,0 +1,22 @@
+[console_scripts]
+
+
+[gui_scripts]
+hackedit = hackedit.main:main
+
+[hackedit.plugins.editors]
+ImageViewer = hackedit.plugins.image_viewer:ImageViewer
+
+[hackedit.plugins.file_icon_providers]
+
+
+[hackedit.plugins.workspace_plugins]
+DocumentOutline = hackedit.plugins.outline:DocumentOutline
+FindReplace = hackedit.plugins.find_replace:FindReplace
+OpenDocuments = hackedit.plugins.documents:OpenDocuments
+Terminal = hackedit.plugins.terminal:Terminal
+
+[hackedit.plugins.workspace_providers]
+empty_workspace = hackedit.plugins.workspaces:EmptyWorkspace
+generic_workspace = hackedit.plugins.workspaces:GenericWorkspace
+
