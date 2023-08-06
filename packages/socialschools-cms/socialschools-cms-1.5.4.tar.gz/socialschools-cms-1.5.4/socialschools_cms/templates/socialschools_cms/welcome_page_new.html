@@ -1,0 +1,33 @@
+{% extends "socialschools_cms/theme_12_base.html" %}
+{% load cms_tags %}
+{% load menu_tags %}
+
+{% block wrapper%}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="css-carousel-slider main-content">
+                <div class="row css-gallery-slider">
+                    <div class="col-md-12">
+                        {% placeholder image_gallery %}
+                        <div class="css-carousel-description">
+                            <div class="css-carousel-description-background"></div>
+                            <div class="css-carousel-description-text">{% placeholder "image_gallery_text" %}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 welcome-intro-left">
+            {% placeholder welcome_block_left %}
+        </div>
+        <div class="col-md-6 welcome-intro-right">
+            <div class="content-block">
+                {% include "socialschools_cms/includes/news.html" %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
