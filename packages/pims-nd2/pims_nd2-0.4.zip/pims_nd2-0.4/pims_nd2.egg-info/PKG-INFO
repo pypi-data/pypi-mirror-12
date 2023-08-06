@@ -1,0 +1,79 @@
+Metadata-Version: 1.1
+Name: pims-nd2
+Version: 0.4
+Summary: ND2SDK wrapper for PIMS
+Home-page: https://github.com/soft-matter/pims_nd2
+Author: Casper van der Wel
+Author-email: caspervdw@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/soft-matter/pims_nd2/tarball/0.4
+Description: pims\_nd2
+        =========
+        
+        This package lets `pims <https://github.com/soft-matter/pims>`__
+        interface with the `ND2SDK <http://www.nd2sdk.com>`__ for fast reading
+        of Nikon \*.nd2 files.
+        
+        This is implemented on Windows, Linux and OSX systems.
+        
+        Dependencies
+        ------------
+        
+        This reader is based on ``pims.FramesSequenceND``, which is available
+        from version 0.3. Apart from
+        `pims <https://github.com/soft-matter/pims>`__ there are no extra
+        dependencies. The required c libraries are included and will be added to
+        the PATH variable at runtime.
+        
+        Examples
+        --------
+        
+        The following code opens the demo file included in the package and
+        iterates through the first 3 frames. Note that frames are only read when
+        necessary.
+        
+        ::
+        
+            from pims_nd2 import ND2_Reader
+            with ND2_Reader('cluster.nd2') as frames:
+                frames.iter_axes = 't'
+                frames.bundle_axes = 'zyx'
+                frames.default_coords['c'] = 1
+                for frame in frames[:3]:
+                    # do something with 3D frames in channel 1
+        
+        The best way to use the reader is using a context manager. If you do not
+        use a context manager, make sure to call ``frames.close()`` at the end
+        of your script.
+        
+        Metadata access can be done on two levels: reader level and frame level.
+        
+        ::
+        
+            frames.metadata['mpp']  # calibration in microns per pixel
+            frames[0].metadata['t_ms']  # time of frame in milliseconds
+        
+        Supporting Grant
+        ----------------
+        
+        This reader was developed by Casper van der Wel, as part of his PhD
+        thesis work in Daniela Kraft's group at the Huygens-Kamerlingh-Onnes
+        laboratory, Institute of Physics, Leiden University, The Netherlands.
+        This work was supported by the Netherlands Organisation for Scientific
+        Research (NWO/OCW).
+        
+Platform: MacOS X
+Platform: Windows
+Platform: Linux CentOs 6.5/7
+Platform: Linux Debian 7/8
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
