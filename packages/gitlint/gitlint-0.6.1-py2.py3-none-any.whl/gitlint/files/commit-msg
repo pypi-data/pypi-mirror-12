@@ -1,0 +1,47 @@
+#!/bin/sh
+### gitlint commit-msg hook start ###
+
+# Bash color codes
+RED="\033[31m"
+YELLOW="\033[33m"
+GREEN="\033[32m"
+END_COLOR="\033[0m"
+
+# Allows us to read user input below, assigns stdin to keyboard
+exec < /dev/tty
+
+echo "gitlint: checking commit message..."
+cat "$1" | gitlint
+gitlint_exit_code=$?
+
+
+# Prompts a given yes/no question.
+# Returns 0 if user answers yes, 1 if no
+# Reprompts if different answer
+ask_yes_no(){
+    question="$1"
+    while true; do
+        read -e -p "$question" yn
+        case $yn in
+             [Yy]* ) return 0;;
+             [Nn]* ) return 1;;
+        esac
+    done
+}
+
+if [ $gitlint_exit_code -gt 0 ]; then
+    echo "-----------------------------------------------"
+    echo "gitlint: ${RED}Your commit message contains the above violations.${END_COLOR}"
+    cat "$1" > "${1}_gitlint_restore"
+    # cat "$1" | grep -v '^#'
+    if ask_yes_no "Continue with commit anyways (this keeps the current commit message)? [y/n] "; then
+        exit 0
+    else
+        echo "Commit aborted"
+    fi
+    exit $gitlint_exit_code
+else
+    echo "gitlint: ${GREEN}OK${END_COLOR} (no violations in commit message)"
+fi
+
+### gitlint commit-msg hook end ###
