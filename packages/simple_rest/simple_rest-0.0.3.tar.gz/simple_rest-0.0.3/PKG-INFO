@@ -1,0 +1,122 @@
+Metadata-Version: 1.0
+Name: simple_rest
+Version: 0.0.3
+Summary: very simple rest client framework
+Home-page: https://bitbucket.org/afriemann/simple_rest.git
+Author: Aljosha Friemann
+Author-email: aljosha.friemann@gmail.com
+License: UNKNOWN
+Description: simple_rest
+        ===========
+        
+        This is a simple library to build rest clients. It should allow for quick and easy client creation without
+        overengineering too much.
+        
+        Example
+        -------
+        
+        Let's build a simple client. The most complicated part will be writing down the API specification..
+        Let's say we define an API via dictionary based on chronos_ to help with the *special needs* of their web interface ::
+        
+            {
+                'scheduler': {
+                    'endpoints': {
+                        'jobs': {
+                            'methods': {
+                                'get': [200]
+                            }
+                        },
+                        'job': {
+                            'endpoints': {
+                                '$job': {
+                                    'methods': {
+                                        'delete': [ 204 ],
+                                        'put': [ 204 ]
+                                    }
+                                }
+                            }
+                        },
+                        'task': {
+                            'endpoints': {
+                                'kill': {
+                                    'endpoints': {
+                                        '$task': {
+                                            'methods': {
+                                                'delete': [ 204 ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        'dependency': {
+                            'methods': {
+                                'post': [ 204 ]
+                            }
+                        },
+                        'iso8601': {
+                            'methods': {
+                                'post': [ 204 ]
+                            }
+                        }
+                    }
+                }
+            }
+        
+        Awesome! Now let's put that to use ::
+        
+            >>> api_definition = { ... } # our dictionary
+        
+            >>> from simple_rest import API, Client
+        
+            >>> chronos_api = API(**api_definition)
+            >>> chronos_client = Client(host, chronos_api)
+        
+        Calling an endpoint like *scheduler/jobs* ::
+        
+            >>> chronos_client.api.scheduler.jobs.get()
+        
+        Will now request ::
+        
+            >>> '%s/%s' % (host, 'scheduler/jobs')
+            https://10.0.2.121:4400/scheduler/jobs
+        
+        due to some funky monkey patching. Take a look at the test module for tipps on how to test requests in your application.
+        The test implemenation is a bit hideous but you'll get the idea.
+        
+        The returned object of a request is the default *requests.model.Response*. Due to differences in the REST implementation
+        I think it should be up to the user how to handle the response.
+        
+        Furthermore you might have noticed, for example, the job endpoint labeled '$job' in there. This notation can be used to
+        allow variable endpoints.  In our case this could be a job id or name ::
+        
+            >>> baked_endpoint = chronos_client.api.scheduler.job.job('my_job')
+            >>> baked_endpoint.get()
+        
+        And the request will go to ::
+        
+            https://10.0.2.121:4400/scheduler/job/my_job
+        
+        Some exception behaviour is predefined. Response status codes not given in the specification of an endpoint will result
+        in a *RequestStatusException* and a call to http request method (e.g. a *get* to the endpoint *scheduler/dependency*)
+        will raise a *ForbiddenRequestException*. While I believe they are necessary to make errors more obvious, I am not a
+        100% happy with them.
+        
+        Now the only thing left would be to write an abstraction layer for our newly created API ::
+        
+            >>> import json
+            >>> class Chronos(Client):
+            ...     def __init__(self, host):
+            ...         super(Chronos, self).__init__(host, chronos_api)
+            ...
+            ...     def list_jobs(self):
+            ...         return json.dumps(self.api.scheduler.jobs())
+        
+        Of course, while this is a valid approach, I would recommend packaging that in a neat little model. Take a look at my
+        other project simple_model_ if you liked this one!
+        
+        .. _chronos: https://mesos.github.io/chronos/docs/api.html
+        .. _simple_model: https://pypi.python.org/pypi/simple_model
+        
+        
+Platform: UNKNOWN
