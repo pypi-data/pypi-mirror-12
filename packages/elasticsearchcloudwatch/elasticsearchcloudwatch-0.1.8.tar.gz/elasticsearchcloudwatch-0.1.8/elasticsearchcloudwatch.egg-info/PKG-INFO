@@ -1,0 +1,111 @@
+Metadata-Version: 1.1
+Name: elasticsearchcloudwatch
+Version: 0.1.8
+Summary: Elasticsearch monitoring scripts for CloudWatch
+Home-page: https://rubelw@bitbucket.org/rubelw/elasticsearchcloudwatch.git
+Author: Will Rubel
+Author-email: willrubel@gmail.com
+License: Apache License (2.0)
+Description: elasticsearch-cloudwatch-python
+        =============================
+        
+        Elasticsearch monitoring scripts for CloudWatch.
+        
+        ### NOTE: This is just a template from which to make your own scripts. ###
+        Do not attempt to download and run.  You will need to modify the scripts to
+        fit your own needs.
+        
+        
+        Requirements
+        ------------
+        
+        - Python >= 2.6
+        - Boto >= 2.33.0
+        - Boto3 >= 1.2.2
+        - Elasticsearch >= 2.1.0
+        
+        
+        Installation
+        ------------
+        
+        Optionally create a virtual environment and activate it. Then just run
+        `pip install elasticsearchcloudwatch`. This will install the scripts in /usr/local/bin folder.
+        
+        For script usage, run:
+        
+            get_web_reqeust.py --help
+            put_web_request.py --help
+        
+        
+        Examples
+        --------
+        Edit the /etc/elasticsearchcloudwatch/escw.config file and and put the appropriate parameters.
+        
+        To perform a simple test run without posting data to Amazon CloudWatch
+        
+          * * * * * /usr/bin/get_web_request.py  --query WebRequest_Test  --verbose
+        
+        To post the data to Amazon CloudWatch
+        
+          * * * * * /usr/bin/put_web_request.py  --query WebRequest_Test --from-cron  --verbose
+        
+        
+        
+        
+        Configuration
+        -------------
+        
+        To allow an EC2 instance to read and post metric data to Amazon CloudWatch,
+        this IAM policy is required:
+        
+            {
+              "Statement": [
+                {
+                  "Action": [
+                    "elasticsearchcloudwatch:WebRequest"            
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+        
+        If the policy is configured via an IAM role that is assigned to the EC2
+        server this script runs on, you're done.
+        
+        Otherwise you can configure the policy for a user account and export
+        the credentials before running the script:
+        
+            export AWS_ACCESS_KEY_ID=[Your AWS Access Key ID]
+            export AWS_SECRET_ACCESS_KEY=[Your AWS Secret Access Key]
+        
+        Third option is to create a _~/.boto_ file with this content:
+        
+            [Credentials]
+            aws_access_key_id = Your AWS Access Key ID
+            aws_secret_access_key = Your AWS Secret Access Key
+        
+        
+        Copyright
+        ---------
+        
+        Copyright 2015 Will Rubel
+        
+        Based on Python-Version of CloudWatch Monitoring Scripts for Linux -
+        Copyright 2015 Oliver Siegmar. All Rights Reserved.
+        
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+        
+        http://www.apache.org/licenses/LICENSE-2.0
+        
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+Keywords: elasticsearch monitoring cloudwatch amazon web services aws ec2
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: System :: Monitoring
