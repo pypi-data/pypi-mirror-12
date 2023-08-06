@@ -1,0 +1,8 @@
+[neutron.ml2.type_drivers]
+opflex = opflexagent.type_opflex:OpflexTypeDriver
+
+[console_scripts]
+opflex-ep-watcher = opflexagent.as_metadata_manager:ep_watcher_main
+neutron-opflex-agent = opflexagent.gbp_ovs_agent:main
+opflex-state-watcher = opflexagent.as_metadata_manager:state_watcher_main
+
