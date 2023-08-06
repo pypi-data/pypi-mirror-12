@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Api Documrnts</title>
+    <link rel="stylesheet" type="text/css" href="{{bootstrap}}">
+    <script type="text/javascript" src="/static/{{resjs_name}}"></script>
+    <style type="text/css">
+    .resource {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        border-bottom: solid 2px orange;
+    }
+    </style>
+</head>
+
+<body class="container-fluid">
+    <div class="page-header">
+        <h1>Api Documents</h1>
+    </div>
+    <ul>
+        <li>auth_header: <code>{{auth_header}}</code></li>
+        <li>auth_token_name: <code>{{auth_token_name}}</code></li>
+        <li>blueprint: <code>{{blueprint}}</code></li>
+        <li>url_prefix: <code>{{url_prefix}}</code></li>
+        {% for name,docs,actions in reslist %}
+        <li>
+        <a class="lead" href="#{{name}}">{{name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% for name,docs,actions in reslist %}
+    <div class="resource table-responsive">
+        <h2 id="{{name}}">{{name}}</h2>
+        <p><pre>{{docs or 'docs of resource'}}</pre></p>
+        <table class="table table-striped">
+            <tr>
+                <th>action / docs</th>
+                <th>url</th>
+                <th>method</th>
+                <th>param</th>
+                <th>auth</th>
+                <th>return</th>
+            </tr>
+            {% for url, meth, action, needtoken, inputs, outputs, docs in actions %}
+            <tr>
+                <td class="info">
+                <strong>{{action}}</strong>
+                <p>{{docs or ''}}</p>
+                </td>
+                <td class="success"><code>{{url}}</code></td>
+                <td class="info"><code>{{meth}}</code></td>
+                <td class="success">
+                <pre>{{inputs}}</pre>
+                </td>
+                <td class="info">{{needtoken}}</td>
+                <td class="success">
+                <pre>{{outputs}}</pre>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
