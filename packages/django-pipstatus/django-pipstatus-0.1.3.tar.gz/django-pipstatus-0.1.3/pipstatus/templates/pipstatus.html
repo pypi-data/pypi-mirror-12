@@ -1,0 +1,23 @@
+{% load pipstatus %}
+{% get_pipstatus as config %}
+
+<table>
+    <tr><th>Package</th><th>Status</th><th>Installed</th><th>Available</th><th>Dependencies</th></tr>
+    {% for x in config.entries %}
+        <tr {% if x.outdated %}class="danger"{% endif %}>
+            <td>{{ x.name }}</td>
+            <td>
+                {% if x.outdated %}
+                    OUTDATED
+                {% else %}
+                    OK
+                {% endif %}
+            </td>
+            <td>{{ x.version }}</td>
+            <td>{{ x.available }}</td>
+            <td>{{ x.dependencies|join:", " }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
