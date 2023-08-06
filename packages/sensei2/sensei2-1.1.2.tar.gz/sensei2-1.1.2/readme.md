@@ -1,0 +1,57 @@
+###Установка
+    
+    pip install git+https://skycker@bitbucket.org/dvebukvy/sensei2.git@master
+   
+    INSTALLED_APPS = (
+        ...
+        'sensei2',
+        ...
+    )
+
+###Настройка
+
+В `settings.py` проекта нужно определить два константы `SENSEI_PLUGINS` and `SENSEI_RULES`
+
+Первая задает плагины и может быть пустой или отсутствовать. Вторая - обязательна и описывает как заполнять БД.
+    
+    SENSEI_RULES = {
+        'topics': [
+            # {'app': 'web_site', 'model': 'TopicCategory', 'total': 1, 'presave_callback': lambda fields, rule, obj: tro(obj)},
+            {'app': 'web_site', 'model': 'TopicCategory', 'total': 1},
+            {'app': 'web_site', 'model': 'Topic', 'total': 1, 'plugins': {'title': 'sensei2.plugins.pretty_title'}}
+        ],
+        'builders': [
+            {'app': 'web_site', 'model': 'Builder', 'total': 1,
+             'ignore': ['addresses', 'emails', 'web_sites', 'telephones']},
+            {'app': 'web_site', 'model': 'BuildAnnounce', 'total': 1}
+        ],
+        'houses': [
+            {'app': 'web_site', 'model': 'HouseStatus', 'total': 1},
+            {'app': 'web_site', 'model': 'House', 'total': 3, 'override': {
+                'coordinates': lambda obj, field, sensei: '{0},{1}'.format(round(sensei.get_random_float(), 5),
+                    round(sensei.get_random_float()), 5)}},
+            # {'app': 'web_site', 'model': 'Stage', 'total': 50},
+            # {'app': 'web_site', 'model': 'StageImage', 'total': 120}
+        ],
+        'plans': [
+            {'app': 'web_site', 'model': 'FlatPlan', 'total': 300, 'ignore': ['total_price', 'total_area']},
+            {'app': 'web_site', 'model': 'FlatPlanParameter', 'total': 25},
+            {'app': 'web_site', 'model': 'Flat', 'total': 500},
+        ]
+    }
+
+###Использование
+
+Как видите, правила заполнения разделены на группы, имя группы правил, которые нужно запустить,
+передается аргументом менаджмент команды. Выполнение заполнения обернуто в декоратор `atomic` (работает одной транзакцией), 
+если что-то где-то падает, то в БД не записывается ничего для данной группы
+    
+    ./manage.py fill <rule_group_name>
+
+Пример для объявления плагинов:
+    
+    SENSEI_PLUGINS = ['sensei2.plugins.pretty_title', 'sensei2.plugins.independent_pretty_tittle']
+
+### Расширенная документация
+
+Полная документация доступна по ссылке http://wiki.dvebukvy.ru/page/42
