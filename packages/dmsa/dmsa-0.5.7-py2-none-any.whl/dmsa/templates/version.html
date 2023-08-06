@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Models DDL and ERDs</title>
+</head>
+<body>
+<a href="{{ url_for('index_route') }}"/>Data Models DDL and ERDs</a> > <a href="{{ url_for('model_route', model_name=model.name) }}"/>{{ model.pretty }}</a> > <a href="{{ url_for('version_route', model_name=model.name, version_name=version.name) }}"/>{{ version.name }}</a>
+<ul>
+    <li><a href="{{ url_for('create_erd_route', model=model.name, version=version.name) }}">ERD</a></li>
+    <li>Creation DDL
+        <ul>
+        {% for dialect in dialects %}
+            <li>{{ dialect.pretty }}
+                <ul>
+                    <li><a href="{{ url_for('ddl_route', model=model.name, version=version.name, dialect=dialect.name) }}"/>Full DDL</a></li>
+                    <li><a href="{{ url_for('ddl_route', model=model.name, version=version.name, dialect=dialect.name, elements='tables') }}"/>Tables Only</a></li>
+                    <li><a href="{{ url_for('ddl_route', model=model.name, version=version.name, dialect=dialect.name, elements='constraints') }}"/>Constraints Only</a></li>
+                    <li><a href="{{ url_for('ddl_route', model=model.name, version=version.name, dialect=dialect.name, elements='indexes') }}"/>Indexes Only</a></li>
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    </li>
+    <li>Drop DDL
+        <ul>
+        {% for dialect in dialects %}
+            <li>{{ dialect.pretty }}
+                <ul>
+                    <li><a href="{{ url_for('drop_route', model=model.name, version=version.name, dialect=dialect.name) }}"/>Full Drop DDL</a></li>
+                    <li><a href="{{ url_for('drop_route', model=model.name, version=version.name, dialect=dialect.name, elements='tables') }}"/>Drop Tables Only</a></li>
+                    <li><a href="{{ url_for('drop_route', model=model.name, version=version.name, dialect=dialect.name, elements='constraints') }}"/>Drop Constraints Only</a></li>
+                    <li><a href="{{ url_for('drop_route', model=model.name, version=version.name, dialect=dialect.name, elements='indexes') }}"/>Drop Indexes Only</a></li>
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    </li>
+    <li>Delete Data
+        <ul>
+        {% for dialect in dialects %}
+            <li><a href="{{ url_for('delete_route', model=model.name, version=version.name, dialect=dialect.name) }}"/>{{ dialect.pretty }}</a></li>
+        {% endfor %}
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
