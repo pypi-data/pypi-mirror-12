@@ -1,0 +1,52 @@
+Metadata-Version: 1.1
+Name: pysmile
+Version: 0.2
+Summary: Tools for working with the SMILE data format
+Home-page: https://github.com/jhosmer/PySmile
+Author: Jonathan Hosmer
+Author-email: jon@pythonforios.com
+License: Apache License, Version 2.0
+Description: PySmile
+        
+        Encode/Decode SMILE format objects
+        
+        Based on:
+        http://wiki.fasterxml.com/SmileFormat
+        and
+        https://github.com/brianm/libsmile
+        
+        
+        Install:
+        
+        `python setup.py clean build test && python setup.py install`
+        
+        or from pypi (https://pypi.python.org/pypi/pysmile/0.1):
+        
+        `pip install pysmile`
+        
+        
+        Example Usage:
+        
+        >>> import pysmile
+        >>> o = {'a': 1, 'b': [2, 3, 4], 'c': {'d': {'e': 4.20}}}
+        >>> b = pysmile.encodes(o)
+        >>> print repr(b)
+        ':)\n\x03\xfa\x80a\xc2\x80c\xfa\x80d\xfa\x80e(fL\x19\x04\x04\xfb\xfb\x80b\xf8\xc4\xc6\xc8\xf9\xfb'
+        
+        >>> d = pysmile.decodes(b)
+        >>> print d
+        {u'a': 1, u'b': [2, 3, 4], u'c': {u'd': {u'e': 4.2}}}
+        
+        >>> assert d == o
+        
+Keywords: json smile
+Platform: Linux
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: HTTP Servers
+Classifier: Topic :: Utilities
