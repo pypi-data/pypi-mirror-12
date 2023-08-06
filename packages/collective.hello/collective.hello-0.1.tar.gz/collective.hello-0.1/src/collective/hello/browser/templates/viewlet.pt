@@ -1,0 +1,11 @@
+<a  id="helloJoinConv"
+    tal:condition="view/displayJoinButton"
+    tal:attributes="href view/roomURL"
+    >
+    Join Hello Conversation
+</a>
+
+<form id="hCRForm" action="./helloService" method="post" tal:condition="view/displayCreateButton">
+  <input id="hCRAuth" type="hidden" name="_authenticator" tal:attributes="value view/authenticator" />
+  <input id="hCRSubmit" type="submit" name="name" value="Create Hello Conversation" />
+</form>
