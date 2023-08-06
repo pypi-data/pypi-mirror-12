@@ -1,0 +1,43 @@
+Metadata-Version: 1.1
+Name: essence
+Version: 0.0.1
+Summary: UNKNOWN
+Home-page: https://github.com/chromy/essence.git
+Author: Hector Dearman
+Author-email: hector.dearman@gmail.com
+License: MIT
+Description: ===
+        essence
+        ===
+        
+        
+        .. image:: https://travis-ci.org/chromy/essence.svg
+            :target: https://travis-ci.org/chromy/essence
+        .. image:: https://img.shields.io/pypi/v/requests.svg
+            :target: https://pypi.python.org/pypi/requests
+        .. image:: https://img.shields.io/pypi/dm/requests.svg
+                :target: https://pypi.python.org/pypi/requests
+        
+        Essence is an entity component system framework for Python.
+        
+        An example::
+        
+            >>> import ecs
+            >>> world = ecs.World()
+            >>> alice = ecs.new_entity()
+            >>> position = PositionComponent(3, 4)
+            >>> alice.add(position)
+            >>> print alice.get(Position)
+            <PositionComponent(3, 4)>
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
