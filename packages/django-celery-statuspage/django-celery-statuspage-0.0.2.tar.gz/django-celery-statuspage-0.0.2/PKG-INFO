@@ -1,0 +1,43 @@
+Metadata-Version: 1.1
+Name: django-celery-statuspage
+Version: 0.0.2
+Summary: Django view to render Celery status
+Home-page: https://github.com/verosk/django-celery-statuspage
+Author: Veros Kaplan
+Author-email: verosk@noreply.users.github.com
+License: MIT
+Description: 
+        django-celery-statuspage
+        ========================
+        
+        This is simple module which can be used to test running Celery tasks.
+        
+        Usage:
+        
+        * add `django_celery_statuspage` to your APPLICATIONS
+        
+        * add `url('^status/celery/', 'django_celery_statuspage.views.ping')`,
+          to your url definition
+        
+        * open `/status/celery/` page on your website
+        
+        Opening `/status/celery/` page creates one dummy task, runs it and 
+        returns its result. If the task result is not obtained withing 5 seconds,
+        response is 500.
+        
+        The `/status/celery/` page can be added to your Nagios/Icinga monitoring.
+        
+Keywords: celery django monitoring statuspage
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Framework :: Django
