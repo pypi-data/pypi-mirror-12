@@ -1,0 +1,36 @@
+{% extends 'report/layouts/base.html' %}
+{% import 'report/components/overview.html' as overview %}
+{% import 'report/components/important_metrics.html' as important_metrics %}
+{% import 'report/components/transcript_stats.html' as transcript_stats %}
+{% import 'report/components/explanations.html' as explanations %}
+
+{% block main %}
+
+	<div class="container">
+		<h2>{{ _('Quality report') }}: {{ _('clinical sequencing') }}</h2>
+		{% if panel_name %}
+			<p>{{ _('Based on the genes in') }}: <strong>{{ panel_name }}</strong></p>
+		{% endif %}
+		{{ overview.table(samples, genders) }}
+
+		<h3>
+			{{ _('Generally important metrics') }}
+    	</h3>
+    	{{ important_metrics.table(key_metrics, levels, selected_level) }}
+		
+
+		<h3>
+			{{ _('Transcript coverage') }}
+		</h3>
+		{{ transcript_stats.table(diagnostic_yield, show_genes=show_genes) }}
+
+		<h3>{{ _('Explanations') }}</h3>
+		{{ explanations.text() }}
+
+		<hr>
+		<div class="text-center">
+			{{ _('Generated') }}: {{ created_at }} | {{ _('End of report') }}
+		</div>
+	</div>
+
+{% endblock %}
