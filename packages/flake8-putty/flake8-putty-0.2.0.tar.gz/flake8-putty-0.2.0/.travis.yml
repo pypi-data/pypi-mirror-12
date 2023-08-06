@@ -1,0 +1,34 @@
+language: python
+sudo: false
+
+python:
+- 2.6
+- 2.7
+- 3.3
+- 3.4
+- 3.5
+- pypy
+
+env:
+  matrix:
+    - TOX_SUFFIX="flakes-v250"
+    - TOX_SUFFIX="flakes-v241"
+    - TOX_SUFFIX="flakes-v240"
+    - TOX_SUFFIX="flakes-v230"
+    - TOX_SUFFIX="flakes-v224"
+    - TOX_SUFFIX="flakes-v220"
+    - TOX_SUFFIX="green"
+
+matrix:
+  allow_failures:
+    - env: TOX_SUFFIX="green"
+      python: 2.6
+
+install:
+- pip install tox
+- python setup.py install
+
+script:
+- v=$TRAVIS_PYTHON_VERSION
+- if [[ ${v%py} != $v ]]; then TOXPY=$v; else TOXPY=py"${v/./}"; fi
+- tox -e "${TOXPY}-${TOX_SUFFIX}"
