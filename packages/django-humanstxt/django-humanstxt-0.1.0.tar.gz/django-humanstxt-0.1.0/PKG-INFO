@@ -1,0 +1,57 @@
+Metadata-Version: 1.1
+Name: django-humanstxt
+Version: 0.1.0
+Summary: A simple HumansTXT Django app
+Home-page: https://django-humanstxt.readthedocs.org
+Author: Nicolas Tobo
+Author-email: nicolas.tobo@gmail.com
+License: GPL V3
+Description: # Django HumansTXT
+        
+        Django HumansTXT will make it easy to you to serve humans.txt file.
+        
+        ## Quickstart
+        
+        Install django-humanstxt using pip (we do recommend to do it in a virtualenv).
+        
+        
+            pip install django-humanstxt
+        
+        To integrate it into a Django project, simply add it to your `INSTALLED_APPS`:
+        
+        
+            INSTALLED_APPS = [
+                # some interesting stuff...
+                'humanstxt',
+                # some other stuff...
+            ]
+        
+        
+            urlpatterns = [
+                # ...
+                url(r'^humans\.txt', include('humanstxt.urls')),
+                # ...
+            ]
+        
+        
+            python manage.py migrate
+        
+        
+        You're now ready to use the app.
+        
+Keywords: django humans txt humanstxt humans.txt
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
