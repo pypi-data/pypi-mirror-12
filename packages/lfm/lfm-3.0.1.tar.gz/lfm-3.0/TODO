@@ -1,0 +1,82 @@
+============================================================================
+TODO for lfm3
+Last update:	Time-stamp: <2015-11-08 14:05:44 inigo>
+============================================================================
+
+New features for v3.x
+---------------------
+Medium Priority:
+  + ui:
+    - new pane views:
+      . horizontal view
+      . multicolumn with only file name, file contents…
+      . quick view
+      . info view
+  + enhancements:
+    - powercli: |: run as tail -f, substitute run sync by default, document
+  + new features:
+    - f12 file menu
+      . folder comparation
+      . folder synchronization
+      . diff and sync dirs: use filecmp.dircmp or rsync
+
+Low Priority (maybe some day):
+  + ui:
+    - tabs:
+      . dir_enter_new_tab
+      . dir_enter_other_pane
+      . dir_enter_other_pane_new_tab
+  + enhancements:
+    - find/grep
+      . exclude files (f.e. *.o) in findgrep
+        grep --exclude=XXX => NON-POSIX, GNU extension
+    - copy_file: copy block-by-block if file is big
+  + new features:
+    - file encryption/unencryption => gnupg
+    - global copy/cut/paste between tabs or panes
+    - background processes: copy/move/delete
+    - folder monitoring
+      . pyinotify module
+    - new actions menu [f10?] => menu for scripted actions
+      . archive: select target dir, get file prefix name (without version, extension), find other pane in target dir, if found move-otherpane-movecursor else error
+      . remove _: replace _ chars with spc
+    - new vfs: rpm, deb, cpio, xpi, egg, apk, jar…
+      . rpm2cpio PACKAGE | cpio -idmv
+  + other:
+    - use mimetypes module
+    - plugin system
+
+Pyview:
+  - relive pyview
+  - tail mode: pyview -f
+    . http://code.activestate.com/recipes/577710-tail-a-continuously-growing-file-like-tail-f-filen/
+  - use mmap
+
+
+Known Bugs
+----------
++ general:
+  - after renaming a file, cursor should be placed over the new file name,
+    but this is not always posible because we don't know new file name
+
++ vfs.py:
+  - rar with password halts lfm, because process is waiting for a password =>
+    => timeout if not output and kill the spawned process
+  - tmpdir are showed in the copy/move/... dialogs or when view/edit/...
+    a file, instead of vfs dir (this is just a minor estetic issue)
+
+
+Some ideas from mc
+------------------
+Alt + , - switch mc’s layout from left-right to top-bottom. Mind = blown. Useful for operating on files with long names.
+Alt + t - switch the panel’s listing mode in a loop: default, brief, long, user-defined. “long” is especially useful, because it maximises one panel so that it takes full width of the window and longer filenames fit on screen.
+Alt + i - synchronize the active panel with the other panel. That is, show the current directory in the other panel.
+Ctrl + u - swap panels.
+Alt + o - if the currently selected file is a directory, load that directory on the other panel and move the selection to the next file. If the currently selected file is not a directory, load the parent directory on the other panel and moves the selection to the next file. This is useful for quick checking the contents of a list of directories.
+Ctrl + PgUp (or just left arrow, if you’ve enabled Lynx-like motion, see later) - move to the parent directory.
+Alt + Shift + h - show the directory history. Might be easier to navigate than going back one entry at a time.
+Alt + y - move to the previous directory in history.
+Alt + u - move to the next directory in history.
+
+
+============================================================================
