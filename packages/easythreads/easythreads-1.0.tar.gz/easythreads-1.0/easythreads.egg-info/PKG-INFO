@@ -1,0 +1,37 @@
+Metadata-Version: 1.1
+Name: easythreads
+Version: 1.0
+Summary: async task pool
+Home-page: https://github.com/rfyiamcool
+Author: ruifengyun
+Author-email: rfyiamcool@163.com
+License: MIT
+Description: #项目名:
+        easythreads
+        使用threading实现了一个线程池,使用方法很是简单,我们只需要把执行的函数塞入线程池里就可以了.
+        
+        #Usage:
+        
+        ```
+        from easythreads import AsyncWorker
+        
+        def task_a():
+            print 'a..'    
+        
+        def task_b(a,b,c):
+            print 'b...'
+        
+        pool = AsyncWorker(10)
+        pool.append(task_a)
+        pool.append(task_b,1,2,3)
+        pool.shutdown(block=False) 
+        ```  
+        
+Keywords: easythreads,fengyun
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
