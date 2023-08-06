@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+	xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="uwosh.default">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+	<include package="plone.browserlayer" />
+	<include package="uwosh.core" />
+	
+	<include file="profiles.zcml" />
+	<include package=".browser" />
+
+</configure>

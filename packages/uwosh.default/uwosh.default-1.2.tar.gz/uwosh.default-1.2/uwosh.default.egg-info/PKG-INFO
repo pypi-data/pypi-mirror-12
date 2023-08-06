@@ -1,0 +1,120 @@
+Metadata-Version: 1.1
+Name: uwosh.default
+Version: 1.2
+Summary: default settings for uwosh plone sites
+Home-page: https://github.com/uwosh/uwosh.default
+Author: Nathan Van Gheem
+Author-email: vangheem@gmail.com
+License: GPL
+Description: Introduction
+        ============
+        What it does:
+        
+        * installs uwosh.requirements
+        * installs top_level_navigation portal actions
+        * installs audience_navigation portal actions
+        * installs titan_services portal actions
+        * adds only_show_body_view for a Page content type so you can only show the contents of the page
+        * patches the zope last resort error handler to display something much nicer for ugly errors
+        
+        Compatibility
+        -------------
+        
+        Works with Plone 4.3.
+        
+        Error Reporting
+        ---------------
+        
+        You can append '/@@reported-errors' onto any url and see the current list of errors that have happened
+        on the zeo client. Technically, you could get different numbers depending on what client you use since I
+        store these values in memory and once a server is restarted, the count is also restarted.
+        
+        The referrer url will not always be able to be retrieved.
+        
+        Use http://validator.w3.org/checklink to do a thorough check on links and make sure you select the
+        "Check linked documents recursively" option so it will traverse the whole site for you returning
+        a listing of errors.
+        
+        Changelog
+        =========
+        
+        1.2
+        ---
+        
+        * removed use of @@uwosh_tools in portal_actions
+          [tkimnguyen]
+        
+        1.1
+        ---
+        
+        * bumped version number to indicate works with Plone 4.0.1
+        
+        * no longer requires uwosh.requirements
+        
+        
+        0.4.6
+        -----
+        
+        * add help_url property 
+        
+        0.4.5
+        -----
+        
+        * removes unnecessary include of uwosh.requirements 
+        
+        
+        0.4.4
+        -----
+        
+        * By default, emails to ploneerrors@uwosh.edu unless you specify in
+          portal_properties -> site_properties a value for "error_recipients"
+        
+        0.4.3
+        -----
+        
+        * fix to only send error once
+        
+        0.4.2 ~ 2010-05-25
+        ------------------
+        
+        * add referrer url to what is captured if it is available
+        
+        
+        0.4.1 ~ 2010-05-24
+        ------------------
+        
+        * stop sending an email for every error we get--only send emails every minute for 500 errors
+          and a summary email every day for the rest
+        
+        * add an error report view to see the current urls and their errors.
+        
+        
+        0.4 ~ 2010-05-21
+        ----------------
+        
+        * more advanced error handling
+          [Nathan Van Gheem]
+          
+        
+        0.3.19b2
+        --------
+        
+        * updated dependency situation
+        
+        
+        0.3.6b1
+        -------
+        
+        * updated all the portal_actions
+        
+        
+        0.1 - Unreleased
+        ----------------
+        
+        * Initial release
+        
+        
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

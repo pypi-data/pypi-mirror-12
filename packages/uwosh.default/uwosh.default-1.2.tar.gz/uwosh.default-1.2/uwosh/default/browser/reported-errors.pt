@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+           tal:define="templateId template/getId;">
+           
+     <table summary="Errors" class="listing" tal:condition="not: view/error_to_view">
+       <thead>
+       <tr class="odd">
+         <th>URL</th>
+         <th>Referrer</th>
+         <th>last reported</th>
+         <th>number reported</th>
+         <th>status</th>
+       </tr>
+       </thead>
+         <tbody tal:define="errors view/get_errors">
+           <tal:errors tal:repeat="error errors">
+           <tr tal:define="oddrow repeat/error/odd;"
+              tal:attributes="class python: oddrow and 'odd' or 'even'">
+             <td style="width:200px;"><a tal:attributes="href python: view.assemble_url(error[0])" tal:content="python: len(error[0]) > 90 and error[0][:90] + '...' or error[0]" /></td>
+             <td style="width:200px"><a tal:attributes="href python: error[1]['referrer']" tal:content="python: len(error[1]['referrer']) > 90 and error[1]['referrer'][:90] + '...' or error[1]['referrer']" /></td>
+             <td tal:content="python: error[1]['last_reported'].ISO()" />
+             <td tal:content="python: error[1]['number_reported']" />
+             <td tal:content="python: error[1]['status']" />
+           </tr>
+           </tal:errors>
+         </tbody>
+     </table>
+
+     <dl tal:condition="view/error_to_view" tal:define="error view/get_error; url view/error_to_view">
+       <dt>URL</dt>
+       <dd tal:content="python: url" />
+       <dt>last reported</dt>
+       <dd tal:content="error/last_reported/pCommonZ" />
+       <dt>number reported</dt>
+       <dd tal:content="error/number_reported" />
+       <dt>status</dt>
+       <dd tal:content="error/status" />
+       <dt>body</dt>
+       <dd tal:content="error/body" />
+    </dl>
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+

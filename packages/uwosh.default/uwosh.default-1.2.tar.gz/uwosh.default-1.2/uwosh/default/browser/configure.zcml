@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="uwosh.default">
+
+	<browser:page
+		name="only_show_body_view"
+		for="Products.ATContentTypes.interface.document.IATDocument"
+		layer="uwosh.default.browser.interfaces.IUWOshDefaultLayer"
+		permission="zope2.View"
+		template="only_show_body_view.pt"
+		/>
+	  <browser:page
+  		name="reported-errors"
+  		for="*"
+  		class=".views.UWOshErrorsView"
+  		permission="zope2.View"
+  		template="reported-errors.pt"
+  	/>
+		
+</configure>

@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+ 	<object name="object" meta_type="CMF Action Category">
+  		<property name="title"></property>
+  
+  		<object name="syndication" meta_type="CMF Action" i18n:domain="plone">
+   			<property name="title" i18n:translate="">
+				Syndication
+			</property>
+   			<property name="description" i18n:translate="">
+   				
+   			</property>
+   			<property name="url_expr">
+				string:${folder_url}/synPropertiesForm
+			</property>
+   			<property name="icon_expr">
+   				
+   			</property>
+   			<property name="available_expr">
+				python:folder is object and portal.portal_syndication.isSiteSyndicationAllowed()
+			</property>
+   			<property name="permissions">
+    			<element value="Manage properties"/>
+   			</property>
+   			<property name="visible">
+				True
+			</property>
+ 		</object>
+	</object>
+	<object name="top_level_navigation" meta_type="CMF Action Category">
+		<property name="title"></property>
+	  	<object name="about_uw_oshkosh" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">About UW Oshkosh</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/about-uw-oshkosh'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="academics" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Academics</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property
+	      		name="url_expr">python:'http://www.uwosh.edu/home' + '/future-students/undergraduate/academics'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="athletics" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Athletics</property>
+		   	<property name="description" i18n:translate=""></property>
+			<property name="url_expr">string: http://www.titans.uwosh.edu/</property>
+			<property name="icon_expr"></property>
+			<property name="available_expr"></property>
+			<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="admissions" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Admissions</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: http://admissions.uwosh.edu/</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="administration" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Administration</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/administration'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="resources" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Resources</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/resources'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="calendars" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Calendars</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/calendars'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="media_relations" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Media Relations</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: http://www.uwosh.edu/imc/media-relations/newsroom</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="community_and_visitors" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Community &amp; Visitors</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/community-and-visitors'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="careers" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Work at UW Oshkosh</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: http://www.uwosh.edu/hr/jobs.php</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+		<object name="career_services" meta_type="CMF Action" i18n:domain="plone">
+		  <property name="title" i18n:translate="">Career Services</property>
+		  <property name="description" i18n:translate=""></property>
+		  <property
+		      name="url_expr">string:http://www.uwosh.edu/career/</property>
+		  <property name="icon_expr"></property>
+		  <property name="available_expr"></property>
+		  <property name="permissions">
+		    <element value="View"/>
+		  </property>
+		  <property name="visible">True</property>
+		</object>
+	  	<object name="titan_services" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Titan Services</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/titan-services-and-campus-resources#documentContent'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="contact_us" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Contact Us</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/contact-us'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="accessibility" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Accessibility</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python: here.portal_url() + '/accessibility-info'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	</object>
+	<object name="audience_navigation" meta_type="CMF Action Category">
+		<property name="title"></property>
+		<object name="future_students" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Future Students</property>
+   			<property name="description" i18n:translate=""></property>
+   			<property name="url_expr">python:'http://www.uwosh.edu/home' + '/future-students'</property>
+   			<property name="icon_expr"></property>
+   			<property name="available_expr"></property>
+   			<property name="permissions">
+    			<element value="View"/>
+   			</property>
+   			<property name="visible">True</property>
+  		</object>
+  		<object name="parents" meta_type="CMF Action" i18n:domain="plone">
+   			<property name="title" i18n:translate="">Parents</property>
+   			<property name="description" i18n:translate=""></property>
+   			<property name="url_expr">python:'http://www.uwosh.edu/home' + '/parents-and-family'</property>
+   			<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="alumni" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Alumni</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: http://www.uwosh.edu/alumni</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="faculty_and_staff" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Faculty and Staff</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/faculty-staff'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	  	<object name="current_students" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Current Students</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/current-students'</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+	</object>
+	<object name="titan_services" meta_type="CMF Action Category">
+	  	<property name="title"></property>
+
+	  	<object name="main" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Titan Services</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">python:'http://www.uwosh.edu/home' + '/titan-services-and-campus-resources'</property>
+   			<property name="icon_expr"></property>
+   			<property name="available_expr"></property>
+   			<property name="permissions">
+    			<element value="View"/>
+   			</property>
+   			<property name="visible">True</property>
+  		</object>
+		<object name="site_index" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Site Index</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: http://www.uwosh.edu/assets/index/index.php?showall=yes</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+		<object name="directory" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Directory</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: http://www.uwosh.edu/assets/directory/</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+		<object name="titan_mail" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Titan Mail</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: https://webmail.uwosh.edu/</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+		<object name="titan_web" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Titan Web</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: http://www.uwosh.edu/registrar/titanweb/</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+		<object name="titan_files" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Titan Files</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: https://titanfiles.uwosh.edu/xythoswfs/webview/xythoslogin.action</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+		<object name="d2l" meta_type="CMF Action" i18n:domain="plone">
+	   		<property name="title" i18n:translate="">Desire2Learn (D2L)</property>
+	   		<property name="description" i18n:translate=""></property>
+	   		<property name="url_expr">string: https://uwosh.courses.wisconsin.edu/</property>
+	   		<property name="icon_expr"></property>
+	   		<property name="available_expr"></property>
+	   		<property name="permissions">
+	    		<element value="View"/>
+	   		</property>
+	   		<property name="visible">True</property>
+	  	</object>
+		<object name="library_resources" meta_type="CMF Action" i18n:domain="plone">
+		  <property name="title" i18n:translate="">Polk Library</property>
+		  <property name="description" i18n:translate=""></property>
+		  <property name="url_expr">string: http://www.uwosh.edu/library/</property>
+		  <property name="icon_expr"></property>
+		  <property name="available_expr"></property>
+		  <property name="permissions">
+		    <element value="View"/>
+		  </property>
+		  <property name="visible">True</property>
+		</object>
+		<object name="MyUWO" meta_type="CMF Action" i18n:domain="plone">
+		  <property name="title" i18n:translate="">MyUWO</property>
+		  <property name="description" i18n:translate=""></property>
+		  <property name="url_expr">string: http://www.uwosh.edu/myuwo/</property>
+		  <property name="icon_expr"></property>
+		  <property name="available_expr"></property>
+		  <property name="permissions">
+		    <element value="View"/>
+		  </property>
+		  <property name="visible">True</property>
+		</object>
+	</object>
+</object>
