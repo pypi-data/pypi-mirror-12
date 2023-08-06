@@ -1,0 +1,44 @@
+Metadata-Version: 1.1
+Name: tornado-measures
+Version: 1.0.0
+Summary: Simple Tornado HTTP Client that automatically sends http response metrics to Backstage measures
+Home-page: http://github.com/globocom/tornado-measures
+Author: Globo.com
+Author-email: backstage1@corp.globo.com
+License: MIT
+Description: # tornado-measures
+        Simple Tornado HTTP Client that automatically sends http response metrics to Backstage measures
+        
+        Example
+        -------
+        
+        ```python
+        from tornado.ioloop import IOLoop
+        from tornado import gen
+        from tornado_measures import setup_measures
+        from tornado.httpclient import AsyncHTTPClient
+        
+        setup_measures(
+            client='MyApplicationName',
+            address=('host', 1984), # logstash host and port
+            # optional: if you want to use pycurl instead default tornado client
+            client_class = 'tornado.curl_httpclient.CurlAsyncHTTPClient' 
+        )
+        # don't use AsyncHTTPClient.configure anymore
+        http_client = AsyncHTTPClient()
+        
+        
+        @gen.coroutine
+        def blah():
+            response = yield http_client.fetch(
+                "http://globo.com/", raise_error=True)
+        
+        blah()
+        IOLoop.current().start()
+        ```
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
