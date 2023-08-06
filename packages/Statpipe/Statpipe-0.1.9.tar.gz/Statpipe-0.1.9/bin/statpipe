@@ -1,0 +1,45 @@
+#!/usr/local/bin/python
+
+"""
+Command line tool which accepts Stata commands, executes them, and returns text output.
+"""
+import os
+import stat
+import subprocess
+import sys
+import clint
+from clint import arguments
+args = arguments.Args()
+from statpipe import *
+
+
+def statpipe_commandline():
+    # make a statpipe config file to store preferences
+    quiet = "-q" in args.all
+
+    # decide what to run
+    if "-c" in args.all:
+        code = args.all[-1]
+
+    elif args.files:
+        code = "\n\n".join((open(i, 'r').read() for i in args.files))
+    
+    else:
+        code = clint.piped_in()
+    
+    if not code:
+        code = "\n".join(raw_input("Enter a stata expression (e.g. di 2*2):\n").split(";"))
+
+    # make a local .statpipe directory to store output to enable debugging
+    if not os.path.isdir(".statpipe"):
+        os.mkdir(".statpipe")
+    os.chdir(".statpipe")
+    
+    log = run_stata_code(code, quiet)
+    sys.stdout.write(log)
+
+    return 0
+
+
+if __name__ == "__main__":
+    statpipe_commandline()
