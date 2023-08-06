@@ -1,0 +1,83 @@
+Metadata-Version: 1.0
+Name: pypi-rst-ref
+Version: 0.0.3
+Summary: A reference for how reStructuredText blocks are rendered by Github and PyPI.
+Home-page: https://github.com/moreati/pypi-rst-ref
+Author: Alex Willmer
+Author-email: alex@moreati.org.uk
+License: Apache 2.0
+Description: 
+        Paragraph 1, no literal syntax
+        
+            >>> indented_doctest_block()
+            None
+        
+        Paragraph 2, no literal syntax
+        
+        >>> unindented_doctest_block()
+        None
+        
+        Paragraph 3, no literal syntax
+        
+            def foo():
+                return None
+        
+        Paragraph 4, expanded literal syntax
+        
+        ::
+        
+            def foo():
+                return None
+        
+        Paragraph 5, partially minimized literal syntax ::
+        
+            def foo():
+                return None
+        
+        Paragraph 6, fully minimized literal syntax::
+        
+            def foo():
+                return None
+        
+        Paragraph 7, code block, no language
+        
+        .. code::
+        
+            def foo():
+                return None
+        
+        Paragraph 8, code block, language=python
+        
+        .. code:: python
+        
+            def foo():
+                return None
+        
+        Paragraph 9, Sphinx doctest block
+        
+        .. doctest::
+        
+            def foo():
+                return None
+        
+        
+        Changelog
+        =========
+        
+        0.0.3
+        -----
+        
+        - Whitespace
+        
+        0.0.2
+        -----
+        
+        - Added a doctest block
+        
+        0.0.1
+        -----
+        
+        - Initial release
+        
+        
+Platform: UNKNOWN
