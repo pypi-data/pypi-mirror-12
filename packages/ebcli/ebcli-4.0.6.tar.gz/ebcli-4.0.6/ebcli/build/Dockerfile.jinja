@@ -1,0 +1,30 @@
+FROM {{ image }}
+
+LABEL com.elasticbox.id={{ box }}
+
+ENV ELASTICBOX_URL {{ url | default('https://elasticbox.com') }}
+ENV ELASTICBOX_PATH {{ path | default('/opt/ebx') }}
+ENV ELASTICBOX_INSTANCE_PATH /var/elasticbox
+
+WORKDIR ${ELASTICBOX_PATH}
+
+ADD agent ${ELASTICBOX_PATH}
+RUN ${ELASTICBOX_PATH}/bootstrap.sh
+
+{% for box in boxes %}
+ADD [ "boxes/{{ box }}", "${ELASTICBOX_PATH}/boxes/{{ box }}" ]
+{% endfor %}
+
+{% if ports | length %}
+EXPOSE {{ ' '.join(ports) }}
+{% endif %}
+
+RUN elasticbox setup {{ box }}
+
+{% for script in scripts %}
+RUN elasticbox config --input='boxes/{{ script.path }}' {%if script.scope %}--scope='{{ script.scope }}' {% endif %}| bash
+{% endfor %}
+
+CMD elasticbox run
+
+
