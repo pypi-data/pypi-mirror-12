@@ -1,0 +1,32 @@
+Metadata-Version: 1.1
+Name: bayeslite-apsw
+Version: 3.9.2-r1
+Summary: Another Python SQLite Wrapper -- bayeslite custom edition
+Home-page: https://github.com/rogerbinns/apsw/
+Author: Roger Binns
+Author-email: rogerb@rogerbinns.com
+License: OSI Approved ::
+Description: A Python wrapper for the SQLite embedded relational database engine.
+        
+        WARNING: This is a bayeslite custom edition.  This is not the normal
+        apsw.  It is a temporary kludge until the `apsw' package on pypi
+        works.  This was customized by running::
+        
+            python setup.py fetch --sqlite --version=3.9.2
+        
+        so that it includes a copy of a working version of sqlite3 instead of
+        relying on whatever version your system may have installed.
+        
+        In contrast to other wrappers such as pysqlite it focuses on being
+        a minimal layer over SQLite attempting just to translate the
+        complete SQLite API into Python.
+Keywords: database,sqlite
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database :: Front-Ends
