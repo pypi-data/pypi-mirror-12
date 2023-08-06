@@ -1,0 +1,13 @@
+{% load djinn_pages_tags %}
+{% for menuitem in menuitems %}
+<li{% if menuitem.has_sub %} class="with-sub"{% endif %}>
+    <a href="{{ menuitem.url }}">{{ menuitem.title }}</a>
+    {% if menuitem.has_sub %}
+    <div class="sub">
+        <ul>
+        {% custommenu menuitem %}
+        </ul>
+    </div>
+    {% endif %}
+</li>
+{% endfor %}
