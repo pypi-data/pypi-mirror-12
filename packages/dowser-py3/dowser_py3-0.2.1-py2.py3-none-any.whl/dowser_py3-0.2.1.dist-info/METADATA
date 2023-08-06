@@ -1,0 +1,59 @@
+Metadata-Version: 2.0
+Name: dowser-py3
+Version: 0.2.1
+Summary: Python3 fork of dowser library
+Home-page: https://github.com/appknox/dowser-py3
+Author: dhilipsiva
+Author-email: dhilipsiva@gmail.com
+License: MIT
+Keywords: dowser memory leak
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: CherryPy
+Requires-Dist: Logbook
+Requires-Dist: Pillow
+Requires-Dist: emport
+Requires-Dist: infi.pyutils
+Requires-Dist: infi.recipe.console-scripts
+Requires-Dist: packaging
+Requires-Dist: pbr
+Requires-Dist: z3c.recipe.scripts
+Requires-Dist: zc.buildout
+Requires-Dist: zc.recipe.egg
+Provides-Extra: dev
+Provides-Extra: test
+
+Overview
+========
+
+This is a Python3 fork of dowser library.
+
+Original repo: https://github.com/Infinidat/dowser
+
+
+Usage
+-----
+
+To quickly start-up a CherryPy-based server:
+
+    from dowser.utils import launch_memory_usage_server
+    launch_memory_usage_server()
+
+
+If you want to integrate dowser in your existing CherryPy app:
+
+    from dowser import Root
+    class ExistingCherryPyApp(object):
+        dowser = Root()
+        dowser.exposed = True
+        trace = dowser.trace
+        chart = dowser.chart
+
+This will bind `/dowser`, `/trace` and `/chart` to the dowser CherryPy app
+
+
