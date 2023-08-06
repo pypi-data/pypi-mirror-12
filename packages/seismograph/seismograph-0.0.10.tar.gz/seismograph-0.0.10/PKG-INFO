@@ -1,0 +1,45 @@
+Metadata-Version: 1.1
+Name: seismograph
+Version: 0.0.10
+Summary: Framework for test development
+Home-page: https://github.com/trifonovmixail/seismograph
+Author: Mikhail Trifonov
+Author-email: trifonovmixail@ya.ru
+License: GNU LGPL
+Description: About
+        -----
+        
+        This is framework for test development
+        
+        
+        Simple example
+        --------------
+        
+        .. code-block:: python
+        
+            import seismograph
+        
+        
+            suite = seismograph.Suite(__name__)
+        
+        
+            suite.register
+            def my_first_test(case):
+                case.assertion.equal(1, 1)
+        
+        
+            if __name__ == '__main__':
+                seismograph.main()
+        
+Keywords: test unittest framework
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Seismograph
+Classifier: Natural Language :: Russian
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Testing
