@@ -1,0 +1,37 @@
+Metadata-Version: 1.1
+Name: sphinxcontrib-apiblueprint
+Version: 0.0.1
+Summary: Sphinx extension to create API docs using API Blueprint
+Home-page: https://github.com/tk0miya/sphinxcontrib-apiblueprint
+Author: Takeshi KOMIYA
+Author-email: i.tkomiya@gmail.com
+License: BSD
+Description: sphinxcontrib-apiblueprint
+        ==========================
+        
+        `sphinxcontrib-apiblueprint` is Sphinx extension to create API docs using `API Blueprint`_
+        
+        .. _API Blueprint: https://apiblueprint.org/
+        
+        Usage
+        -----
+        
+        Include this extension in conf.py::
+        
+            extensions = ['sphinxcontrib.apiblueprint']
+        
+        Write ``apiblueprint`` directive into reST file where you want to import API doc::
+        
+            .. swaggerdoc:: [path to API blueprint definition file]
+        
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Framework :: Sphinx :: Extension
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Documentation
+Classifier: Topic :: Documentation :: Sphinx
