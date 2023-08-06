@@ -1,0 +1,12 @@
+<!--StacksFeaturedLinkList 1-up Grid-->
+
+<div class="stacks-module list-2up stacks-featuredlinklist stacks-featuredlinklist-1up grid {{ addl_classes }}">
+    {% if self.title %}<h2 class="module-title">{{ self.title }}</h2>{% endif %}
+    {% for link in self.links %}
+        <div class="grid-1up grid-block">
+            <div class="grid-block-inner">
+                {{ link }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
