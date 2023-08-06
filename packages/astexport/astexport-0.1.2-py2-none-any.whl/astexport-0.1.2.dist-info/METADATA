@@ -1,0 +1,40 @@
+Metadata-Version: 2.0
+Name: astexport
+Version: 0.1.2
+Summary: Python command line application to export Python AST as Json.
+Home-page: https://github.com/fpoli/python-astexport
+Author: Federico Poli
+Author-email: federpoli@gmail.com
+License: GPLv3
+Platform: UNKNOWN
+Requires-Dist: meta
+Provides-Extra: dev
+Requires-Dist: twine; extra == 'dev'
+Requires-Dist: nose (==1.3.3); extra == 'dev'
+Requires-Dist: pep8 (==1.4.6); extra == 'dev'
+
+python-astexport
+================
+
+Python command line application to export Python 2.7 AST as Json.
+
+.. image:: https://travis-ci.org/fpoli/python-astexport.svg?branch=master
+    :target: https://travis-ci.org/fpoli/python-astexport
+
+
+Installation
+------------
+
+.. code-block:: bash
+
+    $ pip install astexport
+
+
+Usage
+-----
+
+.. code-block:: bash
+
+    $ astexport < example.py > ast.json
+
+
