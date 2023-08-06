@@ -1,0 +1,87 @@
+Metadata-Version: 1.1
+Name: django-template-field
+Version: 0.1.0
+Summary: A Django fitemplate field twith managers to return the rendered or unrendered template.
+Home-page: https://github.com/orcasgit/django-template-field
+Author: Jess Johnson
+Author-email: jess@grokcode.com
+License: BSD
+Description: =============================
+        django-template-field
+        =============================
+        
+        .. image:: https://badge.fury.io/py/django-template-field.png
+            :target: https://badge.fury.io/py/django-template-field
+        
+        .. image:: https://travis-ci.org/orcasgit/django-template-field.png?branch=master
+            :target: https://travis-ci.org/orcasgit/django-template-field
+        
+        A Django template field with a manager to return the rendered template.
+        
+        Documentation
+        -------------
+        
+        The full documentation is at https://django-template-field.readthedocs.org.
+        
+        Quickstart
+        ----------
+        
+        Install django-template-field::
+        
+            pip install django-template-field
+        
+        Then use it in a project::
+        
+            from django.db import models
+        
+            from templatefield import fields, managers
+        
+        
+            class TemplatedText(models.Model):
+                value = fields.TemplateTextField()
+        
+                # Manger that returns rendered templates.
+                objects_rendered = managers.RenderTemplateManager()
+                # Django's default manager returns unrendered templates.
+                objects_unrendered = models.Manager()
+        
+        Extra context can be added in `settings` like so:
+        
+            TEMPLATE_FIELD_CONTEXT = { 'template_var': value }
+        
+        
+        Running Tests
+        --------------
+        
+        
+            source <YOURVIRTUALENV>/bin/activate
+            (myenv) $ pip install -r requirements-test.txt
+            (myenv) $ python runtests.py
+        
+        
+        
+        
+        
+        History
+        -------
+        
+        0.1.0 (2015-10-02)
+        ++++++++++++++++++
+        
+        * First release on PyPI.
+        
+Keywords: django-template-field
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 1.7
+Classifier: Framework :: Django :: 1.8
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
