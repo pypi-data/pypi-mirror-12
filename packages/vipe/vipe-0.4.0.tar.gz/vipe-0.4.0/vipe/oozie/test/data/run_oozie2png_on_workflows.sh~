@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PROJECT_ROOT_DIR=../../../..
+
+ABSOLUTE_PROJECT_ROOT_DIR=$(cd $PROJECT_ROOT_DIR; pwd)
+MY_PYTHON_PATH=$PYTHONPATH
+
+for f in $(find . -name "workflow.xml")
+do
+	echo "Running on '$f' ..."
+	DIR=$(dirname "$f")
+	for DETAIL_LEVEL in highest very_high high medium low lowest
+	do
+		export PYTHONPATH=$PYTHONPATH:$ABSOLUTE_PROJECT_ROOT_DIR; cat $f | $ABSOLUTE_PROJECT_ROOT_DIR/scripts/vipe-oozie2png --detail_level $DETAIL_LEVEL > $DIR/pipeline-detail_${DETAIL_LEVEL}-ports_none-vertical.png
+		export PYTHONPATH=$PYTHONPATH:$ABSOLUTE_PROJECT_ROOT_DIR; cat $f | $ABSOLUTE_PROJECT_ROOT_DIR/scripts/vipe-oozie2png --detail_level $DETAIL_LEVEL --horizontal_orientation > $DIR/pipeline-detail_${DETAIL_LEVEL}-ports_none-horizontal.png
+		export PYTHONPATH=$PYTHONPATH:$ABSOLUTE_PROJECT_ROOT_DIR; cat $f | $ABSOLUTE_PROJECT_ROOT_DIR/scripts/vipe-oozie2png --detail_level $DETAIL_LEVEL --show_output_ports  > $DIR/pipeline-detail_${DETAIL_LEVEL}-ports_output-vertical.png
+		export PYTHONPATH=$PYTHONPATH:$ABSOLUTE_PROJECT_ROOT_DIR; cat $f | $ABSOLUTE_PROJECT_ROOT_DIR/scripts/vipe-oozie2png --detail_level $DETAIL_LEVEL --show_output_ports --horizontal_orientation > $DIR/pipeline-detail_${DETAIL_LEVEL}-ports_input-horizontal.png
+		export PYTHONPATH=$PYTHONPATH:$ABSOLUTE_PROJECT_ROOT_DIR; cat $f | $ABSOLUTE_PROJECT_ROOT_DIR/scripts/vipe-oozie2png --detail_level $DETAIL_LEVEL --show_input_ports --show_output_ports > $DIR/pipeline-detail_${DETAIL_LEVEL}-ports_input_output-vertical.png
+		export PYTHONPATH=$PYTHONPATH:$ABSOLUTE_PROJECT_ROOT_DIR; cat $f | $ABSOLUTE_PROJECT_ROOT_DIR/scripts/vipe-oozie2png --detail_level $DETAIL_LEVEL --show_input_ports --show_output_ports --horizontal_orientation > $DIR/pipeline-detail_${DETAIL_LEVEL}-ports_input_output-horizontal.png
+	done
+	echo "Done."
+done
