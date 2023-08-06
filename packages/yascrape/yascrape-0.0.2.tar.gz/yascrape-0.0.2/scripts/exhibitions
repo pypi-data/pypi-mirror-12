@@ -1,0 +1,68 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+.. module:: TODO
+   :platform: Unix
+   :synopsis: TODO.
+
+.. moduleauthor:: Aljosha Friemann <aljosha.friemann@gmail.com>
+
+"""
+
+import logging, csv, os
+
+import click
+
+from scrapy.model import Exhibitor
+from scrapy.domains.intec import Intec
+
+log = logging.getLogger('exhibition-scraper')
+
+def setup_log(debug, logfile):
+    handlers = [logging.StreamHandler()]
+    if logfile is not None:
+        dirname = os.path.dirname(logfile)
+        if dirname != '':
+            os.makedirs(dirname, exist_ok=True)
+        handlers.append(logging.FileHandler(logfile))
+
+    logging.basicConfig(level=logging.INFO if not debug else logging.DEBUG,
+                        format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                        handlers=handlers)
+
+    logging.getLogger('requests').setLevel(logging.WARNING)
+
+@click.group(context_settings={'help_option_names':['-h','--help']})
+@click.option('-d', '--debug/--no-debug', show_default=True)
+@click.option('-l', '--logfile', default='scraper.log', show_default=True)
+@click.pass_context
+def cli(ctx, debug, logfile):
+    """TODO: Docstring for intec."""
+    setup_log(debug, logfile)
+
+@cli.command()
+@click.option('--start', default=0, type=int, show_default=True)
+@click.option('--event', default='intec', show_default=True)
+@click.option('--root', default='http://www.messe-intec.de', show_default=True)
+@click.pass_context
+def intec(ctx, start, event, root):
+    csv_path = 'intec%s-contacts.csv' % '' if not event else '-%s' % event
+    if os.path.exists(csv_path):
+        log.warning('%s already exists, moving old file to %s.backup', csv_path, csv_path)
+        os.rename(csv_path, csv_path + ".backup")
+
+    exhibition = Intec(root, event)
+
+    with open(csv_path, 'w') as csvfile:
+        log.info('writing contacts to %s', csv_path)
+
+        writer = csv.DictWriter(csvfile, fieldnames=Exhibitor.keys())
+        writer.writeheader()
+
+        for exhibitor in exhibition.get_exhibitors(start = start):
+            writer.writerow(exhibitor.__dict__)
+
+if __name__ == '__main__':
+    cli(obj={})
+
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4 fenc=utf-8
