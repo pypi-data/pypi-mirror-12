@@ -1,0 +1,50 @@
+{% extends 'production_report/reports/base.html' %}
+
+{% block title %}
+  Production Schedule
+{% endblock %}
+
+{% block body %}
+{% for date, production in productions_by_date %}
+
+<span class="h2 pull-left">{{ date|dateformat }}</span>
+<table class="table">
+  <thead>
+    <th class="text-center">Link</th>
+    <th class="text-center">Name</th>
+    <th class="text-center">Unit</th>
+    <th class="text-center">Operator</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">
+        {% if production.code %}
+          <a href="{{ production.__url__ }}">{{ production.code }}<a>
+        {% else %}
+          N/A
+        {% endif %}
+      </td>
+      <td class="text-center">
+        {% if production.product %}
+          {{production.product.rec_name }}
+          {% if production.product.rec_name and production.product.code %}-{% endif %}
+          {{production.product.code}}
+        {% else %}
+           N/A
+        {% endif %}
+      </td>
+      <td class="text-center">
+        {% if production.quantity %}
+          {{ formatLang(production.quantity, production.company.party.lang, digits=production.unit_digits) }} {% if production.uom.symbol != 'u' %}{{ production.uom.symbol }}{% endif %}
+        {% else %}
+          N/A
+        {% endif %}
+      </td>
+      <td class="text-center">
+        {{ production.operator and production.operator.rec_name or 'N/A' }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endfor %}
+{% endblock body %}
