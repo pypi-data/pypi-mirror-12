@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>colour.colorimetry.dataset.light_sources.spds Module &mdash; Colour 0.3.7 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Colour 0.3.7 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-colour.colorimetry.dataset.light_sources.spds">
+<span id="colour-colorimetry-dataset-light-sources-spds-module"></span><h1>colour.colorimetry.dataset.light_sources.spds Module<a class="headerlink" href="#module-colour.colorimetry.dataset.light_sources.spds" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="light-sources-relative-spectral-power-distributions">
+<h2>Light Sources Relative Spectral Power Distributions<a class="headerlink" href="#light-sources-relative-spectral-power-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Defines various light sources relative spectral power distributions.</p>
+<p>The light sources data is in the form of a <em>dict</em> of
+<a class="reference internal" href="colour.colorimetry.spectrum.html#colour.colorimetry.spectrum.SpectralPowerDistribution" title="colour.colorimetry.spectrum.SpectralPowerDistribution"><code class="xref py py-class docutils literal"><span class="pre">colour.colorimetry.spectrum.SpectralPowerDistribution</span></code></a> classes as
+follows:</p>
+<div class="highlight-python"><div class="highlight"><pre>{&#39;name&#39;: SpectralPowerDistribution, ..., &#39;name&#39;: SpectralPowerDistribution}
+</pre></div>
+</div>
+<p>The following light sources are available:</p>
+<ul class="simple">
+<li><em>RIT</em> <em>PointerData.xls</em> spreadsheet light sources: Natural,
+Philips TL-84, T8 Luxline Plus White, SA, SC, T8 Polylux 3000,
+T8 Polylux 4000, Thorn Kolor-rite</li>
+<li><em>NIST</em> <em>NIST CQS simulation 7.4.xls</em> spreadsheet traditional light sources:
+Cool White FL, Daylight FL, HPS, Incandescent, LPS, Mercury,
+Metal Halide, Neodimium Incandescent, Super HPS, Triphosphor FL</li>
+<li><em>NIST</em> <em>NIST CQS simulation 7.4.xls</em> spreadsheet LED light sources:
+3-LED-1 (457/540/605), 3-LED-2 (473/545/616), 3-LED-2 Yellow,
+3-LED-3 (465/546/614), 3-LED-4 (455/547/623), 4-LED No Yellow,
+4-LED Yellow, 4-LED-1 (461/526/576/624), 4-LED-2 (447/512/573/627),
+Luxeon WW 2880, PHOS-1, PHOS-2, PHOS-3, PHOS-4,
+Phosphor LED YAG</li>
+<li><em>NIST</em> <em>NIST CQS simulation 7.4.xls</em> spreadsheet Philips light sources:
+60 A/W (Soft White), C100S54 (HPS), C100S54C (HPS),
+F32T8/TL830 (Triphosphor), F32T8/TL835 (Triphosphor),
+F32T8/TL841 (Triphosphor), F32T8/TL850 (Triphosphor),
+F32T8/TL865 /PLUS (Triphosphor), F34/CW/RS/EW (Cool White FL),
+F34T12/LW/RS /EW, F34T12WW/RS /EW (Warm White FL),
+F40/C50 (Broadband FL), F40/C75 (Broadband FL),
+F40/CWX (Broadband FL), F40/DX (Broadband FL), F40/DXTP (Delux FL),
+F40/N (Natural FL), H38HT-100 (Mercury), H38JA-100/DX (Mercury DX),
+MHC100/U/MP /3K, MHC100/U/MP /4K, SDW-T 100W/LV (Super HPS)</li>
+<li>Projectors and Xenon Arc Lamps:
+Kinoton 75P</li>
+</ul>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://nbviewer.ipython.org/github/colour-science/colour-ipython/blob/master/notebooks/colorimetry/light_sources.ipynb">Light Sources IPython Notebook</a></p>
+</div>
+<dl class="data">
+<dt id="colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_RIT_RELATIVE_SPDS">
+<code class="descclassname">colour.colorimetry.dataset.light_sources.spds.</code><code class="descname">LIGHT_SOURCES_RIT_RELATIVE_SPDS</code><em class="property"> = CaseInsensitiveMapping({u'Natural': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47650&gt;, u'T8 Luxline Plus White': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47850&gt;, u'Philips TL-84': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa476d0&gt;, u'T8 Polylux 4000': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47950&gt;, u'Thorn Kolor-rite': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa479d0&gt;, u'SC': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa477d0&gt;, u'SA': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47750&gt;, u'T8 Polylux 3000': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa478d0&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_RIT_RELATIVE_SPDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Light sources from <em>RIT</em> <em>PointerData.xls</em> spreadsheet.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The relative spectral power distributions have been extracted from
+<em>PointerData.xls</em> spreadsheet that doesn&#8217;t mention the data source thus the
+light source names cannot be accurately verified.</p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Pointer, M. R. (1980). Pointer’s Gamut Data. Retrieved from
+<a class="reference external" href="http://www.cis.rit.edu/research/mcsl2/online/PointerData.xls">http://www.cis.rit.edu/research/mcsl2/online/PointerData.xls</a></td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>LIGHT_SOURCES_RIT_RELATIVE_SPDS_DATA <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;Natural&#8217;, &#8216;Philips TL-84&#8217;, &#8216;T8 Luxline Plus White&#8217;, &#8216;SA&#8217;, &#8216;SC&#8217;,
+&#8216;T8 Polylux 3000&#8217;, &#8216;T8 Polylux 4000&#8217;, &#8216;Thorn Kolor-rite&#8217;}</strong></dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_NIST_TRADITIONAL_RELATIVE_SPDS">
+<code class="descclassname">colour.colorimetry.dataset.light_sources.spds.</code><code class="descname">LIGHT_SOURCES_NIST_TRADITIONAL_RELATIVE_SPDS</code><em class="property"> = CaseInsensitiveMapping({u'Mercury': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47d90&gt;, u'Metal Halide': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47e10&gt;, u'Daylight FL': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47b90&gt;, u'HPS': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47c10&gt;, u'Neodimium Incandescent': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47e90&gt;, u'LPS': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47d10&gt;, u'Triphosphor FL': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47f90&gt;, u'Incandescent': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47c90&gt;, u'Cool White FL': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47b10&gt;, u'Super HPS': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47f10&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_NIST_TRADITIONAL_RELATIVE_SPDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traditional light sources from <em>NIST</em> <em>NIST CQS simulation 7.4.xls</em>
+spreadsheet.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Ohno, Y., &amp; Davis, W. (2008). NIST CQS simulation 7.4. Retrieved from
+<a class="reference external" href="http://cie2.nist.gov/TC1-69/NIST">http://cie2.nist.gov/TC1-69/NIST</a> CQS simulation 7.4.xls</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>LIGHT_SOURCES_NIST_TRADITIONAL_RELATIVE_SPDS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;Cool White FL&#8217;, &#8216;Daylight FL&#8217;, &#8216;HPS&#8217;, &#8216;Incandescent&#8217;, &#8216;LPS&#8217;, &#8216;Mercury&#8217;,
+&#8216;Metal Halide&#8217;, &#8216;Neodimium Incandescent&#8217;, &#8216;Super HPS&#8217;, &#8216;Triphosphor FL&#8217;}</strong></dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_NIST_LED_RELATIVE_SPDS">
+<code class="descclassname">colour.colorimetry.dataset.light_sources.spds.</code><code class="descname">LIGHT_SOURCES_NIST_LED_RELATIVE_SPDS</code><em class="property"> = CaseInsensitiveMapping({u'3-LED-4 (455/547/623)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa562d0&gt;, u'3-LED-2 Yellow': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa561d0&gt;, u'3-LED-2 (473/545/616)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56150&gt;, u'4-LED Yellow': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa563d0&gt;, u'PHOS-2': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56650&gt;, u'PHOS-1': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa565d0&gt;, u'3-LED-1 (457/540/605)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa560d0&gt;, u'PHOS-4': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56750&gt;, u'4-LED No Yellow': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56350&gt;, u'PHOS-3': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa566d0&gt;, u'4-LED-2 (447/512/573/627)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa564d0&gt;, u'Luxeon WW 2880': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56550&gt;, u'Phosphor LED YAG': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa567d0&gt;, u'3-LED-3 (465/546/614)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56250&gt;, u'4-LED-1 (461/526/576/624)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56450&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_NIST_LED_RELATIVE_SPDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>LED light sources from <em>NIST</em> <em>NIST CQS simulation 7.4.xls</em> spreadsheet. <a class="footnote-reference" href="#id2" id="id3">[2]</a></p>
+<dl class="docutils">
+<dt>LIGHT_SOURCES_NIST_LED_RELATIVE_SPDS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;3-LED-1 (457/540/605)&#8217;, &#8216;3-LED-2 (473/545/616)&#8217;, &#8216;3-LED-2 Yellow&#8217;,
+&#8216;3-LED-3 (465/546/614)&#8217;, &#8216;3-LED-4 (455/547/623)&#8217;, &#8216;4-LED No Yellow&#8217;,
+&#8216;4-LED Yellow&#8217;, &#8216;4-LED-1 (461/526/576/624)&#8217;, &#8216;4-LED-2 (447/512/573/627)&#8217;,
+&#8216;Luxeon WW 2880&#8217;, &#8216;PHOS-1&#8217;, &#8216;PHOS-2&#8217;, &#8216;PHOS-3&#8217;, &#8216;PHOS-4&#8217;,
+&#8216;Phosphor LED YAG&#8217;}</strong></dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_NIST_PHILIPS_RELATIVE_SPDS">
+<code class="descclassname">colour.colorimetry.dataset.light_sources.spds.</code><code class="descname">LIGHT_SOURCES_NIST_PHILIPS_RELATIVE_SPDS</code><em class="property"> = CaseInsensitiveMapping({u'MHC100/U/MP /4K': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62390&gt;, u'60 A/W (Soft White)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56950&gt;, u'C100S54C (HPS)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56a50&gt;, u'F40/C75 (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56f50&gt;, u'F34T12/LW/RS /EW': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56dd0&gt;, u'F40/DXTP (Delux FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62110&gt;, u'C100S54 (HPS)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa569d0&gt;, u'SDW-T 100W/LV (Super HPS)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62410&gt;, u'F40/DX (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62090&gt;, u'F32T8/TL835 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56b50&gt;, u'MHC100/U/MP /3K': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62310&gt;, u'F34/CW/RS/EW (Cool White FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56d50&gt;, u'H38HT-100 (Mercury)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62210&gt;, u'H38JA-100/DX (Mercury DX)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62290&gt;, u'F32T8/TL865 /PLUS (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56cd0&gt;, u'F32T8/TL841 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56bd0&gt;, u'F32T8/TL830 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56ad0&gt;, u'F32T8/TL850 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56c50&gt;, u'F40/C50 (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56ed0&gt;, u'F40/N (Natural FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62190&gt;, u'F40/CWX (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56fd0&gt;, u'F34T12WW/RS /EW (Warm White FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56e50&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_NIST_PHILIPS_RELATIVE_SPDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Philips light sources from <em>NIST</em> <em>NIST CQS simulation 7.4.xls</em>
+spreadsheet. <a class="footnote-reference" href="#id2" id="id4">[2]</a></p>
+<dl class="docutils">
+<dt>LIGHT_SOURCES_NIST_PHILIPS_RELATIVE_SPDS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;60 A/W (Soft White)&#8217;, &#8216;C100S54 (HPS)&#8217;, &#8216;C100S54C (HPS)&#8217;,
+&#8216;F32T8/TL830 (Triphosphor)&#8217;, &#8216;F32T8/TL835 (Triphosphor)&#8217;,
+&#8216;F32T8/TL841 (Triphosphor)&#8217;, &#8216;F32T8/TL850 (Triphosphor)&#8217;,
+&#8216;F32T8/TL865 /PLUS (Triphosphor)&#8217;, &#8216;F34/CW/RS/EW (Cool White FL)&#8217;,
+&#8216;F34T12/LW/RS /EW&#8217;, &#8216;F34T12WW/RS /EW (Warm White FL)&#8217;,
+&#8216;F40/C50 (Broadband FL)&#8217;, &#8216;F40/C75 (Broadband FL)&#8217;,
+&#8216;F40/CWX (Broadband FL)&#8217;, &#8216;F40/DX (Broadband FL)&#8217;, &#8216;F40/DXTP (Delux FL)&#8217;,
+&#8216;F40/N (Natural FL)&#8217;, &#8216;H38HT-100 (Mercury)&#8217;, &#8216;H38JA-100/DX (Mercury DX)&#8217;,
+&#8216;MHC100/U/MP /3K&#8217;, &#8216;MHC100/U/MP /4K&#8217;, &#8216;SDW-T 100W/LV (Super HPS)&#8217;}</strong></dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_PROJECTORS_RELATIVE_SPDS">
+<code class="descclassname">colour.colorimetry.dataset.light_sources.spds.</code><code class="descname">LIGHT_SOURCES_PROJECTORS_RELATIVE_SPDS</code><em class="property"> = CaseInsensitiveMapping({u'Kinoton 75P': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62590&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_PROJECTORS_RELATIVE_SPDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Projectors and Xenon Arc Lamps.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td>Houston, J. (2015). Private Discussion with Mansencal, T.</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>LIGHT_SOURCES_PROJECTORS_RELATIVE_SPDS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;Kinoton 75P&#8217;, }</strong></dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_RELATIVE_SPDS">
+<code class="descclassname">colour.colorimetry.dataset.light_sources.spds.</code><code class="descname">LIGHT_SOURCES_RELATIVE_SPDS</code><em class="property"> = CaseInsensitiveMapping({u'Mercury': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47d90&gt;, u'F34T12WW/RS /EW (Warm White FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56e50&gt;, u'4-LED-2 (447/512/573/627)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa564d0&gt;, u'T8 Polylux 4000': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47950&gt;, u'MHC100/U/MP /4K': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62390&gt;, u'60 A/W (Soft White)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56950&gt;, u'F40/C50 (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56ed0&gt;, u'Cool White FL': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47b10&gt;, u'H38HT-100 (Mercury)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62210&gt;, u'Super HPS': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47f10&gt;, u'C100S54C (HPS)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56a50&gt;, u'F34T12/LW/RS /EW': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56dd0&gt;, u'F40/DXTP (Delux FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62110&gt;, u'F40/C75 (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56f50&gt;, u'Neodimium Incandescent': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47e90&gt;, u'Philips TL-84': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa476d0&gt;, u'4-LED No Yellow': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56350&gt;, u'Triphosphor FL': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47f90&gt;, u'F40/DX (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62090&gt;, u'C100S54 (HPS)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa569d0&gt;, u'Kinoton 75P': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62590&gt;, u'SDW-T 100W/LV (Super HPS)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62410&gt;, u'3-LED-3 (465/546/614)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56250&gt;, u'F32T8/TL835 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56b50&gt;, u'MHC100/U/MP /3K': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62310&gt;, u'3-LED-2 (473/545/616)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56150&gt;, u'F34/CW/RS/EW (Cool White FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56d50&gt;, u'Daylight FL': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47b90&gt;, u'3-LED-2 Yellow': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa561d0&gt;, u'3-LED-1 (457/540/605)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa560d0&gt;, u'HPS': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47c10&gt;, u'LPS': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47d10&gt;, u'H38JA-100/DX (Mercury DX)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62290&gt;, u'F32T8/TL865 /PLUS (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56cd0&gt;, u'F32T8/TL841 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56bd0&gt;, u'F32T8/TL830 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56ad0&gt;, u'T8 Luxline Plus White': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47850&gt;, u'T8 Polylux 3000': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa478d0&gt;, u'3-LED-4 (455/547/623)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa562d0&gt;, u'Metal Halide': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47e10&gt;, u'Natural': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47650&gt;, u'F32T8/TL850 (Triphosphor)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56c50&gt;, u'Thorn Kolor-rite': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa479d0&gt;, u'4-LED Yellow': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa563d0&gt;, u'PHOS-2': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56650&gt;, u'PHOS-1': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa565d0&gt;, u'F40/N (Natural FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa62190&gt;, u'PHOS-4': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56750&gt;, u'PHOS-3': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa566d0&gt;, u'Incandescent': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47c90&gt;, u'SC': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa477d0&gt;, u'Luxeon WW 2880': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56550&gt;, u'SA': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa47750&gt;, u'Phosphor LED YAG': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa567d0&gt;, u'4-LED-1 (461/526/576/624)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56450&gt;, u'F40/CWX (Broadband FL)': &lt;colour.colorimetry.spectrum.SpectralPowerDistribution object at 0x2b581aa56fd0&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.light_sources.spds.LIGHT_SOURCES_RELATIVE_SPDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggregated light sources spectral power distributions.</p>
+<p>LIGHT_SOURCES_RELATIVE_SPDS : CaseInsensitiveMapping</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/Colour_Logo_Small_001.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">colour.colorimetry.dataset.light_sources.spds Module</a><ul>
+<li><a class="reference internal" href="#light-sources-relative-spectral-power-distributions">Light Sources Relative Spectral Power Distributions</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/colour.colorimetry.dataset.light_sources.spds.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2013 - 2015, Colour Developers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/colour.colorimetry.dataset.light_sources.spds.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

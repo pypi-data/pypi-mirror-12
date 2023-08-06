@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>colour.models.rgb Module &mdash; Colour 0.3.7 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Colour 0.3.7 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-colour.models.rgb">
+<span id="colour-models-rgb-module"></span><h1>colour.models.rgb Module<a class="headerlink" href="#module-colour.models.rgb" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rgb-colourspace-transformations">
+<h2>RGB Colourspace &amp; Transformations<a class="headerlink" href="#rgb-colourspace-transformations" title="Permalink to this headline">¶</a></h2>
+<p>Defines the <a class="reference internal" href="#colour.models.rgb.RGB_Colourspace" title="colour.models.rgb.RGB_Colourspace"><code class="xref py py-class docutils literal"><span class="pre">RGB_Colourspace</span></code></a> class for the <em>RGB</em> colourspaces dataset
+from <code class="xref py py-mod docutils literal"><span class="pre">colour.models.dataset.aces_rgb</span></code>, etc... and the following <em>RGB</em>
+colourspace transformations:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#colour.models.rgb.XYZ_to_RGB" title="colour.models.rgb.XYZ_to_RGB"><code class="xref py py-func docutils literal"><span class="pre">XYZ_to_RGB()</span></code></a></li>
+<li><a class="reference internal" href="#colour.models.rgb.RGB_to_XYZ" title="colour.models.rgb.RGB_to_XYZ"><code class="xref py py-func docutils literal"><span class="pre">RGB_to_XYZ()</span></code></a></li>
+<li><a class="reference internal" href="#colour.models.rgb.RGB_to_RGB" title="colour.models.rgb.RGB_to_RGB"><code class="xref py py-func docutils literal"><span class="pre">RGB_to_RGB()</span></code></a></li>
+</ul>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://nbviewer.ipython.org/github/colour-science/colour-ipython/blob/master/notebooks/models/rgb.ipynb">RGB Colourspaces IPython Notebook</a></p>
+</div>
+<dl class="class">
+<dt id="colour.models.rgb.RGB_Colourspace">
+<em class="property">class </em><code class="descclassname">colour.models.rgb.</code><code class="descname">RGB_Colourspace</code><span class="sig-paren">(</span><em>name</em>, <em>primaries</em>, <em>whitepoint</em>, <em>illuminant=None</em>, <em>RGB_to_XYZ_matrix=None</em>, <em>XYZ_to_RGB_matrix=None</em>, <em>OECF=None</em>, <em>EOCF=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/colour/models/rgb.html#RGB_Colourspace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Implements support for the <em>RGB</em> colourspaces dataset from
+<code class="xref py py-mod docutils literal"><span class="pre">colour.models.dataset.aces_rgb</span></code>, etc....</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>unicode</em>) &#8211; <em>RGB</em> colourspace name.</li>
+<li><strong>primaries</strong> (<em>array_like</em>) &#8211; <em>RGB</em> colourspace primaries.</li>
+<li><strong>whitepoint</strong> (<em>array_like</em>) &#8211; <em>RGB</em> colourspace whitepoint.</li>
+<li><strong>illuminant</strong> (<em>unicode, optional</em>) &#8211; <em>RGB</em> colourspace whitepoint name as illuminant.</li>
+<li><strong>RGB_to_XYZ_matrix</strong> (<em>array_like, optional</em>) &#8211; Transformation matrix from colourspace to <em>CIE XYZ</em> tristimulus values.</li>
+<li><strong>XYZ_to_RGB_matrix</strong> (<em>array_like, optional</em>) &#8211; Transformation matrix from <em>CIE XYZ</em> tristimulus values to colourspace.</li>
+<li><strong>OECF</strong> (<em>object, optional</em>) &#8211; Opto-electronic conversion function (OECF) that maps estimated
+tristimulus values in a scene to <span class="math">\(R'G'B'\)</span> video component signal
+value.</li>
+<li><strong>EOCF</strong> (<em>object, optional</em>) &#8211; Electro-optical conversion function (EOCF) that maps an <span class="math">\(R'G'B'\)</span>
+video component signal to a tristimulus value at the display.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.EOCF">
+<code class="descname">EOCF</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.EOCF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__EOCF</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__EOCF.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.OECF">
+<code class="descname">OECF</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.OECF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__OECF</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__OECF.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.5/library/functions.html#object" title="(in Python v3.5)">object</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.RGB_to_XYZ_matrix">
+<code class="descname">RGB_to_XYZ_matrix</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.RGB_to_XYZ_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__to_XYZ</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__to_XYZ.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">array_like, (3, 3)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.XYZ_to_RGB_matrix">
+<code class="descname">XYZ_to_RGB_matrix</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.XYZ_to_RGB_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__to_RGB</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__to_RGB.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">array_like, (3, 3)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.illuminant">
+<code class="descname">illuminant</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.illuminant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__illuminant</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__illuminant.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">unicode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.name">
+<code class="descname">name</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__name</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">unicode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.primaries">
+<code class="descname">primaries</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.primaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__primaries</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__primaries.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">array_like, (3, 2)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="colour.models.rgb.RGB_Colourspace.whitepoint">
+<code class="descname">whitepoint</code><a class="headerlink" href="#colour.models.rgb.RGB_Colourspace.whitepoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property for <strong>self.__whitepoint</strong> private attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.__whitepoint.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">array_like</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="colour.models.rgb.XYZ_to_RGB">
+<code class="descclassname">colour.models.rgb.</code><code class="descname">XYZ_to_RGB</code><span class="sig-paren">(</span><em>XYZ</em>, <em>illuminant_XYZ</em>, <em>illuminant_RGB</em>, <em>XYZ_to_RGB_matrix</em>, <em>chromatic_adaptation_transform=u'CAT02'</em>, <em>OECF=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/colour/models/rgb.html#XYZ_to_RGB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#colour.models.rgb.XYZ_to_RGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from <em>CIE XYZ</em> tristimulus values to given <em>RGB</em> colourspace.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>XYZ</strong> (<em>array_like</em>) &#8211; <em>CIE XYZ</em> tristimulus values.</li>
+<li><strong>illuminant_XYZ</strong> (<em>array_like</em>) &#8211; <em>CIE XYZ</em> tristimulus values <em>illuminant</em> <em>xy</em> chromaticity coordinates
+or <em>CIE xyY</em> colourspace array.</li>
+<li><strong>illuminant_RGB</strong> (<em>array_like</em>) &#8211; <em>RGB</em> colourspace <em>illuminant</em> <em>xy</em> chromaticity coordinates or
+<em>CIE xyY</em> colourspace array.</li>
+<li><strong>XYZ_to_RGB_matrix</strong> (<em>array_like</em>) &#8211; <em>Normalised primary matrix</em>.</li>
+<li><strong>chromatic_adaptation_transform</strong> (<em>unicode, optional</em>) &#8211; <strong>{&#8216;CAT02&#8217;, &#8216;XYZ Scaling&#8217;, &#8216;Von Kries&#8217;, &#8216;Bradford&#8217;, &#8216;Sharp&#8217;,
+&#8216;Fairchild, &#8216;CMCCAT97&#8217;, &#8216;CMCCAT2000&#8217;, &#8216;CAT02_BRILL_CAT&#8217;, &#8216;Bianco&#8217;,
+&#8216;Bianco PC&#8217;}</strong>,
+<em>Chromatic adaptation</em> transform.</li>
+<li><strong>OECF</strong> (<em>object, optional</em>) &#8211; <em>Opto-electronic conversion function</em>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>RGB</em> colourspace array.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li>Input <em>CIE XYZ</em> tristimulus values are in domain [0, 1].</li>
+<li>Input <em>illuminant_XYZ</em> <em>xy</em> chromaticity coordinates or <em>CIE xyY</em>
+colourspace array are in domain [0, <span class="math">\(\infty\)</span>].</li>
+<li>Input <em>illuminant_RGB</em> <em>xy</em> chromaticity coordinates or <em>CIE xyY</em>
+colourspace array are in domain [0, <span class="math">\(\infty\)</span>].</li>
+<li>Output <em>RGB</em> colourspace array is in domain [0, 1].</li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">XYZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.07049534</span><span class="p">,</span> <span class="mf">0.10080000</span><span class="p">,</span> <span class="mf">0.09558313</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">illuminant_XYZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.34567</span><span class="p">,</span> <span class="mf">0.35850</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">illuminant_RGB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.31271</span><span class="p">,</span> <span class="mf">0.32902</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chromatic_adaptation_transform</span> <span class="o">=</span> <span class="s">&#39;Bradford&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">XYZ_to_RGB_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">3.24100326</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.53739899</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.49861587</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="o">-</span><span class="mf">0.96922426</span><span class="p">,</span> <span class="mf">1.87592999</span><span class="p">,</span> <span class="mf">0.04155422</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.05563942</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.20401120</span><span class="p">,</span> <span class="mf">1.05714897</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">XYZ_to_RGB</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">XYZ</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">illuminant_XYZ</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">illuminant_RGB</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">XYZ_to_RGB_matrix</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">chromatic_adaptation_transform</span><span class="p">)</span>  
+<span class="go">array([ 0.0110360...,  0.1273446...,  0.1163103...])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="colour.models.rgb.RGB_to_XYZ">
+<code class="descclassname">colour.models.rgb.</code><code class="descname">RGB_to_XYZ</code><span class="sig-paren">(</span><em>RGB</em>, <em>illuminant_RGB</em>, <em>illuminant_XYZ</em>, <em>RGB_to_XYZ_matrix</em>, <em>chromatic_adaptation_transform=u'CAT02'</em>, <em>EOCF=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/colour/models/rgb.html#RGB_to_XYZ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#colour.models.rgb.RGB_to_XYZ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from given <em>RGB</em> colourspace to <em>CIE XYZ</em> tristimulus values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>RGB</strong> (<em>array_like</em>) &#8211; <em>RGB</em> colourspace array.</li>
+<li><strong>illuminant_RGB</strong> (<em>array_like</em>) &#8211; <em>RGB</em> colourspace <em>illuminant</em> chromaticity coordinates or <em>CIE xyY</em>
+colourspace array.</li>
+<li><strong>illuminant_XYZ</strong> (<em>array_like</em>) &#8211; <em>CIE XYZ</em> tristimulus values <em>illuminant</em> chromaticity coordinates or
+<em>CIE xyY</em> colourspace array.</li>
+<li><strong>RGB_to_XYZ_matrix</strong> (<em>array_like</em>) &#8211; <em>Normalised primary matrix</em>.</li>
+<li><strong>chromatic_adaptation_transform</strong> (<em>unicode, optional</em>) &#8211; <strong>{&#8216;CAT02&#8217;, &#8216;XYZ Scaling&#8217;, &#8216;Von Kries&#8217;, &#8216;Bradford&#8217;, &#8216;Sharp&#8217;,
+&#8216;Fairchild, &#8216;CMCCAT97&#8217;, &#8216;CMCCAT2000&#8217;, &#8216;CAT02_BRILL_CAT&#8217;, &#8216;Bianco&#8217;,
+&#8216;Bianco PC&#8217;}</strong>,
+<em>Chromatic adaptation</em> transform.</li>
+<li><strong>EOCF</strong> (<em>object, optional</em>) &#8211; <em>Electro-optical conversion function</em>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>CIE XYZ</em> tristimulus values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li>Input <em>RGB</em> colourspace array is in domain [0, 1].</li>
+<li>Input <em>illuminant_RGB</em> <em>xy</em> chromaticity coordinates or <em>CIE xyY</em>
+colourspace array are in domain [0, <span class="math">\(\infty\)</span>].</li>
+<li>Input <em>illuminant_XYZ</em> <em>xy</em> chromaticity coordinates or <em>CIE xyY</em>
+colourspace array are in domain [0, <span class="math">\(\infty\)</span>].</li>
+<li>Output <em>CIE XYZ</em> tristimulus values are in domain [0, 1].</li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">RGB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.01103604</span><span class="p">,</span> <span class="mf">0.12734466</span><span class="p">,</span> <span class="mf">0.11631037</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">illuminant_RGB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.31271</span><span class="p">,</span> <span class="mf">0.32902</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">illuminant_XYZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.34567</span><span class="p">,</span> <span class="mf">0.35850</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chromatic_adaptation_transform</span> <span class="o">=</span> <span class="s">&#39;Bradford&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RGB_to_XYZ_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.41238656</span><span class="p">,</span> <span class="mf">0.35759149</span><span class="p">,</span> <span class="mf">0.18045049</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.21263682</span><span class="p">,</span> <span class="mf">0.71518298</span><span class="p">,</span> <span class="mf">0.07218020</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.01933062</span><span class="p">,</span> <span class="mf">0.11919716</span><span class="p">,</span> <span class="mf">0.95037259</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RGB_to_XYZ</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">RGB</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">illuminant_RGB</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">illuminant_XYZ</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">RGB_to_XYZ_matrix</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">chromatic_adaptation_transform</span><span class="p">)</span>  
+<span class="go">array([ 0.0704953...,  0.1008    ,  0.0955831...])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="colour.models.rgb.RGB_to_RGB">
+<code class="descclassname">colour.models.rgb.</code><code class="descname">RGB_to_RGB</code><span class="sig-paren">(</span><em>RGB</em>, <em>input_colourspace</em>, <em>output_colourspace</em>, <em>chromatic_adaptation_transform=u'CAT02'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/colour/models/rgb.html#RGB_to_RGB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#colour.models.rgb.RGB_to_RGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from given input <em>RGB</em> colourspace to output <em>RGB</em> colourspace
+using given <em>chromatic adaptation</em> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>RGB</strong> (<em>array_like</em>) &#8211; <em>RGB</em> colourspace array.</li>
+<li><strong>input_colourspace</strong> (<a class="reference internal" href="colour.models.html#colour.models.RGB_Colourspace" title="colour.models.RGB_Colourspace"><em>RGB_Colourspace</em></a>) &#8211; <em>RGB</em> input colourspace.</li>
+<li><strong>output_colourspace</strong> (<a class="reference internal" href="colour.models.html#colour.models.RGB_Colourspace" title="colour.models.RGB_Colourspace"><em>RGB_Colourspace</em></a>) &#8211; <em>RGB</em> output colourspace.</li>
+<li><strong>chromatic_adaptation_transform</strong> (<em>unicode, optional</em>) &#8211; <strong>{&#8216;CAT02&#8217;, &#8216;XYZ Scaling&#8217;, &#8216;Von Kries&#8217;, &#8216;Bradford&#8217;, &#8216;Sharp&#8217;,
+&#8216;Fairchild, &#8216;CMCCAT97&#8217;, &#8216;CMCCAT2000&#8217;, &#8216;CAT02_BRILL_CAT&#8217;, &#8216;Bianco&#8217;,
+&#8216;Bianco PC&#8217;}</strong>,
+<em>Chromatic adaptation</em> transform.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><em>RGB</em> colourspace array.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><em>RGB</em> colourspace arrays are in domain [0, 1].</li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">colour</span> <span class="kn">import</span> <span class="n">sRGB_COLOURSPACE</span><span class="p">,</span> <span class="n">PROPHOTO_RGB_COLOURSPACE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RGB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.01103604</span><span class="p">,</span> <span class="mf">0.12734466</span><span class="p">,</span> <span class="mf">0.11631037</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RGB_to_RGB</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">RGB</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sRGB_COLOURSPACE</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">PROPHOTO_RGB_COLOURSPACE</span><span class="p">)</span>  
+<span class="go">array([ 0.0643338...,  0.1157362...,  0.1157614...])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/Colour_Logo_Small_001.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">colour.models.rgb Module</a><ul>
+<li><a class="reference internal" href="#rgb-colourspace-transformations">RGB Colourspace &amp; Transformations</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/colour.models.rgb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2013 - 2015, Colour Developers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/colour.models.rgb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

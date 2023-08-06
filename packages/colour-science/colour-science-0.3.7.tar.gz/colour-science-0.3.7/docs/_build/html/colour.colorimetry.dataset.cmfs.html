@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>colour.colorimetry.dataset.cmfs Module &mdash; Colour 0.3.7 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Colour 0.3.7 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-colour.colorimetry.dataset.cmfs">
+<span id="colour-colorimetry-dataset-cmfs-module"></span><h1>colour.colorimetry.dataset.cmfs Module<a class="headerlink" href="#module-colour.colorimetry.dataset.cmfs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="colour-matching-functions-spectral-power-distributions">
+<h2>Colour Matching Functions Spectral Power Distributions<a class="headerlink" href="#colour-matching-functions-spectral-power-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Defines various colour matching functions involved in spectral computations.</p>
+<p>The colour matching functions data is in the form of a <em>dict</em> of
+<a class="reference internal" href="colour.colorimetry.spectrum.html#colour.colorimetry.spectrum.TriSpectralPowerDistribution" title="colour.colorimetry.spectrum.TriSpectralPowerDistribution"><code class="xref py py-class docutils literal"><span class="pre">colour.colorimetry.spectrum.TriSpectralPowerDistribution</span></code></a> classes as
+follows:</p>
+<div class="highlight-python"><div class="highlight"><pre>{&#39;name&#39;: TriSpectralPowerDistribution,
+...,
+&#39;name&#39;: TriSpectralPowerDistribution}
+</pre></div>
+</div>
+<p>The following colour matching functions are available:</p>
+<ul class="simple">
+<li>Stockman &amp; Sharpe 2 Degree Cone Fundamentals <a class="footnote-reference" href="#id10" id="id1">[1]</a></li>
+<li>Stockman &amp; Sharpe 10 Degree Cone Fundamentals <a class="footnote-reference" href="#id10" id="id2">[1]</a></li>
+<li>Wright &amp; Guild 1931 2 Degree RGB CMFs <a class="footnote-reference" href="#id11" id="id3">[2]</a></li>
+<li>Stiles &amp; Burch 1955 2 Degree RGB CMFs <a class="footnote-reference" href="#id12" id="id4">[3]</a></li>
+<li>Stiles &amp; Burch 1959 10 Degree RGB CMFs <a class="footnote-reference" href="#id13" id="id5">[4]</a></li>
+<li>CIE 1931 2 Degree Standard Observer <a class="footnote-reference" href="#id14" id="id6">[5]</a></li>
+<li>CIE 1964 10 Degree Standard Observer <a class="footnote-reference" href="#id14" id="id7">[5]</a></li>
+<li>CIE 2012 10 Degree Standard Observer <a class="footnote-reference" href="#id15" id="id8">[6]</a></li>
+<li>CIE 2012 2 Degree Standard Observer <a class="footnote-reference" href="#id15" id="id9">[6]</a></li>
+</ul>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://nbviewer.ipython.org/github/colour-science/colour-ipython/blob/master/notebooks/colorimetry/cmfs.ipynb">Colour Matching Functions IPython Notebook</a></p>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li>Stockman and Sharpe <em>LMS</em> colour matching functions are provided at 1 nm
+steps.</li>
+<li><em>Wright &amp; Guild</em> and <em>Stiles &amp; Burch</em> <em>CIE RGB</em> colour matching functions
+are provided at 5 nm steps.</li>
+<li><em>CIE</em> Standard Observers <em>XYZ</em> colour matching functions are provided at 5
+nm steps.</li>
+</ul>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> CVRL. (n.d.). Cone Fundamentals. Retrieved June 23, 2014,
+from <a class="reference external" href="http://www.cvrl.org/cones.htm">http://www.cvrl.org/cones.htm</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Broadbent, A. D. (2009). Calculation from the original experimental
+data of the CIE 1931 RGB standard observer spectral chromaticity
+co-ordinates and color matching functions. Retrieved June 12, 2014,
+from <a class="reference external" href="http://www.cis.rit.edu/mcsl/research/1931.php">http://www.cis.rit.edu/mcsl/research/1931.php</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>CVRL. (n.d.). Stiles &amp; Burch individual 10-deg colour matching data.
+Retrieved February 24, 2014, from
+<a class="reference external" href="http://www.cvrl.org/stilesburch10_ind.htm">http://www.cvrl.org/stilesburch10_ind.htm</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>CVRL. (n.d.). Stiles &amp; Burch individual 2-deg colour matching data.
+Retrieved February 24, 2014, from
+<a class="reference external" href="http://www.cvrl.org/stilesburch2_ind.htm">http://www.cvrl.org/stilesburch2_ind.htm</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> CVRL. (n.d.). Older CIE Standards. Retrieved February 24, 2014, from
+<a class="reference external" href="http://cvrl.ioo.ucl.ac.uk/cie.htm">http://cvrl.ioo.ucl.ac.uk/cie.htm</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> CVRL. (n.d.). New CIE XYZ functions transformed from the CIE (2006)
+LMS functions. Retrieved February 24, 2014, from
+<a class="reference external" href="http://cvrl.ioo.ucl.ac.uk/ciexyzpr.htm">http://cvrl.ioo.ucl.ac.uk/ciexyzpr.htm</a></td></tr>
+</tbody>
+</table>
+<dl class="data">
+<dt id="colour.colorimetry.dataset.cmfs.LMS_CMFS">
+<code class="descclassname">colour.colorimetry.dataset.cmfs.</code><code class="descname">LMS_CMFS</code><em class="property"> = CaseInsensitiveMapping({u'Stockman &amp; Sharpe 2 Degree Cone Fundamentals': &lt;colour.colorimetry.cmfs.LMS_ConeFundamentals object at 0x2b581aa0a890&gt;, u'Stockman &amp; Sharpe 10 Degree Cone Fundamentals': &lt;colour.colorimetry.cmfs.LMS_ConeFundamentals object at 0x2b581aa0a910&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.cmfs.LMS_CMFS" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>LMS</em> colour matching functions.</p>
+<dl class="docutils">
+<dt>LMS_CMFS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;Stockman &amp; Sharpe 2 Degree Cone Fundamentals&#8217;,
+&#8216;Stockman &amp; Sharpe 10 Degree Cone Fundamentals&#8217;}</strong></dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.cmfs.RGB_CMFS">
+<code class="descclassname">colour.colorimetry.dataset.cmfs.</code><code class="descname">RGB_CMFS</code><em class="property"> = CaseInsensitiveMapping({u'Stiles &amp; Burch 1959 10 Degree RGB CMFs': &lt;colour.colorimetry.cmfs.RGB_ColourMatchingFunctions object at 0x2b581aa0af90&gt;, u'Wright &amp; Guild 1931 2 Degree RGB CMFs': &lt;colour.colorimetry.cmfs.RGB_ColourMatchingFunctions object at 0x2b581aa0ad90&gt;, u'Stiles &amp; Burch 1955 2 Degree RGB CMFs': &lt;colour.colorimetry.cmfs.RGB_ColourMatchingFunctions object at 0x2b581aa0add0&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.cmfs.RGB_CMFS" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>CIE RGB</em> colour matching functions.</p>
+<dl class="docutils">
+<dt>RGB_CMFS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;Wright &amp; Guild 1931 2 Degree RGB CMFs&#8217;,
+&#8216;Stiles &amp; Burch 1955 2 Degree RGB CMFs&#8217;,
+&#8216;Stiles &amp; Burch 1959 10 Degree RGB CMFs&#8217;}</strong></dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.cmfs.STANDARD_OBSERVERS_CMFS">
+<code class="descclassname">colour.colorimetry.dataset.cmfs.</code><code class="descname">STANDARD_OBSERVERS_CMFS</code><em class="property"> = CaseInsensitiveMapping({u'CIE 1931 2 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17350&gt;, u'cie_10_1964': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17390&gt;, u'CIE 2012 10 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17710&gt;, u'CIE 2012 2 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17550&gt;, u'CIE 1964 10 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17390&gt;, u'cie_2_1931': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17350&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.cmfs.STANDARD_OBSERVERS_CMFS" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>CIE</em> Standard Observers <em>XYZ</em> colour matching functions.</p>
+<dl class="docutils">
+<dt>STANDARD_OBSERVERS_CMFS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;CIE 1931 2 Degree Standard Observer&#8217;,
+&#8216;CIE 1964 10 Degree Standard Observer&#8217;,
+&#8216;CIE 2012 2 Degree Standard Observer&#8217;,
+&#8216;CIE 2012 10 Degree Standard Observer&#8217;}</strong></dd>
+</dl>
+<p>Aliases:</p>
+<ul class="simple">
+<li>&#8216;cie_2_1931&#8217;: &#8216;CIE 1931 2 Degree Standard Observer&#8217;</li>
+<li>&#8216;cie_10_1964&#8217;: &#8216;CIE 1964 10 Degree Standard Observer&#8217;</li>
+</ul>
+</dd></dl>
+
+<dl class="data">
+<dt id="colour.colorimetry.dataset.cmfs.CMFS">
+<code class="descclassname">colour.colorimetry.dataset.cmfs.</code><code class="descname">CMFS</code><em class="property"> = CaseInsensitiveMapping({u'Stockman &amp; Sharpe 2 Degree Cone Fundamentals': &lt;colour.colorimetry.cmfs.LMS_ConeFundamentals object at 0x2b581aa0a890&gt;, u'CIE 1931 2 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17350&gt;, u'CIE 2012 10 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17710&gt;, u'cie_10_1964': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17390&gt;, u'Stockman &amp; Sharpe 10 Degree Cone Fundamentals': &lt;colour.colorimetry.cmfs.LMS_ConeFundamentals object at 0x2b581aa0a910&gt;, u'Wright &amp; Guild 1931 2 Degree RGB CMFs': &lt;colour.colorimetry.cmfs.RGB_ColourMatchingFunctions object at 0x2b581aa0ad90&gt;, u'CIE 2012 2 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17550&gt;, u'Stiles &amp; Burch 1959 10 Degree RGB CMFs': &lt;colour.colorimetry.cmfs.RGB_ColourMatchingFunctions object at 0x2b581aa0af90&gt;, u'cie_2_1931': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17350&gt;, u'CIE 1964 10 Degree Standard Observer': &lt;colour.colorimetry.cmfs.XYZ_ColourMatchingFunctions object at 0x2b581aa17390&gt;, u'Stiles &amp; Burch 1955 2 Degree RGB CMFs': &lt;colour.colorimetry.cmfs.RGB_ColourMatchingFunctions object at 0x2b581aa0add0&gt;})</em><a class="headerlink" href="#colour.colorimetry.dataset.cmfs.CMFS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggregated colour matching functions.</p>
+<dl class="docutils">
+<dt>CMFS <span class="classifier-delimiter">:</span> <span class="classifier">CaseInsensitiveMapping</span></dt>
+<dd><strong>{&#8216;Stockman &amp; Sharpe 10 Degree Cone Fundamentals&#8217;,
+&#8216;Stockman &amp; Sharpe 2 Degree Cone Fundamentals&#8217;,
+&#8216;Wright &amp; Guild 1931 2 Degree RGB CMFs&#8217;,
+&#8216;Stiles &amp; Burch 1955 2 Degree RGB CMFs&#8217;,
+&#8216;Stiles &amp; Burch 1959 10 Degree RGB CMFs&#8217;,
+&#8216;CIE 1931 2 Degree Standard Observer&#8217;,
+&#8216;CIE 1964 10 Degree Standard Observer&#8217;,
+&#8216;CIE 2012 2 Degree Standard Observer&#8217;,
+&#8216;CIE 2012 10 Degree Standard Observer&#8217;}</strong></dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/Colour_Logo_Small_001.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">colour.colorimetry.dataset.cmfs Module</a><ul>
+<li><a class="reference internal" href="#colour-matching-functions-spectral-power-distributions">Colour Matching Functions Spectral Power Distributions</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/colour.colorimetry.dataset.cmfs.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2013 - 2015, Colour Developers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/colour.colorimetry.dataset.cmfs.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
