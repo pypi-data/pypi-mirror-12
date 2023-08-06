@@ -1,0 +1,26 @@
+0.1.8 (2015-12-10)
+------------------
+
+* Add less(), skess() list operations
+* Add parse_smart() parser
+
+0.1.7 (2015-11-26)
+------------------
+
+* Add some operations
+* perf tunning
+
+0.1.3 (2015-11-20)
+------------------
+
+* Tune many things
+* All is now documented
+
+0.1.2 (2015-11-04)
+------------------
+
+* More docs and doctests
+
+0.1.1 (2015-11-04)
+------------------
+First working package
