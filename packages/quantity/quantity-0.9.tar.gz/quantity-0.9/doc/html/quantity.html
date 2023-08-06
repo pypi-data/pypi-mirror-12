@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Quantity &mdash; quantity 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="_static/pydoctheme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="quantity 0.9 documentation" href="index.html" />
+    <link rel="next" title="3. Predefined Quantities" href="predefined.html" />
+    <link rel="prev" title="1. Introduction" href="intro.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="predefined.html" title="3. Predefined Quantities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="1. Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">quantity 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-quantity">
+<span id="quantity"></span><h1>2. Quantity<a class="headerlink" href="#module-quantity" title="Permalink to this headline">¶</a></h1>
+<p>Unit-safe computations with quantities.</p>
+<div class="section" id="usage">
+<h2>2.1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="defining-a-quantity-class">
+<span id="defining-a-qty-label"></span><h3>2.1.1. Defining a quantity class<a class="headerlink" href="#defining-a-quantity-class" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>basic</strong> type of quantity is declared just by sub-classing
+<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Length</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>In addition to the new quantity class the meta-class of <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>
+creates a corresponding class for the units automatically. It can be
+referenced via the quantity class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="o">.</span><span class="n">Unit</span>
+<span class="go">&lt;class &#39;quantity.quantity.LengthUnit&#39;&gt;</span>
+</pre></div>
+</div>
+<p>But, as long as there is no unit defined for that class, you can not create
+any instance for the new quantity class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">ValueError: A unit must be given.</span>
+</pre></div>
+</div>
+<p>If there is a reference unit, the simplest way to define it is giving a name
+and a symbol for it as class variables. The meta-class of <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>
+will then create a unit automatically:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Length</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">refUnitName</span> <span class="o">=</span> <span class="s">&#39;Metre&#39;</span>
+<span class="gp">... </span>    <span class="n">refUnitSymbol</span> <span class="o">=</span> <span class="s">&#39;m&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="o">.</span><span class="n">refUnit</span>
+<span class="go">Length.Unit(&#39;m&#39;)</span>
+</pre></div>
+</div>
+<p>Now, this unit can be given to create a quantity:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">METRE</span> <span class="o">=</span> <span class="n">Length</span><span class="o">.</span><span class="n">refUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">METRE</span><span class="p">))</span>
+<span class="go">15 m</span>
+</pre></div>
+</div>
+<p>If no unit is given, the reference unit is used:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<span class="go">15 m</span>
+</pre></div>
+</div>
+<p>Other units can be derived from the reference unit (or another unit), giving
+a definition by multiplying a scaling factor with that unit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MILLIMETRE</span> <span class="o">=</span> <span class="n">Length</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s">&#39;mm&#39;</span><span class="p">,</span> <span class="s">&#39;Millimetre&#39;</span><span class="p">,</span> <span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;0.001&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">METRE</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MILLIMETRE</span>
+<span class="go">Length.Unit(&#39;mm&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">KILOMETRE</span> <span class="o">=</span> <span class="n">Length</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s">&#39;km&#39;</span><span class="p">,</span> <span class="s">&#39;Kilometre&#39;</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">METRE</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">KILOMETRE</span>
+<span class="go">Length.Unit(&#39;km&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CENTIMETRE</span> <span class="o">=</span> <span class="n">Length</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s">&#39;cm&#39;</span><span class="p">,</span> <span class="s">&#39;Centimetre&#39;</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">MILLIMETRE</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CENTIMETRE</span>
+<span class="go">Length.Unit(&#39;cm&#39;)</span>
+</pre></div>
+</div>
+<p>Using one unit as a reference and defining all other units by giving
+a scaling factor is only possible if the units have the same scale. Otherwise,
+units have to be instantiated via the coresponding <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class
+without giving a definition:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Temperature</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CELSIUS</span> <span class="o">=</span> <span class="n">Temperature</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s">&#39;°C&#39;</span><span class="p">,</span> <span class="s">&#39;Degree Celsius&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FAHRENHEIT</span> <span class="o">=</span> <span class="n">Temperature</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s">&#39;°F&#39;</span><span class="p">,</span> <span class="s">&#39;Degree Fahrenheit&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">KELVIN</span> <span class="o">=</span> <span class="n">Temperature</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s">&#39;K&#39;</span><span class="p">,</span> <span class="s">&#39;Kelvin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Derived</strong> types of quantities are declared by giving a definition based on
+more basic types of quantities:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Volume</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">defineAs</span> <span class="o">=</span> <span class="n">Length</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="gp">... </span>    <span class="n">refUnitName</span> <span class="o">=</span> <span class="s">&#39;Cubic Metre&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Duration</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">refUnitName</span> <span class="o">=</span> <span class="s">&#39;Second&#39;</span>
+<span class="gp">... </span>    <span class="n">refUnitSymbol</span> <span class="o">=</span> <span class="s">&#39;s&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Velocity</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">defineAs</span> <span class="o">=</span> <span class="n">Length</span> <span class="o">/</span> <span class="n">Duration</span>
+<span class="gp">... </span>    <span class="n">refUnitName</span> <span class="o">=</span> <span class="s">&#39;Metre per Second&#39;</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>If no symbol for the reference unit is given with the class declaration, a
+symbol is generated from the definition, as long as all types of quantities
+in that definition have a reference unit.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">Volume</span><span class="o">.</span><span class="n">refUnit</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span>
+<span class="go">m³</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">Velocity</span><span class="o">.</span><span class="n">refUnit</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span>
+<span class="go">m/s</span>
+</pre></div>
+</div>
+<p>Other units have to be defined explicitly. For derived quantities, the
+function <a class="reference internal" href="#quantity.generateUnits" title="quantity.generateUnits"><code class="xref py py-func docutils literal"><span class="pre">generateUnits()</span></code></a> can be used to create all units from the
+cross-product of all units of the quantity classes the class is derived from.</p>
+<p>In order to define a <strong>quantized</strong> quantity, the smallest possible fraction
+(in terms of the reference unit) can be given as class variable <cite>quantum</cite>. The
+class method <a class="reference internal" href="#quantity.Quantity.getQuantum" title="quantity.Quantity.getQuantum"><code class="xref py py-meth docutils literal"><span class="pre">Quantity.getQuantum()</span></code></a> can then be used to retrieve the
+smallest fraction for any unit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">DataVolume</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">refUnitName</span> <span class="o">=</span> <span class="s">&#39;Byte&#39;</span>
+<span class="gp">... </span>    <span class="n">refUnitSymbol</span> <span class="o">=</span> <span class="s">&#39;B&#39;</span>
+<span class="gp">... </span>    <span class="n">quantum</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BYTE</span> <span class="o">=</span> <span class="n">DataVolume</span><span class="o">.</span><span class="n">refUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">KILOBYTE</span> <span class="o">=</span> <span class="n">DataVolume</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s">&#39;kB&#39;</span><span class="p">,</span> <span class="s">&#39;Kilobyte&#39;</span><span class="p">,</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">BYTE</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DataVolume</span><span class="o">.</span><span class="n">getQuantum</span><span class="p">(</span><span class="n">KILOBYTE</span><span class="p">)</span>
+<span class="go">Decimal(&#39;0.000125&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instantiating-quantities">
+<h3>2.1.2. Instantiating quantities<a class="headerlink" href="#instantiating-quantities" title="Permalink to this headline">¶</a></h3>
+<p>The simplest way to create an instance of a <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> subclass is to
+call the class giving an amount and a unit. If the unit is omitted, the
+quantity&#8217;s reference unit is used (if one is defined):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">MILLIMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(15), Length.Unit(u&#39;mm&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="go">Length(Decimal(15))</span>
+</pre></div>
+</div>
+<p>Alternatively, the two-args infix operator &#8216;^&#8217; can be used to combine an
+amount and a unit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">17.5</span> <span class="o">^</span> <span class="n">KILOMETRE</span>
+<span class="go">Length(Decimal(&#39;17.5&#39;), Length.Unit(u&#39;km&#39;))</span>
+</pre></div>
+</div>
+<p>Also, it&#8217;s possible to create a <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> instance from a string
+representation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="s">&#39;17.5 km&#39;</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;17.5&#39;), Length.Unit(u&#39;km&#39;))</span>
+</pre></div>
+</div>
+<p>If a unit is given in addition, the resulting quantity is converted
+accordingly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="s">&#39;17 m&#39;</span><span class="p">,</span> <span class="n">KILOMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;0.017&#39;), Length.Unit(u&#39;km&#39;))</span>
+</pre></div>
+</div>
+<p>Instead of calling a subclass, the class <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> can be used as a
+factory function …:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Quantity</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">MILLIMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(15), Length.Unit(u&#39;mm&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Quantity</span><span class="p">(</span><span class="s">&#39;17.5 km&#39;</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;17.5&#39;), Length.Unit(u&#39;km&#39;))</span>
+</pre></div>
+</div>
+<p>… as long as a unit is given:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Quantity</span><span class="p">(</span><span class="mf">17.5</span><span class="p">)</span>
+<span class="go">ValueError: A unit must be given.</span>
+</pre></div>
+</div>
+<p>If the <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> subclass defines a <cite>quantum</cite>, the amount of each
+instance is automatically rounded to this quantum:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">DataVolume</span><span class="p">(</span><span class="s">&#39;1/7&#39;</span><span class="p">,</span> <span class="n">KILOBYTE</span><span class="p">)</span>
+<span class="go">DataVolume(Decimal(&#39;0.142875&#39;), DataVolume.Unit(&#39;kB&#39;))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-between-units">
+<h3>2.1.3. Converting between units<a class="headerlink" href="#converting-between-units" title="Permalink to this headline">¶</a></h3>
+<p>A quantity can be converted to a quantity using a different unit by calling
+the method <a class="reference internal" href="#quantity.Quantity.convert" title="quantity.Quantity.convert"><code class="xref py py-meth docutils literal"><span class="pre">Quantity.convert()</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l5cm</span> <span class="o">=</span> <span class="n">Length</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">CENTIMETRE</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l5cm</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">MILLIMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;50&#39;), Length.Unit(&#39;mm&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l5cm</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">KILOMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;0.00005&#39;), Length.Unit(&#39;km&#39;))</span>
+</pre></div>
+</div>
+<p>To get just the amount of a quantity in another unit, that unit can be called
+with the quantity as parameter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MILLIMETRE</span><span class="p">(</span><span class="n">l5cm</span><span class="p">)</span>
+<span class="go">Decimal(&#39;50&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">KILOMETRE</span><span class="p">(</span><span class="n">l5cm</span><span class="p">)</span>
+<span class="go">Decimal(&#39;0.00005&#39;)</span>
+</pre></div>
+</div>
+<p>These kinds of conversion are automatically enabled for types of quantities
+with reference units. For other types of quantities there is no default way
+of converting between units.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t27c</span> <span class="o">=</span> <span class="n">Temperature</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="mi">27</span><span class="p">),</span> <span class="n">CELSIUS</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t27c</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">FAHRENHEIT</span><span class="p">)</span>
+<span class="go">quantity.quantity.IncompatibleUnitsError: Can&#39;t convert &#39;Degree Celsius&#39; to &#39;Degree Fahrenheit&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="converters">
+<span id="converters-label"></span><h4>2.1.3.1. Converters<a class="headerlink" href="#converters" title="Permalink to this headline">¶</a></h4>
+<p>For types of quantities that do not have a reference unit, one or more
+callables can be registered as converters:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fahrenheit2celsius</span><span class="p">(</span><span class="n">qty</span><span class="p">,</span> <span class="n">toUnit</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">qty</span><span class="o">.</span><span class="n">unit</span> <span class="ow">is</span> <span class="n">FAHRENHEIT</span> <span class="ow">and</span> <span class="n">toUnit</span> <span class="ow">is</span> <span class="n">CELSIUS</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">(</span><span class="n">qty</span><span class="o">.</span><span class="n">amount</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">/</span> <span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;1.8&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="bp">None</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">celsius2fahrenheit</span><span class="p">(</span><span class="n">qty</span><span class="p">,</span> <span class="n">toUnit</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">qty</span><span class="o">.</span><span class="n">unit</span> <span class="ow">is</span> <span class="n">CELSIUS</span> <span class="ow">and</span> <span class="n">toUnit</span> <span class="ow">is</span> <span class="n">FAHRENHEIT</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">qty</span><span class="o">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;1.8&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="bp">None</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Temperature</span><span class="o">.</span><span class="n">Unit</span><span class="o">.</span><span class="n">registerConverter</span><span class="p">(</span><span class="n">celsius2fahrenheit</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Temperature</span><span class="o">.</span><span class="n">Unit</span><span class="o">.</span><span class="n">registerConverter</span><span class="p">(</span><span class="n">fahrenheit2celsius</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">Temperature</span><span class="o">.</span><span class="n">Unit</span><span class="o">.</span><span class="n">registeredConverters</span><span class="p">())</span>
+<span class="go">[&lt;function celsius2fahrenheit at 0x7fab71bfef50&gt;, &lt;function fahrenheit2celsius at 0x7fab71bf7cf8&gt;]</span>
+</pre></div>
+</div>
+<p>For the signature of the callables used as converters see <a class="reference internal" href="#quantity.Converter" title="quantity.Converter"><code class="xref py py-class docutils literal"><span class="pre">Converter</span></code></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t27c</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">FAHRENHEIT</span><span class="p">)</span>
+<span class="go">Temperature(Decimal(&#39;80.6&#39;), Temperature.Unit(&#39;°F&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t27c</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">FAHRENHEIT</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">CELSIUS</span><span class="p">)</span>
+<span class="go">Temperature(Decimal(&#39;27&#39;), Temperature.Unit(&#39;°C&#39;))</span>
+</pre></div>
+</div>
+<p>Alternatively, an instance of <a class="reference internal" href="#quantity.TableConverter" title="quantity.TableConverter"><code class="xref py py-class docutils literal"><span class="pre">TableConverter</span></code></a> can be created and
+registered as converter.</p>
+<p>The example given above can be implemented as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tempConv</span> <span class="o">=</span> <span class="n">TableConverter</span><span class="p">({(</span><span class="n">CELSIUS</span><span class="p">,</span> <span class="n">FAHRENHEIT</span><span class="p">):</span>
+<span class="go">                               (Decimal(&#39;1.8&#39;), 32)})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Temperature</span><span class="o">.</span><span class="n">Unit</span><span class="o">.</span><span class="n">registerConverter</span><span class="p">(</span><span class="n">tempConv</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t27c</span> <span class="o">=</span> <span class="n">Temperature</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="mi">27</span><span class="p">),</span> <span class="n">CELSIUS</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t27c</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">FAHRENHEIT</span><span class="p">)</span>
+<span class="go">Temperature(Decimal(&#39;80.6&#39;), Temperature.Unit(u&#39;°F&#39;))</span>
+</pre></div>
+</div>
+<p>It is suffient to define the conversion in one direction, because a
+reversed conversion is used automatically:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t27c</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">FAHRENHEIT</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">CELSIUS</span><span class="p">)</span>
+<span class="go">Temperature(Decimal(27), Temperature.Unit(u&#39;°C&#39;))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="unit-safe-computations">
+<h3>2.1.4. Unit-safe computations<a class="headerlink" href="#unit-safe-computations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="comparison">
+<h4>2.1.4.1. Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h4>
+<p>Quantities can be compared to other quantities using all comparison operators
+defined for numbers:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Length</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">Length</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">==</span> <span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Different units are taken in to account automatically, as long as they are
+compatible, i. e. a conversion is available:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="n">METRE</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">91</span><span class="p">,</span> <span class="n">CENTIMETRE</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">CELSIUS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">FAHRENHEIT</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">CELSIUS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">KELVIN</span><span class="p">)</span>
+<span class="go">IncompatibleUnitsError: Can&#39;t convert &#39;Kelvin&#39; to &#39;Degree Celsius&#39;</span>
+</pre></div>
+</div>
+<p>Testing instances of different quantity types for equality always returns
+false:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="n">Mass</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Mass</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>All other comparison operators raise an <cite>IncompatibleUnitsError</cite> in this case.</p>
+</div>
+<div class="section" id="addition-and-subtraction">
+<h4>2.1.4.2. Addition and subtraction<a class="headerlink" href="#addition-and-subtraction" title="Permalink to this headline">¶</a></h4>
+<p>Quantities can be added to or subtracted from other quantities …:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">+</span> <span class="n">Length</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="go">Length(Decimal(36))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">-</span> <span class="n">Length</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+<span class="go">Length(Decimal(-64))</span>
+</pre></div>
+</div>
+<p>… as long as they are instances of the same quantity type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">+</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="go">IncompatibleUnitsError: Can&#39;t add a &#39;Length&#39; and a &#39;Duration&#39;</span>
+</pre></div>
+</div>
+<p>When quantities with different units are added or subtracted, the values are
+converted to the unit of the first, if possible …:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">+</span> <span class="n">Length</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">CENTIMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;27.12&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">CENTIMETRE</span><span class="p">)</span> <span class="o">+</span> <span class="n">Length</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">METRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;1712&#39;), Length.Unit(&#39;cm&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">CELSIUS</span><span class="p">)</span> <span class="o">-</span> <span class="n">Temperature</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">FAHRENHEIT</span><span class="p">)</span>
+<span class="go">Temperature(Decimal(&#39;10&#39;), Temperature.Unit(u&#39;°C&#39;))</span>
+</pre></div>
+</div>
+<p>… but an exception is raised, if not:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">CELSIUS</span><span class="p">)</span> <span class="o">-</span> <span class="n">Temperature</span><span class="p">(</span><span class="mi">281</span><span class="p">,</span> <span class="n">KELVIN</span><span class="p">)</span>
+<span class="go">IncompatibleUnitsError: Can&#39;t convert &#39;Kelvin&#39; to &#39;Degree Celsius&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiplication-and-division">
+<h4>2.1.4.3. Multiplication and division<a class="headerlink" href="#multiplication-and-division" title="Permalink to this headline">¶</a></h4>
+<p>Quantities can be multiplied or divided by scalars, preserving the unit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">7.5</span> <span class="o">*</span> <span class="n">Length</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">CENTIMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;22.5&#39;), Length.Unit(u&#39;cm&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Duration</span><span class="p">(</span><span class="mi">66</span><span class="p">,</span> <span class="n">MINUTE</span><span class="p">)</span> <span class="o">/</span> <span class="mi">11</span>
+<span class="go">Duration(Decimal(6), Duration.Unit(u&#39;min&#39;))</span>
+</pre></div>
+</div>
+<p>Quantities can be multiplied or divided by other quantities …:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">METRE</span><span class="p">)</span> <span class="o">/</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">SECOND</span><span class="p">)</span>
+<span class="go">Velocity(Decimal(5))</span>
+</pre></div>
+</div>
+<p>… as long as the resulting type of quantity is defined …:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Duration</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">SECOND</span><span class="p">)</span> <span class="o">*</span> <span class="n">Length</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">UndefinedResultError: Undefined result: Duration * Length</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">KILOMETRE</span><span class="p">)</span> <span class="o">/</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">MINUTE</span><span class="p">)</span> <span class="o">/</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">SECOND</span><span class="p">)</span>
+<span class="go">UndefinedResultError: Undefined result: Velocity / Duration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Acceleration</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">defineAs</span> <span class="o">=</span> <span class="n">Length</span> <span class="o">/</span> <span class="n">Duration</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="gp">... </span>    <span class="n">refUnitName</span> <span class="o">=</span> <span class="s">&#39;Metre per Second squared&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">KILOMETRE</span><span class="p">)</span> <span class="o">/</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">MINUTE</span><span class="p">)</span> <span class="o">/</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">SECOND</span><span class="p">)</span>
+<span class="go">Acceleration(Decimal(2))</span>
+</pre></div>
+</div>
+<p>… or the result is a scalar:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Duration</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">MINUTE</span><span class="p">)</span> <span class="o">/</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">SECOND</span><span class="p">)</span>
+<span class="go">Decimal(&#39;2.4&#39;)</span>
+</pre></div>
+</div>
+<p>When cascading operations, all intermediate results have to be defined:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">KILOMETRE</span><span class="p">)</span> <span class="o">*</span> <span class="n">Length</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span>  <span class="n">METRE</span><span class="p">)</span> <span class="o">*</span> <span class="n">Length</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="n">METRE</span><span class="p">)</span>
+<span class="go">UndefinedResultError: Undefined result: Length * Length</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Area</span><span class="p">(</span><span class="n">Quantity</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">defineAs</span> <span class="o">=</span> <span class="n">Length</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="gp">... </span>    <span class="n">refUnitName</span> <span class="o">=</span> <span class="s">&#39;Square Metre&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">KILOMETRE</span><span class="p">)</span> <span class="o">*</span> <span class="n">Length</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span>  <span class="n">METRE</span><span class="p">)</span> <span class="o">*</span> <span class="n">Length</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="n">METRE</span><span class="p">)</span>
+<span class="go">Volume(Decimal(19500000, 3))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exponentiation">
+<h4>2.1.4.4. Exponentiation<a class="headerlink" href="#exponentiation" title="Permalink to this headline">¶</a></h4>
+<p>Quantities can be raised by an exponent, as long as the exponent is an
+<cite>Integral</cite> number and the resulting quantity is defined:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">5</span> <span class="o">^</span> <span class="n">METRE</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="go">Area(Decimal(25))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">5</span> <span class="o">^</span> <span class="n">METRE</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.5</span>
+<span class="go">TypeError: unsupported operand type(s) for ** or pow(): &#39;Length&#39; and</span>
+<span class="go">    &#39;float&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">5</span> <span class="o">^</span> <span class="n">METRE</span><span class="p">)</span> <span class="o">**</span> <span class="o">-</span><span class="mi">2</span>
+<span class="go">UndefinedResultError: Undefined result: Length ** -2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="rounding">
+<h3>2.1.5. Rounding<a class="headerlink" href="#rounding" title="Permalink to this headline">¶</a></h3>
+<p>The amount of a quantity can be rounded by using the standard <cite>round</cite>
+function.</p>
+<p>If an Integral is given as precision, a copy of the quanitity is returned,
+with its amount rounded accordingly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;17.375&#39;</span><span class="p">),</span> <span class="n">MILLIMETRE</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;17.4&#39;), Length.Unit(&#39;mm&#39;))</span>
+</pre></div>
+</div>
+<p>In addition, a unit or a quantity (of the same type) can be given to specify
+the requested precision. The resulting quantity will then be the integer
+multiple of that precision closest to the called quantity:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;17.375&#39;</span><span class="p">),</span> <span class="n">METRE</span><span class="p">),</span> <span class="n">CENTIMETRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;17.38&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;17.375&#39;</span><span class="p">),</span> <span class="n">METRE</span><span class="p">),</span> <span class="n">Length</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">CENTIMETRE</span><span class="p">))</span>
+<span class="go">Length(Decimal(&#39;17.4&#39;, 2))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;17.372&#39;</span><span class="p">),</span> <span class="n">METRE</span><span class="p">),</span> <span class="n">Length</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">CENTIMETRE</span><span class="p">))</span>
+<span class="go">Length(Decimal(&#39;17.35&#39;))</span>
+</pre></div>
+</div>
+<p>In any case the unit of the resulting quantity will be the same as the unit
+of the called quantity.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This only applies to Python 3.x !!! In Python 2.x the standard <cite>round</cite>
+function tries to convert its first operand to a <cite>float</cite> and thus raises
+an exception when called with a quantity.</p>
+<p>You may circumvent this by modifying the built-in <cite>round</cite> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="nb">int</span><span class="o">.</span><span class="n">__round__</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">__builtin__</span>
+    <span class="n">py2_round</span> <span class="o">=</span> <span class="n">__builtin__</span><span class="o">.</span><span class="n">round</span>
+
+    <span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">number</span><span class="o">.</span><span class="n">__round__</span><span class="p">(</span><span class="n">ndigits</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">py2_round</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">ndigits</span><span class="p">)</span>
+
+    <span class="n">__builtin__</span><span class="o">.</span><span class="n">round</span> <span class="o">=</span> <span class="nb">round</span>
+    <span class="k">del</span> <span class="n">__builtin__</span>
+</pre></div>
+</div>
+<p>But be aware: this has side-effects if there are other classes defining a
+method named <cite>__round__</cite> !!!</p>
+<p class="last">As an alternative the method <a class="reference internal" href="#quantity.Quantity.quantize" title="quantity.Quantity.quantize"><code class="xref py py-meth docutils literal"><span class="pre">Quantity.quantize()</span></code></a> can be used.</p>
+</div>
+<p>For more advanced cases of rounding the method <a class="reference internal" href="#quantity.Quantity.quantize" title="quantity.Quantity.quantize"><code class="xref py py-meth docutils literal"><span class="pre">Quantity.quantize()</span></code></a> can
+round a quantity to any quantum according to any rounding mode:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">Length</span><span class="p">(</span><span class="s">&#39;1.7296 km&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">METRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;1.73&#39;, 3), Length.Unit(u&#39;km&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="mi">25</span> <span class="o">^</span> <span class="n">METRE</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;1.725&#39;), Length.Unit(u&#39;km&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="mi">25</span> <span class="o">^</span> <span class="n">METRE</span><span class="p">,</span> <span class="n">ROUND_UP</span><span class="p">)</span>
+<span class="go">Length(Decimal(&#39;1.75&#39;, 3), Length.Unit(u&#39;km&#39;))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="apportioning">
+<h3>2.1.6. Apportioning<a class="headerlink" href="#apportioning" title="Permalink to this headline">¶</a></h3>
+<p>The method <a class="reference internal" href="#quantity.Quantity.allocate" title="quantity.Quantity.allocate"><code class="xref py py-meth docutils literal"><span class="pre">Quantity.allocate()</span></code></a> can be used to apportion a quantity
+according to a sequence of ratios:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">Mass</span><span class="p">(</span><span class="s">&#39;10 kg&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">38</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">portions</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">ratios</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">portions</span>
+<span class="go">[Mass(Fraction(19, 3)),</span>
+<span class="go"> Mass(Fraction(5, 6)),</span>
+<span class="go"> Mass(Fraction(1, 3)),</span>
+<span class="go"> Mass(Decimal(&#39;2.5&#39;, 2))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span>
+<span class="go">Mass(Decimal(0, 2)))</span>
+</pre></div>
+</div>
+<p>If the quantity is quantized, there can be rounding errors causing a remainder
+with an amount other than 0:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">^</span> <span class="n">KILOBYTE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">portions</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">ratios</span><span class="p">,</span> <span class="n">disperseRoundingError</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">portions</span>
+<span class="go">[DataVolume(Decimal(&#39;6.333375&#39;), DataVolume.Unit(u&#39;kB&#39;)),</span>
+<span class="go"> DataVolume(Decimal(&#39;0.833375&#39;), DataVolume.Unit(u&#39;kB&#39;)),</span>
+<span class="go"> DataVolume(Decimal(&#39;0.333375&#39;), DataVolume.Unit(u&#39;kB&#39;)),</span>
+<span class="go"> DataVolume(Decimal(&#39;2.5&#39;, 6), DataVolume.Unit(u&#39;kB&#39;))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span>
+<span class="go">DataVolume(Decimal(&#39;-0.000125&#39;), DataVolume.Unit(u&#39;kB&#39;)))</span>
+</pre></div>
+</div>
+<p>By default the remainder will be dispersed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">portions</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">ratios</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">portions</span>
+<span class="go">[DataVolume(Decimal(&#39;6.333375&#39;), DataVolume.Unit(u&#39;kB&#39;)),</span>
+<span class="go"> DataVolume(Decimal(&#39;0.833375&#39;), DataVolume.Unit(u&#39;kB&#39;)),</span>
+<span class="go"> DataVolume(Decimal(&#39;0.33325&#39;, 6), DataVolume.Unit(u&#39;kB&#39;)),</span>
+<span class="go"> DataVolume(Decimal(&#39;2.5&#39;, 6), DataVolume.Unit(u&#39;kB&#39;))],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span>
+<span class="go">DataVolume(Decimal(0, 6), DataVolume.Unit(u&#39;kB&#39;)))</span>
+</pre></div>
+</div>
+<p>As well as of numbers, quantities can be used as ratios (as long as they have
+compatible units):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">^</span> <span class="n">LITRE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">350</span> <span class="o">^</span> <span class="n">GRAM</span><span class="p">,</span> <span class="mi">500</span> <span class="o">^</span> <span class="n">GRAM</span><span class="p">,</span> <span class="mi">3</span> <span class="o">^</span> <span class="n">KILOGRAM</span><span class="p">,</span> <span class="mi">150</span> <span class="o">^</span> <span class="n">GRAM</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">ratios</span><span class="p">)</span>
+<span class="go">([Volume(Decimal(&#39;0.875&#39;, 4), Volume.Unit(u&#39;l&#39;)),</span>
+<span class="go">  Volume(Decimal(&#39;1.25&#39;, 3), Volume.Unit(u&#39;l&#39;)),</span>
+<span class="go">  Volume(Decimal(&#39;7.5&#39;, 2), Volume.Unit(u&#39;l&#39;)),</span>
+<span class="go">  Volume(Decimal(&#39;0.375&#39;, 4), Volume.Unit(u&#39;l&#39;))],</span>
+<span class="go"> Volume(Decimal(0, 4), Volume.Unit(u&#39;l&#39;)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="formatting-as-string">
+<h3>2.1.7. Formatting as string<a class="headerlink" href="#formatting-as-string" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> supports the standard <cite>str</cite> and <cite>unicode</cite> (Python 2.x only)
+functions. Both return a string representation of the quantity&#8217;s amount
+followed by a blank and the quantity&#8217;s units symbol.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While the <cite>str</cite> function in Python 3.x and the <cite>unicode</cite> function in
+Python 2.x return the result as a unicode string, the <cite>str</cite> function in
+Python 2.x returns an utf8-encoded bytes string.</p>
+</div>
+<p>In addition, <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> supports the standard <cite>format</cite> function. The
+format specifier should use two keys: &#8216;a&#8217; for the amount and &#8216;u&#8217; for the unit,
+where &#8216;a&#8217; can be followed by a valid format spec for numbers and &#8216;u&#8217; by a
+valid format spec for strings. If no format specifier is given, &#8216;{a} {u}&#8217; is
+used:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Volume</span><span class="p">(</span><span class="s">&#39;19.36&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="go">u&#39;19.36 m³&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s">&#39;{a:*&gt;10.2f} {u:&lt;3}&#39;</span><span class="p">)</span>
+<span class="go">u&#39;*****19.36 m³ &#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="classes">
+<h2>2.2. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="quantity.Quantity">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">Quantity</code><a class="headerlink" href="#quantity.Quantity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class used to define types of quantities.</p>
+<p>Instances of <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> can be created in two ways, by providing a
+numerical amount and - optionally - a unit or by providing a string
+representation of a quantity.</p>
+<p><strong>1. Form</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>amount</strong> (<em>number</em>) &#8211; the numerical part of the quantity</li>
+<li><strong>unit</strong> (<a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class) &#8211; the quantity&#8217;s unit (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><cite>amount</cite> must be of type <cite>number.Real</cite> or be convertable to a
+<cite>decimalfp.Decimal</cite>. <cite>unit</cite> must be an instance of the <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a>
+sub-class corresponding to the <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class. If no <cite>unit</cite>
+is given, the reference unit of the <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class is used
+(if defined, otherwise a ValueError is raised).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">instance of called <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class or instance of the
+sub-class corresponding to given <cite>unit</cite> if <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> is
+called</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">TypeError</span></code> &#8211; 
+<cite>amount</cite> is not a <cite>Real</cite> or <cite>Decimal</cite> number and can not be
+converted to a <cite>Decimal</cite> number</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; 
+no unit given and the <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class doesn&#8217;t
+define a reference unit</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">TypeError</span></code> &#8211; 
+<cite>unit</cite> is not an instance of the <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class
+corresponding to the <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. Form</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>qStr</strong> (<em>unicode string</em>) &#8211; string representation of a quantity</li>
+<li><strong>unit</strong> (<a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class) &#8211; the quantity&#8217;s unit (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><cite>qStr</cite> must contain a numerical value and a unit symbol, separated at
+least by one blank. Any surrounding white space is ignored. If <cite>unit</cite> is
+given in addition, the resulting quantity&#8217;s unit is set to this unit and
+its amount is converted accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">instance of <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class corresponding to symbol in
+<cite>qRepr</cite></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#quantity.QuantityError" title="quantity.QuantityError"><code class="xref py py-exc docutils literal"><span class="pre">QuantityError</span></code></a> &#8211; 
+amount given in <cite>qStr</cite> is not a <cite>Real</cite> or <cite>Decimal</cite>
+number and can not be converted to a <cite>Decimal</cite> number</li>
+<li><a class="reference internal" href="#quantity.QuantityError" title="quantity.QuantityError"><code class="xref py py-exc docutils literal"><span class="pre">QuantityError</span></code></a> &#8211; 
+no unit given and the <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class
+doesn&#8217;t define a reference unit</li>
+<li><a class="reference internal" href="#quantity.QuantityError" title="quantity.QuantityError"><code class="xref py py-exc docutils literal"><span class="pre">QuantityError</span></code></a> &#8211; 
+<cite>unit</cite> is not an instance of the <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a>
+sub-class corresponding to the <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class</li>
+<li><a class="reference internal" href="#quantity.QuantityError" title="quantity.QuantityError"><code class="xref py py-exc docutils literal"><span class="pre">QuantityError</span></code></a> &#8211; 
+a byte string is given that can not be decoded using
+the standard encoding</li>
+<li><a class="reference internal" href="#quantity.QuantityError" title="quantity.QuantityError"><code class="xref py py-exc docutils literal"><span class="pre">QuantityError</span></code></a> &#8211; 
+given string does not represent a <cite>Quantity</cite></li>
+<li><a class="reference internal" href="#quantity.IncompatibleUnitsError" title="quantity.IncompatibleUnitsError"><code class="xref py py-exc docutils literal"><span class="pre">IncompatibleUnitsError</span></code></a> &#8211; 
+the unit derived from the symbol given in
+<cite>qStr</cite> is not compatible with given <cite>unit</cite></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="quantity.Quantity.getUnitBySymbol">
+<em class="property">classmethod </em><code class="descname">getUnitBySymbol</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.getUnitBySymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the unit with symbol <cite>symbol</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) &#8211; symbol to look-up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class, if a unit with given <cite>symbol</cite> exists
+within the <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class associated with this
+<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class, otherwise None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="quantity.Quantity.getQuantum">
+<em class="property">classmethod </em><code class="descname">getQuantum</code><span class="sig-paren">(</span><em>unit</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.getQuantum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the smallest amount an instance of this <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>
+can take for <cite>unit</cite> (return None if no quantum defined).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Quantity.amount">
+<code class="descname">amount</code><a class="headerlink" href="#quantity.Quantity.amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>The quantity&#8217;s amount, i.e. the numerical part of the quantity.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Quantity.unit">
+<code class="descname">unit</code><a class="headerlink" href="#quantity.Quantity.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The quantity&#8217;s unit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.convert">
+<code class="descname">convert</code><span class="sig-paren">(</span><em>toUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return quantity q where q == self and q.unit is toUnit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>toUnit</strong> (<a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><em>Unit</em></a>) &#8211; unit to be converted to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">resulting quantity (of same type)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity">Quantity</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#quantity.IncompatibleUnitsError" title="quantity.IncompatibleUnitsError"><code class="xref py py-exc docutils literal"><span class="pre">IncompatibleUnitsError</span></code></a> &#8211; 
+self can&#8217;t be converted to unit <em>toUnit</em>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.quantize">
+<code class="descname">quantize</code><span class="sig-paren">(</span><em>quant</em>, <em>rounding=None</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.quantize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return integer multiple of <cite>quant</cite> closest to <cite>self</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>quant</strong> (<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> or <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a>) &#8211; quantum to get a
+multiple from</li>
+<li><strong>rounding</strong> (<em>str</em>) &#8211; rounding mode (default: None)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><cite>quant</cite> must either be of type self.Quantity or of type self.Unit.</p>
+<p>If no <cite>rounding</cite> mode is given, the default mode from the current
+context (from module <cite>decimal</cite>) is used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class instance that is the integer multiple
+of <cite>quant</cite> closest to <cite>self</cite> (according to <cite>rounding</cite> mode)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#quantity.IncompatibleUnitsError" title="quantity.IncompatibleUnitsError"><code class="xref py py-exc docutils literal"><span class="pre">IncompatibleUnitsError</span></code></a> &#8211; 
+<cite>quant</cite> can not be converted to self.unit</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">TypeError</span></code> &#8211; 
+no <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> or <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> instance given</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.allocate">
+<code class="descname">allocate</code><span class="sig-paren">(</span><em>ratios</em>, <em>disperseRoundingError=True</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.allocate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apportion <cite>self</cite> according to <cite>ratios</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ratios</strong> (<em>iterable</em>) &#8211; sequence of values defining the relative amount
+of the requested portions</li>
+<li><strong>disperseRoundingError</strong> (<em>bool</em>) &#8211; determines whether a rounding error
+(if there is one due to quantization) shall be dispersed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">portions of <cite>self</cite> according to <cite>ratios</cite> (list),
+remainder (<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>) = self - sum(portions)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">TypeError</span></code> &#8211; 
+<cite>ratios</cite> contains elements that can not be added</li>
+<li><a class="reference internal" href="#quantity.IncompatibleUnitsError" title="quantity.IncompatibleUnitsError"><code class="xref py py-exc docutils literal"><span class="pre">IncompatibleUnitsError</span></code></a> &#8211; 
+<cite>ratios</cite> contains quantities that can not
+be added</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__eq__">
+<code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self == other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__hash__">
+<code class="descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>hash(self)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__abs__">
+<code class="descname">__abs__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__abs__" title="Permalink to this definition">¶</a></dt>
+<dd><p>abs(self) -&gt; self.Quantity(abs(self.amount), self.unit)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__pos__">
+<code class="descname">__pos__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__pos__" title="Permalink to this definition">¶</a></dt>
+<dd><p>+self</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__neg__">
+<code class="descname">__neg__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__neg__" title="Permalink to this definition">¶</a></dt>
+<dd><p>-self -&gt; self.Quantity(-self.amount, self.unit)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__add__">
+<code class="descname">__add__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self + other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__radd__">
+<code class="descname">__radd__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__radd__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self + other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__sub__">
+<code class="descname">__sub__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__sub__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self - other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__rsub__">
+<code class="descname">__rsub__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__rsub__" title="Permalink to this definition">¶</a></dt>
+<dd><p>other - self</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__mul__">
+<code class="descname">__mul__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__mul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self * other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__rmul__">
+<code class="descname">__rmul__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__rmul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self * other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__div__">
+<code class="descname">__div__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__div__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self / other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__truediv__">
+<code class="descname">__truediv__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__truediv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self / other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__rdiv__">
+<code class="descname">__rdiv__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__rdiv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>other / self</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__rtruediv__">
+<code class="descname">__rtruediv__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__rtruediv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>other / self</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__pow__">
+<code class="descname">__pow__</code><span class="sig-paren">(</span><em>exp</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__pow__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self ** exp</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__round__">
+<code class="descname">__round__</code><span class="sig-paren">(</span><em>precision=0</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__round__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of <cite>self</cite> with its amount rounded to the given
+<cite>precision</cite>.</p>
+<p><strong>1. Form</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>precision</strong> (<cite>Integral</cite>) &#8211; number of fractional digits to be rounded
+to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">copy of <cite>self</cite> with its amount rounded to an integer multiple of
+10 ** <cite>precision</cite></td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. Form</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>precision</strong> (<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>) &#8211; quantum of which the result has to
+be an integer multiple</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">copy of <cite>self</cite> rounded to an integer multiple of <cite>precision</cite></td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. Form</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>precision</strong> (<a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a>) &#8211; unit of which the result has to be an
+integer multiple of</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">copy of <cite>self</cite> rounded to integer multiple of 1 ^ <cite>precision</cite></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#quantity.IncompatibleUnitsError" title="quantity.IncompatibleUnitsError"><code class="xref py py-exc docutils literal"><span class="pre">IncompatibleUnitsError</span></code></a> &#8211; 
+<cite>precision</cite> is not an Integral and can not
+be converted to self.unit</td>
+</tr>
+</tbody>
+</table>
+<p>Note: this method is called by the standard <cite>round</cite> function only in
+Python 3.x!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__repr__">
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>repr(self)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__str__">
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>str(self)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__format__">
+<code class="descname">__format__</code><span class="sig-paren">(</span><em>fmtSpec=u''</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__format__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to string (according to format specifier).</p>
+<p>The specifier must be a standard format specifier in the form
+described in PEP 3101. It should use two keys: &#8216;a&#8217; for self.amount and
+&#8216;u&#8217; for self.unit, where &#8216;a&#8217; can be followed by a valid format spec
+for numbers and &#8216;u&#8217; by a valid format spec for strings.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__ge__">
+<code class="descname">__ge__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__ge__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &gt;= other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__gt__">
+<code class="descname">__gt__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__gt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &gt; other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__le__">
+<code class="descname">__le__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__le__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &lt;= other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Quantity.__lt__">
+<code class="descname">__lt__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Quantity.__lt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &lt; other</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Quantity.definition">
+<code class="descname">definition</code><a class="headerlink" href="#quantity.Quantity.definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>The quantity&#8217;s or units definition.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Quantity.normalizedDefinition">
+<code class="descname">normalizedDefinition</code><a class="headerlink" href="#quantity.Quantity.normalizedDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>The quantity&#8217;s or units normalized definition.</p>
+<p>The normalized definition defines the quantity or unit in terms of
+base units only.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="quantity.Unit">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">Unit</code><a class="headerlink" href="#quantity.Unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class used to define types of quantity units.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbol</strong> (<em>unicode string</em>) &#8211; unique string representation of the unit
+(default: None)</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; name of the unit (default: None)</li>
+<li><strong>defineAs</strong> (<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class or _QTerm) &#8211; definition of the
+unit (default: None)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If no symbol is given, but a definition, and the numerical part of that
+definition is None or 1, the symbol is derived from the definition.</p>
+<p>If no symbol and no definition is given, but the corresponding
+<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class is a derived quantity class and all its base
+classes have a reference unit, the symbol and the definition are derived
+from the class definition.</p>
+<p>If only a <cite>symbol</cite> is given and a unit with that symbol is already
+registered, that unit is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> instance</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">TypeError</span></code> &#8211; 
+given <cite>symbol</cite> is not a unicode string</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; 
+no <cite>symbol</cite> was given and it could not be generated</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; 
+a unit with the given or generated <cite>symbol</cite> is already
+registered</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; 
+no <cite>defineAs</cite> given, but reference unit already registered</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">TypeError</span></code> &#8211; 
+given <cite>defineAs</cite> does not fit the <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="quantity.Unit.registeredUnits">
+<em class="property">classmethod </em><code class="descname">registeredUnits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.registeredUnits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator over the units registered in cls.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="quantity.Unit.registerConverter">
+<em class="property">classmethod </em><code class="descname">registerConverter</code><span class="sig-paren">(</span><em>conv</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.registerConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add converter conv to the list of converters registered in cls.</p>
+<p>Does nothing if converter is already registered.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="quantity.Unit.removeConverter">
+<em class="property">classmethod </em><code class="descname">removeConverter</code><span class="sig-paren">(</span><em>conv</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.removeConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove converter conv from the list of converters registered in
+cls.</p>
+<p>Raises ValueError if the converter is not present.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="quantity.Unit.registeredConverters">
+<em class="property">classmethod </em><code class="descname">registeredConverters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.registeredConverters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator over the converters registered in &#8216;cls&#8217;, in
+reversed order of registration.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Unit.definition">
+<code class="descname">definition</code><a class="headerlink" href="#quantity.Unit.definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the definition of the unit.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Unit.symbol">
+<code class="descname">symbol</code><a class="headerlink" href="#quantity.Unit.symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the units symbol, a unique string representation of the
+unit.</p>
+<p>Used for the functions str, repr, format, hash and the unit
+registry.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Unit.name">
+<code class="descname">name</code><a class="headerlink" href="#quantity.Unit.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the units name.</p>
+<p>If the unit was not given a name, its symbol is returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.isRefUnit">
+<code class="descname">isRefUnit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.isRefUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the unit is a reference unit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.isBaseUnit">
+<code class="descname">isBaseUnit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.isBaseUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the unit is a base unit, i. e. it&#8217;s not derived
+from another unit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.isDerivedUnit">
+<code class="descname">isDerivedUnit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.isDerivedUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the unit is derived from another unit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.__eq__">
+<code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self == other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>equiv</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return scaling factor to make <cite>self</cite> equivalent to <cite>equiv</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>equiv</strong> (<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> or <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a>) &#8211; equivalent looked for</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">scaling factor so that (depending on type of <cite>equiv</cite>)
+factor ^ self == equiv or
+factor ^ self == 1 ^ equiv</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">number</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#quantity.IncompatibleUnitsError" title="quantity.IncompatibleUnitsError"><code class="xref py py-exc docutils literal"><span class="pre">IncompatibleUnitsError</span></code></a> &#8211; 
+self and equiv are of incompatible types</li>
+<li><a class="reference internal" href="#quantity.UnitConversionError" title="quantity.UnitConversionError"><code class="xref py py-exc docutils literal"><span class="pre">UnitConversionError</span></code></a> &#8211; 
+conversion factor not available</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">TypeError</span></code> &#8211; 
+no <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> or <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> instance given</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.__ge__">
+<code class="descname">__ge__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.__ge__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &gt;= other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.__gt__">
+<code class="descname">__gt__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.__gt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &gt; other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.__le__">
+<code class="descname">__le__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.__le__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &lt;= other</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="quantity.Unit.__lt__">
+<code class="descname">__lt__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Unit.__lt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self &lt; other</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quantity.Unit.normalizedDefinition">
+<code class="descname">normalizedDefinition</code><a class="headerlink" href="#quantity.Unit.normalizedDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>The quantity&#8217;s or units normalized definition.</p>
+<p>The normalized definition defines the quantity or unit in terms of
+base units only.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="converter-classes-label"></span><dl class="class">
+<dt id="quantity.Converter">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">Converter</code><a class="headerlink" href="#quantity.Converter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A quantity converter can be any callable with a signature like
+conv(qty, toUnit) -&gt; number f so that type(qty)(f, toUnit) == qty.</p>
+<dl class="method">
+<dt id="quantity.Converter.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>qty</em>, <em>toUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.Converter.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a quantity&#8217;s amount to the equivalent amount for another
+unit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>qty</strong> (sub-class of <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>) &#8211; quantity thats amount is to
+be converted</li>
+<li><strong>toUnit</strong> (sub-class of <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a>) &#8211; unit thats equivalent amount
+to be returned</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">factor f so that f ^ toUnit == qty</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">number</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#quantity.IncompatibleUnitsError" title="quantity.IncompatibleUnitsError"><code class="xref py py-exc docutils literal"><span class="pre">IncompatibleUnitsError</span></code></a> &#8211; 
+qty and toUnit are of incompatible types</li>
+<li><a class="reference internal" href="#quantity.UnitConversionError" title="quantity.UnitConversionError"><code class="xref py py-exc docutils literal"><span class="pre">UnitConversionError</span></code></a> &#8211; 
+conversion factor not available</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="quantity.TableConverter">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">TableConverter</code><span class="sig-paren">(</span><em>convTable</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.TableConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converter using a conversion table.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>convTable</strong> (<em>dict or list</em>) &#8211; the mapping used to initialize the
+conversion table</td>
+</tr>
+</tbody>
+</table>
+<p>Each item of the conversion table defines a conversion from one unit to
+another unit and consists of four elements:</p>
+<ul class="simple">
+<li>fromUnit (<a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class): unit of the quantity to be converted</li>
+<li>toUnit (<a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class): target unit of the conversion</li>
+<li>factor (<cite>number</cite>): factor to be applied to the quantity&#8217;s amount</li>
+<li>offset (<cite>number</cite>): an amount added after applying the factor</li>
+</ul>
+<p>When a <cite>dict</cite> is given as <cite>convTable</cite>, each key / value pair must map a
+tuple (fromUnit, toUnit) to a tuple (factor, offset).</p>
+<p>When a <cite>list</cite> is given as <cite>convTable</cite>, each item must be a tuple
+(fromUnit, toUnit, factor, offset).</p>
+<p><cite>factor</cite> and <cite>offset</cite> must be set so that for an amount in terms of
+<cite>fromUnit</cite> the eqivalent amount in terms of <cite>toUnit</cite> is:</p>
+<p>result = amount * factor + offset</p>
+<p>An instance of <cite>TableConverter</cite> can be called with a <a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a>
+sub-class&#8217; instance <cite>qty</cite> and a <a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class&#8217; instance <cite>toUnit</cite>
+as parameters. It looks-up the pair (<cite>qty.unit</cite>, <cite>toUnit</cite>) for a factor
+and an offset and returns the resulting amount according to the formula
+given above.</p>
+<p>If there is no item for the pair (<cite>qty.unit</cite>, <cite>toUnit</cite>), it tries to find
+a reverse mapping by looking-up the pair (<cite>toUnit</cite>, <cite>qty.unit</cite>), and, if
+it finds one, it returns a result by applying a reversed formula:</p>
+<p>result = (amount - offset) / factor</p>
+<p>That means, for each pair of units it is sufficient to define a conversion
+in one direction.</p>
+<p>An instance of <cite>TableConverter</cite> can be directly registered as a converter
+by calling the <a class="reference internal" href="#quantity.Unit.registerConverter" title="quantity.Unit.registerConverter"><code class="xref py py-meth docutils literal"><span class="pre">Unit.registerConverter()</span></code></a> method of a Unit class.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="functions">
+<span id="functions-label"></span><h2>2.3. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="quantity.getUnitBySymbol">
+<code class="descclassname">quantity.</code><code class="descname">getUnitBySymbol</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span> &rarr; unit<a class="headerlink" href="#quantity.getUnitBySymbol" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>string</em>) &#8211; symbol to look-up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="#quantity.Unit" title="quantity.Unit"><code class="xref py py-class docutils literal"><span class="pre">Unit</span></code></a> sub-class if a unit with given <cite>symbol</cite> exists in
+one of the registered quantities&#8217; <cite>Unit</cite> class, otherwise
+<cite>None</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="quantity.generateUnits">
+<code class="descclassname">quantity.</code><code class="descname">generateUnits</code><span class="sig-paren">(</span><em>qCls</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.generateUnits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and register units by combining the units of the base classes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>qCls</strong> (<a class="reference internal" href="#quantity.Quantity" title="quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> sub-class) &#8211; derived quantity class to create
+units for</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; 
+given quantity class is not a derived quantity</td>
+</tr>
+</tbody>
+</table>
+<p>The function creates and registers all units from the cross-product of all
+units of the quantity classes the class <cite>qCls</cite> is derived from, provided
+that the corresponding symbol is not already registered.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="quantity.sum">
+<code class="descclassname">quantity.</code><code class="descname">sum</code><span class="sig-paren">(</span><em>sequence</em><span class="optional">[</span>, <em>start</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; value<a class="headerlink" href="#quantity.sum" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sequence</strong> &#8211; iterable of numbers or number-like objects (NOT strings)</li>
+<li><strong>start</strong> &#8211; starting value to be added (default: None)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">sum of all elements in <cite>sequence</cite> plus the value of <cite>start</cite> (if not
+None). When <cite>sequence</cite> is empty, returns <cite>start</cite>, if not None,
+otherwise 0.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>In contrast to the built-in function &#8216;sum&#8217; this allows to sum sequences of
+number-like objects (like quantities) without having to provide a start
+value.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="exceptions">
+<span id="exceptions-label"></span><h2>2.4. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="quantity.QuantityError">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">QuantityError</code><a class="headerlink" href="#quantity.QuantityError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when a quantity can not not be instanciated with the
+given parameters.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="quantity.IncompatibleUnitsError">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">IncompatibleUnitsError</code><span class="sig-paren">(</span><em>msg</em>, <em>operand1</em>, <em>operand2</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.IncompatibleUnitsError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when operands do not have compatible units.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="quantity.UndefinedResultError">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">UndefinedResultError</code><span class="sig-paren">(</span><em>op</em>, <em>operand1</em>, <em>operand2</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.UndefinedResultError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when operation results in an undefined quantity.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="quantity.UnitConversionError">
+<em class="property">class </em><code class="descclassname">quantity.</code><code class="descname">UnitConversionError</code><span class="sig-paren">(</span><em>msg</em>, <em>fromUnit</em>, <em>toUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#quantity.UnitConversionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when a conversion between two compatible units
+fails.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Quantity</a><ul>
+<li><a class="reference internal" href="#usage">2.1. Usage</a><ul>
+<li><a class="reference internal" href="#defining-a-quantity-class">2.1.1. Defining a quantity class</a></li>
+<li><a class="reference internal" href="#instantiating-quantities">2.1.2. Instantiating quantities</a></li>
+<li><a class="reference internal" href="#converting-between-units">2.1.3. Converting between units</a><ul>
+<li><a class="reference internal" href="#converters">2.1.3.1. Converters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unit-safe-computations">2.1.4. Unit-safe computations</a><ul>
+<li><a class="reference internal" href="#comparison">2.1.4.1. Comparison</a></li>
+<li><a class="reference internal" href="#addition-and-subtraction">2.1.4.2. Addition and subtraction</a></li>
+<li><a class="reference internal" href="#multiplication-and-division">2.1.4.3. Multiplication and division</a></li>
+<li><a class="reference internal" href="#exponentiation">2.1.4.4. Exponentiation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rounding">2.1.5. Rounding</a></li>
+<li><a class="reference internal" href="#apportioning">2.1.6. Apportioning</a></li>
+<li><a class="reference internal" href="#formatting-as-string">2.1.7. Formatting as string</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#classes">2.2. Classes</a></li>
+<li><a class="reference internal" href="#functions">2.3. Functions</a></li>
+<li><a class="reference internal" href="#exceptions">2.4. Exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">1. Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="predefined.html"
+                        title="next chapter">3. Predefined Quantities</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="predefined.html" title="3. Predefined Quantities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="1. Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">quantity 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014 ff., Michael Amrhein.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+    </div>
+  </body>
+</html>
