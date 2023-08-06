@@ -1,0 +1,1 @@
+Please, read documentation here : http://python-textops.readthedocs.org
