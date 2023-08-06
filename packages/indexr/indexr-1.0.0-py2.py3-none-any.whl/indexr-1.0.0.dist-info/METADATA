@@ -1,0 +1,140 @@
+Metadata-Version: 2.0
+Name: indexr
+Version: 1.0.0
+Summary: A general purpose indexer written in Python.
+Home-page: https://github.com/kevin91nl/indexr
+Author: Kevin Jacobs
+Author-email: kevin91nl@gmail.com
+License: ISCL
+Keywords: indexr
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+
+===============================
+indexr
+===============================
+
+.. image:: https://img.shields.io/pypi/v/indexr.svg
+    :target: https://pypi.python.org/pypi/indexr
+
+.. image:: https://img.shields.io/travis/kevin91nl/indexr.svg
+    :target: https://travis-ci.org/kevin91nl/indexr
+
+.. image:: https://readthedocs.org/projects/indexr/badge/
+    :target: https://readthedocs.org/projects/indexr/
+
+
+A general purpose indexer written in Python. Licensed under the MIT license.
+
+
+Features
+--------
+The :code:`indexr.buildr` package is capable of constructing an inverted index.
+
+The :code:`indexr.utils` package contains utilities, such as a tokenization method for converting a text to tokens.
+
+Setup
+-----
+This package can be installed using pip:
+
+:code:`pip install indexr`
+
+Examples
+--------
+In this example, an indexer is constructed for 3 files. The example uses the following 3 files:
+
+:code:`0.txt`:
+
+.. code-block:: resource
+
+    The 0th document.
+
+:code:`1.txt`:
+
+.. code-block:: resource
+
+    The 1st document.
+
+:code:`2.txt`:
+
+.. code-block:: resource
+
+    The 2nd document. Some words: repeat, repeat, repeat.
+
+
+The following code sample can be found in the demo directory (:code:`demo/buildr.py`).
+
+
+.. code-block:: python
+
+    # Build the index
+    index = build_index(files, 'index', force_rebuild=True, indexer=SPIMI(show_progress=True))
+
+    # Try to find the word "1st"
+    print('All found occurrences of "1st":')
+    print(index.find('1st', frequencies=True), "\n")
+
+    # Try to find the word "The"
+    print('All found occurrences of "The":')
+    print(index.find('The', frequencies=True), "\n")
+
+    # Try to find the word "repeat"
+    print('All found occurrences of "repeat":')
+    print(index.find('repeat', frequencies=True), "\n")
+
+
+It gives the following output:
+
+.. code-block:: python
+
+    >>> All found occurrences of "1st":
+    >>> {'1.txt': 1}
+    >>>
+    >>> All found occurrences of "The":
+    >>> {'0.txt': 1, '1.txt': 1, '2.txt': 1}
+    >>>
+    >>> All found occurrences of "repeat":
+    >>> {'2.txt': 3}
+
+So indeed, it finds 1 occurrence of "1st", 3 occurrences of "The" (1 occurrence in each file) and 3 occurrences of "repeat" (3 occurrences in one file).
+
+Documentation
+-------------
+https://indexr.readthedocs.org
+
+Credits
+-------
+
+Tools used in rendering this package:
+
+*  Cookiecutter_
+*  `cookiecutter-pypackage`_
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+
+
+History
+-------
+1.0.0 (2015-12-07)
+---------------------
+
+* First release, including the BSB algorithm and the SPIMI algorithm.
+
+0.1.0 (2015-12-04)
+---------------------
+
+* First release on PyPI.
+
+
