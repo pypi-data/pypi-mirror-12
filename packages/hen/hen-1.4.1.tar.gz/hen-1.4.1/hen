@@ -1,0 +1,179 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import time
+import argparse
+import yaml
+import subprocess
+import select
+import fcntl
+import os
+import sys
+from termcolor import colored
+import signal
+import itertools
+import heapq
+
+
+ColorFactory = itertools.cycle([
+    'white',                     
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+])
+
+
+class Scheduler(object):
+    def __init__(self):
+        self._q = []
+
+    def call_later(self, callable, delay):
+        heapq.heappush(self._q, (time.time() + delay, callable))
+
+    def time_till_next_event(self):
+        if not self._q:
+            return sys.maxsize
+
+        return max(0, self._q[0][0] - time.time())
+
+    def update(self):
+        while self.time_till_next_event() == 0:
+            _, callable = heapq.heappop(self._q)
+            callable()
+
+
+class Subprocess(object):
+    def __init__(self, name, cmdline):
+        self.name = name
+        self.cmdline = cmdline
+        self.p = None
+        self.color = next(ColorFactory)
+        self.restarting = False
+        self.restart()
+        
+    @property
+    def stdout(self):
+        return self.p.stdout
+
+    @property
+    def stderr(self):
+        return self.p.stderr
+    
+    def read_stdout(self):
+        self.stdout_buf += self.stdout.read()
+        
+        while b'\n' in self.stdout_buf:
+            line, self.stdout_buf = self.stdout_buf.split(b'\n', 1)
+            self.print_line(line)
+
+    def read_stderr(self):
+        self.stderr_buf += self.stderr.read()
+        
+        while b'\n' in self.stderr_buf:
+            line, self.stderr_buf = self.stderr_buf.split(b'\n', 1)
+            self.print_line(line)
+
+    def mark_restarting(self):
+        self.restarting = True
+
+    def restart(self):
+        self.restarting = False
+        self.stdout_buf = b''
+        
+        self.stderr_buf = b''
+        if self.p and self.p.poll() is None:
+            self.p.terminate()
+            self.p.wait()
+        self.p = subprocess.Popen(self.cmdline, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+               
+        fd = self.p.stdout.fileno()
+        fl = fcntl.fcntl(fd, fcntl.F_GETFL)
+        fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)                
+
+        fd = self.p.stderr.fileno()
+        fl = fcntl.fcntl(fd, fcntl.F_GETFL)
+        fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)                
+
+    def print_line(self, l):
+        print(colored('%s:' % self.name, self.color, attrs=['bold']), end=' ')
+        print(colored(l.decode('utf-8'), self.color))
+
+    def __unicode__(self):
+        return self.name
+    
+    def __repr__(self):
+        return 'Subprocess(%r)' % self.name
+
+
+def manage_subprocesses(proclist, restart_delay):
+    time_to_quit = {'status': False}
+    
+    def sigint(signal, frame):
+        print(colored('Got sigint. Terminating processes...', 'red'))
+        time_to_quit['status'] = True
+        
+    old_sigint = signal.signal(signal.SIGINT, sigint)
+    
+    sched = Scheduler()
+
+    while not time_to_quit['status']:
+        try:
+            file_map = {}
+            for p in proclist:
+                file_map[p.stdout] = p.read_stdout
+                file_map[p.stderr] = p.read_stderr
+            
+            rlist, _, _ = select.select(file_map.keys(), [], [], min(2, sched.time_till_next_event()))
+    
+            for f in rlist:
+                file_map[f]()
+                
+            for p in proclist:
+                if p.p.poll() is not None and not p.restarting:
+                    print(colored('%s finished with %d. Restarting in %d second(s)...' % (p.name, p.p.poll(), restart_delay), 'red'))
+                    p.mark_restarting()
+                    sched.call_later(p.restart, restart_delay)
+            sched.update()
+        except select.error:
+            continue
+    signal.signal(signal.SIGINT, old_sigint)
+    
+    for p in proclist:
+        p.p.terminate()
+    for p in proclist:
+        p.p.wait()
+        
+    print(colored('Done.', 'red'))
+        
+
+def main():
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument('-f', '--henfile', action='store', default='Henfile')
+    parser.add_argument('-d', '--restart_delay', action='store', type=int, default=1)
+    known_args, unknown_args = parser.parse_known_args()    
+
+    with open('Henfile', 'rt') as f:
+        #henfile = json.load(f)
+        henfile = yaml.load(f)
+
+    parser.add_argument('-h', '--help', action='help')
+
+    disablers = parser.add_argument_group('Disablers', 'These options could be used to temporary disable processes without changing Henfile.')
+    for key in henfile['proc']:
+        disablers.add_argument('--no{0}'.format(key), action='store_false', default=True, dest=key, help='Disable "{0}" process'.format(key))
+
+    args = parser.parse_args()
+
+    env = henfile.get('env')
+    if env:
+        os.environ.update(env)
+
+    import sys
+    sys.stdout.write("\x1b]2;%s\x07" % henfile['name'])
+    processes = [Subprocess(key, cmd) for key, cmd in henfile['proc'].items() if getattr(args, key)]
+    manage_subprocesses(processes, args.restart_delay)
+
+if __name__ == '__main__':
+    main()
