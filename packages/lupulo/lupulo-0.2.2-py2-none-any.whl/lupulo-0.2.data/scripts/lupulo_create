@@ -1,0 +1,27 @@
+#!python
+# -*- coding: utf-8 -*-
+# Copyright (C) 2015  Alejandro López Espinosa (kudrom)
+
+import os
+import shutil
+
+from lupulo.settings import settings
+
+def create_if_not_exists(directory):
+    if not os.path.exists(directory):
+        os.mkdir(directory)
+
+def main():
+    create_if_not_exists("templates")
+    create_if_not_exists("templates/errors")
+    create_if_not_exists("static")
+
+    src = os.path.join(settings['lupulo_cwd'], 'defaults')
+    shutil.copyfile(os.path.join(src, 'data_schema.json'), "./data_schema.json")
+    shutil.copyfile(os.path.join(src, 'layout.json'), "./layout.json")
+    shutil.copyfile(os.path.join(src, 'default_settings.py'), "./settings.py")
+    shutil.copyfile(os.path.join(src, 'default_urls.py'), "./urls.py")
+    shutil.copyfile(os.path.join(src, 'templates/index.html'), "./templates/index.html")
+
+if __name__ == "__main__":
+    main()

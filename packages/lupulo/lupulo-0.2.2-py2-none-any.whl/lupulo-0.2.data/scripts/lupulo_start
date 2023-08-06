@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+# Copyright (C) 2015  Alejandro López Espinosa (kudrom)
+
+command -v python2 > /dev/null
+if [ $? -eq 0 ]
+then
+    ID=`id -u`
+    if [ $ID -ne 0 ]
+    then
+        echo "[!] YOU MIGHT NEED SUPERUSER PERMISSIONS DEPENDING ON THE LISTENER YOU USE."
+    fi
+
+    command="from lupulo.settings import settings; print settings['lupulo_cwd']"
+    path=$(python2 -c "$command")
+
+    dir=$(realpath ./)
+
+    LUPULO_PROJECT_DIR=$dir twistd -ny "$path/startup.tac"
+else
+    echo "You need a python2 interpreter."
+fi
